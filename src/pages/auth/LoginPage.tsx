@@ -79,17 +79,14 @@ export default function LoginPage() {
   return (
     <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
       <div className="w-full max-w-md">
-        {/* Logo */}
+        {/* Logo GA */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-block">
-            <img src="/logo.svg" alt="Gouvernance IA" className="h-10 w-auto mx-auto" />
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center size-14 rounded-xl bg-brand-purple text-white text-2xl font-bold tracking-tighter"
+          >
+            GA
           </Link>
-          <h1 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
-            Connexion à votre portail
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Accédez à vos outils de gouvernance IA
-          </p>
         </div>
 
         {/* Verified email banner */}
