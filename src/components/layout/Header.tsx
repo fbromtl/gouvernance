@@ -41,7 +41,7 @@ import { useAuth } from "@/lib/auth";
 export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, profile, signInWithGoogle, signOut, loading: authLoading } = useAuth();
+  const { user, profile, signOut, loading: authLoading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
