@@ -117,7 +117,7 @@ export function ServicesPage() {
                 structuré. Notre approche couvre les sept piliers essentiels : éthique, sécurité,
                 conformité, protection des données, gestion des risques, transparence et formation.
               </p>
-              <Button asChild size="lg" className="bg-brand-purple text-white hover:bg-brand-purple-dark">
+              <Button asChild size="lg" className="px-8">
                 <Link to="/contact">Demander un diagnostic</Link>
               </Button>
             </div>
@@ -237,7 +237,7 @@ export function ServicesPage() {
                   </li>
                 ))}
               </ul>
-              <Button asChild size="lg" className="bg-brand-purple text-white hover:bg-brand-purple-dark gap-2">
+              <Button asChild size="lg" className="gap-2 px-8">
                 <Link to="/contact">
                   Réserver un conférencier
                   <ArrowRight className="size-4" />

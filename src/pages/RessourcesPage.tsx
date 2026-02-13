@@ -245,7 +245,7 @@ export function RessourcesPage() {
           </Tabs>
 
           <div className="text-center mt-10">
-            <Button asChild size="lg" className="bg-brand-purple text-white hover:bg-brand-purple-dark">
+            <Button asChild size="lg" className="px-8">
               <Link to="/contact">Recevoir les mises à jour réglementaires</Link>
             </Button>
           </div>

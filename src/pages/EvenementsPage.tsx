@@ -112,11 +112,7 @@ export function EvenementsPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <Button
-                    asChild
-                    size="sm"
-                    className="bg-brand-purple text-white hover:bg-brand-purple-dark"
-                  >
+                  <Button asChild size="sm">
                     <Link to={event.href}>{event.cta}</Link>
                   </Button>
                 </CardContent>
@@ -171,11 +167,7 @@ export function EvenementsPage() {
               Études de cas
             </li>
           </ul>
-          <Button
-            asChild
-            size="lg"
-            className="bg-brand-purple text-white hover:bg-brand-purple-dark px-8 py-6 h-auto text-base shadow-lg shadow-brand-purple/30"
-          >
+          <Button asChild size="lg" className="px-8 py-6 h-auto text-base">
             <Link to="/contact">Réserver votre place</Link>
           </Button>
         </div>

@@ -407,11 +407,7 @@ export function RejoindrePage() {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-brand-purple text-white hover:bg-brand-purple-dark py-6 text-base"
-                >
+                <Button type="submit" size="lg" className="w-full py-6 text-base px-8">
                   Soumettre ma candidature
                 </Button>
               </form>

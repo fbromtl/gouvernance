@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Menu,
   Search,
@@ -18,6 +18,10 @@ import {
   Briefcase,
   Shield,
   Globe,
+  Users,
+  Calendar,
+  Building2,
+  Newspaper,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -27,36 +31,11 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
-/*  DATA                                                               */
-/* ------------------------------------------------------------------ */
-
-const aboutLinks = [
-  { to: "/a-propos", label: "Notre mission", desc: "Vision et valeurs fondatrices" },
-  { to: "/a-propos#approche", label: "Notre approche", desc: "Cadres de référence et méthodologie" },
-  { to: "/a-propos#gouvernance", label: "Gouvernance du cercle", desc: "Structure et charte éthique" },
-];
-
-const servicesLinks = [
-  { to: "/services#diagnostic", label: "Diagnostic de maturité IA", icon: Target, desc: "Évaluez votre niveau de gouvernance" },
-  { to: "/services#accompagnement", label: "Accompagnement stratégique", icon: Briefcase, desc: "Conseil pour PME, OBNL et grandes organisations" },
-  { to: "/services#formations", label: "Formations et ateliers", icon: GraduationCap, desc: "Programmes adaptés pour vos équipes" },
-  { to: "/services#conferences", label: "Conférences et interventions", icon: Mic, desc: "Experts disponibles pour vos événements" },
-];
-
-const ressourcesLinks = [
-  { to: "/ressources", label: "Guides et cadres", icon: BookOpen, desc: "Documents et gabarits téléchargeables" },
-  { to: "/ressources#outils", label: "Boîte à outils", icon: Wrench, desc: "Checklists, modèles et FAQ juridique" },
-  { to: "/ressources#veille", label: "Veille réglementaire", icon: Globe, desc: "Suivi des lois et règlements" },
-  { to: "/ressources#etudes", label: "Études de cas", icon: FileText, desc: "Exemples concrets par secteur" },
-];
-
-/* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
 /* ------------------------------------------------------------------ */
 
 export function Header() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -104,72 +83,10 @@ export function Header() {
   };
 
   const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
+    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 200);
   };
 
-  /* ---------------------------------------------------------------- */
-  /*  MEGA DROPDOWN                                                    */
-  /* ---------------------------------------------------------------- */
-
-  const renderMegaDropdown = (
-    id: string,
-    items: { to: string; label: string; desc: string; icon?: React.ElementType }[],
-    footerLink?: { to: string; label: string },
-  ) => (
-    <div
-      className={cn(
-        "absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200",
-        openDropdown === id ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
-      )}
-      onMouseEnter={() => handleDropdownEnter(id)}
-      onMouseLeave={handleDropdownLeave}
-    >
-      <div className="bg-white rounded-xl shadow-xl shadow-black/8 border border-border/60 p-2 min-w-[320px]">
-        <div className="grid gap-0.5">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setOpenDropdown(null)}
-              className={cn(
-                "flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors group",
-                "hover:bg-primary/5",
-                isActive(item.to) && "bg-primary/5"
-              )}
-            >
-              {item.icon && (
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
-                  <item.icon className="size-4" />
-                </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <div className={cn(
-                  "text-sm font-medium text-foreground group-hover:text-primary transition-colors",
-                  isActive(item.to) && "text-primary"
-                )}>
-                  {item.label}
-                </div>
-                <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{item.desc}</div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        {footerLink && (
-          <>
-            <Separator className="my-1.5" />
-            <Link
-              to={footerLink.to}
-              onClick={() => setOpenDropdown(null)}
-              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors rounded-lg hover:bg-primary/5"
-            >
-              {footerLink.label}
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </>
-        )}
-      </div>
-    </div>
-  );
+  const close = () => setOpenDropdown(null);
 
   /* ---------------------------------------------------------------- */
   /*  NAV LINK + DROPDOWN TRIGGER                                      */
@@ -180,7 +97,7 @@ export function Header() {
       to={to}
       className={cn(
         "px-3 py-2 text-sm font-medium transition-colors relative",
-        "text-foreground/75 hover:text-foreground",
+        "text-foreground/70 hover:text-foreground",
         isActive(to) && "text-primary"
       )}
     >
@@ -196,16 +113,11 @@ export function Header() {
       type="button"
       className={cn(
         "flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors relative",
-        "text-foreground/75 hover:text-foreground",
+        "text-foreground/70 hover:text-foreground",
         (openDropdown === id || isActive("/" + id)) && "text-primary"
       )}
       onMouseEnter={() => handleDropdownEnter(id)}
       onMouseLeave={handleDropdownLeave}
-      onClick={() => {
-        const firstLink = id === "about" ? "/a-propos" : id === "services" ? "/services" : "/ressources";
-        navigate(firstLink);
-        setOpenDropdown(null);
-      }}
     >
       {children}
       <ChevronDown className={cn(
@@ -216,6 +128,243 @@ export function Header() {
         <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />
       )}
     </button>
+  );
+
+  /* ---------------------------------------------------------------- */
+  /*  MEGA DROPDOWN: LE CERCLE (About + Experts + Événements + Orgs)   */
+  /* ---------------------------------------------------------------- */
+
+  const renderCercleMega = () => (
+    <div
+      className={cn(
+        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[720px]",
+        openDropdown === "cercle" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
+      )}
+      onMouseEnter={() => handleDropdownEnter("cercle")}
+      onMouseLeave={handleDropdownLeave}
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
+        <div className="grid grid-cols-5">
+          {/* Col 1 — À propos */}
+          <div className="col-span-2 p-5 border-r border-border/40">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-2">Le Cercle</p>
+            {[
+              { to: "/a-propos", label: "Notre mission", desc: "Vision et valeurs fondatrices", icon: Shield },
+              { to: "/a-propos#approche", label: "Notre approche", desc: "Cadres de référence et méthodologie", icon: BookOpen },
+              { to: "/a-propos#gouvernance", label: "Gouvernance du cercle", desc: "Structure et charte éthique", icon: Globe },
+              { to: "/experts", label: "Nos experts", desc: "150+ experts, 15 disciplines", icon: Users },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={close}
+                className={cn(
+                  "flex items-start gap-3 rounded-xl px-2 py-2.5 transition-colors group hover:bg-primary/5",
+                  isActive(item.to) && "bg-primary/5"
+                )}
+              >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
+                  <item.icon className="size-3.5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</div>
+                  <div className="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">{item.desc}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Col 2 — Pages */}
+          <div className="col-span-1 p-5 border-r border-border/40">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-1">Communauté</p>
+            {[
+              { to: "/evenements", label: "Événements", icon: Calendar },
+              { to: "/organisations", label: "Organisations", icon: Building2 },
+              { to: "/actualites", label: "Actualités", icon: Newspaper },
+              { to: "/contact", label: "Contact", icon: Mail },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={close}
+                className={cn(
+                  "flex items-center gap-2.5 rounded-lg px-1 py-2 text-sm transition-colors hover:text-primary",
+                  isActive(item.to) ? "text-primary font-medium" : "text-foreground/70"
+                )}
+              >
+                <item.icon className="size-3.5 shrink-0" />
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Col 3 — CTA card */}
+          <div className="col-span-2 bg-gradient-to-br from-[#1e1a30] to-[#2d1f4e] p-5 flex flex-col justify-between">
+            <div>
+              <p className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Rejoignez-nous</p>
+              <p className="text-sm font-bold text-white leading-snug mb-2">
+                Intégrez un réseau de 150+ experts en gouvernance de l&apos;IA
+              </p>
+              <p className="text-xs text-white/60 leading-relaxed">
+                Accédez à des ressources exclusives, des événements et du mentorat.
+              </p>
+            </div>
+            <Link
+              to="/rejoindre"
+              onClick={close}
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-purple-light hover:text-white transition-colors"
+            >
+              Rejoindre le Cercle
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ---------------------------------------------------------------- */
+  /*  MEGA DROPDOWN: SERVICES                                          */
+  /* ---------------------------------------------------------------- */
+
+  const renderServicesMega = () => (
+    <div
+      className={cn(
+        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[640px]",
+        openDropdown === "services" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
+      )}
+      onMouseEnter={() => handleDropdownEnter("services")}
+      onMouseLeave={handleDropdownLeave}
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
+        <div className="grid grid-cols-2">
+          {/* Col 1 — Links */}
+          <div className="p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-2">Nos services</p>
+            {[
+              { to: "/services#diagnostic", label: "Diagnostic de maturité IA", icon: Target, desc: "Évaluez votre niveau de gouvernance" },
+              { to: "/services#accompagnement", label: "Accompagnement stratégique", icon: Briefcase, desc: "Conseil pour PME, OBNL et grandes organisations" },
+              { to: "/services#formations", label: "Formations et ateliers", icon: GraduationCap, desc: "Programmes adaptés pour vos équipes" },
+              { to: "/services#conferences", label: "Conférences et interventions", icon: Mic, desc: "Experts disponibles pour vos événements" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={close}
+                className={cn(
+                  "flex items-start gap-3 rounded-xl px-2 py-2.5 transition-colors group hover:bg-primary/5",
+                  isActive(item.to) && "bg-primary/5"
+                )}
+              >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
+                  <item.icon className="size-3.5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</div>
+                  <div className="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">{item.desc}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Col 2 — Feature card */}
+          <div className="p-5 bg-muted/30 border-l border-border/40 flex flex-col">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3">En vedette</p>
+            <div className="rounded-xl overflow-hidden mb-3">
+              <img
+                src="/images-gouvernance-ai/businessman-laptop.jpg"
+                alt="Services"
+                className="w-full h-28 object-cover"
+              />
+            </div>
+            <p className="text-sm font-bold text-foreground mb-1">Diagnostic gratuit</p>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+              Évaluez gratuitement la maturité de votre gouvernance IA en 15 minutes.
+            </p>
+            <Link
+              to="/services"
+              onClick={close}
+              className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+            >
+              Tous les services
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ---------------------------------------------------------------- */
+  /*  MEGA DROPDOWN: RESSOURCES                                        */
+  /* ---------------------------------------------------------------- */
+
+  const renderRessourcesMega = () => (
+    <div
+      className={cn(
+        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[640px]",
+        openDropdown === "ressources" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
+      )}
+      onMouseEnter={() => handleDropdownEnter("ressources")}
+      onMouseLeave={handleDropdownLeave}
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
+        <div className="grid grid-cols-2">
+          {/* Col 1 — Links */}
+          <div className="p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-2">Bibliothèque</p>
+            {[
+              { to: "/ressources", label: "Guides et cadres", icon: BookOpen, desc: "Documents et gabarits téléchargeables" },
+              { to: "/ressources#outils", label: "Boîte à outils", icon: Wrench, desc: "Checklists, modèles et FAQ juridique" },
+              { to: "/ressources#veille", label: "Veille réglementaire", icon: Globe, desc: "Suivi des lois et règlements" },
+              { to: "/ressources#etudes", label: "Études de cas", icon: FileText, desc: "Exemples concrets par secteur" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={close}
+                className={cn(
+                  "flex items-start gap-3 rounded-xl px-2 py-2.5 transition-colors group hover:bg-primary/5",
+                  isActive(item.to) && "bg-primary/5"
+                )}
+              >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
+                  <item.icon className="size-3.5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</div>
+                  <div className="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">{item.desc}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Col 2 — Feature card */}
+          <div className="p-5 bg-muted/30 border-l border-border/40 flex flex-col">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3">Dernière publication</p>
+            <div className="rounded-xl overflow-hidden mb-3">
+              <img
+                src="/images-gouvernance-ai/business-strategy.jpg"
+                alt="Ressources"
+                className="w-full h-28 object-cover"
+              />
+            </div>
+            <p className="text-sm font-bold text-foreground mb-1">Guide Loi 25 & IA</p>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+              Tout ce que vous devez savoir sur la conformité de vos systèmes d&apos;IA à la Loi 25.
+            </p>
+            <Link
+              to="/ressources"
+              onClick={close}
+              className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+            >
+              Toutes les ressources
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 
   /* ---------------------------------------------------------------- */
@@ -265,7 +414,7 @@ export function Header() {
         "bg-white/98 backdrop-blur-md border-b transition-shadow duration-300",
         scrolled ? "shadow-md border-border/50" : "border-border/30 shadow-sm"
       )}>
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center hover:opacity-85 transition-opacity shrink-0">
             <img
@@ -275,52 +424,46 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center">
+          {/* Desktop Navigation — Simplified: 4 items */}
+          <nav className="hidden lg:flex items-center">
             <div className="flex items-center gap-0.5">
               <NavLink to="/">Accueil</NavLink>
 
-              {/* À propos dropdown */}
+              {/* Le Cercle mega */}
               <div
                 className="relative"
-                onMouseEnter={() => handleDropdownEnter("about")}
+                onMouseEnter={() => handleDropdownEnter("cercle")}
                 onMouseLeave={handleDropdownLeave}
               >
-                <DropdownTrigger id="about">À propos</DropdownTrigger>
-                {renderMegaDropdown("about", aboutLinks.map(l => ({ ...l, icon: Shield })))}
+                <DropdownTrigger id="cercle">Le Cercle</DropdownTrigger>
+                {renderCercleMega()}
               </div>
 
-              <NavLink to="/experts">Nos experts</NavLink>
-
-              {/* Services dropdown */}
+              {/* Services mega */}
               <div
                 className="relative"
                 onMouseEnter={() => handleDropdownEnter("services")}
                 onMouseLeave={handleDropdownLeave}
               >
                 <DropdownTrigger id="services">Services</DropdownTrigger>
-                {renderMegaDropdown("services", servicesLinks, { to: "/services", label: "Tous les services" })}
+                {renderServicesMega()}
               </div>
 
-              {/* Ressources dropdown */}
+              {/* Ressources mega */}
               <div
                 className="relative"
                 onMouseEnter={() => handleDropdownEnter("ressources")}
                 onMouseLeave={handleDropdownLeave}
               >
                 <DropdownTrigger id="ressources">Ressources</DropdownTrigger>
-                {renderMegaDropdown("ressources", ressourcesLinks, { to: "/ressources", label: "Toutes les ressources" })}
+                {renderRessourcesMega()}
               </div>
-
-              <NavLink to="/evenements">Événements</NavLink>
-              <NavLink to="/organisations">Organisations</NavLink>
             </div>
 
             <Separator orientation="vertical" className="h-6 mx-3" />
 
             {/* Utility icons */}
             <div className="flex items-center gap-1">
-              {/* Search */}
               <button
                 type="button"
                 onClick={() => setSearchOpen(!searchOpen)}
@@ -329,8 +472,6 @@ export function Header() {
               >
                 <Search className="size-4" />
               </button>
-
-              {/* LinkedIn */}
               <a
                 href="https://linkedin.com"
                 target="_blank"
@@ -343,17 +484,13 @@ export function Header() {
             </div>
 
             {/* CTA */}
-            <Button
-              asChild
-              size="sm"
-              className="ml-3 bg-brand-purple text-white hover:bg-brand-purple-dark border-0 shadow-md shadow-brand-purple/20 rounded-full px-5"
-            >
+            <Button asChild size="sm" className="ml-3 px-5">
               <Link to="/rejoindre">Rejoindre le Cercle</Link>
             </Button>
           </nav>
 
           {/* Mobile / Tablet */}
-          <div className="flex xl:hidden items-center gap-1.5">
+          <div className="flex lg:hidden items-center gap-1.5">
             <button
               type="button"
               onClick={() => setSearchOpen(!searchOpen)}
@@ -362,11 +499,7 @@ export function Header() {
             >
               <Search className="size-4" />
             </button>
-            <Button
-              asChild
-              size="sm"
-              className="bg-brand-purple text-white hover:bg-brand-purple-dark border-0 text-xs sm:text-sm rounded-full px-4"
-            >
+            <Button asChild size="sm" className="text-xs sm:text-sm px-4">
               <Link to="/rejoindre">Rejoindre</Link>
             </Button>
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -389,35 +522,36 @@ export function Header() {
                 <nav className="px-4 py-4 space-y-1">
                   <MobileNavLink to="/" active={isActive("/")}>Accueil</MobileNavLink>
 
-                  <MobileDropdown label="À propos" active={isActive("/a-propos")}>
+                  <MobileDropdown label="Le Cercle" active={isActive("/a-propos") || isActive("/experts")}>
                     <MobileNavLink to="/a-propos" active={isActive("/a-propos")} sub>Notre mission</MobileNavLink>
                     <MobileNavLink to="/a-propos#approche" sub>Notre approche</MobileNavLink>
                     <MobileNavLink to="/a-propos#gouvernance" sub>Gouvernance du cercle</MobileNavLink>
+                    <MobileNavLink to="/experts" active={isActive("/experts")} sub>Nos experts</MobileNavLink>
+                    <MobileNavLink to="/evenements" active={isActive("/evenements")} sub>Événements</MobileNavLink>
+                    <MobileNavLink to="/organisations" active={isActive("/organisations")} sub>Organisations</MobileNavLink>
+                    <MobileNavLink to="/actualites" active={isActive("/actualites")} sub>Actualités</MobileNavLink>
                   </MobileDropdown>
 
-                  <MobileNavLink to="/experts" active={isActive("/experts")}>Nos experts</MobileNavLink>
-
                   <MobileDropdown label="Services" active={isActive("/services")}>
-                    {servicesLinks.map((l) => (
-                      <MobileNavLink key={l.to} to={l.to} sub>{l.label}</MobileNavLink>
-                    ))}
+                    <MobileNavLink to="/services#diagnostic" sub>Diagnostic de maturité IA</MobileNavLink>
+                    <MobileNavLink to="/services#accompagnement" sub>Accompagnement stratégique</MobileNavLink>
+                    <MobileNavLink to="/services#formations" sub>Formations et ateliers</MobileNavLink>
+                    <MobileNavLink to="/services#conferences" sub>Conférences et interventions</MobileNavLink>
                   </MobileDropdown>
 
                   <MobileDropdown label="Ressources" active={isActive("/ressources")}>
-                    {ressourcesLinks.map((l) => (
-                      <MobileNavLink key={l.to} to={l.to} sub>{l.label}</MobileNavLink>
-                    ))}
+                    <MobileNavLink to="/ressources" active={isActive("/ressources")} sub>Guides et cadres</MobileNavLink>
+                    <MobileNavLink to="/ressources#outils" sub>Boîte à outils</MobileNavLink>
+                    <MobileNavLink to="/ressources#veille" sub>Veille réglementaire</MobileNavLink>
+                    <MobileNavLink to="/ressources#etudes" sub>Études de cas</MobileNavLink>
                   </MobileDropdown>
 
-                  <MobileNavLink to="/evenements" active={isActive("/evenements")}>Événements</MobileNavLink>
-                  <MobileNavLink to="/organisations" active={isActive("/organisations")}>Pour les organisations</MobileNavLink>
-                  <MobileNavLink to="/actualites" active={isActive("/actualites")}>Actualités</MobileNavLink>
                   <MobileNavLink to="/contact" active={isActive("/contact")}>Contact</MobileNavLink>
                 </nav>
 
                 {/* Mobile Footer */}
                 <div className="px-6 py-4 border-t border-border/50 mt-2">
-                  <Button asChild className="w-full bg-brand-purple text-white hover:bg-brand-purple-dark rounded-full">
+                  <Button asChild className="w-full">
                     <Link to="/rejoindre">Rejoindre le Cercle</Link>
                   </Button>
                   <div className="flex items-center gap-4 mt-4 justify-center">

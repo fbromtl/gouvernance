@@ -151,7 +151,7 @@ function TabCard({ content, Icon }: { content: (typeof tabContent)[TabKey]; Icon
             ))}
           </ul>
         </div>
-        <Button asChild className="bg-brand-purple text-white hover:bg-brand-purple-dark gap-2">
+        <Button asChild className="gap-2 px-8">
           <Link to={content.ctaTo}>
             {content.cta}
             <ArrowRight className="size-4" />

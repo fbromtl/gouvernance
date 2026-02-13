@@ -121,10 +121,10 @@ export function ContactPage() {
                     />
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button type="submit" size="lg" className="flex-1 sm:flex-initial">
+                    <Button type="submit" size="lg" className="flex-1 sm:flex-initial px-8">
                       Envoyer
                     </Button>
-                    <Button asChild variant="outline" size="lg">
+                    <Button asChild variant="outline" size="lg" className="px-8">
                       <Link to="/rejoindre" className="flex items-center gap-2">
                         <Users className="size-4" />
                         Rejoindre le Cercle

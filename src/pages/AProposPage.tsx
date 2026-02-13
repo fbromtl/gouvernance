@@ -318,12 +318,8 @@ export function AProposPage() {
             </Card>
           </div>
           <div className="text-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-brand-purple text-white hover:bg-brand-purple-dark"
-            >
-              <Link to="/rejoindre" className="gap-2">
+            <Button asChild size="lg" className="gap-2 px-8">
+              <Link to="/rejoindre">
                 Rejoindre le Cercle
                 <ArrowRight className="size-5" />
               </Link>

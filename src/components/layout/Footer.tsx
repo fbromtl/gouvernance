@@ -9,6 +9,9 @@ import {
   Send,
   ArrowRight,
   Shield,
+  Circle,
+  Briefcase,
+  BookOpen,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,6 +26,7 @@ import { cn } from "@/lib/utils";
 const footerColumns = [
   {
     title: "Le Cercle",
+    icon: Circle,
     links: [
       { to: "/a-propos", label: "Notre mission" },
       { to: "/a-propos#approche", label: "Notre approche" },
@@ -33,6 +37,7 @@ const footerColumns = [
   },
   {
     title: "Services",
+    icon: Briefcase,
     links: [
       { to: "/services#diagnostic", label: "Diagnostic IA" },
       { to: "/services#accompagnement", label: "Accompagnement" },
@@ -43,6 +48,7 @@ const footerColumns = [
   },
   {
     title: "Ressources",
+    icon: BookOpen,
     links: [
       { to: "/ressources", label: "Guides et cadres" },
       { to: "/ressources#outils", label: "Boîte à outils" },
@@ -89,42 +95,33 @@ export function Footer() {
       {/* ============================================================ */}
       {/*  CTA BANNER                                                   */}
       {/* ============================================================ */}
-      <section className="relative bg-gradient-to-r from-[#252243] via-[#3a1d6e] to-[#252243] overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#2d1f4e] overflow-hidden">
         {/* Subtle pattern */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle at 20% 50%, rgba(171,84,243,0.4) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 50%, rgba(49,45,238,0.3) 0%, transparent 50%)`,
+            backgroundImage: `radial-gradient(ellipse 80% 50% at 50% 0%, rgba(171,84,243,0.25) 0%, transparent 50%),
+                              radial-gradient(ellipse 60% 40% at 100% 100%, rgba(49,45,238,0.15) 0%, transparent 50%)`,
           }}
         />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-12">
             <div className="max-w-xl">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-tight">
                 Prêt à structurer votre gouvernance de l&apos;IA ?
               </h2>
-              <p className="mt-2 text-white/70 text-base">
+              <p className="mt-4 text-white/80 text-base sm:text-lg leading-relaxed">
                 Rejoignez un réseau de 150+ experts et accédez à des ressources exclusives.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Button
-                asChild
-                size="lg"
-                className="bg-brand-purple text-white hover:bg-brand-purple-dark rounded-full px-8 shadow-lg shadow-brand-purple/25"
-              >
-                <Link to="/rejoindre">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0 sm:items-center">
+              <Button asChild size="lg" className="px-8 text-base font-semibold">
+                <Link to="/rejoindre" className="inline-flex items-center">
                   Rejoindre le Cercle
-                  <ArrowRight className="size-4 ml-2" />
+                  <ArrowRight className="size-4 ml-2 shrink-0" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full px-8"
-              >
+              <Button asChild size="lg" variant="outline-light" className="px-8 text-base font-semibold">
                 <Link to="/contact">Nous contacter</Link>
               </Button>
             </div>
@@ -185,9 +182,12 @@ export function Footer() {
 
             {/* Navigation columns */}
             <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              {footerColumns.map((col) => (
+              {footerColumns.map((col) => {
+                const Icon = col.icon;
+                return (
                 <div key={col.title}>
-                  <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
+                  <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
+                    <Icon className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
                     {col.title}
                   </h3>
                   <ul className="space-y-2.5">
@@ -203,12 +203,14 @@ export function Footer() {
                     ))}
                   </ul>
                 </div>
-              ))}
+              );
+              })}
             </div>
 
             {/* Newsletter column */}
             <div className="lg:col-span-3">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
+              <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
+                <Mail className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
                 Infolettre
               </h3>
               <p className="text-sm text-white/50 leading-relaxed mb-4">
@@ -226,10 +228,7 @@ export function Footer() {
                     className="pl-10 bg-white/8 border-white/15 text-white placeholder:text-white/35 focus-visible:ring-brand-purple/50 focus-visible:border-brand-purple/40 h-11 rounded-lg"
                   />
                 </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-brand-purple text-white hover:bg-brand-purple-dark rounded-lg h-10 gap-2"
-                >
+                <Button type="submit" className="w-full gap-2">
                   <Send className="size-3.5" />
                   S&apos;inscrire à l&apos;infolettre
                 </Button>
