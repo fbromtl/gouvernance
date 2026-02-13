@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Menu,
   Search,
@@ -22,6 +22,9 @@ import {
   Calendar,
   Building2,
   Newspaper,
+  LogIn,
+  LogOut,
+  LayoutDashboard,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -29,6 +32,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/auth";
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -36,13 +40,47 @@ import { cn } from "@/lib/utils";
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, profile, signInWithGoogle, signOut, loading: authLoading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const avatarUrl =
+    profile?.avatar_url ??
+    user?.user_metadata?.avatar_url ??
+    user?.user_metadata?.picture ??
+    null;
+
+  const displayName =
+    profile?.full_name ??
+    user?.user_metadata?.full_name ??
+    user?.email ??
+    "";
+
+  const initials = displayName
+    .split(" ")
+    .map((n: string) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -483,10 +521,93 @@ export function Header() {
               </a>
             </div>
 
-            {/* CTA */}
-            <Button asChild size="sm" className="ml-3 px-5">
-              <Link to="/rejoindre">Rejoindre le Cercle</Link>
-            </Button>
+            {/* CTA + Auth */}
+            <div className="flex items-center gap-2 ml-3">
+              <Button asChild size="sm" className="px-5">
+                <Link to="/rejoindre">Rejoindre le Cercle</Link>
+              </Button>
+
+              {!authLoading && !user && (
+                <Button asChild variant="outline" size="sm" className="gap-1.5 px-4">
+                  <Link to="/connexion">
+                    <LogIn className="size-4" />
+                    Se connecter
+                  </Link>
+                </Button>
+              )}
+
+              {!authLoading && user && (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
+                  >
+                    {avatarUrl ? (
+                      <img
+                        src={avatarUrl}
+                        alt={displayName}
+                        className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
+                        {initials}
+                      </div>
+                    )}
+                    <ChevronDown
+                      className={cn(
+                        "size-3 text-muted-foreground transition-transform duration-200",
+                        userMenuOpen && "rotate-180"
+                      )}
+                    />
+                  </button>
+
+                  {/* User dropdown */}
+                  <div
+                    className={cn(
+                      "absolute top-full right-0 mt-2 w-56 rounded-xl bg-white shadow-xl shadow-black/10 border border-border/50 overflow-hidden transition-all duration-200",
+                      userMenuOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    )}
+                  >
+                    <div className="px-4 py-3 border-b border-border/40">
+                      <p className="text-sm font-medium text-foreground truncate">
+                        {displayName}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                    <div className="p-1.5">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setUserMenuOpen(false);
+                          navigate("/portail");
+                        }}
+                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors"
+                      >
+                        <LayoutDashboard className="size-4" />
+                        Mon portail
+                      </button>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          setUserMenuOpen(false);
+                          await signOut();
+                        }}
+                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-red-600/80 hover:text-red-600 hover:bg-red-50 transition-colors"
+                      >
+                        <LogOut className="size-4" />
+                        Se déconnecter
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile / Tablet */}
@@ -499,9 +620,37 @@ export function Header() {
             >
               <Search className="size-4" />
             </button>
-            <Button asChild size="sm" className="text-xs sm:text-sm px-4">
-              <Link to="/rejoindre">Rejoindre</Link>
-            </Button>
+
+            {!authLoading && !user && (
+              <Button asChild variant="outline" size="sm" className="text-xs sm:text-sm px-3 gap-1">
+                <Link to="/connexion">
+                  <LogIn className="size-3.5" />
+                  <span className="hidden sm:inline">Connexion</span>
+                </Link>
+              </Button>
+            )}
+
+            {!authLoading && user && (
+              <button
+                type="button"
+                onClick={() => navigate("/portail")}
+                className="flex items-center justify-center"
+              >
+                {avatarUrl ? (
+                  <img
+                    src={avatarUrl}
+                    alt={displayName}
+                    className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
+                    {initials}
+                  </div>
+                )}
+              </button>
+            )}
+
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <button
@@ -550,7 +699,59 @@ export function Header() {
                 </nav>
 
                 {/* Mobile Footer */}
-                <div className="px-6 py-4 border-t border-border/50 mt-2">
+                <div className="px-6 py-4 border-t border-border/50 mt-2 space-y-3">
+                  {!authLoading && user && (
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 mb-2">
+                      {avatarUrl ? (
+                        <img
+                          src={avatarUrl}
+                          alt={displayName}
+                          className="size-9 rounded-full object-cover border-2 border-border/50"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="flex size-9 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-sm font-bold">
+                          {initials}
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate">{displayName}</p>
+                        <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {!authLoading && user && (
+                    <>
+                      <Button asChild variant="outline" className="w-full gap-2">
+                        <Link to="/portail">
+                          <LayoutDashboard className="size-4" />
+                          Mon portail
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        className="w-full gap-2 text-red-600 hover:text-red-600 hover:bg-red-50"
+                        onClick={async () => {
+                          setMobileOpen(false);
+                          await signOut();
+                        }}
+                      >
+                        <LogOut className="size-4" />
+                        Se déconnecter
+                      </Button>
+                    </>
+                  )}
+
+                  {!authLoading && !user && (
+                    <Button asChild variant="outline" className="w-full gap-2">
+                      <Link to="/connexion">
+                        <LogIn className="size-4" />
+                        Se connecter
+                      </Link>
+                    </Button>
+                  )}
+
                   <Button asChild className="w-full">
                     <Link to="/rejoindre">Rejoindre le Cercle</Link>
                   </Button>
