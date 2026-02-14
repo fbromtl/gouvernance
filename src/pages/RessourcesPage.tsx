@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 
 const guides = [
   {
@@ -69,7 +70,9 @@ const etudesDeCas = [
 
 export function RessourcesPage() {
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils, veille réglementaire et études de cas pour la gouvernance de l'intelligence artificielle." />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -288,5 +291,6 @@ export function RessourcesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

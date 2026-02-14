@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { SEO, JsonLd } from "@/components/SEO";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,27 @@ export function ContactPage() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Contact" description="Contactez le Cercle de Gouvernance de l'IA pour toute question sur nos services, événements ou membership." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact — Cercle de Gouvernance de l'IA",
+        "url": "https://gouvernance-ia.ca/contact",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "Cercle de Gouvernance de l'IA",
+          "email": "info@gouvernance-ia.ca",
+          "telephone": "+1-514-555-1234",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Montréal",
+            "addressRegion": "QC",
+            "addressCountry": "CA"
+          }
+        }
+      }} />
+      <div className="overflow-x-hidden">
       {/* Hero */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -197,5 +218,6 @@ export function ContactPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

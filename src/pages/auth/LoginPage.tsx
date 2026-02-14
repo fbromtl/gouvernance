@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, CheckCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { useAuth } from "@/lib/auth";
 
 /* ------------------------------------------------------------------ */
@@ -77,7 +78,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
+    <>
+      <SEO title="Connexion" description="Connectez-vous au portail de Gouvernance IA." noindex={true} />
+      <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
       <div className="w-full max-w-md">
         {/* Logo GA */}
         <div className="text-center mb-8">
@@ -219,5 +222,6 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

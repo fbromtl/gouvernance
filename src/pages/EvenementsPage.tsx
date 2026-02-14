@@ -4,6 +4,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 const upcomingEvents = [
   {
@@ -53,7 +54,9 @@ const pastEvents = [
 
 export function EvenementsPage() {
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Événements" description="Participez aux événements du Cercle de Gouvernance de l'IA : conférences, tables rondes, ateliers sur la gouvernance responsable de l'intelligence artificielle." />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -204,5 +207,6 @@ export function EvenementsPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

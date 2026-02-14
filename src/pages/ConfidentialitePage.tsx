@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 
 import { Separator } from "@/components/ui/separator";
+import { SEO } from "@/components/SEO";
 
 export function ConfidentialitePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO title="Politique de confidentialité" description="Politique de confidentialité du Cercle de Gouvernance de l'IA. Protection des données conformément à la Loi 25." noindex={true} />
+      <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -102,5 +105,6 @@ export function ConfidentialitePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SEO, JsonLd } from "@/components/SEO";
 
 const diagnosticSteps = [
   { num: 1, title: "Audit initial", desc: "Cartographie de vos usages actuels de l'IA" },
@@ -80,7 +81,20 @@ const conferenceTopics = [
 
 export function ServicesPage() {
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Services" description="Diagnostic de maturité IA, accompagnement stratégique, formations et conférences. Des services adaptés pour la gouvernance responsable de l'intelligence artificielle." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Services de Gouvernance IA",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Diagnostic de maturité IA", "url": "https://gouvernance-ia.ca/services#diagnostic" },
+          { "@type": "ListItem", "position": 2, "name": "Accompagnement stratégique", "url": "https://gouvernance-ia.ca/services#accompagnement" },
+          { "@type": "ListItem", "position": 3, "name": "Formations et ateliers", "url": "https://gouvernance-ia.ca/services#formations" },
+          { "@type": "ListItem", "position": 4, "name": "Conférences et interventions", "url": "https://gouvernance-ia.ca/services#conferences" }
+        ]
+      }} />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -253,5 +267,6 @@ export function ServicesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

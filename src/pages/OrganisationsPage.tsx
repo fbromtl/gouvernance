@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 
 const orgTabs = [
   {
@@ -164,7 +165,9 @@ function TabCard({ content, Icon }: { content: (typeof tabContent)[TabKey]; Icon
 
 export function OrganisationsPage() {
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Organisations membres" description="Découvrez les organisations membres du Cercle de Gouvernance de l'IA et leurs contributions à la gouvernance responsable." />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -217,5 +220,6 @@ export function OrganisationsPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

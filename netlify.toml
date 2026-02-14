@@ -7,3 +7,49 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# SEO & Performance headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+    # Cache: HTML - no cache (always fresh for SEO crawlers)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+    # Cache: Static assets (JS, CSS) - long cache
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+    # Cache: Images - 1 week
+[[headers]]
+  for = "/images-gouvernance-ai/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+    # Cache: Video - 1 month
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+    # Sitemap & robots: no cache
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/xml"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

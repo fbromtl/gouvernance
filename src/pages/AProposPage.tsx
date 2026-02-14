@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 export function AProposPage() {
   const values = [
@@ -104,7 +105,9 @@ export function AProposPage() {
   ];
 
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="À propos" description="Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA. Un réseau d'experts dédié à la gouvernance responsable de l'intelligence artificielle." />
+      <div className="overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -328,5 +331,6 @@ export function AProposPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

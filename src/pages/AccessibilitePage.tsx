@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import { Accessibility, CheckCircle, AlertCircle, Mail } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 
 export function AccessibilitePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO title="Accessibilité" description="Engagement d'accessibilité du Cercle de Gouvernance de l'IA." noindex={true} />
+      <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-4">
@@ -114,5 +117,6 @@ export function AccessibilitePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

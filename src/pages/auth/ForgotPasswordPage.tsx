@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { useAuth } from "@/lib/auth";
 
 export default function ForgotPasswordPage() {
@@ -33,7 +34,9 @@ export default function ForgotPasswordPage() {
 
   if (success) {
     return (
-      <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
+      <>
+        <SEO title="Mot de passe oublié" description="Réinitialisez votre mot de passe." noindex={true} />
+        <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
         <div className="w-full max-w-md">
           <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/5 p-8 text-center">
             <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-green-100 mb-5">
@@ -58,13 +61,16 @@ export default function ForgotPasswordPage() {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
   /* ---------- Form ----------------------------------------------- */
 
   return (
-    <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
+    <>
+      <SEO title="Mot de passe oublié" description="Réinitialisez votre mot de passe." noindex={true} />
+      <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -133,5 +139,6 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -1,8 +1,11 @@
 import { Separator } from "@/components/ui/separator";
+import { SEO } from "@/components/SEO";
 
 export function MentionsLegalesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO title="Mentions légales" description="Mentions légales du site du Cercle de Gouvernance de l'IA." noindex={true} />
+      <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -84,5 +87,6 @@ export function MentionsLegalesPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

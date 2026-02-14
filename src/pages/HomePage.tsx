@@ -28,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SEO, JsonLd } from "@/components/SEO";
 
 export function HomePage() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
@@ -57,7 +58,28 @@ export function HomePage() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Accueil" description="Le Cercle de Gouvernance de l'IA réunit 150+ experts pour vous accompagner dans la conformité, l'éthique et la stratégie IA de votre organisation." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Cercle de Gouvernance de l'IA",
+        "url": "https://gouvernance-ia.ca",
+        "logo": "https://gouvernance-ia.ca/logo.svg",
+        "description": "Réseau de 150+ experts en gouvernance de l'intelligence artificielle. Diagnostic de maturité IA, formations, accompagnement stratégique.",
+        "areaServed": { "@type": "Country", "name": "Canada" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services de Gouvernance IA",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic de maturité IA" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement stratégique" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formations et ateliers" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conférences et interventions" } }
+          ]
+        }
+      }} />
+      <div className="overflow-x-hidden">
       {/* SECTION 1 - HERO */}
       <section className="relative min-h-[calc((100dvh-120px)*0.7)] flex flex-col items-center justify-center px-4 py-16 sm:py-20 sm:px-6 lg:px-8 overflow-hidden">
         {/* Gradient de secours (visible si pas de vidéo ou avant chargement) */}
@@ -722,5 +744,6 @@ export function HomePage() {
       </section>
 
     </div>
+    </>
   );
 }

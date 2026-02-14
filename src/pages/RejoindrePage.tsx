@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 
 const benefits = [
   {
@@ -133,7 +134,9 @@ export function RejoindrePage() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Rejoindre le Cercle" description="Rejoignez un réseau de 150+ experts en gouvernance IA. Accédez à des ressources exclusives, événements et mentorat." />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -416,5 +419,6 @@ export function RejoindrePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

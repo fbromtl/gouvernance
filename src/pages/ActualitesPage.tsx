@@ -4,6 +4,7 @@ import { ArrowRight, Newspaper } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { SEO } from "@/components/SEO";
 
 const articles = [
   {
@@ -64,7 +65,9 @@ const badgeColors: Record<string, string> = {
 
 export function ActualitesPage() {
   return (
-    <div className="overflow-x-hidden">
+    <>
+      <SEO title="Actualités" description="Suivez les dernières actualités en gouvernance de l'intelligence artificielle : réglementation, technologies, événements et publications." />
+      <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
@@ -148,5 +151,6 @@ export function ActualitesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
