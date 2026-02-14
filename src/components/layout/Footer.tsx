@@ -62,7 +62,7 @@ const footerColumns = [
 const socialLinks = [
   { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin, hoverClass: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" },
   { href: "https://x.com", label: "X (Twitter)", icon: Twitter, hoverClass: "hover:bg-foreground hover:border-foreground" },
-  { href: "mailto:info@gouvernance-ia.ca", label: "Courriel", icon: Mail, hoverClass: "hover:bg-brand-purple hover:border-brand-purple" },
+  { href: "mailto:info@gouvernance.ai", label: "Courriel", icon: Mail, hoverClass: "hover:bg-brand-purple hover:border-brand-purple" },
 ];
 
 const legalLinks = [
@@ -154,13 +154,13 @@ export function Footer() {
               {/* Contact info */}
               <div className="mt-6 space-y-3">
                 <a
-                  href="mailto:info@gouvernance-ia.ca"
+                  href="mailto:info@gouvernance.ai"
                   className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
                 >
                   <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-purple/20 transition-colors">
                     <Mail className="size-3.5 text-brand-purple-light" />
                   </span>
-                  info@gouvernance-ia.ca
+                  info@gouvernance.ai
                 </a>
                 <a
                   href="tel:+15145551234"

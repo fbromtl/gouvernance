@@ -418,9 +418,9 @@ export function Header() {
       )}>
         <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-10 text-xs">
           <div className="flex items-center gap-4 sm:gap-6">
-            <a href="mailto:info@gouvernance-ia.ca" className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
+            <a href="mailto:info@gouvernance.ai" className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
               <Mail className="size-3.5" />
-              <span className="hidden sm:inline">info@gouvernance-ia.ca</span>
+              <span className="hidden sm:inline">info@gouvernance.ai</span>
             </a>
             <a href="tel:+15145551234" className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
               <Phone className="size-3.5" />
@@ -756,7 +756,7 @@ export function Header() {
                     <Link to="/rejoindre">Rejoindre le Cercle</Link>
                   </Button>
                   <div className="flex items-center gap-4 mt-4 justify-center">
-                    <a href="mailto:info@gouvernance-ia.ca" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <a href="mailto:info@gouvernance.ai" className="text-muted-foreground hover:text-foreground transition-colors">
                       <Mail className="size-4" />
                     </a>
                     <a href="tel:+15145551234" className="text-muted-foreground hover:text-foreground transition-colors">

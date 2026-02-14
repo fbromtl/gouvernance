@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gouvernance-ia.ca/</loc>
+    <loc>https://gouvernance.ai/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/a-propos</loc>
+    <loc>https://gouvernance.ai/a-propos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/experts</loc>
+    <loc>https://gouvernance.ai/experts</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/services</loc>
+    <loc>https://gouvernance.ai/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/ressources</loc>
+    <loc>https://gouvernance.ai/ressources</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/evenements</loc>
+    <loc>https://gouvernance.ai/evenements</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/rejoindre</loc>
+    <loc>https://gouvernance.ai/rejoindre</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/organisations</loc>
+    <loc>https://gouvernance.ai/organisations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/actualites</loc>
+    <loc>https://gouvernance.ai/actualites</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/contact</loc>
+    <loc>https://gouvernance.ai/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/confidentialite</loc>
+    <loc>https://gouvernance.ai/confidentialite</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/mentions-legales</loc>
+    <loc>https://gouvernance.ai/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gouvernance-ia.ca/accessibilite</loc>
+    <loc>https://gouvernance.ai/accessibilite</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

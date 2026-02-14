@@ -88,10 +88,10 @@ export function ServicesPage() {
         "@type": "ItemList",
         "name": "Services de Gouvernance IA",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Diagnostic de maturité IA", "url": "https://gouvernance-ia.ca/services#diagnostic" },
-          { "@type": "ListItem", "position": 2, "name": "Accompagnement stratégique", "url": "https://gouvernance-ia.ca/services#accompagnement" },
-          { "@type": "ListItem", "position": 3, "name": "Formations et ateliers", "url": "https://gouvernance-ia.ca/services#formations" },
-          { "@type": "ListItem", "position": 4, "name": "Conférences et interventions", "url": "https://gouvernance-ia.ca/services#conferences" }
+          { "@type": "ListItem", "position": 1, "name": "Diagnostic de maturité IA", "url": "https://gouvernance.ai/services#diagnostic" },
+          { "@type": "ListItem", "position": 2, "name": "Accompagnement stratégique", "url": "https://gouvernance.ai/services#accompagnement" },
+          { "@type": "ListItem", "position": 3, "name": "Formations et ateliers", "url": "https://gouvernance.ai/services#formations" },
+          { "@type": "ListItem", "position": 4, "name": "Conférences et interventions", "url": "https://gouvernance.ai/services#conferences" }
         ]
       }} />
       <div className="overflow-x-hidden">

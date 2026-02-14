@@ -64,8 +64,8 @@ export function HomePage() {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Cercle de Gouvernance de l'IA",
-        "url": "https://gouvernance-ia.ca",
-        "logo": "https://gouvernance-ia.ca/logo.svg",
+        "url": "https://gouvernance.ai",
+        "logo": "https://gouvernance.ai/logo.svg",
         "description": "Réseau de 150+ experts en gouvernance de l'intelligence artificielle. Diagnostic de maturité IA, formations, accompagnement stratégique.",
         "areaServed": { "@type": "Country", "name": "Canada" },
         "hasOfferCatalog": {

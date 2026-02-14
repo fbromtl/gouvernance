@@ -35,11 +35,11 @@ export function ContactPage() {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "name": "Contact — Cercle de Gouvernance de l'IA",
-        "url": "https://gouvernance-ia.ca/contact",
+        "url": "https://gouvernance.ai/contact",
         "mainEntity": {
           "@type": "Organization",
           "name": "Cercle de Gouvernance de l'IA",
-          "email": "info@gouvernance-ia.ca",
+          "email": "info@gouvernance.ai",
           "telephone": "+1-514-555-1234",
           "address": {
             "@type": "PostalAddress",
@@ -169,7 +169,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <p className="font-medium text-foreground">Email</p>
-                      <p className="text-muted-foreground">contact@cercle-gouvernance-ia.ca</p>
+                      <p className="text-muted-foreground">contact@cercle-gouvernance.ai</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

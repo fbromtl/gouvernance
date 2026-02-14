@@ -6,4 +6,4 @@ Disallow: /inscription
 Disallow: /mot-de-passe-oublie
 Disallow: /reinitialiser-mot-de-passe
 
-Sitemap: https://gouvernance-ia.ca/sitemap.xml
+Sitemap: https://gouvernance.ai/sitemap.xml

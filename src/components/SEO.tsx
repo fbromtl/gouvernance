@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const SITE_NAME = "Cercle de Gouvernance de l'IA";
-const SITE_URL = "https://gouvernance-ia.ca";
+const SITE_URL = "https://gouvernance.ai";
 const DEFAULT_IMAGE = `${SITE_URL}/images-gouvernance-ai/ceo-analysing.jpg`;
 
 interface SEOProps {
