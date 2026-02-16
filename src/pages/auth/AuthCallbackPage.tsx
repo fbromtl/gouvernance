@@ -5,15 +5,12 @@ import { supabase, supabaseConfigured } from "@/lib/supabase";
 /**
  * Handles the OAuth callback after a provider redirect (Google, etc.).
  *
- * Flow (PKCE):
- *   1. Supabase redirects here with ?code=... in the URL
- *   2. We exchange the code for a session
- *   3. Once the session is established, we redirect to /portail
+ * The Supabase client (with detectSessionInUrl: true) automatically detects
+ * the ?code= parameter and exchanges it for a session via PKCE.
  *
- * Flow (Implicit):
- *   1. Supabase redirects here with #access_token=... in the URL hash
- *   2. The Supabase client detects the hash automatically
- *   3. onAuthStateChange fires → we redirect to /portail
+ * This page simply waits for that exchange to complete, then redirects
+ * to /portail. It must NOT call exchangeCodeForSession() manually, because
+ * the auto-detection already consumes the PKCE code verifier.
  *
  * This page must NOT be inside a ProtectedRoute to avoid
  * premature redirects that would lose the auth code.
@@ -26,63 +23,53 @@ export default function AuthCallbackPage() {
     if (processed.current) return;
     processed.current = true;
 
-    async function handleCallback() {
-      if (!supabaseConfigured) {
-        navigate("/", { replace: true });
-        return;
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("code");
-      const errorParam = params.get("error_description");
-
-      if (errorParam) {
-        console.error("Auth callback error:", errorParam);
-        navigate("/connexion?error=" + encodeURIComponent(errorParam), {
-          replace: true,
-        });
-        return;
-      }
-
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
-        if (error) {
-          console.error("Code exchange failed:", error.message);
-          navigate("/connexion?error=" + encodeURIComponent(error.message), {
-            replace: true,
-          });
-          return;
-        }
-      }
-
-      // For implicit flow or after successful PKCE exchange,
-      // wait briefly for onAuthStateChange to fire, then redirect
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (session) {
-        navigate("/portail", { replace: true });
-      } else {
-        // Fallback: wait a moment for the session to be established
-        const {
-          data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-          if (session) {
-            subscription.unsubscribe();
-            navigate("/portail", { replace: true });
-          }
-        });
-
-        // Timeout: if no session after 10s, redirect to login
-        setTimeout(() => {
-          subscription.unsubscribe();
-          navigate("/connexion", { replace: true });
-        }, 10_000);
-      }
+    if (!supabaseConfigured) {
+      navigate("/", { replace: true });
+      return;
     }
 
-    handleCallback();
+    // Check for error passed back by Supabase
+    const params = new URLSearchParams(window.location.search);
+    const errorParam =
+      params.get("error_description") || params.get("error");
+
+    if (errorParam) {
+      console.error("Auth callback error:", errorParam);
+      navigate(
+        "/connexion?error=" + encodeURIComponent(errorParam),
+        { replace: true }
+      );
+      return;
+    }
+
+    // Listen for the session to be established by the automatic PKCE exchange
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        subscription.unsubscribe();
+        navigate("/portail", { replace: true });
+      }
+    });
+
+    // Also check if the session is already available (exchange may have completed)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        subscription.unsubscribe();
+        navigate("/portail", { replace: true });
+      }
+    });
+
+    // Timeout: if no session after 10s, redirect to login
+    const timeout = setTimeout(() => {
+      subscription.unsubscribe();
+      navigate("/connexion", { replace: true });
+    }, 10_000);
+
+    return () => {
+      subscription.unsubscribe();
+      clearTimeout(timeout);
+    };
   }, [navigate]);
 
   return (
