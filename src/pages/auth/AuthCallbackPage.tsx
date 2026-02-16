@@ -1,40 +1,43 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase, supabaseConfigured } from "@/lib/supabase";
+import { useAuth } from "@/lib/auth";
 
 /**
- * Handles the OAuth callback after a provider redirect (Google, etc.).
+ * Handles the OAuth/email callback after a provider redirect.
  *
- * The Supabase client (with detectSessionInUrl: true) automatically detects
- * the ?code= parameter and exchanges it for a session via PKCE.
+ * With detectSessionInUrl: false, this page is the ONLY place where
+ * the PKCE code exchange happens. This avoids race conditions where
+ * the auto-detection consumes the code verifier before React mounts.
  *
- * This page simply waits for that exchange to complete, then redirects
- * to /portail. It must NOT call exchangeCodeForSession() manually, because
- * the auto-detection already consumes the PKCE code verifier.
+ * Flow:
+ *   1. Supabase redirects here with ?code=...
+ *   2. We manually call exchangeCodeForSession(code)
+ *   3. AuthProvider picks up the session via onAuthStateChange
+ *   4. Once useAuth() shows a user, we redirect to /portail
  *
- * This page must NOT be inside a ProtectedRoute to avoid
- * premature redirects that would lose the auth code.
+ * This page must NOT be inside a ProtectedRoute.
  */
 export default function AuthCallbackPage() {
   const navigate = useNavigate();
-  const processed = useRef(false);
+  const { user, loading } = useAuth();
+  const exchangeStarted = useRef(false);
 
+  // Step 1: Exchange the PKCE code for a session
   useEffect(() => {
-    if (processed.current) return;
-    processed.current = true;
+    if (exchangeStarted.current) return;
 
     if (!supabaseConfigured) {
       navigate("/", { replace: true });
       return;
     }
 
-    // Check for error passed back by Supabase
     const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
     const errorParam =
       params.get("error_description") || params.get("error");
 
     if (errorParam) {
-      console.error("Auth callback error:", errorParam);
       navigate(
         "/connexion?error=" + encodeURIComponent(errorParam),
         { replace: true }
@@ -42,34 +45,33 @@ export default function AuthCallbackPage() {
       return;
     }
 
-    // Listen for the session to be established by the automatic PKCE exchange
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        subscription.unsubscribe();
-        navigate("/portail", { replace: true });
-      }
-    });
+    if (code) {
+      exchangeStarted.current = true;
+      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+        if (error) {
+          console.error("Code exchange failed:", error.message);
+          navigate(
+            "/connexion?error=" + encodeURIComponent(error.message),
+            { replace: true }
+          );
+        }
+      });
+    }
+  }, [navigate]);
 
-    // Also check if the session is already available (exchange may have completed)
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        subscription.unsubscribe();
-        navigate("/portail", { replace: true });
-      }
-    });
+  // Step 2: Redirect once the AuthProvider has the user in state
+  useEffect(() => {
+    if (!loading && user) {
+      navigate("/portail", { replace: true });
+    }
+  }, [user, loading, navigate]);
 
-    // Timeout: if no session after 10s, redirect to login
+  // Step 3: Timeout — if nothing happens after 15s, go to login
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      subscription.unsubscribe();
       navigate("/connexion", { replace: true });
-    }, 10_000);
-
-    return () => {
-      subscription.unsubscribe();
-      clearTimeout(timeout);
-    };
+    }, 15_000);
+    return () => clearTimeout(timeout);
   }, [navigate]);
 
   return (
