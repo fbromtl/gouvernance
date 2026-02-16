@@ -11,7 +11,14 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undef
 export const supabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
 
 export const supabase: SupabaseClient = supabaseConfigured
-  ? createClient(supabaseUrl!, supabaseAnonKey!)
+  ? createClient(supabaseUrl!, supabaseAnonKey!, {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        autoRefreshToken: true,
+        persistSession: true,
+      },
+    })
   : (null as unknown as SupabaseClient) // placeholder — never called when !supabaseConfigured
 
 export interface ContactMessage {

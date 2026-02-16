@@ -22,6 +22,7 @@ import LoginPage from "@/pages/auth/LoginPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
 import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
+import AuthCallbackPage from "@/pages/auth/AuthCallbackPage";
 
 import { PortailLayout } from "@/portail/layout/PortailLayout";
 import DashboardPage from "@/portail/pages/DashboardPage";
@@ -58,6 +59,9 @@ function App() {
             <Route path="/mot-de-passe-oublie" element={<ForgotPasswordPage />} />
             <Route path="/reinitialiser-mot-de-passe" element={<ResetPasswordPage />} />
           </Route>
+
+          {/* Callback OAuth — doit être hors Layout et hors ProtectedRoute */}
+          <Route path="/auth/callback" element={<AuthCallbackPage />} />
 
           {/* Portail SaaS (protégé) */}
           <Route element={<ProtectedRoute />}>
