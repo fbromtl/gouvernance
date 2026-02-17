@@ -2,27 +2,20 @@
   "title": "Dashboard",
   "welcome": "Welcome, {{firstName}}",
   "welcomeFallback": "there",
-  "description": "Your centralized space to manage your organization's AI governance. Explore the tools at your disposal.",
+  "description": "Overview of your AI governance.",
   "quickAccess": "Quick access",
-  "statistics": "Statistics",
-  "actions": {
-    "diagnostic": {
-      "title": "AI Diagnostic",
-      "description": "Assess the maturity of your AI governance with our interactive tool."
-    },
-    "results": {
-      "title": "Results & Reports",
-      "description": "View your diagnostic reports and personalized recommendations."
-    },
-    "profile": {
-      "title": "My Profile",
-      "description": "Manage your personal information and notification preferences."
-    }
-  },
   "stats": {
-    "diagnosticsCompleted": "Diagnostics completed",
-    "averageScore": "Average score",
-    "recommendations": "Recommendations",
-    "resourcesViewed": "Resources viewed"
+    "aiSystems": "AI Systems",
+    "complianceScore": "Compliance Score",
+    "activeIncidents": "Active Incidents",
+    "pendingAlerts": "Pending Alerts"
+  },
+  "noOrg": "No organization",
+  "noOrgDescription": "You are not attached to any organization. Contact your administrator or create one.",
+  "modules": {
+    "aiSystems": { "title": "AI Systems", "description": "Manage your AI systems registry" },
+    "risks": { "title": "Risks", "description": "Assess and monitor risks" },
+    "compliance": { "title": "Compliance", "description": "Track your multi-framework compliance" },
+    "incidents": { "title": "Incidents", "description": "Report and manage incidents" }
   }
 }
