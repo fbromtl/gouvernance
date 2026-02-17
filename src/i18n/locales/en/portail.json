@@ -1,0 +1,12 @@
+{
+  "brandName": "IAG Portal",
+  "nav": {
+    "dashboard": "Dashboard",
+    "diagnostic": "Diagnostic",
+    "results": "Results",
+    "profile": "Profile"
+  },
+  "backToSite": "Back to site",
+  "openMenu": "Open menu",
+  "collapseMenu": "Collapse menu"
+}

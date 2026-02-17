@@ -1,0 +1,28 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, {{firstName}}",
+  "welcomeFallback": "there",
+  "description": "Your centralized space to manage your organization's AI governance. Explore the tools at your disposal.",
+  "quickAccess": "Quick access",
+  "statistics": "Statistics",
+  "actions": {
+    "diagnostic": {
+      "title": "AI Diagnostic",
+      "description": "Assess the maturity of your AI governance with our interactive tool."
+    },
+    "results": {
+      "title": "Results & Reports",
+      "description": "View your diagnostic reports and personalized recommendations."
+    },
+    "profile": {
+      "title": "My Profile",
+      "description": "Manage your personal information and notification preferences."
+    }
+  },
+  "stats": {
+    "diagnosticsCompleted": "Diagnostics completed",
+    "averageScore": "Average score",
+    "recommendations": "Recommendations",
+    "resourcesViewed": "Resources viewed"
+  }
+}

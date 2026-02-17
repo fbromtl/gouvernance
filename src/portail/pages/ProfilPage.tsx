@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   User,
   Mail,
@@ -31,6 +32,7 @@ import { useAuth } from "@/lib/auth";
 export default function ProfilPage() {
   const navigate = useNavigate();
   const { user, profile, updateProfile, signOut } = useAuth();
+  const { t, i18n } = useTranslation("profil");
 
   const [fullName, setFullName] = useState(
     profile?.full_name ?? user?.user_metadata?.full_name ?? ""
@@ -63,8 +65,10 @@ export default function ProfilPage() {
     user?.app_metadata?.providers?.[0] ??
     "email";
 
+  const dateLocale = i18n.language === "en" ? "en-CA" : "fr-CA";
+
   const createdAt = user?.created_at
-    ? new Date(user.created_at).toLocaleDateString("fr-CA", {
+    ? new Date(user.created_at).toLocaleDateString(dateLocale, {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -72,7 +76,7 @@ export default function ProfilPage() {
     : "—";
 
   const lastSignIn = user?.last_sign_in_at
-    ? new Date(user.last_sign_in_at).toLocaleDateString("fr-CA", {
+    ? new Date(user.last_sign_in_at).toLocaleDateString(dateLocale, {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -91,11 +95,11 @@ export default function ProfilPage() {
     const result = await updateProfile({ full_name: fullName.trim() || null });
     setSaving(false);
     if (result.success) {
-      setFeedback({ type: "success", message: "Profil mis a jour avec succes." });
+      setFeedback({ type: "success", message: t("personalInfo.saveSuccess") });
     } else {
       setFeedback({
         type: "error",
-        message: result.error ?? "Erreur lors de la sauvegarde.",
+        message: result.error ?? t("personalInfo.saveError"),
       });
     }
     setTimeout(() => setFeedback(null), 4000);
@@ -113,10 +117,10 @@ export default function ProfilPage() {
       {/* Page header */}
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-foreground">
-          Mon profil
+          {t("pageTitle")}
         </h1>
         <p className="text-muted-foreground mt-1">
-          Gerez vos informations personnelles et vos preferences de compte.
+          {t("pageDescription")}
         </p>
       </div>
 
@@ -154,7 +158,7 @@ export default function ProfilPage() {
             {/* Name + badges */}
             <div className="flex-1 min-w-0 sm:pb-1">
               <h2 className="text-xl font-bold text-foreground truncate">
-                {profile?.full_name ?? user?.user_metadata?.full_name ?? "Utilisateur"}
+                {profile?.full_name ?? user?.user_metadata?.full_name ?? t("common:user")}
               </h2>
               <p className="text-sm text-muted-foreground truncate">{email}</p>
             </div>
@@ -190,10 +194,10 @@ export default function ProfilPage() {
           </div>
           <div>
             <h3 className="font-semibold text-foreground">
-              Informations personnelles
+              {t("personalInfo.title")}
             </h3>
             <p className="text-sm text-muted-foreground">
-              Modifiez votre nom affiche dans le portail.
+              {t("personalInfo.description")}
             </p>
           </div>
         </div>
@@ -201,12 +205,12 @@ export default function ProfilPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           {/* Full name */}
           <div className="space-y-2">
-            <Label htmlFor="fullName">Nom complet</Label>
+            <Label htmlFor="fullName">{t("personalInfo.fullName")}</Label>
             <Input
               id="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="Votre nom complet"
+              placeholder={t("personalInfo.fullNamePlaceholder")}
               className="h-11"
             />
           </div>
@@ -214,9 +218,9 @@ export default function ProfilPage() {
           {/* Email (read-only) */}
           <div className="space-y-2">
             <Label htmlFor="email">
-              Courriel
+              {t("personalInfo.email")}
               <span className="text-xs text-muted-foreground ml-1.5 font-normal">
-                (non modifiable)
+                {t("personalInfo.emailReadonly")}
               </span>
             </Label>
             <Input
@@ -256,7 +260,7 @@ export default function ProfilPage() {
             className="gap-2 px-6"
           >
             <Save className="size-4" />
-            {saving ? "Sauvegarde..." : "Sauvegarder"}
+            {saving ? t("common:saving") : t("common:save")}
           </Button>
         </div>
       </div>
@@ -271,10 +275,10 @@ export default function ProfilPage() {
           </div>
           <div>
             <h3 className="font-semibold text-foreground">
-              Details du compte
+              {t("accountDetails.title")}
             </h3>
             <p className="text-sm text-muted-foreground">
-              Informations sur votre compte et votre connexion.
+              {t("accountDetails.description")}
             </p>
           </div>
         </div>
@@ -283,18 +287,18 @@ export default function ProfilPage() {
           {/* Provider */}
           <InfoRow
             icon={isGoogleProvider ? Chrome : KeyRound}
-            label="Methode de connexion"
+            label={t("accountDetails.signInMethod")}
             value={
               isGoogleProvider
-                ? "Google (" + email + ")"
-                : "Courriel et mot de passe"
+                ? t("accountDetails.googleMethod", { email })
+                : t("accountDetails.emailMethod")
             }
           />
 
           {/* User ID */}
           <InfoRow
             icon={Globe}
-            label="Identifiant"
+            label={t("accountDetails.identifier")}
             value={user?.id ?? "—"}
             mono
           />
@@ -302,31 +306,33 @@ export default function ProfilPage() {
           {/* Created */}
           <InfoRow
             icon={Calendar}
-            label="Membre depuis"
+            label={t("accountDetails.memberSince")}
             value={createdAt}
           />
 
           {/* Last sign in */}
           <InfoRow
             icon={Calendar}
-            label="Derniere connexion"
+            label={t("accountDetails.lastSignIn")}
             value={lastSignIn}
           />
 
           {/* CGU */}
           <InfoRow
             icon={ShieldCheck}
-            label="Conditions d'utilisation"
+            label={t("accountDetails.termsOfUse")}
             value={
-              profile?.cgu_accepted ? "Acceptees" : "Non acceptees"
+              profile?.cgu_accepted
+                ? t("accountDetails.termsAccepted")
+                : t("accountDetails.termsNotAccepted")
             }
             badge={
               profile?.cgu_accepted ? (
                 <Badge className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100">
-                  Acceptees
+                  {t("accountDetails.termsAccepted")}
                 </Badge>
               ) : (
-                <Badge variant="destructive">En attente</Badge>
+                <Badge variant="destructive">{t("accountDetails.termsPending")}</Badge>
               )
             }
           />
@@ -344,10 +350,10 @@ export default function ProfilPage() {
             </div>
             <div>
               <h3 className="font-semibold text-foreground">
-                Donnees Google
+                {t("googleData.title")}
               </h3>
               <p className="text-sm text-muted-foreground">
-                Informations recuperees de votre compte Google.
+                {t("googleData.description")}
               </p>
             </div>
           </div>
@@ -355,22 +361,24 @@ export default function ProfilPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               {
-                label: "Nom complet",
+                label: t("googleData.fullName"),
                 value:
                   user.user_metadata.full_name ??
                   user.user_metadata.name ??
                   "—",
               },
               {
-                label: "Courriel",
+                label: t("googleData.email"),
                 value: user.user_metadata.email ?? email,
               },
               {
-                label: "Courriel verifie",
-                value: user.user_metadata.email_verified ? "Oui" : "Non",
+                label: t("googleData.emailVerified"),
+                value: user.user_metadata.email_verified
+                  ? t("common:yes")
+                  : t("common:no"),
               },
               {
-                label: "Fournisseur",
+                label: t("googleData.provider"),
                 value: user.user_metadata.iss ?? "Google",
               },
             ].map((item) => (
@@ -391,7 +399,7 @@ export default function ProfilPage() {
             {avatarUrl && (
               <div className="sm:col-span-2 rounded-xl bg-muted/30 border border-border/30 p-4">
                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
-                  Photo de profil Google
+                  {t("googleData.profilePhoto")}
                 </p>
                 <div className="flex items-center gap-4">
                   <img
@@ -402,7 +410,7 @@ export default function ProfilPage() {
                   />
                   <div className="text-sm text-muted-foreground">
                     <p>
-                      Cette photo est synchronisee depuis votre compte Google.
+                      {t("googleData.photoSyncMessage")}
                     </p>
                     <p className="text-xs mt-1 text-muted-foreground/70 break-all">
                       {avatarUrl}
@@ -424,9 +432,9 @@ export default function ProfilPage() {
             <LogOut className="size-5 text-red-600" />
           </div>
           <div>
-            <h3 className="font-semibold text-foreground">Zone de danger</h3>
+            <h3 className="font-semibold text-foreground">{t("dangerZone.title")}</h3>
             <p className="text-sm text-muted-foreground">
-              Actions irreversibles sur votre compte.
+              {t("dangerZone.description")}
             </p>
           </div>
         </div>
@@ -436,10 +444,10 @@ export default function ProfilPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <p className="text-sm font-medium text-foreground">
-              Se deconnecter
+              {t("dangerZone.signOutTitle")}
             </p>
             <p className="text-sm text-muted-foreground">
-              Vous serez redirige vers la page d'accueil.
+              {t("dangerZone.signOutDescription")}
             </p>
           </div>
           <Button
@@ -448,7 +456,7 @@ export default function ProfilPage() {
             className="gap-2 shrink-0"
           >
             <LogOut className="size-4" />
-            Se deconnecter
+            {t("common:signOut")}
           </Button>
         </div>
       </div>

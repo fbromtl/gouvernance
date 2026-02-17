@@ -1,0 +1,38 @@
+{
+  "lastStep": "Last step",
+  "title": "Terms of Use",
+  "description": "Please read and accept the terms to access the portal.",
+  "checkboxLabel": "I have read and accept the Terms of Use of the AI Governance portal.",
+  "submitButton": "Accept and access the portal",
+  "submitting": "Validating...",
+  "sections": {
+    "s1": {
+      "title": "1. Purpose",
+      "content": "These Terms of Use (hereinafter \"Terms\") define the conditions for accessing and using the AI Governance portal (hereinafter \"the Portal\"), operated by the AI Governance Circle."
+    },
+    "s2": {
+      "title": "2. Portal Access",
+      "content": "Access to the Portal requires authentication via a Google account. By signing in, you guarantee that you provide accurate and up-to-date information. You are responsible for the confidentiality of your login credentials."
+    },
+    "s3": {
+      "title": "3. Services Offered",
+      "content": "The Portal provides AI governance maturity diagnostic tools, documentary resources, personalized reports, and access to the expert community."
+    },
+    "s4": {
+      "title": "4. Personal Data Protection",
+      "content": "In accordance with Law 25 (Quebec) and applicable personal information protection regulations, your data is processed securely. Data collected is limited to your Google account information (name, email, profile photo) and your diagnostic results."
+    },
+    "s5": {
+      "title": "5. Intellectual Property",
+      "content": "All Portal content (texts, tools, reports, interfaces) is the exclusive property of the AI Governance Circle. Any unauthorized reproduction or distribution is prohibited."
+    },
+    "s6": {
+      "title": "6. Liability",
+      "content": "Diagnostic results and recommendations provided by the Portal are for informational purposes only. They do not constitute legal or professional advice and shall not engage the liability of the AI Governance Circle."
+    },
+    "s7": {
+      "title": "7. Modification of Terms",
+      "content": "The AI Governance Circle reserves the right to modify these Terms at any time. Users will be informed of any substantial modification."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "save": "Save",
+  "saving": "Saving...",
+  "cancel": "Cancel",
+  "loading": "Loading...",
+  "close": "Close",
+  "yes": "Yes",
+  "no": "No",
+  "access": "Access",
+  "signOut": "Sign out",
+  "signOutShort": "Sign out",
+  "user": "User",
+  "error": "Error",
+  "success": "Success",
+  "errorGeneric": "An error occurred.",
+  "noData": "—"
+}

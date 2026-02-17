@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   LayoutDashboard,
   Target,
@@ -15,16 +16,17 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
+import LanguageSwitcher from "@/portail/components/LanguageSwitcher";
 
 /* ------------------------------------------------------------------ */
 /*  NAV ITEMS                                                          */
 /* ------------------------------------------------------------------ */
 
 const navItems = [
-  { to: "/portail", label: "Dashboard", icon: LayoutDashboard, end: true },
-  { to: "/portail/diagnostic", label: "Diagnostic", icon: Target, end: false },
-  { to: "/portail/resultats", label: "Résultats", icon: BarChart3, end: false },
-  { to: "/portail/profil", label: "Profil", icon: User, end: false },
+  { to: "/portail", labelKey: "nav.dashboard", icon: LayoutDashboard, end: true },
+  { to: "/portail/diagnostic", labelKey: "nav.diagnostic", icon: Target, end: false },
+  { to: "/portail/resultats", labelKey: "nav.results", icon: BarChart3, end: false },
+  { to: "/portail/profil", labelKey: "nav.profile", icon: User, end: false },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -34,6 +36,7 @@ const navItems = [
 export function PortailLayout() {
   const { user, profile, signOut } = useAuth();
   const location = useLocation();
+  const { t } = useTranslation("portail");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
@@ -46,7 +49,7 @@ export function PortailLayout() {
     profile?.full_name ??
     user?.user_metadata?.full_name ??
     user?.email ??
-    "Utilisateur";
+    t("common:user");
 
   const avatarUrl =
     profile?.avatar_url ??
@@ -73,7 +76,7 @@ export function PortailLayout() {
           <img src="/logo.svg" alt="Gouvernance IA" className="h-7 w-auto" />
           {sidebarOpen && (
             <span className="text-sm font-bold text-foreground tracking-tight">
-              Portail IAG
+              {t("brandName")}
             </span>
           )}
         </Link>
@@ -96,7 +99,7 @@ export function PortailLayout() {
             )}
           >
             <item.icon className="size-5 shrink-0" />
-            {sidebarOpen && <span>{item.label}</span>}
+            {sidebarOpen && <span>{t(item.labelKey)}</span>}
           </Link>
         ))}
       </nav>
@@ -110,7 +113,7 @@ export function PortailLayout() {
           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
         >
           <ArrowLeft className="size-5 shrink-0" />
-          {sidebarOpen && <span>Retour au site</span>}
+          {sidebarOpen && <span>{t("backToSite")}</span>}
         </Link>
       </div>
     </div>
@@ -158,7 +161,7 @@ export function PortailLayout() {
               type="button"
               className="lg:hidden flex items-center justify-center size-9 rounded-full hover:bg-muted transition-colors"
               onClick={() => setMobileSidebarOpen(true)}
-              aria-label="Ouvrir le menu"
+              aria-label={t("openMenu")}
             >
               <Menu className="size-5" />
             </button>
@@ -168,7 +171,7 @@ export function PortailLayout() {
               type="button"
               className="hidden lg:flex items-center justify-center size-9 rounded-full hover:bg-muted transition-colors"
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              aria-label="Réduire le menu"
+              aria-label={t("collapseMenu")}
             >
               <ChevronLeft
                 className={cn(
@@ -181,6 +184,8 @@ export function PortailLayout() {
 
           {/* User */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+
             <div className="hidden sm:block text-right">
               <div className="text-sm font-medium text-foreground leading-tight">
                 {displayName}
@@ -210,7 +215,7 @@ export function PortailLayout() {
               className="text-muted-foreground hover:text-foreground gap-1.5"
             >
               <LogOut className="size-4" />
-              <span className="hidden sm:inline">Déconnexion</span>
+              <span className="hidden sm:inline">{t("common:signOutShort")}</span>
             </Button>
           </div>
         </header>

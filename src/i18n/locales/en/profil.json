@@ -1,0 +1,44 @@
+{
+  "pageTitle": "My Profile",
+  "pageDescription": "Manage your personal information and account preferences.",
+  "personalInfo": {
+    "title": "Personal Information",
+    "description": "Edit the name displayed in the portal.",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Your full name",
+    "email": "Email",
+    "emailReadonly": "(read-only)",
+    "saveSuccess": "Profile updated successfully.",
+    "saveError": "Error while saving."
+  },
+  "accountDetails": {
+    "title": "Account Details",
+    "description": "Information about your account and login.",
+    "signInMethod": "Sign-in method",
+    "googleMethod": "Google ({{email}})",
+    "emailMethod": "Email and password",
+    "identifier": "Identifier",
+    "memberSince": "Member since",
+    "lastSignIn": "Last sign-in",
+    "termsOfUse": "Terms of Use",
+    "termsAccepted": "Accepted",
+    "termsNotAccepted": "Not accepted",
+    "termsPending": "Pending"
+  },
+  "googleData": {
+    "title": "Google Data",
+    "description": "Information retrieved from your Google account.",
+    "fullName": "Full name",
+    "email": "Email",
+    "emailVerified": "Email verified",
+    "provider": "Provider",
+    "profilePhoto": "Google profile photo",
+    "photoSyncMessage": "This photo is synced from your Google account."
+  },
+  "dangerZone": {
+    "title": "Danger Zone",
+    "description": "Irreversible actions on your account.",
+    "signOutTitle": "Sign out",
+    "signOutDescription": "You will be redirected to the home page."
+  }
+}

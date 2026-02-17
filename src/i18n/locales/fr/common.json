@@ -1,0 +1,17 @@
+{
+  "save": "Sauvegarder",
+  "saving": "Sauvegarde...",
+  "cancel": "Annuler",
+  "loading": "Chargement...",
+  "close": "Fermer",
+  "yes": "Oui",
+  "no": "Non",
+  "access": "Accéder",
+  "signOut": "Se déconnecter",
+  "signOutShort": "Déconnexion",
+  "user": "Utilisateur",
+  "error": "Erreur",
+  "success": "Succès",
+  "errorGeneric": "Une erreur est survenue.",
+  "noData": "—"
+}

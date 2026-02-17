@@ -1,0 +1,12 @@
+{
+  "brandName": "Portail IAG",
+  "nav": {
+    "dashboard": "Dashboard",
+    "diagnostic": "Diagnostic",
+    "results": "Résultats",
+    "profile": "Profil"
+  },
+  "backToSite": "Retour au site",
+  "openMenu": "Ouvrir le menu",
+  "collapseMenu": "Réduire le menu"
+}

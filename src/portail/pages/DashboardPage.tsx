@@ -6,6 +6,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 
 /* ------------------------------------------------------------------ */
@@ -16,24 +17,24 @@ const quickActions = [
   {
     to: "/portail/diagnostic",
     icon: Target,
-    title: "Diagnostic IA",
-    description: "Évaluez la maturité de votre gouvernance IA avec notre outil interactif.",
+    titleKey: "actions.diagnostic.title",
+    descriptionKey: "actions.diagnostic.description",
     color: "bg-violet-50 text-violet-600",
     borderColor: "border-violet-200",
   },
   {
     to: "/portail/resultats",
     icon: BookOpen,
-    title: "Résultats & Rapports",
-    description: "Consultez vos rapports de diagnostic et recommandations personnalisées.",
+    titleKey: "actions.results.title",
+    descriptionKey: "actions.results.description",
     color: "bg-blue-50 text-blue-600",
     borderColor: "border-blue-200",
   },
   {
     to: "/portail/profil",
     icon: User,
-    title: "Mon Profil",
-    description: "Gérez vos informations personnelles et préférences de notification.",
+    titleKey: "actions.profile.title",
+    descriptionKey: "actions.profile.description",
     color: "bg-amber-50 text-amber-600",
     borderColor: "border-amber-200",
   },
@@ -45,10 +46,11 @@ const quickActions = [
 
 export default function DashboardPage() {
   const { profile, user } = useAuth();
+  const { t } = useTranslation("dashboard");
 
   const firstName =
     (profile?.full_name ?? user?.user_metadata?.full_name ?? "")
-      .split(" ")[0] || "là";
+      .split(" ")[0] || t("welcomeFallback");
 
   return (
     <div className="space-y-8">
@@ -60,21 +62,20 @@ export default function DashboardPage() {
             <div className="flex size-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
               <LayoutDashboard className="size-5" />
             </div>
-            <span className="text-sm font-medium text-white/70">Dashboard</span>
+            <span className="text-sm font-medium text-white/70">{t("title")}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            Bienvenue, {firstName} 👋
+            {t("welcome", { firstName })} 👋
           </h1>
           <p className="mt-2 text-white/70 max-w-xl">
-            Votre espace centralisé pour piloter la gouvernance IA de votre
-            organisation. Explorez les outils à votre disposition.
+            {t("description")}
           </p>
         </div>
       </div>
 
       {/* Quick actions */}
       <section>
-        <h2 className="text-lg font-semibold mb-4">Accès rapide</h2>
+        <h2 className="text-lg font-semibold mb-4">{t("quickAccess")}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {quickActions.map((action) => (
             <Link
@@ -88,13 +89,13 @@ export default function DashboardPage() {
                 <action.icon className="size-5" />
               </div>
               <h3 className="font-semibold text-foreground mb-1">
-                {action.title}
+                {t(action.titleKey)}
               </h3>
               <p className="text-sm text-muted-foreground flex-1">
-                {action.description}
+                {t(action.descriptionKey)}
               </p>
               <div className="mt-4 flex items-center gap-1 text-sm font-medium text-brand-purple group-hover:gap-2 transition-all">
-                Accéder <ArrowRight className="size-4" />
+                {t("common:access")} <ArrowRight className="size-4" />
               </div>
             </Link>
           ))}
@@ -103,19 +104,19 @@ export default function DashboardPage() {
 
       {/* Placeholder stats */}
       <section>
-        <h2 className="text-lg font-semibold mb-4">Statistiques</h2>
+        <h2 className="text-lg font-semibold mb-4">{t("statistics")}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { label: "Diagnostics complétés", value: "—" },
-            { label: "Score moyen", value: "—" },
-            { label: "Recommandations", value: "—" },
-            { label: "Ressources consultées", value: "—" },
+            { labelKey: "stats.diagnosticsCompleted", value: "—" },
+            { labelKey: "stats.averageScore", value: "—" },
+            { labelKey: "stats.recommendations", value: "—" },
+            { labelKey: "stats.resourcesViewed", value: "—" },
           ].map((stat) => (
             <div
-              key={stat.label}
+              key={stat.labelKey}
               className="rounded-2xl border border-border/50 bg-card p-5"
             >
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
+              <p className="text-sm text-muted-foreground">{t(stat.labelKey)}</p>
               <p className="text-2xl font-bold text-foreground mt-1">
                 {stat.value}
               </p>

@@ -1,51 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ScrollText, CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth";
 
 /* ------------------------------------------------------------------ */
-/*  CGU TEXT                                                            */
+/*  CGU SECTION KEYS                                                    */
 /* ------------------------------------------------------------------ */
 
-const cguSections = [
-  {
-    title: "1. Objet",
-    content:
-      "Les présentes Conditions Générales d'Utilisation (ci-après « CGU ») ont pour objet de définir les conditions d'accès et d'utilisation du portail de Gouvernance IA (ci-après « le Portail »), opéré par le Cercle de Gouvernance de l'Intelligence Artificielle.",
-  },
-  {
-    title: "2. Accès au Portail",
-    content:
-      "L'accès au Portail nécessite une authentification via un compte Google. En vous connectant, vous garantissez fournir des informations exactes et à jour. Vous êtes responsable de la confidentialité de vos identifiants de connexion.",
-  },
-  {
-    title: "3. Services proposés",
-    content:
-      "Le Portail met à votre disposition des outils de diagnostic de maturité en gouvernance IA, des ressources documentaires, des rapports personnalisés et un accès à la communauté d'experts.",
-  },
-  {
-    title: "4. Protection des données personnelles",
-    content:
-      "Conformément à la Loi 25 (Québec) et aux réglementations applicables en matière de protection des renseignements personnels, vos données sont traitées de manière sécurisée. Les données collectées sont limitées aux informations de votre compte Google (nom, email, photo de profil) et aux résultats de vos diagnostics.",
-  },
-  {
-    title: "5. Propriété intellectuelle",
-    content:
-      "L'ensemble des contenus du Portail (textes, outils, rapports, interfaces) sont la propriété exclusive du Cercle de Gouvernance de l'IA. Toute reproduction ou distribution non autorisée est interdite.",
-  },
-  {
-    title: "6. Responsabilités",
-    content:
-      "Les résultats de diagnostic et recommandations fournis par le Portail sont donnés à titre indicatif. Ils ne constituent pas un conseil juridique ou professionnel et ne sauraient engager la responsabilité du Cercle de Gouvernance de l'IA.",
-  },
-  {
-    title: "7. Modification des CGU",
-    content:
-      "Le Cercle de Gouvernance de l'IA se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle.",
-  },
-];
+const sectionKeys = ["s1", "s2", "s3", "s4", "s5", "s6", "s7"] as const;
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -54,6 +19,7 @@ const cguSections = [
 export default function ConditionsPage() {
   const { acceptCgu } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation("conditions");
   const [checked, setChecked] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -80,25 +46,25 @@ export default function ConditionsPage() {
                 <ScrollText className="size-5" />
               </div>
               <span className="text-sm font-medium text-white/70">
-                Dernière étape
+                {t("lastStep")}
               </span>
             </div>
             <h1 className="text-2xl font-bold tracking-tight">
-              Conditions Générales d'Utilisation
+              {t("title")}
             </h1>
             <p className="mt-2 text-white/70">
-              Veuillez lire et accepter les conditions pour accéder au portail.
+              {t("description")}
             </p>
           </div>
 
           {/* CGU Content */}
           <div className="max-h-[350px] overflow-y-auto p-6 sm:p-8 space-y-5 text-sm leading-relaxed text-muted-foreground">
-            {cguSections.map((section) => (
-              <div key={section.title}>
+            {sectionKeys.map((key) => (
+              <div key={key}>
                 <h3 className="font-semibold text-foreground mb-1">
-                  {section.title}
+                  {t(`sections.${key}.title`)}
                 </h3>
-                <p>{section.content}</p>
+                <p>{t(`sections.${key}.content`)}</p>
               </div>
             ))}
           </div>
@@ -119,8 +85,7 @@ export default function ConditionsPage() {
                 </div>
               </div>
               <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                J'ai lu et j'accepte les Conditions Générales d'Utilisation du
-                portail de Gouvernance IA.
+                {t("checkboxLabel")}
               </span>
             </label>
 
@@ -131,7 +96,7 @@ export default function ConditionsPage() {
               className="w-full"
               size="lg"
             >
-              {submitting ? "Validation en cours..." : "Accepter et accéder au portail"}
+              {submitting ? t("submitting") : t("submitButton")}
             </Button>
           </div>
         </div>

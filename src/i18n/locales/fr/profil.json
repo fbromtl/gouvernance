@@ -1,0 +1,44 @@
+{
+  "pageTitle": "Mon profil",
+  "pageDescription": "Gérez vos informations personnelles et vos préférences de compte.",
+  "personalInfo": {
+    "title": "Informations personnelles",
+    "description": "Modifiez votre nom affiché dans le portail.",
+    "fullName": "Nom complet",
+    "fullNamePlaceholder": "Votre nom complet",
+    "email": "Courriel",
+    "emailReadonly": "(non modifiable)",
+    "saveSuccess": "Profil mis à jour avec succès.",
+    "saveError": "Erreur lors de la sauvegarde."
+  },
+  "accountDetails": {
+    "title": "Détails du compte",
+    "description": "Informations sur votre compte et votre connexion.",
+    "signInMethod": "Méthode de connexion",
+    "googleMethod": "Google ({{email}})",
+    "emailMethod": "Courriel et mot de passe",
+    "identifier": "Identifiant",
+    "memberSince": "Membre depuis",
+    "lastSignIn": "Dernière connexion",
+    "termsOfUse": "Conditions d'utilisation",
+    "termsAccepted": "Acceptées",
+    "termsNotAccepted": "Non acceptées",
+    "termsPending": "En attente"
+  },
+  "googleData": {
+    "title": "Données Google",
+    "description": "Informations récupérées de votre compte Google.",
+    "fullName": "Nom complet",
+    "email": "Courriel",
+    "emailVerified": "Courriel vérifié",
+    "provider": "Fournisseur",
+    "profilePhoto": "Photo de profil Google",
+    "photoSyncMessage": "Cette photo est synchronisée depuis votre compte Google."
+  },
+  "dangerZone": {
+    "title": "Zone de danger",
+    "description": "Actions irréversibles sur votre compte.",
+    "signOutTitle": "Se déconnecter",
+    "signOutDescription": "Vous serez redirigé vers la page d'accueil."
+  }
+}

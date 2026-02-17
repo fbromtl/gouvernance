@@ -1,0 +1,38 @@
+{
+  "lastStep": "Dernière étape",
+  "title": "Conditions Générales d'Utilisation",
+  "description": "Veuillez lire et accepter les conditions pour accéder au portail.",
+  "checkboxLabel": "J'ai lu et j'accepte les Conditions Générales d'Utilisation du portail de Gouvernance IA.",
+  "submitButton": "Accepter et accéder au portail",
+  "submitting": "Validation en cours...",
+  "sections": {
+    "s1": {
+      "title": "1. Objet",
+      "content": "Les présentes Conditions Générales d'Utilisation (ci-après « CGU ») ont pour objet de définir les conditions d'accès et d'utilisation du portail de Gouvernance IA (ci-après « le Portail »), opéré par le Cercle de Gouvernance de l'Intelligence Artificielle."
+    },
+    "s2": {
+      "title": "2. Accès au Portail",
+      "content": "L'accès au Portail nécessite une authentification via un compte Google. En vous connectant, vous garantissez fournir des informations exactes et à jour. Vous êtes responsable de la confidentialité de vos identifiants de connexion."
+    },
+    "s3": {
+      "title": "3. Services proposés",
+      "content": "Le Portail met à votre disposition des outils de diagnostic de maturité en gouvernance IA, des ressources documentaires, des rapports personnalisés et un accès à la communauté d'experts."
+    },
+    "s4": {
+      "title": "4. Protection des données personnelles",
+      "content": "Conformément à la Loi 25 (Québec) et aux réglementations applicables en matière de protection des renseignements personnels, vos données sont traitées de manière sécurisée. Les données collectées sont limitées aux informations de votre compte Google (nom, email, photo de profil) et aux résultats de vos diagnostics."
+    },
+    "s5": {
+      "title": "5. Propriété intellectuelle",
+      "content": "L'ensemble des contenus du Portail (textes, outils, rapports, interfaces) sont la propriété exclusive du Cercle de Gouvernance de l'IA. Toute reproduction ou distribution non autorisée est interdite."
+    },
+    "s6": {
+      "title": "6. Responsabilités",
+      "content": "Les résultats de diagnostic et recommandations fournis par le Portail sont donnés à titre indicatif. Ils ne constituent pas un conseil juridique ou professionnel et ne sauraient engager la responsabilité du Cercle de Gouvernance de l'IA."
+    },
+    "s7": {
+      "title": "7. Modification des CGU",
+      "content": "Le Cercle de Gouvernance de l'IA se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle."
+    }
+  }
+}
