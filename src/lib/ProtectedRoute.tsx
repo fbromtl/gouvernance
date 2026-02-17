@@ -1,18 +1,10 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "./auth";
 
-/**
- * Route guard for the /portail section.
- *
- * - Not authenticated  -> redirect to homepage
- * - Authenticated but CGU not accepted -> redirect to /portail/conditions
- * - Authenticated + CGU accepted -> render child routes
- */
 export function ProtectedRoute() {
   const { user, profile, loading } = useAuth();
   const location = useLocation();
 
-  // Show nothing while auth state is loading
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -24,19 +16,12 @@ export function ProtectedRoute() {
     );
   }
 
-  // Not logged in -> redirect to home
   if (!user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/connexion" state={{ from: location }} replace />;
   }
 
-  // Logged in but CGU not accepted -> redirect to conditions page
-  // (unless we're already on the conditions page)
-  if (
-    profile &&
-    !profile.cgu_accepted &&
-    location.pathname !== "/portail/conditions"
-  ) {
-    return <Navigate to="/portail/conditions" replace />;
+  if (profile && !profile.cgu_accepted && location.pathname !== "/conditions") {
+    return <Navigate to="/conditions" replace />;
   }
 
   return <Outlet />;
