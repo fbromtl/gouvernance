@@ -26,6 +26,7 @@ import AuthCallbackPage from "@/pages/auth/AuthCallbackPage";
 
 import { PortailLayout } from "@/portail/layout/PortailLayout";
 import DashboardPage from "@/portail/pages/DashboardPage";
+import ProfilPage from "@/portail/pages/ProfilPage";
 import ConditionsPage from "@/portail/pages/ConditionsPage";
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<PortailLayout />}>
               <Route path="/portail" element={<DashboardPage />} />
+              <Route path="/portail/profil" element={<ProfilPage />} />
             </Route>
             <Route path="/portail/conditions" element={<ConditionsPage />} />
           </Route>

@@ -34,6 +34,7 @@ interface AuthContextType {
   signUpWithEmail: (email: string, password: string, fullName: string) => Promise<AuthResult>;
   resetPassword: (email: string) => Promise<AuthResult>;
   updatePassword: (newPassword: string) => Promise<AuthResult>;
+  updateProfile: (data: { full_name?: string; avatar_url?: string }) => Promise<AuthResult>;
   signOut: () => Promise<void>;
   acceptCgu: () => Promise<void>;
   refreshProfile: () => Promise<void>;
@@ -218,6 +219,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { success: true };
   };
 
+  const updateProfile = async (
+    data: { full_name?: string; avatar_url?: string }
+  ): Promise<AuthResult> => {
+    if (!user || !supabaseConfigured) {
+      return { success: false, error: "Non authentifié." };
+    }
+    const { error } = await supabase
+      .from("profiles")
+      .update(data)
+      .eq("id", user.id);
+    if (error) return { success: false, error: error.message };
+    setProfile((prev) => (prev ? { ...prev, ...data } : null));
+    return { success: true };
+  };
+
   const signOut = async () => {
     if (!supabaseConfigured) return;
     await supabase.auth.signOut();
@@ -247,6 +263,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         signUpWithEmail,
         resetPassword,
         updatePassword,
+        updateProfile,
         signOut,
         acceptCgu,
         refreshProfile,
