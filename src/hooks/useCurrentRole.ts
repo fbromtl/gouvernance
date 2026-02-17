@@ -17,7 +17,7 @@ export function useCurrentRole() {
         .eq("organization_id", profile.organization_id)
         .single();
       if (error) return "member" as Role;
-      return data.role as Role;
+      return (data as any).role as Role;
     },
     enabled: !!user && !!profile?.organization_id,
   });

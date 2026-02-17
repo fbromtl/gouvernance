@@ -2,6 +2,9 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
+import type { Database } from "@/types/database";
+
+type Notification = Database["public"]["Tables"]["notifications"]["Row"];
 
 export function useNotifications() {
   const { user } = useAuth();
@@ -17,7 +20,7 @@ export function useNotifications() {
         .order("created_at", { ascending: false })
         .limit(50);
       if (error) throw error;
-      return data;
+      return data as Notification[];
     },
     enabled: !!user,
   });
@@ -53,7 +56,7 @@ export function useNotifications() {
     mutationFn: async (id: string) => {
       const { error } = await supabase
         .from("notifications")
-        .update({ read: true })
+        .update({ read: true } as any)
         .eq("id", id);
       if (error) throw error;
     },
@@ -66,7 +69,7 @@ export function useNotifications() {
     mutationFn: async () => {
       const { error } = await supabase
         .from("notifications")
-        .update({ read: true })
+        .update({ read: true } as any)
         .eq("user_id", user!.id)
         .eq("read", false);
       if (error) throw error;

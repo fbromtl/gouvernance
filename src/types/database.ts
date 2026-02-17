@@ -1,6 +1,5 @@
-// Auto-generated types placeholder
+// Manual types matching our migrations
 // Run `npx supabase gen types typescript --linked` to regenerate from live schema
-// For now, manual types matching our migrations
 
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
@@ -37,7 +36,6 @@ export interface Database {
           updated_at?: string;
         };
         Update: {
-          id?: string;
           name?: string;
           slug?: string;
           sector?: string | null;
@@ -47,8 +45,8 @@ export interface Database {
           logo_url?: string | null;
           settings?: Json | null;
           plan?: string | null;
-          updated_at?: string;
         };
+        Relationships: [];
       };
       profiles: {
         Row: {
@@ -72,6 +70,7 @@ export interface Database {
           cgu_accepted?: boolean;
           organization_id?: string | null;
         };
+        Relationships: [];
       };
       user_roles: {
         Row: {
@@ -91,6 +90,7 @@ export interface Database {
         Update: {
           role?: string;
         };
+        Relationships: [];
       };
       audit_logs: {
         Row: {
@@ -116,7 +116,10 @@ export interface Database {
           ip_address?: string | null;
           user_agent?: string | null;
         };
-        Update: never;
+        Update: {
+          id?: never;
+        };
+        Relationships: [];
       };
       notifications: {
         Row: {
@@ -145,6 +148,7 @@ export interface Database {
         Update: {
           read?: boolean;
         };
+        Relationships: [];
       };
       contact_messages: {
         Row: {
@@ -162,7 +166,10 @@ export interface Database {
           organisme?: string | null;
           message: string;
         };
-        Update: never;
+        Update: {
+          id?: never;
+        };
+        Relationships: [];
       };
       newsletter_subscriptions: {
         Row: {
@@ -174,10 +181,15 @@ export interface Database {
           id?: string;
           email: string;
         };
-        Update: never;
+        Update: {
+          id?: never;
+        };
+        Relationships: [];
       };
     };
+    Views: Record<string, never>;
     Functions: Record<string, never>;
     Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }

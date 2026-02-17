@@ -20,8 +20,8 @@ export function useAuditLog() {
       action: entry.action,
       resource_type: entry.resource_type,
       resource_id: entry.resource_id,
-      changes: entry.changes as any,
-    });
+      changes: entry.changes,
+    } as any);
   };
 
   return { log };
