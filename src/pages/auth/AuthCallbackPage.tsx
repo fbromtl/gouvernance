@@ -47,15 +47,26 @@ export default function AuthCallbackPage() {
 
     if (code) {
       exchangeStarted.current = true;
-      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
-        if (error) {
-          console.error("Code exchange failed:", error.message);
+      supabase.auth
+        .exchangeCodeForSession(code)
+        .then(({ error }) => {
+          if (error) {
+            console.error("Code exchange failed:", error.message);
+            navigate(
+              "/connexion?error=" + encodeURIComponent(error.message),
+              { replace: true }
+            );
+          }
+        })
+        .catch((err: unknown) => {
+          const msg =
+            err instanceof Error ? err.message : "Erreur réseau lors de l'authentification";
+          console.error("Code exchange network error:", msg);
           navigate(
-            "/connexion?error=" + encodeURIComponent(error.message),
+            "/connexion?error=" + encodeURIComponent(msg),
             { replace: true }
           );
-        }
-      });
+        });
     }
   }, [navigate]);
 
