@@ -1,0 +1,227 @@
+{
+  "title": "Évaluations de risques",
+  "description": "Évaluez et classifiez les risques de vos systèmes d'IA",
+  "newAssessment": "Nouvelle évaluation",
+  "search": "Rechercher une évaluation...",
+  "columns": {
+    "system": "Système IA",
+    "score": "Score",
+    "riskLevel": "Niveau de risque",
+    "status": "Statut",
+    "createdAt": "Date de création"
+  },
+  "wizard": {
+    "stepA": "A — Impact",
+    "stepB": "B — IA Act UE",
+    "stepC": "C — Données & vie privée",
+    "stepD": "D — Biais & équité",
+    "stepE": "E — Transparence",
+    "stepF": "F — Supervision humaine",
+    "submit": "Soumettre l'évaluation",
+    "saveDraft": "Sauvegarder le brouillon"
+  },
+  "questions": {
+    "q1": {
+      "question": "Le système a-t-il un impact direct ou indirect sur des individus ?",
+      "options": {
+        "oui_direct": "Oui, impact direct",
+        "oui_indirect": "Oui, impact indirect",
+        "non": "Non"
+      }
+    },
+    "q2": {
+      "question": "Les décisions prises par le système sont-elles facilement réversibles ?",
+      "options": {
+        "non": "Non, irréversibles",
+        "difficilement": "Difficilement réversibles",
+        "oui": "Oui, facilement réversibles"
+      }
+    },
+    "q3": {
+      "question": "Le système peut-il affecter les droits fondamentaux des individus ?",
+      "options": {
+        "oui": "Oui",
+        "possiblement": "Possiblement",
+        "non": "Non"
+      }
+    },
+    "q4": {
+      "question": "Quels droits fondamentaux sont potentiellement affectés ?",
+      "options": {
+        "privacy": "Droit à la vie privée",
+        "non_discrimination": "Non-discrimination",
+        "employment": "Droit à l'emploi",
+        "freedom_expression": "Liberté d'expression",
+        "dignity": "Dignité humaine",
+        "access_services": "Accès aux services essentiels",
+        "none": "Aucun"
+      }
+    },
+    "q5": {
+      "question": "Le système correspond-il à une pratique interdite selon l'AI Act de l'UE ?",
+      "options": {
+        "oui": "Oui",
+        "non": "Non"
+      }
+    },
+    "q6": {
+      "question": "Le système relève-t-il d'une catégorie à haut risque selon l'AI Act ?",
+      "options": {
+        "biometric": "Identification biométrique",
+        "critical_infra": "Infrastructure critique",
+        "education": "Éducation et formation",
+        "employment": "Emploi et gestion des travailleurs",
+        "essential_services": "Accès aux services essentiels",
+        "law_enforcement": "Application de la loi",
+        "migration": "Migration, asile et contrôle aux frontières",
+        "justice": "Administration de la justice"
+      }
+    },
+    "q7": {
+      "question": "Le système a-t-il des obligations de transparence à risque limité (chatbot, deepfake, etc.) ?",
+      "options": {
+        "oui": "Oui",
+        "non": "Non"
+      }
+    },
+    "q8": {
+      "question": "Le système traite-t-il des données personnelles ?",
+      "options": {
+        "oui_sensibles": "Oui, des données sensibles (santé, biométrie, etc.)",
+        "oui_standards": "Oui, des données personnelles standards",
+        "non": "Non"
+      }
+    },
+    "q9": {
+      "question": "Les données sont-elles transférées hors du Canada ?",
+      "options": {
+        "oui_hors_canada": "Oui, hors du Canada",
+        "oui_canada": "Oui, au sein du Canada seulement",
+        "non": "Non, aucun transfert"
+      }
+    },
+    "q10": {
+      "question": "Une évaluation des facteurs relatifs à la vie privée (ÉFVP) a-t-elle été réalisée ?",
+      "options": {
+        "non_requis": "Non réalisée et non prévue",
+        "en_cours": "En cours de réalisation",
+        "oui": "Oui, complétée"
+      }
+    },
+    "q11": {
+      "question": "Existe-t-il un risque de biais discriminatoire dans le système ?",
+      "options": {
+        "oui": "Oui",
+        "possiblement": "Possiblement",
+        "non": "Non"
+      }
+    },
+    "q12": {
+      "question": "Des tests de biais ont-ils été effectués ?",
+      "options": {
+        "non": "Non",
+        "partiellement": "Partiellement",
+        "oui": "Oui, de manière exhaustive"
+      }
+    },
+    "q13": {
+      "question": "Le système utilise-t-il des caractéristiques protégées (origine, genre, âge, etc.) ?",
+      "options": {
+        "oui": "Oui",
+        "non": "Non"
+      }
+    },
+    "q14": {
+      "question": "Les décisions du système sont-elles explicables aux personnes concernées ?",
+      "options": {
+        "non": "Non",
+        "partiellement": "Partiellement",
+        "oui": "Oui, entièrement explicables"
+      }
+    },
+    "q15": {
+      "question": "Les utilisateurs sont-ils informés qu'ils interagissent avec un système d'IA ?",
+      "options": {
+        "non": "Non",
+        "oui": "Oui"
+      }
+    },
+    "q16": {
+      "question": "À quelle fréquence un humain révise-t-il les décisions du système ?",
+      "options": {
+        "jamais": "Jamais",
+        "parfois": "Parfois / sur échantillon",
+        "toujours": "Toujours / systématiquement"
+      }
+    },
+    "q17": {
+      "question": "Existe-t-il un mécanisme permettant à un humain de contredire ou arrêter le système ?",
+      "options": {
+        "non": "Non",
+        "oui": "Oui"
+      }
+    }
+  },
+  "riskLevels": {
+    "minimal": "Minimal",
+    "limited": "Limité",
+    "high": "Élevé",
+    "critical": "Critique",
+    "prohibited": "Interdit"
+  },
+  "statuses": {
+    "draft": "Brouillon",
+    "submitted": "Soumise",
+    "in_review": "En révision",
+    "approved": "Approuvée"
+  },
+  "requirements": {
+    "minimal": [
+      "Aucune obligation réglementaire spécifique",
+      "Bonnes pratiques de documentation recommandées"
+    ],
+    "limited": [
+      "Obligations de transparence envers les utilisateurs",
+      "Information claire sur l'utilisation de l'IA",
+      "Documentation du système et de son fonctionnement"
+    ],
+    "high": [
+      "Système de gestion des risques obligatoire",
+      "Évaluation de la conformité avant mise sur le marché",
+      "Jeux de données d'entraînement et de test documentés",
+      "Traçabilité et journalisation des opérations",
+      "Supervision humaine effective",
+      "Précision, robustesse et cybersécurité démontrées",
+      "Enregistrement dans la base de données européenne"
+    ],
+    "critical": [
+      "Toutes les exigences du niveau élevé",
+      "Audit de conformité par un organisme tiers",
+      "Plan de surveillance post-déploiement renforcé",
+      "Notification obligatoire aux autorités compétentes",
+      "Évaluation d'impact sur les droits fondamentaux"
+    ],
+    "prohibited": [
+      "Ce système ne peut pas être déployé dans l'Union européenne",
+      "Vérifiez la conformité avec les lois canadiennes applicables",
+      "Consultez votre service juridique immédiatement"
+    ]
+  },
+  "result": {
+    "title": "Résultat de l'évaluation",
+    "score": "Score total",
+    "level": "Niveau de risque",
+    "requirements": "Exigences applicables",
+    "backToList": "Retour à la liste"
+  },
+  "empty": {
+    "title": "Aucune évaluation de risque",
+    "description": "Commencez par créer une évaluation de risque pour l'un de vos systèmes d'IA.",
+    "action": "Créer une évaluation"
+  },
+  "toast": {
+    "created": "Évaluation de risque créée avec succès",
+    "updated": "Évaluation de risque mise à jour",
+    "approved": "Évaluation de risque approuvée"
+  }
+}
