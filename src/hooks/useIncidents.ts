@@ -12,6 +12,7 @@ export interface IncidentFilters {
   severity?: string;
   category?: string;
   search?: string;
+  ai_system_id?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -33,6 +34,9 @@ export function useIncidents(filters?: IncidentFilters) {
         .eq("organization_id", orgId)
         .is("deleted_at", null);
 
+      if (filters?.ai_system_id) {
+        query = query.eq("ai_system_id", filters.ai_system_id);
+      }
       if (filters?.status) {
         query = query.eq("status", filters.status);
       }

@@ -207,6 +207,16 @@
       "Consult your legal department immediately"
     ]
   },
+  "detail": {
+    "notFound": "Assessment not found.",
+    "approve": "Approve assessment",
+    "startReview": "Start review",
+    "prohibitedWarning": "System prohibited under the EU AI Act",
+    "dates": "Dates",
+    "updatedAt": "Last updated",
+    "approvedAt": "Approved on",
+    "answersTitle": "Questionnaire answers"
+  },
   "result": {
     "title": "Assessment Result",
     "score": "Total score",

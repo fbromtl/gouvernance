@@ -33,6 +33,10 @@ import {
 } from "@/components/ui/dialog";
 
 import { useAiSystem, useDeleteAiSystem } from "@/hooks/useAiSystems";
+import { useRiskAssessments } from "@/hooks/useRiskAssessments";
+import { useIncidents } from "@/hooks/useIncidents";
+import { useUserNames } from "@/hooks/useUserNames";
+import type { RiskAssessment, Incident } from "@/types/database";
 
 /* ------------------------------------------------------------------ */
 /*  Page component                                                      */
@@ -46,6 +50,26 @@ export default function AiSystemDetailPage() {
   const { data: system, isLoading } = useAiSystem(id);
   const deleteMutation = useDeleteAiSystem();
   const [deleteOpen, setDeleteOpen] = useState(false);
+
+  // Data for sub-tabs (only fetched when system is loaded)
+  const { data: riskAssessments = [] } = useRiskAssessments(system?.id);
+  const { data: incidents = [] } = useIncidents(
+    system ? { ai_system_id: system.id } : undefined,
+  );
+
+  // Resolve owner UUIDs to display names
+  const { data: userNames } = useUserNames([
+    system?.business_owner_id,
+    system?.tech_owner_id,
+    system?.privacy_owner_id,
+    system?.risk_owner_id,
+    system?.approver_id,
+  ]);
+
+  function resolveOwner(ownerId: string | null | undefined): string {
+    if (!ownerId) return "---";
+    return userNames?.get(ownerId) ?? ownerId;
+  }
 
   // ----- Delete handler -----
   async function handleDelete() {
@@ -377,7 +401,7 @@ export default function AiSystemDetailPage() {
                     {t("fields.businessOwner")}
                   </p>
                   <p className="text-sm font-medium">
-                    {system.business_owner_id || "---"}
+                    {resolveOwner(system.business_owner_id)}
                   </p>
                 </div>
                 <div>
@@ -385,7 +409,7 @@ export default function AiSystemDetailPage() {
                     {t("fields.techOwner")}
                   </p>
                   <p className="text-sm font-medium">
-                    {system.tech_owner_id || "---"}
+                    {resolveOwner(system.tech_owner_id)}
                   </p>
                 </div>
                 <div>
@@ -393,7 +417,7 @@ export default function AiSystemDetailPage() {
                     {t("fields.privacyOwner")}
                   </p>
                   <p className="text-sm font-medium">
-                    {system.privacy_owner_id || "---"}
+                    {resolveOwner(system.privacy_owner_id)}
                   </p>
                 </div>
                 <div>
@@ -401,7 +425,7 @@ export default function AiSystemDetailPage() {
                     {t("fields.riskOwner")}
                   </p>
                   <p className="text-sm font-medium">
-                    {system.risk_owner_id || "---"}
+                    {resolveOwner(system.risk_owner_id)}
                   </p>
                 </div>
                 <div>
@@ -409,7 +433,7 @@ export default function AiSystemDetailPage() {
                     {t("fields.approver")}
                   </p>
                   <p className="text-sm font-medium">
-                    {system.approver_id || "---"}
+                    {resolveOwner(system.approver_id)}
                   </p>
                 </div>
               </div>
@@ -463,29 +487,113 @@ export default function AiSystemDetailPage() {
         </TabsContent>
 
         {/* ---- Risks Tab ---- */}
-        <TabsContent value="risks" className="mt-4">
-          <EmptyState
-            icon={ShieldAlert}
-            title={t("detail.noRisks")}
-            description={t("detail.noRisksDescription")}
-            actionLabel={t("detail.newRiskAssessment")}
-            onAction={() =>
-              navigate(`/risks/new?ai_system_id=${system.id}`)
-            }
-          />
+        <TabsContent value="risks" className="mt-4 space-y-4">
+          <div className="flex justify-end">
+            <Button
+              size="sm"
+              onClick={() =>
+                navigate(`/risks/new?ai_system_id=${system.id}`)
+              }
+            >
+              {t("detail.newRiskAssessment")}
+            </Button>
+          </div>
+
+          {riskAssessments.length === 0 ? (
+            <EmptyState
+              icon={ShieldAlert}
+              title={t("detail.noRisks")}
+              description={t("detail.noRisksDescription")}
+              actionLabel={t("detail.newRiskAssessment")}
+              onAction={() =>
+                navigate(`/risks/new?ai_system_id=${system.id}`)
+              }
+            />
+          ) : (
+            <div className="space-y-3">
+              {riskAssessments.map((ra: RiskAssessment) => (
+                <Card
+                  key={ra.id}
+                  className="cursor-pointer hover:border-primary/50 transition-colors"
+                  onClick={() => navigate(`/risks/${ra.id}`)}
+                >
+                  <CardContent className="flex items-center justify-between py-4">
+                    <div className="flex items-center gap-4">
+                      <RiskScoreGauge score={ra.total_score} size="sm" />
+                      <div>
+                        <StatusBadge
+                          status={ra.risk_level}
+                          label={t(`detail.riskLevels.${ra.risk_level}`, ra.risk_level)}
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {new Date(ra.created_at).toLocaleDateString("fr-CA")}
+                        </p>
+                      </div>
+                    </div>
+                    <StatusBadge
+                      status={ra.status}
+                      label={t(`detail.riskStatuses.${ra.status}`, ra.status)}
+                    />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </TabsContent>
 
         {/* ---- Incidents Tab ---- */}
-        <TabsContent value="incidents" className="mt-4">
-          <EmptyState
-            icon={AlertCircle}
-            title={t("detail.noIncidents")}
-            description={t("detail.noIncidentsDescription")}
-            actionLabel={t("detail.reportIncident")}
-            onAction={() =>
-              navigate(`/incidents/new?ai_system_id=${system.id}`)
-            }
-          />
+        <TabsContent value="incidents" className="mt-4 space-y-4">
+          <div className="flex justify-end">
+            <Button
+              size="sm"
+              onClick={() =>
+                navigate(`/incidents/new?ai_system_id=${system.id}`)
+              }
+            >
+              {t("detail.reportIncident")}
+            </Button>
+          </div>
+
+          {incidents.length === 0 ? (
+            <EmptyState
+              icon={AlertCircle}
+              title={t("detail.noIncidents")}
+              description={t("detail.noIncidentsDescription")}
+              actionLabel={t("detail.reportIncident")}
+              onAction={() =>
+                navigate(`/incidents/new?ai_system_id=${system.id}`)
+              }
+            />
+          ) : (
+            <div className="space-y-3">
+              {incidents.map((inc: Incident) => (
+                <Card
+                  key={inc.id}
+                  className="cursor-pointer hover:border-primary/50 transition-colors"
+                  onClick={() => navigate(`/incidents/${inc.id}`)}
+                >
+                  <CardContent className="flex items-center justify-between py-4">
+                    <div>
+                      <p className="text-sm font-medium">{inc.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {new Date(inc.created_at).toLocaleDateString("fr-CA")}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <StatusBadge
+                        status={inc.severity}
+                        label={t(`detail.severities.${inc.severity}`, inc.severity)}
+                      />
+                      <StatusBadge
+                        status={inc.status}
+                        label={t(`detail.incidentStatuses.${inc.status}`, inc.status)}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </TabsContent>
 
         {/* ---- History Tab ---- */}

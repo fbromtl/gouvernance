@@ -41,6 +41,7 @@ import AiSystemDetailPage from "@/portail/pages/AiSystemDetailPage";
 // Module: Risk Assessments
 import RiskAssessmentListPage from "@/portail/pages/RiskAssessmentListPage";
 import RiskAssessmentWizardPage from "@/portail/pages/RiskAssessmentWizardPage";
+import RiskAssessmentDetailPage from "@/portail/pages/RiskAssessmentDetailPage";
 
 // Module: Incidents
 import IncidentListPage from "@/portail/pages/IncidentListPage";
@@ -98,7 +99,7 @@ function App() {
               {/* Module: Risk Assessments */}
               <Route path="/risks" element={<RiskAssessmentListPage />} />
               <Route path="/risks/new" element={<RiskAssessmentWizardPage />} />
-              <Route path="/risks/:id" element={<PlaceholderPage />} />
+              <Route path="/risks/:id" element={<RiskAssessmentDetailPage />} />
 
               {/* Module: Incidents */}
               <Route path="/incidents" element={<IncidentListPage />} />

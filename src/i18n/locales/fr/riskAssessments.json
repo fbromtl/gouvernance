@@ -207,6 +207,16 @@
       "Consultez votre service juridique immédiatement"
     ]
   },
+  "detail": {
+    "notFound": "Évaluation introuvable.",
+    "approve": "Approuver l'évaluation",
+    "startReview": "Démarrer la révision",
+    "prohibitedWarning": "Système interdit selon l'AI Act de l'UE",
+    "dates": "Dates",
+    "updatedAt": "Dernière mise à jour",
+    "approvedAt": "Approuvée le",
+    "answersTitle": "Réponses au questionnaire"
+  },
   "result": {
     "title": "Résultat de l'évaluation",
     "score": "Score total",

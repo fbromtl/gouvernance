@@ -234,7 +234,35 @@
     "noIncidentsDescription": "No incidents reported for this system.",
     "reportIncident": "Report an incident",
     "noHistory": "No history",
-    "noHistoryDescription": "The change history will be displayed here."
+    "noHistoryDescription": "The change history will be displayed here.",
+    "riskLevels": {
+      "minimal": "Minimal",
+      "limited": "Limited",
+      "high": "High",
+      "critical": "Critical",
+      "prohibited": "Prohibited"
+    },
+    "riskStatuses": {
+      "draft": "Draft",
+      "submitted": "Submitted",
+      "in_review": "In review",
+      "approved": "Approved"
+    },
+    "severities": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "incidentStatuses": {
+      "reported": "Reported",
+      "triaged": "Triaged",
+      "investigating": "Investigating",
+      "resolving": "Resolving",
+      "resolved": "Resolved",
+      "post_mortem": "Post-mortem",
+      "closed": "Closed"
+    }
   },
   "emptyFiltered": {
     "title": "No results",

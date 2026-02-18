@@ -234,7 +234,35 @@
     "noIncidentsDescription": "Aucun incident signalé pour ce système.",
     "reportIncident": "Signaler un incident",
     "noHistory": "Aucun historique",
-    "noHistoryDescription": "L'historique des modifications sera affiché ici."
+    "noHistoryDescription": "L'historique des modifications sera affiché ici.",
+    "riskLevels": {
+      "minimal": "Minimal",
+      "limited": "Limité",
+      "high": "Élevé",
+      "critical": "Critique",
+      "prohibited": "Interdit"
+    },
+    "riskStatuses": {
+      "draft": "Brouillon",
+      "submitted": "Soumise",
+      "in_review": "En révision",
+      "approved": "Approuvée"
+    },
+    "severities": {
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé",
+      "critical": "Critique"
+    },
+    "incidentStatuses": {
+      "reported": "Signalé",
+      "triaged": "Trié",
+      "investigating": "En investigation",
+      "resolving": "En résolution",
+      "resolved": "Résolu",
+      "post_mortem": "Post-mortem",
+      "closed": "Fermé"
+    }
   },
   "emptyFiltered": {
     "title": "Aucun résultat",
