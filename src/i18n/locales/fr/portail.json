@@ -1,10 +1,12 @@
 {
   "brandName": "gouvernance.ai",
+  "brandTagline": "Plateforme de gouvernance IA",
+  "soon": "Bientôt",
   "nav": {
     "dashboard": "Tableau de bord",
     "aiSystems": "Systèmes IA",
     "governance": "Gouvernance",
-    "risks": "Risques",
+    "risks": "Éval. des risques",
     "decisions": "Décisions",
     "bias": "Biais & Équité",
     "incidents": "Incidents",
@@ -19,13 +21,18 @@
     "profile": "Profil"
   },
   "sections": {
+    "overview": "Vue d'ensemble",
+    "inventory": "Inventaire IA",
+    "governance": "Gouvernance & Conformité",
+    "risks": "Gestion des risques",
+    "operations": "Opérations",
+    "settings": "Paramètres",
     "main": "Principal",
-    "modules": "Modules",
-    "settings": "Paramètres"
+    "modules": "Modules"
   },
   "backToSite": "Retour au site",
   "openMenu": "Ouvrir le menu",
-  "collapseMenu": "Réduire le menu",
+  "collapseMenu": "Réduire",
   "notifications": "Notifications",
   "noNotifications": "Aucune notification",
   "markAllRead": "Tout marquer comme lu",
