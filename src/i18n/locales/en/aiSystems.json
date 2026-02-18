@@ -1,0 +1,205 @@
+{
+  "title": "AI Systems",
+  "description": "Central registry of your artificial intelligence systems",
+  "newSystem": "New system",
+  "editSystem": "Edit system",
+  "search": "Search for a system...",
+  "filters": {
+    "allTypes": "All types",
+    "allRiskLevels": "All risk levels",
+    "allStatuses": "All statuses",
+    "allLifecycles": "All lifecycles"
+  },
+  "columns": {
+    "name": "Name",
+    "type": "Type",
+    "department": "Department",
+    "riskLevel": "Risk level",
+    "lifecycle": "Lifecycle",
+    "owner": "Owner",
+    "nextReview": "Next review",
+    "riskScore": "Risk score"
+  },
+  "wizard": {
+    "step1": "Identification",
+    "step2": "Scope & impact",
+    "step3": "Data & vendor",
+    "step4": "Owners",
+    "step5": "Status & planning",
+    "next": "Next",
+    "previous": "Previous",
+    "saveDraft": "Save draft",
+    "submit": "Save system",
+    "creating": "Creating...",
+    "draftSaved": "Draft saved"
+  },
+  "fields": {
+    "name": "System name",
+    "namePlaceholder": "E.g.: Customer service chatbot, Credit scoring model...",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe what the system does in plain language...",
+    "internalRef": "Internal reference",
+    "internalRefPlaceholder": "E.g.: PRJ-2024-001",
+    "systemType": "System type",
+    "genaiSubtype": "GenAI subtype",
+    "departments": "Department(s)",
+    "purpose": "Purpose / use case",
+    "purposePlaceholder": "Describe what the system is used for...",
+    "affectedPopulation": "Affected population",
+    "estimatedVolume": "Estimated volume of people/year",
+    "autonomyLevel": "Autonomy level",
+    "sensitiveDomains": "Sensitive domain(s)",
+    "dataTypes": "Data used",
+    "systemSource": "System source",
+    "vendorName": "Vendor name",
+    "vendorNamePlaceholder": "E.g.: OpenAI, Microsoft, Google...",
+    "modelVersion": "Model / version",
+    "modelVersionPlaceholder": "E.g.: GPT-4o, Claude 3.5...",
+    "dataLocations": "Data locations",
+    "businessOwner": "Business owner",
+    "techOwner": "Technical owner",
+    "privacyOwner": "Privacy owner",
+    "riskOwner": "Risk owner",
+    "approver": "Approver",
+    "lifecycleStatus": "Lifecycle status",
+    "productionDate": "Production date",
+    "nextReviewDate": "Next review date",
+    "reviewFrequency": "Review frequency",
+    "notes": "Additional notes"
+  },
+  "systemTypes": {
+    "predictive": "Predictive model",
+    "recommendation": "Recommendation system",
+    "classification": "Classification / categorization",
+    "nlp": "Natural language processing",
+    "genai_llm": "Generative AI / LLM",
+    "computer_vision": "Computer vision",
+    "biometric": "Biometrics",
+    "robotic_process": "Robotic process automation (RPA)",
+    "decision_support": "Decision support",
+    "autonomous_agent": "Autonomous agent",
+    "other": "Other"
+  },
+  "genaiSubtypes": {
+    "chatbot": "Chatbot / conversational assistant",
+    "content_generation": "Content generation",
+    "code_generation": "Code generation",
+    "summarization": "Summarization / synthesis",
+    "translation": "Translation",
+    "image_generation": "Image generation",
+    "other_genai": "Other"
+  },
+  "departmentOptions": {
+    "hr": "Human resources",
+    "finance": "Finance",
+    "customer_service": "Customer service",
+    "it": "Information technology",
+    "marketing": "Marketing",
+    "legal": "Legal",
+    "operations": "Operations",
+    "executive": "Executive",
+    "other": "Other"
+  },
+  "populationOptions": {
+    "employees": "Organization employees",
+    "customers": "Customers",
+    "prospects": "Prospects",
+    "public": "General public",
+    "minors": "Minors",
+    "vulnerable": "Vulnerable persons"
+  },
+  "volumeOptions": {
+    "lt_100": "< 100",
+    "100_1000": "100 – 1,000",
+    "1000_10000": "1,000 – 10,000",
+    "10000_100000": "10,000 – 100,000",
+    "gt_100000": "> 100,000"
+  },
+  "autonomyOptions": {
+    "full_auto": "Fully automated decision",
+    "human_in_the_loop": "Human in the loop (validation before action)",
+    "human_on_the_loop": "Human on the loop (supervision)",
+    "human_in_command": "Human in command (AI as a tool)"
+  },
+  "sensitiveDomainOptions": {
+    "employment": "Employment / recruitment",
+    "credit": "Credit / financial scoring",
+    "justice": "Justice / law enforcement",
+    "education": "Education",
+    "health": "Health",
+    "housing": "Housing",
+    "critical_infra": "Critical infrastructure",
+    "biometric_id": "Biometric identification",
+    "migration": "Migration / asylum"
+  },
+  "dataTypeOptions": {
+    "personal_data": "Personal data",
+    "sensitive_data": "Sensitive data",
+    "financial_data": "Financial data",
+    "public_data": "Public data",
+    "synthetic_data": "Synthetic data",
+    "no_personal_data": "No personal data"
+  },
+  "sourceOptions": {
+    "internal": "Developed in-house",
+    "vendor_saas": "SaaS vendor / external API",
+    "vendor_onprem": "On-premise vendor",
+    "open_source": "Open source",
+    "hybrid": "Hybrid"
+  },
+  "locationOptions": {
+    "canada": "Canada",
+    "quebec": "Quebec",
+    "usa": "United States",
+    "eu": "European Union",
+    "other": "Other"
+  },
+  "lifecycleOptions": {
+    "idea": "Idea / exploration",
+    "pilot": "Pilot project",
+    "development": "In development",
+    "testing": "Testing / validation",
+    "production": "In production",
+    "suspended": "Suspended",
+    "decommissioned": "Decommissioned"
+  },
+  "frequencyOptions": {
+    "monthly": "Monthly",
+    "quarterly": "Quarterly",
+    "semi_annual": "Semi-annual",
+    "annual": "Annual"
+  },
+  "riskLevels": {
+    "minimal": "Minimal",
+    "limited": "Limited",
+    "high": "High",
+    "critical": "Critical",
+    "prohibited": "Prohibited"
+  },
+  "detail": {
+    "summary": "Summary",
+    "risks": "Risks",
+    "incidents": "Incidents",
+    "documents": "Documents",
+    "history": "History",
+    "riskScore": "Risk score",
+    "lifecycle": "Lifecycle",
+    "nextReview": "Next review",
+    "owners": "Owners",
+    "noAssessments": "No risk assessments",
+    "newAssessment": "New assessment",
+    "noIncidents": "No incidents",
+    "reportIncident": "Report an incident"
+  },
+  "empty": {
+    "title": "No AI systems registered",
+    "description": "Start by registering your first artificial intelligence system.",
+    "action": "Register a system"
+  },
+  "toast": {
+    "created": "AI system created successfully",
+    "updated": "AI system updated",
+    "deleted": "AI system archived",
+    "draftSaved": "Draft saved"
+  }
+}
