@@ -29,6 +29,12 @@
   "notifications": "Notifications",
   "noNotifications": "Aucune notification",
   "markAllRead": "Tout marquer comme lu",
+  "timeAgo": {
+    "justNow": "À l'instant",
+    "minutes": "Il y a {{count}} min",
+    "hours": "Il y a {{count}}h",
+    "days": "Il y a {{count}}j"
+  },
   "search": "Rechercher...",
   "searchPlaceholder": "Rechercher un système, incident, décision...",
   "placeholder": {
