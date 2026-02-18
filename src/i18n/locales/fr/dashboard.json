@@ -1,28 +1,21 @@
 {
-  "title": "Dashboard",
+  "title": "Tableau de bord",
   "welcome": "Bienvenue, {{firstName}}",
   "welcomeFallback": "là",
-  "description": "Votre espace centralisé pour piloter la gouvernance IA de votre organisation. Explorez les outils à votre disposition.",
+  "description": "Vue d'ensemble de votre gouvernance IA.",
   "quickAccess": "Accès rapide",
-  "statistics": "Statistiques",
-  "actions": {
-    "diagnostic": {
-      "title": "Diagnostic IA",
-      "description": "Évaluez la maturité de votre gouvernance IA avec notre outil interactif."
-    },
-    "results": {
-      "title": "Résultats & Rapports",
-      "description": "Consultez vos rapports de diagnostic et recommandations personnalisées."
-    },
-    "profile": {
-      "title": "Mon Profil",
-      "description": "Gérez vos informations personnelles et préférences de notification."
-    }
-  },
   "stats": {
-    "diagnosticsCompleted": "Diagnostics complétés",
-    "averageScore": "Score moyen",
-    "recommendations": "Recommandations",
-    "resourcesViewed": "Ressources consultées"
+    "aiSystems": "Systèmes IA",
+    "complianceScore": "Score de conformité",
+    "activeIncidents": "Incidents actifs",
+    "pendingAlerts": "Alertes en attente"
+  },
+  "noOrg": "Aucune organisation",
+  "noOrgDescription": "Vous n'êtes rattaché à aucune organisation. Contactez votre administrateur ou créez une organisation.",
+  "modules": {
+    "aiSystems": { "title": "Systèmes IA", "description": "Gérer le registre de vos systèmes IA" },
+    "risks": { "title": "Risques", "description": "Évaluer et suivre les risques" },
+    "compliance": { "title": "Conformité", "description": "Suivre votre conformité multi-référentiels" },
+    "incidents": { "title": "Incidents", "description": "Déclarer et gérer les incidents" }
   }
 }

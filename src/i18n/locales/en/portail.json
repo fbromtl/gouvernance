@@ -1,12 +1,38 @@
 {
-  "brandName": "IAG Portal",
+  "brandName": "gouvernance.ai",
   "nav": {
     "dashboard": "Dashboard",
-    "diagnostic": "Diagnostic",
-    "results": "Results",
+    "aiSystems": "AI Systems",
+    "governance": "Governance",
+    "risks": "Risks",
+    "decisions": "Decisions",
+    "bias": "Bias & Equity",
+    "incidents": "Incidents",
+    "transparency": "Transparency",
+    "lifecycle": "Lifecycle",
+    "documents": "Documentation",
+    "monitoring": "Monitoring",
+    "data": "Data & PIA",
+    "vendors": "Vendors",
+    "compliance": "Compliance",
+    "admin": "Administration",
     "profile": "Profile"
+  },
+  "sections": {
+    "main": "Main",
+    "modules": "Modules",
+    "settings": "Settings"
   },
   "backToSite": "Back to site",
   "openMenu": "Open menu",
-  "collapseMenu": "Collapse menu"
+  "collapseMenu": "Collapse menu",
+  "notifications": "Notifications",
+  "noNotifications": "No notifications",
+  "markAllRead": "Mark all as read",
+  "search": "Search...",
+  "searchPlaceholder": "Search for a system, incident, decision...",
+  "placeholder": {
+    "title": "Under development",
+    "description": "This module will be available soon."
+  }
 }

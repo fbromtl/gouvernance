@@ -17,6 +17,7 @@ export interface Profile {
   full_name: string | null;
   avatar_url: string | null;
   cgu_accepted: boolean;
+  organization_id: string | null;
   created_at: string;
 }
 
@@ -84,7 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const { data: created } = await supabase
       .from("profiles")
-      .upsert([newProfile])
+      .upsert([newProfile] as any)
       .select()
       .single();
 
@@ -227,7 +228,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     const { error } = await supabase
       .from("profiles")
-      .update(data)
+      .update(data as any)
       .eq("id", user.id);
     if (error) return { success: false, error: error.message };
     setProfile((prev) => (prev ? { ...prev, ...data } : null));
@@ -245,7 +246,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!user || !supabaseConfigured) return;
     await supabase
       .from("profiles")
-      .update({ cgu_accepted: true })
+      .update({ cgu_accepted: true } as any)
       .eq("id", user.id);
     setProfile((prev) => (prev ? { ...prev, cgu_accepted: true } : null));
   };

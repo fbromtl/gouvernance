@@ -28,7 +28,7 @@ export default function ConditionsPage() {
     setSubmitting(true);
     try {
       await acceptCgu();
-      navigate("/portail", { replace: true });
+      navigate("/dashboard", { replace: true });
     } finally {
       setSubmitting(false);
     }

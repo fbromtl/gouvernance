@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import type { Database } from '@/types/database'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
@@ -10,8 +11,8 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undef
  */
 export const supabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
 
-export const supabase: SupabaseClient = supabaseConfigured
-  ? createClient(supabaseUrl!, supabaseAnonKey!, {
+export const supabase: SupabaseClient<Database> = supabaseConfigured
+  ? createClient<Database>(supabaseUrl!, supabaseAnonKey!, {
       auth: {
         flowType: 'pkce',
         detectSessionInUrl: false,
@@ -19,7 +20,7 @@ export const supabase: SupabaseClient = supabaseConfigured
         persistSession: true,
       },
     })
-  : (null as unknown as SupabaseClient) // placeholder — never called when !supabaseConfigured
+  : (null as unknown as SupabaseClient<Database>) // placeholder — never called when !supabaseConfigured
 
 export interface ContactMessage {
   id?: string
@@ -39,7 +40,7 @@ export interface NewsletterSubscription {
 export async function submitContactForm(data: Omit<ContactMessage, 'id' | 'created_at'>) {
   const { error } = await supabase
     .from('contact_messages')
-    .insert([data])
+    .insert([data] as any)
 
   if (error) throw error
   return true
@@ -48,7 +49,7 @@ export async function submitContactForm(data: Omit<ContactMessage, 'id' | 'creat
 export async function subscribeNewsletter(email: string) {
   const { error } = await supabase
     .from('newsletter_subscriptions')
-    .insert([{ email }])
+    .insert([{ email }] as any)
 
   if (error) throw error
   return true

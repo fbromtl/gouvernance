@@ -1,129 +1,111 @@
-import {
-  LayoutDashboard,
-  Target,
-  BookOpen,
-  User,
-  ArrowRight,
-} from "lucide-react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/lib/auth";
-
-/* ------------------------------------------------------------------ */
-/*  CARDS DATA                                                         */
-/* ------------------------------------------------------------------ */
-
-const quickActions = [
-  {
-    to: "/portail/diagnostic",
-    icon: Target,
-    titleKey: "actions.diagnostic.title",
-    descriptionKey: "actions.diagnostic.description",
-    color: "bg-violet-50 text-violet-600",
-    borderColor: "border-violet-200",
-  },
-  {
-    to: "/portail/resultats",
-    icon: BookOpen,
-    titleKey: "actions.results.title",
-    descriptionKey: "actions.results.description",
-    color: "bg-blue-50 text-blue-600",
-    borderColor: "border-blue-200",
-  },
-  {
-    to: "/portail/profil",
-    icon: User,
-    titleKey: "actions.profile.title",
-    descriptionKey: "actions.profile.description",
-    color: "bg-amber-50 text-amber-600",
-    borderColor: "border-amber-200",
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  COMPONENT                                                          */
-/* ------------------------------------------------------------------ */
+import { useOrganization } from "@/hooks/useOrganization";
+import { PageHeader } from "@/components/shared/PageHeader";
+import { EmptyState } from "@/components/shared/EmptyState";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Bot, AlertTriangle, CheckCircle, AlertCircle, Building2 } from "lucide-react";
 
 export default function DashboardPage() {
-  const { profile, user } = useAuth();
   const { t } = useTranslation("dashboard");
+  const { profile } = useAuth();
+  const { data: org, isLoading } = useOrganization();
 
-  const firstName =
-    (profile?.full_name ?? user?.user_metadata?.full_name ?? "")
-      .split(" ")[0] || t("welcomeFallback");
+  const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
 
-  return (
-    <div className="space-y-8">
-      {/* Welcome banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-purple via-brand-purple-dark to-[#1e1a30] p-6 sm:p-8 text-white">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-        <div className="relative">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
-              <LayoutDashboard className="size-5" />
-            </div>
-            <span className="text-sm font-medium text-white/70">{t("title")}</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            {t("welcome", { firstName })} 👋
-          </h1>
-          <p className="mt-2 text-white/70 max-w-xl">
-            {t("description")}
-          </p>
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="h-8 w-48 bg-muted animate-pulse rounded" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-28 bg-muted animate-pulse rounded-lg" />
+          ))}
         </div>
       </div>
+    );
+  }
 
-      {/* Quick actions */}
-      <section>
-        <h2 className="text-lg font-semibold mb-4">{t("quickAccess")}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {quickActions.map((action) => (
-            <Link
-              key={action.to}
-              to={action.to}
-              className={`group flex flex-col rounded-2xl border ${action.borderColor} bg-card p-5 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5`}
-            >
-              <div
-                className={`flex size-10 items-center justify-center rounded-xl ${action.color} mb-4`}
-              >
-                <action.icon className="size-5" />
-              </div>
-              <h3 className="font-semibold text-foreground mb-1">
-                {t(action.titleKey)}
-              </h3>
-              <p className="text-sm text-muted-foreground flex-1">
-                {t(action.descriptionKey)}
-              </p>
-              <div className="mt-4 flex items-center gap-1 text-sm font-medium text-brand-purple group-hover:gap-2 transition-all">
-                {t("common:access")} <ArrowRight className="size-4" />
-              </div>
+  if (!profile?.organization_id || !org) {
+    return (
+      <EmptyState
+        icon={Building2}
+        title={t("noOrg")}
+        description={t("noOrgDescription")}
+      />
+    );
+  }
+
+  const statCards = [
+    { key: "aiSystems", icon: Bot, value: "—", path: "/ai-systems" },
+    { key: "complianceScore", icon: CheckCircle, value: "—", path: "/compliance" },
+    { key: "activeIncidents", icon: AlertCircle, value: "—", path: "/incidents" },
+    { key: "pendingAlerts", icon: AlertTriangle, value: "—", path: "/monitoring" },
+  ];
+
+  const quickModules = [
+    { key: "aiSystems", icon: Bot, path: "/ai-systems" },
+    { key: "risks", icon: AlertTriangle, path: "/risks" },
+    { key: "compliance", icon: CheckCircle, path: "/compliance" },
+    { key: "incidents", icon: AlertCircle, path: "/incidents" },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <PageHeader
+        title={t("welcome", { firstName })}
+        description={t("description")}
+      />
+
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {statCards.map((stat) => {
+          const Icon = stat.icon;
+          return (
+            <Link key={stat.key} to={stat.path}>
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="flex items-center gap-4 pt-6">
+                  <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center shrink-0">
+                    <Icon className="h-5 w-5 text-brand-purple" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold">{stat.value}</p>
+                    <p className="text-xs text-muted-foreground">{t(`stats.${stat.key}`)}</p>
+                  </div>
+                </CardContent>
+              </Card>
             </Link>
-          ))}
-        </div>
-      </section>
+          );
+        })}
+      </div>
 
-      {/* Placeholder stats */}
-      <section>
-        <h2 className="text-lg font-semibold mb-4">{t("statistics")}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { labelKey: "stats.diagnosticsCompleted", value: "—" },
-            { labelKey: "stats.averageScore", value: "—" },
-            { labelKey: "stats.recommendations", value: "—" },
-            { labelKey: "stats.resourcesViewed", value: "—" },
-          ].map((stat) => (
-            <div
-              key={stat.labelKey}
-              className="rounded-2xl border border-border/50 bg-card p-5"
-            >
-              <p className="text-sm text-muted-foreground">{t(stat.labelKey)}</p>
-              <p className="text-2xl font-bold text-foreground mt-1">
-                {stat.value}
-              </p>
-            </div>
-          ))}
+      {/* Quick Access */}
+      <div>
+        <h2 className="text-lg font-semibold mb-3">{t("quickAccess")}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {quickModules.map((mod) => {
+            const Icon = mod.icon;
+            return (
+              <Link key={mod.key} to={mod.path}>
+                <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                  <CardHeader className="pb-2">
+                    <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
+                      <Icon className="h-5 w-5 text-brand-purple" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <CardTitle className="text-sm">{t(`modules.${mod.key}.title`)}</CardTitle>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t(`modules.${mod.key}.description`)}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
-      </section>
+      </div>
     </div>
   );
 }

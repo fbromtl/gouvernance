@@ -1,12 +1,38 @@
 {
-  "brandName": "Portail IAG",
+  "brandName": "gouvernance.ai",
   "nav": {
-    "dashboard": "Dashboard",
-    "diagnostic": "Diagnostic",
-    "results": "Résultats",
+    "dashboard": "Tableau de bord",
+    "aiSystems": "Systèmes IA",
+    "governance": "Gouvernance",
+    "risks": "Risques",
+    "decisions": "Décisions",
+    "bias": "Biais & Équité",
+    "incidents": "Incidents",
+    "transparency": "Transparence",
+    "lifecycle": "Cycle de vie",
+    "documents": "Documentation",
+    "monitoring": "Monitoring",
+    "data": "Données & EFVP",
+    "vendors": "Fournisseurs",
+    "compliance": "Conformité",
+    "admin": "Administration",
     "profile": "Profil"
+  },
+  "sections": {
+    "main": "Principal",
+    "modules": "Modules",
+    "settings": "Paramètres"
   },
   "backToSite": "Retour au site",
   "openMenu": "Ouvrir le menu",
-  "collapseMenu": "Réduire le menu"
+  "collapseMenu": "Réduire le menu",
+  "notifications": "Notifications",
+  "noNotifications": "Aucune notification",
+  "markAllRead": "Tout marquer comme lu",
+  "search": "Rechercher...",
+  "searchPlaceholder": "Rechercher un système, incident, décision...",
+  "placeholder": {
+    "title": "En cours de développement",
+    "description": "Ce module sera disponible prochainement."
+  }
 }
