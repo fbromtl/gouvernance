@@ -1,0 +1,168 @@
+{
+  "title": "Incident Register",
+  "description": "Track and manage incidents related to AI systems and privacy",
+  "newIncident": "Report an incident",
+  "search": "Search incidents...",
+  "columns": {
+    "title": "Title",
+    "category": "Category",
+    "severity": "Severity",
+    "status": "Status",
+    "system": "AI System",
+    "detectedAt": "Detection Date",
+    "assignedTo": "Assigned To",
+    "incidentType": "Incident Type"
+  },
+  "categories": {
+    "ai": "AI Incident",
+    "privacy": "Privacy Incident"
+  },
+  "incidentTypes": {
+    "ai": {
+      "performance": "Performance degradation",
+      "security": "Security vulnerability",
+      "bias": "Discriminatory bias",
+      "ethics": "Ethical concern",
+      "availability": "System unavailability",
+      "compliance": "Regulatory non-compliance",
+      "unauthorized_use": "Unauthorized use"
+    },
+    "privacy": {
+      "unauthorized_access": "Unauthorized access",
+      "unauthorized_use_data": "Unauthorized use of data",
+      "unauthorized_disclosure": "Unauthorized disclosure",
+      "data_loss": "Data loss",
+      "data_theft": "Data theft",
+      "other_breach": "Other breach"
+    }
+  },
+  "severities": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "statuses": {
+    "reported": "Reported",
+    "triaged": "Triaged",
+    "investigating": "Investigating",
+    "resolving": "Resolving",
+    "resolved": "Resolved",
+    "post_mortem": "Post-mortem",
+    "closed": "Closed"
+  },
+  "detectionModes": {
+    "automated_monitoring": "Automated monitoring",
+    "user_report": "User report",
+    "internal_audit": "Internal audit",
+    "external_report": "External report",
+    "media": "Media",
+    "regulatory": "Regulatory authority"
+  },
+  "priorities": {
+    "p1_immediate": "P1 — Immediate",
+    "p2_24h": "P2 — 24 hours",
+    "p3_72h": "P3 — 72 hours",
+    "p4_week": "P4 — 1 week"
+  },
+  "filters": {
+    "allStatuses": "All statuses",
+    "allSeverities": "All severities",
+    "allCategories": "All categories",
+    "all": "All"
+  },
+  "stats": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "form": {
+    "title": "Report an Incident",
+    "description": "Fill out this form to report a new incident.",
+    "incidentTitle": "Incident Title",
+    "incidentTitlePlaceholder": "E.g.: Bias detected in scoring model...",
+    "category": "Category",
+    "incidentType": "Incident Type",
+    "selectType": "Select a type",
+    "aiSystemId": "Related AI System",
+    "aiSystemIdPlaceholder": "AI system ID or name (optional)",
+    "incidentDescription": "Incident Description",
+    "incidentDescriptionPlaceholder": "Describe the incident in detail: what happened, when, how was it detected...",
+    "detectedAt": "Detection Date and Time",
+    "startedAt": "Start Date and Time (if known)",
+    "detectionMode": "Detection Mode",
+    "selectDetectionMode": "Select a mode",
+    "severity": "Severity",
+    "seriousHarmRisk": "Serious Harm Risk",
+    "seriousHarmRiskDescription": "Check if this incident presents a serious risk of harm to the individuals concerned.",
+    "loi25Alert": "Under Loi 25, a privacy incident presenting a risk of serious harm must be reported to the Commission d'acces a l'information (CAI) and to the affected individuals.",
+    "submit": "Report Incident",
+    "submitting": "Submitting...",
+    "cancel": "Cancel",
+    "required": "This field is required"
+  },
+  "detail": {
+    "backToList": "Back to incidents",
+    "tabs": {
+      "summary": "Summary",
+      "investigation": "Investigation",
+      "resolution": "Resolution",
+      "postMortem": "Post-mortem",
+      "loi25": "Loi 25"
+    },
+    "category": "Category",
+    "incidentType": "Incident Type",
+    "description": "Description",
+    "detectedAt": "Detected on",
+    "startedAt": "Incident start",
+    "severity": "Severity",
+    "assignedTo": "Assigned to",
+    "impactDescription": "Impact Description",
+    "affectedCount": "Affected Individuals",
+    "priority": "Priority",
+    "seriousHarmRisk": "Serious Harm Risk",
+    "detectionMode": "Detection Mode",
+    "rootCause": "Root Cause",
+    "rootCausePlaceholder": "Describe the identified root cause...",
+    "contributingFactors": "Contributing Factors",
+    "correctiveActions": "Corrective Actions",
+    "resolutionDate": "Resolution Date",
+    "postMortem": "Post-mortem",
+    "lessonsLearned": "Lessons Learned",
+    "statusAction": {
+      "reported": "Triage",
+      "triaged": "Investigate",
+      "investigating": "Resolve",
+      "resolving": "Mark as Resolved",
+      "resolved": "Start Post-mortem",
+      "post_mortem": "Close Incident",
+      "closed": "Incident Closed"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "notSpecified": "Not specified",
+    "placeholder": "This section will be available soon."
+  },
+  "loi25": {
+    "title": "Loi 25 Obligations",
+    "caiNotification": "CAI Notification",
+    "personsNotified": "Persons Notified",
+    "caiNotifiedAt": "CAI Notification Date",
+    "statuses": {
+      "to_notify": "To notify",
+      "notified": "Notified",
+      "acknowledged": "Acknowledged"
+    }
+  },
+  "empty": {
+    "title": "No incidents reported",
+    "description": "No incidents have been reported yet. Use the button below to report a new incident.",
+    "action": "Report an incident"
+  },
+  "toast": {
+    "created": "Incident reported successfully",
+    "updated": "Incident updated",
+    "statusChanged": "Incident status updated"
+  }
+}

@@ -33,6 +33,20 @@ import ProfilPage from "@/portail/pages/ProfilPage";
 import ConditionsPage from "@/portail/pages/ConditionsPage";
 import PlaceholderPage from "@/portail/pages/PlaceholderPage";
 
+// Module: AI Systems
+import AiSystemsListPage from "@/portail/pages/AiSystemsListPage";
+import AiSystemWizardPage from "@/portail/pages/AiSystemWizardPage";
+import AiSystemDetailPage from "@/portail/pages/AiSystemDetailPage";
+
+// Module: Risk Assessments
+import RiskAssessmentListPage from "@/portail/pages/RiskAssessmentListPage";
+import RiskAssessmentWizardPage from "@/portail/pages/RiskAssessmentWizardPage";
+
+// Module: Incidents
+import IncidentListPage from "@/portail/pages/IncidentListPage";
+import IncidentReportPage from "@/portail/pages/IncidentReportPage";
+import IncidentDetailPage from "@/portail/pages/IncidentDetailPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -75,13 +89,26 @@ function App() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/profile" element={<ProfilPage />} />
 
-              {/* Modules — placeholder pages */}
-              <Route path="/ai-systems" element={<PlaceholderPage />} />
+              {/* Module: AI Systems */}
+              <Route path="/ai-systems" element={<AiSystemsListPage />} />
+              <Route path="/ai-systems/new" element={<AiSystemWizardPage />} />
+              <Route path="/ai-systems/:id" element={<AiSystemDetailPage />} />
+              <Route path="/ai-systems/:id/edit" element={<AiSystemWizardPage />} />
+
+              {/* Module: Risk Assessments */}
+              <Route path="/risks" element={<RiskAssessmentListPage />} />
+              <Route path="/risks/new" element={<RiskAssessmentWizardPage />} />
+              <Route path="/risks/:id" element={<PlaceholderPage />} />
+
+              {/* Module: Incidents */}
+              <Route path="/incidents" element={<IncidentListPage />} />
+              <Route path="/incidents/new" element={<IncidentReportPage />} />
+              <Route path="/incidents/:id" element={<IncidentDetailPage />} />
+
+              {/* Modules — placeholder pages (Phase 3+) */}
               <Route path="/governance" element={<PlaceholderPage />} />
-              <Route path="/risks" element={<PlaceholderPage />} />
               <Route path="/decisions" element={<PlaceholderPage />} />
               <Route path="/bias" element={<PlaceholderPage />} />
-              <Route path="/incidents" element={<PlaceholderPage />} />
               <Route path="/transparency" element={<PlaceholderPage />} />
               <Route path="/lifecycle" element={<PlaceholderPage />} />
               <Route path="/documents" element={<PlaceholderPage />} />

@@ -1,0 +1,168 @@
+{
+  "title": "Registre des incidents",
+  "description": "Suivi et gestion des incidents liés aux systèmes IA et à la vie privée",
+  "newIncident": "Signaler un incident",
+  "search": "Rechercher un incident...",
+  "columns": {
+    "title": "Titre",
+    "category": "Catégorie",
+    "severity": "Sévérité",
+    "status": "Statut",
+    "system": "Système IA",
+    "detectedAt": "Date de détection",
+    "assignedTo": "Assigné à",
+    "incidentType": "Type d'incident"
+  },
+  "categories": {
+    "ai": "Incident IA",
+    "privacy": "Incident de confidentialité"
+  },
+  "incidentTypes": {
+    "ai": {
+      "performance": "Dégradation de performance",
+      "security": "Faille de sécurité",
+      "bias": "Biais discriminatoire",
+      "ethics": "Enjeu éthique",
+      "availability": "Indisponibilité du système",
+      "compliance": "Non-conformité réglementaire",
+      "unauthorized_use": "Utilisation non autorisée"
+    },
+    "privacy": {
+      "unauthorized_access": "Accès non autorisé",
+      "unauthorized_use_data": "Utilisation non autorisée de données",
+      "unauthorized_disclosure": "Communication non autorisée",
+      "data_loss": "Perte de données",
+      "data_theft": "Vol de données",
+      "other_breach": "Autre atteinte"
+    }
+  },
+  "severities": {
+    "critical": "Critique",
+    "high": "Élevée",
+    "medium": "Moyenne",
+    "low": "Faible"
+  },
+  "statuses": {
+    "reported": "Signalé",
+    "triaged": "Trié",
+    "investigating": "En investigation",
+    "resolving": "En résolution",
+    "resolved": "Résolu",
+    "post_mortem": "Post-mortem",
+    "closed": "Fermé"
+  },
+  "detectionModes": {
+    "automated_monitoring": "Surveillance automatisée",
+    "user_report": "Signalement utilisateur",
+    "internal_audit": "Audit interne",
+    "external_report": "Signalement externe",
+    "media": "Médias",
+    "regulatory": "Autorité réglementaire"
+  },
+  "priorities": {
+    "p1_immediate": "P1 — Immédiat",
+    "p2_24h": "P2 — 24 heures",
+    "p3_72h": "P3 — 72 heures",
+    "p4_week": "P4 — 1 semaine"
+  },
+  "filters": {
+    "allStatuses": "Tous les statuts",
+    "allSeverities": "Toutes les sévérités",
+    "allCategories": "Toutes les catégories",
+    "all": "Tous"
+  },
+  "stats": {
+    "critical": "Critiques",
+    "high": "Élevés",
+    "medium": "Moyens",
+    "low": "Faibles"
+  },
+  "form": {
+    "title": "Signaler un incident",
+    "description": "Remplissez ce formulaire pour signaler un nouvel incident.",
+    "incidentTitle": "Titre de l'incident",
+    "incidentTitlePlaceholder": "Ex: Biais détecté dans le modèle de scoring...",
+    "category": "Catégorie",
+    "incidentType": "Type d'incident",
+    "selectType": "Sélectionner un type",
+    "aiSystemId": "Système IA concerné",
+    "aiSystemIdPlaceholder": "ID ou nom du système IA (optionnel)",
+    "incidentDescription": "Description de l'incident",
+    "incidentDescriptionPlaceholder": "Décrivez l'incident en détail : que s'est-il passé, quand, comment a-t-il été détecté...",
+    "detectedAt": "Date et heure de détection",
+    "startedAt": "Date et heure de début (si connue)",
+    "detectionMode": "Mode de détection",
+    "selectDetectionMode": "Sélectionner un mode",
+    "severity": "Sévérité",
+    "seriousHarmRisk": "Risque de préjudice sérieux",
+    "seriousHarmRiskDescription": "Cochez si cet incident présente un risque de préjudice sérieux pour les personnes concernées.",
+    "loi25Alert": "En vertu de la Loi 25, un incident de confidentialité présentant un risque de préjudice sérieux doit être notifié à la Commission d'accès à l'information (CAI) et aux personnes concernées.",
+    "submit": "Signaler l'incident",
+    "submitting": "Soumission en cours...",
+    "cancel": "Annuler",
+    "required": "Ce champ est requis"
+  },
+  "detail": {
+    "backToList": "Retour aux incidents",
+    "tabs": {
+      "summary": "Résumé",
+      "investigation": "Investigation",
+      "resolution": "Résolution",
+      "postMortem": "Post-mortem",
+      "loi25": "Loi 25"
+    },
+    "category": "Catégorie",
+    "incidentType": "Type d'incident",
+    "description": "Description",
+    "detectedAt": "Détecté le",
+    "startedAt": "Début de l'incident",
+    "severity": "Sévérité",
+    "assignedTo": "Assigné à",
+    "impactDescription": "Description de l'impact",
+    "affectedCount": "Nombre de personnes touchées",
+    "priority": "Priorité",
+    "seriousHarmRisk": "Risque de préjudice sérieux",
+    "detectionMode": "Mode de détection",
+    "rootCause": "Cause fondamentale",
+    "rootCausePlaceholder": "Décrivez la cause fondamentale identifiée...",
+    "contributingFactors": "Facteurs contributifs",
+    "correctiveActions": "Actions correctives",
+    "resolutionDate": "Date de résolution",
+    "postMortem": "Post-mortem",
+    "lessonsLearned": "Leçons apprises",
+    "statusAction": {
+      "reported": "Trier",
+      "triaged": "Investiguer",
+      "investigating": "Résoudre",
+      "resolving": "Marquer comme résolu",
+      "resolved": "Lancer le post-mortem",
+      "post_mortem": "Fermer l'incident",
+      "closed": "Incident fermé"
+    },
+    "yes": "Oui",
+    "no": "Non",
+    "notSpecified": "Non spécifié",
+    "placeholder": "Cette section sera disponible prochainement."
+  },
+  "loi25": {
+    "title": "Obligations Loi 25",
+    "caiNotification": "Notification à la CAI",
+    "personsNotified": "Personnes notifiées",
+    "caiNotifiedAt": "Date de notification à la CAI",
+    "statuses": {
+      "to_notify": "À notifier",
+      "notified": "Notifié",
+      "acknowledged": "Accusé de réception"
+    }
+  },
+  "empty": {
+    "title": "Aucun incident signalé",
+    "description": "Aucun incident n'a été signalé pour le moment. Utilisez le bouton ci-dessous pour signaler un nouvel incident.",
+    "action": "Signaler un incident"
+  },
+  "toast": {
+    "created": "Incident signalé avec succès",
+    "updated": "Incident mis à jour",
+    "statusChanged": "Statut de l'incident mis à jour"
+  }
+}

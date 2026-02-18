@@ -1,0 +1,227 @@
+{
+  "title": "Risk Assessments",
+  "description": "Assess and classify risks of your AI systems",
+  "newAssessment": "New assessment",
+  "search": "Search for an assessment...",
+  "columns": {
+    "system": "AI System",
+    "score": "Score",
+    "riskLevel": "Risk level",
+    "status": "Status",
+    "createdAt": "Created at"
+  },
+  "wizard": {
+    "stepA": "A — Impact",
+    "stepB": "B — EU AI Act",
+    "stepC": "C — Data & Privacy",
+    "stepD": "D — Bias & Fairness",
+    "stepE": "E — Transparency",
+    "stepF": "F — Human Oversight",
+    "submit": "Submit assessment",
+    "saveDraft": "Save draft"
+  },
+  "questions": {
+    "q1": {
+      "question": "Does the system have a direct or indirect impact on individuals?",
+      "options": {
+        "oui_direct": "Yes, direct impact",
+        "oui_indirect": "Yes, indirect impact",
+        "non": "No"
+      }
+    },
+    "q2": {
+      "question": "Are the decisions made by the system easily reversible?",
+      "options": {
+        "non": "No, irreversible",
+        "difficilement": "Difficult to reverse",
+        "oui": "Yes, easily reversible"
+      }
+    },
+    "q3": {
+      "question": "Can the system affect the fundamental rights of individuals?",
+      "options": {
+        "oui": "Yes",
+        "possiblement": "Possibly",
+        "non": "No"
+      }
+    },
+    "q4": {
+      "question": "Which fundamental rights are potentially affected?",
+      "options": {
+        "privacy": "Right to privacy",
+        "non_discrimination": "Non-discrimination",
+        "employment": "Right to employment",
+        "freedom_expression": "Freedom of expression",
+        "dignity": "Human dignity",
+        "access_services": "Access to essential services",
+        "none": "None"
+      }
+    },
+    "q5": {
+      "question": "Does the system correspond to a prohibited practice under the EU AI Act?",
+      "options": {
+        "oui": "Yes",
+        "non": "No"
+      }
+    },
+    "q6": {
+      "question": "Does the system fall under a high-risk category according to the AI Act?",
+      "options": {
+        "biometric": "Biometric identification",
+        "critical_infra": "Critical infrastructure",
+        "education": "Education and training",
+        "employment": "Employment and worker management",
+        "essential_services": "Access to essential services",
+        "law_enforcement": "Law enforcement",
+        "migration": "Migration, asylum and border control",
+        "justice": "Administration of justice"
+      }
+    },
+    "q7": {
+      "question": "Does the system have limited-risk transparency obligations (chatbot, deepfake, etc.)?",
+      "options": {
+        "oui": "Yes",
+        "non": "No"
+      }
+    },
+    "q8": {
+      "question": "Does the system process personal data?",
+      "options": {
+        "oui_sensibles": "Yes, sensitive data (health, biometrics, etc.)",
+        "oui_standards": "Yes, standard personal data",
+        "non": "No"
+      }
+    },
+    "q9": {
+      "question": "Is data transferred outside of Canada?",
+      "options": {
+        "oui_hors_canada": "Yes, outside of Canada",
+        "oui_canada": "Yes, within Canada only",
+        "non": "No transfer"
+      }
+    },
+    "q10": {
+      "question": "Has a privacy impact assessment (PIA) been completed?",
+      "options": {
+        "non_requis": "Not completed and not planned",
+        "en_cours": "In progress",
+        "oui": "Yes, completed"
+      }
+    },
+    "q11": {
+      "question": "Is there a risk of discriminatory bias in the system?",
+      "options": {
+        "oui": "Yes",
+        "possiblement": "Possibly",
+        "non": "No"
+      }
+    },
+    "q12": {
+      "question": "Have bias tests been conducted?",
+      "options": {
+        "non": "No",
+        "partiellement": "Partially",
+        "oui": "Yes, comprehensively"
+      }
+    },
+    "q13": {
+      "question": "Does the system use protected characteristics (origin, gender, age, etc.)?",
+      "options": {
+        "oui": "Yes",
+        "non": "No"
+      }
+    },
+    "q14": {
+      "question": "Are the system's decisions explainable to affected individuals?",
+      "options": {
+        "non": "No",
+        "partiellement": "Partially",
+        "oui": "Yes, fully explainable"
+      }
+    },
+    "q15": {
+      "question": "Are users informed that they are interacting with an AI system?",
+      "options": {
+        "non": "No",
+        "oui": "Yes"
+      }
+    },
+    "q16": {
+      "question": "How often does a human review the system's decisions?",
+      "options": {
+        "jamais": "Never",
+        "parfois": "Sometimes / sample-based",
+        "toujours": "Always / systematically"
+      }
+    },
+    "q17": {
+      "question": "Is there a mechanism allowing a human to override or stop the system?",
+      "options": {
+        "non": "No",
+        "oui": "Yes"
+      }
+    }
+  },
+  "riskLevels": {
+    "minimal": "Minimal",
+    "limited": "Limited",
+    "high": "High",
+    "critical": "Critical",
+    "prohibited": "Prohibited"
+  },
+  "statuses": {
+    "draft": "Draft",
+    "submitted": "Submitted",
+    "in_review": "In review",
+    "approved": "Approved"
+  },
+  "requirements": {
+    "minimal": [
+      "No specific regulatory obligations",
+      "Good documentation practices recommended"
+    ],
+    "limited": [
+      "Transparency obligations toward users",
+      "Clear information about AI usage",
+      "Documentation of the system and its operation"
+    ],
+    "high": [
+      "Mandatory risk management system",
+      "Conformity assessment before market placement",
+      "Training and testing datasets documented",
+      "Traceability and logging of operations",
+      "Effective human oversight",
+      "Demonstrated accuracy, robustness and cybersecurity",
+      "Registration in the European database"
+    ],
+    "critical": [
+      "All high-level requirements",
+      "Third-party conformity audit",
+      "Enhanced post-deployment monitoring plan",
+      "Mandatory notification to competent authorities",
+      "Fundamental rights impact assessment"
+    ],
+    "prohibited": [
+      "This system cannot be deployed in the European Union",
+      "Verify compliance with applicable Canadian laws",
+      "Consult your legal department immediately"
+    ]
+  },
+  "result": {
+    "title": "Assessment Result",
+    "score": "Total score",
+    "level": "Risk level",
+    "requirements": "Applicable requirements",
+    "backToList": "Back to list"
+  },
+  "empty": {
+    "title": "No risk assessments",
+    "description": "Start by creating a risk assessment for one of your AI systems.",
+    "action": "Create an assessment"
+  },
+  "toast": {
+    "created": "Risk assessment created successfully",
+    "updated": "Risk assessment updated",
+    "approved": "Risk assessment approved"
+  }
+}
