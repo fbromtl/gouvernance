@@ -5,33 +5,46 @@
   "editSystem": "Edit system",
   "search": "Search for a system...",
   "filters": {
-    "allTypes": "All types",
-    "allRiskLevels": "All risk levels",
-    "allStatuses": "All statuses",
-    "allLifecycles": "All lifecycles"
+    "all": "All",
+    "lifecycleStatus": "Lifecycle",
+    "riskLevel": "Risk level",
+    "systemType": "System type"
   },
   "columns": {
     "name": "Name",
-    "type": "Type",
-    "department": "Department",
+    "systemType": "Type",
+    "departments": "Department",
     "riskLevel": "Risk level",
-    "lifecycle": "Lifecycle",
+    "riskScore": "Risk score",
+    "lifecycleStatus": "Lifecycle",
     "owner": "Owner",
-    "nextReview": "Next review",
-    "riskScore": "Risk score"
+    "nextReviewDate": "Next review"
   },
   "wizard": {
-    "step1": "Identification",
-    "step2": "Scope & impact",
-    "step3": "Data & vendor",
-    "step4": "Owners",
-    "step5": "Status & planning",
+    "createTitle": "Register a new AI system",
+    "editTitle": "Edit AI system",
+    "steps": {
+      "identification": "Identification",
+      "identificationDesc": "Basic system information",
+      "scope": "Scope & impact",
+      "scopeDesc": "Affected population and sensitive domains",
+      "data": "Data & vendor",
+      "dataDesc": "Data types and system source",
+      "owners": "Owners",
+      "ownersDesc": "System owners and approvers",
+      "status": "Status & planning",
+      "statusDesc": "Lifecycle status and review schedule"
+    },
     "next": "Next",
     "previous": "Previous",
     "saveDraft": "Save draft",
-    "submit": "Save system",
-    "creating": "Creating...",
-    "draftSaved": "Draft saved"
+    "submitCreate": "Register system",
+    "submitUpdate": "Update system",
+    "createSuccess": "AI system created successfully",
+    "updateSuccess": "AI system updated",
+    "error": "Error saving system",
+    "fieldRequired": "This field is required",
+    "riskPreview": "Risk preview"
   },
   "fields": {
     "name": "System name",
@@ -47,6 +60,7 @@
     "purposePlaceholder": "Describe what the system is used for...",
     "affectedPopulation": "Affected population",
     "estimatedVolume": "Estimated volume of people/year",
+    "estimatedVolumePlaceholder": "Select a range",
     "autonomyLevel": "Autonomy level",
     "sensitiveDomains": "Sensitive domain(s)",
     "dataTypes": "Data used",
@@ -61,46 +75,49 @@
     "privacyOwner": "Privacy owner",
     "riskOwner": "Risk owner",
     "approver": "Approver",
+    "ownerPlaceholder": "UUID or owner name",
     "lifecycleStatus": "Lifecycle status",
     "productionDate": "Production date",
     "nextReviewDate": "Next review date",
     "reviewFrequency": "Review frequency",
-    "notes": "Additional notes"
+    "notes": "Additional notes",
+    "notesPlaceholder": "Additional information..."
   },
   "systemTypes": {
-    "predictive": "Predictive model",
-    "recommendation": "Recommendation system",
-    "classification": "Classification / categorization",
+    "predictive_ml": "Predictive model (ML)",
+    "rules_based": "Rules-based system",
+    "genai_text": "Generative AI — text",
+    "genai_image": "Generative AI — image",
+    "genai_code": "Generative AI — code",
+    "genai_multimodal": "Generative AI — multimodal",
     "nlp": "Natural language processing",
-    "genai_llm": "Generative AI / LLM",
     "computer_vision": "Computer vision",
-    "biometric": "Biometrics",
-    "robotic_process": "Robotic process automation (RPA)",
-    "decision_support": "Decision support",
-    "autonomous_agent": "Autonomous agent",
+    "robotics": "Robotics / automation",
+    "recommendation": "Recommendation system",
     "other": "Other"
   },
   "genaiSubtypes": {
     "chatbot": "Chatbot / conversational assistant",
     "content_generation": "Content generation",
-    "code_generation": "Code generation",
+    "code_assistant": "Code assistant",
+    "image_generation": "Image generation",
     "summarization": "Summarization / synthesis",
     "translation": "Translation",
-    "image_generation": "Image generation",
-    "other_genai": "Other"
-  },
-  "departmentOptions": {
-    "hr": "Human resources",
-    "finance": "Finance",
-    "customer_service": "Customer service",
-    "it": "Information technology",
-    "marketing": "Marketing",
-    "legal": "Legal",
-    "operations": "Operations",
-    "executive": "Executive",
     "other": "Other"
   },
-  "populationOptions": {
+  "departments": {
+    "it": "Information technology",
+    "hr": "Human resources",
+    "finance": "Finance",
+    "marketing": "Marketing",
+    "sales": "Sales",
+    "legal": "Legal",
+    "operations": "Operations",
+    "customer_service": "Customer service",
+    "r_and_d": "Research & development",
+    "executive": "Executive"
+  },
+  "affectedPopulations": {
     "employees": "Organization employees",
     "customers": "Customers",
     "prospects": "Prospects",
@@ -108,53 +125,52 @@
     "minors": "Minors",
     "vulnerable": "Vulnerable persons"
   },
-  "volumeOptions": {
-    "lt_100": "< 100",
+  "estimatedVolumes": {
+    "under_100": "< 100",
     "100_1000": "100 – 1,000",
     "1000_10000": "1,000 – 10,000",
     "10000_100000": "10,000 – 100,000",
-    "gt_100000": "> 100,000"
+    "over_100000": "> 100,000"
   },
-  "autonomyOptions": {
-    "full_auto": "Fully automated decision",
+  "autonomyLevels": {
+    "human_in_command": "Human in command (AI as a tool)",
     "human_in_the_loop": "Human in the loop (validation before action)",
     "human_on_the_loop": "Human on the loop (supervision)",
-    "human_in_command": "Human in command (AI as a tool)"
+    "full_auto": "Fully automated decision"
   },
-  "sensitiveDomainOptions": {
+  "sensitiveDomains": {
+    "biometric_id": "Biometric identification",
+    "justice": "Justice / law enforcement",
+    "migration": "Migration / asylum",
+    "critical_infra": "Critical infrastructure",
+    "health": "Health",
     "employment": "Employment / recruitment",
     "credit": "Credit / financial scoring",
-    "justice": "Justice / law enforcement",
     "education": "Education",
-    "health": "Health",
-    "housing": "Housing",
-    "critical_infra": "Critical infrastructure",
-    "biometric_id": "Biometric identification",
-    "migration": "Migration / asylum"
+    "housing": "Housing"
   },
-  "dataTypeOptions": {
-    "personal_data": "Personal data",
-    "sensitive_data": "Sensitive data",
-    "financial_data": "Financial data",
+  "dataTypes": {
+    "no_personal_data": "No personal data",
     "public_data": "Public data",
     "synthetic_data": "Synthetic data",
-    "no_personal_data": "No personal data"
+    "personal_data": "Personal data",
+    "financial_data": "Financial data",
+    "sensitive_data": "Sensitive data"
   },
-  "sourceOptions": {
+  "systemSources": {
     "internal": "Developed in-house",
-    "vendor_saas": "SaaS vendor / external API",
-    "vendor_onprem": "On-premise vendor",
+    "vendor": "External vendor",
     "open_source": "Open source",
     "hybrid": "Hybrid"
   },
-  "locationOptions": {
+  "dataLocations": {
     "canada": "Canada",
-    "quebec": "Quebec",
     "usa": "United States",
     "eu": "European Union",
-    "other": "Other"
+    "uk": "United Kingdom",
+    "other_international": "Other (international)"
   },
-  "lifecycleOptions": {
+  "lifecycleStatuses": {
     "idea": "Idea / exploration",
     "pilot": "Pilot project",
     "development": "In development",
@@ -163,7 +179,7 @@
     "suspended": "Suspended",
     "decommissioned": "Decommissioned"
   },
-  "frequencyOptions": {
+  "reviewFrequencies": {
     "monthly": "Monthly",
     "quarterly": "Quarterly",
     "semi_annual": "Semi-annual",
@@ -177,19 +193,52 @@
     "prohibited": "Prohibited"
   },
   "detail": {
-    "summary": "Summary",
-    "risks": "Risks",
-    "incidents": "Incidents",
-    "documents": "Documents",
-    "history": "History",
+    "tabs": {
+      "summary": "Summary",
+      "risks": "Risks",
+      "incidents": "Incidents",
+      "history": "History"
+    },
+    "backToList": "Back to list",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete this AI system?",
+    "deleteConfirmDescription": "This action is irreversible. The system will be archived and no longer visible.",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete",
+    "deleting": "Deleting...",
+    "deleteSuccess": "AI system archived",
+    "deleteError": "Error deleting system",
+    "notFound": "System not found",
+    "notFoundDescription": "This AI system does not exist or has been deleted.",
     "riskScore": "Risk score",
-    "lifecycle": "Lifecycle",
-    "nextReview": "Next review",
+    "systemType": "System type",
+    "lifecycleStatus": "Lifecycle",
+    "productionDate": "Production date",
+    "departments": "Departments",
+    "vendor": "Vendor",
+    "modelVersion": "Model / version",
+    "autonomyLevel": "Autonomy level",
+    "dataTypes": "Data types",
+    "affectedPopulation": "Affected population",
+    "sensitiveDomains": "Sensitive domains",
+    "description": "Description",
+    "purpose": "Purpose",
     "owners": "Owners",
-    "noAssessments": "No risk assessments",
-    "newAssessment": "New assessment",
+    "review": "Review & planning",
+    "createdAt": "Created at",
+    "noRisks": "No risk assessments",
+    "noRisksDescription": "Create an assessment to analyze the risks of this system.",
+    "newRiskAssessment": "New assessment",
     "noIncidents": "No incidents",
-    "reportIncident": "Report an incident"
+    "noIncidentsDescription": "No incidents reported for this system.",
+    "reportIncident": "Report an incident",
+    "noHistory": "No history",
+    "noHistoryDescription": "The change history will be displayed here."
+  },
+  "emptyFiltered": {
+    "title": "No results",
+    "description": "Try adjusting your search filters."
   },
   "empty": {
     "title": "No AI systems registered",

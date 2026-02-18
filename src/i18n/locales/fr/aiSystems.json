@@ -5,33 +5,46 @@
   "editSystem": "Modifier le système",
   "search": "Rechercher un système...",
   "filters": {
-    "allTypes": "Tous les types",
-    "allRiskLevels": "Tous les niveaux de risque",
-    "allStatuses": "Tous les statuts",
-    "allLifecycles": "Tous les cycles de vie"
+    "all": "Tous",
+    "lifecycleStatus": "Cycle de vie",
+    "riskLevel": "Niveau de risque",
+    "systemType": "Type de système"
   },
   "columns": {
     "name": "Nom",
-    "type": "Type",
-    "department": "Département",
+    "systemType": "Type",
+    "departments": "Département",
     "riskLevel": "Niveau de risque",
-    "lifecycle": "Cycle de vie",
+    "riskScore": "Score de risque",
+    "lifecycleStatus": "Cycle de vie",
     "owner": "Responsable",
-    "nextReview": "Prochaine revue",
-    "riskScore": "Score de risque"
+    "nextReviewDate": "Prochaine revue"
   },
   "wizard": {
-    "step1": "Identification",
-    "step2": "Périmètre & impact",
-    "step3": "Données & fournisseur",
-    "step4": "Propriétaires",
-    "step5": "Statut & planification",
+    "createTitle": "Enregistrer un nouveau système IA",
+    "editTitle": "Modifier le système IA",
+    "steps": {
+      "identification": "Identification",
+      "identificationDesc": "Informations de base du système",
+      "scope": "Périmètre & impact",
+      "scopeDesc": "Population touchée et domaines sensibles",
+      "data": "Données & fournisseur",
+      "dataDesc": "Types de données et source du système",
+      "owners": "Propriétaires",
+      "ownersDesc": "Responsables du système",
+      "status": "Statut & planification",
+      "statusDesc": "Cycle de vie et fréquence de revue"
+    },
     "next": "Suivant",
     "previous": "Précédent",
     "saveDraft": "Sauvegarder le brouillon",
-    "submit": "Enregistrer le système",
-    "creating": "Création en cours...",
-    "draftSaved": "Brouillon sauvegardé"
+    "submitCreate": "Enregistrer le système",
+    "submitUpdate": "Mettre à jour le système",
+    "createSuccess": "Système IA créé avec succès",
+    "updateSuccess": "Système IA mis à jour",
+    "error": "Erreur lors de la sauvegarde",
+    "fieldRequired": "Ce champ est requis",
+    "riskPreview": "Aperçu du risque"
   },
   "fields": {
     "name": "Nom du système",
@@ -47,6 +60,7 @@
     "purposePlaceholder": "Décrivez à quoi sert le système...",
     "affectedPopulation": "Population touchée",
     "estimatedVolume": "Volume estimé de personnes/an",
+    "estimatedVolumePlaceholder": "Sélectionnez une tranche",
     "autonomyLevel": "Niveau d'autonomie",
     "sensitiveDomains": "Domaine(s) sensible(s)",
     "dataTypes": "Données utilisées",
@@ -61,46 +75,49 @@
     "privacyOwner": "Responsable vie privée",
     "riskOwner": "Responsable risques",
     "approver": "Approbateur",
+    "ownerPlaceholder": "UUID ou nom du responsable",
     "lifecycleStatus": "Statut du cycle de vie",
     "productionDate": "Date de mise en production",
     "nextReviewDate": "Date de prochaine revue",
     "reviewFrequency": "Fréquence de revue",
-    "notes": "Notes complémentaires"
+    "notes": "Notes complémentaires",
+    "notesPlaceholder": "Informations supplémentaires..."
   },
   "systemTypes": {
-    "predictive": "Modèle prédictif",
-    "recommendation": "Système de recommandation",
-    "classification": "Classification / catégorisation",
+    "predictive_ml": "Modèle prédictif (ML)",
+    "rules_based": "Système à base de règles",
+    "genai_text": "IA générative — texte",
+    "genai_image": "IA générative — image",
+    "genai_code": "IA générative — code",
+    "genai_multimodal": "IA générative — multimodal",
     "nlp": "Traitement du langage naturel",
-    "genai_llm": "IA générative / LLM",
     "computer_vision": "Vision par ordinateur",
-    "biometric": "Biométrie",
-    "robotic_process": "Automatisation robotique (RPA)",
-    "decision_support": "Aide à la décision",
-    "autonomous_agent": "Agent autonome",
+    "robotics": "Robotique / automatisation",
+    "recommendation": "Système de recommandation",
     "other": "Autre"
   },
   "genaiSubtypes": {
     "chatbot": "Chatbot / assistant conversationnel",
     "content_generation": "Génération de contenu",
-    "code_generation": "Génération de code",
+    "code_assistant": "Assistant de code",
+    "image_generation": "Génération d'images",
     "summarization": "Résumé / synthèse",
     "translation": "Traduction",
-    "image_generation": "Génération d'images",
-    "other_genai": "Autre"
-  },
-  "departmentOptions": {
-    "hr": "Ressources humaines",
-    "finance": "Finance",
-    "customer_service": "Service client",
-    "it": "Technologies de l'information",
-    "marketing": "Marketing",
-    "legal": "Juridique",
-    "operations": "Opérations",
-    "executive": "Direction",
     "other": "Autre"
   },
-  "populationOptions": {
+  "departments": {
+    "it": "Technologies de l'information",
+    "hr": "Ressources humaines",
+    "finance": "Finance",
+    "marketing": "Marketing",
+    "sales": "Ventes",
+    "legal": "Juridique",
+    "operations": "Opérations",
+    "customer_service": "Service client",
+    "r_and_d": "Recherche & développement",
+    "executive": "Direction"
+  },
+  "affectedPopulations": {
     "employees": "Employés de l'organisation",
     "customers": "Clients",
     "prospects": "Prospects",
@@ -108,53 +125,52 @@
     "minors": "Mineurs",
     "vulnerable": "Personnes vulnérables"
   },
-  "volumeOptions": {
-    "lt_100": "< 100",
+  "estimatedVolumes": {
+    "under_100": "< 100",
     "100_1000": "100 – 1 000",
     "1000_10000": "1 000 – 10 000",
     "10000_100000": "10 000 – 100 000",
-    "gt_100000": "> 100 000"
+    "over_100000": "> 100 000"
   },
-  "autonomyOptions": {
-    "full_auto": "Décision entièrement automatisée",
+  "autonomyLevels": {
+    "human_in_command": "Humain aux commandes (IA comme outil)",
     "human_in_the_loop": "Humain dans la boucle (validation avant action)",
     "human_on_the_loop": "Humain en supervision",
-    "human_in_command": "Humain aux commandes (IA comme outil)"
+    "full_auto": "Décision entièrement automatisée"
   },
-  "sensitiveDomainOptions": {
+  "sensitiveDomains": {
+    "biometric_id": "Identification biométrique",
+    "justice": "Justice / application de la loi",
+    "migration": "Migration / asile",
+    "critical_infra": "Infrastructure critique",
+    "health": "Santé",
     "employment": "Emploi / recrutement",
     "credit": "Crédit / scoring financier",
-    "justice": "Justice / application de la loi",
     "education": "Éducation",
-    "health": "Santé",
-    "housing": "Logement",
-    "critical_infra": "Infrastructure critique",
-    "biometric_id": "Identification biométrique",
-    "migration": "Migration / asile"
+    "housing": "Logement"
   },
-  "dataTypeOptions": {
-    "personal_data": "Renseignements personnels",
-    "sensitive_data": "Données sensibles",
-    "financial_data": "Données financières",
+  "dataTypes": {
+    "no_personal_data": "Aucune donnée personnelle",
     "public_data": "Données publiques",
     "synthetic_data": "Données synthétiques",
-    "no_personal_data": "Aucune donnée personnelle"
+    "personal_data": "Renseignements personnels",
+    "financial_data": "Données financières",
+    "sensitive_data": "Données sensibles"
   },
-  "sourceOptions": {
+  "systemSources": {
     "internal": "Développé en interne",
-    "vendor_saas": "Fournisseur SaaS / API externe",
-    "vendor_onprem": "Fournisseur on-premise",
+    "vendor": "Fournisseur externe",
     "open_source": "Open source",
     "hybrid": "Hybride"
   },
-  "locationOptions": {
+  "dataLocations": {
     "canada": "Canada",
-    "quebec": "Québec",
     "usa": "États-Unis",
     "eu": "Union européenne",
-    "other": "Autre"
+    "uk": "Royaume-Uni",
+    "other_international": "Autre (international)"
   },
-  "lifecycleOptions": {
+  "lifecycleStatuses": {
     "idea": "Idée / exploration",
     "pilot": "Projet pilote",
     "development": "En développement",
@@ -163,7 +179,7 @@
     "suspended": "Suspendu",
     "decommissioned": "Décommissionné"
   },
-  "frequencyOptions": {
+  "reviewFrequencies": {
     "monthly": "Mensuelle",
     "quarterly": "Trimestrielle",
     "semi_annual": "Semestrielle",
@@ -177,19 +193,52 @@
     "prohibited": "Interdit"
   },
   "detail": {
-    "summary": "Résumé",
-    "risks": "Risques",
-    "incidents": "Incidents",
-    "documents": "Documents",
-    "history": "Historique",
+    "tabs": {
+      "summary": "Résumé",
+      "risks": "Risques",
+      "incidents": "Incidents",
+      "history": "Historique"
+    },
+    "backToList": "Retour à la liste",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "deleteConfirmTitle": "Supprimer ce système IA ?",
+    "deleteConfirmDescription": "Cette action est irréversible. Le système sera archivé et ne sera plus visible.",
+    "cancel": "Annuler",
+    "confirmDelete": "Supprimer",
+    "deleting": "Suppression...",
+    "deleteSuccess": "Système IA archivé",
+    "deleteError": "Erreur lors de la suppression",
+    "notFound": "Système non trouvé",
+    "notFoundDescription": "Ce système IA n'existe pas ou a été supprimé.",
     "riskScore": "Score de risque",
-    "lifecycle": "Cycle de vie",
-    "nextReview": "Prochaine revue",
+    "systemType": "Type de système",
+    "lifecycleStatus": "Cycle de vie",
+    "productionDate": "Date de production",
+    "departments": "Départements",
+    "vendor": "Fournisseur",
+    "modelVersion": "Modèle / version",
+    "autonomyLevel": "Niveau d'autonomie",
+    "dataTypes": "Types de données",
+    "affectedPopulation": "Population touchée",
+    "sensitiveDomains": "Domaines sensibles",
+    "description": "Description",
+    "purpose": "Finalité",
     "owners": "Propriétaires",
-    "noAssessments": "Aucune évaluation de risque",
-    "newAssessment": "Nouvelle évaluation",
+    "review": "Revue & planification",
+    "createdAt": "Créé le",
+    "noRisks": "Aucune évaluation de risque",
+    "noRisksDescription": "Créez une évaluation pour analyser les risques de ce système.",
+    "newRiskAssessment": "Nouvelle évaluation",
     "noIncidents": "Aucun incident",
-    "reportIncident": "Signaler un incident"
+    "noIncidentsDescription": "Aucun incident signalé pour ce système.",
+    "reportIncident": "Signaler un incident",
+    "noHistory": "Aucun historique",
+    "noHistoryDescription": "L'historique des modifications sera affiché ici."
+  },
+  "emptyFiltered": {
+    "title": "Aucun résultat",
+    "description": "Essayez de modifier vos filtres de recherche."
   },
   "empty": {
     "title": "Aucun système IA enregistré",
