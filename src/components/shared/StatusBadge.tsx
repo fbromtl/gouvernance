@@ -23,6 +23,7 @@ const variants: Record<string, string> = {
   submitted: "bg-blue-50 text-blue-700 border-blue-200",
   in_review: "bg-indigo-50 text-indigo-700 border-indigo-200",
   approved: "bg-green-50 text-green-700 border-green-200",
+  published: "bg-emerald-50 text-emerald-700 border-emerald-200",
   rejected: "bg-red-50 text-red-700 border-red-200",
   archived: "bg-gray-100 text-gray-600 border-gray-200",
   // Compliance

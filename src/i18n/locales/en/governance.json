@@ -1,0 +1,232 @@
+{
+  "pageTitle": "Governance & Responsibilities",
+  "pageDescription": "Define your organization's AI governance roles, policies, and committees.",
+  "tabs": {
+    "policies": "Policies",
+    "roles": "Roles",
+    "committees": "Committees"
+  },
+  "accessDenied": {
+    "title": "Access Denied",
+    "description": "You do not have the necessary permissions to manage governance."
+  },
+  "policies": {
+    "title": "Policies & Procedures",
+    "description": "Manage your organization's AI governance policies.",
+    "newPolicy": "New Policy",
+    "search": "Search policies...",
+    "columns": {
+      "title": "Title",
+      "type": "Type",
+      "version": "Version",
+      "status": "Status",
+      "updatedAt": "Last Modified",
+      "actions": "Actions"
+    },
+    "filters": {
+      "allStatuses": "All statuses",
+      "allTypes": "All types"
+    },
+    "statuses": {
+      "draft": "Draft",
+      "in_review": "In Review",
+      "published": "Published",
+      "archived": "Archived"
+    },
+    "types": {
+      "ai_usage": "AI Usage Policy",
+      "genai_usage": "Generative AI Policy",
+      "approval_procedure": "Approval Procedure",
+      "incident_procedure": "Incident Management",
+      "complaint_procedure": "Complaint Handling",
+      "decommission_procedure": "Decommission Procedure",
+      "privacy_policy": "Privacy Policy (Law 25)",
+      "ethics_charter": "AI Ethics Charter",
+      "custom": "Custom"
+    },
+    "form": {
+      "createTitle": "New Policy",
+      "editTitle": "Edit Policy",
+      "title": "Title",
+      "titlePlaceholder": "e.g., Responsible AI Usage Policy",
+      "type": "Policy Type",
+      "selectType": "Select a type",
+      "description": "Description",
+      "descriptionPlaceholder": "Brief summary of the policy...",
+      "content": "Content",
+      "contentPlaceholder": "Write the policy content...",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "actions": {
+      "edit": "Edit",
+      "submitForReview": "Submit for Review",
+      "publish": "Publish",
+      "archive": "Archive",
+      "newVersion": "New Version",
+      "viewHistory": "Version History"
+    },
+    "confirm": {
+      "publishTitle": "Publish this policy?",
+      "publishDescription": "Once published, this version will be locked and visible to all members. This action is irreversible.",
+      "publishButton": "Confirm Publication",
+      "archiveTitle": "Archive this policy?",
+      "archiveDescription": "This policy will be archived and no longer visible as an active policy.",
+      "archiveButton": "Confirm Archival"
+    },
+    "versionHistory": "Version History",
+    "versionLabel": "v{{version}}",
+    "currentVersion": "Current version",
+    "empty": {
+      "title": "No policies",
+      "description": "Start by creating your first AI governance policy.",
+      "action": "Create a policy"
+    },
+    "emptyFiltered": {
+      "title": "No results",
+      "description": "No policies match your filters."
+    },
+    "toast": {
+      "created": "Policy created successfully",
+      "updated": "Policy updated",
+      "published": "Policy published successfully",
+      "archived": "Policy archived",
+      "versionCreated": "New version created (draft)",
+      "submitted": "Policy submitted for review",
+      "error": "An error occurred"
+    }
+  },
+  "roles": {
+    "title": "Governance Roles",
+    "description": "Assign AI governance roles to your organization's members.",
+    "assignRole": "Assign Role",
+    "columns": {
+      "role": "Role",
+      "assignee": "Assignee",
+      "mandate": "Mandate",
+      "scope": "Scope",
+      "nominatedAt": "Nominated On",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "roleTypes": {
+      "sponsor": "Executive Sponsor",
+      "ai_lead": "AI Lead",
+      "privacy_officer": "Privacy Officer",
+      "risk_officer": "Risk Officer",
+      "security_officer": "Security Officer",
+      "ethics_officer": "Ethics Officer",
+      "legal_counsel": "Legal Counsel",
+      "model_owner": "Model Owner",
+      "approver": "Approver"
+    },
+    "roleDescriptions": {
+      "sponsor": "C-Level executive responsible for AI strategy",
+      "ai_lead": "Operational lead for AI governance",
+      "privacy_officer": "Personal information management and Law 25 compliance",
+      "risk_officer": "AI risk assessments and management",
+      "security_officer": "AI systems security",
+      "ethics_officer": "Ethical assessments and transparency",
+      "legal_counsel": "Regulatory and legal compliance",
+      "model_owner": "Technical owner of an AI model",
+      "approver": "Approval authority (go/no-go)"
+    },
+    "scopes": {
+      "global": "Global",
+      "per_system": "Per AI System"
+    },
+    "form": {
+      "createTitle": "Assign a Governance Role",
+      "editTitle": "Edit Assignment",
+      "roleType": "Role Type",
+      "selectRole": "Select a role",
+      "assignee": "Assigned Person",
+      "selectAssignee": "Select a member",
+      "mandate": "Mandate / Description",
+      "mandatePlaceholder": "Describe the mandate and responsibilities...",
+      "nominatedAt": "Nomination Date",
+      "scope": "Scope",
+      "aiSystem": "AI System",
+      "selectAiSystem": "Select a system",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "confirm": {
+      "deleteTitle": "Remove this assignment?",
+      "deleteDescription": "Are you sure you want to remove the \"{{role}}\" role assignment?",
+      "deleteButton": "Remove"
+    },
+    "unassigned": "Unassigned",
+    "empty": {
+      "title": "No roles assigned",
+      "description": "Start by assigning key AI governance roles.",
+      "action": "Assign a role"
+    },
+    "toast": {
+      "created": "Role assigned successfully",
+      "updated": "Role updated",
+      "deleted": "Assignment removed",
+      "error": "An error occurred"
+    },
+    "loi25Warning": "The \"Privacy Officer\" role must be assigned and active for Law 25 compliance."
+  },
+  "committees": {
+    "title": "Governance Committees",
+    "description": "Manage AI governance committees and their members.",
+    "newCommittee": "New Committee",
+    "columns": {
+      "name": "Name",
+      "mandate": "Mandate",
+      "frequency": "Frequency",
+      "members": "Members",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "frequencies": {
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "ad_hoc": "Ad hoc"
+    },
+    "committeeRoles": {
+      "president": "Chair",
+      "member": "Member",
+      "secretary": "Secretary"
+    },
+    "form": {
+      "createTitle": "New Committee",
+      "editTitle": "Edit Committee",
+      "name": "Committee Name",
+      "namePlaceholder": "e.g., AI Ethics Committee",
+      "mandate": "Mandate",
+      "mandatePlaceholder": "Describe the committee's mandate...",
+      "frequency": "Meeting Frequency",
+      "selectFrequency": "Select a frequency",
+      "members": "Members",
+      "addMember": "Add Member",
+      "memberRole": "Committee Role",
+      "selectMember": "Select a member",
+      "removeMember": "Remove",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "confirm": {
+      "deleteTitle": "Delete this committee?",
+      "deleteDescription": "Are you sure you want to delete the \"{{name}}\" committee? This action is irreversible.",
+      "deleteButton": "Delete"
+    },
+    "noMembers": "No members",
+    "memberCount": "{{count}} member(s)",
+    "empty": {
+      "title": "No committees",
+      "description": "Create your first governance committee to structure AI decision-making.",
+      "action": "Create a committee"
+    },
+    "toast": {
+      "created": "Committee created successfully",
+      "updated": "Committee updated",
+      "deleted": "Committee deleted",
+      "error": "An error occurred"
+    }
+  }
+}

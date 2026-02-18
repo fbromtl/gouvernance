@@ -427,6 +427,128 @@ export interface Database {
         };
         Relationships: [];
       };
+      governance_policies: {
+        Row: {
+          id: string;
+          organization_id: string;
+          title: string;
+          description: string | null;
+          policy_type: string;
+          content: string;
+          version: number;
+          parent_id: string | null;
+          status: string;
+          published_at: string | null;
+          published_by: string | null;
+          created_by: string | null;
+          updated_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          title: string;
+          description?: string | null;
+          policy_type: string;
+          content?: string;
+          version?: number;
+          parent_id?: string | null;
+          status?: string;
+          published_at?: string | null;
+          published_by?: string | null;
+          created_by?: string | null;
+          updated_by?: string | null;
+        };
+        Update: {
+          title?: string;
+          description?: string | null;
+          policy_type?: string;
+          content?: string;
+          version?: number;
+          status?: string;
+          published_at?: string | null;
+          published_by?: string | null;
+          updated_by?: string | null;
+        };
+        Relationships: [];
+      };
+      governance_roles: {
+        Row: {
+          id: string;
+          organization_id: string;
+          role_type: string;
+          user_id: string | null;
+          mandate: string | null;
+          nominated_at: string | null;
+          scope: string;
+          ai_system_id: string | null;
+          status: string;
+          created_by: string | null;
+          updated_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          role_type: string;
+          user_id?: string | null;
+          mandate?: string | null;
+          nominated_at?: string | null;
+          scope?: string;
+          ai_system_id?: string | null;
+          status?: string;
+          created_by?: string | null;
+          updated_by?: string | null;
+        };
+        Update: {
+          role_type?: string;
+          user_id?: string | null;
+          mandate?: string | null;
+          nominated_at?: string | null;
+          scope?: string;
+          ai_system_id?: string | null;
+          status?: string;
+          updated_by?: string | null;
+        };
+        Relationships: [];
+      };
+      governance_committees: {
+        Row: {
+          id: string;
+          organization_id: string;
+          name: string;
+          mandate: string | null;
+          meeting_frequency: string;
+          members: Json;
+          status: string;
+          created_by: string | null;
+          updated_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          name: string;
+          mandate?: string | null;
+          meeting_frequency?: string;
+          members?: Json;
+          status?: string;
+          created_by?: string | null;
+          updated_by?: string | null;
+        };
+        Update: {
+          name?: string;
+          mandate?: string | null;
+          meeting_frequency?: string;
+          members?: Json;
+          status?: string;
+          updated_by?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -461,3 +583,20 @@ export type RiskAssessmentUpdate = Database["public"]["Tables"]["risk_assessment
 export type Incident = Database["public"]["Tables"]["incidents"]["Row"];
 export type IncidentInsert = Database["public"]["Tables"]["incidents"]["Insert"];
 export type IncidentUpdate = Database["public"]["Tables"]["incidents"]["Update"];
+
+export type GovernancePolicy = Database["public"]["Tables"]["governance_policies"]["Row"];
+export type GovernancePolicyInsert = Database["public"]["Tables"]["governance_policies"]["Insert"];
+export type GovernancePolicyUpdate = Database["public"]["Tables"]["governance_policies"]["Update"];
+
+export type GovernanceRole = Database["public"]["Tables"]["governance_roles"]["Row"];
+export type GovernanceRoleInsert = Database["public"]["Tables"]["governance_roles"]["Insert"];
+export type GovernanceRoleUpdate = Database["public"]["Tables"]["governance_roles"]["Update"];
+
+export type GovernanceCommittee = Database["public"]["Tables"]["governance_committees"]["Row"];
+export type GovernanceCommitteeInsert = Database["public"]["Tables"]["governance_committees"]["Insert"];
+export type GovernanceCommitteeUpdate = Database["public"]["Tables"]["governance_committees"]["Update"];
+
+export interface CommitteeMember {
+  user_id: string;
+  committee_role: "president" | "member" | "secretary";
+}

@@ -51,6 +51,9 @@ import IncidentDetailPage from "@/portail/pages/IncidentDetailPage";
 // Module: Admin
 import AdminPage from "@/portail/pages/AdminPage";
 
+// Module: Governance
+import GovernancePage from "@/portail/pages/GovernancePage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -110,7 +113,7 @@ function App() {
               <Route path="/incidents/:id" element={<IncidentDetailPage />} />
 
               {/* Modules — placeholder pages (Phase 3+) */}
-              <Route path="/governance" element={<PlaceholderPage />} />
+              <Route path="/governance" element={<GovernancePage />} />
               <Route path="/decisions" element={<PlaceholderPage />} />
               <Route path="/bias" element={<PlaceholderPage />} />
               <Route path="/transparency" element={<PlaceholderPage />} />

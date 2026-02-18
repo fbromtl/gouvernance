@@ -1,0 +1,232 @@
+{
+  "pageTitle": "Gouvernance & Responsabilités",
+  "pageDescription": "Définissez les rôles, politiques et comités de gouvernance IA de votre organisation.",
+  "tabs": {
+    "policies": "Politiques",
+    "roles": "Rôles",
+    "committees": "Comités"
+  },
+  "accessDenied": {
+    "title": "Accès refusé",
+    "description": "Vous n'avez pas les permissions nécessaires pour gérer la gouvernance."
+  },
+  "policies": {
+    "title": "Politiques & procédures",
+    "description": "Gérez les politiques de gouvernance IA de votre organisation.",
+    "newPolicy": "Nouvelle politique",
+    "search": "Rechercher une politique...",
+    "columns": {
+      "title": "Titre",
+      "type": "Type",
+      "version": "Version",
+      "status": "Statut",
+      "updatedAt": "Dernière modification",
+      "actions": "Actions"
+    },
+    "filters": {
+      "allStatuses": "Tous les statuts",
+      "allTypes": "Tous les types"
+    },
+    "statuses": {
+      "draft": "Brouillon",
+      "in_review": "En révision",
+      "published": "Publiée",
+      "archived": "Archivée"
+    },
+    "types": {
+      "ai_usage": "Politique d'utilisation de l'IA",
+      "genai_usage": "Politique IA générative",
+      "approval_procedure": "Procédure d'approbation",
+      "incident_procedure": "Gestion des incidents",
+      "complaint_procedure": "Traitement des plaintes",
+      "decommission_procedure": "Procédure de retrait",
+      "privacy_policy": "Protection des RP (Loi 25)",
+      "ethics_charter": "Charte éthique IA",
+      "custom": "Personnalisée"
+    },
+    "form": {
+      "createTitle": "Nouvelle politique",
+      "editTitle": "Modifier la politique",
+      "title": "Titre",
+      "titlePlaceholder": "Ex: Politique d'utilisation responsable de l'IA",
+      "type": "Type de politique",
+      "selectType": "Sélectionner un type",
+      "description": "Description",
+      "descriptionPlaceholder": "Résumé court de la politique...",
+      "content": "Contenu",
+      "contentPlaceholder": "Rédigez le contenu de la politique...",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
+    },
+    "actions": {
+      "edit": "Modifier",
+      "submitForReview": "Soumettre pour révision",
+      "publish": "Publier",
+      "archive": "Archiver",
+      "newVersion": "Nouvelle version",
+      "viewHistory": "Historique des versions"
+    },
+    "confirm": {
+      "publishTitle": "Publier cette politique ?",
+      "publishDescription": "Une fois publiée, cette version sera figée et visible par tous les membres. Cette action est irréversible.",
+      "publishButton": "Confirmer la publication",
+      "archiveTitle": "Archiver cette politique ?",
+      "archiveDescription": "Cette politique sera archivée et ne sera plus visible comme politique active.",
+      "archiveButton": "Confirmer l'archivage"
+    },
+    "versionHistory": "Historique des versions",
+    "versionLabel": "v{{version}}",
+    "currentVersion": "Version actuelle",
+    "empty": {
+      "title": "Aucune politique",
+      "description": "Commencez par créer votre première politique de gouvernance IA.",
+      "action": "Créer une politique"
+    },
+    "emptyFiltered": {
+      "title": "Aucun résultat",
+      "description": "Aucune politique ne correspond à vos filtres."
+    },
+    "toast": {
+      "created": "Politique créée avec succès",
+      "updated": "Politique mise à jour",
+      "published": "Politique publiée avec succès",
+      "archived": "Politique archivée",
+      "versionCreated": "Nouvelle version créée (brouillon)",
+      "submitted": "Politique soumise pour révision",
+      "error": "Une erreur est survenue"
+    }
+  },
+  "roles": {
+    "title": "Rôles de gouvernance",
+    "description": "Assignez les rôles de gouvernance IA aux membres de votre organisation.",
+    "assignRole": "Assigner un rôle",
+    "columns": {
+      "role": "Rôle",
+      "assignee": "Responsable",
+      "mandate": "Mandat",
+      "scope": "Périmètre",
+      "nominatedAt": "Nommé le",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "roleTypes": {
+      "sponsor": "Sponsor exécutif",
+      "ai_lead": "Responsable IA",
+      "privacy_officer": "Responsable vie privée",
+      "risk_officer": "Responsable risques",
+      "security_officer": "Responsable sécurité",
+      "ethics_officer": "Responsable éthique",
+      "legal_counsel": "Conseiller juridique",
+      "model_owner": "Responsable modèle",
+      "approver": "Approbateur"
+    },
+    "roleDescriptions": {
+      "sponsor": "Membre C-Level responsable de la stratégie IA",
+      "ai_lead": "Pilote opérationnel de la gouvernance IA",
+      "privacy_officer": "Gestion des renseignements personnels et conformité Loi 25",
+      "risk_officer": "Évaluations et gestion des risques IA",
+      "security_officer": "Sécurité des systèmes d'IA",
+      "ethics_officer": "Évaluations éthiques et transparence",
+      "legal_counsel": "Conformité réglementaire et juridique",
+      "model_owner": "Propriétaire technique d'un modèle IA",
+      "approver": "Autorité d'approbation (go/no-go)"
+    },
+    "scopes": {
+      "global": "Global",
+      "per_system": "Par système IA"
+    },
+    "form": {
+      "createTitle": "Assigner un rôle de gouvernance",
+      "editTitle": "Modifier l'assignation",
+      "roleType": "Type de rôle",
+      "selectRole": "Sélectionner un rôle",
+      "assignee": "Personne assignée",
+      "selectAssignee": "Sélectionner un membre",
+      "mandate": "Mandat / description",
+      "mandatePlaceholder": "Décrivez le mandat et les responsabilités...",
+      "nominatedAt": "Date de nomination",
+      "scope": "Périmètre",
+      "aiSystem": "Système IA",
+      "selectAiSystem": "Sélectionner un système",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
+    },
+    "confirm": {
+      "deleteTitle": "Supprimer cette assignation ?",
+      "deleteDescription": "Êtes-vous sûr de vouloir supprimer l'assignation du rôle « {{role}} » ?",
+      "deleteButton": "Supprimer"
+    },
+    "unassigned": "Non assigné",
+    "empty": {
+      "title": "Aucun rôle assigné",
+      "description": "Commencez par assigner les rôles clés de gouvernance IA.",
+      "action": "Assigner un rôle"
+    },
+    "toast": {
+      "created": "Rôle assigné avec succès",
+      "updated": "Rôle mis à jour",
+      "deleted": "Assignation supprimée",
+      "error": "Une erreur est survenue"
+    },
+    "loi25Warning": "Le rôle « Responsable vie privée » doit être assigné et actif pour la conformité Loi 25."
+  },
+  "committees": {
+    "title": "Comités de gouvernance",
+    "description": "Gérez les comités de gouvernance IA et leurs membres.",
+    "newCommittee": "Nouveau comité",
+    "columns": {
+      "name": "Nom",
+      "mandate": "Mandat",
+      "frequency": "Fréquence",
+      "members": "Membres",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "frequencies": {
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "quarterly": "Trimestriel",
+      "ad_hoc": "Ad hoc"
+    },
+    "committeeRoles": {
+      "president": "Président(e)",
+      "member": "Membre",
+      "secretary": "Secrétaire"
+    },
+    "form": {
+      "createTitle": "Nouveau comité",
+      "editTitle": "Modifier le comité",
+      "name": "Nom du comité",
+      "namePlaceholder": "Ex: Comité d'éthique IA",
+      "mandate": "Mandat",
+      "mandatePlaceholder": "Décrivez le mandat du comité...",
+      "frequency": "Fréquence de réunion",
+      "selectFrequency": "Sélectionner une fréquence",
+      "members": "Membres",
+      "addMember": "Ajouter un membre",
+      "memberRole": "Rôle dans le comité",
+      "selectMember": "Sélectionner un membre",
+      "removeMember": "Retirer",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
+    },
+    "confirm": {
+      "deleteTitle": "Supprimer ce comité ?",
+      "deleteDescription": "Êtes-vous sûr de vouloir supprimer le comité « {{name}} » ? Cette action est irréversible.",
+      "deleteButton": "Supprimer"
+    },
+    "noMembers": "Aucun membre",
+    "memberCount": "{{count}} membre(s)",
+    "empty": {
+      "title": "Aucun comité",
+      "description": "Créez votre premier comité de gouvernance pour structurer la prise de décision IA.",
+      "action": "Créer un comité"
+    },
+    "toast": {
+      "created": "Comité créé avec succès",
+      "updated": "Comité mis à jour",
+      "deleted": "Comité supprimé",
+      "error": "Une erreur est survenue"
+    }
+  }
+}
