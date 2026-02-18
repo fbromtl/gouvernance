@@ -1,0 +1,87 @@
+{
+  "pageTitle": "Administration",
+  "pageDescription": "Gérez votre organisation, vos membres et leurs rôles.",
+  "tabs": {
+    "organization": "Organisation",
+    "members": "Membres"
+  },
+  "accessDenied": {
+    "title": "Accès refusé",
+    "description": "Vous n'avez pas les permissions nécessaires pour accéder à cette page."
+  },
+  "org": {
+    "title": "Paramètres de l'organisation",
+    "description": "Informations générales de votre organisation.",
+    "name": "Nom de l'organisation",
+    "namePlaceholder": "Ex: Acme Inc.",
+    "sector": "Secteur d'activité",
+    "sectorPlaceholder": "Sélectionner un secteur",
+    "size": "Taille de l'organisation",
+    "sizePlaceholder": "Sélectionner une taille",
+    "country": "Pays",
+    "countryPlaceholder": "Ex: Canada",
+    "province": "Province / Région",
+    "provincePlaceholder": "Ex: Québec",
+    "plan": "Plan actuel",
+    "save": "Sauvegarder",
+    "plans": {
+      "starter": "Starter",
+      "pro": "Professionnel",
+      "enterprise": "Entreprise"
+    },
+    "sectors": {
+      "finance": "Finance & Banque",
+      "healthcare": "Santé",
+      "education": "Éducation",
+      "government": "Gouvernement",
+      "technology": "Technologie",
+      "retail": "Commerce de détail",
+      "manufacturing": "Manufacturier",
+      "energy": "Énergie",
+      "telecom": "Télécommunications",
+      "other": "Autre"
+    },
+    "sizes": {
+      "1-50": "1 à 50 employés",
+      "51-200": "51 à 200 employés",
+      "201-1000": "201 à 1 000 employés",
+      "1001-5000": "1 001 à 5 000 employés",
+      "5000+": "Plus de 5 000 employés"
+    },
+    "saveSuccess": "Organisation mise à jour avec succès.",
+    "saveError": "Erreur lors de la mise à jour de l'organisation."
+  },
+  "members": {
+    "title": "Membres de l'organisation",
+    "description": "Gérez les membres et leurs rôles dans votre organisation.",
+    "columns": {
+      "name": "Nom",
+      "email": "Courriel",
+      "role": "Rôle",
+      "joined": "Membre depuis",
+      "actions": "Actions"
+    },
+    "inviteLink": "Copier le lien d'invitation",
+    "inviteLinkCopied": "Lien d'invitation copié !",
+    "removeMember": "Retirer",
+    "removeConfirmTitle": "Retirer ce membre ?",
+    "removeConfirmDescription": "Êtes-vous sûr de vouloir retirer {{name}} de l'organisation ? Cette action est irréversible.",
+    "removeConfirmButton": "Retirer",
+    "cancel": "Annuler",
+    "roleUpdateSuccess": "Rôle mis à jour avec succès.",
+    "roleUpdateError": "Erreur lors de la mise à jour du rôle.",
+    "removeSuccess": "Membre retiré avec succès.",
+    "removeError": "Erreur lors du retrait du membre.",
+    "noMembers": "Aucun membre dans l'organisation."
+  },
+  "roles": {
+    "super_admin": "Super administrateur",
+    "org_admin": "Administrateur",
+    "compliance_officer": "Responsable conformité",
+    "risk_manager": "Gestionnaire de risques",
+    "data_scientist": "Scientifique des données",
+    "ethics_officer": "Responsable éthique",
+    "auditor": "Auditeur",
+    "member": "Membre"
+  }
+}

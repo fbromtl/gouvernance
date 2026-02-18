@@ -10,6 +10,7 @@ import frPortail from './locales/fr/portail.json'
 import frAiSystems from './locales/fr/aiSystems.json'
 import frRiskAssessments from './locales/fr/riskAssessments.json'
 import frIncidents from './locales/fr/incidents.json'
+import frAdmin from './locales/fr/admin.json'
 
 import enCommon from './locales/en/common.json'
 import enDashboard from './locales/en/dashboard.json'
@@ -19,6 +20,7 @@ import enPortail from './locales/en/portail.json'
 import enAiSystems from './locales/en/aiSystems.json'
 import enRiskAssessments from './locales/en/riskAssessments.json'
 import enIncidents from './locales/en/incidents.json'
+import enAdmin from './locales/en/admin.json'
 
 export const defaultNS = 'common'
 export const supportedLanguages = ['fr', 'en'] as const
@@ -38,6 +40,7 @@ i18n
         aiSystems: frAiSystems,
         riskAssessments: frRiskAssessments,
         incidents: frIncidents,
+        admin: frAdmin,
       },
       en: {
         common: enCommon,
@@ -48,11 +51,12 @@ i18n
         aiSystems: enAiSystems,
         riskAssessments: enRiskAssessments,
         incidents: enIncidents,
+        admin: enAdmin,
       },
     },
     fallbackLng: 'fr',
     defaultNS,
-    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents'],
+    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin'],
     interpolation: {
       escapeValue: false,
     },

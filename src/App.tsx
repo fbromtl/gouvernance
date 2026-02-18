@@ -48,6 +48,9 @@ import IncidentListPage from "@/portail/pages/IncidentListPage";
 import IncidentReportPage from "@/portail/pages/IncidentReportPage";
 import IncidentDetailPage from "@/portail/pages/IncidentDetailPage";
 
+// Module: Admin
+import AdminPage from "@/portail/pages/AdminPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -117,7 +120,7 @@ function App() {
               <Route path="/data" element={<PlaceholderPage />} />
               <Route path="/vendors" element={<PlaceholderPage />} />
               <Route path="/compliance" element={<PlaceholderPage />} />
-              <Route path="/admin" element={<PlaceholderPage />} />
+              <Route path="/admin" element={<AdminPage />} />
             </Route>
 
             {/* Redirects from old routes */}

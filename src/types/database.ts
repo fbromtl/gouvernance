@@ -429,13 +429,27 @@ export interface Database {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      get_org_members: {
+        Args: { _org_id: string };
+        Returns: {
+          user_id: string;
+          full_name: string | null;
+          avatar_url: string | null;
+          email: string;
+          role: string;
+          joined_at: string;
+        }[];
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };
 }
 
 // ---- Convenience type aliases ----
+export type Organization = Database["public"]["Tables"]["organizations"]["Row"];
+
 export type AiSystem = Database["public"]["Tables"]["ai_systems"]["Row"];
 export type AiSystemInsert = Database["public"]["Tables"]["ai_systems"]["Insert"];
 export type AiSystemUpdate = Database["public"]["Tables"]["ai_systems"]["Update"];

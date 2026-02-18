@@ -1,0 +1,87 @@
+{
+  "pageTitle": "Administration",
+  "pageDescription": "Manage your organization, members, and their roles.",
+  "tabs": {
+    "organization": "Organization",
+    "members": "Members"
+  },
+  "accessDenied": {
+    "title": "Access denied",
+    "description": "You do not have the required permissions to access this page."
+  },
+  "org": {
+    "title": "Organization Settings",
+    "description": "General information about your organization.",
+    "name": "Organization name",
+    "namePlaceholder": "E.g. Acme Inc.",
+    "sector": "Industry sector",
+    "sectorPlaceholder": "Select a sector",
+    "size": "Organization size",
+    "sizePlaceholder": "Select a size",
+    "country": "Country",
+    "countryPlaceholder": "E.g. Canada",
+    "province": "Province / Region",
+    "provincePlaceholder": "E.g. Quebec",
+    "plan": "Current plan",
+    "save": "Save",
+    "plans": {
+      "starter": "Starter",
+      "pro": "Professional",
+      "enterprise": "Enterprise"
+    },
+    "sectors": {
+      "finance": "Finance & Banking",
+      "healthcare": "Healthcare",
+      "education": "Education",
+      "government": "Government",
+      "technology": "Technology",
+      "retail": "Retail",
+      "manufacturing": "Manufacturing",
+      "energy": "Energy",
+      "telecom": "Telecommunications",
+      "other": "Other"
+    },
+    "sizes": {
+      "1-50": "1 to 50 employees",
+      "51-200": "51 to 200 employees",
+      "201-1000": "201 to 1,000 employees",
+      "1001-5000": "1,001 to 5,000 employees",
+      "5000+": "More than 5,000 employees"
+    },
+    "saveSuccess": "Organization updated successfully.",
+    "saveError": "Error updating organization."
+  },
+  "members": {
+    "title": "Organization Members",
+    "description": "Manage members and their roles in your organization.",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "joined": "Member since",
+      "actions": "Actions"
+    },
+    "inviteLink": "Copy invite link",
+    "inviteLinkCopied": "Invite link copied!",
+    "removeMember": "Remove",
+    "removeConfirmTitle": "Remove this member?",
+    "removeConfirmDescription": "Are you sure you want to remove {{name}} from the organization? This action cannot be undone.",
+    "removeConfirmButton": "Remove",
+    "cancel": "Cancel",
+    "roleUpdateSuccess": "Role updated successfully.",
+    "roleUpdateError": "Error updating role.",
+    "removeSuccess": "Member removed successfully.",
+    "removeError": "Error removing member.",
+    "noMembers": "No members in the organization."
+  },
+  "roles": {
+    "super_admin": "Super Administrator",
+    "org_admin": "Administrator",
+    "compliance_officer": "Compliance Officer",
+    "risk_manager": "Risk Manager",
+    "data_scientist": "Data Scientist",
+    "ethics_officer": "Ethics Officer",
+    "auditor": "Auditor",
+    "member": "Member"
+  }
+}
