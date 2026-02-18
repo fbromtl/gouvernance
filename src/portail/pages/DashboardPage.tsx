@@ -2,15 +2,21 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/lib/auth";
 import { useOrganization } from "@/hooks/useOrganization";
+import { useAiSystems } from "@/hooks/useAiSystems";
+import { useIncidents } from "@/hooks/useIncidents";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, AlertTriangle, CheckCircle, AlertCircle, Building2 } from "lucide-react";
+import { Bot, AlertTriangle, CheckCircle, AlertCircle, Building2, ShieldAlert, FileText } from "lucide-react";
 
 export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
   const { profile } = useAuth();
   const { data: org, isLoading } = useOrganization();
+
+  // Live data from modules
+  const { data: aiSystems = [] } = useAiSystems();
+  const { data: incidents = [] } = useIncidents();
 
   const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
 
@@ -37,18 +43,23 @@ export default function DashboardPage() {
     );
   }
 
+  // Compute KPIs from live data
+  const productionSystems = aiSystems.filter((s) => s.lifecycle_status === "production").length;
+  const activeIncidents = incidents.filter((i) => !["closed", "resolved", "post_mortem"].includes(i.status)).length;
+  const highRiskSystems = aiSystems.filter((s) => s.risk_level === "critical" || s.risk_level === "high").length;
+
   const statCards = [
-    { key: "aiSystems", icon: Bot, value: "—", path: "/ai-systems" },
+    { key: "aiSystems", icon: Bot, value: String(productionSystems), path: "/ai-systems" },
     { key: "complianceScore", icon: CheckCircle, value: "—", path: "/compliance" },
-    { key: "activeIncidents", icon: AlertCircle, value: "—", path: "/incidents" },
-    { key: "pendingAlerts", icon: AlertTriangle, value: "—", path: "/monitoring" },
+    { key: "activeIncidents", icon: AlertCircle, value: String(activeIncidents), path: "/incidents" },
+    { key: "pendingAlerts", icon: AlertTriangle, value: String(highRiskSystems), path: "/risks" },
   ];
 
   const quickModules = [
-    { key: "aiSystems", icon: Bot, path: "/ai-systems" },
-    { key: "risks", icon: AlertTriangle, path: "/risks" },
-    { key: "compliance", icon: CheckCircle, path: "/compliance" },
-    { key: "incidents", icon: AlertCircle, path: "/incidents" },
+    { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length },
+    { key: "risks", icon: ShieldAlert, path: "/risks", count: null },
+    { key: "incidents", icon: AlertCircle, path: "/incidents", count: incidents.length },
+    { key: "compliance", icon: FileText, path: "/compliance", count: null },
   ];
 
   return (
@@ -90,8 +101,13 @@ export default function DashboardPage() {
               <Link key={mod.key} to={mod.path}>
                 <Card className="hover:shadow-md transition-shadow cursor-pointer">
                   <CardHeader className="pb-2">
-                    <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
-                      <Icon className="h-5 w-5 text-brand-purple" />
+                    <div className="flex items-center justify-between">
+                      <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
+                        <Icon className="h-5 w-5 text-brand-purple" />
+                      </div>
+                      {mod.count !== null && (
+                        <span className="text-xl font-bold text-muted-foreground">{mod.count}</span>
+                      )}
                     </div>
                   </CardHeader>
                   <CardContent>
