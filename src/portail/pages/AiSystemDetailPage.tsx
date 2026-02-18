@@ -7,11 +7,9 @@ import {
   Pencil,
   Trash2,
   Bot,
-  AlertTriangle,
   AlertCircle,
   Clock,
   ShieldAlert,
-  Plus,
 } from "lucide-react";
 
 import { PageHeader } from "@/components/shared/PageHeader";

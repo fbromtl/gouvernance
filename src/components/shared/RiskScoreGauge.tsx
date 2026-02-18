@@ -45,8 +45,6 @@ const STROKE_WIDTH = 8;
 
 // Total arc length (270 degrees)
 const ARC_DEGREES = 270;
-const ARC_RADIANS = (ARC_DEGREES * Math.PI) / 180;
-const CIRCUMFERENCE = ARC_RADIANS * RADIUS; // arc length in SVG units
 
 // Start angle: 135 degrees (bottom-left)
 const START_ANGLE_DEG = 135;
@@ -106,7 +104,6 @@ export function RiskScoreGauge({
   }, [clampedScore, fillSweep]);
 
   // Font sizes relative to the gauge size
-  const scoreFontSize = size === "sm" ? "text-sm" : size === "md" ? "text-lg" : "text-2xl";
   const labelFontSize = size === "sm" ? "text-[10px]" : size === "md" ? "text-xs" : "text-sm";
 
   return (

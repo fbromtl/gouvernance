@@ -300,7 +300,7 @@ export default function AiSystemWizardPage() {
 
   // ----- Form -----
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema) as any,
     defaultValues: {
       name: "",
       description: "",

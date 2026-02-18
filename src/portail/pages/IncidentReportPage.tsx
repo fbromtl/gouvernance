@@ -109,7 +109,7 @@ export default function IncidentReportPage() {
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<IncidentFormData>({
-    resolver: zodResolver(incidentSchema),
+    resolver: zodResolver(incidentSchema) as any,
     defaultValues: {
       title: "",
       category: "ai",
