@@ -1,0 +1,39 @@
+{
+  "step": "Configuration initiale",
+  "title": "Créez votre organisation",
+  "description": "Pour commencer à utiliser la plateforme de gouvernance IA, configurez votre organisation. Vous pourrez inviter vos collègues par la suite.",
+  "form": {
+    "name": "Nom de l'organisation",
+    "namePlaceholder": "Ex : Acme Inc.",
+    "sector": "Secteur d'activité",
+    "sectorPlaceholder": "Sélectionner...",
+    "size": "Taille",
+    "sizePlaceholder": "Sélectionner...",
+    "country": "Pays",
+    "countryPlaceholder": "Ex : Canada",
+    "province": "Province / État",
+    "provincePlaceholder": "Ex : Québec",
+    "submit": "Créer mon organisation",
+    "hint": "Vous serez administrateur de cette organisation. Vous pourrez modifier ces informations plus tard."
+  },
+  "sectors": {
+    "finance": "Finance & Assurance",
+    "healthcare": "Santé",
+    "education": "Éducation",
+    "government": "Gouvernement",
+    "technology": "Technologie",
+    "retail": "Commerce de détail",
+    "manufacturing": "Manufacturier",
+    "energy": "Énergie",
+    "telecom": "Télécommunications",
+    "other": "Autre"
+  },
+  "sizes": {
+    "1-50": "1 à 50 employés",
+    "51-200": "51 à 200 employés",
+    "201-1000": "201 à 1 000 employés",
+    "1001-5000": "1 001 à 5 000 employés",
+    "5000+": "Plus de 5 000 employés"
+  },
+  "error": "Une erreur est survenue lors de la création de l'organisation. Veuillez réessayer."
+}

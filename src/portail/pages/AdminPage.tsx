@@ -7,7 +7,6 @@ import {
   Save,
   Copy,
   Trash2,
-  ShieldAlert,
 } from "lucide-react";
 
 import { useAuth } from "@/lib/auth";
@@ -60,19 +59,7 @@ export default function AdminPage() {
   const { t } = useTranslation("admin");
   const { can } = usePermissions();
 
-  if (!can("manage_organization")) {
-    return (
-      <div className="flex flex-1 items-center justify-center p-8">
-        <Card className="max-w-md p-8 text-center">
-          <ShieldAlert className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-          <h2 className="text-lg font-semibold">{t("accessDenied.title")}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {t("accessDenied.description")}
-          </p>
-        </Card>
-      </div>
-    );
-  }
+  const readOnly = !can("manage_organization");
 
   return (
     <div className="space-y-6 p-4 md:p-6">
@@ -95,10 +82,10 @@ export default function AdminPage() {
         </TabsList>
 
         <TabsContent value="organization">
-          <OrgSettingsTab />
+          <OrgSettingsTab readOnly={readOnly} />
         </TabsContent>
         <TabsContent value="members">
-          <MembersTab />
+          <MembersTab readOnly={readOnly} />
         </TabsContent>
       </Tabs>
     </div>
@@ -109,7 +96,7 @@ export default function AdminPage() {
 /*  ORGANIZATION SETTINGS TAB                                          */
 /* ================================================================== */
 
-function OrgSettingsTab() {
+function OrgSettingsTab({ readOnly = false }: { readOnly?: boolean }) {
   const { t } = useTranslation("admin");
   const { data: org } = useOrganization() as { data: Organization | null | undefined };
   const updateOrg = useUpdateOrganization();
@@ -169,12 +156,13 @@ function OrgSettingsTab() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={t("org.namePlaceholder")}
+            disabled={readOnly}
           />
         </div>
 
         <div className="space-y-2">
           <Label>{t("org.sector")}</Label>
-          <Select value={sector} onValueChange={setSector}>
+          <Select value={sector} onValueChange={setSector} disabled={readOnly}>
             <SelectTrigger>
               <SelectValue placeholder={t("org.sectorPlaceholder")} />
             </SelectTrigger>
@@ -190,7 +178,7 @@ function OrgSettingsTab() {
 
         <div className="space-y-2">
           <Label>{t("org.size")}</Label>
-          <Select value={size} onValueChange={setSize}>
+          <Select value={size} onValueChange={setSize} disabled={readOnly}>
             <SelectTrigger>
               <SelectValue placeholder={t("org.sizePlaceholder")} />
             </SelectTrigger>
@@ -211,6 +199,7 @@ function OrgSettingsTab() {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             placeholder={t("org.countryPlaceholder")}
+            disabled={readOnly}
           />
         </div>
 
@@ -221,16 +210,19 @@ function OrgSettingsTab() {
             value={province}
             onChange={(e) => setProvince(e.target.value)}
             placeholder={t("org.provincePlaceholder")}
+            disabled={readOnly}
           />
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <Button onClick={handleSave} disabled={updateOrg.isPending}>
-          <Save className="mr-2 h-4 w-4" />
-          {t("org.save")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="flex justify-end">
+          <Button onClick={handleSave} disabled={updateOrg.isPending}>
+            <Save className="mr-2 h-4 w-4" />
+            {t("org.save")}
+          </Button>
+        </div>
+      )}
     </Card>
   );
 }
@@ -239,7 +231,7 @@ function OrgSettingsTab() {
 /*  MEMBERS TAB                                                        */
 /* ================================================================== */
 
-function MembersTab() {
+function MembersTab({ readOnly = false }: { readOnly?: boolean }) {
   const { t } = useTranslation("admin");
   const { user } = useAuth();
   const { role: currentRole } = usePermissions();
@@ -303,10 +295,12 @@ function MembersTab() {
           <h2 className="text-lg font-semibold">{t("members.title")}</h2>
           <p className="text-sm text-muted-foreground">{t("members.description")}</p>
         </div>
-        <Button variant="outline" size="sm" onClick={handleCopyInviteLink}>
-          <Copy className="mr-2 h-4 w-4" />
-          {t("members.inviteLink")}
-        </Button>
+        {!readOnly && (
+          <Button variant="outline" size="sm" onClick={handleCopyInviteLink}>
+            <Copy className="mr-2 h-4 w-4" />
+            {t("members.inviteLink")}
+          </Button>
+        )}
       </div>
 
       <Separator />
@@ -326,7 +320,9 @@ function MembersTab() {
                 <TableHead>{t("members.columns.email")}</TableHead>
                 <TableHead>{t("members.columns.role")}</TableHead>
                 <TableHead>{t("members.columns.joined")}</TableHead>
-                <TableHead className="w-[80px]">{t("members.columns.actions")}</TableHead>
+                {!readOnly && (
+                  <TableHead className="w-[80px]">{t("members.columns.actions")}</TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -358,7 +354,7 @@ function MembersTab() {
                     <Select
                       value={m.role}
                       onValueChange={(v) => handleRoleChange(m.user_id, v, m.role)}
-                      disabled={!canChangeRole(m)}
+                      disabled={readOnly || !canChangeRole(m)}
                     >
                       <SelectTrigger className="h-8 w-[180px]">
                         <SelectValue />
@@ -379,6 +375,7 @@ function MembersTab() {
                   </TableCell>
 
                   {/* Actions */}
+                  {!readOnly && (
                   <TableCell>
                     {canChangeRole(m) && (
                       <Dialog
@@ -430,6 +427,7 @@ function MembersTab() {
                       </Dialog>
                     )}
                   </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>

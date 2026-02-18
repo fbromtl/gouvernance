@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { usePermissions } from "@/hooks/usePermissions";
 import type { Permission } from "@/lib/permissions";
 import {
   LayoutDashboard,
@@ -187,8 +186,6 @@ interface AppSidebarProps {
 export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
   const { t } = useTranslation("portail");
   const location = useLocation();
-  const { can } = usePermissions();
-
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + "/");
 
@@ -260,9 +257,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
   /* ------ render a nav group ------ */
   function renderGroup(group: NavGroup, idx: number) {
-    const visibleItems = group.items.filter(
-      (item) => !item.permission || can(item.permission)
-    );
+    const visibleItems = group.items;
     if (visibleItems.length === 0) return null;
 
     return (
@@ -319,9 +314,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
 
             {/* Settings section */}
             {(() => {
-              const visibleSettings = settingsItems.filter(
-                (item) => !item.permission || can(item.permission)
-              );
+              const visibleSettings = settingsItems;
               if (visibleSettings.length === 0) return null;
               return (
                 <div className="space-y-0.5">

@@ -54,6 +54,9 @@ import AdminPage from "@/portail/pages/AdminPage";
 // Module: Governance
 import GovernancePage from "@/portail/pages/GovernancePage";
 
+// Onboarding
+import OnboardingPage from "@/portail/pages/OnboardingPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -89,8 +92,9 @@ function App() {
 
           {/* Portail SaaS (protégé) */}
           <Route element={<ProtectedRoute />}>
-            {/* CGU (hors layout portail) */}
+            {/* CGU et onboarding (hors layout portail) */}
             <Route path="/conditions" element={<ConditionsPage />} />
+            <Route path="/onboarding" element={<OnboardingPage />} />
 
             <Route element={<PortailLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />

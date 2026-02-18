@@ -24,5 +24,15 @@ export function ProtectedRoute() {
     return <Navigate to="/conditions" replace />;
   }
 
+  // Redirect to onboarding if user has no organization
+  if (
+    profile &&
+    profile.cgu_accepted &&
+    !profile.organization_id &&
+    location.pathname !== "/onboarding"
+  ) {
+    return <Navigate to="/onboarding" replace />;
+  }
+
   return <Outlet />;
 }

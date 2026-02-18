@@ -4,7 +4,6 @@ import {
   FileText,
   Users,
   Building2,
-  ShieldAlert,
   Plus,
   Search,
   Pencil,
@@ -149,7 +148,7 @@ function findMember(members: OrgMember[] | undefined, userId: string | null) {
 /*  POLICIES TAB                                                       */
 /* ================================================================== */
 
-function PoliciesTab() {
+function PoliciesTab({ readOnly = false }: { readOnly?: boolean }) {
   const { t } = useTranslation("governance");
 
   const [search, setSearch] = useState("");
@@ -294,10 +293,12 @@ function PoliciesTab() {
             {t("policies.description")}
           </p>
         </div>
-        <Button onClick={openCreate}>
-          <Plus className="mr-2 size-4" />
-          {t("policies.newPolicy")}
-        </Button>
+        {!readOnly && (
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("policies.newPolicy")}
+          </Button>
+        )}
       </div>
 
       <Separator />
@@ -365,7 +366,7 @@ function PoliciesTab() {
               ? t("policies.emptyFiltered.description")
               : t("policies.empty.description")}
           </p>
-          {!hasActiveFilters && (
+          {!hasActiveFilters && !readOnly && (
             <Button className="mt-4" onClick={openCreate}>
               <Plus className="mr-2 size-4" />
               {t("policies.empty.action")}
@@ -382,9 +383,11 @@ function PoliciesTab() {
                 <TableHead>{t("policies.columns.version")}</TableHead>
                 <TableHead>{t("policies.columns.status")}</TableHead>
                 <TableHead>{t("policies.columns.updatedAt")}</TableHead>
-                <TableHead className="w-[200px]">
-                  {t("policies.columns.actions")}
-                </TableHead>
+                {!readOnly && (
+                  <TableHead className="w-[200px]">
+                    {t("policies.columns.actions")}
+                  </TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -408,74 +411,76 @@ function PoliciesTab() {
                   <TableCell className="text-sm text-muted-foreground">
                     {formatDate(p.updated_at)}
                   </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-1">
-                      {p.status === "draft" && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => openEdit(p)}
-                            title={t("policies.actions.edit")}
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleSubmitForReview(p)}
-                            title={t("policies.actions.submitForReview")}
-                          >
-                            <Send className="h-4 w-4" />
-                          </Button>
-                        </>
-                      )}
-                      {p.status === "in_review" && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => openEdit(p)}
-                            title={t("policies.actions.edit")}
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() =>
-                              setConfirmAction({ type: "publish", policy: p })
-                            }
-                            title={t("policies.actions.publish")}
-                          >
-                            <BookCheck className="h-4 w-4" />
-                          </Button>
-                        </>
-                      )}
-                      {p.status === "published" && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleNewVersion(p)}
-                            title={t("policies.actions.newVersion")}
-                          >
-                            <Copy className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() =>
-                              setConfirmAction({ type: "archive", policy: p })
-                            }
-                            title={t("policies.actions.archive")}
-                          >
-                            <Archive className="h-4 w-4" />
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                  </TableCell>
+                  {!readOnly && (
+                    <TableCell>
+                      <div className="flex items-center gap-1">
+                        {p.status === "draft" && (
+                          <>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => openEdit(p)}
+                              title={t("policies.actions.edit")}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleSubmitForReview(p)}
+                              title={t("policies.actions.submitForReview")}
+                            >
+                              <Send className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                        {p.status === "in_review" && (
+                          <>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => openEdit(p)}
+                              title={t("policies.actions.edit")}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() =>
+                                setConfirmAction({ type: "publish", policy: p })
+                              }
+                              title={t("policies.actions.publish")}
+                            >
+                              <BookCheck className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                        {p.status === "published" && (
+                          <>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleNewVersion(p)}
+                              title={t("policies.actions.newVersion")}
+                            >
+                              <Copy className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() =>
+                                setConfirmAction({ type: "archive", policy: p })
+                              }
+                              title={t("policies.actions.archive")}
+                            >
+                              <Archive className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>
@@ -615,7 +620,7 @@ function PoliciesTab() {
 /*  ROLES TAB                                                          */
 /* ================================================================== */
 
-function RolesTab() {
+function RolesTab({ readOnly = false }: { readOnly?: boolean }) {
   const { t } = useTranslation("governance");
 
   const { data: roles, isLoading } = useGovernanceRoles();
@@ -722,10 +727,12 @@ function RolesTab() {
             {t("roles.description")}
           </p>
         </div>
-        <Button onClick={openCreate}>
-          <Plus className="mr-2 size-4" />
-          {t("roles.assignRole")}
-        </Button>
+        {!readOnly && (
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("roles.assignRole")}
+          </Button>
+        )}
       </div>
 
       <Separator />
@@ -752,10 +759,12 @@ function RolesTab() {
           <p className="mt-1 text-sm text-muted-foreground">
             {t("roles.empty.description")}
           </p>
-          <Button className="mt-4" onClick={openCreate}>
-            <Plus className="mr-2 size-4" />
-            {t("roles.empty.action")}
-          </Button>
+          {!readOnly && (
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("roles.empty.action")}
+            </Button>
+          )}
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -767,9 +776,11 @@ function RolesTab() {
                 <TableHead>{t("roles.columns.scope")}</TableHead>
                 <TableHead>{t("roles.columns.nominatedAt")}</TableHead>
                 <TableHead>{t("roles.columns.status")}</TableHead>
-                <TableHead className="w-[100px]">
-                  {t("roles.columns.actions")}
-                </TableHead>
+                {!readOnly && (
+                  <TableHead className="w-[100px]">
+                    {t("roles.columns.actions")}
+                  </TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -817,25 +828,27 @@ function RolesTab() {
                     <TableCell>
                       <StatusBadge status={r.status} />
                     </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-1">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => openEdit(r)}
-                        >
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-destructive hover:text-destructive"
-                          onClick={() => setDeletingRole(r)}
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
+                    {!readOnly && (
+                      <TableCell>
+                        <div className="flex items-center gap-1">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => openEdit(r)}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-destructive hover:text-destructive"
+                            onClick={() => setDeletingRole(r)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    )}
                   </TableRow>
                 );
               })}
@@ -1002,7 +1015,7 @@ function RolesTab() {
 /*  COMMITTEES TAB                                                     */
 /* ================================================================== */
 
-function CommitteesTab() {
+function CommitteesTab({ readOnly = false }: { readOnly?: boolean }) {
   const { t } = useTranslation("governance");
 
   const { data: committees, isLoading } = useCommittees();
@@ -1122,10 +1135,12 @@ function CommitteesTab() {
             {t("committees.description")}
           </p>
         </div>
-        <Button onClick={openCreate}>
-          <Plus className="mr-2 size-4" />
-          {t("committees.newCommittee")}
-        </Button>
+        {!readOnly && (
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("committees.newCommittee")}
+          </Button>
+        )}
       </div>
 
       <Separator />
@@ -1146,10 +1161,12 @@ function CommitteesTab() {
           <p className="mt-1 text-sm text-muted-foreground">
             {t("committees.empty.description")}
           </p>
-          <Button className="mt-4" onClick={openCreate}>
-            <Plus className="mr-2 size-4" />
-            {t("committees.empty.action")}
-          </Button>
+          {!readOnly && (
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("committees.empty.action")}
+            </Button>
+          )}
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -1161,9 +1178,11 @@ function CommitteesTab() {
                 <TableHead>{t("committees.columns.frequency")}</TableHead>
                 <TableHead>{t("committees.columns.members")}</TableHead>
                 <TableHead>{t("committees.columns.status")}</TableHead>
-                <TableHead className="w-[100px]">
-                  {t("committees.columns.actions")}
-                </TableHead>
+                {!readOnly && (
+                  <TableHead className="w-[100px]">
+                    {t("committees.columns.actions")}
+                  </TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -1186,25 +1205,27 @@ function CommitteesTab() {
                   <TableCell>
                     <StatusBadge status={c.status} />
                   </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => openEdit(c)}
-                      >
-                        <Pencil className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-destructive hover:text-destructive"
-                        onClick={() => setDeletingCommittee(c)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
+                  {!readOnly && (
+                    <TableCell>
+                      <div className="flex items-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => openEdit(c)}
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:text-destructive"
+                          onClick={() => setDeletingCommittee(c)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>
@@ -1380,20 +1401,7 @@ export default function GovernancePage() {
   const { t } = useTranslation("governance");
   const { can } = usePermissions();
 
-  // Permission guard
-  if (!can("manage_policies")) {
-    return (
-      <div className="flex flex-1 items-center justify-center p-8">
-        <Card className="max-w-md p-8 text-center">
-          <ShieldAlert className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-          <h2 className="text-lg font-semibold">{t("accessDenied.title")}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {t("accessDenied.description")}
-          </p>
-        </Card>
-      </div>
-    );
-  }
+  const readOnly = !can("manage_policies");
 
   return (
     <div className="space-y-6 p-4 md:p-6">
@@ -1421,13 +1429,13 @@ export default function GovernancePage() {
         </TabsList>
 
         <TabsContent value="policies">
-          <PoliciesTab />
+          <PoliciesTab readOnly={readOnly} />
         </TabsContent>
         <TabsContent value="roles">
-          <RolesTab />
+          <RolesTab readOnly={readOnly} />
         </TabsContent>
         <TabsContent value="committees">
-          <CommitteesTab />
+          <CommitteesTab readOnly={readOnly} />
         </TabsContent>
       </Tabs>
     </div>

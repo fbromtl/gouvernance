@@ -1,0 +1,39 @@
+{
+  "step": "Initial Setup",
+  "title": "Create Your Organization",
+  "description": "To start using the AI governance platform, set up your organization. You can invite your colleagues afterwards.",
+  "form": {
+    "name": "Organization Name",
+    "namePlaceholder": "E.g.: Acme Inc.",
+    "sector": "Industry Sector",
+    "sectorPlaceholder": "Select...",
+    "size": "Size",
+    "sizePlaceholder": "Select...",
+    "country": "Country",
+    "countryPlaceholder": "E.g.: Canada",
+    "province": "Province / State",
+    "provincePlaceholder": "E.g.: Québec",
+    "submit": "Create My Organization",
+    "hint": "You will be the administrator of this organization. You can update these details later."
+  },
+  "sectors": {
+    "finance": "Finance & Insurance",
+    "healthcare": "Healthcare",
+    "education": "Education",
+    "government": "Government",
+    "technology": "Technology",
+    "retail": "Retail",
+    "manufacturing": "Manufacturing",
+    "energy": "Energy",
+    "telecom": "Telecommunications",
+    "other": "Other"
+  },
+  "sizes": {
+    "1-50": "1 to 50 employees",
+    "51-200": "51 to 200 employees",
+    "201-1000": "201 to 1,000 employees",
+    "1001-5000": "1,001 to 5,000 employees",
+    "5000+": "More than 5,000 employees"
+  },
+  "error": "An error occurred while creating the organization. Please try again."
+}
