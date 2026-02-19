@@ -30,7 +30,7 @@ export function PortailLayout() {
 
       {/* Mobile sidebar */}
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" className="p-0 w-[240px]">
+        <SheetContent side="left" className="p-0 w-[250px]">
           <AppSidebar collapsed={false} onToggle={() => setMobileOpen(false)} />
         </SheetContent>
       </Sheet>
@@ -58,10 +58,12 @@ export function PortailLayout() {
           onMobileMenuToggle={() => setMobileOpen(!mobileOpen)}
           onAiToggle={() => setAiOpen(!aiOpen)}
         />
-        <main className="flex-1 overflow-y-auto p-6">
-          <ErrorBoundary key={pathname}>
-            <Outlet />
-          </ErrorBoundary>
+        <main className="flex-1 overflow-y-auto">
+          <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+            <ErrorBoundary key={pathname}>
+              <Outlet />
+            </ErrorBoundary>
+          </div>
         </main>
       </div>
     </div>

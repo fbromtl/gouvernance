@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, Menu, LogOut, User, Settings, Check, Sparkles } from "lucide-react";
+import { Bell, Menu, LogOut, User, Settings, Check, Sparkles, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -15,7 +15,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import LanguageSwitcher from "@/portail/components/LanguageSwitcher";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 interface AppHeaderProps {
   onMobileMenuToggle: () => void;
@@ -51,32 +51,91 @@ const DOT_COLOR: Record<string, string> = {
   info: "bg-gray-400",
 };
 
+/* ------------------------------------------------------------------ */
+/*  Breadcrumb route mapping                                            */
+/* ------------------------------------------------------------------ */
+
+const ROUTE_LABELS: Record<string, string> = {
+  dashboard: "nav.dashboard",
+  "ai-systems": "nav.aiSystems",
+  lifecycle: "nav.lifecycle",
+  vendors: "nav.vendors",
+  governance: "nav.governance",
+  decisions: "nav.decisions",
+  compliance: "nav.compliance",
+  documents: "nav.documents",
+  risks: "nav.risks",
+  incidents: "nav.incidents",
+  bias: "nav.bias",
+  transparency: "nav.transparency",
+  monitoring: "nav.monitoring",
+  data: "nav.data",
+  roadmap: "nav.roadmap",
+  admin: "nav.admin",
+  profile: "nav.profile",
+};
+
 export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
   const { t } = useTranslation("portail");
   const { t: tc } = useTranslation("common");
   const { profile, signOut } = useAuth();
   const { notifications, unreadCount, markAsRead, markAllAsRead } = useNotifications();
   const navigate = useNavigate();
+  const location = useLocation();
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   const initials = profile?.full_name
     ? profile.full_name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
     : "U";
 
+  /* ---- Breadcrumb segments ---- */
+  const segments = location.pathname.split("/").filter(Boolean);
+  const breadcrumbs = segments.map((seg, i) => {
+    const path = "/" + segments.slice(0, i + 1).join("/");
+    const labelKey = ROUTE_LABELS[seg];
+    const label = labelKey ? t(labelKey) : seg;
+    return { path, label, isLast: i === segments.length - 1 };
+  });
+
   return (
-    <header className="flex items-center justify-between border-b bg-card px-4 h-14">
-      <div className="flex items-center gap-3">
+    <header className="flex items-center justify-between border-b border-border/60 bg-card px-4 lg:px-6 h-14 shrink-0">
+      {/* Left section: mobile menu + breadcrumbs */}
+      <div className="flex items-center gap-3 min-w-0">
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden"
+          className="lg:hidden shrink-0 h-8 w-8"
           onClick={onMobileMenuToggle}
         >
           <Menu className="h-5 w-5" />
         </Button>
+
+        {/* Breadcrumbs — desktop only */}
+        <nav className="hidden lg:flex items-center gap-1 text-sm min-w-0" aria-label="Breadcrumb">
+          {breadcrumbs.map((crumb, i) => (
+            <div key={crumb.path} className="flex items-center gap-1 min-w-0">
+              {i > 0 && (
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-foreground/25" />
+              )}
+              {crumb.isLast ? (
+                <span className="font-semibold text-foreground truncate">
+                  {crumb.label}
+                </span>
+              ) : (
+                <Link
+                  to={crumb.path}
+                  className="text-foreground/50 hover:text-foreground transition-colors truncate"
+                >
+                  {crumb.label}
+                </Link>
+              )}
+            </div>
+          ))}
+        </nav>
       </div>
 
-      <div className="flex items-center gap-2">
+      {/* Right section: actions */}
+      <div className="flex items-center gap-1">
         <LanguageSwitcher />
 
         {onAiToggle && (
@@ -84,24 +143,26 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
             variant="ghost"
             size="icon"
             onClick={onAiToggle}
+            className="h-8 w-8 text-foreground/50 hover:text-brand-purple"
             title={t("aiAssistant", { defaultValue: "Assistant IA" })}
           >
             <Sparkles className="h-4 w-4" />
           </Button>
         )}
 
+        {/* Notifications */}
         <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative">
+            <Button variant="ghost" size="icon" className="relative h-8 w-8 text-foreground/50 hover:text-foreground">
               <Bell className="h-4 w-4" />
               {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] font-bold text-destructive-foreground">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-purple px-1 text-[10px] font-bold text-white shadow-sm shadow-brand-purple/30">
                   {unreadCount > 9 ? "9+" : unreadCount}
                 </span>
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-80 p-0">
+          <PopoverContent align="end" className="w-80 p-0 shadow-lg">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3">
               <span className="text-sm font-semibold">{t("notifications")}</span>
@@ -109,7 +170,7 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-auto px-2 py-1 text-xs"
+                  className="h-auto px-2 py-1 text-xs text-brand-purple hover:text-brand-purple"
                   onClick={() => markAllAsRead()}
                 >
                   <Check className="mr-1 h-3 w-3" />
@@ -121,8 +182,11 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
 
             {/* Notification list */}
             {notifications.length === 0 ? (
-              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
-                {t("noNotifications")}
+              <div className="px-4 py-10 text-center">
+                <Bell className="h-8 w-8 text-foreground/15 mx-auto mb-2" />
+                <p className="text-sm text-muted-foreground">
+                  {t("noNotifications")}
+                </p>
               </div>
             ) : (
               <ScrollArea className="max-h-80">
@@ -131,7 +195,7 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
                     key={n.id}
                     type="button"
                     className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-muted/50 ${
-                      !n.read ? "bg-primary/5" : ""
+                      !n.read ? "bg-brand-purple/[0.03]" : ""
                     }`}
                     onClick={() => {
                       if (!n.read) markAsRead(n.id);
@@ -155,7 +219,7 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
                           {n.body}
                         </p>
                       )}
-                      <p className="mt-1 text-xs text-muted-foreground/70">
+                      <p className="mt-1 text-[11px] text-muted-foreground/60">
                         {timeAgo(n.created_at, t)}
                       </p>
                     </div>
@@ -166,12 +230,16 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
           </PopoverContent>
         </Popover>
 
+        {/* Separator */}
+        <div className="h-5 w-px bg-border/60 mx-1.5 hidden sm:block" />
+
+        {/* User dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2">
+            <Button variant="ghost" className="flex items-center gap-2 px-2 h-8">
               <Avatar className="h-7 w-7">
                 <AvatarImage src={profile?.avatar_url ?? undefined} />
-                <AvatarFallback className="text-xs bg-brand-purple/10 text-brand-purple">
+                <AvatarFallback className="text-xs font-semibold bg-brand-purple/10 text-brand-purple">
                   {initials}
                 </AvatarFallback>
               </Avatar>
@@ -180,7 +248,7 @@ export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
               </span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuContent align="end" className="w-48 shadow-lg">
             <DropdownMenuItem asChild>
               <Link to="/profile" className="flex items-center gap-2">
                 <User className="h-4 w-4" />

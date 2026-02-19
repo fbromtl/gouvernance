@@ -5,10 +5,21 @@ import { useOrganization } from "@/hooks/useOrganization";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import { useIncidents } from "@/hooks/useIncidents";
 import { useComplianceScores } from "@/hooks/useCompliance";
-import { PageHeader } from "@/components/shared/PageHeader";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, AlertTriangle, CheckCircle, AlertCircle, Building2, ShieldAlert, FileText } from "lucide-react";
+import {
+  Bot,
+  AlertTriangle,
+  CheckCircle,
+  AlertCircle,
+  Building2,
+  ShieldAlert,
+  FileText,
+  ArrowRight,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+} from "lucide-react";
 
 export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
@@ -24,11 +35,22 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="space-y-6">
-        <div className="h-8 w-48 bg-muted animate-pulse rounded" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="space-y-8">
+        {/* Skeleton header */}
+        <div className="space-y-2">
+          <div className="h-8 w-56 bg-muted animate-pulse rounded-lg" />
+          <div className="h-4 w-72 bg-muted/60 animate-pulse rounded-lg" />
+        </div>
+        {/* Skeleton KPI cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-28 bg-muted animate-pulse rounded-lg" />
+            <div key={i} className="h-32 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+          ))}
+        </div>
+        {/* Skeleton quick access */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-36 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
           ))}
         </div>
       </div>
@@ -49,44 +71,92 @@ export default function DashboardPage() {
   const productionSystems = aiSystems.filter((s) => s.lifecycle_status === "production").length;
   const activeIncidents = incidents.filter((i) => !["closed", "resolved", "post_mortem"].includes(i.status)).length;
   const highRiskSystems = aiSystems.filter((s) => s.risk_level === "critical" || s.risk_level === "high").length;
+  const complianceValue = complianceScores ? complianceScores.global : null;
 
   const statCards = [
-    { key: "aiSystems", icon: Bot, value: String(productionSystems), path: "/ai-systems" },
-    { key: "complianceScore", icon: CheckCircle, value: complianceScores ? `${complianceScores.global}%` : "—", path: "/compliance" },
-    { key: "activeIncidents", icon: AlertCircle, value: String(activeIncidents), path: "/incidents" },
-    { key: "pendingAlerts", icon: AlertTriangle, value: String(highRiskSystems), path: "/risks" },
+    {
+      key: "aiSystems",
+      icon: Bot,
+      value: String(productionSystems),
+      path: "/ai-systems",
+      color: "text-brand-purple",
+      bgColor: "bg-brand-purple/10",
+      trend: null as null | "up" | "down" | "neutral",
+    },
+    {
+      key: "complianceScore",
+      icon: CheckCircle,
+      value: complianceValue !== null ? `${complianceValue}%` : "\u2014",
+      path: "/compliance",
+      color: complianceValue !== null && complianceValue >= 70 ? "text-emerald-600" : "text-amber-600",
+      bgColor: complianceValue !== null && complianceValue >= 70 ? "bg-emerald-50" : "bg-amber-50",
+      trend: complianceValue !== null ? (complianceValue >= 70 ? ("up" as const) : ("down" as const)) : null,
+    },
+    {
+      key: "activeIncidents",
+      icon: AlertCircle,
+      value: String(activeIncidents),
+      path: "/incidents",
+      color: activeIncidents > 0 ? "text-red-600" : "text-emerald-600",
+      bgColor: activeIncidents > 0 ? "bg-red-50" : "bg-emerald-50",
+      trend: activeIncidents > 0 ? ("down" as const) : ("neutral" as const),
+    },
+    {
+      key: "pendingAlerts",
+      icon: AlertTriangle,
+      value: String(highRiskSystems),
+      path: "/risks",
+      color: highRiskSystems > 0 ? "text-amber-600" : "text-emerald-600",
+      bgColor: highRiskSystems > 0 ? "bg-amber-50" : "bg-emerald-50",
+      trend: null,
+    },
   ];
 
+  const TrendIcon = { up: TrendingUp, down: TrendingDown, neutral: Minus };
+
   const quickModules = [
-    { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length },
-    { key: "risks", icon: ShieldAlert, path: "/risks", count: null },
-    { key: "incidents", icon: AlertCircle, path: "/incidents", count: incidents.length },
-    { key: "compliance", icon: FileText, path: "/compliance", count: null },
+    { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length, color: "text-brand-purple", bgColor: "bg-brand-purple/10" },
+    { key: "risks", icon: ShieldAlert, path: "/risks", count: null, color: "text-amber-600", bgColor: "bg-amber-50" },
+    { key: "incidents", icon: AlertCircle, path: "/incidents", count: incidents.length, color: "text-red-600", bgColor: "bg-red-50" },
+    { key: "compliance", icon: FileText, path: "/compliance", count: null, color: "text-emerald-600", bgColor: "bg-emerald-50" },
   ];
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        title={t("welcome", { firstName })}
-        description={t("description")}
-      />
+    <div className="space-y-8">
+      {/* Page Header */}
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
+          {t("welcome", { firstName })}
+        </h1>
+        <p className="text-sm text-muted-foreground mt-1">
+          {t("description")}
+        </p>
+      </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat) => {
           const Icon = stat.icon;
+          const TIcon = stat.trend ? TrendIcon[stat.trend] : null;
           return (
             <Link key={stat.key} to={stat.path}>
-              <Card className="hover:shadow-md transition-shadow">
-                <CardContent className="flex items-center gap-4 pt-6">
-                  <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center shrink-0">
-                    <Icon className="h-5 w-5 text-brand-purple" />
+              <Card className="group relative overflow-hidden hover:shadow-md transition-all duration-300 border-border/60">
+                <CardContent className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div className={`h-10 w-10 rounded-xl ${stat.bgColor} flex items-center justify-center shrink-0`}>
+                      <Icon className={`h-5 w-5 ${stat.color}`} />
+                    </div>
+                    {TIcon && (
+                      <TIcon className={`h-4 w-4 ${stat.trend === "up" ? "text-emerald-500" : stat.trend === "down" ? "text-red-500" : "text-muted-foreground/40"}`} />
+                    )}
                   </div>
-                  <div>
-                    <p className="text-2xl font-bold">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground">{t(`stats.${stat.key}`)}</p>
+                  <div className="mt-4">
+                    <p className="text-3xl font-bold tracking-tight">{stat.value}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5 font-medium">{t(`stats.${stat.key}`)}</p>
                   </div>
                 </CardContent>
+                {/* Subtle hover accent line */}
+                <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-purple/40 group-hover:w-full transition-all duration-500" />
               </Card>
             </Link>
           );
@@ -95,28 +165,36 @@ export default function DashboardPage() {
 
       {/* Quick Access */}
       <div>
-        <h2 className="text-lg font-semibold mb-3">{t("quickAccess")}</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold tracking-tight">{t("quickAccess")}</h2>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {quickModules.map((mod) => {
             const Icon = mod.icon;
             return (
               <Link key={mod.key} to={mod.path}>
-                <Card className="hover:shadow-md transition-shadow cursor-pointer">
-                  <CardHeader className="pb-2">
+                <Card className="group hover:shadow-md transition-all duration-300 cursor-pointer border-border/60 h-full">
+                  <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
-                        <Icon className="h-5 w-5 text-brand-purple" />
+                      <div className={`h-10 w-10 rounded-xl ${mod.bgColor} flex items-center justify-center`}>
+                        <Icon className={`h-5 w-5 ${mod.color}`} />
                       </div>
                       {mod.count !== null && (
-                        <span className="text-xl font-bold text-muted-foreground">{mod.count}</span>
+                        <span className="text-2xl font-bold text-foreground/15 group-hover:text-foreground/35 transition-colors duration-300">
+                          {mod.count}
+                        </span>
                       )}
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <CardTitle className="text-sm">{t(`modules.${mod.key}.title`)}</CardTitle>
-                    <p className="text-xs text-muted-foreground mt-1">
+                  <CardContent className="pb-5">
+                    <CardTitle className="text-sm font-semibold">{t(`modules.${mod.key}.title`)}</CardTitle>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
                       {t(`modules.${mod.key}.description`)}
                     </p>
+                    <div className="flex items-center gap-1 mt-3 text-xs font-medium text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span>{t("viewModule", { defaultValue: "Ouvrir" })}</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
