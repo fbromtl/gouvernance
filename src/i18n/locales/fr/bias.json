@@ -1,0 +1,134 @@
+{
+  "pageTitle": "Registre des biais",
+  "pageDescription": "Identifiez, suivez et corrigez les biais dans vos systèmes d'intelligence artificielle.",
+  "create": "Nouveau finding",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view": "Consulter",
+  "search": "Rechercher un finding...",
+  "noFindings": "Aucun finding de biais enregistré",
+  "noFindingsDescription": "Commencez par signaler un biais détecté dans un de vos systèmes IA.",
+  "biasTypes": {
+    "disparate_impact": "Impact disparate",
+    "representation": "Représentation",
+    "measurement": "Mesure (variables proxy)",
+    "historical": "Historique",
+    "aggregation": "Agrégation",
+    "evaluation": "Évaluation",
+    "toxicity": "Toxicité",
+    "hallucination": "Hallucination ciblée",
+    "stereotyping": "Stéréotypes",
+    "other": "Autre"
+  },
+  "detectionMethods": {
+    "automated_test": "Test automatisé",
+    "manual_audit": "Audit manuel",
+    "user_complaint": "Plainte utilisateur",
+    "monitoring": "Monitoring production",
+    "external_audit": "Audit externe",
+    "regulatory_review": "Revue réglementaire"
+  },
+  "protectedDimensions": {
+    "gender": "Genre",
+    "age": "Âge",
+    "ethnicity": "Origine ethnique",
+    "disability": "Handicap",
+    "religion": "Religion",
+    "sexual_orientation": "Orientation sexuelle",
+    "socioeconomic": "Statut socio-économique",
+    "geographic": "Localisation géographique",
+    "language": "Langue",
+    "intersectional": "Intersectionnalité"
+  },
+  "severities": {
+    "critical": "Critique",
+    "high": "Élevé",
+    "medium": "Moyen",
+    "low": "Faible"
+  },
+  "likelihoods": {
+    "certain": "Certain",
+    "likely": "Probable",
+    "possible": "Possible",
+    "unlikely": "Peu probable",
+    "rare": "Rare"
+  },
+  "statuses": {
+    "identified": "Identifié",
+    "in_remediation": "En remédiation",
+    "retest_pending": "Re-test en attente",
+    "resolved": "Résolu",
+    "accepted_risk": "Risque accepté"
+  },
+  "remediationMeasures": {
+    "data_rebalancing": "Rééquilibrage des données",
+    "model_retraining": "Réentraînement du modèle",
+    "threshold_adjustment": "Ajustement des seuils",
+    "feature_removal": "Retrait de variables",
+    "human_in_loop": "Supervision humaine",
+    "model_replacement": "Remplacement du modèle",
+    "post_processing": "Post-traitement",
+    "monitoring_enhancement": "Renforcement monitoring",
+    "other": "Autre"
+  },
+  "form": {
+    "title": "Titre du finding",
+    "aiSystem": "Système IA concerné",
+    "biasType": "Type de biais",
+    "detectionMethod": "Méthode de détection",
+    "protectedDimensions": "Dimensions protégées affectées",
+    "affectedGroups": "Groupes spécifiquement affectés",
+    "affectedGroupsPlaceholder": "Description des groupes affectés...",
+    "severity": "Sévérité",
+    "likelihood": "Probabilité d'occurrence",
+    "estimatedImpact": "Impact estimé",
+    "estimatedImpactPlaceholder": "Description de l'impact sur les personnes...",
+    "affectedCount": "Nombre de personnes affectées (estimé)",
+    "fairnessMetric": "Métrique de fairness",
+    "measuredValue": "Valeur mesurée",
+    "acceptableThreshold": "Seuil acceptable",
+    "remediationMeasures": "Mesures correctives",
+    "remediationDescription": "Description détaillée des actions",
+    "remediationDescriptionPlaceholder": "Détails du plan de remédiation...",
+    "remediationResponsible": "Responsable remédiation",
+    "remediationTargetDate": "Date cible de résolution",
+    "selectSystem": "Sélectionner un système",
+    "selectType": "Sélectionner un type",
+    "selectMethod": "Sélectionner une méthode",
+    "selectSeverity": "Sélectionner la sévérité",
+    "selectLikelihood": "Sélectionner la probabilité"
+  },
+  "filters": {
+    "allTypes": "Tous les types",
+    "allStatuses": "Tous les statuts",
+    "allSeverities": "Toutes les sévérités",
+    "allSystems": "Tous les systèmes",
+    "filterByType": "Type",
+    "filterByStatus": "Statut",
+    "filterBySeverity": "Sévérité",
+    "filterBySystem": "Système"
+  },
+  "table": {
+    "title": "Titre",
+    "system": "Système IA",
+    "biasType": "Type",
+    "severity": "Sévérité",
+    "status": "Statut",
+    "detectedAt": "Détecté le",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Finding de biais créé",
+    "updated": "Finding de biais mis à jour",
+    "deleted": "Finding de biais supprimé",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce finding ?"
+  },
+  "detail": {
+    "identification": "Identification",
+    "characterization": "Caractérisation",
+    "assessment": "Évaluation",
+    "metrics": "Métriques de fairness",
+    "remediation": "Plan de remédiation",
+    "noContent": "Non renseigné"
+  }
+}

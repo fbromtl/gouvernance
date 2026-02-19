@@ -31,8 +31,6 @@ import { PortailLayout } from "@/portail/layout/PortailLayout";
 import DashboardPage from "@/portail/pages/DashboardPage";
 import ProfilPage from "@/portail/pages/ProfilPage";
 import ConditionsPage from "@/portail/pages/ConditionsPage";
-import PlaceholderPage from "@/portail/pages/PlaceholderPage";
-
 // Module: AI Systems
 import AiSystemsListPage from "@/portail/pages/AiSystemsListPage";
 import AiSystemWizardPage from "@/portail/pages/AiSystemWizardPage";
@@ -53,6 +51,33 @@ import AdminPage from "@/portail/pages/AdminPage";
 
 // Module: Governance
 import GovernancePage from "@/portail/pages/GovernancePage";
+
+// Module: Compliance
+import CompliancePage from "@/portail/pages/CompliancePage";
+
+// Module: Decisions
+import DecisionsPage from "@/portail/pages/DecisionsPage";
+
+// Module: Bias
+import BiasPage from "@/portail/pages/BiasPage";
+
+// Module: Transparency
+import TransparencyPage from "@/portail/pages/TransparencyPage";
+
+// Module: Lifecycle
+import LifecyclePage from "@/portail/pages/LifecyclePage";
+
+// Module: Vendors
+import VendorsPage from "@/portail/pages/VendorsPage";
+
+// Module: Documents
+import DocumentsPage from "@/portail/pages/DocumentsPage";
+
+// Module: Monitoring
+import MonitoringPage from "@/portail/pages/MonitoringPage";
+
+// Module: Data
+import DataPage from "@/portail/pages/DataPage";
 
 // Onboarding
 import OnboardingPage from "@/portail/pages/OnboardingPage";
@@ -118,15 +143,15 @@ function App() {
 
               {/* Modules — placeholder pages (Phase 3+) */}
               <Route path="/governance" element={<GovernancePage />} />
-              <Route path="/decisions" element={<PlaceholderPage />} />
-              <Route path="/bias" element={<PlaceholderPage />} />
-              <Route path="/transparency" element={<PlaceholderPage />} />
-              <Route path="/lifecycle" element={<PlaceholderPage />} />
-              <Route path="/documents" element={<PlaceholderPage />} />
-              <Route path="/monitoring" element={<PlaceholderPage />} />
-              <Route path="/data" element={<PlaceholderPage />} />
-              <Route path="/vendors" element={<PlaceholderPage />} />
-              <Route path="/compliance" element={<PlaceholderPage />} />
+              <Route path="/decisions" element={<DecisionsPage />} />
+              <Route path="/bias" element={<BiasPage />} />
+              <Route path="/transparency" element={<TransparencyPage />} />
+              <Route path="/lifecycle" element={<LifecyclePage />} />
+              <Route path="/documents" element={<DocumentsPage />} />
+              <Route path="/monitoring" element={<MonitoringPage />} />
+              <Route path="/data" element={<DataPage />} />
+              <Route path="/vendors" element={<VendorsPage />} />
+              <Route path="/compliance" element={<CompliancePage />} />
               <Route path="/admin" element={<AdminPage />} />
             </Route>
 

@@ -1,0 +1,79 @@
+{
+  "pageTitle": "Cycle de vie et changements",
+  "pageDescription": "Tracez les événements du cycle de vie et les changements de vos systèmes IA.",
+  "create": "Nouvel événement",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view": "Consulter",
+  "search": "Rechercher un événement...",
+  "noEvents": "Aucun événement enregistré",
+  "noEventsDescription": "Commencez par enregistrer un changement sur un de vos systèmes IA.",
+  "eventTypes": {
+    "model_update": "Mise à jour du modèle",
+    "data_change": "Changement de données",
+    "prompt_change": "Changement de prompt/règles",
+    "threshold_change": "Changement de seuils",
+    "vendor_change": "Changement de fournisseur",
+    "infra_change": "Changement d'infrastructure",
+    "scope_extension": "Extension de périmètre",
+    "scope_reduction": "Réduction de périmètre",
+    "suspension": "Suspension",
+    "resumption": "Reprise",
+    "decommission": "Décommissionnement",
+    "bugfix": "Correction de bug"
+  },
+  "impacts": {
+    "none": "Aucun",
+    "low": "Faible",
+    "medium": "Moyen",
+    "high": "Élevé",
+    "critical": "Critique"
+  },
+  "form": {
+    "aiSystem": "Système IA",
+    "eventType": "Type d'événement",
+    "title": "Titre",
+    "description": "Description détaillée",
+    "descriptionPlaceholder": "Description du changement...",
+    "componentsModified": "Composants modifiés",
+    "previousVersion": "Version précédente",
+    "newVersion": "Nouvelle version",
+    "changeDate": "Date du changement",
+    "impact": "Impact estimé",
+    "isSubstantial": "Changement substantiel",
+    "riskReassessment": "Réévaluation de risque requise",
+    "selectSystem": "Sélectionner un système",
+    "selectType": "Sélectionner un type",
+    "selectImpact": "Sélectionner l'impact"
+  },
+  "components": {
+    "model": "Modèle",
+    "data": "Données",
+    "prompt": "Prompt",
+    "config": "Configuration",
+    "infrastructure": "Infrastructure",
+    "api": "API",
+    "ui": "Interface utilisateur"
+  },
+  "filters": {
+    "allTypes": "Tous les types",
+    "allSystems": "Tous les systèmes",
+    "filterByType": "Type",
+    "filterBySystem": "Système"
+  },
+  "table": {
+    "title": "Titre",
+    "system": "Système IA",
+    "eventType": "Type",
+    "impact": "Impact",
+    "substantial": "Substantiel",
+    "date": "Date",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Événement créé",
+    "updated": "Événement mis à jour",
+    "deleted": "Événement supprimé",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet événement ?"
+  }
+}

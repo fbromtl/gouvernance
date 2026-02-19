@@ -1,0 +1,100 @@
+{
+  "pageTitle": "Conformité Multi-Référentiels",
+  "pageDescription": "Suivez la conformité de votre organisation aux référentiels réglementaires applicables.",
+  "tabs": {
+    "dashboard": "Tableau de bord",
+    "frameworks": "Référentiels",
+    "remediation": "Remédiation"
+  },
+  "frameworks": {
+    "loi25": "Loi 25 (Québec)",
+    "euai": "EU AI Act",
+    "nist_ai_rmf": "NIST AI RMF",
+    "iso42001": "ISO/IEC 42001",
+    "rgpd": "RGPD"
+  },
+  "statuses": {
+    "compliant": "Conforme",
+    "partially_compliant": "Partiellement conforme",
+    "non_compliant": "Non conforme",
+    "not_applicable": "Non applicable"
+  },
+  "priorities": {
+    "critical": "Critique",
+    "high": "Élevée",
+    "medium": "Moyenne",
+    "low": "Faible"
+  },
+  "actionStatuses": {
+    "planned": "Planifiée",
+    "in_progress": "En cours",
+    "completed": "Complétée",
+    "deferred": "Reportée"
+  },
+  "kpis": {
+    "globalScore": "Score global",
+    "compliantCount": "Exigences conformes",
+    "criticalGaps": "Écarts critiques",
+    "activeActions": "Actions en cours"
+  },
+  "dashboard": {
+    "scoreByFramework": "Score par référentiel",
+    "statusDistribution": "Répartition des statuts",
+    "noData": "Aucune évaluation de conformité. Commencez par initialiser un référentiel.",
+    "initPrompt": "Initialiser un référentiel"
+  },
+  "matrix": {
+    "selectFramework": "Sélectionner un référentiel",
+    "allFrameworks": "Tous les référentiels",
+    "code": "Code",
+    "requirement": "Exigence",
+    "article": "Référence",
+    "module": "Module",
+    "status": "Statut",
+    "responsible": "Responsable",
+    "lastVerified": "Dernière vérification",
+    "actions": "Actions",
+    "comments": "Commentaires",
+    "noAssessments": "Aucune évaluation pour ce référentiel.",
+    "initFramework": "Initialiser ce référentiel",
+    "initAll": "Initialiser tous les référentiels",
+    "initializing": "Initialisation en cours...",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "saved": "Statut mis à jour",
+    "editComments": "Modifier les commentaires",
+    "noResponsible": "Non assigné",
+    "notVerified": "Jamais"
+  },
+  "remediation": {
+    "title": "Plan de remédiation",
+    "description": "Actions correctives pour les exigences non conformes ou partiellement conformes.",
+    "create": "Nouvelle action",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "noActions": "Aucune action de remédiation.",
+    "noActionsDescription": "Créez des actions correctives depuis l'onglet Référentiels ou utilisez le bouton ci-dessous.",
+    "actionTitle": "Titre de l'action",
+    "actionDescription": "Description",
+    "linkedRequirement": "Exigence liée",
+    "responsible": "Responsable",
+    "dueDate": "Échéance",
+    "priority": "Priorité",
+    "status": "Statut",
+    "notes": "Notes",
+    "createAction": "Créer l'action",
+    "updateAction": "Mettre à jour",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette action ?",
+    "deleteSuccess": "Action supprimée",
+    "createSuccess": "Action créée",
+    "updateSuccess": "Action mise à jour",
+    "filterByPriority": "Filtrer par priorité",
+    "filterByStatus": "Filtrer par statut",
+    "allPriorities": "Toutes les priorités",
+    "allStatuses": "Tous les statuts"
+  },
+  "empty": {
+    "title": "Conformité",
+    "description": "Commencez par initialiser les référentiels applicables à votre organisation."
+  }
+}

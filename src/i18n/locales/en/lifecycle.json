@@ -1,0 +1,79 @@
+{
+  "pageTitle": "Lifecycle & Changes",
+  "pageDescription": "Track lifecycle events and changes to your AI systems.",
+  "create": "New event",
+  "edit": "Edit",
+  "delete": "Delete",
+  "view": "View",
+  "search": "Search an event...",
+  "noEvents": "No events recorded",
+  "noEventsDescription": "Start by recording a change on one of your AI systems.",
+  "eventTypes": {
+    "model_update": "Model update",
+    "data_change": "Data change",
+    "prompt_change": "Prompt/rules change",
+    "threshold_change": "Threshold change",
+    "vendor_change": "Vendor change",
+    "infra_change": "Infrastructure change",
+    "scope_extension": "Scope extension",
+    "scope_reduction": "Scope reduction",
+    "suspension": "Suspension",
+    "resumption": "Resumption",
+    "decommission": "Decommissioning",
+    "bugfix": "Bug fix"
+  },
+  "impacts": {
+    "none": "None",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "critical": "Critical"
+  },
+  "form": {
+    "aiSystem": "AI System",
+    "eventType": "Event type",
+    "title": "Title",
+    "description": "Detailed description",
+    "descriptionPlaceholder": "Description of the change...",
+    "componentsModified": "Modified components",
+    "previousVersion": "Previous version",
+    "newVersion": "New version",
+    "changeDate": "Change date",
+    "impact": "Estimated impact",
+    "isSubstantial": "Substantial change",
+    "riskReassessment": "Risk reassessment required",
+    "selectSystem": "Select a system",
+    "selectType": "Select a type",
+    "selectImpact": "Select impact"
+  },
+  "components": {
+    "model": "Model",
+    "data": "Data",
+    "prompt": "Prompt",
+    "config": "Configuration",
+    "infrastructure": "Infrastructure",
+    "api": "API",
+    "ui": "User interface"
+  },
+  "filters": {
+    "allTypes": "All types",
+    "allSystems": "All systems",
+    "filterByType": "Type",
+    "filterBySystem": "System"
+  },
+  "table": {
+    "title": "Title",
+    "system": "AI System",
+    "eventType": "Type",
+    "impact": "Impact",
+    "substantial": "Substantial",
+    "date": "Date",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Event created",
+    "updated": "Event updated",
+    "deleted": "Event deleted",
+    "deleteConfirm": "Are you sure you want to delete this event?"
+  }
+}

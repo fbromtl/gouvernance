@@ -1,0 +1,138 @@
+{
+  "pageTitle": "Transparency & Contestation",
+  "pageDescription": "Manage transparency obligations and contestation mechanisms for your automated decisions.",
+  "tabs": {
+    "registry": "Registry",
+    "contestations": "Contestations"
+  },
+  "registry": {
+    "title": "Automated Decisions Registry",
+    "create": "New entry",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noEntries": "No automated decisions recorded",
+    "noEntriesDescription": "Document the automated decisions of your AI systems."
+  },
+  "automationLevels": {
+    "fully_automated": "Fully automated",
+    "semi_automated": "Semi-automated",
+    "assisted": "Assisted"
+  },
+  "decisionImpacts": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "legalBases": {
+    "consent": "Consent",
+    "legitimate_interest": "Legitimate interest",
+    "legal_obligation": "Legal obligation",
+    "contract": "Contract"
+  },
+  "registryStatuses": {
+    "active": "Active",
+    "suspended": "Suspended",
+    "decommissioned": "Decommissioned"
+  },
+  "receptionChannels": {
+    "email": "Email",
+    "web_form": "Web form",
+    "mail": "Mail",
+    "phone": "Phone",
+    "in_person": "In person"
+  },
+  "contestationStatuses": {
+    "received": "Received",
+    "assigned": "Assigned",
+    "under_review": "Under review",
+    "decision_revised": "Decision revised",
+    "decision_maintained": "Decision maintained",
+    "notified": "Notified",
+    "closed": "Closed"
+  },
+  "reviewOutcomes": {
+    "maintained": "Maintained",
+    "revised": "Revised"
+  },
+  "registryForm": {
+    "aiSystem": "AI System",
+    "decisionType": "Decision type",
+    "decisionTypePlaceholder": "E.g. Credit scoring, CV sorting...",
+    "automationLevel": "Automation level",
+    "affectedPersons": "Affected persons",
+    "affectedPersonsPlaceholder": "E.g. clients, employees, candidates...",
+    "decisionImpact": "Decision impact",
+    "informationChannel": "Information channel",
+    "informationChannelPlaceholder": "How persons are informed...",
+    "explanationEnabled": "Right to explanation enabled",
+    "contestationEnabled": "Contestation mechanism enabled",
+    "legalBasis": "Legal basis",
+    "status": "Status",
+    "selectSystem": "Select a system",
+    "selectLevel": "Select level",
+    "selectImpact": "Select impact",
+    "selectBasis": "Select legal basis",
+    "selectStatus": "Select status"
+  },
+  "registryTable": {
+    "system": "AI System",
+    "decisionType": "Decision type",
+    "automationLevel": "Automation",
+    "impact": "Impact",
+    "contestation": "Contestation",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "contestation": {
+    "title": "Contestations",
+    "create": "New contestation",
+    "edit": "Edit",
+    "view": "View",
+    "noContestations": "No contestations recorded",
+    "noContestationsDescription": "Contestation requests for automated decisions will appear here."
+  },
+  "contestationForm": {
+    "caseNumber": "Case number",
+    "aiSystem": "Related AI system",
+    "requesterName": "Requester name",
+    "requesterEmail": "Requester email",
+    "requesterPhone": "Requester phone",
+    "receivedAt": "Date received",
+    "receptionChannel": "Reception channel",
+    "contestedDecision": "Contested decision",
+    "contestedDecisionPlaceholder": "Description of the contested decision...",
+    "contestationReason": "Contestation reason",
+    "contestationReasonPlaceholder": "Reasons for the contestation...",
+    "observations": "Requester observations",
+    "observationsPlaceholder": "Observations or supporting documents...",
+    "assignedTo": "Assigned to",
+    "analysis": "Analysis",
+    "analysisPlaceholder": "Case examination, data verification...",
+    "reviewOutcome": "Review outcome",
+    "justification": "Justification",
+    "justificationPlaceholder": "Why this decision...",
+    "revisedDecision": "Revised decision",
+    "revisedDecisionPlaceholder": "If revised, description of new decision...",
+    "decisionDate": "Decision date",
+    "status": "Status",
+    "selectChannel": "Select channel",
+    "selectOutcome": "Select outcome"
+  },
+  "contestationTable": {
+    "caseNumber": "Case",
+    "requester": "Requester",
+    "system": "AI System",
+    "receivedAt": "Received on",
+    "status": "Status",
+    "outcome": "Outcome",
+    "actions": "Actions"
+  },
+  "messages": {
+    "registryCreated": "Registry entry created",
+    "registryUpdated": "Registry entry updated",
+    "registryDeleted": "Registry entry deleted",
+    "contestationCreated": "Contestation recorded",
+    "contestationUpdated": "Contestation updated",
+    "deleteConfirm": "Are you sure you want to delete this entry?"
+  }
+}

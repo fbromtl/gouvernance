@@ -1,0 +1,110 @@
+{
+  "pageTitle": "Monitoring Post-Deploiement",
+  "pageDescription": "Surveillez la performance et la sante de vos systemes IA en production.",
+  "tabs": {
+    "dashboard": "Tableau de bord",
+    "metrics": "Metriques",
+    "dataPoints": "Donnees"
+  },
+  "create": "Nouvelle metrique",
+  "addDataPoint": "Ajouter une mesure",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "search": "Rechercher...",
+  "noMetrics": "Aucune metrique configuree",
+  "noMetricsDescription": "Commencez par configurer les metriques a surveiller pour vos systemes IA.",
+  "noDataPoints": "Aucune donnee",
+  "noDataPointsDescription": "Aucune mesure enregistree pour cette metrique.",
+  "categories": {
+    "performance": "Performance",
+    "latency": "Latence",
+    "volume": "Volume",
+    "errors": "Erreurs",
+    "drift_data": "Derive donnees",
+    "drift_model": "Derive modele",
+    "quality": "Qualite outputs",
+    "feedback": "Feedback",
+    "custom": "Personnalise"
+  },
+  "directions": {
+    "higher_is_better": "Plus eleve = mieux",
+    "lower_is_better": "Plus bas = mieux",
+    "target_range": "Plage cible"
+  },
+  "frequencies": {
+    "realtime": "Temps reel",
+    "hourly": "Horaire",
+    "daily": "Quotidien",
+    "weekly": "Hebdomadaire",
+    "monthly": "Mensuel",
+    "on_demand": "Sur demande"
+  },
+  "sources": {
+    "manual_input": "Saisie manuelle",
+    "csv_import": "Import CSV",
+    "api_webhook": "API / Webhook",
+    "scheduled_report": "Rapport planifie"
+  },
+  "alertLevels": {
+    "ok": "OK",
+    "warning": "Avertissement",
+    "critical": "Critique"
+  },
+  "form": {
+    "name": "Nom de la metrique",
+    "category": "Categorie",
+    "unit": "Unite",
+    "unitPlaceholder": "ex: %, ms, score",
+    "direction": "Direction",
+    "targetValue": "Valeur cible",
+    "warningThreshold": "Seuil avertissement",
+    "criticalThreshold": "Seuil critique",
+    "acceptableMin": "Minimum acceptable",
+    "acceptableMax": "Maximum acceptable",
+    "frequency": "Frequence de collecte",
+    "source": "Source",
+    "aiSystem": "Systeme IA",
+    "selectSystem": "Selectionner un systeme",
+    "selectCategory": "Selectionner une categorie",
+    "selectDirection": "Selectionner",
+    "selectFrequency": "Selectionner une frequence",
+    "selectSource": "Selectionner une source",
+    "value": "Valeur",
+    "recordedAt": "Date de mesure",
+    "notes": "Notes",
+    "notesPlaceholder": "Notes sur cette mesure..."
+  },
+  "filters": {
+    "allCategories": "Toutes les categories",
+    "allSystems": "Tous les systemes",
+    "filterByCategory": "Categorie",
+    "filterBySystem": "Systeme"
+  },
+  "table": {
+    "name": "Nom",
+    "category": "Categorie",
+    "system": "Systeme IA",
+    "unit": "Unite",
+    "lastValue": "Derniere valeur",
+    "status": "Statut",
+    "frequency": "Frequence",
+    "actions": "Actions",
+    "value": "Valeur",
+    "date": "Date",
+    "alertLevel": "Niveau",
+    "notes": "Notes"
+  },
+  "messages": {
+    "metricCreated": "Metrique creee",
+    "metricUpdated": "Metrique mise a jour",
+    "metricDeleted": "Metrique supprimee",
+    "dataPointAdded": "Mesure ajoutee",
+    "deleteConfirm": "Etes-vous sur de vouloir supprimer cette metrique ?"
+  },
+  "kpi": {
+    "totalMetrics": "Metriques actives",
+    "systemsMonitored": "Systemes surveilles",
+    "warningAlerts": "Avertissements",
+    "criticalAlerts": "Alertes critiques"
+  }
+}

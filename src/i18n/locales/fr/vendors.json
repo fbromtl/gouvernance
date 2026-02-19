@@ -1,0 +1,84 @@
+{
+  "pageTitle": "Gestion des tiers",
+  "pageDescription": "Gérez vos fournisseurs IA, leurs contrats et les risques associés.",
+  "create": "Nouveau fournisseur",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view": "Consulter",
+  "search": "Rechercher un fournisseur...",
+  "noVendors": "Aucun fournisseur enregistré",
+  "noVendorsDescription": "Commencez par ajouter un fournisseur ou partenaire IA.",
+  "serviceTypes": {
+    "model_api": "API de modèle IA",
+    "pretrained_model": "Modèle pré-entraîné",
+    "saas_platform": "Plateforme SaaS",
+    "data_provider": "Fournisseur de données",
+    "infrastructure": "Infrastructure cloud",
+    "consulting": "Conseil IA",
+    "labeling": "Annotation / étiquetage",
+    "other": "Autre"
+  },
+  "contractTypes": {
+    "subscription": "Abonnement",
+    "per_use": "À l'utilisation",
+    "license": "Licence",
+    "custom": "Sur mesure"
+  },
+  "riskLevels": {
+    "low_risk": "Risque faible",
+    "medium_risk": "Risque modéré",
+    "high_risk": "Risque élevé"
+  },
+  "statuses": {
+    "active": "Actif",
+    "under_evaluation": "En évaluation",
+    "suspended": "Suspendu",
+    "terminated": "Résilié"
+  },
+  "form": {
+    "name": "Nom du fournisseur",
+    "serviceTypes": "Types de service",
+    "website": "Site web",
+    "contactName": "Contact principal",
+    "contactEmail": "Email du contact",
+    "contactPhone": "Téléphone",
+    "country": "Pays",
+    "region": "Région",
+    "knownSubcontractors": "Sous-traitants connus",
+    "knownSubcontractorsPlaceholder": "Liste des sous-traitants...",
+    "aiSystems": "Systèmes IA liés",
+    "contractStartDate": "Début du contrat",
+    "contractEndDate": "Fin du contrat",
+    "contractType": "Type de contrat",
+    "contractAmount": "Montant",
+    "contractClauses": "Clauses clés",
+    "contractClausesPlaceholder": "Résumé des clauses contractuelles...",
+    "slaDetails": "Détails du SLA",
+    "slaDetailsPlaceholder": "Disponibilité, temps de réponse, support...",
+    "riskLevel": "Niveau de risque",
+    "status": "Statut",
+    "selectType": "Sélectionner un type",
+    "selectRisk": "Sélectionner le niveau",
+    "selectStatus": "Sélectionner le statut"
+  },
+  "filters": {
+    "allStatuses": "Tous les statuts",
+    "allRisks": "Tous les niveaux",
+    "filterByStatus": "Statut",
+    "filterByRisk": "Risque"
+  },
+  "table": {
+    "name": "Nom",
+    "services": "Services",
+    "riskLevel": "Risque",
+    "status": "Statut",
+    "contractEnd": "Fin contrat",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Fournisseur créé",
+    "updated": "Fournisseur mis à jour",
+    "deleted": "Fournisseur supprimé",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce fournisseur ?"
+  }
+}

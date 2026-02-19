@@ -1,0 +1,77 @@
+{
+  "pageTitle": "Documentation & Evidence",
+  "pageDescription": "Centralize and generate governance documentation for your AI systems.",
+  "create": "New document",
+  "upload": "Upload",
+  "generate": "Generate",
+  "edit": "Edit",
+  "delete": "Delete",
+  "view": "View",
+  "download": "Download",
+  "approve": "Approve",
+  "archive": "Archive",
+  "search": "Search a document...",
+  "noDocuments": "No documents",
+  "noDocumentsDescription": "Start by uploading or generating a governance document.",
+  "types": {
+    "system_card": "AI System Card",
+    "monitoring_plan": "Monitoring plan",
+    "risk_summary": "Risk summary",
+    "decisions_report": "Decision log",
+    "incidents_report": "Incident log",
+    "bias_report": "Bias report",
+    "eu_ai_act_annex_iv": "EU AI Act technical documentation",
+    "compliance_report": "Compliance report",
+    "fria_report": "FRIA report",
+    "efvp_report": "PIA report",
+    "manual_upload": "Uploaded document"
+  },
+  "statuses": {
+    "draft": "Draft",
+    "in_review": "In review",
+    "approved": "Approved",
+    "archived": "Archived"
+  },
+  "form": {
+    "title": "Document title",
+    "type": "Document type",
+    "aiSystem": "Associated AI system",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the document content...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Add a tag...",
+    "file": "File",
+    "selectType": "Select a type",
+    "selectSystem": "Select a system"
+  },
+  "filters": {
+    "allTypes": "All types",
+    "allStatuses": "All statuses",
+    "filterByType": "Type",
+    "filterByStatus": "Status"
+  },
+  "table": {
+    "title": "Title",
+    "type": "Type",
+    "system": "AI System",
+    "status": "Status",
+    "version": "Version",
+    "date": "Date",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Document created",
+    "updated": "Document updated",
+    "deleted": "Document deleted",
+    "approved": "Document approved",
+    "archived": "Document archived",
+    "deleteConfirm": "Are you sure you want to delete this document?"
+  },
+  "detail": {
+    "description": "Description",
+    "tags": "Tags",
+    "file": "File",
+    "approvedBy": "Approved by",
+    "noContent": "Not provided"
+  }
+}

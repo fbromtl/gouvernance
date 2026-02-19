@@ -1,0 +1,77 @@
+{
+  "pageTitle": "Documentation & Evidence",
+  "pageDescription": "Centralisez et generez la documentation de gouvernance de vos systemes IA.",
+  "create": "Nouveau document",
+  "upload": "Televerser",
+  "generate": "Generer",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view": "Consulter",
+  "download": "Telecharger",
+  "approve": "Approuver",
+  "archive": "Archiver",
+  "search": "Rechercher un document...",
+  "noDocuments": "Aucun document",
+  "noDocumentsDescription": "Commencez par televerser ou generer un document de gouvernance.",
+  "types": {
+    "system_card": "AI System Card",
+    "monitoring_plan": "Plan de monitoring",
+    "risk_summary": "Resume des risques",
+    "decisions_report": "Registre des decisions",
+    "incidents_report": "Registre des incidents",
+    "bias_report": "Registre des biais",
+    "eu_ai_act_annex_iv": "Documentation technique EU AI Act",
+    "compliance_report": "Rapport de conformite",
+    "fria_report": "Rapport FRIA",
+    "efvp_report": "Rapport EFVP",
+    "manual_upload": "Document uploade"
+  },
+  "statuses": {
+    "draft": "Brouillon",
+    "in_review": "En revision",
+    "approved": "Approuve",
+    "archived": "Archive"
+  },
+  "form": {
+    "title": "Titre du document",
+    "type": "Type de document",
+    "aiSystem": "Systeme IA associe",
+    "description": "Description",
+    "descriptionPlaceholder": "Decrivez le contenu du document...",
+    "tags": "Tags",
+    "tagsPlaceholder": "Ajouter un tag...",
+    "file": "Fichier",
+    "selectType": "Selectionner un type",
+    "selectSystem": "Selectionner un systeme"
+  },
+  "filters": {
+    "allTypes": "Tous les types",
+    "allStatuses": "Tous les statuts",
+    "filterByType": "Type",
+    "filterByStatus": "Statut"
+  },
+  "table": {
+    "title": "Titre",
+    "type": "Type",
+    "system": "Systeme IA",
+    "status": "Statut",
+    "version": "Version",
+    "date": "Date",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Document cree",
+    "updated": "Document mis a jour",
+    "deleted": "Document supprime",
+    "approved": "Document approuve",
+    "archived": "Document archive",
+    "deleteConfirm": "Etes-vous sur de vouloir supprimer ce document ?"
+  },
+  "detail": {
+    "description": "Description",
+    "tags": "Tags",
+    "file": "Fichier",
+    "approvedBy": "Approuve par",
+    "noContent": "Non renseigne"
+  }
+}

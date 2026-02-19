@@ -1,0 +1,179 @@
+{
+  "pageTitle": "Gestion des donnees & EFVP",
+  "pageDescription": "Inventoriez les jeux de donnees, documentez la base legale et gerez les transferts.",
+  "tabs": {
+    "datasets": "Jeux de donnees",
+    "transfers": "Transferts"
+  },
+  "create": "Nouveau jeu de donnees",
+  "createTransfer": "Nouveau transfert",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "view": "Consulter",
+  "search": "Rechercher...",
+  "noDatasets": "Aucun jeu de donnees",
+  "noDatasetsDescription": "Commencez par inventorier les jeux de donnees utilises par vos systemes IA.",
+  "noTransfers": "Aucun transfert",
+  "noTransfersDescription": "Aucun transfert de donnees hors Quebec enregistre.",
+  "sources": {
+    "internal_db": "Base de donnees interne",
+    "client_provided": "Fourni par le client",
+    "vendor_api": "API fournisseur",
+    "public_dataset": "Jeu de donnees public",
+    "web_scraping": "Web scraping",
+    "synthetic": "Donnees synthetiques",
+    "third_party": "Tiers",
+    "other": "Autre"
+  },
+  "dataCategories": {
+    "identifiers": "Identifiants",
+    "demographic": "Demographiques",
+    "financial": "Financieres",
+    "health": "Sante",
+    "biometric": "Biometriques",
+    "location": "Geolocalisation",
+    "behavioral": "Comportementales",
+    "professional": "Professionnelles",
+    "opinions": "Opinions",
+    "judicial": "Judiciaires",
+    "non_personal": "Non personnelles"
+  },
+  "classifications": {
+    "none": "Aucune RP",
+    "personal": "RP standards",
+    "sensitive": "RP sensibles"
+  },
+  "volumes": {
+    "lt_1k": "< 1 000",
+    "1k_10k": "1 000 - 10 000",
+    "10k_100k": "10 000 - 100 000",
+    "100k_1m": "100 000 - 1 M",
+    "gt_1m": "> 1 M"
+  },
+  "qualities": {
+    "high": "Haute",
+    "medium": "Moyenne",
+    "low": "Basse",
+    "unknown": "Inconnue"
+  },
+  "freshnesses": {
+    "realtime": "Temps reel",
+    "daily": "Quotidien",
+    "weekly": "Hebdomadaire",
+    "monthly": "Mensuel",
+    "static": "Statique"
+  },
+  "formats": {
+    "structured_db": "Base structuree",
+    "csv": "CSV",
+    "json": "JSON",
+    "images": "Images",
+    "text": "Texte",
+    "audio": "Audio",
+    "video": "Video",
+    "mixed": "Mixte"
+  },
+  "legalBases": {
+    "consent": "Consentement",
+    "contract": "Contrat",
+    "legal_obligation": "Obligation legale",
+    "legitimate_interest": "Interet legitime",
+    "vital_interest": "Interet vital",
+    "public_interest": "Interet public"
+  },
+  "destructionPolicies": {
+    "auto_delete": "Suppression automatique",
+    "manual_review": "Revue manuelle",
+    "anonymization": "Anonymisation",
+    "archival": "Archivage"
+  },
+  "retentionUnits": {
+    "days": "jours",
+    "months": "mois",
+    "years": "annees"
+  },
+  "statuses": {
+    "active": "Actif",
+    "archived": "Archive",
+    "pending_deletion": "En attente de suppression",
+    "suspended": "Suspendu",
+    "terminated": "Termine"
+  },
+  "contractualBases": {
+    "contractual_clause": "Clause contractuelle",
+    "compliance_commitment": "Engagement de conformite",
+    "consent": "Consentement"
+  },
+  "form": {
+    "name": "Nom du jeu de donnees",
+    "description": "Description",
+    "descriptionPlaceholder": "Decrivez le jeu de donnees...",
+    "source": "Source",
+    "selectSource": "Selectionner une source",
+    "dataCategories": "Categories de donnees",
+    "classification": "Classification RP",
+    "volume": "Volume",
+    "quality": "Qualite",
+    "freshness": "Fraicheur",
+    "storageLocations": "Localisation de stockage",
+    "format": "Format",
+    "representativeness": "Representativite",
+    "representativenessPlaceholder": "Notes sur la representativite...",
+    "legalBasis": "Base legale",
+    "selectLegalBasis": "Selectionner une base legale",
+    "declaredPurpose": "Finalite declaree",
+    "declaredPurposePlaceholder": "Pourquoi ces donnees sont collectees...",
+    "consentObtained": "Consentement obtenu",
+    "withdrawalMechanism": "Mecanisme de retrait",
+    "withdrawalPlaceholder": "Comment le consentement peut etre retire...",
+    "retentionDuration": "Duree de conservation",
+    "retentionUnit": "Unite",
+    "retentionJustification": "Justification",
+    "retentionPlaceholder": "Pourquoi cette duree...",
+    "destructionPolicy": "Politique de destruction",
+    "selectDestructionPolicy": "Selectionner une politique",
+    "nextReviewDate": "Prochaine revue",
+    "aiSystems": "Systemes IA associes",
+    "destinationCountry": "Pays de destination",
+    "destinationEntity": "Entite receptrice",
+    "transferPurpose": "Finalite du transfert",
+    "transferPurposePlaceholder": "Pourquoi ces donnees sont transferees...",
+    "contractualBasis": "Base contractuelle",
+    "selectContractualBasis": "Selectionner",
+    "efvpCompleted": "EFVP realisee",
+    "protectionMeasures": "Mesures de protection",
+    "protectionPlaceholder": "Mesures mises en place...",
+    "selectDataset": "Selectionner un jeu de donnees"
+  },
+  "filters": {
+    "allSources": "Toutes les sources",
+    "allClassifications": "Toutes les classifications",
+    "allStatuses": "Tous les statuts",
+    "filterBySource": "Source",
+    "filterByClassification": "Classification",
+    "filterByStatus": "Statut"
+  },
+  "table": {
+    "name": "Nom",
+    "source": "Source",
+    "classification": "Classification",
+    "volume": "Volume",
+    "status": "Statut",
+    "actions": "Actions",
+    "dataset": "Jeu de donnees",
+    "destination": "Destination",
+    "purpose": "Finalite",
+    "efvp": "EFVP",
+    "date": "Date"
+  },
+  "messages": {
+    "datasetCreated": "Jeu de donnees cree",
+    "datasetUpdated": "Jeu de donnees mis a jour",
+    "datasetDeleted": "Jeu de donnees supprime",
+    "transferCreated": "Transfert cree",
+    "transferUpdated": "Transfert mis a jour",
+    "transferDeleted": "Transfert supprime",
+    "deleteDatasetConfirm": "Etes-vous sur de vouloir supprimer ce jeu de donnees ?",
+    "deleteTransferConfirm": "Etes-vous sur de vouloir supprimer ce transfert ?"
+  }
+}

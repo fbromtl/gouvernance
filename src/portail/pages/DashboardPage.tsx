@@ -4,6 +4,7 @@ import { useAuth } from "@/lib/auth";
 import { useOrganization } from "@/hooks/useOrganization";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import { useIncidents } from "@/hooks/useIncidents";
+import { useComplianceScores } from "@/hooks/useCompliance";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,6 +18,7 @@ export default function DashboardPage() {
   // Live data from modules
   const { data: aiSystems = [] } = useAiSystems();
   const { data: incidents = [] } = useIncidents();
+  const { data: complianceScores } = useComplianceScores();
 
   const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
 
@@ -50,7 +52,7 @@ export default function DashboardPage() {
 
   const statCards = [
     { key: "aiSystems", icon: Bot, value: String(productionSystems), path: "/ai-systems" },
-    { key: "complianceScore", icon: CheckCircle, value: "—", path: "/compliance" },
+    { key: "complianceScore", icon: CheckCircle, value: complianceScores ? `${complianceScores.global}%` : "—", path: "/compliance" },
     { key: "activeIncidents", icon: AlertCircle, value: String(activeIncidents), path: "/incidents" },
     { key: "pendingAlerts", icon: AlertTriangle, value: String(highRiskSystems), path: "/risks" },
   ];

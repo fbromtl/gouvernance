@@ -1,0 +1,138 @@
+{
+  "pageTitle": "Transparence et contestation",
+  "pageDescription": "Gérez les obligations de transparence et les mécanismes de contestation pour vos décisions automatisées.",
+  "tabs": {
+    "registry": "Registre",
+    "contestations": "Contestations"
+  },
+  "registry": {
+    "title": "Registre des décisions automatisées",
+    "create": "Nouvelle entrée",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "noEntries": "Aucune décision automatisée enregistrée",
+    "noEntriesDescription": "Documentez les décisions automatisées de vos systèmes IA."
+  },
+  "automationLevels": {
+    "fully_automated": "Entièrement automatisée",
+    "semi_automated": "Semi-automatisée",
+    "assisted": "Assistée"
+  },
+  "decisionImpacts": {
+    "high": "Élevé",
+    "medium": "Moyen",
+    "low": "Faible"
+  },
+  "legalBases": {
+    "consent": "Consentement",
+    "legitimate_interest": "Intérêt légitime",
+    "legal_obligation": "Obligation légale",
+    "contract": "Contrat"
+  },
+  "registryStatuses": {
+    "active": "Actif",
+    "suspended": "Suspendu",
+    "decommissioned": "Décommissionné"
+  },
+  "receptionChannels": {
+    "email": "Courriel",
+    "web_form": "Formulaire web",
+    "mail": "Courrier",
+    "phone": "Téléphone",
+    "in_person": "En personne"
+  },
+  "contestationStatuses": {
+    "received": "Reçue",
+    "assigned": "Assignée",
+    "under_review": "En révision",
+    "decision_revised": "Décision révisée",
+    "decision_maintained": "Décision maintenue",
+    "notified": "Notifié",
+    "closed": "Fermée"
+  },
+  "reviewOutcomes": {
+    "maintained": "Maintenue",
+    "revised": "Révisée"
+  },
+  "registryForm": {
+    "aiSystem": "Système IA",
+    "decisionType": "Type de décision",
+    "decisionTypePlaceholder": "Ex: Scoring de crédit, Tri de CV...",
+    "automationLevel": "Niveau d'automatisation",
+    "affectedPersons": "Personnes touchées",
+    "affectedPersonsPlaceholder": "Ex: clients, employés, candidats...",
+    "decisionImpact": "Impact de la décision",
+    "informationChannel": "Canal d'information",
+    "informationChannelPlaceholder": "Comment les personnes sont informées...",
+    "explanationEnabled": "Droit d'explication activé",
+    "contestationEnabled": "Mécanisme de contestation activé",
+    "legalBasis": "Base légale",
+    "status": "Statut",
+    "selectSystem": "Sélectionner un système",
+    "selectLevel": "Sélectionner le niveau",
+    "selectImpact": "Sélectionner l'impact",
+    "selectBasis": "Sélectionner la base légale",
+    "selectStatus": "Sélectionner le statut"
+  },
+  "registryTable": {
+    "system": "Système IA",
+    "decisionType": "Type de décision",
+    "automationLevel": "Automatisation",
+    "impact": "Impact",
+    "contestation": "Contestation",
+    "status": "Statut",
+    "actions": "Actions"
+  },
+  "contestation": {
+    "title": "Contestations",
+    "create": "Nouvelle contestation",
+    "edit": "Modifier",
+    "view": "Consulter",
+    "noContestations": "Aucune contestation enregistrée",
+    "noContestationsDescription": "Les demandes de contestation de décisions automatisées apparaîtront ici."
+  },
+  "contestationForm": {
+    "caseNumber": "Numéro de dossier",
+    "aiSystem": "Système IA concerné",
+    "requesterName": "Nom du demandeur",
+    "requesterEmail": "Courriel du demandeur",
+    "requesterPhone": "Téléphone du demandeur",
+    "receivedAt": "Date de réception",
+    "receptionChannel": "Canal de réception",
+    "contestedDecision": "Décision contestée",
+    "contestedDecisionPlaceholder": "Description de la décision contestée...",
+    "contestationReason": "Motif de contestation",
+    "contestationReasonPlaceholder": "Raisons de la contestation...",
+    "observations": "Observations du demandeur",
+    "observationsPlaceholder": "Observations ou pièces complémentaires...",
+    "assignedTo": "Assigné à",
+    "analysis": "Analyse",
+    "analysisPlaceholder": "Examen du cas, vérification des données...",
+    "reviewOutcome": "Issue de la révision",
+    "justification": "Justification",
+    "justificationPlaceholder": "Pourquoi cette décision...",
+    "revisedDecision": "Nouvelle décision",
+    "revisedDecisionPlaceholder": "Si révisée, description de la nouvelle décision...",
+    "decisionDate": "Date de la décision",
+    "status": "Statut",
+    "selectChannel": "Sélectionner le canal",
+    "selectOutcome": "Sélectionner l'issue"
+  },
+  "contestationTable": {
+    "caseNumber": "Dossier",
+    "requester": "Demandeur",
+    "system": "Système IA",
+    "receivedAt": "Reçue le",
+    "status": "Statut",
+    "outcome": "Issue",
+    "actions": "Actions"
+  },
+  "messages": {
+    "registryCreated": "Entrée du registre créée",
+    "registryUpdated": "Entrée du registre mise à jour",
+    "registryDeleted": "Entrée du registre supprimée",
+    "contestationCreated": "Contestation enregistrée",
+    "contestationUpdated": "Contestation mise à jour",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette entrée ?"
+  }
+}

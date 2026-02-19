@@ -13,6 +13,15 @@ import frIncidents from './locales/fr/incidents.json'
 import frAdmin from './locales/fr/admin.json'
 import frGovernance from './locales/fr/governance.json'
 import frOnboarding from './locales/fr/onboarding.json'
+import frCompliance from './locales/fr/compliance.json'
+import frDecisions from './locales/fr/decisions.json'
+import frBias from './locales/fr/bias.json'
+import frTransparency from './locales/fr/transparency.json'
+import frVendors from './locales/fr/vendors.json'
+import frLifecycle from './locales/fr/lifecycle.json'
+import frDocuments from './locales/fr/documents.json'
+import frMonitoring from './locales/fr/monitoring.json'
+import frData from './locales/fr/data.json'
 
 import enCommon from './locales/en/common.json'
 import enDashboard from './locales/en/dashboard.json'
@@ -25,6 +34,15 @@ import enIncidents from './locales/en/incidents.json'
 import enAdmin from './locales/en/admin.json'
 import enGovernance from './locales/en/governance.json'
 import enOnboarding from './locales/en/onboarding.json'
+import enCompliance from './locales/en/compliance.json'
+import enDecisions from './locales/en/decisions.json'
+import enBias from './locales/en/bias.json'
+import enTransparency from './locales/en/transparency.json'
+import enVendors from './locales/en/vendors.json'
+import enLifecycle from './locales/en/lifecycle.json'
+import enDocuments from './locales/en/documents.json'
+import enMonitoring from './locales/en/monitoring.json'
+import enData from './locales/en/data.json'
 
 export const defaultNS = 'common'
 export const supportedLanguages = ['fr', 'en'] as const
@@ -47,6 +65,15 @@ i18n
         admin: frAdmin,
         governance: frGovernance,
         onboarding: frOnboarding,
+        compliance: frCompliance,
+        decisions: frDecisions,
+        bias: frBias,
+        transparency: frTransparency,
+        vendors: frVendors,
+        lifecycle: frLifecycle,
+        documents: frDocuments,
+        monitoring: frMonitoring,
+        data: frData,
       },
       en: {
         common: enCommon,
@@ -60,11 +87,20 @@ i18n
         admin: enAdmin,
         governance: enGovernance,
         onboarding: enOnboarding,
+        compliance: enCompliance,
+        decisions: enDecisions,
+        bias: enBias,
+        transparency: enTransparency,
+        vendors: enVendors,
+        lifecycle: enLifecycle,
+        documents: enDocuments,
+        monitoring: enMonitoring,
+        data: enData,
       },
     },
     fallbackLng: 'fr',
     defaultNS,
-    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding'],
+    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding', 'compliance', 'decisions', 'bias', 'transparency', 'vendors', 'lifecycle', 'documents', 'monitoring', 'data'],
     interpolation: {
       escapeValue: false,
     },

@@ -1,0 +1,110 @@
+{
+  "pageTitle": "Post-Deployment Monitoring",
+  "pageDescription": "Monitor the performance and health of your AI systems in production.",
+  "tabs": {
+    "dashboard": "Dashboard",
+    "metrics": "Metrics",
+    "dataPoints": "Data"
+  },
+  "create": "New metric",
+  "addDataPoint": "Add measurement",
+  "edit": "Edit",
+  "delete": "Delete",
+  "search": "Search...",
+  "noMetrics": "No metrics configured",
+  "noMetricsDescription": "Start by configuring the metrics to monitor for your AI systems.",
+  "noDataPoints": "No data",
+  "noDataPointsDescription": "No measurements recorded for this metric.",
+  "categories": {
+    "performance": "Performance",
+    "latency": "Latency",
+    "volume": "Volume",
+    "errors": "Errors",
+    "drift_data": "Data drift",
+    "drift_model": "Model drift",
+    "quality": "Output quality",
+    "feedback": "Feedback",
+    "custom": "Custom"
+  },
+  "directions": {
+    "higher_is_better": "Higher is better",
+    "lower_is_better": "Lower is better",
+    "target_range": "Target range"
+  },
+  "frequencies": {
+    "realtime": "Real-time",
+    "hourly": "Hourly",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "on_demand": "On demand"
+  },
+  "sources": {
+    "manual_input": "Manual input",
+    "csv_import": "CSV import",
+    "api_webhook": "API / Webhook",
+    "scheduled_report": "Scheduled report"
+  },
+  "alertLevels": {
+    "ok": "OK",
+    "warning": "Warning",
+    "critical": "Critical"
+  },
+  "form": {
+    "name": "Metric name",
+    "category": "Category",
+    "unit": "Unit",
+    "unitPlaceholder": "e.g.: %, ms, score",
+    "direction": "Direction",
+    "targetValue": "Target value",
+    "warningThreshold": "Warning threshold",
+    "criticalThreshold": "Critical threshold",
+    "acceptableMin": "Acceptable minimum",
+    "acceptableMax": "Acceptable maximum",
+    "frequency": "Collection frequency",
+    "source": "Source",
+    "aiSystem": "AI System",
+    "selectSystem": "Select a system",
+    "selectCategory": "Select a category",
+    "selectDirection": "Select",
+    "selectFrequency": "Select a frequency",
+    "selectSource": "Select a source",
+    "value": "Value",
+    "recordedAt": "Measurement date",
+    "notes": "Notes",
+    "notesPlaceholder": "Notes about this measurement..."
+  },
+  "filters": {
+    "allCategories": "All categories",
+    "allSystems": "All systems",
+    "filterByCategory": "Category",
+    "filterBySystem": "System"
+  },
+  "table": {
+    "name": "Name",
+    "category": "Category",
+    "system": "AI System",
+    "unit": "Unit",
+    "lastValue": "Last value",
+    "status": "Status",
+    "frequency": "Frequency",
+    "actions": "Actions",
+    "value": "Value",
+    "date": "Date",
+    "alertLevel": "Level",
+    "notes": "Notes"
+  },
+  "messages": {
+    "metricCreated": "Metric created",
+    "metricUpdated": "Metric updated",
+    "metricDeleted": "Metric deleted",
+    "dataPointAdded": "Measurement added",
+    "deleteConfirm": "Are you sure you want to delete this metric?"
+  },
+  "kpi": {
+    "totalMetrics": "Active metrics",
+    "systemsMonitored": "Systems monitored",
+    "warningAlerts": "Warnings",
+    "criticalAlerts": "Critical alerts"
+  }
+}

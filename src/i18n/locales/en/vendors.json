@@ -1,0 +1,84 @@
+{
+  "pageTitle": "Vendor Management",
+  "pageDescription": "Manage your AI vendors, their contracts, and associated risks.",
+  "create": "New vendor",
+  "edit": "Edit",
+  "delete": "Delete",
+  "view": "View",
+  "search": "Search a vendor...",
+  "noVendors": "No vendors recorded",
+  "noVendorsDescription": "Start by adding an AI vendor or partner.",
+  "serviceTypes": {
+    "model_api": "AI Model API",
+    "pretrained_model": "Pre-trained model",
+    "saas_platform": "SaaS Platform",
+    "data_provider": "Data provider",
+    "infrastructure": "Cloud infrastructure",
+    "consulting": "AI Consulting",
+    "labeling": "Data labeling",
+    "other": "Other"
+  },
+  "contractTypes": {
+    "subscription": "Subscription",
+    "per_use": "Pay-per-use",
+    "license": "License",
+    "custom": "Custom"
+  },
+  "riskLevels": {
+    "low_risk": "Low risk",
+    "medium_risk": "Medium risk",
+    "high_risk": "High risk"
+  },
+  "statuses": {
+    "active": "Active",
+    "under_evaluation": "Under evaluation",
+    "suspended": "Suspended",
+    "terminated": "Terminated"
+  },
+  "form": {
+    "name": "Vendor name",
+    "serviceTypes": "Service types",
+    "website": "Website",
+    "contactName": "Primary contact",
+    "contactEmail": "Contact email",
+    "contactPhone": "Phone",
+    "country": "Country",
+    "region": "Region",
+    "knownSubcontractors": "Known subcontractors",
+    "knownSubcontractorsPlaceholder": "List of subcontractors...",
+    "aiSystems": "Linked AI systems",
+    "contractStartDate": "Contract start",
+    "contractEndDate": "Contract end",
+    "contractType": "Contract type",
+    "contractAmount": "Amount",
+    "contractClauses": "Key clauses",
+    "contractClausesPlaceholder": "Summary of contract clauses...",
+    "slaDetails": "SLA details",
+    "slaDetailsPlaceholder": "Availability, response time, support...",
+    "riskLevel": "Risk level",
+    "status": "Status",
+    "selectType": "Select type",
+    "selectRisk": "Select level",
+    "selectStatus": "Select status"
+  },
+  "filters": {
+    "allStatuses": "All statuses",
+    "allRisks": "All levels",
+    "filterByStatus": "Status",
+    "filterByRisk": "Risk"
+  },
+  "table": {
+    "name": "Name",
+    "services": "Services",
+    "riskLevel": "Risk",
+    "status": "Status",
+    "contractEnd": "Contract end",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Vendor created",
+    "updated": "Vendor updated",
+    "deleted": "Vendor deleted",
+    "deleteConfirm": "Are you sure you want to delete this vendor?"
+  }
+}

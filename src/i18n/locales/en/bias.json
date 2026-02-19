@@ -1,0 +1,134 @@
+{
+  "pageTitle": "Bias Registry",
+  "pageDescription": "Identify, track, and remediate biases in your AI systems.",
+  "create": "New finding",
+  "edit": "Edit",
+  "delete": "Delete",
+  "view": "View",
+  "search": "Search a finding...",
+  "noFindings": "No bias findings recorded",
+  "noFindingsDescription": "Start by reporting a bias detected in one of your AI systems.",
+  "biasTypes": {
+    "disparate_impact": "Disparate impact",
+    "representation": "Representation",
+    "measurement": "Measurement (proxy variables)",
+    "historical": "Historical",
+    "aggregation": "Aggregation",
+    "evaluation": "Evaluation",
+    "toxicity": "Toxicity",
+    "hallucination": "Targeted hallucination",
+    "stereotyping": "Stereotyping",
+    "other": "Other"
+  },
+  "detectionMethods": {
+    "automated_test": "Automated test",
+    "manual_audit": "Manual audit",
+    "user_complaint": "User complaint",
+    "monitoring": "Production monitoring",
+    "external_audit": "External audit",
+    "regulatory_review": "Regulatory review"
+  },
+  "protectedDimensions": {
+    "gender": "Gender",
+    "age": "Age",
+    "ethnicity": "Ethnicity",
+    "disability": "Disability",
+    "religion": "Religion",
+    "sexual_orientation": "Sexual orientation",
+    "socioeconomic": "Socioeconomic status",
+    "geographic": "Geographic location",
+    "language": "Language",
+    "intersectional": "Intersectionality"
+  },
+  "severities": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "likelihoods": {
+    "certain": "Certain",
+    "likely": "Likely",
+    "possible": "Possible",
+    "unlikely": "Unlikely",
+    "rare": "Rare"
+  },
+  "statuses": {
+    "identified": "Identified",
+    "in_remediation": "In remediation",
+    "retest_pending": "Retest pending",
+    "resolved": "Resolved",
+    "accepted_risk": "Accepted risk"
+  },
+  "remediationMeasures": {
+    "data_rebalancing": "Data rebalancing",
+    "model_retraining": "Model retraining",
+    "threshold_adjustment": "Threshold adjustment",
+    "feature_removal": "Feature removal",
+    "human_in_loop": "Human-in-the-loop",
+    "model_replacement": "Model replacement",
+    "post_processing": "Post-processing",
+    "monitoring_enhancement": "Monitoring enhancement",
+    "other": "Other"
+  },
+  "form": {
+    "title": "Finding title",
+    "aiSystem": "Related AI system",
+    "biasType": "Bias type",
+    "detectionMethod": "Detection method",
+    "protectedDimensions": "Affected protected dimensions",
+    "affectedGroups": "Specifically affected groups",
+    "affectedGroupsPlaceholder": "Description of affected groups...",
+    "severity": "Severity",
+    "likelihood": "Likelihood of occurrence",
+    "estimatedImpact": "Estimated impact",
+    "estimatedImpactPlaceholder": "Description of impact on individuals...",
+    "affectedCount": "Estimated number of affected people",
+    "fairnessMetric": "Fairness metric",
+    "measuredValue": "Measured value",
+    "acceptableThreshold": "Acceptable threshold",
+    "remediationMeasures": "Corrective measures",
+    "remediationDescription": "Detailed action description",
+    "remediationDescriptionPlaceholder": "Details of the remediation plan...",
+    "remediationResponsible": "Remediation responsible",
+    "remediationTargetDate": "Target resolution date",
+    "selectSystem": "Select a system",
+    "selectType": "Select a type",
+    "selectMethod": "Select a method",
+    "selectSeverity": "Select severity",
+    "selectLikelihood": "Select likelihood"
+  },
+  "filters": {
+    "allTypes": "All types",
+    "allStatuses": "All statuses",
+    "allSeverities": "All severities",
+    "allSystems": "All systems",
+    "filterByType": "Type",
+    "filterByStatus": "Status",
+    "filterBySeverity": "Severity",
+    "filterBySystem": "System"
+  },
+  "table": {
+    "title": "Title",
+    "system": "AI System",
+    "biasType": "Type",
+    "severity": "Severity",
+    "status": "Status",
+    "detectedAt": "Detected on",
+    "actions": "Actions"
+  },
+  "messages": {
+    "created": "Bias finding created",
+    "updated": "Bias finding updated",
+    "deleted": "Bias finding deleted",
+    "deleteConfirm": "Are you sure you want to delete this finding?"
+  },
+  "detail": {
+    "identification": "Identification",
+    "characterization": "Characterization",
+    "assessment": "Assessment",
+    "metrics": "Fairness metrics",
+    "remediation": "Remediation plan",
+    "noContent": "Not provided"
+  }
+}
