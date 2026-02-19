@@ -499,7 +499,7 @@ export default function DecisionsPage() {
               onClick={handleSubmit}
               disabled={!formTitle.trim() || createDecision.isPending || updateDecision.isPending}
             >
-              {editingDecision ? t("messages.updated").replace("mise à jour", "Enregistrer") : t("create")}
+              {editingDecision ? t("save") : t("create")}
             </Button>
           </DialogFooter>
         </DialogContent>

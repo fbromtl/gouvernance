@@ -156,7 +156,7 @@ export default function LifecyclePage() {
   const [filterType, setFilterType] = useState("__all__");
 
   /* --- data --- */
-  const { data: events = [], isLoading } = useLifecycleEvents({
+  const { data: events = [], isLoading, isError } = useLifecycleEvents({
     event_type: filterType !== "__all__" ? filterType : undefined,
     search: search || undefined,
   });
@@ -256,6 +256,19 @@ export default function LifecyclePage() {
   }
 
   /* --- render --- */
+  if (isError) {
+    return (
+      <div className="space-y-6">
+        <Card className="p-8 text-center">
+          <RefreshCw className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}

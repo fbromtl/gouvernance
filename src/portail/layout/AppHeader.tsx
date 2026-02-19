@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, Menu, LogOut, User, Settings, Check } from "lucide-react";
+import { Bell, Menu, LogOut, User, Settings, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -19,6 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 interface AppHeaderProps {
   onMobileMenuToggle: () => void;
+  onAiToggle?: () => void;
 }
 
 /* ------------------------------------------------------------------ */
@@ -50,7 +51,7 @@ const DOT_COLOR: Record<string, string> = {
   info: "bg-gray-400",
 };
 
-export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
+export function AppHeader({ onMobileMenuToggle, onAiToggle }: AppHeaderProps) {
   const { t } = useTranslation("portail");
   const { t: tc } = useTranslation("common");
   const { profile, signOut } = useAuth();
@@ -77,6 +78,17 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
 
       <div className="flex items-center gap-2">
         <LanguageSwitcher />
+
+        {onAiToggle && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onAiToggle}
+            title={t("aiAssistant", { defaultValue: "Assistant IA" })}
+          >
+            <Sparkles className="h-4 w-4" />
+          </Button>
+        )}
 
         <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
           <PopoverTrigger asChild>

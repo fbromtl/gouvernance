@@ -173,7 +173,7 @@ export default function MonitoringPage() {
   const [filterSystem, setFilterSystem] = useState("__all__");
 
   /* --- data --- */
-  const { data: metrics = [], isLoading } = useMonitoringMetrics({
+  const { data: metrics = [], isLoading, isError } = useMonitoringMetrics({
     category: filterCategory !== "__all__" ? filterCategory : undefined,
     ai_system_id: filterSystem !== "__all__" ? filterSystem : undefined,
     search: search || undefined,
@@ -297,6 +297,19 @@ export default function MonitoringPage() {
   }
 
   /* --- render --- */
+  if (isError) {
+    return (
+      <div className="space-y-6">
+        <Card className="p-8 text-center">
+          <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}

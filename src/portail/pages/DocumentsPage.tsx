@@ -110,7 +110,7 @@ export default function DocumentsPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   /* ---- data ---- */
-  const { data: documents = [], isLoading } = useDocuments({
+  const { data: documents = [], isLoading, isError } = useDocuments({
     document_type: typeFilter || undefined,
     status: statusFilter || undefined,
     search: searchQuery || undefined,
@@ -222,6 +222,19 @@ export default function DocumentsPage() {
   /* ================================================================ */
   /*  RENDER                                                           */
   /* ================================================================ */
+
+  if (isError) {
+    return (
+      <div className="space-y-6 p-4 md:p-6">
+        <Card className="p-8 text-center">
+          <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 p-4 md:p-6">

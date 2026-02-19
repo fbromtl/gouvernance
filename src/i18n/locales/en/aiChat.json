@@ -1,0 +1,14 @@
+{
+  "title": "AI Assistant",
+  "description": "Your guide for the gouvernance.ai platform",
+  "placeholder": "Ask your question...",
+  "send": "Send",
+  "newConversation": "New conversation",
+  "welcomePrefix": "You are on",
+  "welcomeSuffix": "How can I help you?",
+  "welcomeFallback": "Welcome! I am your AI assistant. How can I help you navigate the platform?",
+  "errorGeneric": "An error occurred. Please try again.",
+  "errorNetwork": "Connection error. Check your network.",
+  "retry": "Retry",
+  "thinking": "Thinking..."
+}

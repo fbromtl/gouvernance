@@ -22,6 +22,7 @@ import frLifecycle from './locales/fr/lifecycle.json'
 import frDocuments from './locales/fr/documents.json'
 import frMonitoring from './locales/fr/monitoring.json'
 import frData from './locales/fr/data.json'
+import frAiChat from './locales/fr/aiChat.json'
 
 import enCommon from './locales/en/common.json'
 import enDashboard from './locales/en/dashboard.json'
@@ -43,6 +44,7 @@ import enLifecycle from './locales/en/lifecycle.json'
 import enDocuments from './locales/en/documents.json'
 import enMonitoring from './locales/en/monitoring.json'
 import enData from './locales/en/data.json'
+import enAiChat from './locales/en/aiChat.json'
 
 export const defaultNS = 'common'
 export const supportedLanguages = ['fr', 'en'] as const
@@ -74,6 +76,7 @@ i18n
         documents: frDocuments,
         monitoring: frMonitoring,
         data: frData,
+        aiChat: frAiChat,
       },
       en: {
         common: enCommon,
@@ -96,11 +99,12 @@ i18n
         documents: enDocuments,
         monitoring: enMonitoring,
         data: enData,
+        aiChat: enAiChat,
       },
     },
     fallbackLng: 'fr',
     defaultNS,
-    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding', 'compliance', 'decisions', 'bias', 'transparency', 'vendors', 'lifecycle', 'documents', 'monitoring', 'data'],
+    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding', 'compliance', 'decisions', 'bias', 'transparency', 'vendors', 'lifecycle', 'documents', 'monitoring', 'data', 'aiChat'],
     interpolation: {
       escapeValue: false,
     },

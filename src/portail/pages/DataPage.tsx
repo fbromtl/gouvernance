@@ -179,7 +179,7 @@ export default function DataPage() {
   const [dsDeleteConfirm, setDsDeleteConfirm] = useState<string | null>(null);
 
   /* ---- dataset data ---- */
-  const { data: datasets = [], isLoading: dsLoading } = useDatasets({
+  const { data: datasets = [], isLoading: dsLoading, isError: dsError } = useDatasets({
     source: dsSourceFilter || undefined,
     classification: dsClassFilter || undefined,
     search: dsSearchQuery || undefined,
@@ -347,7 +347,7 @@ export default function DataPage() {
   const [trDeleteConfirm, setTrDeleteConfirm] = useState<string | null>(null);
 
   /* ---- transfers data ---- */
-  const { data: transfers = [], isLoading: trLoading } = useDataTransfers({
+  const { data: transfers = [], isLoading: trLoading, isError: trError } = useDataTransfers({
     status: trStatusFilter || undefined,
     search: trSearchQuery || undefined,
   });
@@ -458,6 +458,19 @@ export default function DataPage() {
   /* ================================================================ */
   /*  RENDER                                                           */
   /* ================================================================ */
+
+  if (dsError || trError) {
+    return (
+      <div className="space-y-6 p-4 md:p-6">
+        <Card className="p-8 text-center">
+          <Database className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 p-4 md:p-6">

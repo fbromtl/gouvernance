@@ -123,7 +123,7 @@ export default function VendorsPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   /* ---- data ---- */
-  const { data: vendors = [], isLoading } = useVendors({
+  const { data: vendors = [], isLoading, isError } = useVendors({
     status: statusFilter || undefined,
     risk_level: riskFilter || undefined,
     search: searchQuery || undefined,
@@ -286,6 +286,19 @@ export default function VendorsPage() {
   /* ================================================================ */
   /*  RENDER                                                           */
   /* ================================================================ */
+
+  if (isError) {
+    return (
+      <div className="space-y-6 p-4 md:p-6">
+        <Card className="p-8 text-center">
+          <Building2 className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 p-4 md:p-6">

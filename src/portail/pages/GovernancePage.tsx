@@ -391,7 +391,7 @@ function PoliciesTab({ readOnly = false }: { readOnly?: boolean }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {policies!.map((p) => (
+              {(policies ?? []).map((p) => (
                 <TableRow key={p.id}>
                   <TableCell className="font-medium">{p.title}</TableCell>
                   <TableCell className="text-sm">
@@ -784,7 +784,7 @@ function RolesTab({ readOnly = false }: { readOnly?: boolean }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {roles!.map((r) => {
+              {(roles ?? []).map((r) => {
                 const member = findMember(members, r.user_id);
                 return (
                   <TableRow key={r.id}>
@@ -1186,7 +1186,7 @@ function CommitteesTab({ readOnly = false }: { readOnly?: boolean }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {committees!.map((c) => (
+              {(committees ?? []).map((c) => (
                 <TableRow key={c.id}>
                   <TableCell className="font-medium">{c.name}</TableCell>
                   <TableCell className="max-w-[200px] truncate text-sm text-muted-foreground">

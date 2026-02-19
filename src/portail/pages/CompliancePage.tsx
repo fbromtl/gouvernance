@@ -157,7 +157,7 @@ function DashboardTab() {
     );
   }
 
-  if (!scores || scores.frameworks.every((f) => f.compliant + f.partial + f.nonCompliant + f.notApplicable === 0)) {
+  if (!scores || !scores.frameworks || scores.frameworks.every((f) => f.compliant + f.partial + f.nonCompliant + f.notApplicable === 0)) {
     return (
       <Card className="p-8 text-center">
         <Sparkles className="h-10 w-10 mx-auto text-muted-foreground/40 mb-4" />
@@ -166,8 +166,9 @@ function DashboardTab() {
     );
   }
 
-  const totalCompliant = scores.frameworks.reduce((s, f) => s + f.compliant, 0);
-  const totalNonCompliant = scores.frameworks.reduce((s, f) => s + f.nonCompliant, 0);
+  const frameworks = scores.frameworks ?? [];
+  const totalCompliant = frameworks.reduce((s, f) => s + f.compliant, 0);
+  const totalNonCompliant = frameworks.reduce((s, f) => s + f.nonCompliant, 0);
   const activeActions = remediations.filter((a) => a.status === "in_progress" || a.status === "planned").length;
 
   const kpis = [
@@ -207,7 +208,7 @@ function DashboardTab() {
         <CardContent className="pt-6">
           <h3 className="text-sm font-semibold mb-4">{t("dashboard.scoreByFramework")}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {scores.frameworks.map((fw) => {
+            {frameworks.map((fw) => {
               const hasData = fw.compliant + fw.partial + fw.nonCompliant + fw.notApplicable > 0;
               return (
                 <div key={fw.framework} className="flex flex-col items-center gap-2">
@@ -234,7 +235,7 @@ function DashboardTab() {
         <CardContent className="pt-6">
           <h3 className="text-sm font-semibold mb-4">{t("dashboard.statusDistribution")}</h3>
           <div className="space-y-3">
-            {scores.frameworks.filter((f) => f.compliant + f.partial + f.nonCompliant + f.notApplicable > 0).map((fw) => {
+            {frameworks.filter((f) => f.compliant + f.partial + f.nonCompliant + f.notApplicable > 0).map((fw) => {
               const total = fw.compliant + fw.partial + fw.nonCompliant + fw.notApplicable;
               return (
                 <div key={fw.framework}>

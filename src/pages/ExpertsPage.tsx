@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   ChevronDown,
   Shield,
@@ -6,12 +5,9 @@ import {
   FileText,
   TrendingUp,
   Database,
-  Handshake,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
 
 const committees = [
@@ -44,21 +40,6 @@ const committees = [
     title: "Données et vie privée",
     description:
       "Protection des données personnelles, gouvernance des données, Loi 25",
-  },
-];
-
-const partnerCategories = [
-  {
-    title: "Universités et centres de recherche",
-    items: ["Mila", "IVADO", "CIRANO", "CRIM"],
-  },
-  {
-    title: "Associations professionnelles",
-    items: ["AI Québec", "CPQ", "Barreau du Québec"],
-  },
-  {
-    title: "Partenaires technologiques",
-    items: ["Éditeurs de solutions IA", "Integrateurs certifiés"],
   },
 ];
 
@@ -136,47 +117,6 @@ export function ExpertsPage() {
         </div>
       </section>
 
-      {/* SECTION: Partenaires et alliés */}
-      <section className="py-20 sm:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">
-            Partenaires et alliés
-          </h2>
-          <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Nous collaborons avec des organisations de premier plan pour faire avancer la
-            gouvernance de l&apos;IA.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {partnerCategories.map((cat) => (
-              <Card key={cat.title} className="border-2">
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Handshake className="size-5 text-primary" />
-                    {cat.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {cat.items.map((item) => (
-                      <Badge key={item} variant="secondary" className="text-sm">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button asChild size="lg" className="gap-2 px-8">
-              <Link to="/contact">
-                Devenir partenaire
-                <Handshake className="size-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
     </>
   );

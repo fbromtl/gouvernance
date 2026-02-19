@@ -29,6 +29,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogFooter,
@@ -54,10 +55,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import {
-  DialogDescription,
-} from "@/components/ui/dialog";
-
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
 /* ------------------------------------------------------------------ */
