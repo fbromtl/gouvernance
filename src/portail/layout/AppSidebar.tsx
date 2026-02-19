@@ -18,6 +18,7 @@ import {
   Building2,
   CheckCircle,
   Settings,
+  Rocket,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
@@ -174,6 +175,12 @@ const navGroups: NavGroup[] = [
 ];
 
 const settingsItems: NavItem[] = [
+  {
+    key: "roadmap",
+    path: "/roadmap",
+    icon: Rocket,
+    ready: true,
+  },
   {
     key: "admin",
     path: "/admin",

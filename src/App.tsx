@@ -81,6 +81,7 @@ import DataPage from "@/portail/pages/DataPage";
 
 // Onboarding
 import OnboardingPage from "@/portail/pages/OnboardingPage";
+import RoadmapPage from "@/portail/pages/RoadmapPage";
 
 function App() {
   return (
@@ -152,6 +153,7 @@ function App() {
               <Route path="/data" element={<DataPage />} />
               <Route path="/vendors" element={<VendorsPage />} />
               <Route path="/compliance" element={<CompliancePage />} />
+              <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/admin" element={<AdminPage />} />
             </Route>
 
