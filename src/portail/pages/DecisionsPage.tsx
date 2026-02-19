@@ -90,6 +90,9 @@ const STATUS_COLORS: Record<string, string> = {
   archived: "bg-gray-100 text-gray-600 border-gray-200",
 };
 
+const ALL = "__all__";
+const NONE = "__none__";
+
 const IMPACT_COLORS: Record<string, string> = {
   low: "bg-blue-100 text-blue-800 border-blue-200",
   medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
@@ -117,8 +120,8 @@ export default function DecisionsPage() {
   const { can } = usePermissions();
   const readOnly = !can("approve_decisions");
 
-  const [typeFilter, setTypeFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [typeFilter, setTypeFilter] = useState(ALL);
+  const [statusFilter, setStatusFilter] = useState(ALL);
   const [searchQuery, setSearchQuery] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingDecision, setEditingDecision] = useState<Decision | null>(null);
@@ -126,8 +129,8 @@ export default function DecisionsPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   const { data: decisions = [], isLoading } = useDecisions({
-    decision_type: typeFilter || undefined,
-    status: statusFilter || undefined,
+    decision_type: typeFilter === ALL ? undefined : typeFilter,
+    status: statusFilter === ALL ? undefined : statusFilter,
     search: searchQuery || undefined,
   });
   const { data: aiSystems = [] } = useAiSystems();
@@ -146,7 +149,7 @@ export default function DecisionsPage() {
   const [formContext, setFormContext] = useState("");
   const [formDecisionMade, setFormDecisionMade] = useState("");
   const [formJustification, setFormJustification] = useState("");
-  const [formImpact, setFormImpact] = useState("");
+  const [formImpact, setFormImpact] = useState(NONE);
   const [formEffectiveDate, setFormEffectiveDate] = useState("");
 
   const getSystemName = (ids: string[]) => {
@@ -171,7 +174,7 @@ export default function DecisionsPage() {
     setFormContext("");
     setFormDecisionMade("");
     setFormJustification("");
-    setFormImpact("");
+    setFormImpact(NONE);
     setFormEffectiveDate("");
     setDialogOpen(true);
   };
@@ -184,7 +187,7 @@ export default function DecisionsPage() {
     setFormContext(decision.context ?? "");
     setFormDecisionMade(decision.decision_made ?? "");
     setFormJustification(decision.justification ?? "");
-    setFormImpact(decision.impact ?? "");
+    setFormImpact(decision.impact ?? NONE);
     setFormEffectiveDate(decision.effective_date ?? "");
     setDialogOpen(true);
   };
@@ -199,7 +202,7 @@ export default function DecisionsPage() {
       context: formContext.trim() || null,
       decision_made: formDecisionMade.trim() || null,
       justification: formJustification.trim() || null,
-      impact: formImpact || null,
+      impact: formImpact === NONE ? null : formImpact,
       effective_date: formEffectiveDate || null,
     };
 
@@ -280,7 +283,7 @@ export default function DecisionsPage() {
             <SelectValue placeholder={t("filters.filterByType")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allTypes")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allTypes")}</SelectItem>
             {DECISION_TYPES.map((dt) => (
               <SelectItem key={dt} value={dt}>{t(`types.${dt}`)}</SelectItem>
             ))}
@@ -292,7 +295,7 @@ export default function DecisionsPage() {
             <SelectValue placeholder={t("filters.filterByStatus")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allStatuses")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
             {STATUSES.map((s) => (
               <SelectItem key={s} value={s}>{t(`statuses.${s}`)}</SelectItem>
             ))}
@@ -479,7 +482,7 @@ export default function DecisionsPage() {
                     <SelectValue placeholder={t("form.selectImpact")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{t("form.noImpact")}</SelectItem>
+                    <SelectItem value={NONE}>{t("form.noImpact")}</SelectItem>
                     {IMPACTS.map((i) => (
                       <SelectItem key={i} value={i}>{t(`impacts.${i}`)}</SelectItem>
                     ))}

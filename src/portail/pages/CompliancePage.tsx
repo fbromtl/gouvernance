@@ -85,6 +85,8 @@ const PRIORITY_COLORS: Record<string, string> = {
   low: "bg-blue-100 text-blue-800 border-blue-200",
 };
 
+const ALL = "__all__";
+
 const ACTION_STATUS_COLORS: Record<string, string> = {
   planned: "bg-gray-100 text-gray-800 border-gray-200",
   in_progress: "bg-blue-100 text-blue-800 border-blue-200",
@@ -468,15 +470,15 @@ function FrameworksTab({ readOnly }: { readOnly: boolean }) {
 
 function RemediationTab({ readOnly }: { readOnly: boolean }) {
   const { t } = useTranslation("compliance");
-  const [priorityFilter, setPriorityFilter] = useState<string>("");
-  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [priorityFilter, setPriorityFilter] = useState<string>(ALL);
+  const [statusFilter, setStatusFilter] = useState<string>(ALL);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingAction, setEditingAction] = useState<RemediationAction | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   const { data: actions = [], isLoading } = useRemediationActions({
-    priority: priorityFilter || undefined,
-    status: statusFilter || undefined,
+    priority: priorityFilter === ALL ? undefined : priorityFilter,
+    status: statusFilter === ALL ? undefined : statusFilter,
   });
   const { data: assessments = [] } = useComplianceAssessments();
   const { data: members = [] } = useOrgMembers();
@@ -603,7 +605,7 @@ function RemediationTab({ readOnly }: { readOnly: boolean }) {
             <SelectValue placeholder={t("remediation.filterByPriority")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("remediation.allPriorities")}</SelectItem>
+            <SelectItem value={ALL}>{t("remediation.allPriorities")}</SelectItem>
             {(["critical", "high", "medium", "low"] as const).map((p) => (
               <SelectItem key={p} value={p}>
                 {t(`priorities.${p}`)}
@@ -617,7 +619,7 @@ function RemediationTab({ readOnly }: { readOnly: boolean }) {
             <SelectValue placeholder={t("remediation.filterByStatus")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("remediation.allStatuses")}</SelectItem>
+            <SelectItem value={ALL}>{t("remediation.allStatuses")}</SelectItem>
             {(["planned", "in_progress", "completed", "deferred"] as const).map((s) => (
               <SelectItem key={s} value={s}>
                 {t(`actionStatuses.${s}`)}

@@ -102,6 +102,10 @@ const STATUS_COLORS: Record<string, string> = {
   terminated: "bg-red-100 text-red-800 border-red-200",
 };
 
+/** Sentinel values for Radix Select (which forbids value="") */
+const ALL = "__all__";
+const NONE = "__none__";
+
 /* ================================================================== */
 /*  MAIN PAGE                                                          */
 /* ================================================================== */
@@ -112,8 +116,8 @@ export default function VendorsPage() {
   const readOnly = !can("manage_vendors");
 
   /* ---- list filters ---- */
-  const [statusFilter, setStatusFilter] = useState("");
-  const [riskFilter, setRiskFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState(ALL);
+  const [riskFilter, setRiskFilter] = useState(ALL);
   const [searchQuery, setSearchQuery] = useState("");
 
   /* ---- dialogs ---- */
@@ -124,8 +128,8 @@ export default function VendorsPage() {
 
   /* ---- data ---- */
   const { data: vendors = [], isLoading, isError } = useVendors({
-    status: statusFilter || undefined,
-    risk_level: riskFilter || undefined,
+    status: statusFilter === ALL ? undefined : statusFilter,
+    risk_level: riskFilter === ALL ? undefined : riskFilter,
     search: searchQuery || undefined,
   });
   const { data: aiSystems = [] } = useAiSystems();
@@ -146,11 +150,11 @@ export default function VendorsPage() {
   const [formAiSystemIds, setFormAiSystemIds] = useState<string[]>([]);
   const [formContractStartDate, setFormContractStartDate] = useState("");
   const [formContractEndDate, setFormContractEndDate] = useState("");
-  const [formContractType, setFormContractType] = useState("");
+  const [formContractType, setFormContractType] = useState(NONE);
   const [formContractAmount, setFormContractAmount] = useState("");
   const [formContractClauses, setFormContractClauses] = useState("");
   const [formSlaDetails, setFormSlaDetails] = useState("");
-  const [formRiskLevel, setFormRiskLevel] = useState("");
+  const [formRiskLevel, setFormRiskLevel] = useState(NONE);
   const [formStatus, setFormStatus] = useState<string>("active");
 
   /* ---- helpers ---- */
@@ -188,11 +192,11 @@ export default function VendorsPage() {
     setFormAiSystemIds([]);
     setFormContractStartDate("");
     setFormContractEndDate("");
-    setFormContractType("");
+    setFormContractType(NONE);
     setFormContractAmount("");
     setFormContractClauses("");
     setFormSlaDetails("");
-    setFormRiskLevel("");
+    setFormRiskLevel(NONE);
     setFormStatus("active");
   };
 
@@ -216,11 +220,11 @@ export default function VendorsPage() {
     setFormAiSystemIds(vendor.ai_system_ids ?? []);
     setFormContractStartDate(vendor.contract_start_date ?? "");
     setFormContractEndDate(vendor.contract_end_date ?? "");
-    setFormContractType(vendor.contract_type ?? "");
+    setFormContractType(vendor.contract_type ?? NONE);
     setFormContractAmount(vendor.contract_amount != null ? String(vendor.contract_amount) : "");
     setFormContractClauses(vendor.contract_clauses ?? "");
     setFormSlaDetails(vendor.sla_details ?? "");
-    setFormRiskLevel(vendor.risk_level ?? "");
+    setFormRiskLevel(vendor.risk_level ?? NONE);
     setFormStatus(vendor.status);
     setDialogOpen(true);
   };
@@ -242,11 +246,11 @@ export default function VendorsPage() {
       ai_system_ids: formAiSystemIds,
       contract_start_date: formContractStartDate || null,
       contract_end_date: formContractEndDate || null,
-      contract_type: formContractType || null,
+      contract_type: formContractType === NONE ? null : formContractType,
       contract_amount: formContractAmount ? Number(formContractAmount) : null,
       contract_clauses: formContractClauses.trim() || null,
       sla_details: formSlaDetails.trim() || null,
-      risk_level: formRiskLevel || null,
+      risk_level: formRiskLevel === NONE ? null : formRiskLevel,
       status: formStatus,
     };
 
@@ -328,7 +332,7 @@ export default function VendorsPage() {
             <SelectValue placeholder={t("filters.filterByStatus")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allStatuses")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
             {STATUSES.map((s) => (
               <SelectItem key={s} value={s}>
                 {t(`statuses.${s}`)}
@@ -342,7 +346,7 @@ export default function VendorsPage() {
             <SelectValue placeholder={t("filters.filterByRisk")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allRisks")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allRisks")}</SelectItem>
             {RISK_LEVELS.map((r) => (
               <SelectItem key={r} value={r}>
                 {t(`riskLevels.${r}`)}
@@ -633,7 +637,7 @@ export default function VendorsPage() {
                     <SelectValue placeholder={t("form.selectType")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {CONTRACT_TYPES.map((ct) => (
                       <SelectItem key={ct} value={ct}>
                         {t(`contractTypes.${ct}`)}
@@ -683,7 +687,7 @@ export default function VendorsPage() {
                     <SelectValue placeholder={t("form.selectRisk")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {RISK_LEVELS.map((r) => (
                       <SelectItem key={r} value={r}>
                         {t(`riskLevels.${r}`)}

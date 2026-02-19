@@ -67,6 +67,11 @@ import {
 /*  CONSTANTS                                                          */
 /* ================================================================== */
 
+/** Sentinel for "all" in filter selects (Radix UI forbids value="") */
+const ALL = "__all__";
+/** Sentinel for "none selected" in form selects (Radix UI forbids value="") */
+const NONE = "__none__";
+
 const SOURCES = [
   "internal_db",
   "client_provided",
@@ -170,8 +175,8 @@ export default function DataPage() {
   /* ================================================================ */
 
   const [dsSearchQuery, setDsSearchQuery] = useState("");
-  const [dsSourceFilter, setDsSourceFilter] = useState("");
-  const [dsClassFilter, setDsClassFilter] = useState("");
+  const [dsSourceFilter, setDsSourceFilter] = useState(ALL);
+  const [dsClassFilter, setDsClassFilter] = useState(ALL);
 
   const [dsDialogOpen, setDsDialogOpen] = useState(false);
   const [editingDataset, setEditingDataset] = useState<Dataset | null>(null);
@@ -180,8 +185,8 @@ export default function DataPage() {
 
   /* ---- dataset data ---- */
   const { data: datasets = [], isLoading: dsLoading, isError: dsError } = useDatasets({
-    source: dsSourceFilter || undefined,
-    classification: dsClassFilter || undefined,
+    source: dsSourceFilter === ALL ? undefined : dsSourceFilter,
+    classification: dsClassFilter === ALL ? undefined : dsClassFilter,
     search: dsSearchQuery || undefined,
   });
   const { data: aiSystems = [] } = useAiSystems();
@@ -195,17 +200,17 @@ export default function DataPage() {
   const [formDsSource, setFormDsSource] = useState("");
   const [formDsCategories, setFormDsCategories] = useState<string[]>([]);
   const [formDsClassification, setFormDsClassification] = useState("none");
-  const [formDsVolume, setFormDsVolume] = useState("");
-  const [formDsQuality, setFormDsQuality] = useState("");
-  const [formDsFreshness, setFormDsFreshness] = useState("");
+  const [formDsVolume, setFormDsVolume] = useState(NONE);
+  const [formDsQuality, setFormDsQuality] = useState(NONE);
+  const [formDsFreshness, setFormDsFreshness] = useState(NONE);
   const [formDsStorageLocations, setFormDsStorageLocations] = useState("");
-  const [formDsFormat, setFormDsFormat] = useState("");
-  const [formDsLegalBasis, setFormDsLegalBasis] = useState("");
+  const [formDsFormat, setFormDsFormat] = useState(NONE);
+  const [formDsLegalBasis, setFormDsLegalBasis] = useState(NONE);
   const [formDsDeclaredPurpose, setFormDsDeclaredPurpose] = useState("");
   const [formDsConsentObtained, setFormDsConsentObtained] = useState(false);
   const [formDsRetentionDuration, setFormDsRetentionDuration] = useState("");
-  const [formDsRetentionUnit, setFormDsRetentionUnit] = useState("");
-  const [formDsDestructionPolicy, setFormDsDestructionPolicy] = useState("");
+  const [formDsRetentionUnit, setFormDsRetentionUnit] = useState(NONE);
+  const [formDsDestructionPolicy, setFormDsDestructionPolicy] = useState(NONE);
   const [formDsAiSystemIds, setFormDsAiSystemIds] = useState<string[]>([]);
   const [formDsStatus, setFormDsStatus] = useState("active");
 
@@ -228,17 +233,17 @@ export default function DataPage() {
     setFormDsSource("");
     setFormDsCategories([]);
     setFormDsClassification("none");
-    setFormDsVolume("");
-    setFormDsQuality("");
-    setFormDsFreshness("");
+    setFormDsVolume(NONE);
+    setFormDsQuality(NONE);
+    setFormDsFreshness(NONE);
     setFormDsStorageLocations("");
-    setFormDsFormat("");
-    setFormDsLegalBasis("");
+    setFormDsFormat(NONE);
+    setFormDsLegalBasis(NONE);
     setFormDsDeclaredPurpose("");
     setFormDsConsentObtained(false);
     setFormDsRetentionDuration("");
-    setFormDsRetentionUnit("");
-    setFormDsDestructionPolicy("");
+    setFormDsRetentionUnit(NONE);
+    setFormDsDestructionPolicy(NONE);
     setFormDsAiSystemIds([]);
     setFormDsStatus("active");
   };
@@ -256,19 +261,19 @@ export default function DataPage() {
     setFormDsSource(ds.source);
     setFormDsCategories(ds.data_categories ?? []);
     setFormDsClassification(ds.classification);
-    setFormDsVolume(ds.volume ?? "");
-    setFormDsQuality(ds.quality ?? "");
-    setFormDsFreshness(ds.freshness ?? "");
+    setFormDsVolume(ds.volume ?? NONE);
+    setFormDsQuality(ds.quality ?? NONE);
+    setFormDsFreshness(ds.freshness ?? NONE);
     setFormDsStorageLocations((ds.storage_locations ?? []).join(", "));
-    setFormDsFormat(ds.format ?? "");
-    setFormDsLegalBasis(ds.legal_basis ?? "");
+    setFormDsFormat(ds.format ?? NONE);
+    setFormDsLegalBasis(ds.legal_basis ?? NONE);
     setFormDsDeclaredPurpose(ds.declared_purpose ?? "");
     setFormDsConsentObtained(ds.consent_obtained);
     setFormDsRetentionDuration(
       ds.retention_duration != null ? String(ds.retention_duration) : ""
     );
-    setFormDsRetentionUnit(ds.retention_unit ?? "");
-    setFormDsDestructionPolicy(ds.destruction_policy ?? "");
+    setFormDsRetentionUnit(ds.retention_unit ?? NONE);
+    setFormDsDestructionPolicy(ds.destruction_policy ?? NONE);
     setFormDsAiSystemIds(ds.ai_system_ids ?? []);
     setFormDsStatus(ds.status);
     setDsDialogOpen(true);
@@ -283,22 +288,22 @@ export default function DataPage() {
       source: formDsSource,
       data_categories: formDsCategories,
       classification: formDsClassification,
-      volume: formDsVolume || null,
-      quality: formDsQuality || null,
-      freshness: formDsFreshness || null,
+      volume: formDsVolume === NONE ? null : formDsVolume,
+      quality: formDsQuality === NONE ? null : formDsQuality,
+      freshness: formDsFreshness === NONE ? null : formDsFreshness,
       storage_locations: formDsStorageLocations
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean),
-      format: formDsFormat || null,
-      legal_basis: formDsLegalBasis || null,
+      format: formDsFormat === NONE ? null : formDsFormat,
+      legal_basis: formDsLegalBasis === NONE ? null : formDsLegalBasis,
       declared_purpose: formDsDeclaredPurpose.trim() || null,
       consent_obtained: formDsConsentObtained,
       retention_duration: formDsRetentionDuration
         ? Number(formDsRetentionDuration)
         : null,
-      retention_unit: formDsRetentionUnit || null,
-      destruction_policy: formDsDestructionPolicy || null,
+      retention_unit: formDsRetentionUnit === NONE ? null : formDsRetentionUnit,
+      destruction_policy: formDsDestructionPolicy === NONE ? null : formDsDestructionPolicy,
       ai_system_ids: formDsAiSystemIds,
       status: formDsStatus,
     };
@@ -339,7 +344,7 @@ export default function DataPage() {
   /*  TRANSFERS STATE                                                  */
   /* ================================================================ */
 
-  const [trStatusFilter, setTrStatusFilter] = useState("");
+  const [trStatusFilter, setTrStatusFilter] = useState(ALL);
   const [trSearchQuery, setTrSearchQuery] = useState("");
 
   const [trDialogOpen, setTrDialogOpen] = useState(false);
@@ -348,7 +353,7 @@ export default function DataPage() {
 
   /* ---- transfers data ---- */
   const { data: transfers = [], isLoading: trLoading, isError: trError } = useDataTransfers({
-    status: trStatusFilter || undefined,
+    status: trStatusFilter === ALL ? undefined : trStatusFilter,
     search: trSearchQuery || undefined,
   });
   const createTransfer = useCreateDataTransfer();
@@ -360,7 +365,7 @@ export default function DataPage() {
   const [formTrCountry, setFormTrCountry] = useState("");
   const [formTrEntity, setFormTrEntity] = useState("");
   const [formTrPurpose, setFormTrPurpose] = useState("");
-  const [formTrContractualBasis, setFormTrContractualBasis] = useState("");
+  const [formTrContractualBasis, setFormTrContractualBasis] = useState(NONE);
   const [formTrEfvpCompleted, setFormTrEfvpCompleted] = useState(false);
   const [formTrProtection, setFormTrProtection] = useState("");
   const [formTrStatus, setFormTrStatus] = useState("active");
@@ -370,7 +375,7 @@ export default function DataPage() {
     setFormTrCountry("");
     setFormTrEntity("");
     setFormTrPurpose("");
-    setFormTrContractualBasis("");
+    setFormTrContractualBasis(NONE);
     setFormTrEfvpCompleted(false);
     setFormTrProtection("");
     setFormTrStatus("active");
@@ -388,7 +393,7 @@ export default function DataPage() {
     setFormTrCountry(tr.destination_country);
     setFormTrEntity(tr.destination_entity ?? "");
     setFormTrPurpose(tr.transfer_purpose);
-    setFormTrContractualBasis(tr.contractual_basis ?? "");
+    setFormTrContractualBasis(tr.contractual_basis ?? NONE);
     setFormTrEfvpCompleted(tr.efvp_completed);
     setFormTrProtection(tr.protection_measures ?? "");
     setFormTrStatus(tr.status);
@@ -403,7 +408,7 @@ export default function DataPage() {
       destination_country: formTrCountry.trim(),
       destination_entity: formTrEntity.trim() || null,
       transfer_purpose: formTrPurpose.trim(),
-      contractual_basis: formTrContractualBasis || null,
+      contractual_basis: formTrContractualBasis === NONE ? null : formTrContractualBasis,
       efvp_completed: formTrEfvpCompleted,
       protection_measures: formTrProtection.trim() || null,
       status: formTrStatus,
@@ -511,7 +516,7 @@ export default function DataPage() {
                 <SelectValue placeholder={t("filters.filterBySource")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">{t("filters.allSources")}</SelectItem>
+                <SelectItem value={ALL}>{t("filters.allSources")}</SelectItem>
                 {SOURCES.map((s) => (
                   <SelectItem key={s} value={s}>
                     {t(`sources.${s}`)}
@@ -525,7 +530,7 @@ export default function DataPage() {
                 <SelectValue placeholder={t("filters.filterByClassification")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">{t("filters.allClassifications")}</SelectItem>
+                <SelectItem value={ALL}>{t("filters.allClassifications")}</SelectItem>
                 {CLASSIFICATIONS.map((c) => (
                   <SelectItem key={c} value={c}>
                     {t(`classifications.${c}`)}
@@ -664,7 +669,7 @@ export default function DataPage() {
                 <SelectValue placeholder={t("filters.filterByStatus")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">{t("filters.allStatuses")}</SelectItem>
+                <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
                 {TRANSFER_STATUSES.map((s) => (
                   <SelectItem key={s} value={s}>
                     {t(`statuses.${s}`)}
@@ -861,7 +866,7 @@ export default function DataPage() {
                     <SelectValue placeholder={"\u2014"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {VOLUMES.map((v) => (
                       <SelectItem key={v} value={v}>
                         {t(`volumes.${v}`)}
@@ -881,7 +886,7 @@ export default function DataPage() {
                     <SelectValue placeholder={"\u2014"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {QUALITIES.map((q) => (
                       <SelectItem key={q} value={q}>
                         {t(`qualities.${q}`)}
@@ -897,7 +902,7 @@ export default function DataPage() {
                     <SelectValue placeholder={"\u2014"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {FRESHNESSES.map((f) => (
                       <SelectItem key={f} value={f}>
                         {t(`freshnesses.${f}`)}
@@ -925,7 +930,7 @@ export default function DataPage() {
                     <SelectValue placeholder={"\u2014"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {FORMATS.map((f) => (
                       <SelectItem key={f} value={f}>
                         {t(`formats.${f}`)}
@@ -944,7 +949,7 @@ export default function DataPage() {
                   <SelectValue placeholder={t("form.selectLegalBasis")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">{"\u2014"}</SelectItem>
+                  <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                   {LEGAL_BASES.map((lb) => (
                     <SelectItem key={lb} value={lb}>
                       {t(`legalBases.${lb}`)}
@@ -990,7 +995,7 @@ export default function DataPage() {
                     <SelectValue placeholder={"\u2014"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {RETENTION_UNITS.map((u) => (
                       <SelectItem key={u} value={u}>
                         {t(`retentionUnits.${u}`)}
@@ -1009,7 +1014,7 @@ export default function DataPage() {
                     <SelectValue placeholder={t("form.selectDestructionPolicy")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {DESTRUCTION_POLICIES.map((dp) => (
                       <SelectItem key={dp} value={dp}>
                         {t(`destructionPolicies.${dp}`)}
@@ -1349,7 +1354,7 @@ export default function DataPage() {
                   <SelectValue placeholder={t("form.selectContractualBasis")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">{"\u2014"}</SelectItem>
+                  <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                   {CONTRACTUAL_BASES.map((cb) => (
                     <SelectItem key={cb} value={cb}>
                       {t(`contractualBases.${cb}`)}

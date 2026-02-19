@@ -62,6 +62,11 @@ import {
 /*  CONSTANTS                                                          */
 /* ================================================================== */
 
+/** Sentinel value for "all" in filter selects (Radix forbids value=""). */
+const ALL = "__all__";
+/** Sentinel value for "none selected" in form selects (Radix forbids value=""). */
+const NONE = "__none__";
+
 const DOCUMENT_TYPES = [
   "system_card",
   "monitoring_plan",
@@ -99,8 +104,8 @@ export default function DocumentsPage() {
   const readOnly = !can("export_data");
 
   /* ---- list filters ---- */
-  const [typeFilter, setTypeFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [typeFilter, setTypeFilter] = useState(ALL);
+  const [statusFilter, setStatusFilter] = useState(ALL);
   const [searchQuery, setSearchQuery] = useState("");
 
   /* ---- dialogs ---- */
@@ -111,8 +116,8 @@ export default function DocumentsPage() {
 
   /* ---- data ---- */
   const { data: documents = [], isLoading, isError } = useDocuments({
-    document_type: typeFilter || undefined,
-    status: statusFilter || undefined,
+    document_type: typeFilter === ALL ? undefined : typeFilter,
+    status: statusFilter === ALL ? undefined : statusFilter,
     search: searchQuery || undefined,
   });
   const { data: aiSystems = [] } = useAiSystems();
@@ -123,7 +128,7 @@ export default function DocumentsPage() {
   /* ---- form state ---- */
   const [formTitle, setFormTitle] = useState("");
   const [formType, setFormType] = useState("");
-  const [formAiSystemId, setFormAiSystemId] = useState("");
+  const [formAiSystemId, setFormAiSystemId] = useState(NONE);
   const [formDescription, setFormDescription] = useState("");
   const [formTags, setFormTags] = useState("");
 
@@ -148,7 +153,7 @@ export default function DocumentsPage() {
   const resetForm = () => {
     setFormTitle("");
     setFormType("");
-    setFormAiSystemId("");
+    setFormAiSystemId(NONE);
     setFormDescription("");
     setFormTags("");
   };
@@ -163,7 +168,7 @@ export default function DocumentsPage() {
     setEditingDoc(doc);
     setFormTitle(doc.title);
     setFormType(doc.document_type);
-    setFormAiSystemId(doc.ai_system_id ?? "");
+    setFormAiSystemId(doc.ai_system_id ?? NONE);
     setFormDescription(doc.description ?? "");
     setFormTags((doc.tags ?? []).join(", "));
     setDialogOpen(true);
@@ -181,7 +186,7 @@ export default function DocumentsPage() {
     const payload = {
       title: formTitle.trim(),
       document_type: formType,
-      ai_system_id: formAiSystemId || null,
+      ai_system_id: formAiSystemId === NONE ? null : formAiSystemId,
       description: formDescription.trim() || null,
       tags,
     };
@@ -264,7 +269,7 @@ export default function DocumentsPage() {
             <SelectValue placeholder={t("filters.filterByType")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allTypes")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allTypes")}</SelectItem>
             {DOCUMENT_TYPES.map((dt) => (
               <SelectItem key={dt} value={dt}>
                 {t(`types.${dt}`)}
@@ -278,7 +283,7 @@ export default function DocumentsPage() {
             <SelectValue placeholder={t("filters.filterByStatus")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">{t("filters.allStatuses")}</SelectItem>
+            <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
             {STATUSES.map((s) => (
               <SelectItem key={s} value={s}>
                 {t(`statuses.${s}`)}
@@ -443,7 +448,7 @@ export default function DocumentsPage() {
                     <SelectValue placeholder={t("form.selectSystem")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">{"\u2014"}</SelectItem>
+                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
                     {aiSystems.map((sys) => (
                       <SelectItem key={sys.id} value={sys.id}>
                         {sys.name}
