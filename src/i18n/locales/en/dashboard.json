@@ -12,6 +12,8 @@
   },
   "noOrg": "No organization",
   "noOrgDescription": "You are not attached to any organization. Contact your administrator or create one.",
+  "demoMode": "Demo mode",
+  "demoBadge": "DEMO",
   "modules": {
     "aiSystems": { "title": "AI Systems", "description": "Manage your AI systems registry" },
     "risks": { "title": "Risks", "description": "Assess and monitor risks" },

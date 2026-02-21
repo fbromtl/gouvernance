@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/lib/auth";
@@ -9,6 +10,8 @@ import { useDecisions } from "@/hooks/useDecisions";
 import { useBiasFindings } from "@/hooks/useBiasFindings";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
 import {
   Bot,
   AlertTriangle,
@@ -21,6 +24,7 @@ import {
   TrendingUp,
   TrendingDown,
   Minus,
+  FlaskConical,
 } from "lucide-react";
 
 // Dashboard widgets
@@ -34,17 +38,53 @@ import ReviewsDueWidget from "@/portail/components/dashboard/ReviewsDueWidget";
 import RecentDecisionsWidget from "@/portail/components/dashboard/RecentDecisionsWidget";
 import BiasDebtWidget from "@/portail/components/dashboard/BiasDebtWidget";
 
+// Demo data
+import {
+  DEMO_AI_SYSTEMS,
+  DEMO_INCIDENTS,
+  DEMO_COMPLIANCE_SCORES,
+  DEMO_DECISIONS,
+  DEMO_BIAS_FINDINGS,
+} from "@/portail/components/dashboard/demo-data";
+
+/* ------------------------------------------------------------------ */
+/*  Demo-mode persistence                                              */
+/* ------------------------------------------------------------------ */
+const DEMO_KEY = "gouvernance:dashboard:demo";
+
+function readDemo(): boolean {
+  try {
+    return localStorage.getItem(DEMO_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
   const { profile } = useAuth();
   const { data: org, isLoading } = useOrganization();
 
+  // Demo mode state (persisted in localStorage)
+  const [demo, setDemo] = useState(readDemo);
+  const toggleDemo = useCallback((checked: boolean) => {
+    setDemo(checked);
+    try { localStorage.setItem(DEMO_KEY, checked ? "1" : "0"); } catch { /* noop */ }
+  }, []);
+
   // Live data from all modules
-  const { data: aiSystems = [] } = useAiSystems();
-  const { data: incidents = [] } = useIncidents();
-  const { data: complianceScores } = useComplianceScores();
-  const { data: decisions = [] } = useDecisions();
-  const { data: biasFindings = [] } = useBiasFindings();
+  const { data: liveAiSystems = [] } = useAiSystems();
+  const { data: liveIncidents = [] } = useIncidents();
+  const { data: liveComplianceScores } = useComplianceScores();
+  const { data: liveDecisions = [] } = useDecisions();
+  const { data: liveBiasFindings = [] } = useBiasFindings();
+
+  // Use demo data when toggle is ON
+  const aiSystems = demo ? DEMO_AI_SYSTEMS : liveAiSystems;
+  const incidents = demo ? DEMO_INCIDENTS : liveIncidents;
+  const complianceScores = demo ? DEMO_COMPLIANCE_SCORES : liveComplianceScores;
+  const decisions = demo ? DEMO_DECISIONS : liveDecisions;
+  const biasFindings = demo ? DEMO_BIAS_FINDINGS : liveBiasFindings;
 
   const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
 
@@ -75,7 +115,7 @@ export default function DashboardPage() {
     );
   }
 
-  if (!profile?.organization_id || !org) {
+  if (!demo && (!profile?.organization_id || !org)) {
     return (
       <EmptyState
         icon={Building2}
@@ -142,15 +182,41 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* ================================================================ */}
-      {/*  Page Header                                                     */}
+      {/*  Page Header + Demo Toggle                                       */}
       {/* ================================================================ */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-foreground">
-          {t("welcome", { firstName })}
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          {t("description")}
-        </p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            {t("welcome", { firstName })}
+          </h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            {t("description")}
+          </p>
+        </div>
+
+        {/* Demo mode toggle */}
+        <div className="flex items-center gap-2.5 shrink-0 pt-1">
+          {demo && (
+            <Badge className="bg-brand-purple/15 text-brand-purple border-brand-purple/30 text-[10px] font-bold tracking-wider animate-pulse">
+              {t("demoBadge")}
+            </Badge>
+          )}
+          <label
+            htmlFor="demo-toggle"
+            className="flex items-center gap-2 cursor-pointer select-none"
+          >
+            <FlaskConical className={`h-4 w-4 transition-colors ${demo ? "text-brand-purple" : "text-muted-foreground/50"}`} />
+            <span className={`text-xs font-medium transition-colors ${demo ? "text-brand-purple" : "text-muted-foreground"}`}>
+              {t("demoMode")}
+            </span>
+          </label>
+          <Switch
+            id="demo-toggle"
+            checked={demo}
+            onCheckedChange={toggleDemo}
+            className="data-[state=checked]:bg-brand-purple"
+          />
+        </div>
       </div>
 
       {/* ================================================================ */}

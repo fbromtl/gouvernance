@@ -12,6 +12,8 @@
   },
   "noOrg": "Aucune organisation",
   "noOrgDescription": "Vous n'\u00eates rattach\u00e9 \u00e0 aucune organisation. Contactez votre administrateur ou cr\u00e9ez une organisation.",
+  "demoMode": "Mode démo",
+  "demoBadge": "DÉMO",
   "modules": {
     "aiSystems": { "title": "Syst\u00e8mes IA", "description": "G\u00e9rer le registre de vos syst\u00e8mes IA" },
     "risks": { "title": "Risques", "description": "\u00c9valuer et suivre les risques" },
