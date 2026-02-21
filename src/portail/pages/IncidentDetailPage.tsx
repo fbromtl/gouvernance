@@ -198,6 +198,7 @@ export default function IncidentDetailPage() {
       {/* Header */}
       <PageHeader
         title={incident.title}
+        helpNs="incidents"
         actions={
           <div className="flex items-center gap-2">
             <StatusBadge

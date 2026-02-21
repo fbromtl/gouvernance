@@ -153,6 +153,7 @@ export default function AiSystemDetailPage() {
       <PageHeader
         title={system.name}
         description={system.internal_ref ? `Ref: ${system.internal_ref}` : undefined}
+        helpNs="aiSystems"
         actions={
           <>
             <Button

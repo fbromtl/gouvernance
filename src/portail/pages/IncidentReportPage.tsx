@@ -186,6 +186,7 @@ export default function IncidentReportPage() {
       <PageHeader
         title={t("form.title")}
         description={t("form.description")}
+        helpNs="incidents"
       />
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

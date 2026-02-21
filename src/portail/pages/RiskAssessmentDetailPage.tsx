@@ -164,6 +164,7 @@ export default function RiskAssessmentDetailPage() {
       <PageHeader
         title={t("result.title")}
         description={`${t("columns.system")}: ${systemName}`}
+        helpNs="riskAssessments"
         actions={
           <div className="flex items-center gap-2">
             <StatusBadge
