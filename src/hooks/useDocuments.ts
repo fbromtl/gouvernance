@@ -218,6 +218,37 @@ export function useDeleteDocument() {
 /*  FILE UPLOAD                                                        */
 /* ------------------------------------------------------------------ */
 
+/** Infer MIME type from extension when browser doesn't provide one */
+function inferMimeType(fileName: string, browserType: string): string {
+  if (browserType) return browserType;
+  const ext = fileName.split(".").pop()?.toLowerCase();
+  const map: Record<string, string> = {
+    pdf: "application/pdf",
+    doc: "application/msword",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    xls: "application/vnd.ms-excel",
+    xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ppt: "application/vnd.ms-powerpoint",
+    pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    txt: "text/plain",
+    csv: "text/csv",
+    png: "image/png",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    webp: "image/webp",
+  };
+  return map[ext ?? ""] ?? "application/octet-stream";
+}
+
+/** Sanitize filename for storage path (remove accents, special chars) */
+function sanitizeFileName(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .replace(/[^a-zA-Z0-9._-]/g, "_") // Replace special chars with underscore
+    .replace(/_+/g, "_"); // Collapse multiple underscores
+}
+
 export interface UploadResult {
   document: GovDocument;
   storagePath: string;
@@ -234,6 +265,7 @@ export function useUploadDocument() {
         throw new Error("Not authenticated");
 
       const orgId = profile.organization_id;
+      const mimeType = inferMimeType(file.name, file.type);
 
       // 1. Create a document record first (status = processing)
       const { data: doc, error: insertError } = await supabase
@@ -244,7 +276,7 @@ export function useUploadDocument() {
           document_type: "manual_upload",
           file_name: file.name,
           file_size: file.size,
-          mime_type: file.type,
+          mime_type: mimeType,
           status: "draft",
           tags: [],
           created_by: user.id,
@@ -256,15 +288,26 @@ export function useUploadDocument() {
       if (insertError) throw insertError;
 
       // 2. Upload the file to Supabase Storage
-      const storagePath = `${orgId}/${doc.id}/${file.name}`;
+      // Sanitize filename for the storage path (accents/spaces cause issues)
+      const safeFileName = sanitizeFileName(file.name);
+      const storagePath = `${orgId}/${doc.id}/${safeFileName}`;
       const { error: uploadError } = await supabase.storage
         .from("documents")
         .upload(storagePath, file, {
-          contentType: file.type,
-          upsert: true,
+          contentType: mimeType,
         });
 
       if (uploadError) {
+        console.error("[Drive] Upload error details:", {
+          message: uploadError.message,
+          name: (uploadError as any).name,
+          status: (uploadError as any).statusCode,
+          error: uploadError,
+          storagePath,
+          fileType: file.type,
+          inferredType: mimeType,
+          fileSize: file.size,
+        });
         // Clean up the document record
         await supabase.from("documents").delete().eq("id", doc.id);
         throw uploadError;

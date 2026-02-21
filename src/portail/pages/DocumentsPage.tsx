@@ -140,6 +140,7 @@ export default function DocumentsPage() {
           };
           newPending.push(pending);
         } catch (err) {
+          console.error("[Drive] Upload failed for", file.name, err);
           toast.error(
             t("drive.uploadError", {
               defaultValue: "Erreur lors du telechargement de {{name}}",
