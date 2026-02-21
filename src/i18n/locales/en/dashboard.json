@@ -5,10 +5,10 @@
   "description": "Overview of your AI governance.",
   "quickAccess": "Quick access",
   "stats": {
-    "aiSystems": "AI Systems",
+    "aiSystems": "AI Systems in production",
     "complianceScore": "Compliance Score",
     "activeIncidents": "Active Incidents",
-    "pendingAlerts": "Pending Alerts"
+    "pendingAlerts": "High-risk Systems"
   },
   "noOrg": "No organization",
   "noOrgDescription": "You are not attached to any organization. Contact your administrator or create one.",
@@ -17,5 +17,90 @@
     "risks": { "title": "Risks", "description": "Assess and monitor risks" },
     "compliance": { "title": "Compliance", "description": "Track your multi-framework compliance" },
     "incidents": { "title": "Incidents", "description": "Report and manage incidents" }
+  },
+  "widgets": {
+    "riskDistribution": "Risk Distribution",
+    "complianceRadar": "Compliance by Framework",
+    "incidentTimeline": "Incidents by Month",
+    "systemsByType": "Systems by Type",
+    "topRiskSystems": "Top Risk Systems",
+    "pendingActions": "Pending Actions",
+    "noPendingActions": "No pending actions",
+    "reviewsDue": "Reviews Due",
+    "recentDecisions": "Recent Decisions",
+    "biasDebt": "Open Bias Findings",
+    "openFindings": "open findings",
+    "noOpenFindings": "No open bias findings",
+    "noData": "No data",
+    "total": "total",
+    "reviewsDueWidget": {
+      "none": "No reviews due",
+      "overdue_one": "{{count}} day overdue",
+      "overdue_other": "{{count}} days overdue",
+      "daysUntil_one": "In {{count}} day",
+      "daysUntil_other": "In {{count}} days"
+    }
+  },
+  "riskLevels": {
+    "prohibited": "Prohibited",
+    "critical": "Critical",
+    "high": "High",
+    "limited": "Limited",
+    "minimal": "Minimal"
+  },
+  "severity": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "frameworks": {
+    "LOI_25": "Law 25",
+    "EU_AI_ACT": "EU AI Act",
+    "NIST_AI_RMF": "NIST AI RMF",
+    "ISO_42001": "ISO 42001",
+    "RGPD": "GDPR"
+  },
+  "systemTypes": {
+    "predictive_ml": "Predictive ML",
+    "rules_based": "Rules-based",
+    "genai_text": "GenAI Text",
+    "genai_image": "GenAI Image",
+    "genai_code": "GenAI Code",
+    "genai_multimodal": "GenAI Multimodal",
+    "nlp": "NLP",
+    "computer_vision": "Computer Vision",
+    "robotics": "Robotics",
+    "recommendation": "Recommendation",
+    "other": "Other"
+  },
+  "decisionTypes": {
+    "go_nogo": "Go/No-go",
+    "substantial_change": "Substantial Change",
+    "scale_deployment": "Scale Deployment",
+    "vendor_change": "Vendor Change",
+    "policy_adjustment": "Policy Adjustment",
+    "ethical_arbitration": "Ethical Arbitration",
+    "suspension": "Suspension",
+    "exception": "Exception"
+  },
+  "statuses": {
+    "draft": "Draft",
+    "submitted": "Submitted",
+    "in_review": "In Review",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "implemented": "Implemented"
+  },
+  "biasSeverity": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "columns": {
+    "name": "Name",
+    "score": "Score",
+    "riskLevel": "Risk Level"
   }
 }

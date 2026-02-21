@@ -5,6 +5,8 @@ import { useOrganization } from "@/hooks/useOrganization";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import { useIncidents } from "@/hooks/useIncidents";
 import { useComplianceScores } from "@/hooks/useCompliance";
+import { useDecisions } from "@/hooks/useDecisions";
+import { useBiasFindings } from "@/hooks/useBiasFindings";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -21,15 +23,28 @@ import {
   Minus,
 } from "lucide-react";
 
+// Dashboard widgets
+import RiskDistributionChart from "@/portail/components/dashboard/RiskDistributionChart";
+import { ComplianceRadarChart } from "@/portail/components/dashboard/ComplianceRadarChart";
+import { IncidentTimelineChart } from "@/portail/components/dashboard/IncidentTimelineChart";
+import SystemsByTypeChart from "@/portail/components/dashboard/SystemsByTypeChart";
+import TopRiskSystemsTable from "@/portail/components/dashboard/TopRiskSystemsTable";
+import PendingActionsWidget from "@/portail/components/dashboard/PendingActionsWidget";
+import ReviewsDueWidget from "@/portail/components/dashboard/ReviewsDueWidget";
+import RecentDecisionsWidget from "@/portail/components/dashboard/RecentDecisionsWidget";
+import BiasDebtWidget from "@/portail/components/dashboard/BiasDebtWidget";
+
 export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
   const { profile } = useAuth();
   const { data: org, isLoading } = useOrganization();
 
-  // Live data from modules
+  // Live data from all modules
   const { data: aiSystems = [] } = useAiSystems();
   const { data: incidents = [] } = useIncidents();
   const { data: complianceScores } = useComplianceScores();
+  const { data: decisions = [] } = useDecisions();
+  const { data: biasFindings = [] } = useBiasFindings();
 
   const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
 
@@ -47,11 +62,14 @@ export default function DashboardPage() {
             <div key={i} className="h-32 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
           ))}
         </div>
-        {/* Skeleton quick access */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-36 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
-          ))}
+        {/* Skeleton charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 h-80 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+          <div className="h-80 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 h-64 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+          <div className="h-64 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
         </div>
       </div>
     );
@@ -123,7 +141,9 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      {/* Page Header */}
+      {/* ================================================================ */}
+      {/*  Page Header                                                     */}
+      {/* ================================================================ */}
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("welcome", { firstName })}
@@ -133,7 +153,9 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      {/* KPI Cards */}
+      {/* ================================================================ */}
+      {/*  Row 1 — KPI Cards                                               */}
+      {/* ================================================================ */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat) => {
           const Icon = stat.icon;
@@ -155,7 +177,6 @@ export default function DashboardPage() {
                     <p className="text-xs text-muted-foreground mt-0.5 font-medium">{t(`stats.${stat.key}`)}</p>
                   </div>
                 </CardContent>
-                {/* Subtle hover accent line */}
                 <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-purple/40 group-hover:w-full transition-all duration-500" />
               </Card>
             </Link>
@@ -163,7 +184,46 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Quick Access */}
+      {/* ================================================================ */}
+      {/*  Row 2 — Risk distribution + Bias debt + Systems by type         */}
+      {/* ================================================================ */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <RiskDistributionChart data={aiSystems} />
+        <BiasDebtWidget findings={biasFindings} />
+        <SystemsByTypeChart systems={aiSystems} />
+      </div>
+
+      {/* ================================================================ */}
+      {/*  Row 3 — Compliance radar (2/3) + Top risk systems (1/3)         */}
+      {/* ================================================================ */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <ComplianceRadarChart frameworks={complianceScores?.frameworks ?? []} />
+        </div>
+        <TopRiskSystemsTable systems={aiSystems} />
+      </div>
+
+      {/* ================================================================ */}
+      {/*  Row 4 — Incident timeline (2/3) + Recent decisions (1/3)        */}
+      {/* ================================================================ */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <IncidentTimelineChart incidents={incidents} />
+        </div>
+        <RecentDecisionsWidget decisions={decisions} />
+      </div>
+
+      {/* ================================================================ */}
+      {/*  Row 5 — Pending actions (1/2) + Reviews due (1/2)               */}
+      {/* ================================================================ */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <PendingActionsWidget decisions={decisions} biasFindings={biasFindings} />
+        <ReviewsDueWidget systems={aiSystems} />
+      </div>
+
+      {/* ================================================================ */}
+      {/*  Row 6 — Quick Access                                            */}
+      {/* ================================================================ */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold tracking-tight">{t("quickAccess")}</h2>

@@ -1,21 +1,106 @@
 {
   "title": "Tableau de bord",
   "welcome": "Bienvenue, {{firstName}}",
-  "welcomeFallback": "là",
+  "welcomeFallback": "l\u00e0",
   "description": "Vue d'ensemble de votre gouvernance IA.",
-  "quickAccess": "Accès rapide",
+  "quickAccess": "Acc\u00e8s rapide",
   "stats": {
-    "aiSystems": "Systèmes IA",
-    "complianceScore": "Score de conformité",
+    "aiSystems": "Syst\u00e8mes IA en production",
+    "complianceScore": "Score de conformit\u00e9",
     "activeIncidents": "Incidents actifs",
-    "pendingAlerts": "Alertes en attente"
+    "pendingAlerts": "Syst\u00e8mes \u00e0 risque"
   },
   "noOrg": "Aucune organisation",
-  "noOrgDescription": "Vous n'êtes rattaché à aucune organisation. Contactez votre administrateur ou créez une organisation.",
+  "noOrgDescription": "Vous n'\u00eates rattach\u00e9 \u00e0 aucune organisation. Contactez votre administrateur ou cr\u00e9ez une organisation.",
   "modules": {
-    "aiSystems": { "title": "Systèmes IA", "description": "Gérer le registre de vos systèmes IA" },
-    "risks": { "title": "Risques", "description": "Évaluer et suivre les risques" },
-    "compliance": { "title": "Conformité", "description": "Suivre votre conformité multi-référentiels" },
-    "incidents": { "title": "Incidents", "description": "Déclarer et gérer les incidents" }
+    "aiSystems": { "title": "Syst\u00e8mes IA", "description": "G\u00e9rer le registre de vos syst\u00e8mes IA" },
+    "risks": { "title": "Risques", "description": "\u00c9valuer et suivre les risques" },
+    "compliance": { "title": "Conformit\u00e9", "description": "Suivre votre conformit\u00e9 multi-r\u00e9f\u00e9rentiels" },
+    "incidents": { "title": "Incidents", "description": "D\u00e9clarer et g\u00e9rer les incidents" }
+  },
+  "widgets": {
+    "riskDistribution": "R\u00e9partition par risque",
+    "complianceRadar": "Conformit\u00e9 par cadre",
+    "incidentTimeline": "Incidents par mois",
+    "systemsByType": "Syst\u00e8mes par type",
+    "topRiskSystems": "Syst\u00e8mes \u00e0 risque \u00e9lev\u00e9",
+    "pendingActions": "Actions en attente",
+    "noPendingActions": "Aucune action en attente",
+    "reviewsDue": "R\u00e9visions \u00e0 venir",
+    "recentDecisions": "D\u00e9cisions r\u00e9centes",
+    "biasDebt": "Biais ouverts",
+    "openFindings": "constatations ouvertes",
+    "noOpenFindings": "Aucun biais ouvert",
+    "noData": "Aucune donn\u00e9e",
+    "total": "total",
+    "reviewsDueWidget": {
+      "none": "Aucune r\u00e9vision \u00e0 venir",
+      "overdue_one": "En retard de {{count}} jour",
+      "overdue_other": "En retard de {{count}} jours",
+      "daysUntil_one": "Dans {{count}} jour",
+      "daysUntil_other": "Dans {{count}} jours"
+    }
+  },
+  "riskLevels": {
+    "prohibited": "Interdit",
+    "critical": "Critique",
+    "high": "\u00c9lev\u00e9",
+    "limited": "Limit\u00e9",
+    "minimal": "Minimal"
+  },
+  "severity": {
+    "critical": "Critique",
+    "high": "\u00c9lev\u00e9",
+    "medium": "Moyen",
+    "low": "Faible"
+  },
+  "frameworks": {
+    "LOI_25": "Loi 25",
+    "EU_AI_ACT": "EU AI Act",
+    "NIST_AI_RMF": "NIST AI RMF",
+    "ISO_42001": "ISO 42001",
+    "RGPD": "RGPD"
+  },
+  "systemTypes": {
+    "predictive_ml": "ML pr\u00e9dictif",
+    "rules_based": "R\u00e8gles",
+    "genai_text": "GenAI texte",
+    "genai_image": "GenAI image",
+    "genai_code": "GenAI code",
+    "genai_multimodal": "GenAI multimodal",
+    "nlp": "NLP",
+    "computer_vision": "Vision",
+    "robotics": "Robotique",
+    "recommendation": "Recommandation",
+    "other": "Autre"
+  },
+  "decisionTypes": {
+    "go_nogo": "Go/No-go",
+    "substantial_change": "Changement substantiel",
+    "scale_deployment": "D\u00e9ploiement",
+    "vendor_change": "Changement fournisseur",
+    "policy_adjustment": "Ajustement politique",
+    "ethical_arbitration": "Arbitrage \u00e9thique",
+    "suspension": "Suspension",
+    "exception": "Exception"
+  },
+  "statuses": {
+    "draft": "Brouillon",
+    "submitted": "Soumise",
+    "in_review": "En r\u00e9vision",
+    "approved": "Approuv\u00e9e",
+    "rejected": "Rejet\u00e9e",
+    "implemented": "Impl\u00e9ment\u00e9e"
+  },
+  "biasSeverity": {
+    "critical": "Critique",
+    "high": "\u00c9lev\u00e9",
+    "medium": "Moyen",
+    "low": "Faible"
+  },
+  "columns": {
+    "name": "Nom",
+    "score": "Score",
+    "riskLevel": "Niveau de risque"
   }
 }
