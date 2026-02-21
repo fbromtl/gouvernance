@@ -9,7 +9,7 @@ import {
   RefreshCw,
   AlertCircle,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase, supabaseConfigured } from "@/lib/supabase";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,14 +39,18 @@ interface Article {
 /*  Helper: call Edge Function                                         */
 /* ------------------------------------------------------------------ */
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+
 async function fetchRSS(): Promise<Article[]> {
+  if (!supabaseConfigured) throw new Error("Supabase not configured");
   const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.access_token) throw new Error("Not authenticated");
   const res = await fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/regulatory-watch`,
+    `${SUPABASE_URL}/functions/v1/regulatory-watch`,
     {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${session?.access_token}`,
+        Authorization: `Bearer ${session.access_token}`,
         "Content-Type": "application/json",
       },
     }
@@ -60,13 +64,15 @@ async function callAI(
   action: string,
   payload: Record<string, unknown>
 ): Promise<string> {
+  if (!supabaseConfigured) throw new Error("Supabase not configured");
   const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.access_token) throw new Error("Not authenticated");
   const res = await fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/regulatory-watch`,
+    `${SUPABASE_URL}/functions/v1/regulatory-watch`,
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${session?.access_token}`,
+        Authorization: `Bearer ${session.access_token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ action, ...payload }),
@@ -84,6 +90,7 @@ async function callAI(
 function formatDate(dateStr: string, lang: string): string {
   try {
     const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
     return d.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", {
       year: "numeric",
       month: "long",
@@ -186,10 +193,11 @@ export default function VeillePage() {
         language: lang,
       });
       setSummaryDialog((prev) => ({ ...prev, summary, loading: false }));
-    } catch {
+    } catch (err) {
+      console.error("Article summary error:", err);
       setSummaryDialog((prev) => ({
         ...prev,
-        summary: t("weeklySummary.error"),
+        summary: t("articles.error"),
         loading: false,
       }));
     }
@@ -316,9 +324,9 @@ export default function VeillePage() {
 
         {!loadingArticles && !articlesError && articles.length > 0 && (
           <div className="space-y-3">
-            {articles.map((article, i) => (
+            {articles.map((article) => (
               <Card
-                key={i}
+                key={article.link}
                 className="group hover:shadow-md transition-shadow duration-200"
               >
                 <CardContent className="py-4">
