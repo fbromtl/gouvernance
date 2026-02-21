@@ -1,98 +1,73 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  FileText,
-  Plus,
-  Pencil,
-  Trash2,
-  Search,
-  Eye,
+  FileText, Search, LayoutGrid, List, ChevronRight,
+  FolderOpen, Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
 
 import { usePermissions } from "@/hooks/usePermissions";
-import { useAiSystems } from "@/hooks/useAiSystems";
 import {
   useDocuments,
-  useCreateDocument,
+  useDocumentCounts,
+  useUploadDocument,
+  useAnalyzeDocument,
   useUpdateDocument,
   useDeleteDocument,
+  type AiAnalysisResult,
 } from "@/hooks/useDocuments";
 import type { GovDocument } from "@/types/database";
+import { useAuth } from "@/lib/auth";
 
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Badge } from "@/components/ui/badge";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from "@/components/ui/table";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  Dialog, DialogContent, DialogDescription, DialogFooter,
+  DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
 
-/* ================================================================== */
-/*  CONSTANTS                                                          */
-/* ================================================================== */
+import { DropZone } from "@/portail/components/drive/DropZone";
+import { CategorySidebar } from "@/portail/components/drive/CategorySidebar";
+import { FileCard } from "@/portail/components/drive/FileCard";
+import { FileDetail } from "@/portail/components/drive/FileDetail";
+import { ClassificationReview } from "@/portail/components/drive/ClassificationReview";
+import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
+import { cn } from "@/lib/utils";
+import { supabase } from "@/lib/supabase";
 
-/** Sentinel value for "all" in filter selects (Radix forbids value=""). */
+/* ------------------------------------------------------------------ */
+/*  Constants                                                          */
+/* ------------------------------------------------------------------ */
+
 const ALL = "__all__";
-/** Sentinel value for "none selected" in form selects (Radix forbids value=""). */
-const NONE = "__none__";
 
-const DOCUMENT_TYPES = [
-  "system_card",
-  "monitoring_plan",
-  "risk_summary",
-  "decisions_report",
-  "incidents_report",
-  "bias_report",
-  "eu_ai_act_annex_iv",
-  "compliance_report",
-  "fria_report",
-  "efvp_report",
-  "manual_upload",
-] as const;
-
-const STATUSES = ["draft", "in_review", "approved", "archived"] as const;
-
-const STATUS_BADGE_VARIANT: Record<string, string> = {
-  draft: "secondary",
-  in_review: "default",
-  approved: "outline",
-  archived: "secondary",
+const STATUS_STYLES: Record<string, string> = {
+  draft: "bg-gray-100 text-gray-600 border-gray-200",
+  in_review: "bg-amber-50 text-amber-700 border-amber-200",
+  approved: "bg-green-50 text-green-700 border-green-200",
+  archived: "bg-gray-100 text-gray-500 border-gray-200",
 };
 
-const STATUS_BADGE_CLASS: Record<string, string> = {
-  approved: "border-green-300 bg-green-50 text-green-700",
-};
+/* ------------------------------------------------------------------ */
+/*  Pending file type for classification                               */
+/* ------------------------------------------------------------------ */
+
+interface PendingFile {
+  document: GovDocument;
+  storagePath: string;
+  analysis: AiAnalysisResult | null;
+  isAnalyzing: boolean;
+  error: string | null;
+}
 
 /* ================================================================== */
 /*  MAIN PAGE                                                          */
@@ -100,129 +75,258 @@ const STATUS_BADGE_CLASS: Record<string, string> = {
 
 export default function DocumentsPage() {
   const { t } = useTranslation("documents");
+  const { t: ti18n } = useTranslation();
   const { can } = usePermissions();
+  const { profile } = useAuth();
   const readOnly = !can("export_data");
 
-  /* ---- list filters ---- */
-  const [typeFilter, setTypeFilter] = useState(ALL);
-  const [statusFilter, setStatusFilter] = useState(ALL);
+  /* ---- View state ---- */
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(
+    null
+  );
+  const [statusFilter, setStatusFilter] = useState(ALL);
 
-  /* ---- dialogs ---- */
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [editingDoc, setEditingDoc] = useState<GovDocument | null>(null);
+  /* ---- Dialogs ---- */
   const [viewingDoc, setViewingDoc] = useState<GovDocument | null>(null);
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<GovDocument | null>(null);
+  const [showClassification, setShowClassification] = useState(false);
+  const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  /* ---- data ---- */
-  const { data: documents = [], isLoading, isError } = useDocuments({
-    document_type: typeFilter === ALL ? undefined : typeFilter,
+  /* ---- Data ---- */
+  const filters = {
+    category:
+      selectedCategory === "__uncategorized__"
+        ? undefined
+        : selectedCategory ?? undefined,
+    subcategory: selectedSubcategory ?? undefined,
     status: statusFilter === ALL ? undefined : statusFilter,
     search: searchQuery || undefined,
-  });
-  const { data: aiSystems = [] } = useAiSystems();
-  const createDocument = useCreateDocument();
+  };
+
+  const { data: documents = [], isLoading, isError } = useDocuments(filters);
+  const { data: counts = {} } = useDocumentCounts();
+
+  // Filter uncategorized manually if needed
+  const filteredDocs =
+    selectedCategory === "__uncategorized__"
+      ? documents.filter((d) => !d.category)
+      : documents;
+
+  /* ---- Mutations ---- */
+  const uploadDocument = useUploadDocument();
+  const analyzeDocument = useAnalyzeDocument();
   const updateDocument = useUpdateDocument();
   const deleteDocument = useDeleteDocument();
 
-  /* ---- form state ---- */
-  const [formTitle, setFormTitle] = useState("");
-  const [formType, setFormType] = useState("");
-  const [formAiSystemId, setFormAiSystemId] = useState(NONE);
-  const [formDescription, setFormDescription] = useState("");
-  const [formTags, setFormTags] = useState("");
+  /* ---- Upload + analyze flow ---- */
+  const handleFilesSelected = useCallback(
+    async (files: File[]) => {
+      const newPending: PendingFile[] = [];
 
-  /* ---- helpers ---- */
-  const getSystemName = (id: string | null) => {
-    if (!id) return "\u2014";
-    const sys = aiSystems.find((s) => s.id === id);
-    return sys?.name ?? "\u2014";
-  };
+      // Upload all files first
+      for (const file of files) {
+        try {
+          const result = await uploadDocument.mutateAsync(file);
+          const pending: PendingFile = {
+            document: result.document,
+            storagePath: result.storagePath,
+            analysis: null,
+            isAnalyzing: true,
+            error: null,
+          };
+          newPending.push(pending);
+        } catch (err) {
+          toast.error(
+            t("drive.uploadError", {
+              defaultValue: "Erreur lors du telechargement de {{name}}",
+              name: file.name,
+            })
+          );
+        }
+      }
 
-  const getStatusBadge = (status: string) => {
-    const variant = STATUS_BADGE_VARIANT[status] ?? "secondary";
-    const className = STATUS_BADGE_CLASS[status] ?? "";
-    return (
-      <Badge variant={variant as any} className={className}>
-        {t(`statuses.${status}`)}
-      </Badge>
-    );
-  };
+      if (newPending.length === 0) return;
 
-  /* ---- dialog openers ---- */
-  const resetForm = () => {
-    setFormTitle("");
-    setFormType("");
-    setFormAiSystemId(NONE);
-    setFormDescription("");
-    setFormTags("");
-  };
+      // Show classification dialog
+      setPendingFiles(newPending);
+      setShowClassification(true);
 
-  const openCreateDialog = () => {
-    setEditingDoc(null);
-    resetForm();
-    setDialogOpen(true);
-  };
+      // Analyze each file in parallel
+      const language =
+        ti18n("language", { defaultValue: "fr" }) === "en" ? "en" : "fr";
 
-  const openEditDialog = (doc: GovDocument) => {
-    setEditingDoc(doc);
-    setFormTitle(doc.title);
-    setFormType(doc.document_type);
-    setFormAiSystemId(doc.ai_system_id ?? NONE);
-    setFormDescription(doc.description ?? "");
-    setFormTags((doc.tags ?? []).join(", "));
-    setDialogOpen(true);
-  };
+      for (const pending of newPending) {
+        analyzeDocument
+          .mutateAsync({
+            storagePath: pending.storagePath,
+            fileName: pending.document.file_name ?? "",
+            mimeType: pending.document.mime_type ?? "",
+            language,
+          })
+          .then((result) => {
+            setPendingFiles((prev) =>
+              prev.map((f) =>
+                f.document.id === pending.document.id
+                  ? { ...f, analysis: result, isAnalyzing: false }
+                  : f
+              )
+            );
+          })
+          .catch(() => {
+            setPendingFiles((prev) =>
+              prev.map((f) =>
+                f.document.id === pending.document.id
+                  ? {
+                      ...f,
+                      isAnalyzing: false,
+                      error: t("drive.analysisError", {
+                        defaultValue: "Erreur d'analyse IA",
+                      }),
+                    }
+                  : f
+              )
+            );
+          });
+      }
+    },
+    [uploadDocument, analyzeDocument, t, ti18n]
+  );
 
-  /* ---- submit ---- */
-  const handleSubmit = () => {
-    if (!formTitle.trim() || !formType) return;
+  /* ---- Confirm classification ---- */
+  const handleConfirmClassification = useCallback(
+    (
+      docId: string,
+      data: {
+        title: string;
+        category: string;
+        subcategory: string;
+        summary: string;
+        tags: string[];
+      }
+    ) => {
+      const pending = pendingFiles.find((f) => f.document.id === docId);
 
-    const tags = formTags
-      .split(",")
-      .map((t) => t.trim())
-      .filter(Boolean);
-
-    const payload = {
-      title: formTitle.trim(),
-      document_type: formType,
-      ai_system_id: formAiSystemId === NONE ? null : formAiSystemId,
-      description: formDescription.trim() || null,
-      tags,
-    };
-
-    if (editingDoc) {
       updateDocument.mutate(
-        { id: editingDoc.id, ...payload },
+        {
+          id: docId,
+          title: data.title,
+          category: data.category,
+          subcategory: data.subcategory,
+          summary: data.summary,
+          tags: data.tags,
+          ai_analysis: pending?.analysis as any,
+        },
         {
           onSuccess: () => {
-            toast.success(t("messages.updated"));
-            setDialogOpen(false);
+            toast.success(
+              t("drive.classified", {
+                defaultValue: "Document classifie avec succes",
+              })
+            );
           },
         }
       );
-    } else {
-      createDocument.mutate(payload, {
-        onSuccess: () => {
-          toast.success(t("messages.created"));
-          setDialogOpen(false);
-        },
+    },
+    [pendingFiles, updateDocument, t]
+  );
+
+  /* ---- Delete ---- */
+  const handleDelete = useCallback(
+    (doc: GovDocument) => {
+      const orgId = profile?.organization_id;
+      const storagePath = orgId
+        ? `${orgId}/${doc.id}/${doc.file_name}`
+        : undefined;
+
+      deleteDocument.mutate(
+        { id: doc.id, storagePath },
+        {
+          onSuccess: () => {
+            toast.success(t("messages.deleted"));
+            setDeleteConfirm(null);
+            setViewingDoc(null);
+          },
+        }
+      );
+    },
+    [deleteDocument, profile, t]
+  );
+
+  /* ---- Download ---- */
+  const handleDownload = useCallback(
+    async (doc: GovDocument) => {
+      if (!doc.file_url) return;
+      const orgId = profile?.organization_id;
+      if (!orgId) return;
+
+      const storagePath = `${orgId}/${doc.id}/${doc.file_name}`;
+      const { data, error } = await supabase.storage
+        .from("documents")
+        .download(storagePath);
+
+      if (error || !data) {
+        toast.error(
+          t("drive.downloadError", {
+            defaultValue: "Erreur de telechargement",
+          })
+        );
+        return;
+      }
+
+      // Create download link
+      const url = URL.createObjectURL(data);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = doc.file_name ?? "document";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+    [profile, t]
+  );
+
+  /* ---- Category selection ---- */
+  const handleCategorySelect = useCallback(
+    (category: string | null, subcategory: string | null) => {
+      setSelectedCategory(category);
+      setSelectedSubcategory(subcategory);
+    },
+    []
+  );
+
+  /* ---- Breadcrumb ---- */
+  const breadcrumbParts: { label: string; onClick?: () => void }[] = [
+    {
+      label: t("drive.allDocuments", { defaultValue: "Tous les documents" }),
+      onClick: () => handleCategorySelect(null, null),
+    },
+  ];
+
+  if (selectedCategory && selectedCategory !== "__uncategorized__") {
+    breadcrumbParts.push({
+      label: t(`drive.categories.${selectedCategory}`, {
+        defaultValue: selectedCategory,
+      }),
+      onClick: () => handleCategorySelect(selectedCategory, null),
+    });
+
+    if (selectedSubcategory) {
+      breadcrumbParts.push({
+        label: t(`drive.subcategories.${selectedSubcategory}`, {
+          defaultValue: selectedSubcategory,
+        }),
       });
     }
-  };
-
-  /* ---- delete ---- */
-  const handleDelete = (id: string) => {
-    deleteDocument.mutate(
-      { id },
-      {
-        onSuccess: () => {
-          toast.success(t("messages.deleted"));
-          setDeleteConfirm(null);
-        },
-      }
-    );
-  };
+  } else if (selectedCategory === "__uncategorized__") {
+    breadcrumbParts.push({
+      label: t("drive.uncategorized", { defaultValue: "Non classe" }),
+    });
+  }
 
   /* ================================================================ */
   /*  RENDER                                                           */
@@ -230,11 +334,13 @@ export default function DocumentsPage() {
 
   if (isError) {
     return (
-      <div className="space-y-6 p-4 md:p-6">
+      <div className="p-4 md:p-6">
         <Card className="p-8 text-center">
           <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
           <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+            {t("errorLoading", {
+              defaultValue: "Erreur de chargement des donnees.",
+            })}
           </p>
         </Card>
       </div>
@@ -242,388 +348,324 @@ export default function DocumentsPage() {
   }
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      {/* Header */}
-      <div className="flex items-start gap-3">
-        <FileText className="h-7 w-7 text-brand-purple mt-0.5" />
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-          <p className="text-muted-foreground">{t("pageDescription")}</p>
+    <div className="flex flex-col gap-4 p-4 md:p-6 -mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8">
+      {/* ---- Header ---- */}
+      <div className="flex items-start justify-between gap-3 px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
+        <div className="flex items-start gap-3">
+          <FolderOpen className="h-7 w-7 text-brand-purple mt-0.5" />
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">
+              {t("drive.title", { defaultValue: "Espace documentaire" })}
+            </h1>
+            <p className="text-muted-foreground">
+              {t("drive.description", {
+                defaultValue:
+                  "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
+              })}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="relative flex-1 min-w-[200px] max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder={t("search")}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9"
+      {/* ---- Upload zone ---- */}
+      {!readOnly && (
+        <div className="px-4 sm:px-6 lg:px-8">
+          <DropZone
+            onFilesSelected={handleFilesSelected}
+            isUploading={uploadDocument.isPending}
           />
         </div>
-
-        <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-52">
-            <SelectValue placeholder={t("filters.filterByType")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={ALL}>{t("filters.allTypes")}</SelectItem>
-            {DOCUMENT_TYPES.map((dt) => (
-              <SelectItem key={dt} value={dt}>
-                {t(`types.${dt}`)}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-44">
-            <SelectValue placeholder={t("filters.filterByStatus")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
-            {STATUSES.map((s) => (
-              <SelectItem key={s} value={s}>
-                {t(`statuses.${s}`)}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        {!readOnly && (
-          <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
-            <Plus className="h-4 w-4" />
-            {t("create")}
-          </Button>
-        )}
-      </div>
-
-      {/* Content */}
-      {isLoading ? (
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-16 rounded-lg" />
-          ))}
-        </div>
-      ) : documents.length === 0 ? (
-        <Card className="p-8 text-center">
-          <FileText className="h-10 w-10 mx-auto text-muted-foreground/40 mb-4" />
-          <p className="font-medium text-muted-foreground">{t("noDocuments")}</p>
-          <p className="text-sm text-muted-foreground/70 mt-1">
-            {t("noDocumentsDescription")}
-          </p>
-          {!readOnly && (
-            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("create")}
-            </Button>
-          )}
-        </Card>
-      ) : (
-        <Card>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>{t("table.title")}</TableHead>
-                <TableHead className="w-[200px]">{t("table.type")}</TableHead>
-                <TableHead className="w-[160px]">{t("table.system")}</TableHead>
-                <TableHead className="w-[120px]">{t("table.status")}</TableHead>
-                <TableHead className="w-[80px]">{t("table.version")}</TableHead>
-                <TableHead className="w-[110px]">{t("table.date")}</TableHead>
-                <TableHead className="w-[100px]">{t("table.actions")}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {documents.map((doc) => (
-                <TableRow key={doc.id}>
-                  <TableCell>
-                    <button
-                      className="text-sm font-medium text-left hover:text-brand-purple transition-colors"
-                      onClick={() => setViewingDoc(doc)}
-                    >
-                      {doc.title}
-                    </button>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline" className="text-[10px] px-1.5 py-0">
-                      {t(`types.${doc.document_type}`)}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
-                    {getSystemName(doc.ai_system_id)}
-                  </TableCell>
-                  <TableCell>{getStatusBadge(doc.status)}</TableCell>
-                  <TableCell className="text-sm text-muted-foreground text-center">
-                    v{doc.version}
-                  </TableCell>
-                  <TableCell className="text-xs text-muted-foreground">
-                    {new Date(doc.created_at).toLocaleDateString("fr-CA")}
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        onClick={() => setViewingDoc(doc)}
-                      >
-                        <Eye className="h-3.5 w-3.5" />
-                      </Button>
-                      {!readOnly && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                            onClick={() => openEditDialog(doc)}
-                          >
-                            <Pencil className="h-3.5 w-3.5" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7 text-destructive"
-                            onClick={() => setDeleteConfirm(doc.id)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Card>
       )}
 
-      {/* ============================================================ */}
-      {/*  CREATE / EDIT DIALOG                                         */}
-      {/* ============================================================ */}
-      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {editingDoc ? t("edit") : t("create")}
-            </DialogTitle>
-            <DialogDescription>{t("pageDescription")}</DialogDescription>
-          </DialogHeader>
+      {/* ---- Main content: sidebar + files ---- */}
+      <div className="flex flex-1 min-h-0 px-4 sm:px-6 lg:px-8 pb-6 lg:pb-8">
+        {/* Sidebar - Desktop */}
+        <div
+          className={cn(
+            "hidden lg:block shrink-0 transition-all duration-200",
+            sidebarOpen ? "w-[250px] mr-6" : "w-0 mr-0 overflow-hidden"
+          )}
+        >
+          <Card className="sticky top-0 p-2 h-fit max-h-[calc(100vh-260px)] overflow-y-auto">
+            <CategorySidebar
+              selectedCategory={selectedCategory}
+              selectedSubcategory={selectedSubcategory}
+              onSelect={handleCategorySelect}
+              counts={counts}
+            />
+          </Card>
+        </div>
 
-          <div className="space-y-4">
-            {/* Title */}
-            <div>
-              <Label>{t("form.title")}</Label>
+        {/* Files area */}
+        <div className="flex-1 min-w-0 space-y-4">
+          {/* Toolbar */}
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Sidebar toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden lg:flex h-8 w-8"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              <FolderOpen className="h-4 w-4" />
+            </Button>
+
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-1 text-sm min-w-0 mr-auto">
+              {breadcrumbParts.map((part, i) => (
+                <div key={i} className="flex items-center gap-1">
+                  {i > 0 && (
+                    <ChevronRight className="h-3.5 w-3.5 text-foreground/25 shrink-0" />
+                  )}
+                  {part.onClick && i < breadcrumbParts.length - 1 ? (
+                    <button
+                      onClick={part.onClick}
+                      className="text-foreground/50 hover:text-foreground transition-colors truncate"
+                    >
+                      {part.label}
+                    </button>
+                  ) : (
+                    <span className="font-semibold text-foreground truncate">
+                      {part.label}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Search */}
+            <div className="relative w-full sm:w-auto sm:min-w-[200px] max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                value={formTitle}
-                onChange={(e) => setFormTitle(e.target.value)}
+                placeholder={t("search")}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-9 h-8"
               />
             </div>
 
-            {/* Document type */}
-            <div>
-              <Label>{t("form.type")}</Label>
-              <Select value={formType} onValueChange={setFormType}>
-                <SelectTrigger>
-                  <SelectValue placeholder={t("form.selectType")} />
-                </SelectTrigger>
-                <SelectContent>
-                  {DOCUMENT_TYPES.map((dt) => (
-                    <SelectItem key={dt} value={dt}>
-                      {t(`types.${dt}`)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {/* Status filter */}
+            <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <SelectTrigger className="w-36 h-8 text-xs">
+                <SelectValue placeholder={t("filters.filterByStatus")} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
+                <SelectItem value="draft">{t("statuses.draft")}</SelectItem>
+                <SelectItem value="in_review">
+                  {t("statuses.in_review")}
+                </SelectItem>
+                <SelectItem value="approved">
+                  {t("statuses.approved")}
+                </SelectItem>
+                <SelectItem value="archived">
+                  {t("statuses.archived")}
+                </SelectItem>
+              </SelectContent>
+            </Select>
 
-            {/* AI System */}
-            {aiSystems.length > 0 && (
-              <div>
-                <Label>{t("form.aiSystem")}</Label>
-                <Select value={formAiSystemId} onValueChange={setFormAiSystemId}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t("form.selectSystem")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={NONE}>{"\u2014"}</SelectItem>
-                    {aiSystems.map((sys) => (
-                      <SelectItem key={sys.id} value={sys.id}>
-                        {sys.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
-
-            {/* Description */}
-            <div>
-              <Label>{t("form.description")}</Label>
-              <Textarea
-                value={formDescription}
-                onChange={(e) => setFormDescription(e.target.value)}
-                rows={3}
-                placeholder={t("form.descriptionPlaceholder")}
-              />
-            </div>
-
-            {/* Tags */}
-            <div>
-              <Label>{t("form.tags")}</Label>
-              <Input
-                value={formTags}
-                onChange={(e) => setFormTags(e.target.value)}
-                placeholder={t("form.tagsPlaceholder")}
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                Separating tags with commas
-              </p>
+            {/* View toggle */}
+            <div className="flex border rounded-lg overflow-hidden">
+              <Button
+                variant={viewMode === "grid" ? "default" : "ghost"}
+                size="icon"
+                className="h-8 w-8 rounded-none"
+                onClick={() => setViewMode("grid")}
+              >
+                <LayoutGrid className="h-3.5 w-3.5" />
+              </Button>
+              <Button
+                variant={viewMode === "list" ? "default" : "ghost"}
+                size="icon"
+                className="h-8 w-8 rounded-none"
+                onClick={() => setViewMode("list")}
+              >
+                <List className="h-3.5 w-3.5" />
+              </Button>
             </div>
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)}>
-              Annuler
-            </Button>
-            <Button
-              onClick={handleSubmit}
-              disabled={
-                !formTitle.trim() ||
-                !formType ||
-                createDocument.isPending ||
-                updateDocument.isPending
-              }
+          {/* Mobile category pills */}
+          <div className="flex lg:hidden gap-2 overflow-x-auto pb-1">
+            <Badge
+              variant={selectedCategory === null ? "default" : "outline"}
+              className="cursor-pointer whitespace-nowrap"
+              onClick={() => handleCategorySelect(null, null)}
             >
-              {editingDoc ? t("edit") : t("create")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+              {t("drive.allDocuments", { defaultValue: "Tous" })}
+            </Badge>
+            {DRIVE_CATEGORIES.map((cat) => (
+              <Badge
+                key={cat.key}
+                variant={selectedCategory === cat.key ? "default" : "outline"}
+                className="cursor-pointer whitespace-nowrap"
+                onClick={() => handleCategorySelect(cat.key, null)}
+              >
+                {t(`drive.categories.${cat.labelKey}`, {
+                  defaultValue: cat.labelKey,
+                })}
+              </Badge>
+            ))}
+          </div>
 
-      {/* ============================================================ */}
-      {/*  DETAIL SHEET                                                 */}
-      {/* ============================================================ */}
-      <Sheet open={!!viewingDoc} onOpenChange={() => setViewingDoc(null)}>
-        <SheetContent className="sm:max-w-xl overflow-y-auto">
-          {viewingDoc && (
-            <>
-              <SheetHeader>
-                <SheetTitle>{viewingDoc.title}</SheetTitle>
-                <SheetDescription>
-                  <div className="flex gap-2 mt-1 flex-wrap">
-                    {getStatusBadge(viewingDoc.status)}
-                    <Badge variant="outline">
-                      {t(`types.${viewingDoc.document_type}`)}
-                    </Badge>
-                    <Badge variant="outline">v{viewingDoc.version}</Badge>
-                  </div>
-                </SheetDescription>
-              </SheetHeader>
-
-              <div className="mt-6 space-y-5">
-                {/* AI System */}
-                {viewingDoc.ai_system_id && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                      {t("table.system")}
-                    </h4>
-                    <p className="text-sm">{getSystemName(viewingDoc.ai_system_id)}</p>
-                  </div>
-                )}
-
-                {/* Description */}
-                <div>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                    {t("detail.description")}
-                  </h4>
-                  <p className="text-sm whitespace-pre-wrap">
-                    {viewingDoc.description || t("detail.noContent")}
-                  </p>
-                </div>
-
-                {/* Tags */}
-                {(viewingDoc.tags ?? []).length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                      {t("detail.tags")}
-                    </h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {viewingDoc.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
+          {/* Content */}
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <Skeleton key={i} className="h-36 rounded-xl" />
+              ))}
+            </div>
+          ) : filteredDocs.length === 0 ? (
+            <Card className="p-10 text-center">
+              <FolderOpen className="h-12 w-12 mx-auto text-muted-foreground/20 mb-4" />
+              <p className="font-medium text-muted-foreground">
+                {t("drive.noDocuments", {
+                  defaultValue: "Aucun document dans cette categorie",
+                })}
+              </p>
+              <p className="text-sm text-muted-foreground/70 mt-1">
+                {t("drive.noDocumentsHint", {
+                  defaultValue:
+                    "Glissez-deposez des fichiers ci-dessus pour commencer.",
+                })}
+              </p>
+            </Card>
+          ) : viewMode === "grid" ? (
+            /* ---- Grid view ---- */
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              {filteredDocs.map((doc) => (
+                <FileCard
+                  key={doc.id}
+                  document={doc}
+                  onView={setViewingDoc}
+                  onDelete={readOnly ? undefined : setDeleteConfirm}
+                  onDownload={handleDownload}
+                />
+              ))}
+            </div>
+          ) : (
+            /* ---- List view ---- */
+            <Card>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t("table.title")}</TableHead>
+                    <TableHead className="w-[160px]">
+                      {t("drive.category", { defaultValue: "Categorie" })}
+                    </TableHead>
+                    <TableHead className="w-[120px]">
+                      {t("table.status")}
+                    </TableHead>
+                    <TableHead className="w-[80px]">
+                      {t("drive.size", { defaultValue: "Taille" })}
+                    </TableHead>
+                    <TableHead className="w-[100px]">
+                      {t("table.date")}
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredDocs.map((doc) => (
+                    <TableRow
+                      key={doc.id}
+                      className="cursor-pointer"
+                      onClick={() => setViewingDoc(doc)}
+                    >
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
+                          <span className="text-sm font-medium truncate">
+                            {doc.title}
+                          </span>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        {doc.category ? (
+                          <Badge
+                            variant="outline"
+                            className="text-[10px] px-1.5 py-0"
+                          >
+                            {t(`drive.categories.${doc.category}`, {
+                              defaultValue: doc.category,
+                            })}
+                          </Badge>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">
+                            —
+                          </span>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          variant="outline"
+                          className={cn(
+                            "text-[10px] px-1.5 py-0",
+                            STATUS_STYLES[doc.status]
+                          )}
+                        >
+                          {t(`statuses.${doc.status}`)}
                         </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* File */}
-                {viewingDoc.file_name && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                      {t("detail.file")}
-                    </h4>
-                    <p className="text-sm">
-                      {viewingDoc.file_name}
-                      {viewingDoc.file_size && (
-                        <span className="text-muted-foreground ml-2">
-                          ({Math.round(viewingDoc.file_size / 1024)} KB)
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                )}
-
-                {/* Approved by */}
-                {viewingDoc.approved_at && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                      {t("detail.approvedBy")}
-                    </h4>
-                    <p className="text-sm">
-                      {new Date(viewingDoc.approved_at).toLocaleDateString("fr-CA")}
-                    </p>
-                  </div>
-                )}
-
-                {/* Metadata */}
-                <div className="pt-4 border-t text-xs text-muted-foreground space-y-1">
-                  <p>
-                    {"Cr\u00e9\u00e9 le "}
-                    {new Date(viewingDoc.created_at).toLocaleDateString("fr-CA")}
-                  </p>
-                  <p>
-                    {"Mis \u00e0 jour le "}
-                    {new Date(viewingDoc.updated_at).toLocaleDateString("fr-CA")}
-                  </p>
-                </div>
-              </div>
-            </>
+                      </TableCell>
+                      <TableCell className="text-xs text-muted-foreground">
+                        {formatFileSize(doc.file_size)}
+                      </TableCell>
+                      <TableCell className="text-xs text-muted-foreground">
+                        {new Date(doc.created_at).toLocaleDateString("fr-CA")}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Card>
           )}
-        </SheetContent>
-      </Sheet>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/*  FILE DETAIL SHEET                                            */}
+      {/* ============================================================ */}
+      <FileDetail
+        document={viewingDoc}
+        onClose={() => setViewingDoc(null)}
+        onDelete={readOnly ? undefined : (doc) => setDeleteConfirm(doc)}
+        onDownload={handleDownload}
+        readOnly={readOnly}
+      />
+
+      {/* ============================================================ */}
+      {/*  CLASSIFICATION REVIEW DIALOG                                 */}
+      {/* ============================================================ */}
+      <ClassificationReview
+        files={pendingFiles}
+        onConfirm={handleConfirmClassification}
+        onCancel={() => setShowClassification(false)}
+        open={showClassification}
+      />
 
       {/* ============================================================ */}
       {/*  DELETE CONFIRMATION                                          */}
       {/* ============================================================ */}
-      <Dialog open={!!deleteConfirm} onOpenChange={() => setDeleteConfirm(null)}>
+      <Dialog
+        open={!!deleteConfirm}
+        onOpenChange={() => setDeleteConfirm(null)}
+      >
         <DialogContent className="max-w-sm">
           <DialogHeader>
             <DialogTitle>{t("delete")}</DialogTitle>
-            <DialogDescription>{t("messages.deleteConfirm")}</DialogDescription>
+            <DialogDescription>
+              {t("messages.deleteConfirm")}
+            </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
-              Annuler
+              {t("drive.cancel", { defaultValue: "Annuler" })}
             </Button>
             <Button
               variant="destructive"
               onClick={() => deleteConfirm && handleDelete(deleteConfirm)}
               disabled={deleteDocument.isPending}
             >
+              <Trash2 className="h-4 w-4 mr-1.5" />
               {t("delete")}
             </Button>
           </DialogFooter>

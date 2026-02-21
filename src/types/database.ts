@@ -1206,6 +1206,10 @@ export interface Database {
           version: number;
           status: string;
           tags: string[];
+          category: string | null;
+          subcategory: string | null;
+          summary: string | null;
+          ai_analysis: Record<string, unknown> | null;
           approved_by: string | null;
           approved_at: string | null;
           created_by: string | null;
@@ -1227,6 +1231,10 @@ export interface Database {
           version?: number;
           status?: string;
           tags?: string[];
+          category?: string | null;
+          subcategory?: string | null;
+          summary?: string | null;
+          ai_analysis?: Record<string, unknown> | null;
           approved_by?: string | null;
           approved_at?: string | null;
           created_by?: string | null;
@@ -1244,6 +1252,10 @@ export interface Database {
           version?: number;
           status?: string;
           tags?: string[];
+          category?: string | null;
+          subcategory?: string | null;
+          summary?: string | null;
+          ai_analysis?: Record<string, unknown> | null;
           approved_by?: string | null;
           approved_at?: string | null;
           updated_by?: string | null;
