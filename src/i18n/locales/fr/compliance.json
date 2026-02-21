@@ -96,5 +96,10 @@
   "empty": {
     "title": "Conformité",
     "description": "Commencez par initialiser les référentiels applicables à votre organisation."
+  },
+  "help": {
+    "title": "Comprendre : Conformité",
+    "why": "Le module de conformité mesure votre degré d'alignement avec les cadres réglementaires (EU AI Act, Loi 25, NIST AI RMF, ISO 42001, RGPD). Il identifie les écarts et pilote les actions de remédiation.",
+    "how": "1. Consultez le tableau de bord pour voir vos scores par référentiel.\n2. Évaluez chaque exigence dans l'onglet « Cadres ».\n3. Créez des actions de remédiation pour les non-conformités.\n4. Suivez l'avancement des remédiations et leur impact sur vos scores."
   }
 }

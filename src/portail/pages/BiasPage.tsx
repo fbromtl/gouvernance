@@ -19,6 +19,7 @@ import {
   useDeleteBiasFinding,
 } from "@/hooks/useBiasFindings";
 import type { BiasFinding } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -301,10 +302,13 @@ export default function BiasPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Scale className="h-6 w-6 text-brand-purple" />
-            {t("pageTitle")}
-          </h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <Scale className="h-6 w-6 text-brand-purple" />
+              {t("pageTitle")}
+            </h1>
+            <SectionHelpButton ns="bias" />
+          </div>
           <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
         </div>
         {!readOnly && (

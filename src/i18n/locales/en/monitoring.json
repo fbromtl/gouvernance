@@ -106,5 +106,10 @@
     "systemsMonitored": "Systems monitored",
     "warningAlerts": "Warnings",
     "criticalAlerts": "Critical alerts"
+  },
+  "help": {
+    "title": "Understanding: Monitoring",
+    "why": "Continuous monitoring of your AI systems helps detect performance drift, anomalies, and issues before they affect your users. This is a key requirement of the EU AI Act for high-risk systems.",
+    "how": "1. Configure monitoring metrics for each system.\n2. Review real-time performance dashboards.\n3. Set alert thresholds to be notified of anomalies.\n4. Analyze trends to anticipate problems."
   }
 }

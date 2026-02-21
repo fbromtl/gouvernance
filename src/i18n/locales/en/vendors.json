@@ -80,5 +80,10 @@
     "updated": "Vendor updated",
     "deleted": "Vendor deleted",
     "deleteConfirm": "Are you sure you want to delete this vendor?"
+  },
+  "help": {
+    "title": "Understanding: Vendors",
+    "why": "Third-party AI management lets you track and evaluate your AI technology vendors. It ensures your partners meet the same governance standards as your organization.",
+    "how": "1. Register each AI vendor with their key information.\n2. Assess their compliance and reliability level.\n3. Associate vendors with the AI systems they provide.\n4. Periodically review contracts and commitments."
   }
 }

@@ -204,6 +204,7 @@ export default function IncidentListPage() {
       {/* Header */}
       <PageHeader
         title={t("title")}
+        helpNs="incidents"
         description={t("description")}
         actions={
           <Button onClick={() => navigate("/incidents/new")}>

@@ -96,5 +96,10 @@
   "empty": {
     "title": "Compliance",
     "description": "Start by initializing the frameworks applicable to your organization."
+  },
+  "help": {
+    "title": "Understanding: Compliance",
+    "why": "The compliance module measures your alignment with regulatory frameworks (EU AI Act, Law 25, NIST AI RMF, ISO 42001, GDPR). It identifies gaps and drives remediation actions.",
+    "how": "1. Check the dashboard for scores by framework.\n2. Assess each requirement in the 'Frameworks' tab.\n3. Create remediation actions for non-conformities.\n4. Track remediation progress and its impact on your scores."
   }
 }

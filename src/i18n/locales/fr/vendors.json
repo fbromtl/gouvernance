@@ -80,5 +80,10 @@
     "updated": "Fournisseur mis à jour",
     "deleted": "Fournisseur supprimé",
     "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce fournisseur ?"
+  },
+  "help": {
+    "title": "Comprendre : Fournisseurs",
+    "why": "La gestion des tiers IA permet de suivre et d'évaluer vos fournisseurs de technologies d'intelligence artificielle. Elle garantit que vos partenaires respectent les mêmes standards de gouvernance que votre organisation.",
+    "how": "1. Enregistrez chaque fournisseur IA avec ses informations clés.\n2. Évaluez leur niveau de conformité et de fiabilité.\n3. Associez les fournisseurs aux systèmes IA qu'ils alimentent.\n4. Révisez périodiquement les contrats et les engagements."
   }
 }

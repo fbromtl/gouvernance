@@ -134,5 +134,10 @@
     "contestationCreated": "Contestation enregistrée",
     "contestationUpdated": "Contestation mise à jour",
     "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette entrée ?"
+  },
+  "help": {
+    "title": "Comprendre : Transparence",
+    "why": "La transparence est un principe fondamental de l'IA responsable. Ce module enregistre et expose les décisions prises par vos systèmes IA, permettant leur explicabilité et leur auditabilité.",
+    "how": "1. Consultez le journal des décisions automatisées de vos systèmes.\n2. Vérifiez les explications fournies pour chaque décision.\n3. Identifiez les décisions nécessitant une révision humaine.\n4. Exportez les logs pour vos rapports de transparence."
   }
 }

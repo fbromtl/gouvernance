@@ -233,5 +233,10 @@
     "created": "Risk assessment created successfully",
     "updated": "Risk assessment updated",
     "approved": "Risk assessment approved"
+  },
+  "help": {
+    "title": "Understanding: Risk Assessments",
+    "why": "Risk assessments let you qualify each AI system by its potential danger level. This risk-based approach is at the heart of the EU AI Act, NIST AI RMF, and governance best practices.",
+    "how": "1. Create an assessment by selecting an AI system.\n2. Answer the questionnaire to evaluate risks.\n3. Review the automatically calculated risk score.\n4. Apply recommended mitigation measures."
   }
 }

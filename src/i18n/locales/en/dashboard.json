@@ -107,5 +107,10 @@
     "name": "Name",
     "score": "Score",
     "riskLevel": "Risk Level"
+  },
+  "help": {
+    "title": "Understanding: Dashboard",
+    "why": "The dashboard centralizes key indicators for your AI governance. It gives you an at-a-glance view of your systems' status, compliance scores, and identified risks.",
+    "how": "1. Review the KPIs at the top for a quick overview.\n2. Analyze risk distribution and compliance charts.\n3. Check pending actions and upcoming reviews.\n4. Use quick links to access detailed modules."
   }
 }

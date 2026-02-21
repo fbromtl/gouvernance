@@ -278,5 +278,10 @@
     "updated": "Système IA mis à jour",
     "deleted": "Système IA archivé",
     "draftSaved": "Brouillon sauvegardé"
+  },
+  "help": {
+    "title": "Comprendre : Systèmes IA",
+    "why": "Le registre des systèmes IA est la pierre angulaire de votre gouvernance. Il inventorie tous les systèmes d'intelligence artificielle utilisés dans votre organisation, conformément aux exigences de l'EU AI Act et de la Loi 25.",
+    "how": "1. Enregistrez chaque système IA via le bouton « Nouveau système ».\n2. Renseignez le type, le niveau de risque et le responsable.\n3. Suivez le cycle de vie de chaque système (développement, production, retrait).\n4. Consultez les détails d'un système pour voir ses évaluations de risque et sa conformité."
   }
 }

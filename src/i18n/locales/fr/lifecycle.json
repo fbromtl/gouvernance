@@ -75,5 +75,10 @@
     "updated": "Événement mis à jour",
     "deleted": "Événement supprimé",
     "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet événement ?"
+  },
+  "help": {
+    "title": "Comprendre : Cycle de vie",
+    "why": "Le suivi du cycle de vie couvre chaque étape de vos systèmes IA, de la conception au retrait. Il garantit que les contrôles de gouvernance sont appliqués à chaque phase et que les transitions sont documentées.",
+    "how": "1. Suivez l'état actuel de chaque système (développement, test, production, retrait).\n2. Documentez les transitions entre les phases.\n3. Vérifiez que les prérequis de gouvernance sont remplis avant chaque promotion.\n4. Planifiez les révisions et les mises à jour périodiques."
   }
 }

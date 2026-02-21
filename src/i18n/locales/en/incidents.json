@@ -164,5 +164,10 @@
     "created": "Incident reported successfully",
     "updated": "Incident updated",
     "statusChanged": "Incident status updated"
+  },
+  "help": {
+    "title": "Understanding: Incidents",
+    "why": "AI incident management lets you report, track, and resolve any malfunction or adverse event related to your AI systems. This is a regulatory requirement under the EU AI Act for high-risk systems.",
+    "how": "1. Report an incident via the 'Report incident' button.\n2. Specify the severity, affected system, and description.\n3. Track resolution progress in the list.\n4. Document corrective actions and lessons learned."
   }
 }

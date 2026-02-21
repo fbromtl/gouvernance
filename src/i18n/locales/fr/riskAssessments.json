@@ -233,5 +233,10 @@
     "created": "Évaluation de risque créée avec succès",
     "updated": "Évaluation de risque mise à jour",
     "approved": "Évaluation de risque approuvée"
+  },
+  "help": {
+    "title": "Comprendre : Évaluations de risques",
+    "why": "Les évaluations de risques permettent de qualifier chaque système IA selon son niveau de danger potentiel. Cette approche basée sur le risque est au cœur de l'EU AI Act, du NIST AI RMF et des bonnes pratiques de gouvernance.",
+    "how": "1. Créez une évaluation en sélectionnant un système IA.\n2. Répondez aux questions du questionnaire pour évaluer les risques.\n3. Consultez le score de risque calculé automatiquement.\n4. Appliquez les mesures d'atténuation recommandées."
   }
 }

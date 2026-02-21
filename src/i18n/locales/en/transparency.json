@@ -134,5 +134,10 @@
     "contestationCreated": "Contestation recorded",
     "contestationUpdated": "Contestation updated",
     "deleteConfirm": "Are you sure you want to delete this entry?"
+  },
+  "help": {
+    "title": "Understanding: Transparency",
+    "why": "Transparency is a fundamental principle of responsible AI. This module records and exposes decisions made by your AI systems, enabling their explainability and auditability.",
+    "how": "1. Review the automated decision log of your systems.\n2. Check the explanations provided for each decision.\n3. Identify decisions requiring human review.\n4. Export logs for your transparency reports."
   }
 }

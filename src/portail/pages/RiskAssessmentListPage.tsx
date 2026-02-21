@@ -97,6 +97,7 @@ export default function RiskAssessmentListPage() {
       <div className="space-y-6">
         <PageHeader
           title={t("title")}
+          helpNs="riskAssessments"
           description={t("description")}
           actions={
             <Button onClick={() => navigate("/risks/new")}>
@@ -120,6 +121,7 @@ export default function RiskAssessmentListPage() {
     <div className="space-y-6">
       <PageHeader
         title={t("title")}
+        helpNs="riskAssessments"
         description={t("description")}
         actions={
           <Button onClick={() => navigate("/risks/new")}>

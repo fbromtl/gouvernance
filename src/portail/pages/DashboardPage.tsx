@@ -9,6 +9,7 @@ import { useComplianceScores } from "@/hooks/useCompliance";
 import { useDecisions } from "@/hooks/useDecisions";
 import { useBiasFindings } from "@/hooks/useBiasFindings";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
@@ -186,9 +187,12 @@ export default function DashboardPage() {
       {/* ================================================================ */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            {t("welcome", { firstName })}
-          </h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              {t("welcome", { firstName })}
+            </h1>
+            <SectionHelpButton ns="dashboard" />
+          </div>
           <p className="text-sm text-muted-foreground mt-1">
             {t("description")}
           </p>

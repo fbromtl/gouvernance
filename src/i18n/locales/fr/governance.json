@@ -228,5 +228,10 @@
       "deleted": "Comité supprimé",
       "error": "Une erreur est survenue"
     }
+  },
+  "help": {
+    "title": "Comprendre : Gouvernance",
+    "why": "Ce module structure les politiques et la documentation de votre cadre de gouvernance IA. Il centralise les règles, processus et lignes directrices qui encadrent l'utilisation responsable de l'IA dans votre organisation.",
+    "how": "1. Définissez vos politiques de gouvernance IA (charte éthique, processus d'approbation).\n2. Documentez les rôles et responsabilités de chaque partie prenante.\n3. Publiez et partagez les documents de gouvernance avec votre équipe.\n4. Révisez périodiquement vos politiques pour rester aligné avec la réglementation."
   }
 }

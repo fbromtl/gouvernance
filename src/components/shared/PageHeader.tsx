@@ -1,13 +1,16 @@
 import type { ReactNode } from "react";
+import { SectionHelpButton } from "./SectionHelpButton";
 
 interface PageHeaderProps {
   title: string;
   description?: string;
   actions?: ReactNode;
   icon?: React.ComponentType<{ className?: string }>;
+  /** i18n namespace for contextual help dialog (e.g. "dashboard") */
+  helpNs?: string;
 }
 
-export function PageHeader({ title, description, actions, icon: Icon }: PageHeaderProps) {
+export function PageHeader({ title, description, actions, icon: Icon, helpNs }: PageHeaderProps) {
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-start gap-3">
@@ -17,7 +20,10 @@ export function PageHeader({ title, description, actions, icon: Icon }: PageHead
           </div>
         )}
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">{title}</h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">{title}</h1>
+            {helpNs && <SectionHelpButton ns={helpNs} />}
+          </div>
           {description && (
             <p className="text-sm text-muted-foreground mt-0.5 max-w-2xl leading-relaxed">{description}</p>
           )}

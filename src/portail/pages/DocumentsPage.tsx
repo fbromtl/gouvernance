@@ -42,6 +42,7 @@ import { FileDetail } from "@/portail/components/drive/FileDetail";
 import { ClassificationReview } from "@/portail/components/drive/ClassificationReview";
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
@@ -355,9 +356,12 @@ export default function DocumentsPage() {
         <div className="flex items-start gap-3">
           <FolderOpen className="h-7 w-7 text-brand-purple mt-0.5" />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">
-              {t("drive.title", { defaultValue: "Espace documentaire" })}
-            </h1>
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-2xl font-bold tracking-tight">
+                {t("drive.title", { defaultValue: "Espace documentaire" })}
+              </h1>
+              <SectionHelpButton ns="documents" />
+            </div>
             <p className="text-muted-foreground">
               {t("drive.description", {
                 defaultValue:

@@ -107,5 +107,10 @@
     "name": "Nom",
     "score": "Score",
     "riskLevel": "Niveau de risque"
+  },
+  "help": {
+    "title": "Comprendre : Tableau de bord",
+    "why": "Le tableau de bord centralise les indicateurs clés de votre gouvernance IA. Il vous permet de visualiser en un coup d'œil l'état de vos systèmes, votre conformité et les risques identifiés.",
+    "how": "1. Consultez les KPI en haut de page pour un aperçu rapide.\n2. Analysez les graphiques de répartition des risques et de conformité.\n3. Vérifiez les actions en attente et les révisions à venir.\n4. Utilisez les liens rapides pour accéder aux modules détaillés."
   }
 }

@@ -175,5 +175,10 @@
     "transferDeleted": "Transfer deleted",
     "deleteDatasetConfirm": "Are you sure you want to delete this dataset?",
     "deleteTransferConfirm": "Are you sure you want to delete this transfer?"
+  },
+  "help": {
+    "title": "Understanding: Data",
+    "why": "Data governance is inseparable from AI governance. This module traces the origin, quality, and usage of data that feeds your AI systems, in compliance with GDPR and Law 25.",
+    "how": "1. Inventory the datasets used by each AI system.\n2. Document data provenance and lineage.\n3. Assess quality and risks associated with each dataset.\n4. Ensure compliance with personal data protection requirements."
   }
 }

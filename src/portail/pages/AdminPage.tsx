@@ -20,6 +20,7 @@ import {
 } from "@/hooks/useAdminMutations";
 import { ROLES } from "@/lib/permissions";
 import type { Organization } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -65,7 +66,10 @@ export default function AdminPage() {
     <div className="space-y-6 p-4 md:p-6">
       {/* Page header */}
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+        <div className="flex items-center gap-1.5">
+          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+          <SectionHelpButton ns="admin" />
+        </div>
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 

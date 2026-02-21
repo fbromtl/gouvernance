@@ -104,5 +104,10 @@
     "conditions": "Conditions",
     "timeline": "Chronologie",
     "noContent": "Non renseigné"
+  },
+  "help": {
+    "title": "Comprendre : Décisions",
+    "why": "Le registre des décisions trace toutes les décisions importantes liées à vos systèmes IA : déploiement, suspension, changement de fournisseur, arbitrages éthiques. Il assure la traçabilité et la responsabilité exigées par les régulateurs.",
+    "how": "1. Enregistrez chaque décision avec son type et sa justification.\n2. Soumettez-la au processus d'approbation si nécessaire.\n3. Suivez le statut de chaque décision (brouillon, en révision, approuvée).\n4. Consultez l'historique pour démontrer la traçabilité aux auditeurs."
   }
 }

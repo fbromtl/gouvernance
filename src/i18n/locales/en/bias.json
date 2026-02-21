@@ -130,5 +130,10 @@
     "metrics": "Fairness metrics",
     "remediation": "Remediation plan",
     "noContent": "Not provided"
+  },
+  "help": {
+    "title": "Understanding: Bias",
+    "why": "Detecting and mitigating algorithmic bias is essential to ensure the fairness of your AI systems. This module tracks bias findings and the corrective actions implemented.",
+    "how": "1. Record bias findings identified in your systems.\n2. Assess the severity and impact of each bias.\n3. Define and track mitigation actions.\n4. Regularly verify that corrections are effective."
   }
 }

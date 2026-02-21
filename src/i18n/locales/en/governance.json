@@ -228,5 +228,10 @@
       "deleted": "Committee deleted",
       "error": "An error occurred"
     }
+  },
+  "help": {
+    "title": "Understanding: Governance",
+    "why": "This module structures the policies and documentation of your AI governance framework. It centralizes the rules, processes, and guidelines that govern the responsible use of AI in your organization.",
+    "how": "1. Define your AI governance policies (ethics charter, approval processes).\n2. Document the roles and responsibilities of each stakeholder.\n3. Publish and share governance documents with your team.\n4. Periodically review your policies to stay aligned with regulations."
   }
 }

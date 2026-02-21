@@ -104,5 +104,10 @@
     "conditions": "Conditions",
     "timeline": "Timeline",
     "noContent": "Not provided"
+  },
+  "help": {
+    "title": "Understanding: Decisions",
+    "why": "The decision registry traces all important decisions related to your AI systems: deployment, suspension, vendor changes, ethical arbitrations. It ensures the traceability and accountability required by regulators.",
+    "how": "1. Record each decision with its type and justification.\n2. Submit it for approval if necessary.\n3. Track the status of each decision (draft, in review, approved).\n4. Review history to demonstrate traceability to auditors."
   }
 }

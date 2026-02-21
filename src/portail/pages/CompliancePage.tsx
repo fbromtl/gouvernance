@@ -35,6 +35,7 @@ import {
 import type { ComplianceAssessment, RemediationAction } from "@/types/database";
 
 import { ComplianceScoreGauge } from "@/components/shared/ComplianceScoreGauge";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -106,7 +107,10 @@ export default function CompliancePage() {
   return (
     <div className="space-y-6 p-4 md:p-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+        <div className="flex items-center gap-1.5">
+          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+          <SectionHelpButton ns="compliance" />
+        </div>
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 

@@ -278,5 +278,10 @@
     "updated": "AI system updated",
     "deleted": "AI system archived",
     "draftSaved": "Draft saved"
+  },
+  "help": {
+    "title": "Understanding: AI Systems",
+    "why": "The AI systems registry is the cornerstone of your governance. It inventories all AI systems used in your organization, as required by the EU AI Act and Law 25.",
+    "how": "1. Register each AI system via the 'New system' button.\n2. Fill in the type, risk level, and responsible person.\n3. Track the lifecycle of each system (development, production, retirement).\n4. View system details to see risk assessments and compliance status."
   }
 }

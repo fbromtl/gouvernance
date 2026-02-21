@@ -19,6 +19,7 @@ import {
   useDeleteVendor,
 } from "@/hooks/useVendors";
 import type { Vendor } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -310,7 +311,10 @@ export default function VendorsPage() {
       <div className="flex items-start gap-3">
         <Building2 className="h-7 w-7 text-brand-purple mt-0.5" />
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+            <SectionHelpButton ns="vendors" />
+          </div>
           <p className="text-muted-foreground">{t("pageDescription")}</p>
         </div>
       </div>

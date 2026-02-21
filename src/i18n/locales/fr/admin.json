@@ -83,5 +83,10 @@
     "ethics_officer": "Responsable éthique",
     "auditor": "Auditeur",
     "member": "Membre"
+  },
+  "help": {
+    "title": "Comprendre : Administration",
+    "why": "L'espace d'administration permet de configurer votre organisation, de gérer les membres de l'équipe et leurs rôles. C'est ici que vous contrôlez qui a accès à quoi dans la plateforme.",
+    "how": "1. Configurez les informations de votre organisation (nom, secteur).\n2. Invitez des membres et attribuez-leur un rôle (admin, éditeur, lecteur).\n3. Gérez les permissions d'accès aux différents modules.\n4. Consultez l'activité récente de votre équipe."
   }
 }

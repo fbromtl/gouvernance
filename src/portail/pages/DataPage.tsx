@@ -23,6 +23,7 @@ import {
   useDeleteDataTransfer,
 } from "@/hooks/useData";
 import type { Dataset, DataTransfer } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -483,7 +484,10 @@ export default function DataPage() {
       <div className="flex items-start gap-3">
         <Database className="h-7 w-7 text-brand-purple mt-0.5" />
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+            <SectionHelpButton ns="data" />
+          </div>
           <p className="text-muted-foreground">{t("pageDescription")}</p>
         </div>
       </div>

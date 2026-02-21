@@ -148,5 +148,10 @@
       "employee_certs": "Employee Certifications",
       "user_guides": "User Guides"
     }
+  },
+  "help": {
+    "title": "Understanding: Documents",
+    "why": "The Drive centralizes all your AI governance documents. AI automatically analyzes and classifies your files to facilitate organization and evidence retrieval during audits.",
+    "how": "1. Drag and drop your files into the upload area.\n2. Review the AI-suggested classification.\n3. Browse by category to find your documents.\n4. Use search to quickly locate a specific document."
   }
 }

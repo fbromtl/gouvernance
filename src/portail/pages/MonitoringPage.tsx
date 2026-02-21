@@ -20,6 +20,7 @@ import {
   useAddDataPoint,
 } from "@/hooks/useMonitoring";
 import type { MonitoringMetric } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -315,10 +316,13 @@ export default function MonitoringPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Activity className="h-6 w-6 text-brand-purple" />
-            {t("pageTitle")}
-          </h1>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <Activity className="h-6 w-6 text-brand-purple" />
+              {t("pageTitle")}
+            </h1>
+            <SectionHelpButton ns="monitoring" />
+          </div>
           <p className="text-sm text-muted-foreground mt-1">
             {t("pageDescription")}
           </p>

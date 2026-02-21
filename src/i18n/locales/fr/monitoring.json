@@ -106,5 +106,10 @@
     "systemsMonitored": "Systemes surveilles",
     "warningAlerts": "Avertissements",
     "criticalAlerts": "Alertes critiques"
+  },
+  "help": {
+    "title": "Comprendre : Surveillance",
+    "why": "La surveillance continue de vos systèmes IA permet de détecter les dérives de performance, les anomalies et les problèmes avant qu'ils n'affectent vos utilisateurs. C'est une exigence clé de l'EU AI Act pour les systèmes à haut risque.",
+    "how": "1. Configurez les métriques de surveillance pour chaque système.\n2. Consultez les tableaux de bord de performance en temps réel.\n3. Définissez des seuils d'alerte pour être notifié des anomalies.\n4. Analysez les tendances pour anticiper les problèmes."
   }
 }

@@ -83,5 +83,10 @@
     "ethics_officer": "Ethics Officer",
     "auditor": "Auditor",
     "member": "Member"
+  },
+  "help": {
+    "title": "Understanding: Administration",
+    "why": "The administration area lets you configure your organization, manage team members and their roles. This is where you control who has access to what in the platform.",
+    "how": "1. Configure your organization's information (name, sector).\n2. Invite members and assign them a role (admin, editor, viewer).\n3. Manage access permissions for different modules.\n4. Review your team's recent activity."
   }
 }

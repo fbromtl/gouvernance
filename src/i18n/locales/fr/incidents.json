@@ -164,5 +164,10 @@
     "created": "Incident signalé avec succès",
     "updated": "Incident mis à jour",
     "statusChanged": "Statut de l'incident mis à jour"
+  },
+  "help": {
+    "title": "Comprendre : Incidents",
+    "why": "La gestion des incidents IA permet de déclarer, suivre et résoudre tout dysfonctionnement ou événement indésirable lié à vos systèmes d'intelligence artificielle. C'est une obligation réglementaire sous l'EU AI Act pour les systèmes à haut risque.",
+    "how": "1. Déclarez un incident via le bouton « Signaler un incident ».\n2. Précisez la sévérité, le système concerné et la description.\n3. Suivez l'avancement de la résolution dans la liste.\n4. Documentez les actions correctives et les leçons apprises."
   }
 }

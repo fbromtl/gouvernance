@@ -203,6 +203,7 @@ export default function AiSystemsListPage() {
       {/* Header */}
       <PageHeader
         title={t("title")}
+        helpNs="aiSystems"
         description={t("description")}
         actions={
           <Button onClick={() => navigate("/ai-systems/new")}>

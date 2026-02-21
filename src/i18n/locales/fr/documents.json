@@ -148,5 +148,10 @@
       "employee_certs": "Certifications employes",
       "user_guides": "Guides utilisateur"
     }
+  },
+  "help": {
+    "title": "Comprendre : Documents",
+    "why": "Le Drive centralise tous vos documents de gouvernance IA. L'IA analyse et classifie automatiquement vos fichiers pour faciliter l'organisation et la recherche de preuves lors des audits.",
+    "how": "1. Glissez-déposez vos fichiers dans la zone d'upload.\n2. Vérifiez la classification proposée par l'IA.\n3. Naviguez par catégorie pour retrouver vos documents.\n4. Utilisez la recherche pour trouver rapidement un document spécifique."
   }
 }

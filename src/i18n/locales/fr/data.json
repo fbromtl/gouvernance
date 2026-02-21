@@ -175,5 +175,10 @@
     "transferDeleted": "Transfert supprime",
     "deleteDatasetConfirm": "Etes-vous sur de vouloir supprimer ce jeu de donnees ?",
     "deleteTransferConfirm": "Etes-vous sur de vouloir supprimer ce transfert ?"
+  },
+  "help": {
+    "title": "Comprendre : Données",
+    "why": "La gouvernance des données est indissociable de la gouvernance IA. Ce module trace l'origine, la qualité et l'utilisation des données qui alimentent vos systèmes d'intelligence artificielle, conformément au RGPD et à la Loi 25.",
+    "how": "1. Inventoriez les jeux de données utilisés par chaque système IA.\n2. Documentez la provenance et la lignée des données.\n3. Évaluez la qualité et les risques liés à chaque jeu de données.\n4. Assurez la conformité avec les exigences de protection des données personnelles."
   }
 }

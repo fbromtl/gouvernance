@@ -13,5 +13,11 @@
   "error": "Erreur",
   "success": "Succès",
   "errorGeneric": "Une erreur est survenue.",
-  "noData": "—"
+  "noData": "—",
+  "help": {
+    "openHelp": "Comprendre cette section",
+    "whyTitle": "Pourquoi cette section ?",
+    "howTitle": "Comment l'utiliser ?",
+    "understood": "Compris"
+  }
 }

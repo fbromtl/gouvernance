@@ -23,6 +23,7 @@ import {
   useUpdateContestation,
 } from "@/hooks/useTransparency";
 import type { AutomatedDecision, Contestation } from "@/types/database";
+import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -182,10 +183,13 @@ export default function TransparencyPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <Eye className="h-6 w-6 text-brand-purple" />
-          {t("pageTitle")}
-        </h1>
+        <div className="flex items-center gap-1.5">
+          <h1 className="text-2xl font-bold flex items-center gap-2">
+            <Eye className="h-6 w-6 text-brand-purple" />
+            {t("pageTitle")}
+          </h1>
+          <SectionHelpButton ns="transparency" />
+        </div>
         <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
       </div>
 

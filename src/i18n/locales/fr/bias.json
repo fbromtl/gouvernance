@@ -130,5 +130,10 @@
     "metrics": "Métriques de fairness",
     "remediation": "Plan de remédiation",
     "noContent": "Non renseigné"
+  },
+  "help": {
+    "title": "Comprendre : Biais",
+    "why": "La détection et l'atténuation des biais algorithmiques sont essentielles pour garantir l'équité de vos systèmes IA. Ce module suit les constats de biais et les actions correctives mises en place.",
+    "how": "1. Enregistrez les constats de biais identifiés dans vos systèmes.\n2. Évaluez la sévérité et l'impact de chaque biais.\n3. Définissez et suivez les actions de mitigation.\n4. Vérifiez régulièrement que les corrections sont efficaces."
   }
 }
