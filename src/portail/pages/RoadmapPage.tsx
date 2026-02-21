@@ -105,9 +105,9 @@ export default function RoadmapPage() {
           <Sparkles className="h-5 w-5 text-brand-purple" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Fonctionnalit\u00e9s \u00e0 venir</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Fonctionnalités à venir</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            D\u00e9couvrez notre feuille de route pour faire \u00e9voluer la plateforme.
+            Découvrez notre feuille de route pour faire évoluer la plateforme.
           </p>
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function RoadmapPage() {
           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50">
             <CheckCircle className="h-4 w-4 text-emerald-600" />
           </div>
-          <h2 className="text-lg font-semibold tracking-tight">D\u00e9j\u00e0 disponible</h2>
+          <h2 className="text-lg font-semibold tracking-tight">Déjà disponible</h2>
           <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border-emerald-200 text-xs">
             {availableModules.length} modules
           </Badge>
@@ -153,7 +153,7 @@ export default function RoadmapPage() {
           </div>
           <h2 className="text-lg font-semibold tracking-tight">Prochainement</h2>
           <Badge variant="secondary" className="bg-brand-purple/10 text-brand-purple border-brand-purple/20 text-xs">
-            En d\u00e9veloppement
+            En développement
           </Badge>
         </div>
 
@@ -165,7 +165,7 @@ export default function RoadmapPage() {
             >
               <CardHeader className="pb-3">
                 <Badge variant="outline" className="absolute top-4 right-4 text-[11px] font-medium">
-                  \u00c0 venir
+                  À venir
                 </Badge>
                 <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${feature.bgColor} ${feature.color} mb-3`}>
                   <feature.icon className="h-5 w-5" />
@@ -198,7 +198,7 @@ export default function RoadmapPage() {
           <div>
             <p className="font-semibold text-foreground">Vous souhaitez influencer notre feuille de route ?</p>
             <p className="text-sm text-muted-foreground mt-1">
-              Partagez vos besoins et suggestions pour les prochaines fonctionnalit\u00e9s.
+              Partagez vos besoins et suggestions pour les prochaines fonctionnalités.
             </p>
           </div>
           <Button asChild className="shrink-0 gap-2 shadow-sm">

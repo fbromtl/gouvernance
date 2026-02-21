@@ -32,6 +32,9 @@
     "openFindings": "open findings",
     "noOpenFindings": "No open bias findings",
     "noData": "No data",
+    "noSystems": "No systems registered",
+    "noDecisions": "No recent decisions",
+    "noReviewsDue": "No reviews due",
     "total": "total",
     "reviewsDueWidget": {
       "none": "No reviews due",

@@ -31,7 +31,10 @@
     "biasDebt": "Biais ouverts",
     "openFindings": "constatations ouvertes",
     "noOpenFindings": "Aucun biais ouvert",
-    "noData": "Aucune donn\u00e9e",
+    "noData": "Aucune donnée",
+    "noSystems": "Aucun système enregistré",
+    "noDecisions": "Aucune décision récente",
+    "noReviewsDue": "Aucune révision à venir",
     "total": "total",
     "reviewsDueWidget": {
       "none": "Aucune r\u00e9vision \u00e0 venir",
