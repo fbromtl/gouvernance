@@ -23,7 +23,9 @@ import {
   ChevronRight,
   ExternalLink,
   Sparkles,
+  Newspaper,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -43,6 +45,7 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>;
   permission?: Permission;
   ready?: boolean;
+  badge?: string;
 }
 
 interface NavGroup {
@@ -63,6 +66,13 @@ const navGroups: NavGroup[] = [
         path: "/dashboard",
         icon: LayoutDashboard,
         ready: true,
+      },
+      {
+        key: "veille",
+        path: "/veille",
+        icon: Newspaper,
+        ready: true,
+        badge: "IA",
       },
     ],
   },
@@ -233,7 +243,14 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         />
 
         {!collapsed && (
-          <span className="flex-1 truncate">{t(`nav.${item.key}`)}</span>
+          <>
+            <span className="flex-1 truncate">{t(`nav.${item.key}`)}</span>
+            {item.badge && (
+              <Badge className="ml-auto bg-brand-purple/15 text-brand-purple border-brand-purple/30 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+                {item.badge}
+              </Badge>
+            )}
+          </>
         )}
       </Link>
     );

@@ -83,6 +83,9 @@ import DataPage from "@/portail/pages/DataPage";
 import OnboardingPage from "@/portail/pages/OnboardingPage";
 import RoadmapPage from "@/portail/pages/RoadmapPage";
 
+// Module: Veille réglementaire
+import VeillePage from "@/portail/pages/VeillePage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -124,6 +127,7 @@ function App() {
 
             <Route element={<PortailLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/veille" element={<VeillePage />} />
               <Route path="/profile" element={<ProfilPage />} />
 
               {/* Module: AI Systems */}

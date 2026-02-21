@@ -1,0 +1,30 @@
+{
+  "pageTitle": "Veille réglementaire",
+  "pageDescription": "Suivez les dernières actualités en gouvernance de l'intelligence artificielle.",
+  "weeklySummary": {
+    "title": "Résumé IA de la semaine",
+    "subtitle": "Principales évolutions réglementaires et actualités en gouvernance IA",
+    "loading": "Génération du résumé en cours…",
+    "regenerate": "Régénérer",
+    "error": "Impossible de générer le résumé. Réessayez.",
+    "empty": "Aucun article récent pour générer un résumé."
+  },
+  "articles": {
+    "title": "Dernières actualités",
+    "loading": "Chargement des actualités…",
+    "error": "Impossible de charger le flux RSS. Réessayez.",
+    "empty": "Aucune actualité disponible pour le moment.",
+    "readArticle": "Lire l'article",
+    "summarize": "Résumer",
+    "summarizing": "Résumé en cours…",
+    "summaryTitle": "Résumé IA",
+    "close": "Fermer",
+    "source": "Source",
+    "published": "Publié le"
+  },
+  "help": {
+    "title": "Comprendre : Veille réglementaire",
+    "why": "La veille réglementaire vous permet de rester informé des dernières évolutions en matière de gouvernance de l'IA. Elle agrège automatiquement les actualités pertinentes et utilise l'IA pour vous fournir des résumés synthétiques.",
+    "how": "1. Consultez le résumé IA en haut de page pour un aperçu hebdomadaire.\n2. Parcourez les articles récents dans la liste.\n3. Cliquez sur « Résumer » pour obtenir un résumé IA d'un article.\n4. Cliquez sur « Lire l'article » pour accéder à la source complète."
+  }
+}

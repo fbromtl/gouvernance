@@ -1,0 +1,30 @@
+{
+  "pageTitle": "Regulatory Watch",
+  "pageDescription": "Follow the latest news on artificial intelligence governance.",
+  "weeklySummary": {
+    "title": "AI Weekly Summary",
+    "subtitle": "Key regulatory developments and AI governance news",
+    "loading": "Generating summary…",
+    "regenerate": "Regenerate",
+    "error": "Unable to generate summary. Please try again.",
+    "empty": "No recent articles to generate a summary."
+  },
+  "articles": {
+    "title": "Latest News",
+    "loading": "Loading news…",
+    "error": "Unable to load RSS feed. Please try again.",
+    "empty": "No news available at the moment.",
+    "readArticle": "Read article",
+    "summarize": "Summarize",
+    "summarizing": "Summarizing…",
+    "summaryTitle": "AI Summary",
+    "close": "Close",
+    "source": "Source",
+    "published": "Published on"
+  },
+  "help": {
+    "title": "Understanding: Regulatory Watch",
+    "why": "Regulatory Watch keeps you informed of the latest developments in AI governance. It automatically aggregates relevant news and uses AI to provide concise summaries.",
+    "how": "1. Check the AI summary at the top for a weekly overview.\n2. Browse recent articles in the list.\n3. Click 'Summarize' to get an AI summary of an article.\n4. Click 'Read article' to access the full source."
+  }
+}
