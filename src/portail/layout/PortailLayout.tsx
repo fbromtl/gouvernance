@@ -6,12 +6,11 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
 import { usePageContext } from "@/hooks/usePageContext";
 import { useAiChat } from "@/hooks/useAiChat";
-import { AiChatPanel } from "@/portail/components/AiChatPanel";
+import { FloatingChat } from "@/portail/components/FloatingChat";
 
 export function PortailLayout() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aiOpen, setAiOpen] = useState(false);
   const { pathname } = useLocation();
 
   const pageContext = usePageContext();
@@ -35,28 +34,10 @@ export function PortailLayout() {
         </SheetContent>
       </Sheet>
 
-      {/* AI Chat panel */}
-      <Sheet open={aiOpen} onOpenChange={setAiOpen}>
-        <SheetContent
-          side="right"
-          className="w-[420px] sm:max-w-[420px] p-0"
-          showCloseButton={false}
-        >
-          <AiChatPanel
-            messages={messages}
-            onSend={sendMessage}
-            isStreaming={isStreaming}
-            error={error}
-            onReset={resetChat}
-          />
-        </SheetContent>
-      </Sheet>
-
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <AppHeader
           onMobileMenuToggle={() => setMobileOpen(!mobileOpen)}
-          onAiToggle={() => setAiOpen(!aiOpen)}
         />
         <main className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
@@ -66,6 +47,15 @@ export function PortailLayout() {
           </div>
         </main>
       </div>
+
+      {/* Floating AI Chat Widget */}
+      <FloatingChat
+        messages={messages}
+        onSend={sendMessage}
+        isStreaming={isStreaming}
+        error={error}
+        onReset={resetChat}
+      />
     </div>
   );
 }
