@@ -94,6 +94,10 @@ import VeillePage from "@/portail/pages/VeillePage";
 import { DiagnosticPage } from "@/pages/DiagnosticPage";
 import { DiagnosticResultsPage } from "@/pages/DiagnosticResultsPage";
 
+// Module: Members
+import MembresPage from "@/portail/pages/MembresPage";
+import { MemberPublicPage } from "@/pages/MemberPublicPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -128,6 +132,9 @@ function App() {
           {/* Diagnostic public (standalone, no header/footer) */}
           <Route path="/diagnostic" element={<DiagnosticPage />} />
           <Route path="/diagnostic/resultats" element={<DiagnosticResultsPage />} />
+
+          {/* Public member profiles */}
+          <Route path="/membres/:slug" element={<MemberPublicPage />} />
 
           {/* OAuth callback */}
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
@@ -170,6 +177,7 @@ function App() {
               <Route path="/data" element={<DataPage />} />
               <Route path="/vendors" element={<VendorsPage />} />
               <Route path="/compliance" element={<CompliancePage />} />
+              <Route path="/membres" element={<MembresPage />} />
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/billing" element={<BillingPage />} />
