@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Sparkles, Building2, Zap, Shield } from "lucide-react";
+import { Check, X, ArrowRight, Eye, Users, Crown, Shield } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +23,7 @@ interface PlanFeature {
 
 interface PlanCardConfig {
   id: PlanId;
-  icon: typeof Zap;
+  icon: typeof Eye;
   features: PlanFeature[];
   ctaTo: string;
   ctaLabel: string;
@@ -34,7 +34,7 @@ interface PlanCardConfig {
 /*  PLAN CONFIGURATIONS                                                 */
 /* ------------------------------------------------------------------ */
 
-const FREE_FEATURES: PlanFeature[] = [
+const OBSERVER_FEATURES: PlanFeature[] = [
   { key: "dashboard" },
   { key: "ai_systems_limit", interpolation: { count: 3 } },
   { key: "lifecycle" },
@@ -42,7 +42,7 @@ const FREE_FEATURES: PlanFeature[] = [
   { key: "members", interpolation: { count: 1 } },
 ];
 
-const PRO_FEATURES: PlanFeature[] = [
+const MEMBER_FEATURES: PlanFeature[] = [
   { key: "ai_systems_unlimited" },
   { key: "risk_assessments" },
   { key: "incidents" },
@@ -56,37 +56,41 @@ const PRO_FEATURES: PlanFeature[] = [
   { key: "export_pdf" },
   { key: "support_email" },
   { key: "members_plural", interpolation: { count: 10 } },
+  { key: "member_directory" },
+  { key: "public_profile" },
+  { key: "linkedin_badge" },
 ];
 
-const ENTERPRISE_FEATURES: PlanFeature[] = [
+const EXPERT_FEATURES: PlanFeature[] = [
   { key: "monitoring" },
   { key: "data_catalog" },
   { key: "governance_structure" },
   { key: "support_dedicated" },
   { key: "members_unlimited" },
+  { key: "priority_visibility" },
 ];
 
 const PLAN_CONFIGS: PlanCardConfig[] = [
   {
     id: "observer",
-    icon: Zap,
-    features: FREE_FEATURES,
+    icon: Eye,
+    features: OBSERVER_FEATURES,
     ctaTo: "/inscription",
     ctaLabel: "choosePlan",
   },
   {
     id: "member",
-    icon: Sparkles,
-    features: PRO_FEATURES,
+    icon: Users,
+    features: MEMBER_FEATURES,
     ctaTo: "/inscription",
-    ctaLabel: "choosePlan",
+    ctaLabel: "becomeMember",
   },
   {
     id: "expert",
-    icon: Building2,
-    features: ENTERPRISE_FEATURES,
+    icon: Crown,
+    features: EXPERT_FEATURES,
     ctaTo: "/inscription",
-    ctaLabel: "choosePlan",
+    ctaLabel: "becomeExpert",
     secondaryCta: { to: "/contact", label: "contactUs" },
   },
 ];
@@ -95,28 +99,37 @@ const PLAN_CONFIGS: PlanCardConfig[] = [
 /*  COMPARISON TABLE DATA                                               */
 /* ------------------------------------------------------------------ */
 
-const ALL_FEATURE_KEYS = [
-  "dashboard",
-  "ai_systems",
-  "lifecycle",
-  "veille_read",
-  "risk_assessments",
-  "incidents",
-  "compliance",
-  "decisions",
-  "bias",
-  "transparency",
-  "vendors",
-  "documents",
-  "ai_chat",
-  "export_pdf",
-  "monitoring",
-  "data_catalog",
-  "governance_structure",
-  "support_community",
-  "support_email",
-  "support_dedicated",
-] as const;
+type ComparisonRow =
+  | { type: "feature"; key: string }
+  | { type: "section"; labelKey: string };
+
+const COMPARISON_ROWS: ComparisonRow[] = [
+  { type: "feature", key: "dashboard" },
+  { type: "feature", key: "ai_systems" },
+  { type: "feature", key: "lifecycle" },
+  { type: "feature", key: "veille_read" },
+  { type: "feature", key: "risk_assessments" },
+  { type: "feature", key: "incidents" },
+  { type: "feature", key: "compliance" },
+  { type: "feature", key: "decisions" },
+  { type: "feature", key: "bias" },
+  { type: "feature", key: "transparency" },
+  { type: "feature", key: "vendors" },
+  { type: "feature", key: "documents" },
+  { type: "feature", key: "ai_chat" },
+  { type: "feature", key: "export_pdf" },
+  { type: "feature", key: "monitoring" },
+  { type: "feature", key: "data_catalog" },
+  { type: "feature", key: "governance_structure" },
+  { type: "feature", key: "support_community" },
+  { type: "feature", key: "support_email" },
+  { type: "feature", key: "support_dedicated" },
+  { type: "section", labelKey: "communityLabel" },
+  { type: "feature", key: "member_directory" },
+  { type: "feature", key: "public_profile" },
+  { type: "feature", key: "linkedin_badge" },
+  { type: "feature", key: "priority_visibility" },
+];
 
 const PLAN_AVAILABILITY: Record<string, [boolean, boolean, boolean]> = {
   dashboard:             [true,  true,  true],
@@ -139,6 +152,10 @@ const PLAN_AVAILABILITY: Record<string, [boolean, boolean, boolean]> = {
   support_community:     [true,  false, false],
   support_email:         [false, true,  false],
   support_dedicated:     [false, false, true],
+  member_directory:      [false, true,  true],
+  public_profile:        [false, true,  true],
+  linkedin_badge:        [false, true,  true],
+  priority_visibility:   [false, false, true],
 };
 
 /* ------------------------------------------------------------------ */
@@ -190,9 +207,10 @@ export function TarifsPage() {
     return isYearly ? p.yearlyPrice : p.monthlyPrice;
   };
 
-  const getCtaInfo = (planId: PlanId) => {
+  const getCtaInfo = (config: PlanCardConfig) => {
+    const planId = config.id;
     if (!isLoggedIn) {
-      return { label: t("choosePlan"), variant: "default" as const, to: "/inscription" };
+      return { label: t(config.ctaLabel), variant: "default" as const, to: config.ctaTo };
     }
     if (currentPlan === planId) {
       return { label: t("currentPlan"), variant: "outline" as const, to: "/billing" };
@@ -202,14 +220,14 @@ export function TarifsPage() {
     if (targetIdx > currentIdx) {
       return { label: t("upgrade"), variant: "default" as const, to: "/billing" };
     }
-    return { label: t("choosePlan"), variant: "outline" as const, to: "/billing" };
+    return { label: t(config.ctaLabel), variant: "outline" as const, to: "/billing" };
   };
 
   return (
     <>
       <SEO
         title="Tarifs"
-        description="Découvrez les forfaits gouvernance.ai : gratuit, pro et entreprise. Choisissez le plan adapté à la gouvernance IA de votre organisation."
+        description="Rejoignez le Cercle gouvernance.ai : Observateur, Membre ou Expert. Choisissez le niveau d'adhésion adapté à votre gouvernance IA."
       />
 
       {/* ============================================================ */}
@@ -304,7 +322,7 @@ export function TarifsPage() {
               const plan = PLANS[config.id];
               const isHighlighted = plan.highlighted;
               const isCurrentPlan = currentPlan === config.id;
-              const cta = getCtaInfo(config.id);
+              const cta = getCtaInfo(config);
               const price = formatPrice(config.id);
 
               return (
@@ -455,6 +473,17 @@ export function TarifsPage() {
       </section>
 
       {/* ============================================================ */}
+      {/*  HONORARY MEMBERS BANNER                                       */}
+      {/* ============================================================ */}
+      <section className="pb-10 sm:pb-14">
+        <div className="mx-auto max-w-3xl text-center py-6 px-8 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <p className="text-sm text-muted-foreground">
+            {t("honoraryBanner")}
+          </p>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/*  FEATURE COMPARISON TABLE                                      */}
       {/* ============================================================ */}
       <section className="py-16 sm:py-24 bg-muted/30">
@@ -507,11 +536,24 @@ export function TarifsPage() {
             </div>
 
             {/* Table rows */}
-            {ALL_FEATURE_KEYS.map((key, i) => {
-              const avail = PLAN_AVAILABILITY[key];
+            {COMPARISON_ROWS.map((row, i) => {
+              if (row.type === "section") {
+                return (
+                  <div
+                    key={row.labelKey}
+                    className="grid grid-cols-4 gap-0 border-b border-border/40 bg-muted/30"
+                  >
+                    <div className="col-span-4 p-3 sm:p-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                      {t(row.labelKey)}
+                    </div>
+                  </div>
+                );
+              }
+
+              const avail = PLAN_AVAILABILITY[row.key];
               return (
                 <div
-                  key={key}
+                  key={row.key}
                   className={cn(
                     "grid grid-cols-4 gap-0 border-b border-border/15 last:border-b-0 transition-colors",
                     "hover:bg-muted/20",
@@ -519,7 +561,7 @@ export function TarifsPage() {
                   )}
                 >
                   <div className="p-3 sm:p-3.5 text-sm text-foreground/80 flex items-center">
-                    {t(`features.${key}`)}
+                    {t(`features.${row.key}`)}
                   </div>
                   {avail.map((has, colIdx) => (
                     <div
