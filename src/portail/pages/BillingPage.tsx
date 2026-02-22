@@ -19,7 +19,7 @@ import {
   useCreateCheckout,
   useCustomerPortal,
 } from "@/hooks/useSubscription";
-import { PLANS, type PlanId } from "@/lib/stripe";
+import { PLANS, PURCHASABLE_PLANS, type PlanId } from "@/lib/stripe";
 import { PageHeader } from "@/components/shared/PageHeader";
 import type { BillingPeriod } from "@/types/database";
 
@@ -39,7 +39,7 @@ const PLAN_BADGE_COLORS: Record<PlanId, string> = {
   observer: "bg-gray-100 text-gray-700 border-gray-200",
   member: "bg-brand-purple/10 text-brand-purple border-brand-purple/20",
   expert: "bg-amber-100 text-amber-800 border-amber-200",
-  honorary: "bg-slate-100 text-slate-600 border-slate-200",
+  honorary: "bg-slate-200 text-slate-700 border-slate-300",
 };
 
 const PLAN_LABELS: Record<PlanId, string> = {
@@ -335,7 +335,7 @@ export default function BillingPage() {
           </Button>
         )}
 
-        {currentPlan !== "expert" && (
+        {currentPlan !== "expert" && currentPlan !== "honorary" && (
           <Button onClick={scrollToPlans} className="bg-brand-purple hover:bg-brand-purple-dark">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             {t("actions.upgrade", "Mettre \u00e0 niveau")}
@@ -394,7 +394,7 @@ export default function BillingPage() {
 
         {/* Plan cards grid */}
         <div className="grid gap-6 md:grid-cols-3">
-          {(Object.keys(PLANS) as PlanId[]).map((planId) => {
+          {PURCHASABLE_PLANS.map((planId) => {
             const plan = PLANS[planId];
             const isCurrent = currentPlan === planId;
             const price =
