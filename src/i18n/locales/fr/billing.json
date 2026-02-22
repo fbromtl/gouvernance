@@ -8,9 +8,10 @@
   "yearlyDiscount": "2 mois offerts",
   "month": "/ mois",
   "year": "/ an",
-  "free": "Gratuit",
-  "pro": "Pro",
-  "enterprise": "Entreprise",
+  "observer": "Observateur",
+  "member": "Membre",
+  "expert": "Expert",
+  "honorary": "Honoraire",
   "currentPlan": "Forfait actuel",
   "choosePlan": "Choisir ce forfait",
   "upgrade": "Passer au forfait supérieur",
@@ -19,9 +20,10 @@
   "startingAt": "À partir de",
   "recommended": "Recommandé",
   "idealFor": {
-    "free": "Pour découvrir la plateforme",
-    "pro": "Idéal pour les PME",
-    "enterprise": "Pour les grandes organisations"
+    "observer": "Pour découvrir la plateforme",
+    "member": "Idéal pour les PME",
+    "expert": "Pour les grandes organisations",
+    "honorary": "Accordé pour contributions spéciales"
   },
   "features": {
     "dashboard": "Tableau de bord",
@@ -67,6 +69,19 @@
     "successMessage": "Votre abonnement a été activé avec succès !",
     "canceledMessage": "Le paiement a été annulé."
   },
+  "included": "Inclus",
+  "allFromObserver": "Tout de l'Observateur, plus :",
+  "allFromMember": "Tout du Membre, plus :",
+  "allFromFree": "Tout du Gratuit, plus :",
+  "allFromPro": "Tout du Pro, plus :",
+  "comparisonTitle": "Comparaison détaillée",
+  "comparisonSubtitle": "Toutes les fonctionnalités en un coup d'œil",
+  "featuresLabel": "Fonctionnalités",
+  "readyTitle": "Prêt à structurer votre gouvernance IA ?",
+  "readySubtitle": "Inscrivez-vous gratuitement et explorez la plateforme. Aucune carte de crédit requise.",
+  "startFree": "Commencer gratuitement",
+  "perMonth": "/ mois",
+  "billedYearly": "Facturé annuellement",
   "gate": {
     "title": "Fonctionnalité Premium",
     "description": "Cette fonctionnalité est disponible avec le forfait {{plan}} ou supérieur.",

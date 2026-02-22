@@ -10,7 +10,7 @@ interface PlanFeature {
 
 export function usePlanFeatures() {
   const { data: subscription } = useSubscription();
-  const plan: SubscriptionPlan = subscription?.plan ?? 'free';
+  const plan: SubscriptionPlan = subscription?.plan ?? 'observer';
 
   const query = useQuery({
     queryKey: ['plan-features', plan],
@@ -32,7 +32,7 @@ export function usePlanFeatures() {
   });
 
   const hasFeature = (featureKey: string): boolean => {
-    if (!query.data) return plan === 'enterprise';
+    if (!query.data) return plan === 'expert';
     return query.data[featureKey] ?? false;
   };
 

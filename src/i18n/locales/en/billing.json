@@ -8,9 +8,10 @@
   "yearlyDiscount": "2 months free",
   "month": "/ month",
   "year": "/ year",
-  "free": "Free",
-  "pro": "Pro",
-  "enterprise": "Enterprise",
+  "observer": "Observer",
+  "member": "Member",
+  "expert": "Expert",
+  "honorary": "Honorary",
   "currentPlan": "Current plan",
   "choosePlan": "Choose this plan",
   "upgrade": "Upgrade",
@@ -19,9 +20,10 @@
   "startingAt": "Starting at",
   "recommended": "Recommended",
   "idealFor": {
-    "free": "To discover the platform",
-    "pro": "Ideal for SMBs",
-    "enterprise": "For large organizations"
+    "observer": "To discover the platform",
+    "member": "Ideal for SMBs",
+    "expert": "For large organizations",
+    "honorary": "Granted for special contributions"
   },
   "features": {
     "dashboard": "Dashboard",
@@ -67,6 +69,19 @@
     "successMessage": "Your subscription has been activated!",
     "canceledMessage": "Payment was canceled."
   },
+  "included": "Included",
+  "allFromObserver": "Everything in Observer, plus:",
+  "allFromMember": "Everything in Member, plus:",
+  "allFromFree": "Everything in Free, plus:",
+  "allFromPro": "Everything in Pro, plus:",
+  "comparisonTitle": "Detailed comparison",
+  "comparisonSubtitle": "All features at a glance",
+  "featuresLabel": "Features",
+  "readyTitle": "Ready to structure your AI governance?",
+  "readySubtitle": "Sign up for free and explore the platform. No credit card required.",
+  "startFree": "Start for free",
+  "perMonth": "/ month",
+  "billedYearly": "Billed yearly",
   "gate": {
     "title": "Premium Feature",
     "description": "This feature is available with the {{plan}} plan or higher.",

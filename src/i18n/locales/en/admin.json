@@ -26,6 +26,10 @@
     "save": "Save",
     "plans": {
       "starter": "Starter",
+      "observer": "Observer",
+      "member": "Member",
+      "expert": "Expert",
+      "honorary": "Honorary",
       "pro": "Professional",
       "enterprise": "Enterprise"
     },

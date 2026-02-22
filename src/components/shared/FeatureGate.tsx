@@ -23,7 +23,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
 
   if (silent) return null;
 
-  const requiredPlan = plan === 'free' ? 'Pro' : 'Entreprise';
+  const requiredPlan = plan === 'observer' ? 'Membre' : 'Membre Expert';
 
   return (
     <div className="flex items-center justify-center min-h-[400px] p-8">

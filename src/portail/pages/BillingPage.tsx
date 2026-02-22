@@ -36,15 +36,17 @@ import { Label } from "@/components/ui/label";
 /* ------------------------------------------------------------------ */
 
 const PLAN_BADGE_COLORS: Record<PlanId, string> = {
-  free: "bg-gray-100 text-gray-700 border-gray-200",
-  pro: "bg-brand-purple/10 text-brand-purple border-brand-purple/20",
-  enterprise: "bg-amber-100 text-amber-800 border-amber-200",
+  observer: "bg-gray-100 text-gray-700 border-gray-200",
+  member: "bg-brand-purple/10 text-brand-purple border-brand-purple/20",
+  expert: "bg-amber-100 text-amber-800 border-amber-200",
+  honorary: "bg-slate-100 text-slate-600 border-slate-200",
 };
 
 const PLAN_LABELS: Record<PlanId, string> = {
-  free: "Free",
-  pro: "Pro",
-  enterprise: "Enterprise",
+  observer: "Observateur",
+  member: "Membre",
+  expert: "Expert",
+  honorary: "Honoraire",
 };
 
 const STATUS_BADGE: Record<string, { label: string; className: string }> = {
@@ -75,26 +77,32 @@ const STATUS_BADGE: Record<string, { label: string; className: string }> = {
 };
 
 const PLAN_FEATURES: Record<PlanId, string[]> = {
-  free: [
+  observer: [
     "1 membre",
     "3 syst\u00e8mes IA",
     "Tableau de bord basique",
     "Registre IA",
   ],
-  pro: [
+  member: [
     "Jusqu'\u00e0 10 membres",
     "Syst\u00e8mes IA illimit\u00e9s",
     "\u00c9valuations de risques",
     "Rapports de conformit\u00e9",
     "Support prioritaire",
   ],
-  enterprise: [
+  expert: [
     "Membres illimit\u00e9s",
     "Syst\u00e8mes IA illimit\u00e9s",
     "Toutes les fonctionnalit\u00e9s",
     "SSO / SAML",
     "Support d\u00e9di\u00e9",
     "SLA garanti",
+  ],
+  honorary: [
+    "Membres illimit\u00e9s",
+    "Syst\u00e8mes IA illimit\u00e9s",
+    "Toutes les fonctionnalit\u00e9s",
+    "Acc\u00e8s Expert complet",
   ],
 };
 
@@ -162,7 +170,7 @@ export default function BillingPage() {
     plansSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const currentPlan = subscription?.plan ?? "free";
+  const currentPlan = subscription?.plan ?? "observer";
 
   /* ================================================================ */
   /*  No org state                                                     */
@@ -327,7 +335,7 @@ export default function BillingPage() {
           </Button>
         )}
 
-        {currentPlan !== "enterprise" && (
+        {currentPlan !== "expert" && (
           <Button onClick={scrollToPlans} className="bg-brand-purple hover:bg-brand-purple-dark">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             {t("actions.upgrade", "Mettre \u00e0 niveau")}
@@ -424,7 +432,7 @@ export default function BillingPage() {
                 <div className="space-y-4 flex-1">
                   {/* Plan name */}
                   <div className="flex items-center gap-2 pt-2">
-                    {planId === "enterprise" && (
+                    {planId === "expert" && (
                       <Crown className="h-5 w-5 text-amber-500" />
                     )}
                     <h3 className="text-lg font-semibold">
@@ -464,7 +472,7 @@ export default function BillingPage() {
                     <Button variant="outline" disabled className="w-full">
                       {t("plans.current", "Forfait actuel")}
                     </Button>
-                  ) : planId === "free" ? (
+                  ) : planId === "observer" ? (
                     <Button
                       variant="outline"
                       className="w-full"
@@ -476,7 +484,7 @@ export default function BillingPage() {
                   ) : (
                     <Button
                       className={`w-full ${
-                        planId === "pro"
+                        planId === "member"
                           ? "bg-brand-purple hover:bg-brand-purple-dark"
                           : "bg-amber-600 hover:bg-amber-700"
                       }`}
@@ -489,7 +497,7 @@ export default function BillingPage() {
                     </Button>
                   )}
 
-                  {planId === "enterprise" && !isCurrent && (
+                  {planId === "expert" && !isCurrent && (
                     <Button variant="link" asChild className="w-full text-sm">
                       <a href="mailto:contact@gouvernanceai.ca">
                         {t("plans.contactUs", "Contactez-nous")}

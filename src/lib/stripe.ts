@@ -17,7 +17,7 @@ export const stripeConfigured = Boolean(stripePublishableKey);
 /*  Plan definitions (shared between pricing page & billing page)      */
 /* ------------------------------------------------------------------ */
 
-export type PlanId = 'free' | 'pro' | 'enterprise';
+export type PlanId = 'observer' | 'member' | 'expert' | 'honorary';
 
 export interface PlanDefinition {
   id: PlanId;
@@ -25,32 +25,51 @@ export interface PlanDefinition {
   yearlyPrice: number;
   monthlyPriceId?: string;
   yearlyPriceId?: string;
-  maxMembers: number | null;  // null = unlimited
+  maxMembers: number | null;
   maxAiSystems: number | null;
   highlighted?: boolean;
+  badgeColor?: string;
 }
 
 export const PLANS: Record<PlanId, PlanDefinition> = {
-  free: {
-    id: 'free',
+  observer: {
+    id: 'observer',
     monthlyPrice: 0,
     yearlyPrice: 0,
     maxMembers: 1,
     maxAiSystems: 3,
   },
-  pro: {
-    id: 'pro',
+  member: {
+    id: 'member',
     monthlyPrice: 99,
     yearlyPrice: 990,
     maxMembers: 10,
     maxAiSystems: null,
     highlighted: true,
+    badgeColor: 'brand-purple',
   },
-  enterprise: {
-    id: 'enterprise',
+  expert: {
+    id: 'expert',
     monthlyPrice: 499,
     yearlyPrice: 4990,
     maxMembers: null,
     maxAiSystems: null,
+    badgeColor: 'amber-500',
+  },
+  honorary: {
+    id: 'honorary',
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    maxMembers: null,
+    maxAiSystems: null,
+    badgeColor: 'slate-400',
   },
 };
+
+/** Plans that can be purchased via Stripe (excludes honorary) */
+export const PURCHASABLE_PLANS: PlanId[] = ['observer', 'member', 'expert'];
+
+/** honorary gets same access as expert */
+export function effectivePlan(plan: PlanId): PlanId {
+  return plan === 'honorary' ? 'expert' : plan;
+}

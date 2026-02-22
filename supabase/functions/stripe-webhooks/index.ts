@@ -233,7 +233,7 @@ async function handleSubscriptionDeleted(
   const { error } = await supabase
     .from("subscriptions")
     .update({
-      plan: "free",
+      plan: "observer",
       status: "canceled",
       stripe_subscription_id: null,
       cancel_at_period_end: false,
