@@ -3,6 +3,10 @@
 
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
+export type SubscriptionPlan = 'free' | 'pro' | 'enterprise';
+export type BillingPeriod = 'monthly' | 'yearly';
+export type SubscriptionStatus = 'active' | 'trialing' | 'past_due' | 'canceled' | 'unpaid' | 'incomplete';
+
 export interface Database {
   public: {
     Tables: {
@@ -654,6 +658,35 @@ export interface Database {
           members?: Json;
           status?: string;
           updated_by?: string | null;
+        };
+        Relationships: [];
+      };
+      governance_diagnostics: {
+        Row: {
+          id: string;
+          user_id: string;
+          organization_id: string | null;
+          total_score: number;
+          maturity_level: string;
+          answers: Json;
+          completed_at: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          organization_id?: string | null;
+          total_score: number;
+          maturity_level: string;
+          answers?: Json;
+          completed_at?: string;
+          created_at?: string;
+        };
+        Update: {
+          total_score?: number;
+          maturity_level?: string;
+          answers?: Json;
+          organization_id?: string | null;
         };
         Relationships: [];
       };
@@ -1348,6 +1381,63 @@ export interface Database {
           recorded_at?: string;
           alert_level?: string | null;
           notes?: string | null;
+        };
+        Relationships: [];
+      };
+      subscriptions: {
+        Row: {
+          id: string;
+          organization_id: string;
+          stripe_customer_id: string | null;
+          stripe_subscription_id: string | null;
+          plan: SubscriptionPlan;
+          billing_period: BillingPeriod | null;
+          status: SubscriptionStatus;
+          current_period_start: string | null;
+          current_period_end: string | null;
+          cancel_at_period_end: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          stripe_customer_id?: string | null;
+          stripe_subscription_id?: string | null;
+          plan?: SubscriptionPlan;
+          billing_period?: BillingPeriod | null;
+          status?: SubscriptionStatus;
+          current_period_start?: string | null;
+          current_period_end?: string | null;
+          cancel_at_period_end?: boolean;
+        };
+        Update: {
+          stripe_customer_id?: string | null;
+          stripe_subscription_id?: string | null;
+          plan?: SubscriptionPlan;
+          billing_period?: BillingPeriod | null;
+          status?: SubscriptionStatus;
+          current_period_start?: string | null;
+          current_period_end?: string | null;
+          cancel_at_period_end?: boolean;
+        };
+        Relationships: [];
+      };
+      plan_features: {
+        Row: {
+          id: string;
+          plan: SubscriptionPlan;
+          feature_key: string;
+          enabled: boolean;
+        };
+        Insert: {
+          id?: string;
+          plan: SubscriptionPlan;
+          feature_key: string;
+          enabled?: boolean;
+        };
+        Update: {
+          enabled?: boolean;
         };
         Relationships: [];
       };

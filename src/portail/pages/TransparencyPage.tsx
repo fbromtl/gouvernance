@@ -61,6 +61,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
@@ -181,33 +182,35 @@ export default function TransparencyPage() {
   const getSystemName = (id: string) => systems.find((s) => s.id === id)?.name ?? "—";
 
   return (
-    <div className="space-y-6">
-      <div>
-        <div className="flex items-center gap-1.5">
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Eye className="h-6 w-6 text-brand-purple" />
-            {t("pageTitle")}
-          </h1>
-          <SectionHelpButton ns="transparency" />
+    <FeatureGate feature="transparency">
+      <div className="space-y-6">
+        <div>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <Eye className="h-6 w-6 text-brand-purple" />
+              {t("pageTitle")}
+            </h1>
+            <SectionHelpButton ns="transparency" />
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
         </div>
-        <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
+
+        <Tabs defaultValue="registry">
+          <TabsList>
+            <TabsTrigger value="registry">{t("tabs.registry")}</TabsTrigger>
+            <TabsTrigger value="contestations">{t("tabs.contestations")}</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="registry" className="mt-4">
+            <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
+          </TabsContent>
+
+          <TabsContent value="contestations" className="mt-4">
+            <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
+          </TabsContent>
+        </Tabs>
       </div>
-
-      <Tabs defaultValue="registry">
-        <TabsList>
-          <TabsTrigger value="registry">{t("tabs.registry")}</TabsTrigger>
-          <TabsTrigger value="contestations">{t("tabs.contestations")}</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="registry" className="mt-4">
-          <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
-        </TabsContent>
-
-        <TabsContent value="contestations" className="mt-4">
-          <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
-        </TabsContent>
-      </Tabs>
-    </div>
+    </FeatureGate>
   );
 }
 

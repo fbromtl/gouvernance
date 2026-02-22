@@ -15,6 +15,7 @@ import { RejoindrePage } from "@/pages/RejoindrePage";
 import { OrganisationsPage } from "@/pages/OrganisationsPage";
 import { ActualitesPage } from "@/pages/ActualitesPage";
 import { ContactPage } from "@/pages/ContactPage";
+import { TarifsPage } from "@/pages/TarifsPage";
 import { ConfidentialitePage } from "@/pages/ConfidentialitePage";
 import { MentionsLegalesPage } from "@/pages/MentionsLegalesPage";
 import { AccessibilitePage } from "@/pages/AccessibilitePage";
@@ -48,6 +49,9 @@ import IncidentDetailPage from "@/portail/pages/IncidentDetailPage";
 
 // Module: Admin
 import AdminPage from "@/portail/pages/AdminPage";
+
+// Module: Billing
+import BillingPage from "@/portail/pages/BillingPage";
 
 // Module: Governance
 import GovernancePage from "@/portail/pages/GovernancePage";
@@ -86,6 +90,10 @@ import RoadmapPage from "@/portail/pages/RoadmapPage";
 // Module: Veille réglementaire
 import VeillePage from "@/portail/pages/VeillePage";
 
+// Diagnostic public (standalone)
+import { DiagnosticPage } from "@/pages/DiagnosticPage";
+import { DiagnosticResultsPage } from "@/pages/DiagnosticResultsPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -103,6 +111,7 @@ function App() {
             <Route path="/organisations" element={<OrganisationsPage />} />
             <Route path="/actualites" element={<ActualitesPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/tarifs" element={<TarifsPage />} />
             <Route path="/confidentialite" element={<ConfidentialitePage />} />
             <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
             <Route path="/accessibilite" element={<AccessibilitePage />} />
@@ -115,6 +124,10 @@ function App() {
             <Route path="/mot-de-passe-oublie" element={<ForgotPasswordPage />} />
             <Route path="/reinitialiser-mot-de-passe" element={<ResetPasswordPage />} />
           </Route>
+
+          {/* Diagnostic public (standalone, no header/footer) */}
+          <Route path="/diagnostic" element={<DiagnosticPage />} />
+          <Route path="/diagnostic/resultats" element={<DiagnosticResultsPage />} />
 
           {/* OAuth callback */}
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
@@ -159,6 +172,7 @@ function App() {
               <Route path="/compliance" element={<CompliancePage />} />
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/admin" element={<AdminPage />} />
+              <Route path="/billing" element={<BillingPage />} />
             </Route>
 
             {/* Redirects from old routes */}

@@ -1,0 +1,99 @@
+{
+  "pageTitle": "AI Governance Diagnostic",
+  "pageDescription": "Assess your AI governance maturity level in 10 questions.",
+  "startButton": "Start the diagnostic",
+  "nextButton": "Next",
+  "previousButton": "Previous",
+  "seeResults": "See my results",
+  "questionOf": "Question {{current}} of {{total}}",
+  "questions": {
+    "inventory": {
+      "question": "Do you have a registry of your AI systems?",
+      "description": "A comprehensive inventory of AI systems used in your organization."
+    },
+    "risk_assessment": {
+      "question": "Do you assess the risks of your AI systems?",
+      "description": "Systematic analysis of the potential impacts of each AI system."
+    },
+    "data_protection": {
+      "question": "Do your AI systems process personal data in a controlled manner?",
+      "description": "Compliance with GDPR, Law 25, and data protection best practices."
+    },
+    "bias_fairness": {
+      "question": "Do you have processes to detect algorithmic bias?",
+      "description": "Fairness tests, regular audits, and correction mechanisms."
+    },
+    "transparency": {
+      "question": "Do you inform people when they interact with AI?",
+      "description": "Transparency obligations and the right to explanation of automated decisions."
+    },
+    "human_oversight": {
+      "question": "Can a human intervene in your AI decisions?",
+      "description": "Oversight mechanisms and the ability to contest decisions."
+    },
+    "regulatory_compliance": {
+      "question": "Do you follow the requirements of Law 25 or the EU AI Act?",
+      "description": "Regulatory monitoring and compliance with applicable legal frameworks."
+    },
+    "incident_management": {
+      "question": "Do you have an AI incident reporting process?",
+      "description": "Procedures for detection, reporting, and resolution of incidents."
+    },
+    "organizational_governance": {
+      "question": "Do you have roles or committees dedicated to AI governance?",
+      "description": "Organizational structure with clear responsibilities for AI."
+    },
+    "training_awareness": {
+      "question": "Are your teams trained on responsible AI issues?",
+      "description": "Training programs and awareness of AI ethics."
+    }
+  },
+  "answers": {
+    "not_at_all": "Not at all",
+    "considering": "Considering it",
+    "partially": "Partially in place",
+    "fully_implemented": "Yes, formalized"
+  },
+  "levels": {
+    "debutant": "Beginner",
+    "emergent": "Emerging",
+    "intermediaire": "Intermediate",
+    "avance": "Advanced",
+    "exemplaire": "Exemplary"
+  },
+  "results": {
+    "title": "Your maturity score",
+    "subtitle": "AI Governance",
+    "scoreLabel": "{{score}} / 30",
+    "detailsLocked": "Create your free account to unlock personalized recommendations by domain.",
+    "ctaButton": "Unlock my full results",
+    "ctaSubtext": "Free — Sign in with Google in 10 seconds",
+    "domains": {
+      "inventory": "AI Inventory",
+      "risk_assessment": "Risk Assessment",
+      "data_protection": "Data Protection",
+      "bias_fairness": "Bias & Fairness",
+      "transparency": "Transparency",
+      "human_oversight": "Human Oversight",
+      "regulatory_compliance": "Regulatory Compliance",
+      "incident_management": "Incident Management",
+      "organizational_governance": "Organizational Governance",
+      "training_awareness": "Training & Awareness"
+    }
+  },
+  "widget": {
+    "title": "Your AI governance diagnostic",
+    "retake": "Retake the diagnostic",
+    "viewDetails": "View details",
+    "completedOn": "Completed on {{date}}"
+  },
+  "homepage": {
+    "badge": "Free diagnostic",
+    "title": "Assess your AI governance maturity",
+    "description": "10 questions to get your maturity score and personalized recommendations. Free, no commitment.",
+    "cta": "Start the diagnostic",
+    "duration": "3 minutes",
+    "questionsCount": "10 questions",
+    "free": "100% free"
+  }
+}

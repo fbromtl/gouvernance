@@ -20,7 +20,8 @@
     "admin": "Administration",
     "veille": "Veille réglementaire",
     "roadmap": "Fonctionnalités à venir",
-    "profile": "Profil"
+    "profile": "Profil",
+    "billing": "Abonnement"
   },
   "sections": {
     "overview": "Vue d'ensemble",

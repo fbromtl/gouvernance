@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 
 // Dashboard widgets
+import DiagnosticResultWidget from "@/portail/components/dashboard/DiagnosticResultWidget";
 import RiskDistributionChart from "@/portail/components/dashboard/RiskDistributionChart";
 import { ComplianceRadarChart } from "@/portail/components/dashboard/ComplianceRadarChart";
 import { IncidentTimelineChart } from "@/portail/components/dashboard/IncidentTimelineChart";
@@ -222,6 +223,11 @@ export default function DashboardPage() {
           />
         </div>
       </div>
+
+      {/* ================================================================ */}
+      {/*  Diagnostic Widget (if pending or exists)                         */}
+      {/* ================================================================ */}
+      <DiagnosticResultWidget />
 
       {/* ================================================================ */}
       {/*  Row 1 — KPI Cards                                               */}

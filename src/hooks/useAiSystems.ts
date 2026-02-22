@@ -135,9 +135,13 @@ export function useAiSystems(filters?: AiSystemFilters) {
         query = query.eq("system_type", filters.system_type);
       }
       if (filters?.search) {
-        query = query.or(
-          `name.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-        );
+        // Sanitize search input for PostgREST filter safety
+        const safe = filters.search.replace(/[%_,.*()]/g, "");
+        if (safe) {
+          query = query.or(
+            `name.ilike.%${safe}%,description.ilike.%${safe}%`
+          );
+        }
       }
 
       query = query.order("risk_score", { ascending: false });

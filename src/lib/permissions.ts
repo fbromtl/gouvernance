@@ -22,6 +22,7 @@ export const PERMISSIONS = {
   configure_monitoring:  ['super_admin', 'org_admin', 'risk_manager', 'data_scientist'],
   manage_policies:       ['super_admin', 'org_admin', 'compliance_officer', 'ethics_officer'],
   manage_vendors:        ['super_admin', 'org_admin', 'compliance_officer', 'risk_manager'],
+  manage_billing:        ['super_admin', 'org_admin'],
 } as const;
 
 export type Permission = keyof typeof PERMISSIONS;

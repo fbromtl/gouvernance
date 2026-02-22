@@ -58,6 +58,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ================================================================== */
 /*  CONSTANTS                                                          */
@@ -294,18 +295,21 @@ export default function VendorsPage() {
 
   if (isError) {
     return (
-      <div className="space-y-6 p-4 md:p-6">
-        <Card className="p-8 text-center">
-          <Building2 className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-          </p>
-        </Card>
-      </div>
+      <FeatureGate feature="vendors">
+        <div className="space-y-6 p-4 md:p-6">
+          <Card className="p-8 text-center">
+            <Building2 className="h-8 w-8 text-destructive mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">
+              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+            </p>
+          </Card>
+        </div>
+      </FeatureGate>
     );
   }
 
   return (
+    <FeatureGate feature="vendors">
     <div className="space-y-6 p-4 md:p-6">
       {/* Header */}
       <div className="flex items-start gap-3">
@@ -980,5 +984,6 @@ export default function VendorsPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

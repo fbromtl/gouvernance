@@ -1,38 +1,38 @@
 {
-  "pageTitle": "Monitoring Post-Deploiement",
-  "pageDescription": "Surveillez la performance et la sante de vos systemes IA en production.",
+  "pageTitle": "Monitoring Post-Déploiement",
+  "pageDescription": "Surveillez la performance et la santé de vos systèmes IA en production.",
   "tabs": {
     "dashboard": "Tableau de bord",
-    "metrics": "Metriques",
-    "dataPoints": "Donnees"
+    "metrics": "Métriques",
+    "dataPoints": "Données"
   },
-  "create": "Nouvelle metrique",
+  "create": "Nouvelle métrique",
   "addDataPoint": "Ajouter une mesure",
   "edit": "Modifier",
   "delete": "Supprimer",
   "search": "Rechercher...",
-  "noMetrics": "Aucune metrique configuree",
-  "noMetricsDescription": "Commencez par configurer les metriques a surveiller pour vos systemes IA.",
-  "noDataPoints": "Aucune donnee",
-  "noDataPointsDescription": "Aucune mesure enregistree pour cette metrique.",
+  "noMetrics": "Aucune métrique configurée",
+  "noMetricsDescription": "Commencez par configurer les métriques à surveiller pour vos systèmes IA.",
+  "noDataPoints": "Aucune donnée",
+  "noDataPointsDescription": "Aucune mesure enregistrée pour cette métrique.",
   "categories": {
     "performance": "Performance",
     "latency": "Latence",
     "volume": "Volume",
     "errors": "Erreurs",
-    "drift_data": "Derive donnees",
-    "drift_model": "Derive modele",
-    "quality": "Qualite outputs",
+    "drift_data": "Dérive données",
+    "drift_model": "Dérive modèle",
+    "quality": "Qualité outputs",
     "feedback": "Feedback",
-    "custom": "Personnalise"
+    "custom": "Personnalisé"
   },
   "directions": {
-    "higher_is_better": "Plus eleve = mieux",
+    "higher_is_better": "Plus élevé = mieux",
     "lower_is_better": "Plus bas = mieux",
     "target_range": "Plage cible"
   },
   "frequencies": {
-    "realtime": "Temps reel",
+    "realtime": "Temps réel",
     "hourly": "Horaire",
     "daily": "Quotidien",
     "weekly": "Hebdomadaire",
@@ -43,7 +43,7 @@
     "manual_input": "Saisie manuelle",
     "csv_import": "Import CSV",
     "api_webhook": "API / Webhook",
-    "scheduled_report": "Rapport planifie"
+    "scheduled_report": "Rapport planifié"
   },
   "alertLevels": {
     "ok": "OK",
@@ -51,9 +51,9 @@
     "critical": "Critique"
   },
   "form": {
-    "name": "Nom de la metrique",
-    "category": "Categorie",
-    "unit": "Unite",
+    "name": "Nom de la métrique",
+    "category": "Catégorie",
+    "unit": "Unité",
     "unitPlaceholder": "ex: %, ms, score",
     "direction": "Direction",
     "targetValue": "Valeur cible",
@@ -61,33 +61,33 @@
     "criticalThreshold": "Seuil critique",
     "acceptableMin": "Minimum acceptable",
     "acceptableMax": "Maximum acceptable",
-    "frequency": "Frequence de collecte",
+    "frequency": "Fréquence de collecte",
     "source": "Source",
-    "aiSystem": "Systeme IA",
-    "selectSystem": "Selectionner un systeme",
-    "selectCategory": "Selectionner une categorie",
-    "selectDirection": "Selectionner",
-    "selectFrequency": "Selectionner une frequence",
-    "selectSource": "Selectionner une source",
+    "aiSystem": "Système IA",
+    "selectSystem": "Sélectionner un système",
+    "selectCategory": "Sélectionner une catégorie",
+    "selectDirection": "Sélectionner",
+    "selectFrequency": "Sélectionner une fréquence",
+    "selectSource": "Sélectionner une source",
     "value": "Valeur",
     "recordedAt": "Date de mesure",
     "notes": "Notes",
     "notesPlaceholder": "Notes sur cette mesure..."
   },
   "filters": {
-    "allCategories": "Toutes les categories",
-    "allSystems": "Tous les systemes",
-    "filterByCategory": "Categorie",
-    "filterBySystem": "Systeme"
+    "allCategories": "Toutes les catégories",
+    "allSystems": "Tous les systèmes",
+    "filterByCategory": "Catégorie",
+    "filterBySystem": "Système"
   },
   "table": {
     "name": "Nom",
-    "category": "Categorie",
-    "system": "Systeme IA",
-    "unit": "Unite",
-    "lastValue": "Derniere valeur",
+    "category": "Catégorie",
+    "system": "Système IA",
+    "unit": "Unité",
+    "lastValue": "Dernière valeur",
     "status": "Statut",
-    "frequency": "Frequence",
+    "frequency": "Fréquence",
     "actions": "Actions",
     "value": "Valeur",
     "date": "Date",
@@ -95,15 +95,15 @@
     "notes": "Notes"
   },
   "messages": {
-    "metricCreated": "Metrique creee",
-    "metricUpdated": "Metrique mise a jour",
-    "metricDeleted": "Metrique supprimee",
-    "dataPointAdded": "Mesure ajoutee",
-    "deleteConfirm": "Etes-vous sur de vouloir supprimer cette metrique ?"
+    "metricCreated": "Métrique créée",
+    "metricUpdated": "Métrique mise à jour",
+    "metricDeleted": "Métrique supprimée",
+    "dataPointAdded": "Mesure ajoutée",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette métrique ?"
   },
   "kpi": {
-    "totalMetrics": "Metriques actives",
-    "systemsMonitored": "Systemes surveilles",
+    "totalMetrics": "Métriques actives",
+    "systemsMonitored": "Systèmes surveillés",
     "warningAlerts": "Avertissements",
     "criticalAlerts": "Alertes critiques"
   },

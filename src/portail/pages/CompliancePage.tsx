@@ -67,6 +67,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ================================================================== */
 /*  STATUS BADGE HELPER                                                */
@@ -105,42 +106,44 @@ export default function CompliancePage() {
   const readOnly = !can("manage_compliance");
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <div>
-        <div className="flex items-center gap-1.5">
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-          <SectionHelpButton ns="compliance" />
+    <FeatureGate feature="compliance">
+      <div className="space-y-6 p-4 md:p-6">
+        <div>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+            <SectionHelpButton ns="compliance" />
+          </div>
+          <p className="text-muted-foreground">{t("pageDescription")}</p>
         </div>
-        <p className="text-muted-foreground">{t("pageDescription")}</p>
+
+        <Tabs defaultValue="dashboard" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="dashboard" className="gap-1.5">
+              <BarChart3 className="h-4 w-4" />
+              {t("tabs.dashboard")}
+            </TabsTrigger>
+            <TabsTrigger value="frameworks" className="gap-1.5">
+              <CheckCircle className="h-4 w-4" />
+              {t("tabs.frameworks")}
+            </TabsTrigger>
+            <TabsTrigger value="remediation" className="gap-1.5">
+              <ArrowUpCircle className="h-4 w-4" />
+              {t("tabs.remediation")}
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="dashboard">
+            <DashboardTab />
+          </TabsContent>
+          <TabsContent value="frameworks">
+            <FrameworksTab readOnly={readOnly} />
+          </TabsContent>
+          <TabsContent value="remediation">
+            <RemediationTab readOnly={readOnly} />
+          </TabsContent>
+        </Tabs>
       </div>
-
-      <Tabs defaultValue="dashboard" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="dashboard" className="gap-1.5">
-            <BarChart3 className="h-4 w-4" />
-            {t("tabs.dashboard")}
-          </TabsTrigger>
-          <TabsTrigger value="frameworks" className="gap-1.5">
-            <CheckCircle className="h-4 w-4" />
-            {t("tabs.frameworks")}
-          </TabsTrigger>
-          <TabsTrigger value="remediation" className="gap-1.5">
-            <ArrowUpCircle className="h-4 w-4" />
-            {t("tabs.remediation")}
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="dashboard">
-          <DashboardTab />
-        </TabsContent>
-        <TabsContent value="frameworks">
-          <FrameworksTab readOnly={readOnly} />
-        </TabsContent>
-        <TabsContent value="remediation">
-          <RemediationTab readOnly={readOnly} />
-        </TabsContent>
-      </Tabs>
-    </div>
+    </FeatureGate>
   );
 }
 
