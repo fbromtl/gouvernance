@@ -16,6 +16,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import LanguageSwitcher from "@/portail/components/LanguageSwitcher";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { MemberBadge } from "@/components/shared/MemberBadge";
+import { useSubscription } from "@/hooks/useSubscription";
+import type { PlanId } from "@/lib/stripe";
 
 interface AppHeaderProps {
   onMobileMenuToggle: () => void;
@@ -72,6 +75,7 @@ const ROUTE_LABELS: Record<string, string> = {
   roadmap: "nav.roadmap",
   admin: "nav.admin",
   profile: "nav.profile",
+  membres: "nav.members",
 };
 
 export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
@@ -82,6 +86,8 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const { data: subscription } = useSubscription();
+  const currentPlan = (subscription?.plan ?? "observer") as PlanId;
 
   const initials = profile?.full_name
     ? profile.full_name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
@@ -233,6 +239,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
               <span className="text-sm font-medium hidden sm:inline-block max-w-[120px] truncate">
                 {profile?.full_name ?? tc("user")}
               </span>
+              <MemberBadge plan={currentPlan} size="sm" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48 shadow-lg">
