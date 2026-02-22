@@ -18,6 +18,10 @@ export interface Profile {
   avatar_url: string | null;
   cgu_accepted: boolean;
   organization_id: string | null;
+  bio: string | null;
+  linkedin_url: string | null;
+  member_slug: string | null;
+  job_title: string | null;
   created_at: string;
 }
 
@@ -35,7 +39,14 @@ interface AuthContextType {
   signUpWithEmail: (email: string, password: string, fullName: string) => Promise<AuthResult>;
   resetPassword: (email: string) => Promise<AuthResult>;
   updatePassword: (newPassword: string) => Promise<AuthResult>;
-  updateProfile: (data: { full_name?: string; avatar_url?: string }) => Promise<AuthResult>;
+  updateProfile: (data: {
+    full_name?: string | null;
+    avatar_url?: string | null;
+    bio?: string | null;
+    linkedin_url?: string | null;
+    member_slug?: string | null;
+    job_title?: string | null;
+  }) => Promise<AuthResult>;
   signOut: () => Promise<void>;
   acceptCgu: () => Promise<void>;
   refreshProfile: () => Promise<void>;
@@ -223,7 +234,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const updateProfile = async (
-    data: { full_name?: string; avatar_url?: string }
+    data: {
+      full_name?: string | null;
+      avatar_url?: string | null;
+      bio?: string | null;
+      linkedin_url?: string | null;
+      member_slug?: string | null;
+      job_title?: string | null;
+    }
   ): Promise<AuthResult> => {
     if (!user || !supabaseConfigured) {
       return { success: false, error: "Non authentifié." };

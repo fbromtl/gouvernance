@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   User,
@@ -15,15 +15,40 @@ import {
   Globe,
   KeyRound,
   Chrome,
+  Linkedin,
+  Briefcase,
+  Crown,
+  ExternalLink,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
+import { MemberBadge } from "@/components/shared/MemberBadge";
+import { useSubscription } from "@/hooks/useSubscription";
+import type { PlanId } from "@/lib/stripe";
+
+/* ------------------------------------------------------------------ */
+/*  HELPERS                                                            */
+/* ------------------------------------------------------------------ */
+
+/** Slugify a string: lowercase, remove accents, spaces to hyphens */
+function slugify(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // remove accents
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "") // remove non-alphanumeric
+    .replace(/[\s]+/g, "-") // spaces to hyphens
+    .replace(/-+/g, "-") // collapse multiple hyphens
+    .replace(/^-|-$/g, ""); // trim leading/trailing hyphens
+}
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -33,10 +58,17 @@ export default function ProfilPage() {
   const navigate = useNavigate();
   const { user, profile, updateProfile, signOut } = useAuth();
   const { t, i18n } = useTranslation("profil");
+  const { t: tMembers } = useTranslation("members");
+  const { data: subscription } = useSubscription();
+
+  const currentPlan: PlanId = (subscription?.plan as PlanId) ?? "observer";
 
   const [fullName, setFullName] = useState(
     profile?.full_name ?? user?.user_metadata?.full_name ?? ""
   );
+  const [bio, setBio] = useState(profile?.bio ?? "");
+  const [linkedinUrl, setLinkedinUrl] = useState(profile?.linkedin_url ?? "");
+  const [jobTitle, setJobTitle] = useState(profile?.job_title ?? "");
   const [saving, setSaving] = useState(false);
   const [feedback, setFeedback] = useState<{
     type: "success" | "error";
@@ -92,7 +124,24 @@ export default function ProfilPage() {
   const handleSave = async () => {
     setSaving(true);
     setFeedback(null);
-    const result = await updateProfile({ full_name: fullName.trim() || null });
+
+    const trimmedName = fullName.trim() || null;
+
+    // Auto-generate member_slug if needed
+    const shouldGenerateSlug =
+      !profile?.member_slug &&
+      trimmedName &&
+      currentPlan !== "observer";
+    const memberSlug = shouldGenerateSlug ? slugify(trimmedName) : undefined;
+
+    const result = await updateProfile({
+      full_name: trimmedName,
+      bio: bio.trim() || null,
+      linkedin_url: linkedinUrl.trim() || null,
+      job_title: jobTitle.trim() || null,
+      ...(memberSlug ? { member_slug: memberSlug } : {}),
+    });
+
     setSaving(false);
     if (result.success) {
       setFeedback({ type: "success", message: t("personalInfo.saveSuccess") });
@@ -262,6 +311,141 @@ export default function ProfilPage() {
             <Save className="size-4" />
             {saving ? t("common:saving") : t("common:save")}
           </Button>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/*  MEMBERSHIP SECTION                                           */}
+      {/* ============================================================ */}
+      <div className="rounded-2xl border border-border/50 bg-card p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
+            <Crown className="size-5 text-brand-purple" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-foreground">
+              {i18n.language === "en"
+                ? "My Circle Membership"
+                : "Mon adh\u00e9sion au Cercle"}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {tMembers(`levels.${currentPlan}`)}
+            </p>
+          </div>
+          <div className="ml-auto">
+            <MemberBadge plan={currentPlan} size="lg" />
+          </div>
+        </div>
+
+        <div className="space-y-5">
+          {/* Job title */}
+          <div className="space-y-2">
+            <Label htmlFor="jobTitle" className="flex items-center gap-2">
+              <Briefcase className="size-3.5 text-muted-foreground" />
+              {i18n.language === "en" ? "Job Title" : "Titre professionnel"}
+            </Label>
+            <Input
+              id="jobTitle"
+              value={jobTitle}
+              onChange={(e) => setJobTitle(e.target.value)}
+              placeholder={
+                i18n.language === "en"
+                  ? "e.g. AI Governance Lead"
+                  : "ex. Responsable Gouvernance IA"
+              }
+              className="h-11"
+            />
+          </div>
+
+          {/* LinkedIn URL */}
+          <div className="space-y-2">
+            <Label htmlFor="linkedinUrl" className="flex items-center gap-2">
+              <Linkedin className="size-3.5 text-muted-foreground" />
+              {i18n.language === "en" ? "LinkedIn Profile" : "Profil LinkedIn"}
+            </Label>
+            <Input
+              id="linkedinUrl"
+              value={linkedinUrl}
+              onChange={(e) => setLinkedinUrl(e.target.value)}
+              placeholder="https://linkedin.com/in/..."
+              className="h-11"
+              type="url"
+            />
+          </div>
+
+          {/* Bio */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="bio">
+                {i18n.language === "en" ? "Biography" : "Biographie"}
+              </Label>
+              <span
+                className={cn(
+                  "text-xs tabular-nums",
+                  bio.length > 200
+                    ? "text-red-500 font-medium"
+                    : "text-muted-foreground"
+                )}
+              >
+                {bio.length}/200
+              </span>
+            </div>
+            <Textarea
+              id="bio"
+              value={bio}
+              onChange={(e) => setBio(e.target.value.slice(0, 200))}
+              placeholder={
+                i18n.language === "en"
+                  ? "A few words about you..."
+                  : "Quelques mots sur vous..."
+              }
+              maxLength={200}
+              rows={3}
+              className="resize-none"
+            />
+          </div>
+
+          {/* Public page link */}
+          {profile?.member_slug && (
+            <div className="flex items-center gap-2 rounded-xl bg-brand-purple/5 border border-brand-purple/10 p-3">
+              <ExternalLink className="size-4 text-brand-purple shrink-0" />
+              <Link
+                to={`/membres/${profile.member_slug}`}
+                className="text-sm font-medium text-brand-purple hover:underline"
+              >
+                {i18n.language === "en"
+                  ? "View my public page"
+                  : "Voir ma page publique"}
+              </Link>
+            </div>
+          )}
+
+          {/* Upgrade CTA for observers */}
+          {currentPlan === "observer" && (
+            <div className="flex items-center justify-between rounded-xl bg-muted/40 border border-border/40 p-4">
+              <div>
+                <p className="text-sm font-medium text-foreground">
+                  {i18n.language === "en"
+                    ? "Unlock your public profile"
+                    : "D\u00e9bloquez votre profil public"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {i18n.language === "en"
+                    ? "Become a Member to appear in the directory"
+                    : "Devenez Membre pour appara\u00eetre dans l\u2019annuaire"}
+                </p>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                className="shrink-0 gap-1.5 border-brand-purple/30 text-brand-purple hover:bg-brand-purple/5"
+                onClick={() => navigate("/billing")}
+              >
+                <Crown className="size-3.5" />
+                {tMembers("teaser.cta")}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
