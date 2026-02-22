@@ -25,6 +25,7 @@ import {
   Sparkles,
   Newspaper,
   CreditCard,
+  Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -178,6 +179,17 @@ const navGroups: NavGroup[] = [
         key: "data",
         path: "/data",
         icon: Database,
+        ready: true,
+      },
+    ],
+  },
+  {
+    labelKey: "sections.community",
+    items: [
+      {
+        key: "members",
+        path: "/membres",
+        icon: Users,
         ready: true,
       },
     ],

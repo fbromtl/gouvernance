@@ -21,7 +21,8 @@
     "veille": "Veille réglementaire",
     "roadmap": "Fonctionnalités à venir",
     "profile": "Profil",
-    "billing": "Abonnement"
+    "billing": "Abonnement",
+    "members": "Membres du Cercle"
   },
   "sections": {
     "overview": "Vue d'ensemble",
@@ -29,6 +30,7 @@
     "governance": "Gouvernance & Conformité",
     "risks": "Gestion des risques",
     "operations": "Opérations",
+    "community": "Communauté",
     "settings": "Paramètres",
     "main": "Principal",
     "modules": "Modules"

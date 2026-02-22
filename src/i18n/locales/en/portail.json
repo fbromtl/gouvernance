@@ -21,7 +21,8 @@
     "veille": "Regulatory Watch",
     "roadmap": "Upcoming Features",
     "profile": "Profile",
-    "billing": "Subscription"
+    "billing": "Subscription",
+    "members": "Circle Members"
   },
   "sections": {
     "overview": "Overview",
@@ -29,6 +30,7 @@
     "governance": "Governance & Compliance",
     "risks": "Risk Management",
     "operations": "Operations",
+    "community": "Community",
     "settings": "Settings",
     "main": "Main",
     "modules": "Modules"
