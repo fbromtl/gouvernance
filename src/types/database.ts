@@ -57,7 +57,11 @@ export interface Database {
           id: string;
           full_name: string | null;
           avatar_url: string | null;
+          bio: string | null;
           cgu_accepted: boolean;
+          job_title: string | null;
+          linkedin_url: string | null;
+          member_slug: string | null;
           organization_id: string | null;
           created_at: string;
         };
@@ -65,13 +69,21 @@ export interface Database {
           id: string;
           full_name?: string | null;
           avatar_url?: string | null;
+          bio?: string | null;
           cgu_accepted?: boolean;
+          job_title?: string | null;
+          linkedin_url?: string | null;
+          member_slug?: string | null;
           organization_id?: string | null;
         };
         Update: {
           full_name?: string | null;
           avatar_url?: string | null;
+          bio?: string | null;
           cgu_accepted?: boolean;
+          job_title?: string | null;
+          linkedin_url?: string | null;
+          member_slug?: string | null;
           organization_id?: string | null;
         };
         Relationships: [];
