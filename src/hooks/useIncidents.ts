@@ -47,9 +47,13 @@ export function useIncidents(filters?: IncidentFilters) {
         query = query.eq("category", filters.category);
       }
       if (filters?.search) {
-        query = query.or(
-          `title.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-        );
+        // Sanitize search input for PostgREST filter safety
+        const safe = filters.search.replace(/[%_,.*()]/g, "");
+        if (safe) {
+          query = query.or(
+            `title.ilike.%${safe}%,description.ilike.%${safe}%`
+          );
+        }
       }
 
       query = query.order("created_at", { ascending: false });

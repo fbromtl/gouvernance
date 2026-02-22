@@ -1,0 +1,99 @@
+{
+  "pageTitle": "Diagnostic de Gouvernance IA",
+  "pageDescription": "Évaluez votre niveau de maturité en gouvernance de l'intelligence artificielle en 10 questions.",
+  "startButton": "Commencer le diagnostic",
+  "nextButton": "Suivante",
+  "previousButton": "Précédente",
+  "seeResults": "Voir mes résultats",
+  "questionOf": "Question {{current}} sur {{total}}",
+  "questions": {
+    "inventory": {
+      "question": "Avez-vous un registre de vos systèmes d'intelligence artificielle ?",
+      "description": "Un inventaire complet des systèmes IA utilisés dans votre organisation."
+    },
+    "risk_assessment": {
+      "question": "Évaluez-vous les risques de vos systèmes IA ?",
+      "description": "Analyse systématique des impacts potentiels de chaque système IA."
+    },
+    "data_protection": {
+      "question": "Vos systèmes IA traitent-ils des données personnelles de façon encadrée ?",
+      "description": "Conformité au RGPD, Loi 25, et bonnes pratiques de protection des données."
+    },
+    "bias_fairness": {
+      "question": "Avez-vous des processus pour détecter les biais algorithmiques ?",
+      "description": "Tests d'équité, audits réguliers et mécanismes de correction."
+    },
+    "transparency": {
+      "question": "Informez-vous les personnes qu'elles interagissent avec une IA ?",
+      "description": "Obligation de transparence et droit à l'explication des décisions automatisées."
+    },
+    "human_oversight": {
+      "question": "Un humain peut-il intervenir sur les décisions de vos IA ?",
+      "description": "Mécanismes de supervision et possibilité de contester les décisions."
+    },
+    "regulatory_compliance": {
+      "question": "Suivez-vous les exigences de la Loi 25 ou du EU AI Act ?",
+      "description": "Veille réglementaire et conformité aux cadres juridiques applicables."
+    },
+    "incident_management": {
+      "question": "Avez-vous un processus de signalement des incidents IA ?",
+      "description": "Procédures de détection, signalement et résolution des incidents."
+    },
+    "organizational_governance": {
+      "question": "Avez-vous des rôles ou comités dédiés à la gouvernance IA ?",
+      "description": "Structure organisationnelle avec responsabilités claires pour l'IA."
+    },
+    "training_awareness": {
+      "question": "Vos équipes sont-elles formées aux enjeux de l'IA responsable ?",
+      "description": "Programmes de formation et sensibilisation à l'éthique IA."
+    }
+  },
+  "answers": {
+    "not_at_all": "Pas du tout",
+    "considering": "En réflexion",
+    "partially": "Partiellement en place",
+    "fully_implemented": "Oui, formalisé"
+  },
+  "levels": {
+    "debutant": "Débutant",
+    "emergent": "Émergent",
+    "intermediaire": "Intermédiaire",
+    "avance": "Avancé",
+    "exemplaire": "Exemplaire"
+  },
+  "results": {
+    "title": "Votre score de maturité",
+    "subtitle": "Gouvernance IA",
+    "scoreLabel": "{{score}} / 30",
+    "detailsLocked": "Créez votre compte gratuit pour débloquer vos recommandations personnalisées par domaine.",
+    "ctaButton": "Débloquer mes résultats complets",
+    "ctaSubtext": "Gratuit — Connexion avec Google en 10 secondes",
+    "domains": {
+      "inventory": "Inventaire IA",
+      "risk_assessment": "Évaluation des risques",
+      "data_protection": "Protection des données",
+      "bias_fairness": "Biais & Équité",
+      "transparency": "Transparence",
+      "human_oversight": "Supervision humaine",
+      "regulatory_compliance": "Conformité réglementaire",
+      "incident_management": "Gestion des incidents",
+      "organizational_governance": "Gouvernance organisationnelle",
+      "training_awareness": "Formation & sensibilisation"
+    }
+  },
+  "widget": {
+    "title": "Votre diagnostic de gouvernance IA",
+    "retake": "Refaire le diagnostic",
+    "viewDetails": "Voir le détail",
+    "completedOn": "Complété le {{date}}"
+  },
+  "homepage": {
+    "badge": "Diagnostic gratuit",
+    "title": "Évaluez votre maturité en gouvernance IA",
+    "description": "10 questions pour obtenir votre score de maturité et des recommandations personnalisées. Gratuit, sans engagement.",
+    "cta": "Lancer le diagnostic",
+    "duration": "3 minutes",
+    "questionsCount": "10 questions",
+    "free": "100% gratuit"
+  }
+}

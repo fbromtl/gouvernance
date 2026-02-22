@@ -19,6 +19,9 @@ import {
   CheckCircle,
   Building2,
   Globe,
+  Clock,
+  ListChecks,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -616,6 +619,55 @@ export function HomePage() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* SECTION 5b - DIAGNOSTIC CTA */}
+      <section className="relative py-20 sm:py-24 bg-background overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(171, 84, 243, 0.4) 0%, transparent 60%)`,
+          }}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Badge
+            variant="secondary"
+            className="mb-6 bg-brand-purple/10 text-brand-purple border-brand-purple/30 hover:bg-brand-purple/20"
+          >
+            <Sparkles className="mr-1 h-3 w-3" />
+            Diagnostic gratuit
+          </Badge>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Évaluez votre maturité en gouvernance IA
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+            10 questions pour obtenir votre score de maturité et des recommandations personnalisées. Gratuit, sans engagement.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 mb-10">
+            {[
+              { icon: Clock, label: "3 minutes" },
+              { icon: ListChecks, label: "10 questions" },
+              { icon: Sparkles, label: "100% gratuit" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-purple/10">
+                  <item.icon className="h-4 w-4 text-brand-purple" />
+                </div>
+                {item.label}
+              </div>
+            ))}
+          </div>
+          <Button
+            asChild
+            size="lg"
+            className="bg-brand-purple hover:bg-brand-purple/90 text-white px-8 py-6 h-auto text-base font-semibold shadow-lg shadow-brand-purple/25"
+          >
+            <Link to="/diagnostic">
+              Lancer le diagnostic
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
 

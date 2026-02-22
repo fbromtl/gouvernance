@@ -204,8 +204,19 @@ export default function VeillePage() {
   };
 
   /* ------ Strip HTML from snippet ------ */
-  const stripHtml = (html: string) =>
-    html.replace(/<[^>]*>/g, "").trim();
+  const stripHtml = (html: string) => {
+    // 1. Decode HTML entities (&lt; &gt; &amp; &quot; &#39; &#xxx;)
+    const decoded = html
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&amp;/g, "&")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+      .replace(/&nbsp;/g, " ");
+    // 2. Strip HTML tags
+    return decoded.replace(/<[^>]*>/g, "").trim();
+  };
 
   return (
     <div className="space-y-6 p-4 md:p-6">

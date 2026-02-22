@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { ColumnDef } from "@tanstack/react-table";
-import { Bot, Plus, Search } from "lucide-react";
+import { AlertTriangle, Bot, Plus, Search } from "lucide-react";
 
 import { PageHeader } from "@/components/shared/PageHeader";
 import { EmptyState } from "@/components/shared/EmptyState";
@@ -83,7 +83,7 @@ export default function AiSystemsListPage() {
     [search, lifecycleStatus, riskLevel, systemType],
   );
 
-  const { data: systems, isLoading } = useAiSystems(filters);
+  const { data: systems, isLoading, isError } = useAiSystems(filters);
 
   // ----- Format helpers -----
   function formatDate(dateStr: string | null) {
@@ -189,6 +189,16 @@ export default function AiSystemsListPage() {
             <Skeleton key={i} className="h-12 w-full" />
           ))}
         </div>
+      </div>
+    );
+  }
+
+  // ----- Error state -----
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <AlertTriangle className="size-10 text-destructive mb-4" />
+        <p className="text-muted-foreground">{t("errors.loadFailed", { defaultValue: "Erreur lors du chargement des données." })}</p>
       </div>
     );
   }
