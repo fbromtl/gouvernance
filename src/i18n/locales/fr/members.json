@@ -1,0 +1,38 @@
+{
+  "pageTitle": "Membres du Cercle",
+  "pageDescription": "Annuaire des membres du Cercle de Gouvernance de l'IA",
+  "memberCount": "{{count}} Membres du Cercle",
+  "filterAll": "Tous",
+  "filterMember": "Membres",
+  "filterExpert": "Experts",
+  "filterHonorary": "Honoraires",
+  "searchPlaceholder": "Rechercher un membre...",
+  "teaser": {
+    "title": "Rejoignez le Cercle",
+    "description": "Devenez Membre pour accéder à l'annuaire complet et échanger avec les {{count}} membres du Cercle.",
+    "cta": "Devenir Membre"
+  },
+  "card": {
+    "viewProfile": "Voir le profil",
+    "connectLinkedin": "LinkedIn"
+  },
+  "publicProfile": {
+    "memberSince": "Membre depuis {{date}}",
+    "shareLinkedin": "Partager sur LinkedIn",
+    "downloadBadge": "Télécharger mon badge",
+    "linkedinPost": "Je suis {{level}} du Cercle de Gouvernance de l'IA — la communauté de référence en gouvernance responsable de l'IA. 🤖🛡️",
+    "backToDirectory": "Retour à l'annuaire"
+  },
+  "badge": {
+    "member": "Membre",
+    "expert": "Expert",
+    "honorary": "Honoraire"
+  },
+  "levels": {
+    "observer": "Observateur",
+    "member": "Membre du Cercle",
+    "expert": "Membre Expert",
+    "honorary": "Membre Honoraire"
+  },
+  "nav": "Membres du Cercle"
+}

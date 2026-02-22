@@ -1,0 +1,38 @@
+{
+  "pageTitle": "Circle Members",
+  "pageDescription": "Directory of AI Governance Circle members",
+  "memberCount": "{{count}} Circle Members",
+  "filterAll": "All",
+  "filterMember": "Members",
+  "filterExpert": "Experts",
+  "filterHonorary": "Honorary",
+  "searchPlaceholder": "Search a member...",
+  "teaser": {
+    "title": "Join the Circle",
+    "description": "Become a Member to access the full directory and connect with {{count}} Circle members.",
+    "cta": "Become a Member"
+  },
+  "card": {
+    "viewProfile": "View profile",
+    "connectLinkedin": "LinkedIn"
+  },
+  "publicProfile": {
+    "memberSince": "Member since {{date}}",
+    "shareLinkedin": "Share on LinkedIn",
+    "downloadBadge": "Download my badge",
+    "linkedinPost": "I'm a {{level}} of the AI Governance Circle — the leading community for responsible AI governance. 🤖🛡️",
+    "backToDirectory": "Back to directory"
+  },
+  "badge": {
+    "member": "Member",
+    "expert": "Expert",
+    "honorary": "Honorary"
+  },
+  "levels": {
+    "observer": "Observer",
+    "member": "Circle Member",
+    "expert": "Expert Member",
+    "honorary": "Honorary Member"
+  },
+  "nav": "Circle Members"
+}

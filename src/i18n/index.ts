@@ -26,6 +26,7 @@ import frAiChat from './locales/fr/aiChat.json'
 import frVeille from './locales/fr/veille.json'
 import frDiagnostic from './locales/fr/diagnostic.json'
 import frBilling from './locales/fr/billing.json'
+import frMembers from './locales/fr/members.json'
 
 import enCommon from './locales/en/common.json'
 import enDashboard from './locales/en/dashboard.json'
@@ -51,6 +52,7 @@ import enAiChat from './locales/en/aiChat.json'
 import enVeille from './locales/en/veille.json'
 import enDiagnostic from './locales/en/diagnostic.json'
 import enBilling from './locales/en/billing.json'
+import enMembers from './locales/en/members.json'
 
 export const defaultNS = 'common'
 export const supportedLanguages = ['fr', 'en'] as const
@@ -86,6 +88,7 @@ i18n
         veille: frVeille,
         diagnostic: frDiagnostic,
         billing: frBilling,
+        members: frMembers,
       },
       en: {
         common: enCommon,
@@ -112,11 +115,12 @@ i18n
         veille: enVeille,
         diagnostic: enDiagnostic,
         billing: enBilling,
+        members: enMembers,
       },
     },
     fallbackLng: 'fr',
     defaultNS,
-    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding', 'compliance', 'decisions', 'bias', 'transparency', 'vendors', 'lifecycle', 'documents', 'monitoring', 'data', 'aiChat', 'veille', 'diagnostic', 'billing'],
+    ns: ['common', 'dashboard', 'profil', 'conditions', 'portail', 'aiSystems', 'riskAssessments', 'incidents', 'admin', 'governance', 'onboarding', 'compliance', 'decisions', 'bias', 'transparency', 'vendors', 'lifecycle', 'documents', 'monitoring', 'data', 'aiChat', 'veille', 'diagnostic', 'billing', 'members'],
     interpolation: {
       escapeValue: false,
     },
