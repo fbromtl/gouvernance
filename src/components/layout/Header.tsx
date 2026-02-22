@@ -496,6 +496,8 @@ export function Header() {
                 <DropdownTrigger id="ressources">Ressources</DropdownTrigger>
                 {renderRessourcesMega()}
               </div>
+
+              <NavLink to="/tarifs">Tarifs</NavLink>
             </div>
 
             <Separator orientation="vertical" className="h-6 mx-3" />
@@ -695,6 +697,7 @@ export function Header() {
                     <MobileNavLink to="/ressources#etudes" sub>Études de cas</MobileNavLink>
                   </MobileDropdown>
 
+                  <MobileNavLink to="/tarifs" active={isActive("/tarifs")}>Tarifs</MobileNavLink>
                   <MobileNavLink to="/contact" active={isActive("/contact")}>Contact</MobileNavLink>
                 </nav>
 

@@ -43,6 +43,7 @@ import { ClassificationReview } from "@/portail/components/drive/ClassificationR
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
@@ -336,20 +337,23 @@ export default function DocumentsPage() {
 
   if (isError) {
     return (
-      <div className="p-4 md:p-6">
-        <Card className="p-8 text-center">
-          <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", {
-              defaultValue: "Erreur de chargement des donnees.",
-            })}
-          </p>
-        </Card>
-      </div>
+      <FeatureGate feature="documents">
+        <div className="p-4 md:p-6">
+          <Card className="p-8 text-center">
+            <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">
+              {t("errorLoading", {
+                defaultValue: "Erreur de chargement des donnees.",
+              })}
+            </p>
+          </Card>
+        </div>
+      </FeatureGate>
     );
   }
 
   return (
+    <FeatureGate feature="documents">
     <div className="flex flex-col gap-4 p-4 md:p-6 -mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8">
       {/* ---- Header ---- */}
       <div className="flex items-start justify-between gap-3 px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
@@ -677,5 +681,6 @@ export default function DocumentsPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

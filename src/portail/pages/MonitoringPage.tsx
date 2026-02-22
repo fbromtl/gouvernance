@@ -21,6 +21,7 @@ import {
 } from "@/hooks/useMonitoring";
 import type { MonitoringMetric } from "@/types/database";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -300,18 +301,21 @@ export default function MonitoringPage() {
   /* --- render --- */
   if (isError) {
     return (
-      <div className="space-y-6">
-        <Card className="p-8 text-center">
-          <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-          </p>
-        </Card>
-      </div>
+      <FeatureGate feature="monitoring">
+        <div className="space-y-6">
+          <Card className="p-8 text-center">
+            <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">
+              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+            </p>
+          </Card>
+        </div>
+      </FeatureGate>
     );
   }
 
   return (
+    <FeatureGate feature="monitoring">
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -894,5 +898,6 @@ export default function MonitoringPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

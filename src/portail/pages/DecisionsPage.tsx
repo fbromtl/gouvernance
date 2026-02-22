@@ -65,6 +65,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ================================================================== */
 /*  CONSTANTS                                                          */
@@ -261,14 +262,15 @@ export default function DecisionsPage() {
   };
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <div>
-        <div className="flex items-center gap-1.5">
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-          <SectionHelpButton ns="decisions" />
+    <FeatureGate feature="decisions">
+      <div className="space-y-6 p-4 md:p-6">
+        <div>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
+            <SectionHelpButton ns="decisions" />
+          </div>
+          <p className="text-muted-foreground">{t("pageDescription")}</p>
         </div>
-        <p className="text-muted-foreground">{t("pageDescription")}</p>
-      </div>
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">
@@ -600,5 +602,6 @@ export default function DecisionsPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

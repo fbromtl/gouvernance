@@ -21,6 +21,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { useIncidents, type IncidentFilters } from "@/hooks/useIncidents";
 import type { Incident } from "@/types/database";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                           */
@@ -73,7 +74,7 @@ export default function IncidentListPage() {
     [search, status, severity, category],
   );
 
-  const { data: incidents, isLoading } = useIncidents(filters);
+  const { data: incidents, isLoading, isError } = useIncidents(filters);
 
   // ----- Severity stats -----
   const severityStats = useMemo(() => {
@@ -170,27 +171,41 @@ export default function IncidentListPage() {
   // ----- Loading skeleton -----
   if (isLoading) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-64" />
-          <Skeleton className="h-9 w-48" />
+      <FeatureGate feature="incidents">
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <Skeleton className="h-8 w-64" />
+            <Skeleton className="h-9 w-48" />
+          </div>
+          <div className="grid grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <Skeleton key={i} className="h-20 w-full" />
+            ))}
+          </div>
+          <div className="flex gap-3">
+            {[1, 2, 3, 4].map((i) => (
+              <Skeleton key={i} className="h-9 w-44" />
+            ))}
+          </div>
+          <div className="space-y-2">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Skeleton key={i} className="h-12 w-full" />
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="h-20 w-full" />
-          ))}
+      </FeatureGate>
+    );
+  }
+
+  // ----- Error state -----
+  if (isError) {
+    return (
+      <FeatureGate feature="incidents">
+        <div className="flex flex-col items-center justify-center py-16 text-center">
+          <AlertTriangle className="size-10 text-destructive mb-4" />
+          <p className="text-muted-foreground">{t("errors.loadFailed", { defaultValue: "Erreur lors du chargement des données." })}</p>
         </div>
-        <div className="flex gap-3">
-          {[1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="h-9 w-44" />
-          ))}
-        </div>
-        <div className="space-y-2">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <Skeleton key={i} className="h-12 w-full" />
-          ))}
-        </div>
-      </div>
+      </FeatureGate>
     );
   }
 
@@ -200,19 +215,20 @@ export default function IncidentListPage() {
     search || status !== ALL || severity !== ALL || category !== ALL;
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
-        title={t("title")}
-        helpNs="incidents"
-        description={t("description")}
-        actions={
-          <Button onClick={() => navigate("/incidents/new")}>
-            <Plus className="mr-2 size-4" />
-            {t("newIncident")}
-          </Button>
-        }
-      />
+    <FeatureGate feature="incidents">
+      <div className="space-y-6">
+        {/* Header */}
+        <PageHeader
+          title={t("title")}
+          helpNs="incidents"
+          description={t("description")}
+          actions={
+            <Button onClick={() => navigate("/incidents/new")}>
+              <Plus className="mr-2 size-4" />
+              {t("newIncident")}
+            </Button>
+          }
+        />
 
       {/* Severity stat cards */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -284,25 +300,26 @@ export default function IncidentListPage() {
         </Select>
       </div>
 
-      {/* Table or Empty State */}
-      {isEmpty ? (
-        <EmptyState
-          icon={AlertTriangle}
-          title={t("empty.title")}
-          description={t("empty.description")}
-          actionLabel={hasActiveFilters ? undefined : t("empty.action")}
-          onAction={
-            hasActiveFilters ? undefined : () => navigate("/incidents/new")
-          }
-        />
-      ) : (
-        <DataTable
-          columns={columns}
-          data={incidents}
-          onRowClick={(row) => navigate(`/incidents/${row.id}`)}
-          pageSize={10}
-        />
-      )}
-    </div>
+        {/* Table or Empty State */}
+        {isEmpty ? (
+          <EmptyState
+            icon={AlertTriangle}
+            title={t("empty.title")}
+            description={t("empty.description")}
+            actionLabel={hasActiveFilters ? undefined : t("empty.action")}
+            onAction={
+              hasActiveFilters ? undefined : () => navigate("/incidents/new")
+            }
+          />
+        ) : (
+          <DataTable
+            columns={columns}
+            data={incidents}
+            onRowClick={(row) => navigate(`/incidents/${row.id}`)}
+            pageSize={10}
+          />
+        )}
+      </div>
+    </FeatureGate>
   );
 }

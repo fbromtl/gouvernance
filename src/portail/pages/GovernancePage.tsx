@@ -84,6 +84,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
@@ -1405,43 +1406,45 @@ export default function GovernancePage() {
   const readOnly = !can("manage_policies");
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <div>
-        <div className="flex items-center gap-1.5">
-          <h1 className="text-2xl font-bold tracking-tight">
-            {t("pageTitle")}
-          </h1>
-          <SectionHelpButton ns="governance" />
+    <FeatureGate feature="governance_structure">
+      <div className="space-y-6 p-4 md:p-6">
+        <div>
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-2xl font-bold tracking-tight">
+              {t("pageTitle")}
+            </h1>
+            <SectionHelpButton ns="governance" />
+          </div>
+          <p className="text-muted-foreground">{t("pageDescription")}</p>
         </div>
-        <p className="text-muted-foreground">{t("pageDescription")}</p>
+
+        <Tabs defaultValue="policies" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="policies" className="gap-2">
+              <FileText className="h-4 w-4" />
+              {t("tabs.policies")}
+            </TabsTrigger>
+            <TabsTrigger value="roles" className="gap-2">
+              <Users className="h-4 w-4" />
+              {t("tabs.roles")}
+            </TabsTrigger>
+            <TabsTrigger value="committees" className="gap-2">
+              <Building2 className="h-4 w-4" />
+              {t("tabs.committees")}
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="policies">
+            <PoliciesTab readOnly={readOnly} />
+          </TabsContent>
+          <TabsContent value="roles">
+            <RolesTab readOnly={readOnly} />
+          </TabsContent>
+          <TabsContent value="committees">
+            <CommitteesTab readOnly={readOnly} />
+          </TabsContent>
+        </Tabs>
       </div>
-
-      <Tabs defaultValue="policies" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="policies" className="gap-2">
-            <FileText className="h-4 w-4" />
-            {t("tabs.policies")}
-          </TabsTrigger>
-          <TabsTrigger value="roles" className="gap-2">
-            <Users className="h-4 w-4" />
-            {t("tabs.roles")}
-          </TabsTrigger>
-          <TabsTrigger value="committees" className="gap-2">
-            <Building2 className="h-4 w-4" />
-            {t("tabs.committees")}
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="policies">
-          <PoliciesTab readOnly={readOnly} />
-        </TabsContent>
-        <TabsContent value="roles">
-          <RolesTab readOnly={readOnly} />
-        </TabsContent>
-        <TabsContent value="committees">
-          <CommitteesTab readOnly={readOnly} />
-        </TabsContent>
-      </Tabs>
-    </div>
+    </FeatureGate>
   );
 }

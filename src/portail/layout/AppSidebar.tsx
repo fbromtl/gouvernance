@@ -24,6 +24,7 @@ import {
   ExternalLink,
   Sparkles,
   Newspaper,
+  CreditCard,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -188,6 +189,13 @@ const settingsItems: NavItem[] = [
     key: "roadmap",
     path: "/roadmap",
     icon: Rocket,
+    ready: true,
+  },
+  {
+    key: "billing",
+    path: "/billing",
+    icon: CreditCard,
+    permission: "manage_billing",
     ready: true,
   },
   {
