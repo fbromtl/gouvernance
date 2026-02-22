@@ -8,9 +8,14 @@ import { useIncidents } from "@/hooks/useIncidents";
 import { useComplianceScores } from "@/hooks/useCompliance";
 import { useDecisions } from "@/hooks/useDecisions";
 import { useBiasFindings } from "@/hooks/useBiasFindings";
+import { useSubscription } from "@/hooks/useSubscription";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { MemberBadge } from "@/components/shared/MemberBadge";
+import type { PlanId } from "@/lib/stripe";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -26,6 +31,7 @@ import {
   TrendingDown,
   Minus,
   FlaskConical,
+  Users,
 } from "lucide-react";
 
 // Dashboard widgets
@@ -66,6 +72,10 @@ export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
   const { profile } = useAuth();
   const { data: org, isLoading } = useOrganization();
+
+  // Subscription data for membership widget
+  const { data: subscription } = useSubscription();
+  const plan: PlanId = (subscription?.plan as PlanId) ?? "observer";
 
   // Demo mode state (persisted in localStorage)
   const [demo, setDemo] = useState(readDemo);
@@ -228,6 +238,87 @@ export default function DashboardPage() {
       {/*  Diagnostic Widget (if pending or exists)                         */}
       {/* ================================================================ */}
       <DiagnosticResultWidget />
+
+      {/* ================================================================ */}
+      {/*  Membership Widget                                                */}
+      {/* ================================================================ */}
+      {plan !== "observer" ? (
+        <Card className="border-border/60">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-semibold">
+              {t("membership.profileTitle", { defaultValue: "Votre profil de membre" })}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pb-5">
+            <div className="flex items-center gap-3">
+              <Avatar size="lg">
+                {profile?.avatar_url ? (
+                  <AvatarImage src={profile.avatar_url} alt={profile.full_name ?? ""} />
+                ) : null}
+                <AvatarFallback>
+                  {(profile?.full_name ?? "?").slice(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-semibold truncate">
+                    {profile?.full_name ?? t("welcomeFallback")}
+                  </span>
+                  <MemberBadge plan={plan} size="sm" />
+                </div>
+                {profile?.job_title && (
+                  <p className="text-xs text-muted-foreground truncate">{profile.job_title}</p>
+                )}
+              </div>
+            </div>
+            <div className="mt-3">
+              {profile?.member_slug ? (
+                <Link
+                  to={`/membres/${profile.member_slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-medium text-brand-purple hover:underline"
+                >
+                  {t("membership.viewPublicPage", { defaultValue: "Voir ma page publique" })}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              ) : (
+                <Link
+                  to="/profile"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {t("membership.completeProfile", { defaultValue: "Complétez votre profil" })}
+                </Link>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="border-brand-purple/20 bg-brand-purple/[0.02]">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-semibold">
+              {t("membership.joinTitle", { defaultValue: "Rejoignez le Cercle" })}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pb-5">
+            <div className="flex items-start gap-3">
+              <div className="h-10 w-10 rounded-xl bg-brand-purple/10 flex items-center justify-center shrink-0">
+                <Users className="h-5 w-5 text-brand-purple" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {t("membership.joinDescription", {
+                    defaultValue: "Devenez Membre pour accéder à l'annuaire et échanger avec vos pairs.",
+                  })}
+                </p>
+                <Button asChild size="sm" className="mt-3 bg-brand-purple hover:bg-brand-purple/90 text-white">
+                  <Link to="/billing">
+                    {t("membership.joinCta", { defaultValue: "Devenir Membre" })}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* ================================================================ */}
       {/*  Row 1 — KPI Cards                                               */}
