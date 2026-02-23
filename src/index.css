@@ -169,6 +169,12 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    background-image: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      oklch(0.94 0.02 290 / 40%) 0%,
+      transparent 70%
+    );
+    background-attachment: fixed;
   }
   html {
     scroll-behavior: smooth;

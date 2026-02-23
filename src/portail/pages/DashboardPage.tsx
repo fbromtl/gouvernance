@@ -200,7 +200,7 @@ export default function DashboardPage() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-2xl font-extrabold tracking-tight text-foreground">
               {t("welcome", { firstName })}
             </h1>
             <SectionHelpButton ns="dashboard" />
@@ -351,7 +351,7 @@ export default function DashboardPage() {
           const TIcon = stat.trend ? TrendIcon[stat.trend] : null;
           return (
             <Link key={stat.key} to={stat.path}>
-              <Card className="group relative overflow-hidden hover:shadow-md transition-all duration-300 border-border/60">
+              <Card className="group relative overflow-hidden hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] hover:border-border/80 transition-all duration-300">
                 <CardContent className="p-5">
                   <div className="flex items-start justify-between">
                     <div className={`h-10 w-10 rounded-xl ${stat.bgColor} flex items-center justify-center shrink-0`}>
