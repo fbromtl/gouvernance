@@ -11,6 +11,8 @@ import {
 import { toast } from "sonner";
 
 import { usePermissions } from "@/hooks/usePermissions";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_DATASETS, DEMO_DATA_TRANSFERS } from "@/portail/demo";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import {
   useDatasets,
@@ -167,6 +169,7 @@ const STATUS_COLORS: Record<string, string> = {
 export default function DataPage() {
   const { t } = useTranslation("data");
   const { can } = usePermissions();
+  const { isPreview } = useFeaturePreview("data_catalog");
   const readOnly = !can("manage_compliance");
 
   /* ---- active tab ---- */
@@ -186,11 +189,12 @@ export default function DataPage() {
   const [dsDeleteConfirm, setDsDeleteConfirm] = useState<string | null>(null);
 
   /* ---- dataset data ---- */
-  const { data: datasets = [], isLoading: dsLoading, isError: dsError } = useDatasets({
+  const { data: rawDatasets = [], isLoading: dsLoading, isError: dsError } = useDatasets({
     source: dsSourceFilter === ALL ? undefined : dsSourceFilter,
     classification: dsClassFilter === ALL ? undefined : dsClassFilter,
     search: dsSearchQuery || undefined,
   });
+  const datasets = isPreview ? DEMO_DATASETS : rawDatasets;
   const { data: aiSystems = [] } = useAiSystems();
   const createDataset = useCreateDataset();
   const updateDataset = useUpdateDataset();
@@ -354,10 +358,11 @@ export default function DataPage() {
   const [trDeleteConfirm, setTrDeleteConfirm] = useState<string | null>(null);
 
   /* ---- transfers data ---- */
-  const { data: transfers = [], isLoading: trLoading, isError: trError } = useDataTransfers({
+  const { data: rawTransfers = [], isLoading: trLoading, isError: trError } = useDataTransfers({
     status: trStatusFilter === ALL ? undefined : trStatusFilter,
     search: trSearchQuery || undefined,
   });
+  const transfers = isPreview ? DEMO_DATA_TRANSFERS : rawTransfers;
   const createTransfer = useCreateDataTransfer();
   const updateTransfer = useUpdateDataTransfer();
   const deleteTransfer = useDeleteDataTransfer();
@@ -466,7 +471,7 @@ export default function DataPage() {
   /*  RENDER                                                           */
   /* ================================================================ */
 
-  if (dsError || trError) {
+  if ((dsError || trError) && !isPreview) {
     return (
       <FeatureGate feature="data_catalog">
         <div className="space-y-6 p-4 md:p-6">
@@ -556,7 +561,7 @@ export default function DataPage() {
           </div>
 
           {/* Dataset table */}
-          {dsLoading ? (
+          {dsLoading && !isPreview ? (
             <div className="space-y-3">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="h-16 rounded-lg bg-muted animate-pulse" />
@@ -695,7 +700,7 @@ export default function DataPage() {
           </div>
 
           {/* Transfer table */}
-          {trLoading ? (
+          {trLoading && !isPreview ? (
             <div className="space-y-3">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="h-16 rounded-lg bg-muted animate-pulse" />

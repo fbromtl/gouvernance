@@ -11,6 +11,8 @@ import {
 import { toast } from "sonner";
 
 import { usePermissions } from "@/hooks/usePermissions";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_VENDORS } from "@/portail/demo";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import {
   useVendors,
@@ -115,6 +117,7 @@ const NONE = "__none__";
 export default function VendorsPage() {
   const { t } = useTranslation("vendors");
   const { can } = usePermissions();
+  const { isPreview } = useFeaturePreview("vendors");
   const readOnly = !can("manage_vendors");
 
   /* ---- list filters ---- */
@@ -129,11 +132,12 @@ export default function VendorsPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   /* ---- data ---- */
-  const { data: vendors = [], isLoading, isError } = useVendors({
+  const { data: rawVendors = [], isLoading, isError } = useVendors({
     status: statusFilter === ALL ? undefined : statusFilter,
     risk_level: riskFilter === ALL ? undefined : riskFilter,
     search: searchQuery || undefined,
   });
+  const vendors = isPreview ? DEMO_VENDORS : rawVendors;
   const { data: aiSystems = [] } = useAiSystems();
   const createVendor = useCreateVendor();
   const updateVendor = useUpdateVendor();
@@ -293,7 +297,7 @@ export default function VendorsPage() {
   /*  RENDER                                                           */
   /* ================================================================ */
 
-  if (isError) {
+  if (isError && !isPreview) {
     return (
       <FeatureGate feature="vendors">
         <div className="space-y-6 p-4 md:p-6">
@@ -372,7 +376,7 @@ export default function VendorsPage() {
       </div>
 
       {/* Content */}
-      {isLoading ? (
+      {isLoading && !isPreview ? (
         <div className="space-y-3">
           {[1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-16 rounded-lg" />

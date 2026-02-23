@@ -7,6 +7,8 @@ import {
 import { toast } from "sonner";
 
 import { usePermissions } from "@/hooks/usePermissions";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_DOCUMENTS, DEMO_DOCUMENT_COUNTS } from "@/portail/demo";
 import {
   useDocuments,
   useDocumentCounts,
@@ -80,6 +82,7 @@ export default function DocumentsPage() {
   const { t: ti18n } = useTranslation();
   const { can } = usePermissions();
   const { profile } = useAuth();
+  const { isPreview } = useFeaturePreview("documents");
   const readOnly = !can("export_data");
 
   /* ---- View state ---- */
@@ -109,8 +112,10 @@ export default function DocumentsPage() {
     search: searchQuery || undefined,
   };
 
-  const { data: documents = [], isLoading, isError } = useDocuments(filters);
-  const { data: counts = {} } = useDocumentCounts();
+  const { data: rawDocuments = [], isLoading, isError } = useDocuments(filters);
+  const { data: rawCounts = {} } = useDocumentCounts();
+  const documents = isPreview ? DEMO_DOCUMENTS : rawDocuments;
+  const counts = isPreview ? DEMO_DOCUMENT_COUNTS : rawCounts;
 
   // Filter uncategorized manually if needed
   const filteredDocs =
@@ -335,7 +340,7 @@ export default function DocumentsPage() {
   /*  RENDER                                                           */
   /* ================================================================ */
 
-  if (isError) {
+  if (isError && !isPreview) {
     return (
       <FeatureGate feature="documents">
         <div className="p-4 md:p-6">
@@ -518,7 +523,7 @@ export default function DocumentsPage() {
           </div>
 
           {/* Content */}
-          {isLoading ? (
+          {isLoading && !isPreview ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <Skeleton key={i} className="h-36 rounded-xl" />
