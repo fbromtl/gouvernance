@@ -46,6 +46,7 @@ import PendingActionsWidget from "@/portail/components/dashboard/PendingActionsW
 import ReviewsDueWidget from "@/portail/components/dashboard/ReviewsDueWidget";
 import RecentDecisionsWidget from "@/portail/components/dashboard/RecentDecisionsWidget";
 import BiasDebtWidget from "@/portail/components/dashboard/BiasDebtWidget";
+import AgentActivityWidget from "@/portail/components/dashboard/AgentActivityWidget";
 
 // Demo data
 import {
@@ -341,6 +342,11 @@ export default function DashboardPage() {
           </Button>
         </div>
       )}
+
+      {/* ================================================================ */}
+      {/*  Agent Activity Widget                                            */}
+      {/* ================================================================ */}
+      <AgentActivityWidget />
 
       {/* ================================================================ */}
       {/*  Row 1 — KPI Cards                                               */}

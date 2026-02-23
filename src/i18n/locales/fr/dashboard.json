@@ -44,6 +44,12 @@
       "overdue_other": "En retard de {{count}} jours",
       "daysUntil_one": "Dans {{count}} jour",
       "daysUntil_other": "Dans {{count}} jours"
+    },
+    "agentActivity": {
+      "title": "Activit\u00e9 des Agents IA",
+      "noTraces": "Aucune trace d'agent",
+      "viewJournal": "Voir le journal",
+      "traces": "traces r\u00e9centes"
     }
   },
   "riskLevels": {

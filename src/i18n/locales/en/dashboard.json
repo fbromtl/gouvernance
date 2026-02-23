@@ -44,6 +44,12 @@
       "overdue_other": "{{count}} days overdue",
       "daysUntil_one": "In {{count}} day",
       "daysUntil_other": "In {{count}} days"
+    },
+    "agentActivity": {
+      "title": "AI Agent Activity",
+      "noTraces": "No agent traces",
+      "viewJournal": "View journal",
+      "traces": "recent traces"
     }
   },
   "riskLevels": {
