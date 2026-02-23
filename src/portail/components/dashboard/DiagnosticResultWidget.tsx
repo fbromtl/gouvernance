@@ -274,7 +274,7 @@ export default function DiagnosticResultWidget() {
               variant="destructive"
               disabled={deleteMutation.isPending}
               onClick={() => {
-                deleteMutation.mutate(diagnostic.id, {
+                deleteMutation.mutate(undefined, {
                   onSuccess: () => setShowDeleteConfirm(false),
                 });
               }}

@@ -94,20 +94,19 @@ export function useSaveDiagnostic() {
 }
 
 /**
- * Delete a diagnostic result from the database
+ * Delete ALL diagnostic results for the current user
  */
 export function useDeleteDiagnostic() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (diagnosticId: string) => {
+    mutationFn: async () => {
       if (!user) throw new Error("User not authenticated");
 
       const { error } = await supabase
         .from("governance_diagnostics")
         .delete()
-        .eq("id", diagnosticId)
         .eq("user_id", user.id);
 
       if (error) throw error;
