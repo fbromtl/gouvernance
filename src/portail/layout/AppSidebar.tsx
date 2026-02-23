@@ -17,14 +17,11 @@ import {
   Database,
   Building2,
   CheckCircle,
-  Settings,
-  Rocket,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
   Sparkles,
   Newspaper,
-  CreditCard,
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -196,28 +193,6 @@ const navGroups: NavGroup[] = [
   },
 ];
 
-const settingsItems: NavItem[] = [
-  {
-    key: "roadmap",
-    path: "/roadmap",
-    icon: Rocket,
-    ready: true,
-  },
-  {
-    key: "billing",
-    path: "/billing",
-    icon: CreditCard,
-    permission: "manage_billing",
-    ready: true,
-  },
-  {
-    key: "admin",
-    path: "/admin",
-    icon: Settings,
-    permission: "manage_organization",
-    ready: true,
-  },
-];
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -345,27 +320,6 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         <ScrollArea className="flex-1 py-1.5">
           <nav className="flex flex-col px-2">
             {navGroups.map(renderGroup)}
-
-            {/* Settings section */}
-            {(() => {
-              const visibleSettings = settingsItems;
-              if (visibleSettings.length === 0) return null;
-              return (
-                <div className="space-y-0.5">
-                  {!collapsed && (
-                    <div className="px-3 pt-5 pb-1.5">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/35">
-                        {t("sections.settings")}
-                      </span>
-                    </div>
-                  )}
-                  {collapsed && (
-                    <div className="mx-3 my-2.5 border-t border-border/40" />
-                  )}
-                  {visibleSettings.map(renderItem)}
-                </div>
-              );
-            })()}
           </nav>
         </ScrollArea>
 

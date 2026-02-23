@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, Menu, LogOut, User, Settings, Check, ChevronRight } from "lucide-react";
+import { Bell, Menu, LogOut, User, Settings, Check, ChevronRight, Rocket, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -250,9 +250,21 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
+              <Link to="/billing" className="flex items-center gap-2">
+                <CreditCard className="h-4 w-4" />
+                {t("nav.billing")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link to="/admin" className="flex items-center gap-2">
                 <Settings className="h-4 w-4" />
                 {t("nav.admin")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/roadmap" className="flex items-center gap-2">
+                <Rocket className="h-4 w-4" />
+                {t("nav.roadmap")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
