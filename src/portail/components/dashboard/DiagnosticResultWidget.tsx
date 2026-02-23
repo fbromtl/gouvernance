@@ -14,11 +14,22 @@ import {
   GraduationCap,
   RotateCcw,
   Sparkles,
+  Trash2,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 import {
   useLatestDiagnostic,
   useSaveDiagnostic,
+  useDeleteDiagnostic,
   getPendingDiagnostic,
   clearPendingDiagnostic,
 } from "@/hooks/useDiagnostic";
@@ -89,7 +100,9 @@ export default function DiagnosticResultWidget() {
   const { t } = useTranslation("diagnostic");
   const { data: latestDiagnostic, isLoading } = useLatestDiagnostic();
   const saveMutation = useSaveDiagnostic();
+  const deleteMutation = useDeleteDiagnostic();
   const [consumed, setConsumed] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   // On mount: check for pending diagnostic in localStorage and save it
   useEffect(() => {
@@ -150,13 +163,22 @@ export default function DiagnosticResultWidget() {
               </p>
             </div>
           </div>
-          <Link
-            to="/diagnostic"
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <RotateCcw className="h-3 w-3" />
-            {t("widget.retake")}
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/diagnostic"
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <RotateCcw className="h-3 w-3" />
+              {t("widget.retake")}
+            </Link>
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              className="inline-flex items-center justify-center rounded-md p-1 text-muted-foreground/50 hover:text-destructive hover:bg-destructive/10 transition-colors"
+              title={t("widget.delete")}
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
 
         {/* Score + Level */}
@@ -231,6 +253,39 @@ export default function DiagnosticResultWidget() {
           })}
         </div>
       </div>
+
+      {/* Delete confirmation dialog */}
+      <Dialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{t("widget.deleteConfirmTitle")}</DialogTitle>
+            <DialogDescription>
+              {t("widget.deleteConfirmDescription")}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={() => setShowDeleteConfirm(false)}
+            >
+              {t("widget.cancel")}
+            </Button>
+            <Button
+              variant="destructive"
+              disabled={deleteMutation.isPending}
+              onClick={() => {
+                deleteMutation.mutate(diagnostic.id, {
+                  onSuccess: () => setShowDeleteConfirm(false),
+                });
+              }}
+            >
+              {deleteMutation.isPending
+                ? t("widget.deleting")
+                : t("widget.confirmDelete")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

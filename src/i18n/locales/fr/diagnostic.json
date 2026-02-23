@@ -85,7 +85,13 @@
     "title": "Votre diagnostic de gouvernance IA",
     "retake": "Refaire le diagnostic",
     "viewDetails": "Voir le détail",
-    "completedOn": "Complété le {{date}}"
+    "completedOn": "Complété le {{date}}",
+    "delete": "Supprimer le diagnostic",
+    "deleteConfirmTitle": "Supprimer définitivement le diagnostic Flash ?",
+    "deleteConfirmDescription": "Cette action est irréversible. Vous pourrez toujours en refaire un.",
+    "cancel": "Annuler",
+    "confirmDelete": "Supprimer",
+    "deleting": "Suppression…"
   },
   "homepage": {
     "badge": "Diagnostic gratuit",

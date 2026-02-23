@@ -85,7 +85,13 @@
     "title": "Your AI governance diagnostic",
     "retake": "Retake the diagnostic",
     "viewDetails": "View details",
-    "completedOn": "Completed on {{date}}"
+    "completedOn": "Completed on {{date}}",
+    "delete": "Delete diagnostic",
+    "deleteConfirmTitle": "Permanently delete the Flash diagnostic?",
+    "deleteConfirmDescription": "This action is irreversible. You can always take a new one.",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete",
+    "deleting": "Deleting…"
   },
   "homepage": {
     "badge": "Free diagnostic",
