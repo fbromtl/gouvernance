@@ -108,6 +108,18 @@
     "score": "Score",
     "riskLevel": "Risk Level"
   },
+  "membership": {
+    "joinTitle": "Join the Circle",
+    "joinSubtitle": "Join the community of AI governance professionals.",
+    "benefit1": "AI professionals directory",
+    "benefit2": "Peer-to-peer exchanges",
+    "benefit3": "Community visibility",
+    "benefit4": "Full access to tools",
+    "joinCta": "Become a Member",
+    "profileTitle": "Your member profile",
+    "viewPublicPage": "View my public page",
+    "completeProfile": "Complete your profile"
+  },
   "help": {
     "title": "Understanding: Dashboard",
     "why": "The dashboard centralizes key indicators for your AI governance. It gives you an at-a-glance view of your systems' status, compliance scores, and identified risks.",

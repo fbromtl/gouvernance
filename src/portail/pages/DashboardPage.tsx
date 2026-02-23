@@ -31,7 +31,8 @@ import {
   TrendingDown,
   Minus,
   FlaskConical,
-  Users,
+  Sparkles,
+  Check,
 } from "lucide-react";
 
 // Dashboard widgets
@@ -292,32 +293,53 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       ) : (
-        <Card className="border-brand-purple/20 bg-brand-purple/[0.02]">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold">
+        <div className="rounded-2xl bg-gradient-to-br from-brand-purple via-brand-purple/90 to-indigo-600 p-6 text-white">
+          {/* Title */}
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles className="h-5 w-5 text-white/80" />
+            <h3 className="text-lg font-bold">
               {t("membership.joinTitle", { defaultValue: "Rejoignez le Cercle" })}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pb-5">
-            <div className="flex items-start gap-3">
-              <div className="h-10 w-10 rounded-xl bg-brand-purple/10 flex items-center justify-center shrink-0">
-                <Users className="h-5 w-5 text-brand-purple" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {t("membership.joinDescription", {
-                    defaultValue: "Devenez Membre pour accéder à l'annuaire et échanger avec vos pairs.",
-                  })}
-                </p>
-                <Button asChild size="sm" className="mt-3 bg-brand-purple hover:bg-brand-purple/90 text-white">
-                  <Link to="/billing">
-                    {t("membership.joinCta", { defaultValue: "Devenir Membre" })}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </h3>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-sm text-white/80 mb-4">
+            {t("membership.joinSubtitle", {
+              defaultValue: "Intégrez la communauté des professionnels de la gouvernance IA.",
+            })}
+          </p>
+
+          {/* Benefits */}
+          <ul className="space-y-2 mb-5">
+            {(
+              [
+                t("membership.benefit1", { defaultValue: "Annuaire des professionnels IA" }),
+                t("membership.benefit2", { defaultValue: "Échanges entre pairs" }),
+                t("membership.benefit3", { defaultValue: "Visibilité dans la communauté" }),
+                t("membership.benefit4", { defaultValue: "Accès complet aux outils" }),
+              ] as string[]
+            ).map((benefit) => (
+              <li key={benefit} className="flex items-center gap-2 text-sm">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 shrink-0">
+                  <Check className="h-3 w-3" />
+                </span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA Button */}
+          <Button
+            asChild
+            size="sm"
+            className="bg-white text-brand-purple hover:bg-white/90 font-semibold shadow-md"
+          >
+            <Link to="/billing" className="gap-1.5">
+              {t("membership.joinCta", { defaultValue: "Devenir Membre" })}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       )}
 
       {/* ================================================================ */}

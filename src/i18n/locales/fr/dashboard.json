@@ -108,6 +108,18 @@
     "score": "Score",
     "riskLevel": "Niveau de risque"
   },
+  "membership": {
+    "joinTitle": "Rejoignez le Cercle",
+    "joinSubtitle": "Intégrez la communauté des professionnels de la gouvernance IA.",
+    "benefit1": "Annuaire des professionnels IA",
+    "benefit2": "Échanges entre pairs",
+    "benefit3": "Visibilité dans la communauté",
+    "benefit4": "Accès complet aux outils",
+    "joinCta": "Devenir Membre",
+    "profileTitle": "Votre profil de membre",
+    "viewPublicPage": "Voir ma page publique",
+    "completeProfile": "Complétez votre profil"
+  },
   "help": {
     "title": "Comprendre : Tableau de bord",
     "why": "Le tableau de bord centralise les indicateurs clés de votre gouvernance IA. Il vous permet de visualiser en un coup d'œil l'état de vos systèmes, votre conformité et les risques identifiés.",
