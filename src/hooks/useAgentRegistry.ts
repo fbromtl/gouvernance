@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
-import type { AgentRegistry, AgentRegistryInsert, AgentRegistryUpdate } from "@/types/database";
+import type { AgentRegistry, AgentRegistryUpdate } from "@/types/database";
 
 export function useAgentRegistry() {
   const { profile } = useAuth();

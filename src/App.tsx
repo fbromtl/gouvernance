@@ -98,6 +98,9 @@ import { DiagnosticResultsPage } from "@/pages/DiagnosticResultsPage";
 import MembresPage from "@/portail/pages/MembresPage";
 import { MemberPublicPage } from "@/pages/MemberPublicPage";
 
+// Module: Agent Registry
+import AgentsPage from "@/portail/pages/AgentsPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -178,6 +181,7 @@ function App() {
               <Route path="/vendors" element={<VendorsPage />} />
               <Route path="/compliance" element={<CompliancePage />} />
               <Route path="/membres" element={<MembresPage />} />
+              <Route path="/agents" element={<AgentsPage />} />
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/billing" element={<BillingPage />} />

@@ -189,6 +189,12 @@ const navGroups: NavGroup[] = [
         icon: Users,
         ready: true,
       },
+      {
+        key: "agents",
+        path: "/agents",
+        icon: Bot,
+        ready: true,
+      },
     ],
   },
 ];

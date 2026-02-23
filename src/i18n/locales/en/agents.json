@@ -1,0 +1,93 @@
+{
+  "pageTitle": "AI Agent Registry",
+  "pageDescription": "Manage AI agents authorized to interact with your governance platform.",
+  "create": "New Agent",
+  "search": "Search for an agent...",
+  "noAgents": "No agents registered",
+  "noAgentsDescription": "Register your first AI agent to start using the ADP protocol.",
+  "table": {
+    "agent_id": "Identifier",
+    "name": "Name",
+    "autonomy": "Autonomy",
+    "status": "Status",
+    "allowedTypes": "Allowed Types",
+    "maxRisk": "Max Risk",
+    "createdAt": "Created",
+    "actions": "Actions"
+  },
+  "autonomyLevels": {
+    "A1": "A1 \u2014 Informational",
+    "A2": "A2 \u2014 Advisory",
+    "A3": "A3 \u2014 Co-piloted",
+    "A4": "A4 \u2014 Supervised",
+    "A5": "A5 \u2014 Autonomous"
+  },
+  "statuses": {
+    "active": "Active",
+    "suspended": "Suspended",
+    "revoked": "Revoked"
+  },
+  "decisionTypes": {
+    "D1": "D1 \u2014 Operational",
+    "D2": "D2 \u2014 Tactical",
+    "D3": "D3 \u2014 Strategic",
+    "D4": "D4 \u2014 Self-modification"
+  },
+  "riskLevels": {
+    "R1": "R1 \u2014 Low",
+    "R2": "R2 \u2014 Moderate",
+    "R3": "R3 \u2014 High",
+    "R4": "R4 \u2014 Critical"
+  },
+  "form": {
+    "agent_id": "Agent Identifier",
+    "agent_id_placeholder": "e.g., my-ai-agent",
+    "name": "Agent Name",
+    "name_placeholder": "e.g., Governance Assistant",
+    "description": "Description",
+    "description_placeholder": "Describe this agent's role and capabilities...",
+    "autonomyLevel": "Autonomy Level",
+    "selectAutonomy": "Select a level",
+    "allowedTypes": "Allowed Decision Types",
+    "maxRisk": "Maximum Risk",
+    "selectRisk": "Select a risk level",
+    "ownerName": "Owner Name",
+    "ownerName_placeholder": "e.g., John Doe",
+    "ownerEmail": "Owner Email",
+    "ownerEmail_placeholder": "e.g., john@example.com"
+  },
+  "filters": {
+    "allAutonomy": "All levels",
+    "filterByAutonomy": "Filter by autonomy",
+    "allStatuses": "All statuses",
+    "filterByStatus": "Filter by status"
+  },
+  "apiKey": {
+    "generated": "Agent registered successfully! Here is your API key:",
+    "warning": "This key will only be displayed once. Copy it now and store it securely.",
+    "copy": "Copy Key",
+    "copied": "Key copied!"
+  },
+  "detail": {
+    "title": "Agent Details",
+    "description": "Description",
+    "owner": "Owner",
+    "metadata": "Metadata",
+    "createdAt": "Created",
+    "updatedAt": "Updated"
+  },
+  "actions": {
+    "suspend": "Suspend",
+    "revoke": "Revoke",
+    "reactivate": "Reactivate"
+  },
+  "messages": {
+    "created": "Agent registered successfully.",
+    "updated": "Agent updated.",
+    "suspended": "Agent suspended.",
+    "revoked": "Agent revoked.",
+    "reactivated": "Agent reactivated.",
+    "deleteConfirm": "Are you sure you want to delete this agent?"
+  },
+  "cancel": "Cancel"
+}

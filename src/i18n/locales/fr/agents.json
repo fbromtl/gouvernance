@@ -1,0 +1,93 @@
+{
+  "pageTitle": "Registre des Agents IA",
+  "pageDescription": "G\u00e9rez les agents IA autoris\u00e9s \u00e0 interagir avec votre plateforme de gouvernance.",
+  "create": "Nouvel Agent",
+  "search": "Rechercher un agent...",
+  "noAgents": "Aucun agent enregistr\u00e9",
+  "noAgentsDescription": "Enregistrez votre premier agent IA pour commencer \u00e0 utiliser le protocole ADP.",
+  "table": {
+    "agent_id": "Identifiant",
+    "name": "Nom",
+    "autonomy": "Autonomie",
+    "status": "Statut",
+    "allowedTypes": "Types autoris\u00e9s",
+    "maxRisk": "Risque max.",
+    "createdAt": "Cr\u00e9\u00e9 le",
+    "actions": "Actions"
+  },
+  "autonomyLevels": {
+    "A1": "A1 \u2014 Informationnel",
+    "A2": "A2 \u2014 Consultatif",
+    "A3": "A3 \u2014 Copilot\u00e9",
+    "A4": "A4 \u2014 Supervis\u00e9",
+    "A5": "A5 \u2014 Autonome"
+  },
+  "statuses": {
+    "active": "Actif",
+    "suspended": "Suspendu",
+    "revoked": "R\u00e9voqu\u00e9"
+  },
+  "decisionTypes": {
+    "D1": "D1 \u2014 Op\u00e9rationnel",
+    "D2": "D2 \u2014 Tactique",
+    "D3": "D3 \u2014 Strat\u00e9gique",
+    "D4": "D4 \u2014 Auto-modification"
+  },
+  "riskLevels": {
+    "R1": "R1 \u2014 Faible",
+    "R2": "R2 \u2014 Mod\u00e9r\u00e9",
+    "R3": "R3 \u2014 \u00c9lev\u00e9",
+    "R4": "R4 \u2014 Critique"
+  },
+  "form": {
+    "agent_id": "Identifiant de l'agent",
+    "agent_id_placeholder": "ex: mon-agent-ia",
+    "name": "Nom de l'agent",
+    "name_placeholder": "ex: Assistant de gouvernance",
+    "description": "Description",
+    "description_placeholder": "D\u00e9crivez le r\u00f4le et les capacit\u00e9s de cet agent...",
+    "autonomyLevel": "Niveau d'autonomie",
+    "selectAutonomy": "S\u00e9lectionner un niveau",
+    "allowedTypes": "Types de d\u00e9cision autoris\u00e9s",
+    "maxRisk": "Risque maximum",
+    "selectRisk": "S\u00e9lectionner un niveau de risque",
+    "ownerName": "Nom du responsable",
+    "ownerName_placeholder": "ex: Jean Dupont",
+    "ownerEmail": "Courriel du responsable",
+    "ownerEmail_placeholder": "ex: jean@exemple.com"
+  },
+  "filters": {
+    "allAutonomy": "Tous les niveaux",
+    "filterByAutonomy": "Filtrer par autonomie",
+    "allStatuses": "Tous les statuts",
+    "filterByStatus": "Filtrer par statut"
+  },
+  "apiKey": {
+    "generated": "Agent enregistr\u00e9 avec succ\u00e8s ! Voici votre cl\u00e9 API :",
+    "warning": "Cette cl\u00e9 ne sera affich\u00e9e qu'une seule fois. Copiez-la maintenant et conservez-la en lieu s\u00fbr.",
+    "copy": "Copier la cl\u00e9",
+    "copied": "Cl\u00e9 copi\u00e9e !"
+  },
+  "detail": {
+    "title": "D\u00e9tails de l'agent",
+    "description": "Description",
+    "owner": "Responsable",
+    "metadata": "M\u00e9tadonn\u00e9es",
+    "createdAt": "Cr\u00e9\u00e9 le",
+    "updatedAt": "Mis \u00e0 jour le"
+  },
+  "actions": {
+    "suspend": "Suspendre",
+    "revoke": "R\u00e9voquer",
+    "reactivate": "R\u00e9activer"
+  },
+  "messages": {
+    "created": "Agent enregistr\u00e9 avec succ\u00e8s.",
+    "updated": "Agent mis \u00e0 jour.",
+    "suspended": "Agent suspendu.",
+    "revoked": "Agent r\u00e9voqu\u00e9.",
+    "reactivated": "Agent r\u00e9activ\u00e9.",
+    "deleteConfirm": "\u00cates-vous s\u00fbr de vouloir supprimer cet agent ?"
+  },
+  "cancel": "Annuler"
+}
