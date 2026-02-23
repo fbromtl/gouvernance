@@ -13,7 +13,7 @@ interface FeatureGateProps {
 }
 
 export function FeatureGate({ feature, children, silent = false }: FeatureGateProps) {
-  const { hasFeature, plan } = usePlanFeatures();
+  const { hasFeature } = usePlanFeatures();
   const navigate = useNavigate();
   const { t } = useTranslation('billing');
 
