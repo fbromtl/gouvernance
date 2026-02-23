@@ -85,6 +85,12 @@ import {
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import {
+  DEMO_POLICIES,
+  DEMO_GOVERNANCE_ROLES,
+  DEMO_COMMITTEES,
+} from "@/portail/demo";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
@@ -150,7 +156,7 @@ function findMember(members: OrgMember[] | undefined, userId: string | null) {
 /*  POLICIES TAB                                                       */
 /* ================================================================== */
 
-function PoliciesTab({ readOnly = false }: { readOnly?: boolean }) {
+function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean; isPreview?: boolean }) {
   const { t } = useTranslation("governance");
 
   const [search, setSearch] = useState("");
@@ -166,7 +172,9 @@ function PoliciesTab({ readOnly = false }: { readOnly?: boolean }) {
     [search, statusFilter, typeFilter]
   );
 
-  const { data: policies, isLoading } = usePolicies(filters);
+  const { data: realPolicies, isLoading: realLoading } = usePolicies(filters);
+  const policies = isPreview ? DEMO_POLICIES : realPolicies;
+  const isLoading = isPreview ? false : realLoading;
   const createMutation = useCreatePolicy();
   const updateMutation = useUpdatePolicy();
   const publishMutation = usePublishPolicy();
@@ -622,10 +630,12 @@ function PoliciesTab({ readOnly = false }: { readOnly?: boolean }) {
 /*  ROLES TAB                                                          */
 /* ================================================================== */
 
-function RolesTab({ readOnly = false }: { readOnly?: boolean }) {
+function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean; isPreview?: boolean }) {
   const { t } = useTranslation("governance");
 
-  const { data: roles, isLoading } = useGovernanceRoles();
+  const { data: realRoles, isLoading: realLoading } = useGovernanceRoles();
+  const roles = isPreview ? DEMO_GOVERNANCE_ROLES : realRoles;
+  const isLoading = isPreview ? false : realLoading;
   const { data: members } = useOrgMembers();
   const { data: aiSystems } = useAiSystems();
 
@@ -1017,10 +1027,12 @@ function RolesTab({ readOnly = false }: { readOnly?: boolean }) {
 /*  COMMITTEES TAB                                                     */
 /* ================================================================== */
 
-function CommitteesTab({ readOnly = false }: { readOnly?: boolean }) {
+function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean; isPreview?: boolean }) {
   const { t } = useTranslation("governance");
 
-  const { data: committees, isLoading } = useCommittees();
+  const { data: realCommittees, isLoading: realLoading } = useCommittees();
+  const committees = isPreview ? DEMO_COMMITTEES : realCommittees;
+  const isLoading = isPreview ? false : realLoading;
   const { data: members } = useOrgMembers();
 
   const createMutation = useCreateCommittee();
@@ -1402,6 +1414,7 @@ function CommitteesTab({ readOnly = false }: { readOnly?: boolean }) {
 export default function GovernancePage() {
   const { t } = useTranslation("governance");
   const { can } = usePermissions();
+  const { isPreview } = useFeaturePreview("governance_structure");
 
   const readOnly = !can("manage_policies");
 
@@ -1435,13 +1448,13 @@ export default function GovernancePage() {
           </TabsList>
 
           <TabsContent value="policies">
-            <PoliciesTab readOnly={readOnly} />
+            <PoliciesTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
           <TabsContent value="roles">
-            <RolesTab readOnly={readOnly} />
+            <RolesTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
           <TabsContent value="committees">
-            <CommitteesTab readOnly={readOnly} />
+            <CommitteesTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
         </Tabs>
       </div>

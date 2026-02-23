@@ -22,6 +22,11 @@ import {
 import type { MonitoringMetric } from "@/types/database";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import {
+  DEMO_MONITORING_METRICS,
+  DEMO_MONITORING_DATA_POINTS,
+} from "@/portail/demo";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -167,6 +172,7 @@ const emptyDataPointForm: DataPointFormData = {
 export default function MonitoringPage() {
   const { t } = useTranslation("monitoring");
   const { can } = usePermissions();
+  const { isPreview } = useFeaturePreview("monitoring");
   const readOnly = !can("configure_monitoring");
 
   /* --- filters --- */
@@ -175,11 +181,14 @@ export default function MonitoringPage() {
   const [filterSystem, setFilterSystem] = useState("__all__");
 
   /* --- data --- */
-  const { data: metrics = [], isLoading, isError } = useMonitoringMetrics({
+  const { data: realMetrics = [], isLoading: realLoading, isError: realError } = useMonitoringMetrics({
     category: filterCategory !== "__all__" ? filterCategory : undefined,
     ai_system_id: filterSystem !== "__all__" ? filterSystem : undefined,
     search: search || undefined,
   });
+  const metrics = isPreview ? DEMO_MONITORING_METRICS : realMetrics;
+  const isLoading = isPreview ? false : realLoading;
+  const isError = isPreview ? false : realError;
   const { data: systems = [] } = useAiSystems();
 
   const createMutation = useCreateMonitoringMetric();
@@ -195,7 +204,8 @@ export default function MonitoringPage() {
 
   /* --- data points state --- */
   const [selectedMetricId, setSelectedMetricId] = useState<string | null>(null);
-  const { data: dataPoints = [] } = useMonitoringDataPoints(selectedMetricId);
+  const { data: realDataPoints = [] } = useMonitoringDataPoints(selectedMetricId);
+  const dataPoints = isPreview ? DEMO_MONITORING_DATA_POINTS : realDataPoints;
   const [dataPointDialogOpen, setDataPointDialogOpen] = useState(false);
   const [dataPointForm, setDataPointForm] = useState<DataPointFormData>(emptyDataPointForm);
 
