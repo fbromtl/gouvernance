@@ -129,6 +129,18 @@ const navGroups: NavGroup[] = [
         icon: FileText,
         ready: true,
       },
+      {
+        key: "agents",
+        path: "/agents",
+        icon: Bot,
+        ready: true,
+      },
+      {
+        key: "agentTraces",
+        path: "/agent-traces",
+        icon: Activity,
+        ready: true,
+      },
     ],
   },
   {
@@ -187,18 +199,6 @@ const navGroups: NavGroup[] = [
         key: "members",
         path: "/membres",
         icon: Users,
-        ready: true,
-      },
-      {
-        key: "agents",
-        path: "/agents",
-        icon: Bot,
-        ready: true,
-      },
-      {
-        key: "agentTraces",
-        path: "/agent-traces",
-        icon: Activity,
         ready: true,
       },
     ],
