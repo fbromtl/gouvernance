@@ -1453,6 +1453,132 @@ export interface Database {
         };
         Relationships: [];
       };
+      agent_registry: {
+        Row: {
+          id: string;
+          organization_id: string;
+          agent_id: string;
+          name: string;
+          description: string | null;
+          autonomy_level: string;
+          allowed_types: string[];
+          max_risk: string;
+          owner_name: string | null;
+          owner_email: string | null;
+          status: string;
+          metadata: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          agent_id: string;
+          name: string;
+          description?: string | null;
+          autonomy_level: string;
+          allowed_types?: string[];
+          max_risk?: string;
+          owner_name?: string | null;
+          owner_email?: string | null;
+          status?: string;
+          metadata?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          agent_id?: string;
+          name?: string;
+          description?: string | null;
+          autonomy_level?: string;
+          allowed_types?: string[];
+          max_risk?: string;
+          owner_name?: string | null;
+          owner_email?: string | null;
+          status?: string;
+          metadata?: Json;
+        };
+        Relationships: [];
+      };
+      agent_traces: {
+        Row: {
+          id: string;
+          organization_id: string;
+          trace_id: string;
+          agent_id: string;
+          event_type: string;
+          decision_type: string | null;
+          risk_level: string | null;
+          reversibility: string | null;
+          classification_code: string | null;
+          description: string | null;
+          reasoning: string | null;
+          authorization: Json | null;
+          context: Json;
+          previous_hash: string | null;
+          event_hash: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          trace_id: string;
+          agent_id: string;
+          event_type: string;
+          decision_type?: string | null;
+          risk_level?: string | null;
+          reversibility?: string | null;
+          classification_code?: string | null;
+          description?: string | null;
+          reasoning?: string | null;
+          authorization?: Json | null;
+          context?: Json;
+          previous_hash?: string | null;
+          event_hash: string;
+        };
+        Update: {
+          id?: never;
+        };
+        Relationships: [];
+      };
+      agent_policies: {
+        Row: {
+          id: string;
+          organization_id: string;
+          policy_id: string;
+          name: string;
+          category: string | null;
+          severity: string | null;
+          rule: Json;
+          regulatory_mapping: string[];
+          active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          policy_id: string;
+          name: string;
+          category?: string | null;
+          severity?: string | null;
+          rule: Json;
+          regulatory_mapping?: string[];
+          active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          policy_id?: string;
+          name?: string;
+          category?: string | null;
+          severity?: string | null;
+          rule?: Json;
+          regulatory_mapping?: string[];
+          active?: boolean;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -1557,3 +1683,14 @@ export interface CommitteeMember {
   user_id: string;
   committee_role: "president" | "member" | "secretary";
 }
+
+export type AgentRegistry = Database["public"]["Tables"]["agent_registry"]["Row"];
+export type AgentRegistryInsert = Database["public"]["Tables"]["agent_registry"]["Insert"];
+export type AgentRegistryUpdate = Database["public"]["Tables"]["agent_registry"]["Update"];
+
+export type AgentTrace = Database["public"]["Tables"]["agent_traces"]["Row"];
+export type AgentTraceInsert = Database["public"]["Tables"]["agent_traces"]["Insert"];
+
+export type AgentPolicy = Database["public"]["Tables"]["agent_policies"]["Row"];
+export type AgentPolicyInsert = Database["public"]["Tables"]["agent_policies"]["Insert"];
+export type AgentPolicyUpdate = Database["public"]["Tables"]["agent_policies"]["Update"];
