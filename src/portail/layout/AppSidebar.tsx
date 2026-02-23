@@ -195,6 +195,12 @@ const navGroups: NavGroup[] = [
         icon: Bot,
         ready: true,
       },
+      {
+        key: "agentTraces",
+        path: "/agent-traces",
+        icon: Activity,
+        ready: true,
+      },
     ],
   },
 ];

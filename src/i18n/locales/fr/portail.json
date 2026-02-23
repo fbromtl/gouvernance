@@ -23,7 +23,8 @@
     "profile": "Profil",
     "billing": "Adhésion & Facturation",
     "members": "Membres du Cercle",
-    "agents": "Agents IA"
+    "agents": "Agents IA",
+    "agentTraces": "Traces Agent"
   },
   "sections": {
     "overview": "Vue d'ensemble",

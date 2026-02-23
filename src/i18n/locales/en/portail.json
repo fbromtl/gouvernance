@@ -23,7 +23,8 @@
     "profile": "Profile",
     "billing": "Membership & Billing",
     "members": "Circle Members",
-    "agents": "AI Agents"
+    "agents": "AI Agents",
+    "agentTraces": "Agent Traces"
   },
   "sections": {
     "overview": "Overview",

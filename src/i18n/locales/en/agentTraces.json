@@ -1,0 +1,67 @@
+{
+  "pageTitle": "Agent Trace Journal",
+  "pageDescription": "View the immutable history of AI agent decisions and events.",
+  "search": "Search traces...",
+  "noTraces": "No traces recorded",
+  "noTracesDescription": "AI agent traces will appear here once events are generated.",
+  "filters": {
+    "allAgents": "All agents",
+    "allEventTypes": "All events",
+    "allDecisionTypes": "All types",
+    "allRiskLevels": "All levels",
+    "filterByAgent": "Filter by agent",
+    "filterByEvent": "Filter by event",
+    "filterByDecision": "Filter by decision type",
+    "filterByRisk": "Filter by risk level"
+  },
+  "table": {
+    "traceId": "Trace ID",
+    "agentId": "Agent",
+    "eventType": "Event",
+    "classification": "Classification",
+    "description": "Description",
+    "chain": "Chain",
+    "timestamp": "Date"
+  },
+  "eventTypes": {
+    "decision": "Decision",
+    "approval": "Approval",
+    "escalation": "Escalation"
+  },
+  "decisionTypes": {
+    "D1": "D1 — Operational",
+    "D2": "D2 — Tactical",
+    "D3": "D3 — Strategic",
+    "D4": "D4 — Critical"
+  },
+  "riskLevels": {
+    "R1": "R1 — Low",
+    "R2": "R2 — Moderate",
+    "R3": "R3 — High",
+    "R4": "R4 — Critical"
+  },
+  "reversibility": {
+    "total": "Reversible",
+    "partial": "Partially reversible",
+    "irreversible": "Irreversible"
+  },
+  "chain": {
+    "valid": "Chain valid",
+    "broken": "Chain broken",
+    "first": "First entry"
+  },
+  "detail": {
+    "description": "Description",
+    "reasoning": "Reasoning",
+    "authorization": "Authorization result",
+    "eventHash": "Event hash",
+    "previousHash": "Previous hash",
+    "context": "Context",
+    "classification": "Classification",
+    "riskLevel": "Risk level",
+    "reversibility": "Reversibility",
+    "noContent": "No content"
+  },
+  "copyHash": "Copy hash",
+  "copied": "Copied!"
+}

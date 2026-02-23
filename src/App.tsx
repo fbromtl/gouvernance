@@ -101,6 +101,9 @@ import { MemberPublicPage } from "@/pages/MemberPublicPage";
 // Module: Agent Registry
 import AgentsPage from "@/portail/pages/AgentsPage";
 
+// Module: Agent Traces
+import AgentTracesPage from "@/portail/pages/AgentTracesPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -182,6 +185,7 @@ function App() {
               <Route path="/compliance" element={<CompliancePage />} />
               <Route path="/membres" element={<MembresPage />} />
               <Route path="/agents" element={<AgentsPage />} />
+              <Route path="/agent-traces" element={<AgentTracesPage />} />
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/billing" element={<BillingPage />} />

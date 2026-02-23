@@ -1,0 +1,67 @@
+{
+  "pageTitle": "Journal des Traces Agent",
+  "pageDescription": "Consultez l'historique immutable des décisions et événements des agents IA.",
+  "search": "Rechercher dans les traces...",
+  "noTraces": "Aucune trace enregistrée",
+  "noTracesDescription": "Les traces des agents IA apparaîtront ici une fois que des événements seront générés.",
+  "filters": {
+    "allAgents": "Tous les agents",
+    "allEventTypes": "Tous les événements",
+    "allDecisionTypes": "Tous les types",
+    "allRiskLevels": "Tous les niveaux",
+    "filterByAgent": "Filtrer par agent",
+    "filterByEvent": "Filtrer par événement",
+    "filterByDecision": "Filtrer par type de décision",
+    "filterByRisk": "Filtrer par niveau de risque"
+  },
+  "table": {
+    "traceId": "Trace ID",
+    "agentId": "Agent",
+    "eventType": "Événement",
+    "classification": "Classification",
+    "description": "Description",
+    "chain": "Chaîne",
+    "timestamp": "Date"
+  },
+  "eventTypes": {
+    "decision": "Décision",
+    "approval": "Approbation",
+    "escalation": "Escalade"
+  },
+  "decisionTypes": {
+    "D1": "D1 — Opérationnelle",
+    "D2": "D2 — Tactique",
+    "D3": "D3 — Stratégique",
+    "D4": "D4 — Critique"
+  },
+  "riskLevels": {
+    "R1": "R1 — Faible",
+    "R2": "R2 — Modéré",
+    "R3": "R3 — Élevé",
+    "R4": "R4 — Critique"
+  },
+  "reversibility": {
+    "total": "Réversible",
+    "partial": "Partiellement réversible",
+    "irreversible": "Irréversible"
+  },
+  "chain": {
+    "valid": "Chaîne valide",
+    "broken": "Chaîne rompue",
+    "first": "Première entrée"
+  },
+  "detail": {
+    "description": "Description",
+    "reasoning": "Raisonnement",
+    "authorization": "Résultat d'autorisation",
+    "eventHash": "Hash de l'événement",
+    "previousHash": "Hash précédent",
+    "context": "Contexte",
+    "classification": "Classification",
+    "riskLevel": "Niveau de risque",
+    "reversibility": "Réversibilité",
+    "noContent": "Aucun contenu"
+  },
+  "copyHash": "Copier le hash",
+  "copied": "Copié !"
+}
