@@ -61,17 +61,25 @@ Deno.serve(async (req: Request) => {
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY") ?? supabaseServiceKey;
 
-    const token = authHeader.replace("Bearer ", "");
+    // Use anon key + user JWT (recommended Supabase pattern for Edge Functions)
+    const userClient = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(token);
+    } = await userClient.auth.getUser();
 
     if (authError || !user) {
+      console.error("Auth verification failed:", authError?.message ?? "no user");
       return jsonResponse({ error: "Invalid token" }, 401);
     }
+
+    // Admin client for DB operations (bypasses RLS)
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // ---- 2. Parse body ----
     const body = await req.json();

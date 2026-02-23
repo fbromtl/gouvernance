@@ -42,14 +42,44 @@ function stripeHeaders(): Record<string, string> {
 /*  Price ID lookup                                                    */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Resolve the Stripe Price ID for a given plan + period combination.
+ *
+ * Priority:
+ *   1. Env-var based lookup (STRIPE_PRICE_MEMBER_MONTHLY, etc.)
+ *   2. Legacy env-var names  (STRIPE_PRICE_PRO_MONTHLY, etc.)
+ *   3. Hardcoded fallbacks   (from frontend PLANS definition)
+ */
 function getPriceId(plan: string, period: string): string | null {
-  const map: Record<string, string | undefined> = {
-    pro_monthly: Deno.env.get("STRIPE_PRICE_PRO_MONTHLY"),
-    pro_yearly: Deno.env.get("STRIPE_PRICE_PRO_YEARLY"),
-    enterprise_monthly: Deno.env.get("STRIPE_PRICE_ENTERPRISE_MONTHLY"),
-    enterprise_yearly: Deno.env.get("STRIPE_PRICE_ENTERPRISE_YEARLY"),
+  // Map current plan names → env-var prefix (+ legacy aliases)
+  const envPrefixes: Record<string, string[]> = {
+    member:     ["MEMBER", "PRO"],
+    expert:     ["EXPERT", "ENTERPRISE"],
+    // Legacy names (backward compat)
+    pro:        ["PRO", "MEMBER"],
+    enterprise: ["ENTERPRISE", "EXPERT"],
   };
-  return map[`${plan}_${period}`] ?? null;
+
+  const prefixes = envPrefixes[plan];
+  if (!prefixes) return null;
+
+  const periodUpper = period.toUpperCase(); // MONTHLY | YEARLY
+
+  // Try each env-var prefix
+  for (const prefix of prefixes) {
+    const val = Deno.env.get(`STRIPE_PRICE_${prefix}_${periodUpper}`);
+    if (val) return val;
+  }
+
+  // Hardcoded fallbacks (mirrors src/lib/stripe.ts PLANS)
+  const hardcoded: Record<string, string> = {
+    member_monthly:  "price_1T3nfmGxmyz5JooX0eHr5UID",
+    member_yearly:   "price_1T3nfnGxmyz5JooXt3KF9w7O",
+    expert_monthly:  "price_1T3nfoGxmyz5JooXGE1vzOMQ",
+    expert_yearly:   "price_1T3nfpGxmyz5JooXrBWeSha0",
+  };
+
+  return hardcoded[`${plan}_${period}`] ?? null;
 }
 
 /* ------------------------------------------------------------------ */
@@ -75,17 +105,25 @@ Deno.serve(async (req: Request) => {
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY") ?? supabaseServiceKey;
 
-    const token = authHeader.replace("Bearer ", "");
+    // Use anon key + user JWT (recommended Supabase pattern for Edge Functions)
+    const userClient = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(token);
+    } = await userClient.auth.getUser();
 
     if (authError || !user) {
+      console.error("Auth verification failed:", authError?.message ?? "no user");
       return jsonResponse({ error: "Invalid token" }, 401);
     }
+
+    // Admin client for DB operations (bypasses RLS)
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // ---- 2. Parse body ----
     const body = await req.json();
