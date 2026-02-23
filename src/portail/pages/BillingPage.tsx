@@ -263,62 +263,73 @@ export default function BillingPage() {
       />
 
       {/* ---- Current Plan Card ---- */}
-      <Card className="p-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 flex-wrap">
-              <h2 className="text-lg font-semibold">
-                {t("currentPlan.title", "Forfait actuel")}
-              </h2>
-              <Badge
-                variant="outline"
-                className={PLAN_BADGE_COLORS[currentPlan]}
-              >
-                {PLAN_LABELS[currentPlan]}
-              </Badge>
-              <Badge variant="outline" className={statusInfo.className}>
-                {statusInfo.label}
-              </Badge>
-            </div>
-
-            {subscription?.billing_period && (
-              <p className="text-sm text-muted-foreground">
-                {t("currentPlan.period", "P\u00e9riode de facturation :")}{" "}
-                <span className="font-medium text-foreground">
-                  {subscription.billing_period === "monthly"
-                    ? t("period.monthly", "Mensuel")
-                    : t("period.yearly", "Annuel")}
-                </span>
-              </p>
-            )}
-
-            {subscription?.current_period_end && (
-              <p className="text-sm text-muted-foreground">
-                {t("currentPlan.nextBilling", "Prochaine facturation :")}{" "}
-                <span className="font-medium text-foreground">
-                  {format(
-                    new Date(subscription.current_period_end),
-                    "d MMMM yyyy",
-                    { locale: fr }
-                  )}
-                </span>
-              </p>
-            )}
-
-            {subscription?.cancel_at_period_end && (
-              <div className="flex items-center gap-2 mt-2 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                <AlertTriangle className="h-4 w-4 shrink-0" />
-                <p>
-                  {t(
-                    "currentPlan.cancelWarning",
-                    "Votre abonnement sera annul\u00e9 \u00e0 la fin de la p\u00e9riode en cours."
-                  )}
-                </p>
-              </div>
-            )}
-          </div>
+      {currentPlan === "observer" ? (
+        /* Compact line for free-tier users — focus on upgrade */
+        <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-muted-foreground">
+          <span>{t("currentPlan.title", "Forfait actuel")} :</span>
+          <Badge variant="outline" className={PLAN_BADGE_COLORS.observer}>
+            {PLAN_LABELS.observer}
+          </Badge>
+          <span className="text-xs">({t("plans.free", "Gratuit")})</span>
         </div>
-      </Card>
+      ) : (
+        <Card className="p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 flex-wrap">
+                <h2 className="text-lg font-semibold">
+                  {t("currentPlan.title", "Forfait actuel")}
+                </h2>
+                <Badge
+                  variant="outline"
+                  className={PLAN_BADGE_COLORS[currentPlan]}
+                >
+                  {PLAN_LABELS[currentPlan]}
+                </Badge>
+                <Badge variant="outline" className={statusInfo.className}>
+                  {statusInfo.label}
+                </Badge>
+              </div>
+
+              {subscription?.billing_period && (
+                <p className="text-sm text-muted-foreground">
+                  {t("currentPlan.period", "P\u00e9riode de facturation :")}{" "}
+                  <span className="font-medium text-foreground">
+                    {subscription.billing_period === "monthly"
+                      ? t("period.monthly", "Mensuel")
+                      : t("period.yearly", "Annuel")}
+                  </span>
+                </p>
+              )}
+
+              {subscription?.current_period_end && (
+                <p className="text-sm text-muted-foreground">
+                  {t("currentPlan.nextBilling", "Prochaine facturation :")}{" "}
+                  <span className="font-medium text-foreground">
+                    {format(
+                      new Date(subscription.current_period_end),
+                      "d MMMM yyyy",
+                      { locale: fr }
+                    )}
+                  </span>
+                </p>
+              )}
+
+              {subscription?.cancel_at_period_end && (
+                <div className="flex items-center gap-2 mt-2 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  <p>
+                    {t(
+                      "currentPlan.cancelWarning",
+                      "Votre abonnement sera annul\u00e9 \u00e0 la fin de la p\u00e9riode en cours."
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </Card>
+      )}
 
       {/* ---- Quick Actions ---- */}
       <div className="flex flex-wrap gap-3">
@@ -393,8 +404,11 @@ export default function BillingPage() {
         </div>
 
         {/* Plan cards grid */}
-        <div className="grid gap-6 md:grid-cols-3">
-          {PURCHASABLE_PLANS.map((planId) => {
+        <div className={`grid gap-6 ${currentPlan === "observer" ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+          {(currentPlan === "observer"
+            ? PURCHASABLE_PLANS.filter((p) => p !== "observer")
+            : PURCHASABLE_PLANS
+          ).map((planId) => {
             const plan = PLANS[planId];
             const isCurrent = currentPlan === planId;
             const price =
