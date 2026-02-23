@@ -6,6 +6,8 @@
     "subtitle": "Principales évolutions réglementaires et actualités en gouvernance IA",
     "loading": "Génération du résumé en cours…",
     "regenerate": "Régénérer",
+    "generate": "Générer le résumé IA",
+    "prompt": "Cliquez pour générer un résumé IA des actualités de la semaine.",
     "error": "Impossible de générer le résumé. Réessayez.",
     "empty": "Aucun article récent pour générer un résumé."
   },

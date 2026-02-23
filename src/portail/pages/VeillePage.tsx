@@ -169,11 +169,9 @@ export default function VeillePage() {
     [lang, t]
   );
 
-  /* ------ Initial load ------ */
+  /* ------ Initial load (articles only – summary is on-demand) ------ */
   useEffect(() => {
-    loadArticles().then((arts) => {
-      if (arts.length > 0) generateWeeklySummary(arts);
-    });
+    loadArticles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -244,18 +242,21 @@ export default function VeillePage() {
               </div>
               {t("weeklySummary.title")}
             </CardTitle>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => generateWeeklySummary(articles)}
-              disabled={loadingWeekly || articles.length === 0}
-              className="gap-1.5"
-            >
-              <RefreshCw
-                className={`h-3.5 w-3.5 ${loadingWeekly ? "animate-spin" : ""}`}
-              />
-              {t("weeklySummary.regenerate")}
-            </Button>
+            {/* Show regenerate only when a summary already exists */}
+            {weeklySummary && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => generateWeeklySummary(articles)}
+                disabled={loadingWeekly || articles.length === 0}
+                className="gap-1.5"
+              >
+                <RefreshCw
+                  className={`h-3.5 w-3.5 ${loadingWeekly ? "animate-spin" : ""}`}
+                />
+                {t("weeklySummary.regenerate")}
+              </Button>
+            )}
           </div>
           <p className="text-sm text-muted-foreground">
             {t("weeklySummary.subtitle")}
@@ -287,6 +288,21 @@ export default function VeillePage() {
             <p className="text-sm text-muted-foreground">
               {t("weeklySummary.empty")}
             </p>
+          )}
+          {/* CTA: generate on demand (shown when no summary yet & articles available) */}
+          {!loadingWeekly && !weeklyError && !weeklySummary && articles.length > 0 && (
+            <div className="flex flex-col items-center gap-3 py-4">
+              <p className="text-sm text-muted-foreground text-center">
+                {t("weeklySummary.prompt")}
+              </p>
+              <Button
+                onClick={() => generateWeeklySummary(articles)}
+                className="gap-2 bg-brand-purple hover:bg-brand-purple/90"
+              >
+                <Sparkles className="h-4 w-4" />
+                {t("weeklySummary.generate")}
+              </Button>
+            </div>
           )}
         </CardContent>
       </Card>

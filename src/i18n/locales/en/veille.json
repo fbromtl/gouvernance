@@ -6,6 +6,8 @@
     "subtitle": "Key regulatory developments and AI governance news",
     "loading": "Generating summary…",
     "regenerate": "Regenerate",
+    "generate": "Generate AI summary",
+    "prompt": "Click to generate an AI summary of this week's news.",
     "error": "Unable to generate summary. Please try again.",
     "empty": "No recent articles to generate a summary."
   },
