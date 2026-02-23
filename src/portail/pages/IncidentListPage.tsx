@@ -22,6 +22,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useIncidents, type IncidentFilters } from "@/hooks/useIncidents";
 import type { Incident } from "@/types/database";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_INCIDENTS } from "@/portail/demo";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                           */
@@ -75,17 +77,21 @@ export default function IncidentListPage() {
   );
 
   const { data: incidents, isLoading, isError } = useIncidents(filters);
+  const { isPreview } = useFeaturePreview('incidents');
+  const displayIncidents = isPreview ? DEMO_INCIDENTS : incidents;
+  const effectiveLoading = isPreview ? false : isLoading;
+  const effectiveError = isPreview ? false : isError;
 
   // ----- Severity stats -----
   const severityStats = useMemo(() => {
-    if (!incidents) return { critical: 0, high: 0, medium: 0, low: 0 };
+    if (!displayIncidents) return { critical: 0, high: 0, medium: 0, low: 0 };
     return {
-      critical: incidents.filter((i) => i.severity === "critical").length,
-      high: incidents.filter((i) => i.severity === "high").length,
-      medium: incidents.filter((i) => i.severity === "medium").length,
-      low: incidents.filter((i) => i.severity === "low").length,
+      critical: displayIncidents.filter((i) => i.severity === "critical").length,
+      high: displayIncidents.filter((i) => i.severity === "high").length,
+      medium: displayIncidents.filter((i) => i.severity === "medium").length,
+      low: displayIncidents.filter((i) => i.severity === "low").length,
     };
-  }, [incidents]);
+  }, [displayIncidents]);
 
   // ----- Format helpers -----
   function formatDate(dateStr: string | null) {
@@ -169,7 +175,7 @@ export default function IncidentListPage() {
   );
 
   // ----- Loading skeleton -----
-  if (isLoading) {
+  if (effectiveLoading) {
     return (
       <FeatureGate feature="incidents">
         <div className="space-y-6">
@@ -198,7 +204,7 @@ export default function IncidentListPage() {
   }
 
   // ----- Error state -----
-  if (isError) {
+  if (effectiveError) {
     return (
       <FeatureGate feature="incidents">
         <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -210,7 +216,7 @@ export default function IncidentListPage() {
   }
 
   // ----- Empty / data state -----
-  const isEmpty = !incidents || incidents.length === 0;
+  const isEmpty = !displayIncidents || displayIncidents.length === 0;
   const hasActiveFilters =
     search || status !== ALL || severity !== ALL || category !== ALL;
 
@@ -314,7 +320,7 @@ export default function IncidentListPage() {
         ) : (
           <DataTable
             columns={columns}
-            data={incidents}
+            data={displayIncidents}
             onRowClick={(row) => navigate(`/incidents/${row.id}`)}
             pageSize={10}
           />

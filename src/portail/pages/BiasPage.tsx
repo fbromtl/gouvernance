@@ -57,6 +57,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_BIAS_FINDINGS } from "@/portail/demo";
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
 /* ------------------------------------------------------------------ */
@@ -200,6 +202,9 @@ export default function BiasPage() {
     severity: filterSeverity !== "__all__" ? filterSeverity : undefined,
     search: search || undefined,
   });
+  const { isPreview } = useFeaturePreview('bias');
+  const displayFindings = isPreview ? DEMO_BIAS_FINDINGS : findings;
+  const effectiveLoading = isPreview ? false : isLoading;
   const { data: systems = [] } = useAiSystems();
 
   const createMutation = useCreateBiasFinding();
@@ -368,9 +373,9 @@ export default function BiasPage() {
       </div>
 
       {/* Table */}
-      {isLoading ? (
+      {effectiveLoading ? (
         <Card className="p-8 text-center text-muted-foreground">...</Card>
-      ) : findings.length === 0 ? (
+      ) : displayFindings.length === 0 ? (
         <Card className="p-12 text-center">
           <Scale className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
           <h3 className="font-semibold text-lg">{t("noFindings")}</h3>
@@ -397,7 +402,7 @@ export default function BiasPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {findings.map((f) => (
+              {displayFindings.map((f) => (
                 <TableRow key={f.id}>
                   <TableCell className="font-medium max-w-[250px] truncate">{f.title}</TableCell>
                   <TableCell className="text-sm text-muted-foreground">{getSystemName(f.ai_system_id)}</TableCell>

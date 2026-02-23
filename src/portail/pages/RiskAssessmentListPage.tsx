@@ -21,6 +21,8 @@ import {
 import { useRiskAssessments } from "@/hooks/useRiskAssessments";
 import type { RiskAssessment } from "@/types/database";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_RISK_ASSESSMENTS } from "@/portail/demo";
 
 type AssessmentRow = RiskAssessment & { ai_systems: { name: string } | null };
 
@@ -29,11 +31,14 @@ export default function RiskAssessmentListPage() {
   const navigate = useNavigate();
 
   const { data: assessments = [], isLoading } = useRiskAssessments();
+  const { isPreview } = useFeaturePreview('risk_assessments');
+  const displayAssessments = isPreview ? DEMO_RISK_ASSESSMENTS : assessments;
+  const effectiveLoading = isPreview ? false : isLoading;
 
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [riskLevelFilter, setRiskLevelFilter] = useState<string>("all");
 
-  const filtered = assessments.filter((a) => {
+  const filtered = displayAssessments.filter((a) => {
     if (statusFilter !== "all" && a.status !== statusFilter) return false;
     if (riskLevelFilter !== "all" && a.risk_level !== riskLevelFilter) return false;
     return true;
@@ -93,7 +98,7 @@ export default function RiskAssessmentListPage() {
     },
   ];
 
-  if (!isLoading && assessments.length === 0) {
+  if (!effectiveLoading && displayAssessments.length === 0) {
     return (
       <FeatureGate feature="risk_assessments">
         <div className="space-y-6">
@@ -168,7 +173,7 @@ export default function RiskAssessmentListPage() {
         <DataTable
           columns={columns}
           data={filtered}
-          isLoading={isLoading}
+          isLoading={effectiveLoading}
           onRowClick={(row) => navigate(`/risks/${row.id}`)}
         />
       </div>

@@ -66,6 +66,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_DECISIONS } from "@/portail/demo";
 
 /* ================================================================== */
 /*  CONSTANTS                                                          */
@@ -135,6 +137,9 @@ export default function DecisionsPage() {
     status: statusFilter === ALL ? undefined : statusFilter,
     search: searchQuery || undefined,
   });
+  const { isPreview } = useFeaturePreview('decisions');
+  const displayDecisions = isPreview ? DEMO_DECISIONS : decisions;
+  const effectiveLoading = isPreview ? false : isLoading;
   const { data: aiSystems = [] } = useAiSystems();
   const { data: members = [] } = useOrgMembers();
   const createDecision = useCreateDecision();
@@ -317,13 +322,13 @@ export default function DecisionsPage() {
       </div>
 
       {/* Content */}
-      {isLoading ? (
+      {effectiveLoading ? (
         <div className="space-y-3">
           {[1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-16 rounded-lg" />
           ))}
         </div>
-      ) : decisions.length === 0 ? (
+      ) : displayDecisions.length === 0 ? (
         <Card className="p-8 text-center">
           <ClipboardCheck className="h-10 w-10 mx-auto text-muted-foreground/40 mb-4" />
           <p className="font-medium text-muted-foreground">{t("noDecisions")}</p>
@@ -350,7 +355,7 @@ export default function DecisionsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {decisions.map((d) => (
+              {displayDecisions.map((d) => (
                 <TableRow key={d.id}>
                   <TableCell>
                     <button
