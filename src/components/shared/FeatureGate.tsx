@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Lock, ArrowUpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { usePlanFeatures } from '@/hooks/usePlanFeatures';
 
 interface FeatureGateProps {
   feature: string;
   children: ReactNode;
+  /** When true, render nothing if feature is missing (for hiding UI fragments) */
   silent?: boolean;
 }
 
@@ -17,34 +17,52 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
   const navigate = useNavigate();
   const { t } = useTranslation('billing');
 
+  // Feature is available → render children normally
   if (hasFeature(feature)) {
     return <>{children}</>;
   }
 
+  // Silent mode → hide entirely
   if (silent) return null;
 
-  const requiredPlan = plan === 'observer' ? 'Membre' : 'Membre Expert';
-
+  // Preview mode → show children with blur overlay + sticky banner
   return (
-    <div className="flex items-center justify-center min-h-[400px] p-8">
-      <Card className="max-w-md w-full text-center">
-        <CardContent className="pt-8 pb-8 space-y-4">
-          <div className="mx-auto w-16 h-16 rounded-full bg-brand-purple/10 flex items-center justify-center">
-            <Lock className="h-8 w-8 text-brand-purple" />
-          </div>
-          <h3 className="text-xl font-semibold">{t('gate.title')}</h3>
-          <p className="text-muted-foreground text-sm">
-            {t('gate.description', { plan: requiredPlan })}
-          </p>
-          <Button
-            onClick={() => navigate('/billing')}
-            className="bg-brand-purple hover:bg-brand-purple-dark text-white"
-          >
-            <ArrowUpCircle className="h-4 w-4 mr-2" />
-            {t('gate.upgrade')}
-          </Button>
-        </CardContent>
-      </Card>
+    <div className="relative">
+      {/* Sticky upgrade banner */}
+      <div className="sticky top-0 z-50 flex items-center justify-between gap-3 bg-brand-purple px-4 py-2.5 text-white text-sm shadow-md">
+        <div className="flex items-center gap-2">
+          <Lock className="h-4 w-4 shrink-0" />
+          <span>{t('gate.preview')}</span>
+        </div>
+        <Button
+          size="sm"
+          variant="secondary"
+          className="shrink-0 bg-white text-brand-purple hover:bg-white/90 font-medium"
+          onClick={() => navigate('/billing')}
+        >
+          <ArrowUpCircle className="h-4 w-4 mr-1.5" />
+          {t('gate.unlock')}
+        </Button>
+      </div>
+
+      {/* Content wrapper with blur overlay */}
+      <div className="relative overflow-hidden select-none pointer-events-none">
+        {/* Actual page content (rendered but not interactive) */}
+        <div aria-hidden="true">
+          {children}
+        </div>
+
+        {/* Progressive blur overlay: transparent at top, blurred at bottom */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            maskImage: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.3) 50%, black 75%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.3) 50%, black 75%)',
+          }}
+        />
+      </div>
     </div>
   );
 }

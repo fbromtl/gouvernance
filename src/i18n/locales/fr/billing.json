@@ -92,6 +92,8 @@
   "gate": {
     "title": "Réservé aux Membres",
     "description": "Cette fonctionnalité est disponible avec le niveau {{plan}} ou supérieur.",
-    "upgrade": "Devenir Membre"
+    "upgrade": "Devenir Membre",
+    "preview": "Aperçu — Cette fonctionnalité est réservée aux Membres",
+    "unlock": "Débloquer cette fonctionnalité"
   }
 }
