@@ -68,6 +68,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import {
+  DEMO_COMPLIANCE_SCORES,
+  DEMO_COMPLIANCE_ASSESSMENTS,
+  DEMO_REMEDIATION_ACTIONS,
+} from "@/portail/demo";
 
 /* ================================================================== */
 /*  STATUS BADGE HELPER                                                */
@@ -104,6 +110,7 @@ export default function CompliancePage() {
   const { t } = useTranslation("compliance");
   const { can } = usePermissions();
   const readOnly = !can("manage_compliance");
+  const { isPreview } = useFeaturePreview("compliance");
 
   return (
     <FeatureGate feature="compliance">
@@ -133,13 +140,13 @@ export default function CompliancePage() {
           </TabsList>
 
           <TabsContent value="dashboard">
-            <DashboardTab />
+            <DashboardTab isPreview={isPreview} />
           </TabsContent>
           <TabsContent value="frameworks">
-            <FrameworksTab readOnly={readOnly} />
+            <FrameworksTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
           <TabsContent value="remediation">
-            <RemediationTab readOnly={readOnly} />
+            <RemediationTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
         </Tabs>
       </div>
@@ -151,10 +158,14 @@ export default function CompliancePage() {
 /*  DASHBOARD TAB                                                      */
 /* ================================================================== */
 
-function DashboardTab() {
+function DashboardTab({ isPreview }: { isPreview: boolean }) {
   const { t } = useTranslation("compliance");
-  const { data: scores, isLoading } = useComplianceScores();
-  const { data: remediations = [] } = useRemediationActions();
+  const { data: realScores, isLoading: realLoading } = useComplianceScores();
+  const { data: realRemediations = [] } = useRemediationActions();
+
+  const scores = isPreview ? DEMO_COMPLIANCE_SCORES : realScores;
+  const remediations = isPreview ? DEMO_REMEDIATION_ACTIONS : realRemediations;
+  const isLoading = isPreview ? false : realLoading;
 
   if (isLoading) {
     return (
@@ -299,12 +310,14 @@ function DashboardTab() {
 /*  FRAMEWORKS TAB                                                     */
 /* ================================================================== */
 
-function FrameworksTab({ readOnly }: { readOnly: boolean }) {
+function FrameworksTab({ readOnly, isPreview }: { readOnly: boolean; isPreview: boolean }) {
   const { t } = useTranslation("compliance");
   const [selectedFramework, setSelectedFramework] = useState<FrameworkCode | "all">("all");
-  const { data: assessments = [], isLoading } = useComplianceAssessments(
+  const { data: realAssessments = [], isLoading: realLoading } = useComplianceAssessments(
     selectedFramework !== "all" ? { framework_code: selectedFramework } : undefined
   );
+  const assessments = isPreview ? DEMO_COMPLIANCE_ASSESSMENTS : realAssessments;
+  const isLoading = isPreview ? false : realLoading;
   const seedFramework = useSeedFramework();
   const seedAll = useSeedAllFrameworks();
   const updateAssessment = useUpdateAssessment();
@@ -475,7 +488,7 @@ function FrameworksTab({ readOnly }: { readOnly: boolean }) {
 /*  REMEDIATION TAB                                                    */
 /* ================================================================== */
 
-function RemediationTab({ readOnly }: { readOnly: boolean }) {
+function RemediationTab({ readOnly, isPreview }: { readOnly: boolean; isPreview: boolean }) {
   const { t } = useTranslation("compliance");
   const [priorityFilter, setPriorityFilter] = useState<string>(ALL);
   const [statusFilter, setStatusFilter] = useState<string>(ALL);
@@ -483,11 +496,14 @@ function RemediationTab({ readOnly }: { readOnly: boolean }) {
   const [editingAction, setEditingAction] = useState<RemediationAction | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
-  const { data: actions = [], isLoading } = useRemediationActions({
+  const { data: realActions = [], isLoading: realLoading } = useRemediationActions({
     priority: priorityFilter === ALL ? undefined : priorityFilter,
     status: statusFilter === ALL ? undefined : statusFilter,
   });
-  const { data: assessments = [] } = useComplianceAssessments();
+  const { data: realAssessments = [] } = useComplianceAssessments();
+  const actions = isPreview ? DEMO_REMEDIATION_ACTIONS : realActions;
+  const assessments = isPreview ? DEMO_COMPLIANCE_ASSESSMENTS : realAssessments;
+  const isLoading = isPreview ? false : realLoading;
   const { data: members = [] } = useOrgMembers();
   const createRemediation = useCreateRemediation();
   const updateRemediation = useUpdateRemediation();

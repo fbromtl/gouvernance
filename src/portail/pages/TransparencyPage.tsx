@@ -62,6 +62,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { FeatureGate } from "@/components/shared/FeatureGate";
+import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { DEMO_AUTOMATED_DECISIONS, DEMO_CONTESTATIONS } from "@/portail/demo";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
@@ -177,6 +179,7 @@ export default function TransparencyPage() {
   const { t } = useTranslation("transparency");
   const { can } = usePermissions();
   const readOnly = !can("manage_compliance");
+  const { isPreview } = useFeaturePreview("transparency");
 
   const { data: systems = [] } = useAiSystems();
   const getSystemName = (id: string) => systems.find((s) => s.id === id)?.name ?? "—";
@@ -202,11 +205,11 @@ export default function TransparencyPage() {
           </TabsList>
 
           <TabsContent value="registry" className="mt-4">
-            <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
+            <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
           </TabsContent>
 
           <TabsContent value="contestations" className="mt-4">
-            <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} />
+            <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
           </TabsContent>
         </Tabs>
       </div>
@@ -222,14 +225,18 @@ function RegistryTab({
   readOnly,
   systems,
   getSystemName,
+  isPreview,
 }: {
   readOnly: boolean;
   systems: { id: string; name: string }[];
   getSystemName: (id: string) => string;
+  isPreview: boolean;
 }) {
   const { t } = useTranslation("transparency");
   const [search, setSearch] = useState("");
-  const { data: entries = [], isLoading } = useAutomatedDecisions({ search: search || undefined });
+  const { data: realEntries = [], isLoading: realLoading } = useAutomatedDecisions({ search: search || undefined });
+  const entries = isPreview ? DEMO_AUTOMATED_DECISIONS : realEntries;
+  const isLoading = isPreview ? false : realLoading;
   const createMutation = useCreateAutomatedDecision();
   const updateMutation = useUpdateAutomatedDecision();
   const deleteMutation = useDeleteAutomatedDecision();
@@ -469,18 +476,22 @@ function ContestationsTab({
   readOnly,
   systems,
   getSystemName,
+  isPreview,
 }: {
   readOnly: boolean;
   systems: { id: string; name: string }[];
   getSystemName: (id: string) => string;
+  isPreview: boolean;
 }) {
   const { t } = useTranslation("transparency");
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("__all__");
-  const { data: contestations = [], isLoading } = useContestations({
+  const { data: realContestations = [], isLoading: realLoading } = useContestations({
     status: filterStatus !== "__all__" ? filterStatus : undefined,
     search: search || undefined,
   });
+  const contestations = isPreview ? DEMO_CONTESTATIONS : realContestations;
+  const isLoading = isPreview ? false : realLoading;
   const createMutation = useCreateContestation();
   const updateMutation = useUpdateContestation();
 
