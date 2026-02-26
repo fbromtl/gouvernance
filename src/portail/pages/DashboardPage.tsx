@@ -13,7 +13,8 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { MemberBadge } from "@/components/shared/MemberBadge";
 import type { PlanId } from "@/lib/stripe";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalKPI } from "@/portail/components/ui/PortalKPI";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
@@ -27,9 +28,6 @@ import {
   ShieldAlert,
   FileText,
   ArrowRight,
-  TrendingUp,
-  TrendingDown,
-  Minus,
   FlaskConical,
   Sparkles,
   Check,
@@ -107,23 +105,23 @@ export default function DashboardPage() {
       <div className="space-y-8">
         {/* Skeleton header */}
         <div className="space-y-2">
-          <div className="h-8 w-56 bg-muted animate-pulse rounded-lg" />
-          <div className="h-4 w-72 bg-muted/60 animate-pulse rounded-lg" />
+          <div className="h-8 w-56 bg-neutral-100 animate-pulse rounded-lg" />
+          <div className="h-4 w-72 bg-neutral-100/60 animate-pulse rounded-lg" />
         </div>
         {/* Skeleton KPI cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-32 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+            <div key={i} className="h-32 bg-white animate-pulse rounded-xl border border-neutral-100" />
           ))}
         </div>
         {/* Skeleton charts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 h-80 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
-          <div className="h-80 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+          <div className="lg:col-span-2 h-80 bg-white animate-pulse rounded-xl border border-neutral-100" />
+          <div className="h-80 bg-white animate-pulse rounded-xl border border-neutral-100" />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 h-64 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
-          <div className="h-64 bg-muted/40 animate-pulse rounded-xl border border-border/50" />
+          <div className="lg:col-span-2 h-64 bg-white animate-pulse rounded-xl border border-neutral-100" />
+          <div className="h-64 bg-white animate-pulse rounded-xl border border-neutral-100" />
         </div>
       </div>
     );
@@ -184,8 +182,6 @@ export default function DashboardPage() {
     },
   ];
 
-  const TrendIcon = { up: TrendingUp, down: TrendingDown, neutral: Minus };
-
   const quickModules = [
     { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length, color: "text-brand-purple", bgColor: "bg-brand-purple/10" },
     { key: "risks", icon: ShieldAlert, path: "/risks", count: null, color: "text-amber-600", bgColor: "bg-amber-50" },
@@ -201,12 +197,12 @@ export default function DashboardPage() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-extrabold tracking-tight text-foreground">
+            <h1 className="text-2xl font-extrabold tracking-tight text-neutral-900">
               {t("welcome", { firstName })}
             </h1>
             <SectionHelpButton ns="dashboard" />
           </div>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-neutral-500 mt-1">
             {t("description")}
           </p>
         </div>
@@ -222,8 +218,8 @@ export default function DashboardPage() {
             htmlFor="demo-toggle"
             className="flex items-center gap-2 cursor-pointer select-none"
           >
-            <FlaskConical className={`h-4 w-4 transition-colors ${demo ? "text-brand-purple" : "text-muted-foreground/50"}`} />
-            <span className={`text-xs font-medium transition-colors ${demo ? "text-brand-purple" : "text-muted-foreground"}`}>
+            <FlaskConical className={`h-4 w-4 transition-colors ${demo ? "text-brand-purple" : "text-neutral-400"}`} />
+            <span className={`text-xs font-medium transition-colors ${demo ? "text-brand-purple" : "text-neutral-500"}`}>
               {t("demoMode")}
             </span>
           </label>
@@ -245,54 +241,50 @@ export default function DashboardPage() {
       {/*  Membership Widget                                                */}
       {/* ================================================================ */}
       {plan !== "observer" ? (
-        <Card className="border-border/60">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold">
-              {t("membership.profileTitle", { defaultValue: "Votre profil de membre" })}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pb-5">
-            <div className="flex items-center gap-3">
-              <Avatar size="lg">
-                {profile?.avatar_url ? (
-                  <AvatarImage src={profile.avatar_url} alt={profile.full_name ?? ""} />
-                ) : null}
-                <AvatarFallback>
-                  {(profile?.full_name ?? "?").slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold truncate">
-                    {profile?.full_name ?? t("welcomeFallback")}
-                  </span>
-                  <MemberBadge plan={plan} size="sm" />
-                </div>
-                {profile?.job_title && (
-                  <p className="text-xs text-muted-foreground truncate">{profile.job_title}</p>
-                )}
+        <PortalCard>
+          <h3 className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-3">
+            {t("membership.profileTitle", { defaultValue: "Votre profil de membre" })}
+          </h3>
+          <div className="flex items-center gap-3">
+            <Avatar size="lg">
+              {profile?.avatar_url ? (
+                <AvatarImage src={profile.avatar_url} alt={profile.full_name ?? ""} />
+              ) : null}
+              <AvatarFallback>
+                {(profile?.full_name ?? "?").slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-neutral-900 truncate">
+                  {profile?.full_name ?? t("welcomeFallback")}
+                </span>
+                <MemberBadge plan={plan} size="sm" />
               </div>
-            </div>
-            <div className="mt-3">
-              {profile?.member_slug ? (
-                <Link
-                  to={`/membres/${profile.member_slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-medium text-brand-purple hover:underline"
-                >
-                  {t("membership.viewPublicPage", { defaultValue: "Voir ma page publique" })}
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              ) : (
-                <Link
-                  to="/profile"
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {t("membership.completeProfile", { defaultValue: "Complétez votre profil" })}
-                </Link>
+              {profile?.job_title && (
+                <p className="text-xs text-neutral-500 truncate">{profile.job_title}</p>
               )}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+          <div className="mt-3">
+            {profile?.member_slug ? (
+              <Link
+                to={`/membres/${profile.member_slug}`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-brand-purple hover:underline"
+              >
+                {t("membership.viewPublicPage", { defaultValue: "Voir ma page publique" })}
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            ) : (
+              <Link
+                to="/profile"
+                className="text-xs text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                {t("membership.completeProfile", { defaultValue: "Complétez votre profil" })}
+              </Link>
+            )}
+          </div>
+        </PortalCard>
       ) : (
         <div className="rounded-2xl bg-gradient-to-br from-brand-purple via-brand-purple/90 to-indigo-600 p-6 text-white">
           {/* Title */}
@@ -352,31 +344,18 @@ export default function DashboardPage() {
       {/*  Row 1 — KPI Cards                                               */}
       {/* ================================================================ */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {statCards.map((stat) => {
-          const Icon = stat.icon;
-          const TIcon = stat.trend ? TrendIcon[stat.trend] : null;
-          return (
-            <Link key={stat.key} to={stat.path}>
-              <Card className="group relative overflow-hidden hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] hover:border-border/80 transition-all duration-300">
-                <CardContent className="p-5">
-                  <div className="flex items-start justify-between">
-                    <div className={`h-10 w-10 rounded-xl ${stat.bgColor} flex items-center justify-center shrink-0`}>
-                      <Icon className={`h-5 w-5 ${stat.color}`} />
-                    </div>
-                    {TIcon && (
-                      <TIcon className={`h-4 w-4 ${stat.trend === "up" ? "text-emerald-500" : stat.trend === "down" ? "text-red-500" : "text-muted-foreground/40"}`} />
-                    )}
-                  </div>
-                  <div className="mt-4">
-                    <p className="text-3xl font-bold tracking-tight">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5 font-medium">{t(`stats.${stat.key}`)}</p>
-                  </div>
-                </CardContent>
-                <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-purple/40 group-hover:w-full transition-all duration-500" />
-              </Card>
-            </Link>
-          );
-        })}
+        {statCards.map((stat) => (
+          <PortalKPI
+            key={stat.key}
+            icon={stat.icon}
+            label={t(`stats.${stat.key}`)}
+            value={stat.value}
+            color={stat.color}
+            bgColor={stat.bgColor}
+            trend={stat.trend}
+            href={stat.path}
+          />
+        ))}
       </div>
 
       {/* ================================================================ */}
@@ -421,37 +400,33 @@ export default function DashboardPage() {
       {/* ================================================================ */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold tracking-tight">{t("quickAccess")}</h2>
+          <h2 className="text-lg font-semibold tracking-tight text-neutral-900">{t("quickAccess")}</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {quickModules.map((mod) => {
             const Icon = mod.icon;
             return (
               <Link key={mod.key} to={mod.path}>
-                <Card className="group hover:shadow-md transition-all duration-300 cursor-pointer border-border/60 h-full">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <div className={`h-10 w-10 rounded-xl ${mod.bgColor} flex items-center justify-center`}>
-                        <Icon className={`h-5 w-5 ${mod.color}`} />
-                      </div>
-                      {mod.count !== null && (
-                        <span className="text-2xl font-bold text-foreground/15 group-hover:text-foreground/35 transition-colors duration-300">
-                          {mod.count}
-                        </span>
-                      )}
+                <PortalCard className="h-full cursor-pointer">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className={`h-10 w-10 rounded-xl ${mod.bgColor} flex items-center justify-center`}>
+                      <Icon className={`h-5 w-5 ${mod.color}`} />
                     </div>
-                  </CardHeader>
-                  <CardContent className="pb-5">
-                    <CardTitle className="text-sm font-semibold">{t(`modules.${mod.key}.title`)}</CardTitle>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                      {t(`modules.${mod.key}.description`)}
-                    </p>
-                    <div className="flex items-center gap-1 mt-3 text-xs font-medium text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span>{t("viewModule", { defaultValue: "Ouvrir" })}</span>
-                      <ArrowRight className="h-3 w-3" />
-                    </div>
-                  </CardContent>
-                </Card>
+                    {mod.count !== null && (
+                      <span className="text-2xl font-bold text-neutral-900/15 group-hover:text-neutral-900/35 transition-colors duration-300">
+                        {mod.count}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm font-semibold text-neutral-900">{t(`modules.${mod.key}.title`)}</p>
+                  <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                    {t(`modules.${mod.key}.description`)}
+                  </p>
+                  <div className="flex items-center gap-1 mt-3 text-xs font-medium text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>{t("viewModule", { defaultValue: "Ouvrir" })}</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </div>
+                </PortalCard>
               </Link>
             );
           })}
