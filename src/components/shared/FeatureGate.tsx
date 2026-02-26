@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Lock, ArrowUpCircle } from 'lucide-react';
+import { Lock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePlanFeatures } from '@/hooks/usePlanFeatures';
 
@@ -25,43 +25,46 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
   // Silent mode → hide entirely
   if (silent) return null;
 
-  // Preview mode → show children with blur overlay + sticky banner
+  // Preview mode → show children with blur + centered upgrade dialog
   return (
     <div className="relative">
-      {/* Sticky upgrade banner */}
-      <div className="sticky top-0 z-50 flex items-center justify-between gap-3 bg-brand-purple px-4 py-2.5 text-white text-sm shadow-md">
-        <div className="flex items-center gap-2">
-          <Lock className="h-4 w-4 shrink-0" />
-          <span>{t('gate.preview')}</span>
-        </div>
-        <Button
-          size="sm"
-          variant="secondary"
-          className="shrink-0 bg-white text-brand-purple hover:bg-white/90 font-medium"
-          onClick={() => navigate('/billing')}
-        >
-          <ArrowUpCircle className="h-4 w-4 mr-1.5" />
-          {t('gate.unlock')}
-        </Button>
-      </div>
-
       {/* Content wrapper with blur overlay */}
       <div className="relative overflow-hidden select-none pointer-events-none">
-        {/* Actual page content (rendered but not interactive) */}
         <div aria-hidden="true">
           {children}
         </div>
 
-        {/* Progressive blur overlay: transparent at top, blurred at bottom */}
+        {/* Full blur overlay */}
         <div
           className="absolute inset-0 z-10"
           style={{
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            maskImage: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.3) 50%, black 75%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.3) 50%, black 75%)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            background: 'rgba(255,255,255,0.4)',
           }}
         />
+      </div>
+
+      {/* Centered upgrade dialog */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+        <div className="pointer-events-auto w-full max-w-sm mx-4 bg-white rounded-2xl border border-neutral-100 shadow-xl shadow-neutral-200/50 p-8 text-center">
+          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ab54f3]/10">
+            <Lock className="h-7 w-7 text-[#ab54f3]" />
+          </div>
+          <h3 className="text-lg font-bold text-neutral-900 tracking-tight">
+            {t('gate.title')}
+          </h3>
+          <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
+            {t('gate.preview')}
+          </p>
+          <Button
+            className="mt-6 w-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] text-white rounded-full shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all font-semibold"
+            onClick={() => navigate('/billing')}
+          >
+            {t('gate.unlock')}
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </div>
       </div>
     </div>
   );
