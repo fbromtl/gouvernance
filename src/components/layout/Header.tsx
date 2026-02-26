@@ -525,18 +525,18 @@ export function Header() {
 
             {/* CTA + Auth */}
             <div className="flex items-center gap-2 ml-3">
-              <Button asChild size="sm" className="px-5">
-                <Link to="/rejoindre">Rejoindre le Cercle</Link>
-              </Button>
-
               {!authLoading && !user && (
-                <Button asChild variant="outline" size="sm" className="gap-1.5 px-4">
-                  <Link to="/connexion">
-                    <LogIn className="size-4" />
-                    Se connecter
-                  </Link>
-                </Button>
+                <Link
+                  to="/connexion"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5"
+                >
+                  Se connecter
+                </Link>
               )}
+
+              <Button asChild size="sm" className="px-5">
+                <Link to="/rejoindre">Inscription gratuite</Link>
+              </Button>
 
               {!authLoading && user && (
                 <div className="relative" ref={userMenuRef}>
@@ -624,12 +624,13 @@ export function Header() {
             </button>
 
             {!authLoading && !user && (
-              <Button asChild variant="outline" size="sm" className="text-xs sm:text-sm px-3 gap-1">
-                <Link to="/connexion">
-                  <LogIn className="size-3.5" />
-                  <span className="hidden sm:inline">Connexion</span>
-                </Link>
-              </Button>
+              <Link
+                to="/connexion"
+                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1"
+              >
+                <span className="hidden sm:inline">Se connecter</span>
+                <LogIn className="size-3.5 sm:hidden" />
+              </Link>
             )}
 
             {!authLoading && user && (
@@ -746,6 +747,10 @@ export function Header() {
                     </>
                   )}
 
+                  <Button asChild className="w-full">
+                    <Link to="/rejoindre">Inscription gratuite</Link>
+                  </Button>
+
                   {!authLoading && !user && (
                     <Button asChild variant="outline" className="w-full gap-2">
                       <Link to="/connexion">
@@ -754,10 +759,6 @@ export function Header() {
                       </Link>
                     </Button>
                   )}
-
-                  <Button asChild className="w-full">
-                    <Link to="/rejoindre">Rejoindre le Cercle</Link>
-                  </Button>
                   <div className="flex items-center gap-4 mt-4 justify-center">
                     <a href="mailto:info@gouvernance.ai" className="text-muted-foreground hover:text-foreground transition-colors">
                       <Mail className="size-4" />
