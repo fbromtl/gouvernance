@@ -107,7 +107,7 @@ function ScoreGauge({ score, level, color }: { score: number; level: string; col
             cy="100"
             r={radius}
             fill="none"
-            stroke="rgba(255,255,255,0.1)"
+            stroke="rgba(0,0,0,0.06)"
             strokeWidth="12"
           />
           {/* Progress circle */}
@@ -128,14 +128,14 @@ function ScoreGauge({ score, level, color }: { score: number; level: string; col
         {/* Score text in center */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <motion.span
-            className="text-4xl font-bold text-white"
+            className="text-4xl font-bold text-neutral-900"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             {score}
           </motion.span>
-          <span className="text-sm text-white/50">/ 30</span>
+          <span className="text-sm text-neutral-400">/ 30</span>
         </div>
       </div>
 
@@ -144,8 +144,8 @@ function ScoreGauge({ score, level, color }: { score: number; level: string; col
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="mt-4 rounded-full px-4 py-1.5 text-sm font-semibold text-white"
-        style={{ backgroundColor: color + "33", border: `1px solid ${color}` }}
+        className="mt-4 rounded-full px-4 py-1.5 text-sm font-semibold text-neutral-900"
+        style={{ backgroundColor: color + "1A", border: `1px solid ${color}` }}
       >
         {t(`levels.${level}`)}
       </motion.div>
@@ -179,8 +179,8 @@ export function DiagnosticResultsPage() {
 
   if (!result) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-[#ab54f3]" />
+      <div className="flex min-h-screen items-center justify-center" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-[#ab54f3]" />
       </div>
     );
   }
@@ -189,7 +189,7 @@ export function DiagnosticResultsPage() {
   const VISIBLE_COUNT = 3; // Show only first 3 domains, blur the rest
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]">
+    <div className="min-h-screen" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
         {/* ── Header ─────────────────────────────────── */}
         <motion.div
@@ -201,7 +201,7 @@ export function DiagnosticResultsPage() {
             <Sparkles className="h-4 w-4" />
             {t("results.subtitle")}
           </div>
-          <h1 className="text-2xl font-bold text-white sm:text-3xl">
+          <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
             {t("results.title")}
           </h1>
         </motion.div>
@@ -225,13 +225,13 @@ export function DiagnosticResultsPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: isVisible ? 1 : 0.4, x: 0 }}
                   transition={{ delay: 1.2 + index * 0.08 }}
-                  className={`flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 ${
+                  className={`flex items-center gap-3 rounded-xl border border-neutral-200 bg-white shadow-sm px-4 py-3 ${
                     !isVisible ? "select-none" : ""
                   }`}
                   style={!isVisible ? { filter: "blur(4px)" } : undefined}
                 >
-                  <Icon className="h-5 w-5 shrink-0 text-white/50" />
-                  <span className="flex-1 text-sm text-white/80">
+                  <Icon className="h-5 w-5 shrink-0 text-neutral-400" />
+                  <span className="flex-1 text-sm text-neutral-700">
                     {t(`results.domains.${key}`)}
                   </span>
                   <div className="flex items-center gap-2">
@@ -240,12 +240,12 @@ export function DiagnosticResultsPage() {
                         <div
                           key={step}
                           className={`h-2 w-6 rounded-full ${
-                            step <= value - 1 ? getScoreBarColor(value) : "bg-white/10"
+                            step <= value - 1 ? getScoreBarColor(value) : "bg-neutral-200"
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="w-8 text-right text-sm font-bold text-white/70">
+                    <span className="w-8 text-right text-sm font-bold text-neutral-500">
                       {value}/3
                     </span>
                   </div>
@@ -259,22 +259,22 @@ export function DiagnosticResultsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8 }}
-            className="absolute inset-x-0 bottom-0 flex flex-col items-center rounded-2xl bg-gradient-to-t from-[#1e1a30] via-[#1e1a30]/95 to-transparent px-6 pb-6 pt-24"
+            className="absolute inset-x-0 bottom-0 flex flex-col items-center rounded-2xl bg-gradient-to-t from-white via-white/95 to-transparent px-6 pb-6 pt-24"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <LockIcon className="h-6 w-6 text-white/60" />
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100">
+              <LockIcon className="h-6 w-6 text-neutral-400" />
             </div>
-            <p className="mb-6 max-w-md text-center text-sm text-white/60">
+            <p className="mb-6 max-w-md text-center text-sm text-neutral-500">
               {t("results.detailsLocked")}
             </p>
             <Link
               to="/connexion"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#ab54f3] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#ab54f3]/25 transition-all hover:bg-[#9b3fe3] hover:shadow-[#ab54f3]/40"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all hover:shadow-purple-500/40"
             >
               {t("results.ctaButton")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <p className="mt-3 text-xs text-white/40">
+            <p className="mt-3 text-xs text-neutral-400">
               {t("results.ctaSubtext")}
             </p>
           </motion.div>
@@ -287,12 +287,12 @@ export function DiagnosticResultsPage() {
               localStorage.removeItem(STORAGE_KEY);
               navigate("/diagnostic");
             }}
-            className="inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-white/70"
+            className="inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-600"
           >
             <RotateCcw className="h-4 w-4" />
             {t("widget.retake")}
           </button>
-          <Link to="/" className="text-xs text-white/30 hover:text-white/50">
+          <Link to="/" className="text-xs text-neutral-300 hover:text-neutral-500">
             gouvernance.ai
           </Link>
         </div>
