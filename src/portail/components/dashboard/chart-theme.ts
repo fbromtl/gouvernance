@@ -59,10 +59,40 @@ export const SERIES_COLORS = [
 export const TOOLTIP_STYLE = {
   contentStyle: {
     backgroundColor: "white",
-    border: "1px solid #e5e7eb",
-    borderRadius: "8px",
-    boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
+    border: "1px solid #f5f5f5",
+    borderRadius: "12px",
+    boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
     fontSize: "12px",
-    padding: "8px 12px",
+    padding: "12px 16px",
   },
 };
+
+// Upgraded Recharts shared styles (homepage-aligned)
+export const RECHARTS_STYLE = {
+  grid: { stroke: "#f5f5f5", strokeDasharray: "3 3" },
+  axis: {
+    tick: { fill: "#a3a3a3", fontSize: 11 },
+    tickLine: false,
+    axisLine: false,
+  },
+  tooltip: {
+    contentStyle: {
+      backgroundColor: "white",
+      border: "1px solid #f5f5f5",
+      borderRadius: "12px",
+      boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+      padding: "12px 16px",
+      fontSize: "12px",
+    },
+    labelStyle: {
+      fontSize: "10px",
+      fontWeight: 700,
+      textTransform: "uppercase" as const,
+      letterSpacing: "0.1em",
+      color: "#a3a3a3",
+      marginBottom: "6px",
+    },
+    cursor: { fill: "rgba(0,0,0,0.03)" },
+  },
+  bar: { radius: [4, 4, 0, 0] as [number, number, number, number] },
+} as const;
