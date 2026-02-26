@@ -58,6 +58,7 @@ export function useCreateCheckout() {
       plan: SubscriptionPlan;
       period: BillingPeriod;
       organizationId: string;
+      trialDays?: number;
     }) => {
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData?.session?.access_token;
@@ -77,6 +78,7 @@ export function useCreateCheckout() {
           organization_id: params.organizationId,
           success_url: `${window.location.origin}/billing?success=true`,
           cancel_url: `${window.location.origin}/billing?canceled=true`,
+          ...(params.trialDays ? { trial_period_days: params.trialDays } : {}),
         }),
       });
 
