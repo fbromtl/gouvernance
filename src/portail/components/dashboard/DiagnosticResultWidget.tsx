@@ -13,7 +13,6 @@ import {
   Building2,
   GraduationCap,
   RotateCcw,
-  Sparkles,
   Trash2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,6 +24,8 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 
 import {
   useLatestDiagnostic,
@@ -91,7 +92,7 @@ function getScoreBarColor(value: number): string {
     case 3:
       return "bg-green-500";
     default:
-      return "bg-gray-500";
+      return "bg-neutral-500";
   }
 }
 
@@ -125,12 +126,12 @@ export default function DiagnosticResultWidget() {
   // Still saving
   if (saveMutation.isPending) {
     return (
-      <div className="rounded-xl border bg-card p-6">
+      <PortalCard hoverable={false} className="p-6">
         <div className="flex items-center gap-3">
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-muted border-t-primary" />
-          <span className="text-sm text-muted-foreground">Enregistrement de votre diagnostic...</span>
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-100 border-t-primary" />
+          <span className="text-sm text-neutral-500">Enregistrement de votre diagnostic...</span>
         </div>
-      </div>
+      </PortalCard>
     );
   }
 
@@ -142,44 +143,38 @@ export default function DiagnosticResultWidget() {
 
   return (
     <div
-      className="rounded-xl border bg-card overflow-hidden"
+      className="rounded-xl border border-neutral-100 bg-white overflow-hidden"
       style={{ borderTop: `3px solid ${color}` }}
     >
       <div className="p-6">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-              <Sparkles className="h-5 w-5 text-primary" />
+        <PortalCardHeader
+          action={
+            <div className="flex items-center gap-2">
+              <Link
+                to="/diagnostic"
+                className="inline-flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                <RotateCcw className="h-3 w-3" />
+                {t("widget.retake")}
+              </Link>
+              <button
+                onClick={() => setShowDeleteConfirm(true)}
+                className="inline-flex items-center justify-center rounded-md p-1 text-neutral-400 hover:text-destructive hover:bg-destructive/10 transition-colors"
+                title={t("widget.delete")}
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+              </button>
             </div>
-            <div>
-              <h3 className="text-base font-semibold text-foreground">
-                {t("widget.title")}
-              </h3>
-              <p className="text-xs text-muted-foreground">
-                {t("widget.completedOn", {
-                  date: new Date(diagnostic.completed_at).toLocaleDateString("fr-CA"),
-                })}
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link
-              to="/diagnostic"
-              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <RotateCcw className="h-3 w-3" />
-              {t("widget.retake")}
-            </Link>
-            <button
-              onClick={() => setShowDeleteConfirm(true)}
-              className="inline-flex items-center justify-center rounded-md p-1 text-muted-foreground/50 hover:text-destructive hover:bg-destructive/10 transition-colors"
-              title={t("widget.delete")}
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        </div>
+          }
+        >
+          {t("widget.title")}
+        </PortalCardHeader>
+        <p className="text-xs text-neutral-500 -mt-3 mb-4">
+          {t("widget.completedOn", {
+            date: new Date(diagnostic.completed_at).toLocaleDateString("fr-CA"),
+          })}
+        </p>
 
         {/* Score + Level */}
         <div className="flex items-center gap-4 mb-6">
@@ -191,9 +186,8 @@ export default function DiagnosticResultWidget() {
                 cy="32"
                 r="26"
                 fill="none"
-                stroke="currentColor"
+                stroke="#e5e5e5"
                 strokeWidth="5"
-                className="text-muted/30"
               />
               <circle
                 cx="32"
@@ -208,7 +202,7 @@ export default function DiagnosticResultWidget() {
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-lg font-bold text-foreground">{diagnostic.total_score}</span>
+              <span className="text-lg font-bold text-neutral-900">{diagnostic.total_score}</span>
             </div>
           </div>
           <div>
@@ -218,7 +212,7 @@ export default function DiagnosticResultWidget() {
             >
               {t(`levels.${diagnostic.maturity_level}`)}
             </span>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 text-sm text-neutral-500">
               {diagnostic.total_score} / 30
             </p>
           </div>
@@ -231,8 +225,8 @@ export default function DiagnosticResultWidget() {
             const value = (diagnostic.answers as Record<string, number>)[key] ?? 0;
             return (
               <div key={key} className="flex items-center gap-2">
-                <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
-                <span className="flex-1 truncate text-xs text-muted-foreground">
+                <Icon className="h-4 w-4 shrink-0 text-neutral-500" />
+                <span className="flex-1 truncate text-xs text-neutral-500">
                   {t(`results.domains.${key}`)}
                 </span>
                 <div className="flex gap-0.5">
@@ -240,12 +234,12 @@ export default function DiagnosticResultWidget() {
                     <div
                       key={step}
                       className={`h-1.5 w-4 rounded-full ${
-                        step <= value - 1 ? getScoreBarColor(value) : "bg-muted/30"
+                        step <= value - 1 ? getScoreBarColor(value) : "bg-neutral-100"
                       }`}
                     />
                   ))}
                 </div>
-                <span className="w-6 text-right text-xs font-medium text-muted-foreground">
+                <span className="w-6 text-right text-xs font-medium text-neutral-500">
                   {value}/3
                 </span>
               </div>
