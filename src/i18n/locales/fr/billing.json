@@ -94,6 +94,19 @@
     "description": "Cette fonctionnalité est disponible avec le niveau {{plan}} ou supérieur.",
     "upgrade": "Devenir Membre",
     "preview": "Aperçu — Cette fonctionnalité est réservée aux Membres",
-    "unlock": "Débloquer cette fonctionnalité"
+    "unlock": "Débloquer cette fonctionnalité",
+    "trialSubtitle": "Débloquez toutes les fonctionnalités pendant 15 jours",
+    "trialFeature1": "Évaluations de risques",
+    "trialFeature2": "Conformité & audits",
+    "trialFeature3": "Gestion des incidents",
+    "trialFeature4": "Export PDF & chat IA",
+    "trialCta": "Essayer gratuitement 15 jours",
+    "trialReassurance": "Aucun paiement avant 15 jours · Annulez à tout moment",
+    "priceMonthly": "{{price}} $ / mois",
+    "priceYearly": "{{price}} $ / an",
+    "afterTrial": "après l'essai gratuit",
+    "discount": "-17 %",
+    "toggleMonthly": "Mensuel",
+    "toggleYearly": "Annuel"
   }
 }

@@ -92,6 +92,21 @@
   "gate": {
     "title": "Members only",
     "description": "This feature is available with the {{plan}} level or higher.",
-    "upgrade": "Become a Member"
+    "upgrade": "Become a Member",
+    "preview": "Preview — This feature is reserved for Members",
+    "unlock": "Unlock this feature",
+    "trialSubtitle": "Unlock all features for 15 days",
+    "trialFeature1": "Risk assessments",
+    "trialFeature2": "Compliance & audits",
+    "trialFeature3": "Incident management",
+    "trialFeature4": "PDF exports & AI chat",
+    "trialCta": "Try free for 15 days",
+    "trialReassurance": "No charge for 15 days · Cancel anytime",
+    "priceMonthly": "{{price}} $ / month",
+    "priceYearly": "{{price}} $ / year",
+    "afterTrial": "after free trial",
+    "discount": "-17%",
+    "toggleMonthly": "Monthly",
+    "toggleYearly": "Yearly"
   }
 }
