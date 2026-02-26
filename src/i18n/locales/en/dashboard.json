@@ -49,7 +49,8 @@
       "title": "AI Agent Activity",
       "noTraces": "No agent traces",
       "viewJournal": "View journal",
-      "traces": "recent traces"
+      "traces": "recent traces",
+      "connectAgent": "Connect MCP agent"
     }
   },
   "riskLevels": {
