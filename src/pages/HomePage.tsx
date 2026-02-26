@@ -139,6 +139,29 @@ export function HomePage() {
               <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Diagnostic en 10 min</span>
             </div>
 
+            {/* ── Social Proof Avatars ── */}
+            <div className="flex items-center justify-center gap-3 mb-16">
+              <div className="flex -space-x-2.5">
+                {[
+                  "/images-gouvernance-ai/businesswoman-meeting.jpg",
+                  "/images-gouvernance-ai/businessman-ai.jpg",
+                  "/images-gouvernance-ai/businesspeople-meeting.jpg",
+                  "/images-gouvernance-ai/businessman-laptop.jpg",
+                  "/images-gouvernance-ai/coworking.jpg",
+                ].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
+                ))}
+              </div>
+              <p className="text-sm text-neutral-500">
+                <span className="font-semibold text-neutral-700">150+ organisations</span> nous font confiance
+              </p>
+            </div>
+
             {/* ── Dashboard Mockup ── */}
             <div className="overflow-hidden flex flex-col bg-white max-w-6xl border-neutral-200/60 border rounded-2xl mr-auto ml-auto relative shadow-2xl">
               {/* Mockup header */}
@@ -381,6 +404,17 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Intermediate CTA */}
+        <div className="text-center py-10 bg-white">
+          <Link
+            to="/inscription"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+          >
+            Rejoindre le Cercle gratuitement
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
         {/* ============================================================ */}
         {/*  HOW IT WORKS – 3 steps                                      */}
@@ -830,10 +864,21 @@ export function HomePage() {
           </div>
         </section>
 
+        {/* Intermediate CTA */}
+        <div className="text-center py-10">
+          <Link
+            to="/inscription"
+            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-7 py-3 text-sm font-semibold text-white shadow-lg hover:bg-neutral-800 transition-all"
+          >
+            Commencer mon évaluation gratuite
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
         {/* ============================================================ */}
         {/*  PRICING                                                      */}
         {/* ============================================================ */}
-        <section className="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6">
+        <section id="pricing" className="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6">
           {/* Section header */}
           <div className="flex flex-col w-full mb-12">
             <div className="flex items-end justify-between w-full pb-5">
@@ -1069,6 +1114,17 @@ export function HomePage() {
           </div>
         </section>
 
+        {/* Intermediate CTA */}
+        <div className="text-center py-10">
+          <Link
+            to="/inscription"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+          >
+            Créer mon compte — C'est gratuit
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
         {/* ============================================================ */}
         {/*  REGULATORY URGENCY BANNER                                    */}
         {/* ============================================================ */}
@@ -1084,10 +1140,10 @@ export function HomePage() {
               </p>
             </div>
             <Link
-              to="/services#diagnostic"
-              className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors whitespace-nowrap"
+              to="/inscription"
+              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#ab54f3] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-purple-500/20 hover:shadow-purple-500/40 hover:brightness-110 transition-all whitespace-nowrap"
             >
-              Vérifier ma conformité
+              Vérifier maintenant
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -1154,6 +1210,40 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* ============================================================ */}
+        {/*  STICKY CTA BAR                                               */}
+        {/* ============================================================ */}
+        {showStickyBar && !stickyDismissed && (
+          <div className="fixed bottom-4 inset-x-4 z-40 mx-auto max-w-3xl animate-in slide-in-from-bottom duration-300">
+            <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/95 backdrop-blur-md border border-neutral-200 shadow-lg px-6 py-3">
+              <p className="text-sm font-medium text-neutral-700 hidden sm:block">
+                Évaluez votre maturité IA —{" "}
+                <span className="text-neutral-500">Gratuit, 10 minutes</span>
+              </p>
+              <p className="text-sm font-medium text-neutral-700 sm:hidden">
+                Diagnostic IA gratuit
+              </p>
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/inscription"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-purple-500/25 hover:shadow-purple-500/40 transition-all whitespace-nowrap"
+                >
+                  S'inscrire
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setStickyDismissed(true)}
+                  className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors"
+                  aria-label="Fermer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
