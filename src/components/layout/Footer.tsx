@@ -6,18 +6,9 @@ import {
   Phone,
   MapPin,
   ArrowUp,
-  Send,
-  ArrowRight,
   Shield,
-  Circle,
-  Briefcase,
-  BookOpen,
+  Send,
 } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
@@ -25,30 +16,27 @@ import { cn } from "@/lib/utils";
 
 const footerColumns = [
   {
-    title: "Le Cercle",
-    icon: Circle,
+    title: "Produit",
     links: [
-      { to: "/a-propos", label: "Notre mission" },
-      { to: "/a-propos#approche", label: "Notre approche" },
-      { to: "/experts", label: "Nos experts" },
-      { to: "/rejoindre", label: "Devenir membre" },
-      { to: "/actualites", label: "Actualités" },
+      { to: "/portail", label: "Portail IAG" },
+      { to: "/services#diagnostic", label: "Diagnostic IA" },
+      { to: "/services", label: "Services" },
+      { to: "/tarification", label: "Tarification" },
+      { to: "/agents", label: "Agents IA" },
     ],
   },
   {
-    title: "Services",
-    icon: Briefcase,
+    title: "Le Cercle",
     links: [
-      { to: "/services#diagnostic", label: "Diagnostic IA" },
-      { to: "/services#accompagnement", label: "Accompagnement" },
-      { to: "/services#formations", label: "Formations" },
-      { to: "/services#conferences", label: "Conférences" },
-      { to: "/organisations", label: "Organisations" },
+      { to: "/a-propos", label: "Notre mission" },
+      { to: "/experts", label: "Nos experts" },
+      { to: "/rejoindre", label: "Devenir membre" },
+      { to: "/actualites", label: "Actualités" },
+      { to: "/contact", label: "Contact" },
     ],
   },
   {
     title: "Ressources",
-    icon: BookOpen,
     links: [
       { to: "/ressources", label: "Guides et cadres" },
       { to: "/ressources#outils", label: "Boîte à outils" },
@@ -60,15 +48,9 @@ const footerColumns = [
 ];
 
 const socialLinks = [
-  { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin, hoverClass: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" },
-  { href: "https://x.com", label: "X (Twitter)", icon: Twitter, hoverClass: "hover:bg-foreground hover:border-foreground" },
-  { href: "mailto:info@gouvernance.ai", label: "Courriel", icon: Mail, hoverClass: "hover:bg-brand-purple hover:border-brand-purple" },
-];
-
-const legalLinks = [
-  { to: "/confidentialite", label: "Confidentialité" },
-  { to: "/mentions-legales", label: "Mentions légales" },
-  { to: "/accessibilite", label: "Accessibilité" },
+  { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin },
+  { href: "https://x.com", label: "X (Twitter)", icon: Twitter },
+  { href: "mailto:info@gouvernance.ai", label: "Courriel", icon: Mail },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -91,226 +73,173 @@ export function Footer() {
   };
 
   return (
-    <footer>
-      {/* ============================================================ */}
-      {/*  CTA BANNER                                                   */}
-      {/* ============================================================ */}
-      <section className="relative bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#2d1f4e] overflow-hidden">
-        {/* Subtle pattern */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `radial-gradient(ellipse 80% 50% at 50% 0%, rgba(171,84,243,0.25) 0%, transparent 50%),
-                              radial-gradient(ellipse 60% 40% at 100% 100%, rgba(49,45,238,0.15) 0%, transparent 50%)`,
-          }}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-12">
-            <div className="max-w-xl">
-              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-tight">
-                Prêt à structurer votre gouvernance de l&apos;IA ?
-              </h2>
-              <p className="mt-4 text-white/80 text-base sm:text-lg leading-relaxed">
-                Rejoignez un réseau de 150+ experts et accédez à des ressources exclusives.
-              </p>
+    <footer className="max-w-7xl mr-auto mb-12 ml-auto pr-6 pl-6 pt-8">
+      <div className="bg-neutral-950 rounded-[40px] px-8 py-12 sm:px-12 sm:py-16 relative overflow-hidden text-white">
+        {/* Background + subtle glow */}
+        <div className="bg-black w-full h-full absolute top-0 left-0" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#ab54f3]/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#ab54f3]/5 blur-[100px] pointer-events-none" />
+
+        {/* ── Top section: 5-column grid ── */}
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+          {/* Brand + contact — spans 2 cols on lg */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block hover:opacity-90 transition-opacity">
+              <img
+                src="/logo-light.svg"
+                alt="Cercle de Gouvernance de l'IA"
+                className="h-10 w-auto"
+              />
+            </Link>
+
+            <p className="text-neutral-400 max-w-xs mb-8 leading-relaxed mt-6 text-[15px]">
+              Le Cercle accompagne les dirigeants dans l&apos;adoption
+              responsable de l&apos;IA en éclairant leurs décisions
+              stratégiques et en renforçant la conformité.
+            </p>
+
+            {/* Contact details */}
+            <div className="space-y-3">
+              <a
+                href="mailto:info@gouvernance.ai"
+                className="flex items-center gap-3 text-sm text-neutral-400 hover:text-white transition-colors group"
+              >
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ab54f3]/20 transition-colors">
+                  <Mail className="w-3.5 h-3.5 text-[#ab54f3]" />
+                </span>
+                info@gouvernance.ai
+              </a>
+              <a
+                href="tel:+15145551234"
+                className="flex items-center gap-3 text-sm text-neutral-400 hover:text-white transition-colors group"
+              >
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#ab54f3]/20 transition-colors">
+                  <Phone className="w-3.5 h-3.5 text-[#ab54f3]" />
+                </span>
+                +1 (514) 555-1234
+              </a>
+              <div className="flex items-center gap-3 text-sm text-neutral-400">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5">
+                  <MapPin className="w-3.5 h-3.5 text-[#ab54f3]" />
+                </span>
+                Montréal, QC, Canada
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0 sm:items-center">
-              <Button asChild size="lg" className="px-8 text-base font-semibold">
-                <Link to="/rejoindre" className="inline-flex items-center">
-                  Rejoindre le Cercle
-                  <ArrowRight className="size-4 ml-2 shrink-0" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline-light" className="px-8 text-base font-semibold">
-                <Link to="/contact">Nous contacter</Link>
-              </Button>
+          </div>
+
+          {/* Nav columns — 1 col each */}
+          {footerColumns.map((col) => (
+            <div key={col.title}>
+              <h4 className="text-sm font-medium mb-6">{col.title}</h4>
+              <ul className="space-y-4 text-sm text-neutral-500">
+                {col.links.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Newsletter + Social row ── */}
+        <div className="relative z-10 mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8">
+          <div className="flex-1 max-w-lg">
+            <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
+              <Send className="w-3.5 h-3.5 text-[#ab54f3]" />
+              Infolettre
+            </h4>
+            <p className="text-xs text-neutral-500 mb-3 leading-relaxed">
+              Recevez nos analyses et guides en gouvernance IA.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="Entrez votre courriel"
+                required
+                className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#ab54f3]/30 focus:border-[#ab54f3]/40 transition-all text-white placeholder:text-neutral-500"
+              />
+              <button
+                type="submit"
+                className="bg-white text-neutral-950 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors whitespace-nowrap"
+              >
+                S&apos;inscrire
+              </button>
+            </form>
+          </div>
+
+          <div className="flex-shrink-0">
+            <h4 className="text-sm font-medium mb-3">Suivez-nous</h4>
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#ab54f3]/20 hover:text-[#ab54f3] transition-all duration-200"
+                  aria-label={social.label}
+                  title={social.label}
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ============================================================ */}
-      {/*  MAIN FOOTER                                                  */}
-      {/* ============================================================ */}
-      <div className="bg-[#1e1a30]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Top section */}
-          <div className="py-12 lg:py-16 grid gap-10 lg:gap-8 lg:grid-cols-12">
-            {/* Brand column */}
-            <div className="lg:col-span-4">
-              <Link to="/" className="inline-block hover:opacity-90 transition-opacity">
-                <img
-                  src="/logo-light.svg"
-                  alt="Cercle de Gouvernance de l'IA"
-                  className="h-10 w-auto"
-                />
-              </Link>
-              <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-sm">
-                Le Cercle de Gouvernance de l&apos;IA accompagne les dirigeants dans l&apos;adoption
-                responsable de l&apos;intelligence artificielle en éclairant leurs décisions
-                stratégiques et en renforçant la conformité aux réglementations.
-              </p>
-
-              {/* Contact info */}
-              <div className="mt-6 space-y-3">
-                <a
-                  href="mailto:info@gouvernance.ai"
-                  className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
-                >
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-purple/20 transition-colors">
-                    <Mail className="size-3.5 text-brand-purple-light" />
-                  </span>
-                  info@gouvernance.ai
-                </a>
-                <a
-                  href="tel:+15145551234"
-                  className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
-                >
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-purple/20 transition-colors">
-                    <Phone className="size-3.5 text-brand-purple-light" />
-                  </span>
-                  +1 (514) 555-1234
-                </a>
-                <div className="flex items-center gap-2.5 text-sm text-white/55">
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8">
-                    <MapPin className="size-3.5 text-brand-purple-light" />
-                  </span>
-                  Montréal, Québec, Canada
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation columns */}
-            <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              {footerColumns.map((col) => {
-                const Icon = col.icon;
-                return (
-                <div key={col.title}>
-                  <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
-                    <Icon className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
-                    {col.title}
-                  </h3>
-                  <ul className="space-y-2.5">
-                    {col.links.map((link) => (
-                      <li key={link.to}>
-                        <Link
-                          to={link.to}
-                          className="text-sm text-white/50 hover:text-white hover:translate-x-0.5 transition-all duration-200 inline-block"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-              })}
-            </div>
-
-            {/* Newsletter column */}
-            <div className="lg:col-span-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
-                <Mail className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
-                Infolettre
-              </h3>
-              <p className="text-sm text-white/50 leading-relaxed mb-4">
-                Recevez nos analyses, guides et actualités en gouvernance de l&apos;IA directement
-                dans votre boîte de réception.
-              </p>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-white/30" />
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="votre@email.com"
-                    required
-                    className="pl-10 bg-white/8 border-white/15 text-white placeholder:text-white/35 focus-visible:ring-brand-purple/50 focus-visible:border-brand-purple/40 h-11 rounded-lg"
-                  />
-                </div>
-                <Button type="submit" className="w-full gap-2">
-                  <Send className="size-3.5" />
-                  S&apos;inscrire à l&apos;infolettre
-                </Button>
-              </form>
-
-              {/* Social links */}
-              <div className="mt-6">
-                <p className="text-xs text-white/40 mb-3 uppercase tracking-wider">Suivez-nous</p>
-                <div className="flex gap-2">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target={social.href.startsWith("http") ? "_blank" : undefined}
-                      rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className={cn(
-                        "flex items-center justify-center size-9 rounded-lg border border-white/15 text-white/60 transition-all duration-200",
-                        "hover:text-white hover:scale-105",
-                        social.hoverClass
-                      )}
-                      aria-label={social.label}
-                      title={social.label}
-                    >
-                      <social.icon className="size-4" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+        {/* ── Certifications / trust bar ── */}
+        <div className="relative z-10 mt-14 pt-8 border-t border-white/[0.06]">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-neutral-500">
+            <span className="flex items-center gap-2">
+              <Shield className="w-3.5 h-3.5 text-[#ab54f3]" />
+              Conforme Loi 25
+            </span>
+            <span className="hidden sm:block w-px h-3 bg-white/10" />
+            <span className="flex items-center gap-2">
+              <Shield className="w-3.5 h-3.5 text-[#ab54f3]" />
+              Aligné EU AI Act
+            </span>
+            <span className="hidden sm:block w-px h-3 bg-white/10" />
+            <span>ISO/IEC 42001</span>
+            <span className="hidden sm:block w-px h-3 bg-white/10" />
+            <span>Cadre NIST AI RMF</span>
+            <span className="hidden sm:block w-px h-3 bg-white/10" />
+            <span>Principes OCDE</span>
           </div>
+        </div>
 
-          {/* Certifications / trust bar */}
-          <div className="border-t border-white/8 py-6">
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-white/35">
-              <span className="flex items-center gap-1.5">
-                <Shield className="size-3.5" />
-                Conforme Loi 25
+        {/* ── Bottom bar ── */}
+        <div className="relative z-10 mt-8 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-xs text-neutral-600">
+            © {new Date().getFullYear()} Cercle de Gouvernance de l&apos;IA. Tous droits réservés.
+          </p>
+          <div className="flex items-center gap-8 text-xs text-neutral-600">
+            <Link to="/confidentialite" className="hover:text-white transition-colors">
+              Confidentialité
+            </Link>
+            <Link to="/mentions-legales" className="hover:text-white transition-colors">
+              Mentions légales
+            </Link>
+            <Link to="/accessibilite" className="hover:text-white transition-colors">
+              Accessibilité
+            </Link>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="flex items-center gap-2 hover:text-white transition-colors group"
+            >
+              Haut
+              <span className="flex items-center justify-center w-7 h-7 rounded-full border border-white/15 group-hover:border-[#ab54f3]/50 group-hover:bg-[#ab54f3]/10 transition-all">
+                <ArrowUp className="w-3 h-3" />
               </span>
-              <Separator orientation="vertical" className="h-3 bg-white/15 hidden sm:block" />
-              <span>Aligné ISO/IEC 42001</span>
-              <Separator orientation="vertical" className="h-3 bg-white/15 hidden sm:block" />
-              <span>Cadre NIST AI RMF</span>
-              <Separator orientation="vertical" className="h-3 bg-white/15 hidden sm:block" />
-              <span>Principes OCDE</span>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="border-t border-white/8 py-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              {/* Copyright + legal */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <p className="text-xs text-white/40">
-                  © {new Date().getFullYear()} Cercle de Gouvernance de l&apos;IA
-                </p>
-                <div className="flex items-center gap-1">
-                  {legalLinks.map((link, i) => (
-                    <span key={link.to} className="flex items-center">
-                      {i > 0 && <span className="text-white/20 mx-1.5">·</span>}
-                      <Link
-                        to={link.to}
-                        className="text-xs text-white/35 hover:text-white/60 transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Back to top */}
-              <button
-                type="button"
-                onClick={scrollToTop}
-                className="flex items-center gap-2 text-xs text-white/40 hover:text-white/70 transition-colors group self-start sm:self-auto"
-              >
-                Retour en haut
-                <span className="flex items-center justify-center size-7 rounded-full border border-white/15 group-hover:border-white/30 group-hover:bg-white/5 transition-all">
-                  <ArrowUp className="size-3" />
-                </span>
-              </button>
-            </div>
+            </button>
           </div>
         </div>
       </div>

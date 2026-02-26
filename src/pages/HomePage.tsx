@@ -233,25 +233,6 @@ export function HomePage() {
         </section>
 
         {/* ============================================================ */}
-        {/*  CLIENT LOGOS – Trust bar                                     */}
-        {/* ============================================================ */}
-        <section className="max-w-7xl mx-auto px-6 py-12">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400 mb-8">
-            Ils nous font confiance
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-            {["Banque Nationale", "Hydro-Québec", "Desjardins", "CAE", "WSP", "BDC"].map((name) => (
-              <span
-                key={name}
-                className="text-lg font-semibold text-neutral-300 opacity-40 hover:opacity-70 transition-opacity select-none"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* ============================================================ */}
         {/*  BENTO "WHY" SECTION                                         */}
         {/* ============================================================ */}
         <section className="overflow-hidden border-y bg-white border-neutral-200 pt-24 pb-24 relative">

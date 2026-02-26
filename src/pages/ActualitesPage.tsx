@@ -69,22 +69,23 @@ export function ActualitesPage() {
       <SEO title="Actualités" description="Suivez les dernières actualités en gouvernance de l'intelligence artificielle : réglementation, technologies, événements et publications." />
       <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(49, 45, 238, 0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Actualités
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Nouvelles du Cercle, veille stratégique et prises de position sur la gouvernance de
             l&apos;IA.
           </p>
@@ -92,19 +93,19 @@ export function ActualitesPage() {
       </section>
 
       {/* NEWS GRID */}
-      <section className="py-20 sm:py-24 bg-background">
+      <section className="py-24 sm:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((article) => (
               <Card
                 key={article.title}
-                className="group border-2 hover:border-primary/30 hover:shadow-lg transition-all h-full flex flex-col"
+                className="group rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
               >
                 <CardHeader className="pb-2">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge
                       variant={article.badge === "Veille" ? "outline" : "secondary"}
-                      className={cn("text-xs", badgeColors[article.badge])}
+                      className={cn("text-xs rounded-full", badgeColors[article.badge])}
                     >
                       {article.badge}
                     </Badge>
@@ -134,22 +135,29 @@ export function ActualitesPage() {
               </Card>
             ))}
           </div>
-
-          <div className="mt-16 text-center p-6 rounded-xl bg-muted/50 border">
-            <Newspaper className="size-10 text-primary mx-auto mb-3 opacity-70" />
-            <p className="text-muted-foreground">
-              Abonnez-vous à notre infolettre pour ne rien manquer.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 mt-3 text-primary font-medium hover:text-primary/80 transition-colors"
-            >
-              Nous contacter
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
         </div>
       </section>
+
+      {/* NEWSLETTER CTA */}
+      <section className="py-24 sm:py-32 bg-neutral-950">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Newspaper className="size-10 text-purple-400 mx-auto mb-4 opacity-80" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Restez informé
+          </h2>
+          <p className="text-neutral-400 text-lg mb-8">
+            Abonnez-vous à notre infolettre pour ne rien manquer.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+          >
+            Nous contacter
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+
     </div>
     </>
   );

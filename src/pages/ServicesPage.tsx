@@ -9,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SEO, JsonLd } from "@/components/SEO";
@@ -96,54 +95,59 @@ export function ServicesPage() {
       }} />
       <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(49, 45, 238, 0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-950 mb-6">
             Services et accompagnement
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
-            Des solutions sur mesure pour structurer et optimiser la gouvernance de l'IA dans votre
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
+            Des solutions sur mesure pour structurer et optimiser la gouvernance de l&apos;IA dans votre
             organisation.
           </p>
         </div>
       </section>
 
       {/* SECTION: Diagnostic de maturité IA */}
-      <section id="diagnostic" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      <section id="diagnostic" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
                 Diagnostic de maturité IA
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              <p className="text-lg text-neutral-600 leading-relaxed mb-8">
                 Évaluez le niveau de gouvernance IA de votre organisation grâce à notre diagnostic
                 structuré. Notre approche couvre les sept piliers essentiels : éthique, sécurité,
                 conformité, protection des données, gestion des risques, transparence et formation.
               </p>
-              <Button asChild size="lg" className="px-8">
-                <Link to="/contact">Demander un diagnostic</Link>
-              </Button>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              >
+                Demander un diagnostic
+                <ArrowRight className="size-4" />
+              </Link>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {diagnosticSteps.map((step) => (
                 <Card
                   key={step.num}
-                  className="border-2 hover:border-primary/30 transition-all group overflow-hidden"
+                  className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
                 >
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-purple/20 text-brand-purple font-bold text-sm group-hover:bg-brand-purple/30 transition-colors">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-brand-purple/20 text-brand-purple font-bold text-sm group-hover:bg-brand-purple/30 transition-colors">
                         {step.num}
                       </span>
                       <CardTitle className="text-base">{step.title}</CardTitle>
@@ -160,46 +164,42 @@ export function ServicesPage() {
       </section>
 
       {/* SECTION: Accompagnement stratégique */}
-      <section id="accompagnement" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      <section id="accompagnement" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Accompagnement stratégique
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Un accompagnement personnalisé pour chaque type d&apos;organisation.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {accompagnementTypes.map((item) => (
-              <Card
+              <div
                 key={item.title}
-                className="border-2 hover:border-primary/30 hover:shadow-lg transition-all group h-full"
+                className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:bg-white/10 transition-all group h-full"
               >
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="size-6" />
-                  </div>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="leading-relaxed">{item.description}</CardDescription>
-                </CardContent>
-              </Card>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-purple-400 mb-3 group-hover:bg-white/15 transition-colors">
+                  <item.icon className="size-6" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-neutral-400 leading-relaxed text-sm">{item.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* SECTION: Formations et ateliers */}
-      <section id="formations" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      <section id="formations" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
               Formations et ateliers
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Des programmes de formation adaptés pour développer les compétences en gouvernance de
               l&apos;IA à tous les niveaux de l&apos;organisation.
             </p>
@@ -209,14 +209,14 @@ export function ServicesPage() {
             {formations.map((formation) => (
               <Card
                 key={formation.title}
-                className="border-2 hover:border-primary/30 hover:shadow-lg transition-all flex flex-col"
+                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col"
               >
                 <CardHeader>
                   <div className="flex flex-wrap gap-2 mb-3">
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs rounded-full">
                       {formation.duree}
                     </Badge>
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-xs rounded-full">
                       {formation.public}
                     </Badge>
                   </div>
@@ -232,35 +232,36 @@ export function ServicesPage() {
       </section>
 
       {/* SECTION: Conférences et interventions */}
-      <section id="conferences" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      <section id="conferences" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
                 Conférences et interventions
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-neutral-300 leading-relaxed mb-6">
                 Nos experts sont disponibles pour animer des conférences, panels et tables rondes
                 lors de vos événements.
               </p>
               <ul className="space-y-3 mb-8">
                 {conferenceTopics.map((topic) => (
-                  <li key={topic} className="flex items-center gap-3 text-foreground">
-                    <Mic2 className="size-4 text-primary shrink-0" />
+                  <li key={topic} className="flex items-center gap-3 text-neutral-300">
+                    <Mic2 className="size-4 text-purple-400 shrink-0" />
                     <span>{topic}</span>
                   </li>
                 ))}
               </ul>
-              <Button asChild size="lg" className="gap-2 px-8">
-                <Link to="/contact">
-                  Réserver un conférencier
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              >
+                Réserver un conférencier
+                <ArrowRight className="size-4" />
+              </Link>
             </div>
             <div className="flex justify-center">
-              <div className="flex h-48 w-48 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <FileText className="size-20 opacity-60" />
+              <div className="flex h-48 w-48 items-center justify-center bg-white/5 rounded-3xl text-purple-400/40">
+                <FileText className="size-20" />
               </div>
             </div>
           </div>

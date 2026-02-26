@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Users } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -51,34 +51,34 @@ export function ContactPage() {
       }} />
       <div className="overflow-x-hidden">
       {/* Hero */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Contact
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Échangez avec le Cercle de Gouvernance de l&apos;IA. Posez vos questions, partagez vos défis ou rejoignez notre communauté.
           </p>
         </div>
       </section>
 
-      {/* Two column layout */}
-      <section className="py-16 sm:py-24 bg-background">
+      {/* Form section - light background */}
+      <section className="py-24 sm:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Form - left */}
-            <Card className="border-2 shadow-lg">
+            <Card className="rounded-3xl border border-neutral-200 bg-white shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl">Envoyez-nous un message</CardTitle>
                 <CardDescription>
@@ -142,10 +142,14 @@ export function ContactPage() {
                     />
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button type="submit" size="lg" className="flex-1 sm:flex-initial px-8">
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+                    >
                       Envoyer
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="px-8">
+                      <ArrowRight className="size-4" />
+                    </button>
+                    <Button asChild variant="outline" size="lg" className="rounded-full px-8">
                       <Link to="/rejoindre" className="flex items-center gap-2">
                         <Users className="size-4" />
                         Rejoindre le Cercle
@@ -156,38 +160,38 @@ export function ContactPage() {
               </CardContent>
             </Card>
 
-            {/* Info - right */}
+            {/* Info - right (dark section) */}
             <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">
+              <div className="rounded-3xl bg-neutral-950 p-8 sm:p-10">
+                <h2 className="text-2xl font-bold text-white mb-6">
                   Nos coordonnées
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
                       <Mail className="size-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">Email</p>
-                      <p className="text-muted-foreground">contact@cercle-gouvernance.ai</p>
+                      <p className="font-medium text-white">Email</p>
+                      <p className="text-neutral-400">contact@cercle-gouvernance.ai</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
                       <Phone className="size-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">Téléphone</p>
-                      <p className="text-muted-foreground">+1 (514) 555-0123</p>
+                      <p className="font-medium text-white">Téléphone</p>
+                      <p className="text-neutral-400">+1 (514) 555-0123</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
                       <MapPin className="size-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">Adresse</p>
-                      <p className="text-muted-foreground">
+                      <p className="font-medium text-white">Adresse</p>
+                      <p className="text-neutral-400">
                         Cercle de Gouvernance de l&apos;IA<br />
                         1234 Rue Sherbrooke Ouest<br />
                         Montréal, QC H3G 1H4
@@ -198,15 +202,15 @@ export function ContactPage() {
               </div>
 
               {/* Map placeholder */}
-              <Card className="overflow-hidden border-2">
+              <Card className="overflow-hidden rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-0">
-                  <div className="aspect-[4/3] bg-muted flex items-center justify-center">
+                  <div className="aspect-[4/3] bg-neutral-50 flex items-center justify-center">
                     <div className="text-center p-8">
-                      <MapPin className="size-12 mx-auto text-muted-foreground/50 mb-4" />
-                      <p className="text-muted-foreground font-medium">
+                      <MapPin className="size-12 mx-auto text-neutral-300 mb-4" />
+                      <p className="text-neutral-500 font-medium">
                         Carte à venir
                       </p>
-                      <p className="text-sm text-muted-foreground mt-1">
+                      <p className="text-sm text-neutral-400 mt-1">
                         Intégration Google Maps ou OpenStreetMap
                       </p>
                     </div>

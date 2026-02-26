@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import {
-  ChevronDown,
   Target,
   Eye,
   Users,
@@ -10,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
@@ -109,52 +107,38 @@ export function AProposPage() {
       <SEO title="À propos" description="Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA. Un réseau d'experts dédié à la gouvernance responsable de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative min-h-[calc(100dvh-4rem)] flex flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(171,84,243,0.06) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(171,84,243,0.06) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%)`,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             À propos du Cercle
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto mb-10">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Une communauté d&apos;experts engagés pour une gouvernance responsable de
             l&apos;intelligence artificielle.
           </p>
         </div>
-        <a
-          href="#mission"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
-          aria-label="Défiler vers Notre mission"
-        >
-          <ChevronDown className="size-8" />
-          <span className="text-xs font-medium">Découvrir</span>
-        </a>
       </section>
 
-      {/* SECTION: Notre mission (id="mission") */}
-      <section id="mission" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      {/* SECTION: Notre mission (id="mission") — bg-white */}
+      <section id="mission" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-16 text-center">
             Notre mission
           </h2>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="space-y-8">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-neutral-600 leading-relaxed">
                 Le Cercle de Gouvernance de l&apos;IA existe pour combler un besoin critique :
                 accompagner les organisations dans l&apos;adoption éthique, sécuritaire et
                 conforme de l&apos;intelligence artificielle. Face à l&apos;évolution rapide
@@ -162,11 +146,11 @@ export function AProposPage() {
                 ont besoin d&apos;un espace d&apos;échange structuré et de ressources pratiques
                 pour naviguer avec confiance.
               </p>
-              <div className="flex items-start gap-4 rounded-xl bg-primary/5 border border-primary/10 p-6">
-                <Eye className="size-6 text-primary shrink-0 mt-0.5" />
+              <div className="flex items-start gap-4 rounded-2xl bg-purple-50 border border-purple-100 p-6">
+                <Eye className="size-6 text-purple-500 shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Notre vision</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="font-semibold text-neutral-950 mb-2">Notre vision</h3>
+                  <p className="text-neutral-600 leading-relaxed">
                     Devenir la référence francophone en matière de gouvernance de
                     l&apos;intelligence artificielle, en rassemblant les meilleurs experts
                     et en produisant des ressources concrètes et accessibles.
@@ -175,9 +159,9 @@ export function AProposPage() {
               </div>
               <div className="grid sm:grid-cols-3 gap-4">
                 {values.map((v) => (
-                  <Card key={v.title} className="border-2 hover:border-primary/30 transition-colors">
+                  <Card key={v.title} className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
                     <CardHeader className="pb-2">
-                      <Target className="size-6 text-primary mb-2" />
+                      <Target className="size-6 text-purple-500 mb-2" />
                       <CardTitle className="text-base">{v.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
@@ -189,51 +173,47 @@ export function AProposPage() {
             </div>
             <div className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl bg-primary/10 border border-primary/20 p-8 text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">150+</div>
-                  <div className="text-sm font-medium text-muted-foreground">Experts</div>
+                <div className="rounded-2xl bg-purple-50 border border-purple-100 p-8 text-center">
+                  <div className="text-3xl font-bold text-purple-600 mb-1">150+</div>
+                  <div className="text-sm font-medium text-neutral-600">Experts</div>
                 </div>
-                <div className="rounded-xl bg-primary/10 border border-primary/20 p-8 text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">15</div>
-                  <div className="text-sm font-medium text-muted-foreground">Disciplines</div>
+                <div className="rounded-2xl bg-purple-50 border border-purple-100 p-8 text-center">
+                  <div className="text-3xl font-bold text-purple-600 mb-1">15</div>
+                  <div className="text-sm font-medium text-neutral-600">Disciplines</div>
                 </div>
               </div>
-              <div className="rounded-xl bg-muted/50 p-8 flex items-center justify-center">
-                <Users className="size-24 text-primary/20" />
+              <div className="rounded-2xl bg-neutral-50 p-8 flex items-center justify-center">
+                <Users className="size-24 text-purple-200" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION: Notre histoire (id="histoire") */}
-      <section id="histoire" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      {/* SECTION: Notre histoire (id="histoire") — DARK bg-neutral-950 */}
+      <section id="histoire" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Notre histoire
           </h2>
-          <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-400 text-center mb-16 max-w-2xl mx-auto">
             Une trajectoire marquée par l&apos;engagement et l&apos;expertise collective.
           </p>
           <div className="relative">
-            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-primary/30" />
+            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-purple-500/30" />
             <div className="space-y-8">
               {milestones.map((m) => (
                 <div key={`${m.year}-${m.title}`} className="relative flex gap-6 sm:gap-8 pl-12 sm:pl-16">
                   <div className="absolute left-0 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold shrink-0">
                     {m.year.slice(-2)}
                   </div>
-                  <Card className="flex-1 border-2">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="secondary">{m.year}</Badge>
-                      </div>
-                      <CardTitle className="text-lg">{m.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription>{m.description}</CardDescription>
-                    </CardContent>
-                  </Card>
+                  <div className="flex-1 rounded-3xl bg-white/5 border border-white/10 p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge className="rounded-full bg-white/10 text-neutral-300 border border-white/20 hover:bg-white/15">{m.year}</Badge>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">{m.title}</h3>
+                    <p className="text-neutral-400">{m.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -241,13 +221,13 @@ export function AProposPage() {
         </div>
       </section>
 
-      {/* SECTION: Notre approche (id="approche") */}
-      <section id="approche" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      {/* SECTION: Notre approche (id="approche") — bg-white */}
+      <section id="approche" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4 text-center">
             Notre approche
           </h2>
-          <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-600 text-center mb-16 max-w-2xl mx-auto">
             Notre méthodologie s&apos;appuie sur les cadres de référence les plus reconnus
             au niveau international, adaptés à la réalité québécoise et canadienne.
           </p>
@@ -255,14 +235,14 @@ export function AProposPage() {
             {frameworks.map((f) => (
               <Card
                 key={f.name}
-                className="border-2 hover:border-primary/30 transition-colors group"
+                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <CardHeader className="pb-2">
-                  <Badge variant="outline" className="w-fit mb-2 text-xs">
+                  <Badge variant="outline" className="w-fit mb-2 text-xs rounded-full">
                     {f.origin}
                   </Badge>
                   <CardTitle className="text-base flex items-center gap-2">
-                    <BookOpen className="size-4 text-primary shrink-0" />
+                    <BookOpen className="size-4 text-purple-500 shrink-0" />
                     {f.name}
                   </CardTitle>
                 </CardHeader>
@@ -275,58 +255,47 @@ export function AProposPage() {
         </div>
       </section>
 
-      {/* SECTION: Gouvernance du cercle (id="gouvernance") */}
-      <section id="gouvernance" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      {/* SECTION: Gouvernance du cercle (id="gouvernance") — DARK bg-neutral-950 */}
+      <section id="gouvernance" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Gouvernance du cercle
           </h2>
-          <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-400 text-center mb-16 max-w-2xl mx-auto">
             Une structure organisationnelle transparente pour garantir l&apos;intégrité et
             l&apos;efficacité de nos actions.
           </p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardHeader>
-                <Shield className="size-8 text-primary mb-2" />
-                <CardTitle>Comité directeur</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="leading-relaxed">
-                  {gouvernanceItems[0].description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardHeader>
-                <FileCheck className="size-8 text-primary mb-2" />
-                <CardTitle>Charte éthique</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="leading-relaxed">
-                  {gouvernanceItems[1].description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="border-2 hover:border-primary/30 transition-colors">
-              <CardHeader>
-                <Users className="size-8 text-primary mb-2" />
-                <CardTitle>Processus décisionnel</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="leading-relaxed">
-                  {gouvernanceItems[2].description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
+              <Shield className="size-8 text-purple-400 mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Comité directeur</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                {gouvernanceItems[0].description}
+              </p>
+            </div>
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
+              <FileCheck className="size-8 text-purple-400 mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Charte éthique</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                {gouvernanceItems[1].description}
+              </p>
+            </div>
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
+              <Users className="size-8 text-purple-400 mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Processus décisionnel</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                {gouvernanceItems[2].description}
+              </p>
+            </div>
           </div>
           <div className="text-center">
-            <Button asChild size="lg" className="gap-2 px-8">
-              <Link to="/rejoindre">
-                Rejoindre le Cercle
-                <ArrowRight className="size-5" />
-              </Link>
-            </Button>
+            <Link
+              to="/rejoindre"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+            >
+              Rejoindre le Cercle
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
         </div>
       </section>

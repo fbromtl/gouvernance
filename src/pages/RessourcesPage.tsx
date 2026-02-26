@@ -8,9 +8,9 @@ import {
   FileCheck,
   Wrench,
   BookOpen,
+  ArrowRight,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -74,22 +74,23 @@ export function RessourcesPage() {
       <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils, veille réglementaire et études de cas pour la gouvernance de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(49, 45, 238, 0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-950 mb-6">
             Ressources
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Guides pratiques, outils et veille réglementaire pour structurer votre gouvernance de
             l&apos;IA.
           </p>
@@ -97,13 +98,13 @@ export function RessourcesPage() {
       </section>
 
       {/* SECTION: Guides et cadres de référence */}
-      <section id="guides" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      <section id="guides" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
               Guides et cadres de référence
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Documents téléchargeables et gabarits pour structurer votre démarche de gouvernance.
             </p>
           </div>
@@ -112,16 +113,17 @@ export function RessourcesPage() {
             {guides.map((guide) => (
               <Card
                 key={guide.title}
-                className="border-2 hover:border-primary/30 transition-all group flex flex-col"
+                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 group flex flex-col"
               >
                 <CardHeader>
                   <div className="flex items-start justify-between gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-purple-100 text-purple-600 group-hover:bg-purple-200 transition-colors">
                       <guide.icon className="size-5" />
                     </div>
                     <Badge
                       variant={guide.badge === "Gratuit" ? "default" : "secondary"}
                       className={cn(
+                        "rounded-full",
                         guide.badge === "Gratuit" && "bg-brand-purple/20 text-brand-purple-dark"
                       )}
                     >
@@ -135,7 +137,7 @@ export function RessourcesPage() {
                     {guide.description}
                   </CardDescription>
                   <div className="mt-4 flex justify-end">
-                    <Download className="size-4 text-muted-foreground opacity-60" aria-hidden />
+                    <Download className="size-4 text-neutral-400 opacity-60" aria-hidden />
                   </div>
                 </CardContent>
               </Card>
@@ -145,24 +147,24 @@ export function RessourcesPage() {
       </section>
 
       {/* SECTION: Boîte à outils */}
-      <section id="outils" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      <section id="outils" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Boîte à outils
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Des outils pratiques pour accompagner votre démarche au quotidien.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {outils.map((outil, index) => (
-              <Card
+              <div
                 key={outil}
-                className="border-2 hover:border-primary/30 transition-all flex flex-row items-center gap-4"
+                className="bg-white/5 border border-white/10 rounded-3xl flex flex-row items-center gap-4 p-4 hover:bg-white/10 transition-all"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary ml-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-purple-400">
                   {index === 0 ? (
                     <FileCheck className="size-5" />
                   ) : index === 1 ? (
@@ -173,72 +175,70 @@ export function RessourcesPage() {
                     <BookOpen className="size-5" />
                   )}
                 </div>
-                <CardContent className="py-4 pl-0">
-                  <p className="font-medium text-foreground">{outil}</p>
-                </CardContent>
-                <div className="ml-auto pr-4">
-                  <Wrench className="size-4 text-muted-foreground" />
+                <p className="font-medium text-neutral-200">{outil}</p>
+                <div className="ml-auto">
+                  <Wrench className="size-4 text-neutral-500" />
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* SECTION: Veille réglementaire */}
-      <section id="veille" className="py-20 sm:py-24 bg-background scroll-mt-20">
+      <section id="veille" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
               Veille réglementaire
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
               Suivi des lois et règlements en matière d&apos;intelligence artificielle au Québec, au
               Canada et à l&apos;international.
             </p>
           </div>
 
           <Tabs defaultValue="quebec" className="w-full max-w-3xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto gap-1 p-1">
-              <TabsTrigger value="quebec" className="text-xs sm:text-sm py-2">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto rounded-full bg-neutral-100 border border-neutral-200 p-1.5">
+              <TabsTrigger value="quebec" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
                 Québec
               </TabsTrigger>
-              <TabsTrigger value="canada" className="text-xs sm:text-sm py-2">
+              <TabsTrigger value="canada" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
                 Canada
               </TabsTrigger>
-              <TabsTrigger value="ue" className="text-xs sm:text-sm py-2">
+              <TabsTrigger value="ue" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
                 Union européenne
               </TabsTrigger>
-              <TabsTrigger value="international" className="text-xs sm:text-sm py-2">
+              <TabsTrigger value="international" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
                 International
               </TabsTrigger>
             </TabsList>
             <div className="mt-6">
               <TabsContent value="quebec" className="mt-0">
-                <Card>
+                <Card className="rounded-3xl border border-neutral-200">
                   <CardContent className="pt-6">
-                    <p className="text-muted-foreground leading-relaxed">{veilleContent.quebec}</p>
+                    <p className="text-neutral-600 leading-relaxed">{veilleContent.quebec}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="canada" className="mt-0">
-                <Card>
+                <Card className="rounded-3xl border border-neutral-200">
                   <CardContent className="pt-6">
-                    <p className="text-muted-foreground leading-relaxed">{veilleContent.canada}</p>
+                    <p className="text-neutral-600 leading-relaxed">{veilleContent.canada}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="ue" className="mt-0">
-                <Card>
+                <Card className="rounded-3xl border border-neutral-200">
                   <CardContent className="pt-6">
-                    <p className="text-muted-foreground leading-relaxed">{veilleContent.ue}</p>
+                    <p className="text-neutral-600 leading-relaxed">{veilleContent.ue}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="international" className="mt-0">
-                <Card>
+                <Card className="rounded-3xl border border-neutral-200">
                   <CardContent className="pt-6">
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-neutral-600 leading-relaxed">
                       {veilleContent.international}
                     </p>
                   </CardContent>
@@ -248,44 +248,44 @@ export function RessourcesPage() {
           </Tabs>
 
           <div className="text-center mt-10">
-            <Button asChild size="lg" className="px-8">
-              <Link to="/contact">Recevoir les mises à jour réglementaires</Link>
-            </Button>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+            >
+              Recevoir les mises à jour réglementaires
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* SECTION: Études de cas */}
-      <section id="etudes" className="py-20 sm:py-24 bg-muted/50 scroll-mt-20">
+      <section id="etudes" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Études de cas
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Exemples concrets d&apos;implantation de gouvernance IA par secteur d&apos;activité.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {etudesDeCas.map((etude) => (
-              <Card
+              <div
                 key={etude}
-                className="border-2 border-dashed hover:border-primary/20 transition-all relative overflow-hidden"
+                className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:bg-white/10 transition-all relative overflow-hidden"
               >
-                <CardHeader>
-                  <Badge variant="secondary" className="absolute top-4 right-4 w-fit">
-                    À venir
-                  </Badge>
-                  <CardTitle className="text-lg pr-20">{etude}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Cette étude de cas sera bientôt disponible pour illustrer les meilleures
-                    pratiques de gouvernance IA.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                <Badge className="rounded-full bg-white/10 text-neutral-300 border border-white/20 mb-4">
+                  À venir
+                </Badge>
+                <h3 className="text-lg font-semibold text-neutral-200 mb-2">{etude}</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Cette étude de cas sera bientôt disponible pour illustrer les meilleures
+                  pratiques de gouvernance IA.
+                </p>
+              </div>
             ))}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,22 +58,23 @@ export function EvenementsPage() {
       <SEO title="Événements" description="Participez aux événements du Cercle de Gouvernance de l'IA : conférences, tables rondes, ateliers sur la gouvernance responsable de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(49, 45, 238, 0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Événements
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Conférences, tables rondes et webinaires pour approfondir les enjeux de la gouvernance
             de l&apos;IA.
           </p>
@@ -81,22 +82,22 @@ export function EvenementsPage() {
       </section>
 
       {/* SECTION: Événements à venir */}
-      <section className="py-20 sm:py-24 bg-background">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-12">
             Événements à venir
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
               <Card
                 key={event.title}
-                className="border-2 hover:border-primary/30 hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
               >
                 <CardHeader className="space-y-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge
                       variant="secondary"
-                      className="bg-brand-purple/15 text-brand-purple-dark font-medium"
+                      className="rounded-full bg-brand-purple/15 text-brand-purple-dark font-medium"
                     >
                       {event.badge}
                     </Badge>
@@ -115,9 +116,13 @@ export function EvenementsPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <Button asChild size="sm">
-                    <Link to={event.href}>{event.cta}</Link>
-                  </Button>
+                  <Link
+                    to={event.href}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+                  >
+                    {event.cta}
+                    <ArrowRight className="size-4" />
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -128,7 +133,7 @@ export function EvenementsPage() {
       {/* SECTION: Sommet annuel */}
       <section
         id="sommet"
-        className="py-20 sm:py-24 relative overflow-hidden"
+        className="py-24 sm:py-32 relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#252243] via-[#3a1d6e] to-[#1e1a30]" />
         <div
@@ -141,7 +146,7 @@ export function EvenementsPage() {
           }}
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
             Sommet annuel de la Gouvernance de l&apos;IA
           </h2>
           <p className="text-lg text-purple-200/90 mb-2">
@@ -170,38 +175,42 @@ export function EvenementsPage() {
               Études de cas
             </li>
           </ul>
-          <Button asChild size="lg" className="px-8 py-6 h-auto text-base">
-            <Link to="/contact">Réserver votre place</Link>
-          </Button>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+          >
+            Réserver votre place
+            <ArrowRight className="size-4" />
+          </Link>
         </div>
       </section>
 
-      {/* SECTION: Événements passés */}
-      <section className="py-20 sm:py-24 bg-muted/50">
+      {/* SECTION: Événements passés (dark) */}
+      <section className="py-24 sm:py-32 bg-neutral-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-12">
             Événements passés
           </h2>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
             {pastEvents.map((event) => (
               <Card
                 key={event.title}
-                className="border-2 bg-muted/50 opacity-90 hover:opacity-100 transition-opacity"
+                className="rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
               >
                 <CardHeader className="pb-2">
-                  <span className="text-sm text-muted-foreground flex items-center gap-1.5 mb-2">
+                  <span className="text-sm text-neutral-400 flex items-center gap-1.5 mb-2">
                     <Calendar className="size-4 shrink-0" />
                     {event.date}
                   </span>
-                  <CardTitle className="text-lg text-muted-foreground">{event.title}</CardTitle>
-                  <Badge variant="outline" className="w-fit mt-2 text-xs">
+                  <CardTitle className="text-lg text-neutral-300">{event.title}</CardTitle>
+                  <Badge variant="outline" className="rounded-full w-fit mt-2 text-xs border-white/20 text-neutral-400">
                     {event.badge}
                   </Badge>
                 </CardHeader>
               </Card>
             ))}
           </div>
-          <p className="mt-8 text-muted-foreground">
+          <p className="mt-8 text-neutral-400">
             Les enregistrements et présentations sont accessibles aux membres du Cercle.
           </p>
         </div>

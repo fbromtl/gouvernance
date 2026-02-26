@@ -7,13 +7,13 @@ export function ConfidentialitePage() {
   return (
     <>
       <SEO title="Politique de confidentialité" description="Politique de confidentialité du Cercle de Gouvernance de l'IA. Protection des données conformément à la Loi 25." noindex={true} />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
             Politique de confidentialité
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-neutral-500">
             Dernière mise à jour : février 2026
           </p>
         </header>

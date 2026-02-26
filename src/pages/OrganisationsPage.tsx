@@ -109,9 +109,9 @@ type TabKey = keyof typeof tabContent;
 
 function TabCard({ content, Icon }: { content: (typeof tabContent)[TabKey]; Icon: typeof Building2 }) {
   return (
-    <Card className="border-2 hover:border-primary/30 transition-all overflow-hidden">
+    <Card className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       <CardHeader>
-        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-3">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-3">
           <Icon className="size-6" />
         </div>
         <CardTitle className="text-xl">{content.title}</CardTitle>
@@ -152,12 +152,13 @@ function TabCard({ content, Icon }: { content: (typeof tabContent)[TabKey]; Icon
             ))}
           </ul>
         </div>
-        <Button asChild className="gap-2 px-8">
-          <Link to={content.ctaTo}>
-            {content.cta}
-            <ArrowRight className="size-4" />
-          </Link>
-        </Button>
+        <Link
+          to={content.ctaTo}
+          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+        >
+          {content.cta}
+          <ArrowRight className="size-4" />
+        </Link>
       </CardContent>
     </Card>
   );
@@ -169,22 +170,23 @@ export function OrganisationsPage() {
       <SEO title="Organisations membres" description="Découvrez les organisations membres du Cercle de Gouvernance de l'IA et leurs contributions à la gouvernance responsable." />
       <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(171, 84, 243, 0.35) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(49, 45, 238, 0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Pour les organisations
           </h1>
-          <p className="text-lg sm:text-xl text-purple-100/90 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Des programmes adaptés à chaque type d&apos;organisation pour structurer une gouvernance
             IA efficace et conforme.
           </p>
@@ -192,17 +194,20 @@ export function OrganisationsPage() {
       </section>
 
       {/* TABS CONTENT */}
-      <section className="py-20 sm:py-24 bg-background">
+      <section className="py-24 sm:py-32 bg-neutral-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 text-center mb-12">
+            Un programme pour chaque réalité
+          </h2>
           <Tabs defaultValue="pme" className="w-full">
-            <TabsList className="w-full flex flex-wrap h-auto gap-1 p-1 mb-8 bg-muted">
+            <TabsList className="w-full flex flex-wrap h-auto gap-1 p-1.5 mb-10 rounded-full bg-neutral-100 border border-neutral-200">
               {orgTabs.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
                   className={cn(
-                    "flex-1 min-w-[140px] sm:min-w-0 gap-2",
-                    "data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    "flex-1 min-w-[140px] sm:min-w-0 gap-2 rounded-full transition-all",
+                    "data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-neutral-950"
                   )}
                 >
                   <tab.icon className="size-4 shrink-0" />
@@ -217,6 +222,25 @@ export function OrganisationsPage() {
               </TabsContent>
             ))}
           </Tabs>
+        </div>
+      </section>
+
+      {/* DARK CTA SECTION */}
+      <section className="py-24 sm:py-32 bg-neutral-950">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6">
+            Prêt à structurer votre gouvernance IA?
+          </h2>
+          <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-10">
+            Contactez-nous pour découvrir le programme adapté à votre organisation et démarrer votre démarche de gouvernance responsable.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+          >
+            Nous contacter
+            <ArrowRight className="size-4" />
+          </Link>
         </div>
       </section>
     </div>

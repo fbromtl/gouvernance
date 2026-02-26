@@ -5,13 +5,13 @@ export function MentionsLegalesPage() {
   return (
     <>
       <SEO title="Mentions légales" description="Mentions légales du site du Cercle de Gouvernance de l'IA." noindex={true} />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
             Mentions légales
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-neutral-500">
             Informations juridiques relatives au site du Cercle de Gouvernance de l&apos;IA
           </p>
         </header>

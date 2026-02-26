@@ -8,24 +8,24 @@ export function AccessibilitePage() {
   return (
     <>
       <SEO title="Accessibilité" description="Engagement d'accessibilité du Cercle de Gouvernance de l'IA." noindex={true} />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
               <Accessibility className="size-6" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
               Accessibilité
             </h1>
           </div>
-          <p className="text-muted-foreground">
+          <p className="text-neutral-500">
             Engagement du Cercle de Gouvernance de l&apos;IA en matière d&apos;accessibilité web
           </p>
         </header>
 
         <div className="space-y-8">
-          <Card>
+          <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle>Notre engagement</CardTitle>
               <CardDescription>
@@ -38,10 +38,10 @@ export function AccessibilitePage() {
             </CardHeader>
           </Card>
 
-          <Card>
+          <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="size-5 text-primary" />
+                <CheckCircle className="size-5 text-purple-500" />
                 Normes suivies
               </CardTitle>
             </CardHeader>
@@ -72,7 +72,7 @@ export function AccessibilitePage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <AlertCircle className="size-5 text-amber-500" />
@@ -89,10 +89,10 @@ export function AccessibilitePage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Mail className="size-5 text-primary" />
+                <Mail className="size-5 text-purple-500" />
                 Retour et suggestions
               </CardTitle>
               <CardDescription>
