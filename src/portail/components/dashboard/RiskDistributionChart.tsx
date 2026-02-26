@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useTranslation } from "react-i18next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { RISK_COLORS, TOOLTIP_STYLE } from "./chart-theme";
 import type { Database } from "@/types/database";
 
@@ -41,8 +42,8 @@ function CenterLabel({ viewBox, total }: CenterLabelProps) {
         y={cy - 8}
         textAnchor="middle"
         dominantBaseline="middle"
-        className="fill-foreground text-2xl font-bold"
-        style={{ fontSize: "1.5rem", fontWeight: 700 }}
+        className="text-2xl font-bold"
+        style={{ fontSize: "1.5rem", fontWeight: 700, fill: "#171717" }}
       >
         {total}
       </text>
@@ -51,7 +52,7 @@ function CenterLabel({ viewBox, total }: CenterLabelProps) {
         y={cy + 14}
         textAnchor="middle"
         dominantBaseline="middle"
-        style={{ fontSize: "0.7rem", fill: "#6b7280" }}
+        style={{ fontSize: "0.7rem", fill: "#a3a3a3" }}
       >
         total
       </text>
@@ -78,9 +79,9 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
           className="inline-block h-2.5 w-2.5 rounded-full"
           style={{ backgroundColor: fill }}
         />
-        <span className="font-medium text-gray-800">{name}</span>
+        <span className="font-medium text-neutral-900">{name}</span>
       </div>
-      <p className="mt-0.5 text-gray-600">
+      <p className="mt-0.5 text-neutral-500">
         {value} système{value !== 1 ? "s" : ""}
       </p>
     </div>
@@ -125,17 +126,13 @@ export default function RiskDistributionChart({ data }: Props) {
   const hasData = slices.length > 0;
 
   return (
-    <Card className="flex flex-col" style={{ minHeight: "320px" }}>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-semibold">
-          {t("widgets.riskDistribution")}
-        </CardTitle>
-      </CardHeader>
+    <PortalCard className="flex flex-col min-h-[320px]">
+      <PortalCardHeader>{t("widgets.riskDistribution")}</PortalCardHeader>
 
-      <CardContent className="flex flex-1 flex-col gap-4 pt-0">
+      <div className="flex flex-1 flex-col gap-4">
         {!hasData ? (
           // Empty state
-          <div className="flex flex-1 items-center justify-center text-gray-400 text-2xl font-light select-none">
+          <div className="flex flex-1 items-center justify-center text-neutral-400 text-2xl font-light select-none">
             —
           </div>
         ) : (
@@ -183,9 +180,9 @@ export default function RiskDistributionChart({ data }: Props) {
                       style={{ backgroundColor: slice.fill }}
                       aria-hidden="true"
                     />
-                    <span className="truncate text-gray-700">{slice.name}</span>
+                    <span className="truncate text-neutral-600">{slice.name}</span>
                   </span>
-                  <span className="shrink-0 font-semibold text-gray-900 tabular-nums">
+                  <span className="shrink-0 font-semibold text-neutral-900 tabular-nums">
                     {slice.value}
                   </span>
                 </li>
@@ -193,7 +190,7 @@ export default function RiskDistributionChart({ data }: Props) {
             </ul>
           </>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }

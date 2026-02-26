@@ -19,7 +19,7 @@ import {
   parseISO,
 } from "date-fns";
 import { fr } from "date-fns/locale";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalChartContainer } from "@/portail/components/ui/PortalChartContainer";
 import { SEVERITY_COLORS, TOOLTIP_STYLE } from "./chart-theme";
 
 interface IncidentTimelineChartProps {
@@ -67,7 +67,7 @@ function CustomTooltip({
 
   return (
     <div style={TOOLTIP_STYLE.contentStyle}>
-      <p className="font-semibold text-gray-800 mb-1">{label}</p>
+      <p className="font-semibold text-neutral-900 mb-1">{label}</p>
       {payload
         .slice()
         .reverse()
@@ -80,16 +80,16 @@ function CustomTooltip({
                 className="inline-block w-2.5 h-2.5 rounded-sm flex-shrink-0"
                 style={{ backgroundColor: entry.color }}
               />
-              <span className="text-gray-600">
+              <span className="text-neutral-500">
                 {t(`severity.${key}`, { defaultValue: key })}:
               </span>
-              <span className="font-medium text-gray-800">{entry.value}</span>
+              <span className="font-medium text-neutral-900">{entry.value}</span>
             </div>
           );
         })}
-      <div className="mt-1 pt-1 border-t border-gray-100 flex justify-between text-xs">
-        <span className="text-gray-500">Total</span>
-        <span className="font-semibold text-gray-800">{total}</span>
+      <div className="mt-1 pt-1 border-t border-neutral-100 flex justify-between text-xs">
+        <span className="text-neutral-400">Total</span>
+        <span className="font-semibold text-neutral-900">{total}</span>
       </div>
     </div>
   );
@@ -151,44 +151,38 @@ export function IncidentTimelineChart({
   );
 
   return (
-    <Card className="min-h-[320px] flex flex-col">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-semibold">
-          {t("widgets.incidentTimeline")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex-1 flex flex-col justify-center">
-        {!hasData ? (
-          <div className="flex items-center justify-center flex-1 min-h-[220px] text-gray-400 text-2xl font-light select-none">
-            —
-          </div>
-        ) : (
-          <ResponsiveContainer width="100%" height={240}>
-            <BarChart
-              data={chartData}
-              margin={{ top: 4, right: 8, left: 0, bottom: 0 }}
-              barCategoryGap="30%"
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke="#f0f0f0"
-                vertical={false}
-              />
-              <XAxis
-                dataKey="month"
-                fontSize={11}
-                tickLine={false}
-                axisLine={false}
-                tick={{ fill: "#6b7280" }}
-              />
-              <YAxis
-                allowDecimals={false}
-                fontSize={11}
-                width={30}
-                tickLine={false}
-                axisLine={false}
-                tick={{ fill: "#6b7280" }}
-              />
+    <PortalChartContainer title={t("widgets.incidentTimeline")}>
+      {!hasData ? (
+        <div className="flex items-center justify-center flex-1 min-h-[220px] text-neutral-400 text-2xl font-light select-none">
+          —
+        </div>
+      ) : (
+        <ResponsiveContainer width="100%" height={240}>
+          <BarChart
+            data={chartData}
+            margin={{ top: 4, right: 8, left: 0, bottom: 0 }}
+            barCategoryGap="30%"
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="#f5f5f5"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="month"
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: "#a3a3a3" }}
+            />
+            <YAxis
+              allowDecimals={false}
+              fontSize={11}
+              width={30}
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: "#a3a3a3" }}
+            />
               <Tooltip
                 content={<CustomTooltip />}
                 cursor={{ fill: "rgba(0,0,0,0.04)" }}
@@ -219,9 +213,8 @@ export function IncidentTimelineChart({
               />
             </BarChart>
           </ResponsiveContainer>
-        )}
-      </CardContent>
-    </Card>
+      )}
+    </PortalChartContainer>
   );
 }
 

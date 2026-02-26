@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalChartContainer } from "@/portail/components/ui/PortalChartContainer";
 import { Badge } from "@/components/ui/badge";
 import { CHART_COLORS, TOOLTIP_STYLE } from "./chart-theme";
 
@@ -51,7 +51,7 @@ function CustomTooltip({ active, payload }: CustomTooltipProps) {
 
   return (
     <div style={TOOLTIP_STYLE.contentStyle}>
-      <p className="font-semibold text-foreground mb-0.5">{datum.framework}</p>
+      <p className="font-semibold text-neutral-900 mb-0.5">{datum.framework}</p>
       <p style={{ color: CHART_COLORS.purple }}>
         {datum.score}%
       </p>
@@ -98,64 +98,58 @@ export function ComplianceRadarChart({ frameworks }: Props) {
       : "bg-red-100 text-red-700 border-red-200";
 
   return (
-    <Card className="min-h-[400px] flex flex-col">
-      <CardHeader>
-        <div className="flex items-center justify-between gap-2">
-          <CardTitle className="text-base">
-            {t("widgets.complianceRadar")}
-          </CardTitle>
-          {globalScore !== null && (
-            <Badge
-              variant="outline"
-              className={`text-xs font-semibold px-2 py-0.5 ${badgeColor}`}
-            >
-              {globalScore}%
-            </Badge>
-          )}
-        </div>
-      </CardHeader>
-
-      <CardContent className="flex-1 flex items-center justify-center">
-        {isEmpty ? (
-          <span className="text-2xl text-muted-foreground select-none">
+    <PortalChartContainer
+      title={t("widgets.complianceRadar")}
+      minHeight="400px"
+      action={
+        globalScore !== null ? (
+          <Badge variant="outline" className={`text-xs font-semibold px-2 py-0.5 ${badgeColor}`}>
+            {globalScore}%
+          </Badge>
+        ) : undefined
+      }
+    >
+      {isEmpty ? (
+        <div className="flex-1 flex items-center justify-center">
+          <span className="text-2xl text-neutral-400 select-none">
             —
           </span>
-        ) : (
-          <ResponsiveContainer width="100%" height={320}>
-            <RadarChart
-              data={radarData}
-              margin={{ top: 10, right: 30, bottom: 10, left: 30 }}
-            >
-              <PolarGrid stroke="#e5e7eb" />
+        </div>
+      ) : (
+        <ResponsiveContainer width="100%" height={320}>
+          <RadarChart
+            data={radarData}
+            margin={{ top: 10, right: 30, bottom: 10, left: 30 }}
+          >
+            <PolarGrid stroke="#f5f5f5" />
 
-              <PolarAngleAxis
-                dataKey="framework"
-                tick={{ fontSize: 11, fill: "currentColor" }}
-              />
+            <PolarAngleAxis
+              dataKey="framework"
+              tick={{ fontSize: 11, fill: "#a3a3a3" }}
+            />
 
-              <PolarRadiusAxis
-                domain={[0, 100]}
-                tickCount={5}
-                tick={{ fontSize: 10, fill: "#9ca3af" }}
-                axisLine={false}
-              />
+            <PolarRadiusAxis
+              domain={[0, 100]}
+              tickCount={5}
+              tick={{ fontSize: 10, fill: "#a3a3a3" }}
+              axisLine={false}
+            />
 
-              <Radar
-                dataKey="score"
-                fill={CHART_COLORS.purple}
-                fillOpacity={0.15}
-                stroke={CHART_COLORS.purple}
-                strokeWidth={2}
-                dot={{ r: 3, fill: CHART_COLORS.purple, strokeWidth: 0 }}
-                activeDot={{ r: 4, fill: CHART_COLORS.purple, strokeWidth: 2, stroke: "white" }}
-              />
+            <Radar
+              dataKey="score"
+              fill={CHART_COLORS.purple}
+              fillOpacity={0.15}
+              stroke={CHART_COLORS.purple}
+              strokeWidth={2}
+              dot={{ r: 3, fill: CHART_COLORS.purple, strokeWidth: 0 }}
+              activeDot={{ r: 4, fill: CHART_COLORS.purple, strokeWidth: 2, stroke: "white" }}
+            />
 
-              <Tooltip content={<CustomTooltip />} />
-            </RadarChart>
-          </ResponsiveContainer>
-        )}
-      </CardContent>
-    </Card>
+            <Tooltip content={<CustomTooltip />} />
+          </RadarChart>
+        </ResponsiveContainer>
+      )}
+    </PortalChartContainer>
   );
 }
 

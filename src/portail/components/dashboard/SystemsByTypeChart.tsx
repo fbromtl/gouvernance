@@ -7,7 +7,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { PieChart as PieChartIcon } from "lucide-react";
 import { SERIES_COLORS, TOOLTIP_STYLE } from "./chart-theme";
 
@@ -43,34 +44,23 @@ export default function SystemsByTypeChart({ systems }: SystemsByTypeChartProps)
 
   if (systems.length === 0) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-sm font-semibold">
-            {t("widgets.systemsByType")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col items-center justify-center py-10 text-center">
-            <div className="h-12 w-12 rounded-xl bg-muted/80 flex items-center justify-center mb-3">
-              <PieChartIcon className="h-5 w-5 text-muted-foreground/60" />
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {t("widgets.noSystems")}
-            </p>
+      <PortalCard>
+        <PortalCardHeader>{t("widgets.systemsByType")}</PortalCardHeader>
+        <div className="flex flex-col items-center justify-center py-10 text-center">
+          <div className="h-12 w-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
+            <PieChartIcon className="h-5 w-5 text-neutral-400" />
           </div>
-        </CardContent>
-      </Card>
+          <p className="text-sm text-neutral-500">
+            {t("widgets.noSystems")}
+          </p>
+        </div>
+      </PortalCard>
     );
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-sm font-semibold">
-          {t("widgets.systemsByType")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <PortalCard>
+      <PortalCardHeader>{t("widgets.systemsByType")}</PortalCardHeader>
         <ResponsiveContainer width="100%" height={260}>
           <PieChart>
             <Pie
@@ -104,7 +94,7 @@ export default function SystemsByTypeChart({ systems }: SystemsByTypeChartProps)
             {data.map((entry) => (
               <div
                 key={entry.type}
-                className="flex items-center gap-1.5 text-xs text-muted-foreground"
+                className="flex items-center gap-1.5 text-xs text-neutral-500"
               >
                 <span
                   className="h-2.5 w-2.5 rounded-full shrink-0"
@@ -113,14 +103,13 @@ export default function SystemsByTypeChart({ systems }: SystemsByTypeChartProps)
                 <span className="truncate max-w-[120px]">
                   {tSystems(`systemTypes.${entry.type}`)}
                 </span>
-                <span className="font-medium text-foreground">
+                <span className="font-medium text-neutral-900">
                   {entry.count}
                 </span>
               </div>
             ))}
           </div>
         </div>
-      </CardContent>
-    </Card>
+    </PortalCard>
   );
 }
