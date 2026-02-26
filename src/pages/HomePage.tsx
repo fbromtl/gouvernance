@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Shield,
@@ -9,7 +9,7 @@ import {
   Check,
   Zap,
   CreditCard,
-  Mail,
+  X,
   UserPlus,
   ClipboardCheck,
   BarChart3,
@@ -24,9 +24,22 @@ import { SEO, JsonLd } from "@/components/SEO";
 /* ================================================================== */
 
 export function HomePage() {
-  const [email, setEmail] = useState("");
   const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const [stickyDismissed, setStickyDismissed] = useState(false);
+
+  // Sticky CTA bar: show after scrolling past hero, hide near pricing
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const pricingEl = document.getElementById("pricing");
+      const pricingTop = pricingEl ? pricingEl.offsetTop - window.innerHeight : Infinity;
+      setShowStickyBar(scrollY > 500 && scrollY < pricingTop);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -95,22 +108,10 @@ export function HomePage() {
             </p>
 
             {/* CTA row */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-20 items-center justify-center w-full max-w-2xl mx-auto">
-              <div className="relative w-full sm:w-80 group">
-                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
-                  <Mail className="h-[18px] w-[18px] text-neutral-400 group-focus-within:text-[#ab54f3]/60 transition-colors" />
-                </div>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Entrez votre courriel"
-                  className="w-full bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-full pl-12 pr-6 py-4 text-base font-medium text-neutral-900 focus:outline-none focus:ring-4 focus:ring-[#ab54f3]/10 focus:border-[#ab54f3]/40 transition-all placeholder:text-neutral-400 shadow-sm hover:border-neutral-300"
-                />
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center w-full max-w-2xl mx-auto">
               <Link
                 to="/inscription"
-                className="group inline-flex items-center gap-2 font-medium text-white bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] rounded-full pt-4 pr-8 pb-4 pl-8 relative shadow-lg overflow-hidden transition-all duration-300 hover:shadow-[#ab54f3]/50"
+                className="group inline-flex items-center gap-2 font-medium text-white bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] rounded-full py-4 px-8 relative shadow-lg overflow-hidden transition-all duration-300 hover:shadow-[#ab54f3]/50"
                 style={{
                   boxShadow:
                     "0 15px 33px -12px rgba(171,84,243,0.6), inset 0 4px 6.3px rgba(255,255,255,0.3), inset 0 -5px 6.3px rgba(0,0,0,0.1)",
@@ -118,10 +119,24 @@ export function HomePage() {
               >
                 <div className="group-hover:translate-y-0 transition-transform duration-300 bg-white/10 absolute inset-0 translate-y-full" />
                 <span className="relative flex items-center gap-2">
-                  Commencer gratuitement
+                  Créer mon compte gratuit
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
+              <Link
+                to="/diagnostic"
+                className="inline-flex items-center gap-2 font-medium text-neutral-900 bg-white border border-neutral-200 rounded-full py-4 px-8 shadow-sm hover:bg-neutral-50 hover:border-neutral-300 transition-all"
+              >
+                Lancer le diagnostic
+                <Zap className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Reassurance line */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-16 text-sm text-neutral-500">
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Gratuit</span>
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Sans carte de crédit</span>
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Diagnostic en 10 min</span>
             </div>
 
             {/* ── Dashboard Mockup ── */}
