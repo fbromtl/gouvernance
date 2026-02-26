@@ -232,8 +232,8 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         className={cn(
           "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
           active
-            ? "bg-brand-purple/10 text-brand-purple shadow-[inset_0_0_0_1px_rgba(171,84,243,0.12)]"
-            : "text-foreground/65 hover:bg-muted/80 hover:text-foreground",
+            ? "bg-[#ab54f3]/8 text-[#ab54f3] shadow-[inset_0_0_0_1px_rgba(171,84,243,0.10)]"
+            : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-900",
           collapsed && "justify-center px-2"
         )}
       >
@@ -245,7 +245,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         <Icon
           className={cn(
             "h-[18px] w-[18px] shrink-0 transition-colors duration-200",
-            active ? "text-brand-purple" : "text-foreground/45 group-hover:text-foreground/70"
+            active ? "text-[#ab54f3]" : "text-neutral-400 group-hover:text-neutral-700"
           )}
         />
 
@@ -285,13 +285,13 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       <div key={idx} className="space-y-0.5">
         {!collapsed && (
           <div className="px-3 pt-5 pb-1.5 first:pt-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/35">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-300">
               {t(group.labelKey)}
             </span>
           </div>
         )}
         {collapsed && idx > 0 && (
-          <div className="mx-3 my-2.5 border-t border-border/40" />
+          <div className="mx-3 my-2.5 border-t border-neutral-100" />
         )}
         {visibleItems.map(renderItem)}
       </div>
@@ -302,14 +302,14 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
     <TooltipProvider delayDuration={0}>
       <aside
         className={cn(
-          "flex flex-col border-r border-border/60 bg-card transition-all duration-300 ease-in-out",
+          "flex flex-col border-r border-neutral-100 bg-white transition-all duration-300 ease-in-out",
           collapsed ? "w-[60px]" : "w-[250px]"
         )}
       >
         {/* ---- Brand Header ---- */}
         <div
           className={cn(
-            "flex items-center gap-3 border-b border-border/60 px-3 h-14 shrink-0",
+            "flex items-center gap-3 border-b border-neutral-100 px-3 h-14 shrink-0",
             collapsed && "justify-center"
           )}
         >
@@ -318,10 +318,10 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           </div>
           {!collapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="font-bold text-sm tracking-tight truncate text-foreground">
+              <span className="font-bold text-sm tracking-tight truncate text-neutral-900">
                 {t("brandName")}
               </span>
-              <span className="text-[10px] text-foreground/40 -mt-0.5 font-medium">
+              <span className="text-[10px] text-neutral-400 -mt-0.5 font-medium">
                 {t("brandTagline")}
               </span>
             </div>
@@ -336,11 +336,11 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         </ScrollArea>
 
         {/* ---- Footer ---- */}
-        <div className="border-t border-border/60 p-2 space-y-0.5">
+        <div className="border-t border-neutral-100 p-2 space-y-0.5">
           <Link
             to="/"
             className={cn(
-              "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium text-foreground/45 hover:text-foreground hover:bg-muted/60 transition-all duration-200",
+              "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-900 hover:bg-neutral-50 transition-all duration-200",
               collapsed && "justify-center px-2"
             )}
           >
@@ -353,7 +353,7 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
             size="sm"
             onClick={onToggle}
             className={cn(
-              "w-full h-8 text-foreground/40 hover:text-foreground hover:bg-muted/60",
+              "w-full h-8 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-50",
               collapsed && "px-0"
             )}
           >

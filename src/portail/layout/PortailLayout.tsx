@@ -18,7 +18,7 @@ export function PortailLayout() {
     useAiChat(pageContext);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div className="flex h-screen overflow-hidden bg-neutral-50/50">
       {/* Desktop sidebar */}
       <div className="hidden lg:flex">
         <AppSidebar

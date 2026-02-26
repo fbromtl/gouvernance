@@ -103,7 +103,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
   });
 
   return (
-    <header className="flex items-center justify-between border-b border-border/60 bg-card px-4 lg:px-6 h-14 shrink-0">
+    <header className="flex items-center justify-between border-b border-neutral-100 bg-white px-4 lg:px-6 h-14 shrink-0">
       {/* Left section: mobile menu + breadcrumbs */}
       <div className="flex items-center gap-3 min-w-0">
         <Button
@@ -120,16 +120,16 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
           {breadcrumbs.map((crumb, i) => (
             <div key={crumb.path} className="flex items-center gap-1 min-w-0">
               {i > 0 && (
-                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-foreground/25" />
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-neutral-300" />
               )}
               {crumb.isLast ? (
-                <span className="font-semibold text-foreground truncate">
+                <span className="font-semibold text-neutral-900 truncate">
                   {crumb.label}
                 </span>
               ) : (
                 <Link
                   to={crumb.path}
-                  className="text-foreground/50 hover:text-foreground transition-colors truncate"
+                  className="text-neutral-400 hover:text-neutral-900 transition-colors truncate"
                 >
                   {crumb.label}
                 </Link>
@@ -146,7 +146,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
         {/* Notifications */}
         <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative h-8 w-8 text-foreground/50 hover:text-foreground">
+            <Button variant="ghost" size="icon" className="relative h-8 w-8 text-neutral-400 hover:text-neutral-900">
               <Bell className="h-4 w-4" />
               {unreadCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-purple px-1 text-[10px] font-bold text-white shadow-sm shadow-brand-purple/30">
@@ -224,7 +224,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
         </Popover>
 
         {/* Separator */}
-        <div className="h-5 w-px bg-border/60 mx-1.5 hidden sm:block" />
+        <div className="h-5 w-px bg-neutral-200 mx-1.5 hidden sm:block" />
 
         {/* User dropdown */}
         <DropdownMenu>
