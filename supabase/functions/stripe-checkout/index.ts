@@ -133,12 +133,14 @@ Deno.serve(async (req: Request) => {
       organization_id,
       success_url,
       cancel_url,
+      trial_period_days,
     }: {
       plan: string;
       period: string;
       organization_id: string;
       success_url: string;
       cancel_url: string;
+      trial_period_days?: number;
     } = body;
 
     if (!plan || !period || !organization_id || !success_url || !cancel_url) {
@@ -225,6 +227,11 @@ Deno.serve(async (req: Request) => {
     sessionParams.append("metadata[plan]", plan);
     sessionParams.append("subscription_data[metadata][organization_id]", organization_id);
     sessionParams.append("subscription_data[metadata][plan]", plan);
+
+    // Free trial
+    if (trial_period_days && trial_period_days > 0) {
+      sessionParams.append("subscription_data[trial_period_days]", String(trial_period_days));
+    }
 
     const sessionRes = await fetch(`${STRIPE_API}/checkout/sessions`, {
       method: "POST",
