@@ -5,7 +5,8 @@ import { formatDistanceToNow, parseISO } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ClipboardList } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { STATUS_COLORS } from "./chart-theme";
 
 interface RecentDecisionsWidgetProps {
@@ -33,19 +34,17 @@ export default function RecentDecisionsWidget({ decisions }: RecentDecisionsWidg
   );
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-sm font-semibold">
-          {t("widgets.recentDecisions")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <PortalCard>
+      <PortalCardHeader>
+        {t("widgets.recentDecisions")}
+      </PortalCardHeader>
+      <div>
         {recent.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-10 text-center">
-            <div className="h-12 w-12 rounded-xl bg-muted/80 flex items-center justify-center mb-3">
-              <ClipboardList className="h-5 w-5 text-muted-foreground/60" />
+            <div className="h-12 w-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
+              <ClipboardList className="h-5 w-5 text-neutral-400" />
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-neutral-500">
               {t("widgets.noDecisions")}
             </p>
           </div>
@@ -69,7 +68,7 @@ export default function RecentDecisionsWidget({ decisions }: RecentDecisionsWidg
                       style={{ backgroundColor: dotColor }}
                     />
                     {!isLast && (
-                      <span className="w-px flex-1 bg-border" />
+                      <span className="w-px flex-1 bg-neutral-100" />
                     )}
                   </div>
 
@@ -87,7 +86,7 @@ export default function RecentDecisionsWidget({ decisions }: RecentDecisionsWidg
                           defaultValue: decision.decision_type,
                         })}
                       </Badge>
-                      <span className="text-[11px] text-muted-foreground">
+                      <span className="text-[11px] text-neutral-500">
                         {relativeTime}
                       </span>
                     </div>
@@ -97,7 +96,7 @@ export default function RecentDecisionsWidget({ decisions }: RecentDecisionsWidg
             })}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }

@@ -7,7 +7,8 @@ import { Activity, ArrowRight, Plus } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { useRecentAgentTraces } from "@/hooks/useAgentTraces";
 import CreateAgentDialog from "@/portail/components/agents/CreateAgentDialog";
 
@@ -24,15 +25,12 @@ export default function AgentActivityWidget() {
 
   return (
     <>
-      <Card>
-        <CardHeader className="pb-2">
-          <div className="flex items-center justify-between">
-            <CardTitle className="text-sm font-semibold">
-              {t("widgets.agentActivity.title")}
-            </CardTitle>
+      <PortalCard>
+        <PortalCardHeader
+          action={
             <div className="flex items-center gap-2">
               {traces.length > 0 && (
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-neutral-500">
                   {traces.length} {t("widgets.agentActivity.traces")}
                 </span>
               )}
@@ -46,15 +44,17 @@ export default function AgentActivityWidget() {
                 {t("widgets.agentActivity.connectAgent")}
               </Button>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent>
+          }
+        >
+          {t("widgets.agentActivity.title")}
+        </PortalCardHeader>
+        <div>
           {traces.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-10 text-center">
-              <div className="h-12 w-12 rounded-xl bg-muted/80 flex items-center justify-center mb-3">
-                <Activity className="h-5 w-5 text-muted-foreground/60" />
+              <div className="h-12 w-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
+                <Activity className="h-5 w-5 text-neutral-400" />
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-neutral-500">
                 {t("widgets.agentActivity.noTraces")}
               </p>
             </div>
@@ -78,7 +78,7 @@ export default function AgentActivityWidget() {
                         style={{ backgroundColor: dotColor }}
                       />
                       {!isLast && (
-                        <span className="w-px flex-1 bg-border" />
+                        <span className="w-px flex-1 bg-neutral-100" />
                       )}
                     </div>
 
@@ -96,7 +96,7 @@ export default function AgentActivityWidget() {
                             {trace.classification_code}
                           </Badge>
                         )}
-                        <span className="text-[11px] text-muted-foreground">
+                        <span className="text-[11px] text-neutral-500">
                           {relativeTime}
                         </span>
                       </div>
@@ -115,8 +115,8 @@ export default function AgentActivityWidget() {
               </Link>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </PortalCard>
 
       <CreateAgentDialog open={createOpen} onOpenChange={setCreateOpen} />
     </>

@@ -6,7 +6,8 @@ import { formatDistanceToNow, parseISO } from "date-fns";
 import { fr } from "date-fns/locale/fr";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import type { BiasFinding, Decision } from "@/types/database";
 
 // ---------------------------------------------------------------------------
@@ -94,24 +95,23 @@ export default function PendingActionsWidget({
   const count = pendingActions.length;
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-base">
-            {t("widgets.pendingActions")}
-          </CardTitle>
-          {count > 0 && (
+    <PortalCard>
+      <PortalCardHeader
+        action={
+          count > 0 ? (
             <Badge variant="secondary" className="text-[10px]">
               {count}
             </Badge>
-          )}
-        </div>
-      </CardHeader>
-      <CardContent>
+          ) : undefined
+        }
+      >
+        {t("widgets.pendingActions")}
+      </PortalCardHeader>
+      <div>
         {count === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
-            <Inbox className="h-8 w-8 text-muted-foreground/40 mb-2" />
-            <p className="text-sm text-muted-foreground">
+            <Inbox className="h-8 w-8 text-neutral-400 mb-2" />
+            <p className="text-sm text-neutral-500">
               {t("widgets.noPendingActions")}
             </p>
           </div>
@@ -121,12 +121,12 @@ export default function PendingActionsWidget({
               <Link
                 key={`${action.type}-${action.id}`}
                 to={action.link}
-                className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-muted/50"
+                className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-neutral-50"
               >
                 {action.type === "decision" ? (
-                  <ClipboardCheck className="h-4 w-4 shrink-0 text-muted-foreground/60" />
+                  <ClipboardCheck className="h-4 w-4 shrink-0 text-neutral-400" />
                 ) : (
-                  <Scale className="h-4 w-4 shrink-0 text-muted-foreground/60" />
+                  <Scale className="h-4 w-4 shrink-0 text-neutral-400" />
                 )}
 
                 <span className="flex-1 truncate text-sm">{action.title}</span>
@@ -144,7 +144,7 @@ export default function PendingActionsWidget({
                   </Badge>
                 )}
 
-                <span className="shrink-0 text-[11px] text-muted-foreground/50">
+                <span className="shrink-0 text-[11px] text-neutral-400">
                   {formatDistanceToNow(parseISO(action.createdAt), {
                     addSuffix: true,
                     locale,
@@ -154,7 +154,7 @@ export default function PendingActionsWidget({
             ))}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }

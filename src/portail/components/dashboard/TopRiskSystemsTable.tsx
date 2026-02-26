@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 
 interface TopRiskSystemsTableProps {
   systems: {
@@ -35,19 +36,17 @@ export default function TopRiskSystemsTable({ systems }: TopRiskSystemsTableProp
   );
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-sm font-semibold">
-          {t("widgets.topRiskSystems")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <PortalCard>
+      <PortalCardHeader>
+        {t("widgets.topRiskSystems")}
+      </PortalCardHeader>
+      <div>
         {top5.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-10 text-center">
-            <div className="h-12 w-12 rounded-xl bg-muted/80 flex items-center justify-center mb-3">
-              <ShieldAlert className="h-5 w-5 text-muted-foreground/60" />
+            <div className="h-12 w-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-3">
+              <ShieldAlert className="h-5 w-5 text-neutral-400" />
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-neutral-500">
               {t("widgets.noSystems")}
             </p>
           </div>
@@ -56,12 +55,12 @@ export default function TopRiskSystemsTable({ systems }: TopRiskSystemsTableProp
             {top5.map((system, index) => (
               <div
                 key={system.id}
-                className={`flex items-center gap-3 py-2.5 px-2 rounded-lg hover:bg-muted/50 transition-colors ${
-                  index < top5.length - 1 ? "border-b" : ""
+                className={`flex items-center gap-3 py-2.5 px-2 rounded-lg hover:bg-neutral-50 transition-colors ${
+                  index < top5.length - 1 ? "border-b border-neutral-100" : ""
                 }`}
               >
                 {/* Rank */}
-                <span className="text-sm tabular-nums font-medium text-muted-foreground w-5 shrink-0 text-center">
+                <span className="text-sm tabular-nums font-medium text-neutral-400 w-5 shrink-0 text-center">
                   {index + 1}
                 </span>
 
@@ -91,7 +90,7 @@ export default function TopRiskSystemsTable({ systems }: TopRiskSystemsTableProp
             ))}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }

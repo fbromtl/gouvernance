@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckCircle2 } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { SEVERITY_COLORS } from "./chart-theme";
 import type { BiasFinding } from "@/types/database";
 
@@ -49,18 +50,16 @@ export default function BiasDebtWidget({ findings }: BiasDebtWidgetProps) {
   }, [findings]);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-base">
-          {t("widgets.biasDebt")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <PortalCard>
+      <PortalCardHeader>
+        {t("widgets.biasDebt")}
+      </PortalCardHeader>
+      <div>
         {total === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <CheckCircle2 className="h-10 w-10 text-green-500 mb-2" />
-            <p className="text-4xl font-bold text-foreground">0</p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-4xl font-bold text-neutral-900">0</p>
+            <p className="text-sm text-neutral-500 mt-1">
               Aucun biais ouvert
             </p>
           </div>
@@ -68,8 +67,8 @@ export default function BiasDebtWidget({ findings }: BiasDebtWidgetProps) {
           <div className="space-y-4">
             {/* Large total count */}
             <div className="text-center">
-              <p className="text-4xl font-bold text-foreground">{total}</p>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-4xl font-bold text-neutral-900">{total}</p>
+              <p className="text-sm text-neutral-500 mt-1">
                 {t("widgets.openFindings")}
               </p>
             </div>
@@ -85,7 +84,7 @@ export default function BiasDebtWidget({ findings }: BiasDebtWidgetProps) {
                     className="h-2 w-2 shrink-0 rounded-full"
                     style={{ backgroundColor: SEVERITY_COLORS[sev] }}
                   />
-                  <span className="text-muted-foreground">
+                  <span className="text-neutral-500">
                     {SEVERITY_LABELS[sev]}
                   </span>
                   <span className="font-semibold tabular-nums">
@@ -96,7 +95,7 @@ export default function BiasDebtWidget({ findings }: BiasDebtWidgetProps) {
             </div>
 
             {/* Stacked bar */}
-            <div className="flex h-2 w-full overflow-hidden rounded-full bg-muted">
+            <div className="flex h-2 w-full overflow-hidden rounded-full bg-neutral-100">
               {SEVERITY_ORDER.map((sev) => {
                 const count = bySeverity[sev];
                 if (count === 0) return null;
@@ -116,7 +115,7 @@ export default function BiasDebtWidget({ findings }: BiasDebtWidgetProps) {
             </div>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }

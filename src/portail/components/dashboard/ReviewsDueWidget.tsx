@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { CalendarClock } from "lucide-react";
 import { differenceInDays, parseISO, isPast, startOfDay } from "date-fns";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PortalCard } from "@/portail/components/ui/PortalCard";
+import { PortalCardHeader } from "@/portail/components/ui/PortalCardHeader";
 import { Badge } from "@/components/ui/badge";
 
 interface ReviewSystem {
@@ -59,7 +60,7 @@ function renderDaysIndicator(item: ReviewItem) {
   }
 
   return (
-    <span className="text-[11px] text-muted-foreground/60">
+    <span className="text-[11px] text-neutral-400">
       {item.daysUntil}j
     </span>
   );
@@ -103,24 +104,23 @@ export default function ReviewsDueWidget({ systems }: ReviewsDueWidgetProps) {
   );
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-base">
-            {t("widgets.reviewsDue")}
-          </CardTitle>
-          {reviewsIn30Days > 0 && (
+    <PortalCard>
+      <PortalCardHeader
+        action={
+          reviewsIn30Days > 0 ? (
             <Badge variant="secondary" className="text-[10px]">
               {reviewsIn30Days}
             </Badge>
-          )}
-        </div>
-      </CardHeader>
-      <CardContent>
+          ) : undefined
+        }
+      >
+        {t("widgets.reviewsDue")}
+      </PortalCardHeader>
+      <div>
         {reviews.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
-            <CalendarClock className="h-8 w-8 text-muted-foreground/40 mb-2" />
-            <p className="text-sm text-muted-foreground">
+            <CalendarClock className="h-8 w-8 text-neutral-400 mb-2" />
+            <p className="text-sm text-neutral-500">
               {t("widgets.noReviewsDue")}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function ReviewsDueWidget({ systems }: ReviewsDueWidgetProps) {
             {reviews.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-muted/50"
+                className="flex items-center justify-between gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-neutral-50"
               >
                 <Link
                   to={`/ai-systems/${item.id}`}
@@ -142,7 +142,7 @@ export default function ReviewsDueWidget({ systems }: ReviewsDueWidgetProps) {
             ))}
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </PortalCard>
   );
 }
