@@ -7,7 +7,6 @@ import {
   MapPin,
   ArrowUp,
   Send,
-  ArrowRight,
   Shield,
   Circle,
   Briefcase,
@@ -92,43 +91,6 @@ export function Footer() {
 
   return (
     <footer>
-      {/* ============================================================ */}
-      {/*  CTA BANNER                                                   */}
-      {/* ============================================================ */}
-      <section className="relative bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#2d1f4e] overflow-hidden">
-        {/* Subtle pattern */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `radial-gradient(ellipse 80% 50% at 50% 0%, rgba(171,84,243,0.25) 0%, transparent 50%),
-                              radial-gradient(ellipse 60% 40% at 100% 100%, rgba(49,45,238,0.15) 0%, transparent 50%)`,
-          }}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-12">
-            <div className="max-w-xl">
-              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-tight">
-                Prêt à structurer votre gouvernance de l&apos;IA ?
-              </h2>
-              <p className="mt-4 text-white/80 text-base sm:text-lg leading-relaxed">
-                Rejoignez un réseau de 150+ experts et accédez à des ressources exclusives.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0 sm:items-center">
-              <Button asChild size="lg" className="px-8 text-base font-semibold">
-                <Link to="/rejoindre" className="inline-flex items-center">
-                  Rejoindre le Cercle
-                  <ArrowRight className="size-4 ml-2 shrink-0" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline-light" className="px-8 text-base font-semibold">
-                <Link to="/contact">Nous contacter</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ============================================================ */}
       {/*  MAIN FOOTER                                                  */}
       {/* ============================================================ */}
