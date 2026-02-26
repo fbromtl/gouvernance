@@ -145,25 +145,25 @@ export function DiagnosticPage() {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30]">
+    <div className="fixed inset-0 flex flex-col" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
       {/* ── Top Bar ────────────────────────────────────── */}
       <div className="relative z-10 flex items-center justify-between px-4 pt-4 sm:px-6 sm:pt-6">
         <button
           onClick={goBack}
           disabled={currentIndex === 0}
-          className="flex items-center gap-1 text-sm text-white/60 transition-colors hover:text-white disabled:invisible"
+          className="flex items-center gap-1 text-sm text-neutral-400 transition-colors hover:text-neutral-700 disabled:invisible"
         >
           <ChevronLeft className="h-4 w-4" />
           {t("previousButton")}
         </button>
 
-        <span className="text-sm font-medium text-white/70">
+        <span className="text-sm font-medium text-neutral-500">
           {t("questionOf", { current: currentIndex + 1, total: totalQuestions })}
         </span>
 
         <button
           onClick={goHome}
-          className="text-white/60 transition-colors hover:text-white"
+          className="text-neutral-400 transition-colors hover:text-neutral-700"
         >
           <X className="h-5 w-5" />
         </button>
@@ -171,7 +171,7 @@ export function DiagnosticPage() {
 
       {/* ── Progress Bar ───────────────────────────────── */}
       <div className="mx-4 mt-3 sm:mx-6">
-        <div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
+        <div className="h-1 w-full overflow-hidden rounded-full bg-neutral-200">
           <motion.div
             className="h-full rounded-full bg-[#ab54f3]"
             initial={{ width: 0 }}
@@ -196,16 +196,16 @@ export function DiagnosticPage() {
           >
             {/* Icon */}
             <div className="mb-6 flex justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ab54f3]/20 sm:h-20 sm:w-20">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ab54f3]/10 sm:h-20 sm:w-20">
                 <Icon className="h-8 w-8 text-[#ab54f3] sm:h-10 sm:w-10" />
               </div>
             </div>
 
             {/* Question */}
-            <h2 className="mb-3 text-center text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+            <h2 className="mb-3 text-center text-xl font-bold text-neutral-900 sm:text-2xl lg:text-3xl">
               {t(`questions.${currentKey}.question`)}
             </h2>
-            <p className="mb-10 text-center text-sm text-white/60 sm:text-base">
+            <p className="mb-10 text-center text-sm text-neutral-500 sm:text-base">
               {t(`questions.${currentKey}.description`)}
             </p>
 
@@ -219,12 +219,12 @@ export function DiagnosticPage() {
                   <button
                     key={option.key}
                     onClick={() => handleAnswer(option.value)}
-                    className={`group relative w-full rounded-xl border px-5 py-4 text-left transition-all duration-200 ${
+                    className={`group relative w-full rounded-2xl border px-5 py-4 text-left transition-all duration-200 ${
                       isSelected
-                        ? "border-[#ab54f3] bg-[#ab54f3]/20 text-white"
+                        ? "border-[#ab54f3] bg-[#ab54f3]/5 shadow-md shadow-purple-500/10 text-neutral-900"
                         : wasPreviouslySelected
-                          ? "border-[#ab54f3]/50 bg-[#ab54f3]/10 text-white"
-                          : "border-white/10 bg-white/5 text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white"
+                          ? "border-[#ab54f3]/50 bg-[#ab54f3]/5 text-neutral-900"
+                          : "border-neutral-200 bg-white shadow-sm text-neutral-700 hover:border-neutral-300 hover:shadow-md hover:bg-neutral-50"
                     }`}
                   >
                     <div className="flex items-center gap-4">
@@ -234,7 +234,7 @@ export function DiagnosticPage() {
                             ? "bg-[#ab54f3] text-white"
                             : wasPreviouslySelected
                               ? "bg-[#ab54f3]/60 text-white"
-                              : "bg-white/10 text-white/60 group-hover:bg-white/20"
+                              : "bg-neutral-100 text-neutral-500 group-hover:bg-neutral-200"
                         }`}
                       >
                         {option.value}
@@ -253,7 +253,7 @@ export function DiagnosticPage() {
 
       {/* ── Keyboard hint ──────────────────────────────── */}
       <div className="pb-6 text-center">
-        <p className="text-xs text-white/30">
+        <p className="text-xs text-neutral-300">
           gouvernance.ai
         </p>
       </div>
