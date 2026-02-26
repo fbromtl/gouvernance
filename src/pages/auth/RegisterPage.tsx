@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, User, CheckCircle, Shield, X } from "lucide-react";
+import { BenefitsPanel } from "@/components/auth/BenefitsPanel";
 
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
@@ -142,189 +143,195 @@ export default function RegisterPage() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
 
         {/* Floating card */}
-        <div className="relative w-full max-w-[440px] rounded-2xl bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+        <div className="relative w-full max-w-[440px] md:max-w-[820px] rounded-2xl bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col md:flex-row">
 
-          {/* Close button */}
-          <Link
-            to="/"
-            className="absolute top-4 right-4 z-10 flex items-center justify-center size-8 rounded-full text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors"
-            aria-label="Fermer"
-          >
-            <X className="size-5" />
-          </Link>
+          {/* Left side — form */}
+          <div className="relative flex-1 min-w-0">
+            {/* Close button */}
+            <Link
+              to="/"
+              className="absolute top-4 right-4 z-10 flex items-center justify-center size-8 rounded-full text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors"
+              aria-label="Fermer"
+            >
+              <X className="size-5" />
+            </Link>
 
-          <div className="px-8 pt-8 pb-6 sm:px-10 sm:pt-10">
-            {/* Header */}
-            <h1 className="text-2xl font-bold text-neutral-900 leading-tight">
-              Inscrivez-vous gratuitement
-            </h1>
-            <p className="mt-2 text-sm text-neutral-500">
-              Accédez au portail de gouvernance IA en quelques secondes.
-            </p>
+            <div className="px-8 pt-8 pb-6 sm:px-10 sm:pt-10">
+              {/* Header */}
+              <h1 className="text-2xl font-bold text-neutral-900 leading-tight">
+                Inscrivez-vous gratuitement
+              </h1>
+              <p className="mt-2 text-sm text-neutral-500">
+                Accédez au portail de gouvernance IA en quelques secondes.
+              </p>
 
-            {/* Error */}
-            {error && (
-              <div className="mt-5 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                {error}
-              </div>
-            )}
-
-            {/* Social login buttons */}
-            <div className="mt-7 space-y-3">
-              <button
-                type="button"
-                onClick={handleGoogleLogin}
-                disabled={googleLoading || submitting}
-                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
-              >
-                <GoogleIcon className="size-5 shrink-0" />
-                <span className="flex-1 text-center">
-                  {googleLoading ? "Redirection..." : "Continuer avec Google"}
-                </span>
-              </button>
-
-              <button
-                type="button"
-                disabled
-                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
-              >
-                <MicrosoftIcon className="size-5 shrink-0" />
-                <span className="flex-1 text-center">Continuer avec Microsoft</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setShowEmailForm(!showEmailForm)}
-                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors"
-              >
-                <Mail className="size-5 shrink-0 text-neutral-500" />
-                <span className="flex-1 text-center">Continuer avec un courriel</span>
-              </button>
-            </div>
-
-            {/* Email form — collapsible */}
-            {showEmailForm && (
-              <div className="mt-5 animate-in slide-in-from-top-2 fade-in duration-200">
-                <div className="relative mb-5">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-neutral-200" />
-                  </div>
-                  <div className="relative flex justify-center text-xs">
-                    <span className="bg-white px-3 text-neutral-400">Créer un compte par courriel</span>
-                  </div>
+              {/* Error */}
+              {error && (
+                <div className="mt-5 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                  {error}
                 </div>
+              )}
 
-                <form onSubmit={handleRegister} className="space-y-3.5">
-                  {/* Full name */}
-                  <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
-                    <input
-                      id="fullName"
-                      type="text"
-                      required
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Nom complet"
-                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                    />
+              {/* Social login buttons */}
+              <div className="mt-7 space-y-3">
+                <button
+                  type="button"
+                  onClick={handleGoogleLogin}
+                  disabled={googleLoading || submitting}
+                  className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
+                >
+                  <GoogleIcon className="size-5 shrink-0" />
+                  <span className="flex-1 text-center">
+                    {googleLoading ? "Redirection..." : "Continuer avec Google"}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  disabled
+                  className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
+                >
+                  <MicrosoftIcon className="size-5 shrink-0" />
+                  <span className="flex-1 text-center">Continuer avec Microsoft</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setShowEmailForm(!showEmailForm)}
+                  className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors"
+                >
+                  <Mail className="size-5 shrink-0 text-neutral-500" />
+                  <span className="flex-1 text-center">Continuer avec un courriel</span>
+                </button>
+              </div>
+
+              {/* Email form — collapsible */}
+              {showEmailForm && (
+                <div className="mt-5 animate-in slide-in-from-top-2 fade-in duration-200">
+                  <div className="relative mb-5">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-neutral-200" />
+                    </div>
+                    <div className="relative flex justify-center text-xs">
+                      <span className="bg-white px-3 text-neutral-400">Créer un compte par courriel</span>
+                    </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="relative">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
-                    <input
-                      id="reg-email"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="nom@entreprise.ca"
-                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                    />
-                  </div>
+                  <form onSubmit={handleRegister} className="space-y-3.5">
+                    {/* Full name */}
+                    <div className="relative">
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                      <input
+                        id="fullName"
+                        type="text"
+                        required
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="Nom complet"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                      />
+                    </div>
 
-                  {/* Password */}
-                  <div>
+                    {/* Email */}
+                    <div className="relative">
+                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                      <input
+                        id="reg-email"
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="nom@entreprise.ca"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                      />
+                    </div>
+
+                    {/* Password */}
+                    <div>
+                      <div className="relative">
+                        <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                        <input
+                          id="reg-password"
+                          type={showPassword ? "text" : "password"}
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="Mot de passe (min. 8 car.)"
+                          className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 transition-colors"
+                          tabIndex={-1}
+                        >
+                          {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                        </button>
+                      </div>
+                      {passwordStrength && (
+                        <div className="mt-1.5">
+                          <div className="h-1 rounded-full bg-neutral-100 overflow-hidden">
+                            <div className={`h-full rounded-full transition-all duration-300 ${passwordStrength.color} ${passwordStrength.width}`} />
+                          </div>
+                          <p className="text-[11px] text-neutral-400 mt-0.5">
+                            Force : {passwordStrength.label}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Confirm password */}
                     <div className="relative">
                       <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
                       <input
-                        id="reg-password"
+                        id="reg-confirm"
                         type={showPassword ? "text" : "password"}
                         required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Mot de passe (min. 8 car.)"
-                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder="Confirmer le mot de passe"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
                       />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 transition-colors"
-                        tabIndex={-1}
-                      >
-                        {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                      </button>
+                      {confirmPassword && password === confirmPassword && (
+                        <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />
+                      )}
                     </div>
-                    {passwordStrength && (
-                      <div className="mt-1.5">
-                        <div className="h-1 rounded-full bg-neutral-100 overflow-hidden">
-                          <div className={`h-full rounded-full transition-all duration-300 ${passwordStrength.color} ${passwordStrength.width}`} />
-                        </div>
-                        <p className="text-[11px] text-neutral-400 mt-0.5">
-                          Force : {passwordStrength.label}
-                        </p>
-                      </div>
-                    )}
-                  </div>
 
-                  {/* Confirm password */}
-                  <div className="relative">
-                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
-                    <input
-                      id="reg-confirm"
-                      type={showPassword ? "text" : "password"}
-                      required
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      placeholder="Confirmer le mot de passe"
-                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                    />
-                    {confirmPassword && password === confirmPassword && (
-                      <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />
-                    )}
-                  </div>
+                    {/* Submit */}
+                    <Button
+                      type="submit"
+                      className="w-full h-11 gap-2 mt-1"
+                      disabled={submitting || googleLoading}
+                    >
+                      {submitting ? "Création en cours..." : "Créer mon compte"}
+                    </Button>
+                  </form>
+                </div>
+              )}
 
-                  {/* Submit */}
-                  <Button
-                    type="submit"
-                    className="w-full h-11 gap-2 mt-1"
-                    disabled={submitting || googleLoading}
-                  >
-                    {submitting ? "Création en cours..." : "Créer mon compte"}
-                  </Button>
-                </form>
+              {/* Trust */}
+              <div className="flex items-center gap-2 mt-6 text-[11px] text-neutral-400">
+                <Shield className="size-3.5 shrink-0" />
+                <span>Vos données sont protégées conformément à la Loi 25.</span>
               </div>
-            )}
+            </div>
 
-            {/* Trust */}
-            <div className="flex items-center gap-2 mt-6 text-[11px] text-neutral-400">
-              <Shield className="size-3.5 shrink-0" />
-              <span>Vos données sont protégées conformément à la Loi 25.</span>
+            {/* Footer */}
+            <div className="border-t border-neutral-100 bg-neutral-50/60 px-8 py-4 sm:px-10 text-center">
+              <p className="text-sm text-neutral-500">
+                Déjà un compte ?{" "}
+                <Link
+                  to="/connexion"
+                  className="font-semibold text-brand-purple hover:text-brand-purple-dark transition-colors"
+                >
+                  Se connecter
+                </Link>
+              </p>
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="border-t border-neutral-100 bg-neutral-50/60 px-8 py-4 sm:px-10 text-center">
-            <p className="text-sm text-neutral-500">
-              Déjà un compte ?{" "}
-              <Link
-                to="/connexion"
-                className="font-semibold text-brand-purple hover:text-brand-purple-dark transition-colors"
-              >
-                Se connecter
-              </Link>
-            </p>
-          </div>
+          {/* Right side — benefits */}
+          <BenefitsPanel />
         </div>
       </div>
     </>
