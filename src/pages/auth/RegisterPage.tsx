@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Lock, Eye, EyeOff, User, ArrowRight, CheckCircle, Shield } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, User, CheckCircle, Shield, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
@@ -21,6 +21,17 @@ function GoogleIcon({ className }: { className?: string }) {
   );
 }
 
+function MicrosoftIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 21 21">
+      <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+      <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+      <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+      <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+    </svg>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
 /* ------------------------------------------------------------------ */
@@ -33,6 +44,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -93,22 +105,21 @@ export default function RegisterPage() {
     return (
       <>
         <SEO title="Inscription" description="Créez votre compte sur le portail de Gouvernance IA." noindex={true} />
-        <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
-        <div className="w-full max-w-md">
-          <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/5 p-8 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-8 text-center animate-in fade-in zoom-in-95 duration-200">
             <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-green-100 mb-5">
               <Mail className="size-7 text-green-600" />
             </div>
-            <h1 className="text-xl font-bold text-foreground mb-2">
+            <h1 className="text-xl font-bold text-neutral-900 mb-2">
               Vérifiez votre courriel
             </h1>
-            <p className="text-sm text-muted-foreground mb-1">
+            <p className="text-sm text-neutral-500 mb-1">
               Un courriel de confirmation a été envoyé à
             </p>
-            <p className="text-sm font-semibold text-foreground mb-4">
+            <p className="text-sm font-semibold text-neutral-900 mb-4">
               {email}
             </p>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-neutral-500 mb-6">
               Cliquez sur le lien dans le courriel pour activer votre compte.
               Vérifiez aussi votre dossier de courriels indésirables.
             </p>
@@ -117,184 +128,194 @@ export default function RegisterPage() {
             </Button>
           </div>
         </div>
-      </div>
       </>
     );
   }
 
-  /* ---------- Registration form ---------------------------------- */
+  /* ---------- Registration dialog -------------------------------- */
 
   return (
     <>
       <SEO title="Inscription" description="Créez votre compte sur le portail de Gouvernance IA." noindex={true} />
-      <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-block">
-            <img src="/logo.svg" alt="Gouvernance IA" className="h-10 w-auto mx-auto" />
-          </Link>
-          <h1 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
-            Créer un compte
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Rejoignez le portail de Gouvernance IA
-          </p>
-        </div>
 
-        {/* Card */}
-        <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/5 overflow-hidden">
-          <div className="p-6 sm:p-8">
+      {/* Full-screen backdrop */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+
+        {/* Floating card */}
+        <div className="relative w-full max-w-[440px] rounded-2xl bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+
+          {/* Close button */}
+          <Link
+            to="/"
+            className="absolute top-4 right-4 z-10 flex items-center justify-center size-8 rounded-full text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors"
+            aria-label="Fermer"
+          >
+            <X className="size-5" />
+          </Link>
+
+          <div className="px-8 pt-8 pb-6 sm:px-10 sm:pt-10">
+            {/* Header */}
+            <h1 className="text-2xl font-bold text-neutral-900 leading-tight">
+              Inscrivez-vous gratuitement
+            </h1>
+            <p className="mt-2 text-sm text-neutral-500">
+              Accédez au portail de gouvernance IA en quelques secondes.
+            </p>
+
             {/* Error */}
             {error && (
-              <div className="mb-5 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+              <div className="mt-5 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
                 {error}
               </div>
             )}
 
-            {/* Google button */}
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full h-11 gap-2.5 text-sm font-medium"
-              onClick={handleGoogleLogin}
-              disabled={googleLoading || submitting}
-            >
-              <GoogleIcon className="size-5" />
-              {googleLoading ? "Redirection..." : "S'inscrire avec Google"}
-            </Button>
+            {/* Social login buttons */}
+            <div className="mt-7 space-y-3">
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={googleLoading || submitting}
+                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
+              >
+                <GoogleIcon className="size-5 shrink-0" />
+                <span className="flex-1 text-center">
+                  {googleLoading ? "Redirection..." : "Continuer avec Google"}
+                </span>
+              </button>
 
-            {/* Separator */}
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-border/60" />
-              </div>
-              <div className="relative flex justify-center text-xs">
-                <span className="bg-card px-3 text-muted-foreground">ou par courriel</span>
-              </div>
+              <button
+                type="button"
+                disabled
+                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
+              >
+                <MicrosoftIcon className="size-5 shrink-0" />
+                <span className="flex-1 text-center">Continuer avec Microsoft</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowEmailForm(!showEmailForm)}
+                className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors"
+              >
+                <Mail className="size-5 shrink-0 text-neutral-500" />
+                <span className="flex-1 text-center">Continuer avec un courriel</span>
+              </button>
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleRegister} className="space-y-4">
-              {/* Full name */}
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-1.5">
-                  Nom complet
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    id="fullName"
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Jean Dupont"
-                    className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-4 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="reg-email" className="block text-sm font-medium text-foreground mb-1.5">
-                  Courriel
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    id="reg-email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="nom@entreprise.ca"
-                    className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-4 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Password */}
-              <div>
-                <label htmlFor="reg-password" className="block text-sm font-medium text-foreground mb-1.5">
-                  Mot de passe
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    id="reg-password"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Minimum 8 caractères"
-                    className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-11 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                    tabIndex={-1}
-                  >
-                    {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                  </button>
-                </div>
-                {/* Strength bar */}
-                {passwordStrength && (
-                  <div className="mt-2">
-                    <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                      <div className={`h-full rounded-full transition-all duration-300 ${passwordStrength.color} ${passwordStrength.width}`} />
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Force : {passwordStrength.label}
-                    </p>
+            {/* Email form — collapsible */}
+            {showEmailForm && (
+              <div className="mt-5 animate-in slide-in-from-top-2 fade-in duration-200">
+                <div className="relative mb-5">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-neutral-200" />
                   </div>
-                )}
-              </div>
-
-              {/* Confirm password */}
-              <div>
-                <label htmlFor="reg-confirm" className="block text-sm font-medium text-foreground mb-1.5">
-                  Confirmer le mot de passe
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    id="reg-confirm"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Retapez le mot de passe"
-                    className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-4 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
-                  />
-                  {confirmPassword && password === confirmPassword && (
-                    <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />
-                  )}
+                  <div className="relative flex justify-center text-xs">
+                    <span className="bg-white px-3 text-neutral-400">Créer un compte par courriel</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Submit */}
-              <Button
-                type="submit"
-                className="w-full h-11 gap-2"
-                disabled={submitting || googleLoading}
-              >
-                {submitting ? "Création en cours..." : "Créer mon compte"}
-                {!submitting && <ArrowRight className="size-4" />}
-              </Button>
-            </form>
+                <form onSubmit={handleRegister} className="space-y-3.5">
+                  {/* Full name */}
+                  <div className="relative">
+                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                    <input
+                      id="fullName"
+                      type="text"
+                      required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Nom complet"
+                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div className="relative">
+                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                    <input
+                      id="reg-email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="nom@entreprise.ca"
+                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                    />
+                  </div>
+
+                  {/* Password */}
+                  <div>
+                    <div className="relative">
+                      <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                      <input
+                        id="reg-password"
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Mot de passe (min. 8 car.)"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 transition-colors"
+                        tabIndex={-1}
+                      >
+                        {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                      </button>
+                    </div>
+                    {passwordStrength && (
+                      <div className="mt-1.5">
+                        <div className="h-1 rounded-full bg-neutral-100 overflow-hidden">
+                          <div className={`h-full rounded-full transition-all duration-300 ${passwordStrength.color} ${passwordStrength.width}`} />
+                        </div>
+                        <p className="text-[11px] text-neutral-400 mt-0.5">
+                          Force : {passwordStrength.label}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Confirm password */}
+                  <div className="relative">
+                    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-neutral-400" />
+                    <input
+                      id="reg-confirm"
+                      type={showPassword ? "text" : "password"}
+                      required
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Confirmer le mot de passe"
+                      className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                    />
+                    {confirmPassword && password === confirmPassword && (
+                      <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />
+                    )}
+                  </div>
+
+                  {/* Submit */}
+                  <Button
+                    type="submit"
+                    className="w-full h-11 gap-2 mt-1"
+                    disabled={submitting || googleLoading}
+                  >
+                    {submitting ? "Création en cours..." : "Créer mon compte"}
+                  </Button>
+                </form>
+              </div>
+            )}
 
             {/* Trust */}
-            <div className="flex items-center gap-2 mt-4 text-xs text-muted-foreground">
+            <div className="flex items-center gap-2 mt-6 text-[11px] text-neutral-400">
               <Shield className="size-3.5 shrink-0" />
               <span>Vos données sont protégées conformément à la Loi 25.</span>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="border-t border-border/40 bg-muted/20 px-6 py-4 sm:px-8 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="border-t border-neutral-100 bg-neutral-50/60 px-8 py-4 sm:px-10 text-center">
+            <p className="text-sm text-neutral-500">
               Déjà un compte ?{" "}
               <Link
                 to="/connexion"
@@ -305,15 +326,7 @@ export default function RegisterPage() {
             </p>
           </div>
         </div>
-
-        {/* Back */}
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-foreground transition-colors">
-            ← Retour au site
-          </Link>
-        </p>
       </div>
-    </div>
     </>
   );
 }
