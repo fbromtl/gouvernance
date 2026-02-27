@@ -1,0 +1,17 @@
+{
+  "name": "Cercle de Gouvernance de l'IA",
+  "short_name": "Gouvernance IA",
+  "description": "Gouvernance responsable de l'intelligence artificielle",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#6c3baa",
+  "background_color": "#ffffff",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
