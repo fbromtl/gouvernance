@@ -14,7 +14,6 @@ import { EvenementsPage } from "@/pages/EvenementsPage";
 import { RejoindrePage } from "@/pages/RejoindrePage";
 import { OrganisationsPage } from "@/pages/OrganisationsPage";
 import { ActualitesPage } from "@/pages/ActualitesPage";
-import { ArticlePage } from "@/pages/ArticlePage";
 import { ContactPage } from "@/pages/ContactPage";
 import { TarifsPage } from "@/pages/TarifsPage";
 import { ConfidentialitePage } from "@/pages/ConfidentialitePage";
@@ -121,7 +120,6 @@ function App() {
             <Route path="/rejoindre" element={<RejoindrePage />} />
             <Route path="/organisations" element={<OrganisationsPage />} />
             <Route path="/actualites" element={<ActualitesPage />} />
-            <Route path="/actualites/:slug" element={<ArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/tarifs" element={<TarifsPage />} />
             <Route path="/confidentialite" element={<ConfidentialitePage />} />
