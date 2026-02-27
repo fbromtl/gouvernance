@@ -2,48 +2,17 @@ import { Link } from "react-router-dom";
 import {
   FileText,
   ClipboardList,
-  AlertTriangle,
-  CheckSquare,
-  Download,
   FileCheck,
   Wrench,
   BookOpen,
   ArrowRight,
 } from "lucide-react";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 import { SEO } from "@/components/SEO";
-
-const guides = [
-  {
-    icon: FileText,
-    title: "Guide complet de la gouvernance de l'IA",
-    description:
-      "Les sept piliers, les cadres réglementaires et les meilleures pratiques en un seul document.",
-    badge: "Bientôt disponible" as const,
-  },
-  {
-    icon: ClipboardList,
-    title: "Gabarit de politique d'utilisation de l'IA",
-    description: "Modèle prêt à adapter pour encadrer l'utilisation de l'IA dans votre organisation.",
-    badge: "Bientôt disponible" as const,
-  },
-  {
-    icon: AlertTriangle,
-    title: "Grille d'évaluation des risques IA",
-    description: "Matrice structurée pour identifier, évaluer et prioriser les risques liés à vos systèmes d'IA.",
-    badge: "Bientôt disponible" as const,
-  },
-  {
-    icon: CheckSquare,
-    title: "Checklist de conformité réglementaire",
-    description: "Liste de vérification couvrant la Loi 25, l'AI Act et les directives canadiennes.",
-    badge: "Gratuit" as const,
-  },
-];
+import { DocumentLibrary } from "@/components/resources/DocumentLibrary";
 
 const outils = [
   "Checklist de conformité Loi 25 pour l'IA",
@@ -97,54 +66,8 @@ export function RessourcesPage() {
         </div>
       </section>
 
-      {/* SECTION: Guides et cadres de référence */}
-      <section id="guides" className="py-24 sm:py-32 bg-white scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
-              Guides et cadres de référence
-            </h2>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Documents téléchargeables et gabarits pour structurer votre démarche de gouvernance.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {guides.map((guide) => (
-              <Card
-                key={guide.title}
-                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 group flex flex-col"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-purple-100 text-purple-600 group-hover:bg-purple-200 transition-colors">
-                      <guide.icon className="size-5" />
-                    </div>
-                    <Badge
-                      variant={guide.badge === "Gratuit" ? "default" : "secondary"}
-                      className={cn(
-                        "rounded-full",
-                        guide.badge === "Gratuit" && "bg-brand-purple/20 text-brand-purple-dark"
-                      )}
-                    >
-                      {guide.badge}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-base mt-3">{guide.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 pt-0">
-                  <CardDescription className="text-sm leading-relaxed">
-                    {guide.description}
-                  </CardDescription>
-                  <div className="mt-4 flex justify-end">
-                    <Download className="size-4 text-neutral-400 opacity-60" aria-hidden />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* SECTION: Bibliothèque documentaire */}
+      <DocumentLibrary />
 
       {/* SECTION: Boîte à outils */}
       <section id="outils" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
