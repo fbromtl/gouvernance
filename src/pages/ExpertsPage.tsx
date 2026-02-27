@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 const committees = [
   {
@@ -46,6 +46,19 @@ export function ExpertsPage() {
   return (
     <>
       <SEO title="Nos experts" description="Plus de 150 experts en gouvernance IA : conformité, éthique, cybersécurité, droit du numérique et stratégie. Découvrez nos comités thématiques." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Comités d'experts en gouvernance de l'IA",
+        "description": "Plus de 150 experts répartis en comités thématiques pour la gouvernance responsable de l'intelligence artificielle.",
+        "numberOfItems": committees.length,
+        "itemListElement": committees.map((c, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": c.title,
+          "description": c.description,
+        })),
+      }} />
       <div className="overflow-x-hidden">
       {/* HERO SECTION */}
       <section
