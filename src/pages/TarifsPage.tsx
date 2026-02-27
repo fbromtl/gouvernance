@@ -350,6 +350,22 @@ export function TarifsPage() {
       {/* ============================================================ */}
       <section className="relative -mt-10 pb-16 sm:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Community social proof */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mx-auto max-w-2xl text-center mb-10"
+          >
+            <div className="inline-flex items-center gap-2.5 rounded-2xl bg-muted/30 border border-border/40 px-5 py-3">
+              <Users className="size-4 text-brand-purple shrink-0" />
+              <p className="text-sm text-muted-foreground">
+                {t("communityBanner")}
+              </p>
+            </div>
+          </motion.div>
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
