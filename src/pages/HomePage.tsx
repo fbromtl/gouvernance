@@ -19,6 +19,7 @@ import {
 
 import { SEO, JsonLd } from "@/components/SEO";
 import { McpAgentShowcase } from "@/components/home/McpAgentShowcase";
+import { EcosystemMarquee } from "@/components/home/EcosystemMarquee";
 
 /* ================================================================== */
 /*  HOME PAGE – Template-inspired design with governance content       */
@@ -270,6 +271,11 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* ============================================================ */}
+        {/*  ECOSYSTEM MARQUEE                                           */}
+        {/* ============================================================ */}
+        <EcosystemMarquee />
 
         {/* ============================================================ */}
         {/*  MCP AGENT SHOWCASE                                          */}
