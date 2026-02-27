@@ -117,7 +117,8 @@ export function Header() {
   };
 
   const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 200);
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    dropdownTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
   };
 
   const close = () => setOpenDropdown(null);
@@ -150,8 +151,6 @@ export function Header() {
         "text-foreground/70 hover:text-foreground",
         (openDropdown === id || isActive("/" + id)) && "text-primary"
       )}
-      onMouseEnter={() => handleDropdownEnter(id)}
-      onMouseLeave={handleDropdownLeave}
     >
       {children}
       <ChevronDown className={cn(
@@ -174,8 +173,6 @@ export function Header() {
         "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[720px]",
         openDropdown === "cercle" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
       )}
-      onMouseEnter={() => handleDropdownEnter("cercle")}
-      onMouseLeave={handleDropdownLeave}
     >
       <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
         <div className="grid grid-cols-5">
@@ -267,8 +264,6 @@ export function Header() {
         "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[640px]",
         openDropdown === "ressources" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
       )}
-      onMouseEnter={() => handleDropdownEnter("ressources")}
-      onMouseLeave={handleDropdownLeave}
     >
       <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
         <div className="grid grid-cols-2">
