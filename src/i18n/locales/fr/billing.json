@@ -89,7 +89,7 @@
   "honoraryLearnMore": "En savoir plus",
   "perMonth": "/ mois",
   "billedYearly": "Facturé annuellement",
-  "billedAnnually": "Facturé {{price}} $/an",
+  "billedAnnually": "Facturé {{price}} {{symbol}}/an",
   "noCommitment": "Sans engagement",
   "communityBanner": "+150 professionnels en gouvernance de l'IA — juristes, CISO, DPO, responsables conformité — échangent et collaborent au sein du Cercle.",
   "gate": {

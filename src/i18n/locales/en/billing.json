@@ -89,7 +89,7 @@
   "honoraryLearnMore": "Learn more",
   "perMonth": "/ month",
   "billedYearly": "Billed yearly",
-  "billedAnnually": "Billed {{price}} $/year",
+  "billedAnnually": "Billed {{price}} {{symbol}}/year",
   "noCommitment": "No commitment",
   "communityBanner": "+150 AI governance professionals — lawyers, CISOs, DPOs, compliance officers — exchange and collaborate within the Circle.",
   "gate": {
