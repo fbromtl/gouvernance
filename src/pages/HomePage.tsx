@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { SEO, JsonLd } from "@/components/SEO";
+import { McpAgentShowcase } from "@/components/home/McpAgentShowcase";
 
 /* ================================================================== */
 /*  HOME PAGE – Template-inspired design with governance content       */
@@ -269,6 +270,11 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* ============================================================ */}
+        {/*  MCP AGENT SHOWCASE                                          */}
+        {/* ============================================================ */}
+        <McpAgentShowcase />
 
         {/* ============================================================ */}
         {/*  BENTO "WHY" SECTION                                         */}
