@@ -46,6 +46,17 @@ export function McpAgentShowcase() {
           83%              { opacity:1; transform:scale(1); }
           88%              { opacity:1; transform:scale(1); }
         }
+        @media (prefers-reduced-motion: reduce) {
+          [style*="mcpPulse"],
+          [style*="mcpSlideIn"],
+          [style*="mcpAppear"],
+          [style*="mcpTrace"],
+          [style*="mcpBadge"] {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
       `}</style>
 
       <div className="mx-auto max-w-7xl px-6">
@@ -66,10 +77,10 @@ export function McpAgentShowcase() {
 
             {/* Description */}
             <p className="text-lg text-neutral-600 leading-relaxed mb-8 max-w-lg">
-              Le protocole MCP (Model Context Protocol) permet a vos agents IA
-              de reporter automatiquement leurs decisions algorithmiques sur la
-              plateforme. Tracabilite, conformite et supervision en temps reel
-              &mdash; sans effort supplementaire.
+              Le protocole MCP (Model Context Protocol) permet à vos agents IA
+              de reporter automatiquement leurs décisions algorithmiques sur la
+              plateforme. Traçabilité, conformité et supervision en temps réel
+              &mdash; sans effort supplémentaire.
             </p>
 
             {/* CTA */}
@@ -77,20 +88,20 @@ export function McpAgentShowcase() {
               to="/ressources"
               className="group inline-flex items-center gap-2 text-[#ab54f3] font-medium hover:text-[#8b3fd4] transition-colors"
             >
-              Decouvrir le MCP
+              Découvrir le MCP
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
           {/* ── Right column: animated mockup ── */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end" aria-hidden="true">
             <div className="w-full max-w-md lg:max-w-none bg-white rounded-2xl border border-neutral-200 shadow-xl overflow-hidden">
               {/* Mockup header */}
               <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
                 <div className="flex items-center gap-2">
                   <Activity className="h-4 w-4 text-[#ab54f3]" />
                   <span className="text-sm font-semibold text-neutral-800">
-                    Activite des agents
+                    Activité des agents
                   </span>
                 </div>
 
@@ -109,14 +120,13 @@ export function McpAgentShowcase() {
               {/* Mockup body */}
               <div className="relative px-5 py-5 min-h-[260px]">
                 {/* Connect button with pulse */}
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-3 py-2 text-xs font-medium text-neutral-500 cursor-default"
+                <div
+                  className="flex items-center gap-1.5 rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-3 py-2 text-xs font-medium text-neutral-500"
                   style={{ animation: "mcpPulse 8s ease-in-out infinite" }}
                 >
                   <Plus className="h-3.5 w-3.5" />
                   Connecter Agent
-                </button>
+                </div>
 
                 {/* ── Slide-in config modal ── */}
                 <div
@@ -128,12 +138,12 @@ export function McpAgentShowcase() {
                   </p>
                   <div className="space-y-2">
                     {[
-                      { label: "Nom de l'agent", value: "Agent-Conformite-01" },
+                      { label: "Nom de l'agent", value: "Agent-Conformité-01" },
                       {
                         label: "Endpoint MCP",
                         value: "https://mcp.gouvernance.ai",
                       },
-                      { label: "Cle API", value: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" },
+                      { label: "Clé API", value: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" },
                     ].map((field) => (
                       <div key={field.label}>
                         <span className="block text-[10px] font-medium text-neutral-400 mb-0.5">
@@ -158,11 +168,11 @@ export function McpAgentShowcase() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-neutral-800">
-                        Agent-Conformite-01
+                        Agent-Conformité-01
                       </p>
                       <span className="inline-flex items-center gap-1 text-[10px] font-medium text-[#22c55e]">
                         <CheckCircle2 className="h-3 w-3" />
-                        Connecte
+                        Connecté
                       </span>
                     </div>
                   </div>
@@ -179,7 +189,7 @@ export function McpAgentShowcase() {
                   <span className="mt-1 block h-2 w-2 shrink-0 rounded-full bg-[#22c55e]" />
                   <div>
                     <p className="text-[11px] font-medium text-neutral-700">
-                      Decision : approbation auto &mdash; scoring credit
+                      Décision : approbation auto &mdash; scoring crédit
                     </p>
                     <p className="text-[10px] text-neutral-400 mt-0.5">
                       il y a 2 s
