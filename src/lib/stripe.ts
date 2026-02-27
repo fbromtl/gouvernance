@@ -77,3 +77,52 @@ export const PURCHASABLE_PLANS: PlanId[] = ['observer', 'member', 'expert'];
 export function effectivePlan(plan: PlanId): PlanId {
   return plan === 'honorary' ? 'expert' : plan;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Multi-currency display prices (display-only, Stripe stays CAD)     */
+/* ------------------------------------------------------------------ */
+
+export type Currency = 'CAD' | 'EUR' | 'USD';
+
+/** Fixed display prices per currency. CAD = source of truth. */
+export const CURRENCY_PRICES: Record<Currency, Record<PlanId, { monthly: number; yearly: number }>> = {
+  CAD: {
+    observer: { monthly: 0, yearly: 0 },
+    member:   { monthly: 99, yearly: 950 },
+    expert:   { monthly: 499, yearly: 4790 },
+    honorary: { monthly: 0, yearly: 0 },
+  },
+  EUR: {
+    observer: { monthly: 0, yearly: 0 },
+    member:   { monthly: 69, yearly: 690 },
+    expert:   { monthly: 369, yearly: 3490 },
+    honorary: { monthly: 0, yearly: 0 },
+  },
+  USD: {
+    observer: { monthly: 0, yearly: 0 },
+    member:   { monthly: 75, yearly: 720 },
+    expert:   { monthly: 379, yearly: 3590 },
+    honorary: { monthly: 0, yearly: 0 },
+  },
+};
+
+const CURRENCY_SYMBOLS: Record<Currency, string> = {
+  CAD: 'CA$',
+  EUR: '€',
+  USD: 'US$',
+};
+
+export function currencySymbol(c: Currency): string {
+  return CURRENCY_SYMBOLS[c];
+}
+
+/** Auto-detect currency from navigator.language */
+export function detectCurrency(): Currency {
+  const lang = (typeof navigator !== 'undefined' ? navigator.language : 'fr-CA').toLowerCase();
+  // European locales → EUR
+  if (/^(fr-fr|de|it|es|nl|pt|fr-be|fr-ch)/.test(lang)) return 'EUR';
+  // English (non-Canadian) → USD
+  if (/^en(?!-ca)/.test(lang)) return 'USD';
+  // fr-CA, en-CA, fr (no region), everything else → CAD
+  return 'CAD';
+}
