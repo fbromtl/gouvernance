@@ -5,7 +5,7 @@
   "pricingSubtitle": "Join a community of professionals facing the same challenges. AI governance platform included with your membership.",
   "monthly": "Monthly",
   "yearly": "Yearly",
-  "yearlyDiscount": "2 months free",
+  "yearlyDiscount": "Save 20%",
   "month": "/ month",
   "year": "/ year",
   "observer": "Observer",
@@ -90,6 +90,7 @@
   "perMonth": "/ month",
   "billedYearly": "Billed yearly",
   "billedAnnually": "Billed {{price}} $/year",
+  "noCommitment": "No commitment",
   "communityBanner": "+150 AI governance professionals — lawyers, CISOs, DPOs, compliance officers — exchange and collaborate within the Circle.",
   "gate": {
     "title": "Members only",
@@ -107,7 +108,7 @@
     "priceMonthly": "{{price}} $ / month",
     "priceYearly": "{{price}} $ / year",
     "afterTrial": "after free trial",
-    "discount": "-17%",
+    "discount": "-20%",
     "toggleMonthly": "Monthly",
     "toggleYearly": "Yearly"
   }

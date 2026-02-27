@@ -5,7 +5,7 @@
   "pricingSubtitle": "Rejoignez une communauté de professionnels qui partagent les mêmes enjeux. Plateforme de gouvernance IA incluse avec votre adhésion.",
   "monthly": "Mensuel",
   "yearly": "Annuel",
-  "yearlyDiscount": "2 mois offerts",
+  "yearlyDiscount": "Économisez 20 %",
   "month": "/ mois",
   "year": "/ an",
   "observer": "Observateur",
@@ -90,6 +90,7 @@
   "perMonth": "/ mois",
   "billedYearly": "Facturé annuellement",
   "billedAnnually": "Facturé {{price}} $/an",
+  "noCommitment": "Sans engagement",
   "communityBanner": "+150 professionnels en gouvernance de l'IA — juristes, CISO, DPO, responsables conformité — échangent et collaborent au sein du Cercle.",
   "gate": {
     "title": "Réservé aux Membres",
@@ -107,7 +108,7 @@
     "priceMonthly": "{{price}} $ / mois",
     "priceYearly": "{{price}} $ / an",
     "afterTrial": "après l'essai gratuit",
-    "discount": "-17 %",
+    "discount": "-20 %",
     "toggleMonthly": "Mensuel",
     "toggleYearly": "Annuel"
   }

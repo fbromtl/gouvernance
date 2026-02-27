@@ -42,7 +42,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   member: {
     id: 'member',
     monthlyPrice: 99,
-    yearlyPrice: 990,
+    yearlyPrice: 950,
     monthlyPriceId: 'price_1T3nfmGxmyz5JooX0eHr5UID',
     yearlyPriceId: 'price_1T3nfnGxmyz5JooXt3KF9w7O',
     maxMembers: 10,
@@ -53,7 +53,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   expert: {
     id: 'expert',
     monthlyPrice: 499,
-    yearlyPrice: 4990,
+    yearlyPrice: 4790,
     monthlyPriceId: 'price_1T3nfoGxmyz5JooXGE1vzOMQ',
     yearlyPriceId: 'price_1T3nfpGxmyz5JooXrBWeSha0',
     maxMembers: null,
