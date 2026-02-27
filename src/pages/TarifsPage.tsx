@@ -195,7 +195,7 @@ const PLAN_ORDER: PlanId[] = ["observer", "member", "expert", "honorary"];
 
 export function TarifsPage() {
   const { t } = useTranslation("billing");
-  const [isYearly, setIsYearly] = useState(false);
+  const [isYearly, setIsYearly] = useState(true);
   const { user } = useAuth();
   const { data: subscription } = useSubscription();
 
@@ -204,7 +204,10 @@ export function TarifsPage() {
 
   const formatPrice = (plan: PlanId) => {
     const p = PLANS[plan];
-    return isYearly ? p.yearlyPrice : p.monthlyPrice;
+    if (isYearly) {
+      return p.yearlyPrice > 0 ? Math.round(p.yearlyPrice / 12) : 0;
+    }
+    return p.monthlyPrice;
   };
 
   const getCtaInfo = (config: PlanCardConfig) => {
@@ -436,13 +439,13 @@ export function TarifsPage() {
                           </span>
                           {price > 0 && (
                             <span className="text-sm text-muted-foreground font-medium">
-                              {isYearly ? t("year") : t("month")}
+                              {t("month")}
                             </span>
                           )}
                         </div>
                         {isYearly && price > 0 && (
-                          <p className="text-xs text-emerald-600 font-medium mt-1">
-                            {t("yearlyDiscount")}
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {t("billedAnnually", { price: PLANS[config.id].yearlyPrice.toLocaleString() })}
                           </p>
                         )}
                       </div>
