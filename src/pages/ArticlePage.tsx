@@ -16,7 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 import { getArticleBySlug, getRelatedArticles, getAuthor } from "@/lib/articles";
 import type { Article, Author } from "@/types/article";
@@ -107,6 +107,41 @@ export function ArticlePage() {
   return (
     <>
       <SEO title={article.title} description={article.excerpt} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": article.title,
+        "description": article.excerpt,
+        "datePublished": article.date,
+        "dateModified": article.date,
+        "author": author ? {
+          "@type": "Person",
+          "name": author.name,
+          "jobTitle": author.title,
+        } : undefined,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cercle de Gouvernance de l'IA",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://gouvernance.ai/logo.svg",
+          },
+        },
+        "image": article.cover?.startsWith("http") ? article.cover : `https://gouvernance.ai${article.cover}`,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://gouvernance.ai/actualites/${article.slug}`,
+        },
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Actualités", "item": "https://gouvernance.ai/actualites" },
+          { "@type": "ListItem", "position": 3, "name": article.title },
+        ],
+      }} />
       <div className="overflow-x-hidden">
         {/* Article content */}
         <section className="pt-32 pb-16">
