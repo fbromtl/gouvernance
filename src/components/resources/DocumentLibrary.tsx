@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileText, Globe, FileDown } from "lucide-react";
+import { FileText, Globe, FileDown, LogIn } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,28 +14,34 @@ import { LoginDialog } from "@/components/auth/LoginDialog";
 import { JURISDICTIONS } from "@/types/public-documents";
 import type { Jurisdiction, PublicDocument } from "@/types/public-documents";
 
-export function DocumentLibrary() {
+export function DocumentLibrary({ mode = "public" }: { mode?: "public" | "portail" }) {
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction>("quebec");
   const [loginOpen, setLoginOpen] = useState(false);
   const [pendingUrl, setPendingUrl] = useState<string | null>(null);
   const { user } = useAuth();
   const { data: categories, isLoading } = usePublicDocuments(jurisdiction);
+  const navigate = useNavigate();
 
   const handleConsult = useCallback((doc: PublicDocument) => {
-    if (!user) {
-      setPendingUrl(doc.file_url);
-      setLoginOpen(true);
+    if (mode === "portail") {
+      window.open(doc.file_url, "_blank");
       return;
     }
-    window.open(doc.file_url, "_blank");
-  }, [user]);
+    // public mode: always show login prompt
+    setPendingUrl(doc.file_url);
+    setLoginOpen(true);
+  }, [mode]);
 
   const handleLoginSuccess = useCallback(() => {
+    if (mode === "public") {
+      navigate("/bibliotheque");
+      return;
+    }
     if (pendingUrl) {
       window.open(pendingUrl, "_blank");
       setPendingUrl(null);
     }
-  }, [pendingUrl]);
+  }, [mode, pendingUrl, navigate]);
 
   return (
     <>
@@ -108,7 +115,7 @@ export function DocumentLibrary() {
                           <AccordionContent className="pb-5">
                             <div className="space-y-3">
                               {cat.documents.map((doc) => (
-                                <DocumentCard key={doc.id} doc={doc} onConsult={() => handleConsult(doc)} />
+                                <DocumentCard key={doc.id} doc={doc} onConsult={() => handleConsult(doc)} mode={mode} />
                               ))}
                             </div>
                           </AccordionContent>
@@ -131,12 +138,14 @@ export function DocumentLibrary() {
         </div>
       </section>
 
-      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} onSuccess={handleLoginSuccess} />
+      {mode === "public" && (
+        <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} onSuccess={handleLoginSuccess} />
+      )}
     </>
   );
 }
 
-function DocumentCard({ doc, onConsult }: { doc: PublicDocument; onConsult: () => void }) {
+function DocumentCard({ doc, onConsult, mode = "public" }: { doc: PublicDocument; onConsult: () => void; mode?: "public" | "portail" }) {
   return (
     <Card className="rounded-xl border-neutral-200 hover:border-purple-200 transition-colors">
       <CardContent className="p-4">
@@ -177,8 +186,12 @@ function DocumentCard({ doc, onConsult }: { doc: PublicDocument; onConsult: () =
             className="shrink-0 gap-1 text-purple-600 hover:text-purple-700 hover:bg-purple-50"
             onClick={onConsult}
           >
-            <FileDown className="h-3.5 w-3.5" />
-            Consulter
+            {mode === "portail" ? (
+              <FileDown className="h-3.5 w-3.5" />
+            ) : (
+              <LogIn className="h-3.5 w-3.5" />
+            )}
+            {mode === "portail" ? "Consulter" : "Se connecter"}
           </Button>
         </div>
       </CardContent>

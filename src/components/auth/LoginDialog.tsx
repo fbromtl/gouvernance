@@ -64,8 +64,8 @@ export function LoginDialog({
             Connexion requise
           </DialogTitle>
           <DialogDescription className="text-center">
-            Connectez-vous pour acc&eacute;der aux documents de la
-            biblioth&egrave;que.
+            Connectez-vous pour accéder aux documents de la
+            bibliothèque.
           </DialogDescription>
         </DialogHeader>
 

@@ -19,6 +19,7 @@
     "compliance": "Compliance",
     "admin": "Manage my organization",
     "veille": "Regulatory Watch",
+    "bibliotheque": "Library",
     "roadmap": "Upcoming Features",
     "profile": "Profile",
     "billing": "Membership & Billing",
@@ -49,6 +50,7 @@
     "hours": "{{count}}h ago",
     "days": "{{count}}d ago"
   },
+  "bibliothequeDescription": "AI governance frameworks, laws and guides — organized by jurisdiction.",
   "search": "Search...",
   "searchPlaceholder": "Search for a system, incident, decision...",
   "placeholder": {

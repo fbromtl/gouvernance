@@ -22,6 +22,7 @@ import {
   ExternalLink,
   Sparkles,
   Newspaper,
+  BookOpen,
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -72,6 +73,12 @@ const navGroups: NavGroup[] = [
         icon: Newspaper,
         ready: true,
         badge: "IA",
+      },
+      {
+        key: "bibliotheque",
+        path: "/bibliotheque",
+        icon: BookOpen,
+        ready: true,
       },
     ],
   },

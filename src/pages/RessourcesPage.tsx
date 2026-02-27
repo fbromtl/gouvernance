@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SEO } from "@/components/SEO";
-import { DocumentLibrary } from "@/components/resources/DocumentLibrary";
+import { DocumentLibraryPreview } from "@/components/resources/DocumentLibraryPreview";
 
 const outils = [
   "Checklist de conformité Loi 25 pour l'IA",
@@ -67,7 +67,7 @@ export function RessourcesPage() {
       </section>
 
       {/* SECTION: Bibliothèque documentaire */}
-      <DocumentLibrary />
+      <DocumentLibraryPreview />
 
       {/* SECTION: Boîte à outils */}
       <section id="outils" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">

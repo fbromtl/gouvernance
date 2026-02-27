@@ -19,6 +19,7 @@
     "compliance": "Conformité",
     "admin": "Gérer mon organisation",
     "veille": "Veille réglementaire",
+    "bibliotheque": "Bibliothèque",
     "roadmap": "Fonctionnalités à venir",
     "profile": "Profil",
     "billing": "Adhésion & Facturation",
@@ -49,6 +50,7 @@
     "hours": "Il y a {{count}}h",
     "days": "Il y a {{count}}j"
   },
+  "bibliothequeDescription": "Cadres, lois et guides de gouvernance de l'IA — organisés par juridiction.",
   "search": "Rechercher...",
   "searchPlaceholder": "Rechercher un système, incident, décision...",
   "placeholder": {

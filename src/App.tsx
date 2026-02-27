@@ -90,6 +90,9 @@ import RoadmapPage from "@/portail/pages/RoadmapPage";
 // Module: Veille réglementaire
 import VeillePage from "@/portail/pages/VeillePage";
 
+// Module: Bibliothèque documentaire
+import BibliothecPage from "@/portail/pages/BibliothecPage";
+
 // Diagnostic public (standalone)
 import { DiagnosticPage } from "@/pages/DiagnosticPage";
 import { DiagnosticResultsPage } from "@/pages/DiagnosticResultsPage";
@@ -154,6 +157,7 @@ function App() {
             <Route element={<PortailLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/veille" element={<VeillePage />} />
+              <Route path="/bibliotheque" element={<BibliothecPage />} />
               <Route path="/profile" element={<ProfilPage />} />
 
               {/* Module: AI Systems */}
