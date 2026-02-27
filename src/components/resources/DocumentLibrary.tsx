@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { usePublicDocuments } from "@/hooks/usePublicDocuments";
-import { useAuth } from "@/lib/auth";
 import { LoginDialog } from "@/components/auth/LoginDialog";
 import { JURISDICTIONS } from "@/types/public-documents";
 import type { Jurisdiction, PublicDocument } from "@/types/public-documents";
@@ -18,7 +17,6 @@ export function DocumentLibrary({ mode = "public" }: { mode?: "public" | "portai
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction>("quebec");
   const [loginOpen, setLoginOpen] = useState(false);
   const [pendingUrl, setPendingUrl] = useState<string | null>(null);
-  const { user } = useAuth();
   const { data: categories, isLoading } = usePublicDocuments(jurisdiction);
   const navigate = useNavigate();
 
