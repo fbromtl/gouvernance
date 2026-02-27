@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SEO, JsonLd } from "@/components/SEO";
 import { cn } from "@/lib/utils";
-import { PLANS, type PlanId } from "@/lib/stripe";
+import { PLANS, CURRENCY_PRICES, type PlanId, type Currency, currencySymbol, detectCurrency } from "@/lib/stripe";
 import { useAuth } from "@/lib/auth";
 import { useSubscription } from "@/hooks/useSubscription";
 
@@ -196,6 +196,7 @@ const PLAN_ORDER: PlanId[] = ["observer", "member", "expert", "honorary"];
 export function TarifsPage() {
   const { t } = useTranslation("billing");
   const [isYearly, setIsYearly] = useState(true);
+  const [currency, setCurrency] = useState<Currency>(detectCurrency);
   const { user } = useAuth();
   const { data: subscription } = useSubscription();
 
@@ -203,11 +204,11 @@ export function TarifsPage() {
   const isLoggedIn = !!user;
 
   const formatPrice = (plan: PlanId) => {
-    const p = PLANS[plan];
+    const prices = CURRENCY_PRICES[currency][plan];
     if (isYearly) {
-      return p.yearlyPrice > 0 ? Math.round(p.yearlyPrice / 12) : 0;
+      return prices.yearly > 0 ? Math.round(prices.yearly / 12) : 0;
     }
-    return p.monthlyPrice;
+    return prices.monthly;
   };
 
   const getCtaInfo = (config: PlanCardConfig) => {
@@ -342,6 +343,30 @@ export function TarifsPage() {
               </Badge>
             </button>
           </motion.div>
+
+          {/* Currency Selector */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-4 inline-flex items-center gap-0.5 rounded-full bg-white/5 border border-white/10 p-0.5"
+          >
+            {(["CAD", "EUR", "USD"] as const).map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setCurrency(c)}
+                className={cn(
+                  "rounded-full px-3 py-1 text-xs font-medium transition-all duration-200",
+                  currency === c
+                    ? "bg-white/15 text-white"
+                    : "text-white/40 hover:text-white/70"
+                )}
+              >
+                {c}
+              </button>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -435,7 +460,7 @@ export function TarifsPage() {
                         )}
                         <div className="flex items-baseline gap-1 mt-0.5">
                           <span className="text-4xl font-extrabold text-foreground tracking-tight">
-                            {price === 0 ? "$0" : `$${price}`}
+                            {price === 0 ? `${currencySymbol(currency)}0` : `${currencySymbol(currency)}${price}`}
                           </span>
                           {price > 0 && (
                             <span className="text-sm text-muted-foreground font-medium">
@@ -446,7 +471,7 @@ export function TarifsPage() {
                         {price > 0 && (
                           <p className="text-xs text-muted-foreground mt-1">
                             {isYearly
-                              ? t("billedAnnually", { price: PLANS[config.id].yearlyPrice.toLocaleString() })
+                              ? t("billedAnnually", { price: CURRENCY_PRICES[currency][config.id].yearly.toLocaleString(), symbol: currencySymbol(currency) })
                               : t("noCommitment")}
                           </p>
                         )}
