@@ -2,7 +2,7 @@
   "pageTitle": "Adhésion",
   "pageDescription": "Gérez votre adhésion au Cercle et votre facturation",
   "pricingTitle": "Rejoignez le Cercle",
-  "pricingSubtitle": "L'outil de gouvernance IA le plus complet, inclus avec votre adhésion",
+  "pricingSubtitle": "Rejoignez une communauté de professionnels qui partagent les mêmes enjeux. Plateforme de gouvernance IA incluse avec votre adhésion.",
   "monthly": "Mensuel",
   "yearly": "Annuel",
   "yearlyDiscount": "2 mois offerts",
@@ -22,9 +22,9 @@
   "startingAt": "À partir de",
   "recommended": "Recommandé",
   "idealFor": {
-    "observer": "Découvrez la plateforme de l'extérieur",
-    "member": "Faites partie du Cercle de Gouvernance de l'IA",
-    "expert": "Soyez reconnu et dirigez la gouvernance IA"
+    "observer": "Découvrez le Cercle et explorez la plateforme",
+    "member": "Intégrez le Cercle et ses outils complets de gouvernance",
+    "expert": "Dirigez la gouvernance IA et bénéficiez d'un accompagnement dédié"
   },
   "features": {
     "dashboard": "Tableau de bord",
@@ -83,12 +83,14 @@
   "featuresLabel": "Fonctionnalités",
   "communityLabel": "Communauté",
   "readyTitle": "Prêt à rejoindre le Cercle ?",
-  "readySubtitle": "Devenez Membre du Cercle de Gouvernance de l'IA. Accédez à l'annuaire, échangez avec vos pairs et structurez votre gouvernance.",
+  "readySubtitle": "Rejoignez des professionnels qui font face aux mêmes défis. Accédez à la plateforme, l'annuaire et le réseau d'experts.",
   "startFree": "Commencer gratuitement",
   "honoraryBanner": "Le Cercle accueille aussi des Membres Honoraires, sommités nommées par le Conseil d'administration.",
   "honoraryLearnMore": "En savoir plus",
   "perMonth": "/ mois",
   "billedYearly": "Facturé annuellement",
+  "billedAnnually": "Facturé {{price}} $/an",
+  "communityBanner": "+150 professionnels en gouvernance de l'IA — juristes, CISO, DPO, responsables conformité — échangent et collaborent au sein du Cercle.",
   "gate": {
     "title": "Réservé aux Membres",
     "description": "Cette fonctionnalité est disponible avec le niveau {{plan}} ou supérieur.",

@@ -2,7 +2,7 @@
   "pageTitle": "Membership",
   "pageDescription": "Manage your Circle membership and billing",
   "pricingTitle": "Join the Circle",
-  "pricingSubtitle": "The most comprehensive AI governance tool, included with your membership",
+  "pricingSubtitle": "Join a community of professionals facing the same challenges. AI governance platform included with your membership.",
   "monthly": "Monthly",
   "yearly": "Yearly",
   "yearlyDiscount": "2 months free",
@@ -22,9 +22,9 @@
   "startingAt": "Starting at",
   "recommended": "Recommended",
   "idealFor": {
-    "observer": "Discover the platform from the outside",
-    "member": "Be part of the AI Governance Circle",
-    "expert": "Be recognized and lead AI governance"
+    "observer": "Discover the Circle and explore the platform",
+    "member": "Join the Circle and its comprehensive governance tools",
+    "expert": "Lead AI governance with dedicated support"
   },
   "features": {
     "dashboard": "Dashboard",
@@ -83,12 +83,14 @@
   "featuresLabel": "Features",
   "communityLabel": "Community",
   "readyTitle": "Ready to join the Circle?",
-  "readySubtitle": "Become a Member of the AI Governance Circle. Access the directory, connect with your peers and structure your governance.",
+  "readySubtitle": "Join professionals facing the same challenges. Access the platform, directory and expert network.",
   "startFree": "Start for free",
   "honoraryBanner": "The Circle also welcomes Honorary Members, luminaries nominated by the Board of Directors.",
   "honoraryLearnMore": "Learn more",
   "perMonth": "/ month",
   "billedYearly": "Billed yearly",
+  "billedAnnually": "Billed {{price}} $/year",
+  "communityBanner": "+150 AI governance professionals — lawyers, CISOs, DPOs, compliance officers — exchange and collaborate within the Circle.",
   "gate": {
     "title": "Members only",
     "description": "This feature is available with the {{plan}} level or higher.",
