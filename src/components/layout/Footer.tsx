@@ -9,7 +9,6 @@ import {
   Send,
   Shield,
   Circle,
-  Briefcase,
   BookOpen,
 } from "lucide-react";
 
@@ -35,14 +34,14 @@ const footerColumns = [
     ],
   },
   {
-    title: "Services",
-    icon: Briefcase,
+    title: "Plateforme",
+    icon: Shield,
     links: [
-      { to: "/services#diagnostic", label: "Diagnostic IA" },
-      { to: "/services#accompagnement", label: "Accompagnement" },
-      { to: "/services#formations", label: "Formations" },
-      { to: "/services#conferences", label: "Conférences" },
+      { to: "/tarifs", label: "Tarifs" },
+      { to: "/diagnostic", label: "Diagnostic IA" },
       { to: "/organisations", label: "Organisations" },
+      { to: "/evenements", label: "Événements" },
+      { to: "/contact", label: "Contact" },
     ],
   },
   {
@@ -53,7 +52,7 @@ const footerColumns = [
       { to: "/ressources#outils", label: "Boîte à outils" },
       { to: "/ressources#veille", label: "Veille réglementaire" },
       { to: "/ressources#etudes", label: "Études de cas" },
-      { to: "/evenements", label: "Événements" },
+      { to: "/actualites", label: "Actualités" },
     ],
   },
 ];

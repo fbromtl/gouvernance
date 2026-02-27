@@ -9,13 +9,9 @@ import {
   Phone,
   ChevronDown,
   ArrowRight,
-  Target,
   BookOpen,
   Wrench,
-  GraduationCap,
-  Mic,
   FileText,
-  Briefcase,
   Shield,
   Globe,
   Users,
@@ -262,78 +258,6 @@ export function Header() {
   );
 
   /* ---------------------------------------------------------------- */
-  /*  MEGA DROPDOWN: SERVICES                                          */
-  /* ---------------------------------------------------------------- */
-
-  const renderServicesMega = () => (
-    <div
-      className={cn(
-        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[640px]",
-        openDropdown === "services" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
-      )}
-      onMouseEnter={() => handleDropdownEnter("services")}
-      onMouseLeave={handleDropdownLeave}
-    >
-      <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
-        <div className="grid grid-cols-2">
-          {/* Col 1 — Links */}
-          <div className="p-5">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-2">Nos services</p>
-            {[
-              { to: "/services#diagnostic", label: "Diagnostic de maturité IA", icon: Target, desc: "Évaluez votre niveau de gouvernance" },
-              { to: "/services#accompagnement", label: "Accompagnement stratégique", icon: Briefcase, desc: "Conseil pour PME, OBNL et grandes organisations" },
-              { to: "/services#formations", label: "Formations et ateliers", icon: GraduationCap, desc: "Programmes adaptés pour vos équipes" },
-              { to: "/services#conferences", label: "Conférences et interventions", icon: Mic, desc: "Experts disponibles pour vos événements" },
-            ].map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={close}
-                className={cn(
-                  "flex items-start gap-3 rounded-xl px-2 py-2.5 transition-colors group hover:bg-primary/5",
-                  isActive(item.to) && "bg-primary/5"
-                )}
-              >
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
-                  <item.icon className="size-3.5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</div>
-                  <div className="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">{item.desc}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Col 2 — Feature card */}
-          <div className="p-5 bg-muted/30 border-l border-border/40 flex flex-col">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3">En vedette</p>
-            <div className="rounded-xl overflow-hidden mb-3">
-              <img
-                src="/images-gouvernance-ai/businessman-laptop.jpg"
-                alt="Services"
-                className="w-full h-28 object-cover"
-              />
-            </div>
-            <p className="text-sm font-bold text-foreground mb-1">Diagnostic gratuit</p>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              Évaluez gratuitement la maturité de votre gouvernance IA en 15 minutes.
-            </p>
-            <Link
-              to="/services"
-              onClick={close}
-              className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-            >
-              Tous les services
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  /* ---------------------------------------------------------------- */
   /*  MEGA DROPDOWN: RESSOURCES                                        */
   /* ---------------------------------------------------------------- */
 
@@ -475,16 +399,6 @@ export function Header() {
               >
                 <DropdownTrigger id="cercle">Le Cercle</DropdownTrigger>
                 {renderCercleMega()}
-              </div>
-
-              {/* Services mega */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter("services")}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <DropdownTrigger id="services">Services</DropdownTrigger>
-                {renderServicesMega()}
               </div>
 
               {/* Ressources mega */}
@@ -682,13 +596,6 @@ export function Header() {
                     <MobileNavLink to="/evenements" active={isActive("/evenements")} sub>Événements</MobileNavLink>
                     <MobileNavLink to="/organisations" active={isActive("/organisations")} sub>Organisations</MobileNavLink>
                     <MobileNavLink to="/actualites" active={isActive("/actualites")} sub>Actualités</MobileNavLink>
-                  </MobileDropdown>
-
-                  <MobileDropdown label="Services" active={isActive("/services")}>
-                    <MobileNavLink to="/services#diagnostic" sub>Diagnostic de maturité IA</MobileNavLink>
-                    <MobileNavLink to="/services#accompagnement" sub>Accompagnement stratégique</MobileNavLink>
-                    <MobileNavLink to="/services#formations" sub>Formations et ateliers</MobileNavLink>
-                    <MobileNavLink to="/services#conferences" sub>Conférences et interventions</MobileNavLink>
                   </MobileDropdown>
 
                   <MobileDropdown label="Ressources" active={isActive("/ressources")}>

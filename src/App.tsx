@@ -8,7 +8,6 @@ import { Layout } from "@/components/layout/Layout";
 import { HomePage } from "@/pages/HomePage";
 import { AProposPage } from "@/pages/AProposPage";
 import { ExpertsPage } from "@/pages/ExpertsPage";
-import { ServicesPage } from "@/pages/ServicesPage";
 import { RessourcesPage } from "@/pages/RessourcesPage";
 import { EvenementsPage } from "@/pages/EvenementsPage";
 import { RejoindrePage } from "@/pages/RejoindrePage";
@@ -115,7 +114,6 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/a-propos" element={<AProposPage />} />
             <Route path="/experts" element={<ExpertsPage />} />
-            <Route path="/services" element={<ServicesPage />} />
             <Route path="/ressources" element={<RessourcesPage />} />
             <Route path="/evenements" element={<EvenementsPage />} />
             <Route path="/rejoindre" element={<RejoindrePage />} />

@@ -501,10 +501,10 @@ export function HomePage() {
                   </span>
                 </div>
                 <Link
-                  to="/services"
+                  to="/ressources"
                   className="group flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors"
                 >
-                  Voir tous les services
+                  Voir les ressources
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -895,7 +895,7 @@ export function HomePage() {
                 </span>
               </div>
               <Link
-                to="/services"
+                to="/tarifs"
                 className="group flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors"
               >
                 Comparer les plans
@@ -1190,10 +1190,10 @@ export function HomePage() {
                     <Zap className="w-4 h-4 fill-current" />
                   </Link>
                   <Link
-                    to="/services"
+                    to="/ressources"
                     className="w-full sm:w-auto bg-white border border-neutral-200 text-neutral-900 px-10 py-4 rounded-full text-sm font-medium hover:bg-neutral-50 transition-all flex items-center justify-center gap-2"
                   >
-                    Découvrir nos services
+                    Explorer les ressources
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
