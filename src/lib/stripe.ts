@@ -94,14 +94,14 @@ export const CURRENCY_PRICES: Record<Currency, Record<PlanId, { monthly: number;
   },
   EUR: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 69, yearly: 690 },
-    expert:   { monthly: 369, yearly: 3490 },
+    member:   { monthly: 59, yearly: 588 },
+    expert:   { monthly: 299, yearly: 2868 },
     honorary: { monthly: 0, yearly: 0 },
   },
   USD: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 75, yearly: 720 },
-    expert:   { monthly: 379, yearly: 3590 },
+    member:   { monthly: 69, yearly: 660 },
+    expert:   { monthly: 349, yearly: 3348 },
     honorary: { monthly: 0, yearly: 0 },
   },
 };
