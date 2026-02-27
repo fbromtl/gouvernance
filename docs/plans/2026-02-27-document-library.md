@@ -2,11 +2,11 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Replace the "Guides et cadres de référence" section on `/ressources` with a public document library organized by jurisdiction, with auth-gated file access.
+**Goal:** Replace the "Guides et cadres de référence" section on `/ressources` with a public document library organized by jurisdiction, with soft-gated file access (login popup in UI, static files for SEO).
 
-**Architecture:** Supabase table `public_documents` stores metadata (publicly readable via RLS). Files live in a private Supabase Storage bucket `public-documents`, accessible only via signed URLs after authentication. UI uses Tabs (jurisdiction) + Accordion (categories) + Cards (documents). A login Dialog pops up when unauthenticated users click "Consulter".
+**Architecture:** Supabase table `public_documents` stores metadata (publicly readable via RLS). Files live as static assets in `/public/documents/` served by Netlify CDN. UI uses Tabs (jurisdiction) + Accordion (categories) + Cards (documents). A login Dialog pops up when unauthenticated users click "Consulter".
 
-**Tech Stack:** React, TypeScript, Tailwind CSS v4, Supabase (Postgres + Storage), @tanstack/react-query, Shadcn UI (Tabs, Accordion, Dialog, Card, Badge), Framer Motion, i18next, Lucide icons.
+**Tech Stack:** React, TypeScript, Tailwind CSS v4, Supabase (Postgres only — no Storage), @tanstack/react-query, Shadcn UI (Tabs, Accordion, Dialog, Card, Badge), Framer Motion, i18next, Lucide icons.
 
 **Design doc:** `docs/plans/2026-02-27-document-library-design.md`
 
@@ -20,7 +20,7 @@
 **Step 1: Write the migration SQL**
 
 ```sql
--- Public document library: metadata visible to all, files behind auth
+-- Public document library: metadata visible to all, files are static assets
 CREATE TABLE public.public_documents (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   jurisdiction TEXT NOT NULL CHECK (jurisdiction IN ('quebec', 'canada', 'europe', 'france', 'usa')),
@@ -31,7 +31,7 @@ CREATE TABLE public.public_documents (
   title TEXT NOT NULL,
   file_name TEXT NOT NULL,
   file_type TEXT NOT NULL CHECK (file_type IN ('pdf', 'html')),
-  storage_path TEXT NOT NULL,
+  file_url TEXT NOT NULL,
   summary_purpose TEXT NOT NULL DEFAULT '',
   summary_content TEXT NOT NULL DEFAULT '',
   summary_governance TEXT NOT NULL DEFAULT '',
@@ -43,6 +43,9 @@ CREATE TABLE public.public_documents (
 
 -- Index for the main query pattern: list by jurisdiction
 CREATE INDEX idx_public_documents_jurisdiction ON public.public_documents(jurisdiction, category_order, document_order);
+
+-- Unique constraint for upsert by file_url
+ALTER TABLE public.public_documents ADD CONSTRAINT public_documents_file_url_key UNIQUE (file_url);
 
 -- RLS: anyone can read published documents metadata
 ALTER TABLE public.public_documents ENABLE ROW LEVEL SECURITY;
@@ -59,9 +62,9 @@ CREATE POLICY "Service role full access"
   USING (auth.role() = 'service_role');
 ```
 
-**Step 2: Apply migration locally**
+**Step 2: Apply migration**
 
-Run: `npx supabase db push` (or apply via Supabase dashboard if remote-only)
+Run via Supabase dashboard SQL editor or `npx supabase db push`.
 
 **Step 3: Commit**
 
@@ -95,7 +98,7 @@ export interface PublicDocument {
   title: string;
   file_name: string;
   file_type: 'pdf' | 'html';
-  storage_path: string;
+  file_url: string;
   summary_purpose: string;
   summary_content: string;
   summary_governance: string;
@@ -129,7 +132,6 @@ Create `src/hooks/usePublicDocuments.ts`:
 ```typescript
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/lib/auth";
 import type { PublicDocument, Jurisdiction, DocumentCategory } from "@/types/public-documents";
 
 /** Fetch all published documents for a jurisdiction, grouped by category */
@@ -167,28 +169,6 @@ export function usePublicDocuments(jurisdiction: Jurisdiction) {
     staleTime: 5 * 60 * 1000, // 5 minutes — this data rarely changes
   });
 }
-
-/** Generate a signed URL for a document (requires auth) */
-export function useDocumentUrl() {
-  const { user } = useAuth();
-
-  const getSignedUrl = async (storagePath: string): Promise<string | null> => {
-    if (!user) return null;
-
-    const { data, error } = await supabase.storage
-      .from("public-documents")
-      .createSignedUrl(storagePath, 3600); // 1 hour
-
-    if (error) {
-      console.error("Failed to get signed URL:", error);
-      return null;
-    }
-
-    return data.signedUrl;
-  };
-
-  return { getSignedUrl };
-}
 ```
 
 **Step 3: Verify build**
@@ -212,9 +192,7 @@ git commit -m "feat(docs): add public document types and data-fetching hook"
 
 **Step 1: Create the login dialog**
 
-This is a reusable Dialog that wraps the login flow (Google OAuth + email/password). It takes an `open` + `onOpenChange` prop and optionally a callback for after login.
-
-Reference the existing login pattern in `src/pages/auth/LoginPage.tsx` (Google OAuth button + email form). Simplify it into a compact dialog:
+Reference the existing login pattern in `src/pages/auth/LoginPage.tsx`. Create a compact Dialog version:
 
 ```typescript
 import { useState } from "react";
@@ -224,7 +202,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/lib/auth";
 import { Lock, Mail } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 interface LoginDialogProps {
   open: boolean;
@@ -234,7 +211,6 @@ interface LoginDialogProps {
 
 export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps) {
   const { signInWithGoogle, signInWithEmail } = useAuth();
-  const { t } = useTranslation("common");
   const [showEmail, setShowEmail] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -243,7 +219,6 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
 
   const handleGoogle = async () => {
     await signInWithGoogle();
-    // OAuth redirects — onSuccess will be called after redirect back
   };
 
   const handleEmail = async (e: React.FormEvent) => {
@@ -255,7 +230,7 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
       onOpenChange(false);
       onSuccess?.();
     } catch {
-      setError(t("loginError", "Identifiants invalides"));
+      setError("Identifiants invalides");
     } finally {
       setLoading(false);
     }
@@ -277,12 +252,7 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
         </DialogHeader>
 
         <div className="space-y-4 pt-2">
-          {/* Google OAuth */}
-          <Button
-            variant="outline"
-            className="w-full h-11 gap-2"
-            onClick={handleGoogle}
-          >
+          <Button variant="outline" className="w-full h-11 gap-2" onClick={handleGoogle}>
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -292,7 +262,6 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
             Continuer avec Google
           </Button>
 
-          {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -302,13 +271,8 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
             </div>
           </div>
 
-          {/* Email form */}
           {!showEmail ? (
-            <Button
-              variant="ghost"
-              className="w-full gap-2 text-muted-foreground"
-              onClick={() => setShowEmail(true)}
-            >
+            <Button variant="ghost" className="w-full gap-2 text-muted-foreground" onClick={() => setShowEmail(true)}>
               <Mail className="h-4 w-4" />
               Se connecter par email
             </Button>
@@ -316,23 +280,11 @@ export function LoginDialog({ open, onOpenChange, onSuccess }: LoginDialogProps)
             <form onSubmit={handleEmail} className="space-y-3">
               <div>
                 <Label htmlFor="login-email">Email</Label>
-                <Input
-                  id="login-email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <Input id="login-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               <div>
                 <Label htmlFor="login-password">Mot de passe</Label>
-                <Input
-                  id="login-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                <Input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
               <Button type="submit" className="w-full" disabled={loading}>
@@ -375,19 +327,19 @@ git commit -m "feat(auth): add reusable login dialog component"
 
 **Step 1: Create the DocumentLibrary component**
 
-This component renders the full library section: jurisdiction tabs, category accordions, document cards with "Consulter" button.
+This renders: jurisdiction tabs, category accordions, document cards with "Consulter" button (soft gate).
 
 ```typescript
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { FileText, Globe, ChevronRight, FileDown } from "lucide-react";
+import { FileText, Globe, FileDown } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { usePublicDocuments, useDocumentUrl } from "@/hooks/usePublicDocuments";
+import { usePublicDocuments } from "@/hooks/usePublicDocuments";
 import { useAuth } from "@/lib/auth";
 import { LoginDialog } from "@/components/auth/LoginDialog";
 import { JURISDICTIONS } from "@/types/public-documents";
@@ -396,28 +348,25 @@ import type { Jurisdiction, PublicDocument } from "@/types/public-documents";
 export function DocumentLibrary() {
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction>("quebec");
   const [loginOpen, setLoginOpen] = useState(false);
-  const [pendingDoc, setPendingDoc] = useState<string | null>(null);
+  const [pendingUrl, setPendingUrl] = useState<string | null>(null);
   const { user } = useAuth();
   const { data: categories, isLoading } = usePublicDocuments(jurisdiction);
-  const { getSignedUrl } = useDocumentUrl();
 
-  const handleConsult = useCallback(async (doc: PublicDocument) => {
+  const handleConsult = useCallback((doc: PublicDocument) => {
     if (!user) {
-      setPendingDoc(doc.storage_path);
+      setPendingUrl(doc.file_url);
       setLoginOpen(true);
       return;
     }
-    const url = await getSignedUrl(doc.storage_path);
-    if (url) window.open(url, "_blank");
-  }, [user, getSignedUrl]);
+    window.open(doc.file_url, "_blank");
+  }, [user]);
 
-  const handleLoginSuccess = useCallback(async () => {
-    if (pendingDoc) {
-      const url = await getSignedUrl(pendingDoc);
-      if (url) window.open(url, "_blank");
-      setPendingDoc(null);
+  const handleLoginSuccess = useCallback(() => {
+    if (pendingUrl) {
+      window.open(pendingUrl, "_blank");
+      setPendingUrl(null);
     }
-  }, [pendingDoc, getSignedUrl]);
+  }, [pendingUrl]);
 
   return (
     <>
@@ -491,11 +440,7 @@ export function DocumentLibrary() {
                           <AccordionContent className="pb-5">
                             <div className="space-y-3">
                               {cat.documents.map((doc) => (
-                                <DocumentCard
-                                  key={doc.id}
-                                  doc={doc}
-                                  onConsult={() => handleConsult(doc)}
-                                />
+                                <DocumentCard key={doc.id} doc={doc} onConsult={() => handleConsult(doc)} />
                               ))}
                             </div>
                           </AccordionContent>
@@ -518,18 +463,10 @@ export function DocumentLibrary() {
         </div>
       </section>
 
-      <LoginDialog
-        open={loginOpen}
-        onOpenChange={setLoginOpen}
-        onSuccess={handleLoginSuccess}
-      />
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} onSuccess={handleLoginSuccess} />
     </>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Document Card (sub-component)                                      */
-/* ------------------------------------------------------------------ */
 
 function DocumentCard({ doc, onConsult }: { doc: PublicDocument; onConsult: () => void }) {
   return (
@@ -591,7 +528,7 @@ Expected: Zero errors.
 
 ```bash
 git add src/components/resources/DocumentLibrary.tsx
-git commit -m "feat(resources): add DocumentLibrary component with tabs, accordions, and auth gate"
+git commit -m "feat(resources): add DocumentLibrary component with tabs, accordions, and soft gate"
 ```
 
 ---
@@ -611,18 +548,13 @@ import { DocumentLibrary } from "@/components/resources/DocumentLibrary";
 
 **Step 2: Replace the Guides section**
 
-Find the section with id="guides" (the first content section after the hero). This includes:
-- The `guides` data array (4 items with icons, titles, descriptions, badges)
-- The section JSX with the grid of 4 guide cards
-- Any related icon imports that are only used for the guides (Book, Shield, etc.)
-
-Replace the entire guides section JSX (from the section opening tag through the closing tag) with:
+Find the section with id="guides" (the first content section after the hero, around lines 71-132). Replace the entire guides section JSX with:
 
 ```tsx
 <DocumentLibrary />
 ```
 
-Remove the `guides` data array and any unused imports (icons that were only used in the guides section).
+Remove the `guides` data array and any unused imports (icons only used in the guides section).
 
 **Step 3: Verify build and preview**
 
@@ -632,7 +564,6 @@ Expected: Zero errors.
 Preview: Navigate to `/ressources` and verify:
 - The DocumentLibrary renders with jurisdiction tabs
 - The 3 other sections (Boîte à outils, Veille réglementaire, Études de cas) still appear below
-- The tabs default to "Québec"
 - Empty state shows "Documents à venir" (until we seed data)
 
 **Step 4: Commit**
@@ -644,20 +575,17 @@ git commit -m "feat(resources): replace Guides section with DocumentLibrary"
 
 ---
 
-### Task 6: Create Supabase Storage bucket and seed data script
+### Task 6: Copy documents to public folder and seed metadata
 
 **Files:**
 - Create: `scripts/seed-public-documents.ts`
+- Create: `public/documents/` (directory with copied files)
 
 **Step 1: Create the seed script**
 
 This script:
-1. Creates the `public-documents` bucket in Supabase Storage (if not exists)
-2. Reads the RAG folder structure from local disk
-3. Uploads files to Supabase Storage
-4. Inserts metadata rows into `public_documents` table
-
-The script uses the Supabase service role key (from env) for admin access.
+1. Copies files from the local RAG folder to `/public/documents/`
+2. Inserts metadata rows into `public_documents` table
 
 ```typescript
 /**
@@ -667,9 +595,10 @@ The script uses the Supabase service role key (from env) for admin access.
  *   npx tsx scripts/seed-public-documents.ts
  *
  * Requires env vars:
- *   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+ *   SUPABASE_URL (or VITE_SUPABASE_URL), SUPABASE_SERVICE_ROLE_KEY
  *
  * Reads documents from: C:\Users\fbrom\OneDrive\Desktop\Gouvernance\RAG\
+ * Copies to: ./public/documents/
  */
 import { createClient } from "@supabase/supabase-js";
 import * as fs from "fs";
@@ -678,7 +607,7 @@ import * as path from "path";
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const RAG_ROOT = "C:/Users/fbrom/OneDrive/Desktop/Gouvernance/RAG";
-const BUCKET = "public-documents";
+const PUBLIC_DIR = path.resolve("public/documents");
 
 const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
 
@@ -690,24 +619,8 @@ const JURISDICTION_MAP: Record<string, string> = {
   "USA": "usa",
 };
 
-async function ensureBucket() {
-  const { data: buckets } = await supabase.storage.listBuckets();
-  if (!buckets?.find((b) => b.name === BUCKET)) {
-    const { error } = await supabase.storage.createBucket(BUCKET, { public: false });
-    if (error) throw new Error(`Failed to create bucket: ${error.message}`);
-    console.log(`Created bucket: ${BUCKET}`);
-  } else {
-    console.log(`Bucket exists: ${BUCKET}`);
-  }
-}
-
 function getFileType(filename: string): "pdf" | "html" {
   return filename.endsWith(".html") ? "html" : "pdf";
-}
-
-function getMimeType(filename: string): string {
-  if (filename.endsWith(".html")) return "text/html";
-  return "application/pdf";
 }
 
 async function seedJurisdiction(folderName: string) {
@@ -720,7 +633,6 @@ async function seedJurisdiction(folderName: string) {
   const jurisdictionPath = path.join(RAG_ROOT, folderName);
   const entries = fs.readdirSync(jurisdictionPath, { withFileTypes: true });
 
-  // Skip index file, process only directories
   const categoryDirs = entries
     .filter((e) => e.isDirectory())
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -733,6 +645,10 @@ async function seedJurisdiction(folderName: string) {
       .replace(/^\d+-/, "")
       .replace(/-/g, " ");
 
+    // Create target directory
+    const targetDir = path.join(PUBLIC_DIR, jurisdiction, categorySlug);
+    fs.mkdirSync(targetDir, { recursive: true });
+
     const files = fs.readdirSync(catPath)
       .filter((f) => f.endsWith(".pdf") || f.endsWith(".html"))
       .sort();
@@ -741,23 +657,13 @@ async function seedJurisdiction(folderName: string) {
 
     for (let docIdx = 0; docIdx < files.length; docIdx++) {
       const fileName = files[docIdx];
-      const filePath = path.join(catPath, fileName);
-      const storagePath = `${jurisdiction}/${categorySlug}/${fileName}`;
+      const srcPath = path.join(catPath, fileName);
+      const destPath = path.join(targetDir, fileName);
+      const fileUrl = `/documents/${jurisdiction}/${categorySlug}/${fileName}`;
       const fileType = getFileType(fileName);
 
-      // Upload file to storage
-      const fileBuffer = fs.readFileSync(filePath);
-      const { error: uploadError } = await supabase.storage
-        .from(BUCKET)
-        .upload(storagePath, fileBuffer, {
-          contentType: getMimeType(fileName),
-          upsert: true,
-        });
-
-      if (uploadError) {
-        console.error(`    FAIL upload ${fileName}: ${uploadError.message}`);
-        continue;
-      }
+      // Copy file
+      fs.copyFileSync(srcPath, destPath);
 
       // Derive a human-readable title from filename
       const title = fileName
@@ -765,7 +671,7 @@ async function seedJurisdiction(folderName: string) {
         .replace(/\.(pdf|html)$/, "")
         .replace(/-/g, " ");
 
-      // Insert metadata (summaries will be filled manually or via AI later)
+      // Insert metadata
       const { error: insertError } = await supabase
         .from("public_documents")
         .upsert({
@@ -777,14 +683,14 @@ async function seedJurisdiction(folderName: string) {
           title,
           file_name: fileName,
           file_type: fileType,
-          storage_path: storagePath,
+          file_url: fileUrl,
           summary_purpose: "",
           summary_content: "",
           summary_governance: "",
           document_order: docIdx,
           is_published: true,
         }, {
-          onConflict: "storage_path",
+          onConflict: "file_url",
           ignoreDuplicates: false,
         });
 
@@ -799,7 +705,7 @@ async function seedJurisdiction(folderName: string) {
 
 async function main() {
   console.log("=== Seeding public document library ===\n");
-  await ensureBucket();
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 
   const folders = fs.readdirSync(RAG_ROOT, { withFileTypes: true })
     .filter((e) => e.isDirectory())
@@ -811,32 +717,23 @@ async function main() {
   }
 
   console.log("\n=== Done ===");
+  console.log(`Files copied to: ${PUBLIC_DIR}`);
+  console.log("Remember to commit the public/documents/ folder.");
 }
 
 main().catch(console.error);
 ```
 
-**Step 2: Add a unique constraint for upsert**
-
-The seed script uses `upsert` on `storage_path`. Add a migration:
-
-Create `supabase/migrations/20260227000002_public_documents_unique_path.sql`:
-
-```sql
-ALTER TABLE public.public_documents
-  ADD CONSTRAINT public_documents_storage_path_key UNIQUE (storage_path);
-```
-
-**Step 3: Run the seed script**
+**Step 2: Run the seed script**
 
 Run: `npx tsx scripts/seed-public-documents.ts`
-Expected: All 40 Québec documents uploaded + inserted. Other jurisdictions processed too.
+Expected: Files copied to `public/documents/`, metadata inserted in Supabase.
 
-**Step 4: Commit**
+**Step 3: Commit**
 
 ```bash
-git add scripts/seed-public-documents.ts supabase/migrations/20260227000002_public_documents_unique_path.sql
-git commit -m "feat(docs): add seed script for public document library"
+git add scripts/seed-public-documents.ts public/documents/
+git commit -m "feat(docs): add seed script and copy documents to public folder"
 ```
 
 ---
@@ -848,7 +745,7 @@ git commit -m "feat(docs): add seed script for public document library"
 
 **Step 1: Create the summary generation script**
 
-This script reads each document from `public_documents` that has empty summaries, fetches the file from storage, and uses Claude (or OpenAI) to generate the 3 summary fields. This is run once after seeding.
+This script reads each document from `public_documents` with empty summaries and uses Claude to generate the 3 summary fields.
 
 ```typescript
 /**
@@ -857,23 +754,26 @@ This script reads each document from `public_documents` that has empty summaries
  * Usage:
  *   ANTHROPIC_API_KEY=... npx tsx scripts/generate-document-summaries.ts
  *
- * Generates 3 structured summaries per document:
- *   - summary_purpose: À quoi sert ce document
- *   - summary_content: De quoi il est composé
- *   - summary_governance: Comment il sert la gouvernance IA
+ * Requires: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, ANTHROPIC_API_KEY
  */
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const BUCKET = "public-documents";
 
 const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
 const anthropic = new Anthropic();
 
+const JURISDICTION_LABELS: Record<string, string> = {
+  quebec: "le Québec",
+  canada: "le Canada",
+  france: "la France",
+  europe: "l'Union européenne",
+  usa: "les États-Unis",
+};
+
 async function generateSummaries() {
-  // Get documents with empty summaries
   const { data: docs, error } = await supabase
     .from("public_documents")
     .select("*")
@@ -888,7 +788,6 @@ async function generateSummaries() {
   for (const doc of docs) {
     console.log(`Processing: ${doc.jurisdiction}/${doc.file_name}`);
 
-    // For HTML files or PDFs, generate summary from title + context
     const prompt = `Tu es un expert en gouvernance de l'IA. Pour le document suivant, génère 3 résumés courts (1-2 phrases chacun) en français:
 
 Titre: ${doc.title}
@@ -900,7 +799,7 @@ Réponds en JSON strict:
 {
   "summary_purpose": "À quoi sert ce document (1-2 phrases)",
   "summary_content": "De quoi il est composé / ses sections principales (1-2 phrases)",
-  "summary_governance": "Comment il sert la gouvernance de l'IA dans le contexte de ${doc.jurisdiction === "quebec" ? "le Québec" : doc.jurisdiction === "canada" ? "le Canada" : doc.jurisdiction === "france" ? "la France" : doc.jurisdiction === "europe" ? "l'Union européenne" : "les États-Unis"} (1-2 phrases)"
+  "summary_governance": "Comment il sert la gouvernance de l'IA dans le contexte de ${JURISDICTION_LABELS[doc.jurisdiction] || doc.jurisdiction} (1-2 phrases)"
 }`;
 
     try {
@@ -934,7 +833,6 @@ Réponds en JSON strict:
         console.log(`  OK`);
       }
 
-      // Rate limit: 100ms between calls
       await new Promise((r) => setTimeout(r, 100));
     } catch (err) {
       console.log(`  FAIL AI: ${err}`);
@@ -976,7 +874,7 @@ Check the following:
 - [ ] Click accordion → documents expand with title + summaries
 - [ ] Click "Consulter" when NOT logged in → login dialog opens
 - [ ] Login via Google → dialog closes, document opens in new tab
-- [ ] Click "Consulter" when logged in → document opens directly
+- [ ] Click "Consulter" when logged in → document opens directly in new tab
 - [ ] Switch tabs (Canada, Europe, etc.) → content updates
 - [ ] Empty jurisdictions show "Documents à venir" placeholder
 - [ ] The 3 other sections (Boîte à outils, Veille, Études de cas) still work

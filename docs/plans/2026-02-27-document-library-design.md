@@ -1,10 +1,10 @@
 # Design : Bibliothèque documentaire publique
 
-> Date : 2026-02-27
+> Date : 2026-02-27 (v2 — approche fichiers statiques)
 
 ## Contexte
 
-La section "Guides et cadres de référence" de `/ressources` est remplacée par une bibliothèque documentaire structurée par juridiction. Les métadonnées (titre, résumé) sont visibles publiquement. L'accès aux fichiers nécessite une connexion.
+La section "Guides et cadres de référence" de `/ressources` est remplacée par une bibliothèque documentaire structurée par juridiction. Les métadonnées (titre, résumé) sont visibles publiquement. L'accès aux fichiers est soft-gaté (popup de connexion côté UI, fichiers techniquement publics pour le SEO).
 
 Source de données : dossier RAG local avec 5 juridictions (Québec, Canada, Europe, France, USA), chacune contenant des catégories thématiques et des documents PDF/HTML.
 
@@ -42,7 +42,7 @@ Visible publiquement :
 - Badge de la juridiction
 
 Bouton **"Consulter"** :
-- Utilisateur connecté → ouvre le fichier (URL signée Supabase, durée 1h)
+- Utilisateur connecté → ouvre le fichier directement (URL statique)
 - Utilisateur non connecté → popup de connexion rapide (modal Dialog)
 
 ## Modèle de données
@@ -60,7 +60,7 @@ Bouton **"Consulter"** :
 | title | text | Titre du document |
 | file_name | text | Nom du fichier original |
 | file_type | text | 'pdf' ou 'html' |
-| storage_path | text | Chemin dans Supabase Storage |
+| file_url | text | URL relative : `/documents/quebec/01-declaration-montreal/fichier.pdf` |
 | summary_purpose | text | À quoi sert le document |
 | summary_content | text | De quoi il est composé |
 | summary_governance | text | Comment il sert la gouvernance IA |
@@ -72,23 +72,29 @@ Bouton **"Consulter"** :
 ### RLS (Row Level Security)
 
 - **SELECT** : tout le monde peut lire les métadonnées (WHERE is_published = true)
-- **storage_path** : l'URL signée n'est générée que côté client après vérification auth
 
 ## Stockage des fichiers
 
-- **Bucket Supabase Storage** : `public-documents` (nouveau, séparé du bucket `documents` privé)
-- **Structure** : `{jurisdiction}/{category_slug}/{file_name}`
-- **Accès** : bucket privé, URL signées (durée 1h) générées après authentification
-- **Upload initial** : script de migration pour uploader les fichiers du dossier RAG local
+- **Fichiers statiques** dans `/public/documents/{jurisdiction}/{category_slug}/{file_name}`
+- Servis par Netlify CDN (gratuit, rapide, indexable par Google)
+- URLs stables et permanentes : `votresite.com/documents/quebec/.../fichier.pdf`
+- **Coût supplémentaire : 0 $**
 
-## Flow d'authentification
+### Ajouter un document
+
+1. Déposer le fichier dans `/public/documents/{juridiction}/{catégorie}/`
+2. Ajouter une ligne dans la table `public_documents` (via dashboard Supabase ou script)
+
+## Flow d'authentification (soft gate)
 
 1. Utilisateur non connecté clique "Consulter"
 2. Dialog modal s'ouvre avec les options de connexion (Google OAuth + email/mot de passe)
 3. Après connexion réussie, le modal se ferme
-4. Le document s'ouvre automatiquement (URL signée générée)
+4. Le document s'ouvre automatiquement (URL statique)
 
 Réutilise le composant de connexion existant dans un `Dialog` Shadcn.
+
+**Note :** Les fichiers sont techniquement publics (accessibles par URL directe), mais l'UX guide l'utilisateur vers la connexion. Cela permet le SEO tout en incitant à l'inscription.
 
 ## Ce qui ne change pas
 
