@@ -106,7 +106,13 @@ export function ArticlePage() {
 
   return (
     <>
-      <SEO title={article.title} description={article.excerpt} />
+      <SEO
+        title={article.title}
+        description={article.excerpt}
+        type="article"
+        publishedTime={article.date}
+        authorName={author?.name}
+      />
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "NewsArticle",

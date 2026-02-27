@@ -11,6 +11,10 @@ interface SEOProps {
   image?: string;
   type?: string;
   noindex?: boolean;
+  /** ISO date string for article pages */
+  publishedTime?: string;
+  /** Author name for article pages */
+  authorName?: string;
 }
 
 /**
@@ -23,6 +27,8 @@ export function SEO({
   image,
   type = "website",
   noindex = false,
+  publishedTime,
+  authorName,
 }: SEOProps) {
   const { pathname } = useLocation();
 
@@ -79,7 +85,17 @@ export function SEO({
     setMeta("name", "twitter:title", fullTitle);
     setMeta("name", "twitter:description", desc);
     setMeta("name", "twitter:image", img);
-  }, [fullTitle, desc, img, url, type, noindex]);
+
+    // Article-specific meta
+    if (publishedTime) {
+      setMeta("property", "article:published_time", publishedTime);
+      setMeta("property", "article:author", authorName ?? "");
+    }
+
+    // Always set locale and site name
+    setMeta("property", "og:locale", "fr_CA");
+    setMeta("property", "og:site_name", SITE_NAME);
+  }, [fullTitle, desc, img, url, type, noindex, publishedTime, authorName]);
 
   return null;
 }
