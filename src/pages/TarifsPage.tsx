@@ -6,7 +6,7 @@ import { Check, X, ArrowRight, Eye, Users, Crown, Shield } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 import { cn } from "@/lib/utils";
 import { PLANS, type PlanId } from "@/lib/stripe";
 import { useAuth } from "@/lib/auth";
@@ -229,6 +229,42 @@ export function TarifsPage() {
         title="Tarifs"
         description="Rejoignez le Cercle gouvernance.ai : Observateur, Membre ou Expert. Choisissez le niveau d'adhésion adapté à votre gouvernance IA."
       />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Membership — Cercle de Gouvernance de l'IA",
+        "description": "Accédez aux ressources, événements et au réseau d'experts en gouvernance de l'IA.",
+        "brand": {
+          "@type": "Organization",
+          "name": "Cercle de Gouvernance de l'IA",
+        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Observateur",
+            "price": "0",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "description": "Accès gratuit aux ressources de base",
+          },
+          {
+            "@type": "Offer",
+            "name": "Membre",
+            "price": "99",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "description": "Accès complet aux ressources et événements",
+          },
+          {
+            "@type": "Offer",
+            "name": "Expert",
+            "price": "499",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "description": "Accès premium avec accompagnement personnalisé",
+          },
+        ],
+      }} />
 
       {/* ============================================================ */}
       {/*  HERO — compact, everything above the fold                    */}
