@@ -254,7 +254,7 @@ export function TarifsPage() {
           {
             "@type": "Offer",
             "name": "Membre",
-            "price": "99",
+            "price": "149",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
             "description": "Accès complet aux ressources et événements",

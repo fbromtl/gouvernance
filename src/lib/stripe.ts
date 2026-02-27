@@ -41,8 +41,8 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   },
   member: {
     id: 'member',
-    monthlyPrice: 99,
-    yearlyPrice: 950,
+    monthlyPrice: 149,
+    yearlyPrice: 1430,
     monthlyPriceId: 'price_1T3nfmGxmyz5JooX0eHr5UID',
     yearlyPriceId: 'price_1T3nfnGxmyz5JooXt3KF9w7O',
     maxMembers: 10,
@@ -88,19 +88,19 @@ export type Currency = 'CAD' | 'EUR' | 'USD';
 export const CURRENCY_PRICES: Record<Currency, Record<PlanId, { monthly: number; yearly: number }>> = {
   CAD: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 99, yearly: 950 },
+    member:   { monthly: 149, yearly: 1430 },
     expert:   { monthly: 499, yearly: 4790 },
     honorary: { monthly: 0, yearly: 0 },
   },
   EUR: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 59, yearly: 588 },
+    member:   { monthly: 89, yearly: 858 },
     expert:   { monthly: 299, yearly: 2868 },
     honorary: { monthly: 0, yearly: 0 },
   },
   USD: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 69, yearly: 660 },
+    member:   { monthly: 99, yearly: 950 },
     expert:   { monthly: 349, yearly: 3348 },
     honorary: { monthly: 0, yearly: 0 },
   },
