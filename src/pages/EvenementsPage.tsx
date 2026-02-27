@@ -3,7 +3,7 @@ import { ArrowRight, Calendar, MapPin } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 const upcomingEvents = [
   {
@@ -55,6 +55,26 @@ export function EvenementsPage() {
   return (
     <>
       <SEO title="Événements" description="Participez aux événements du Cercle de Gouvernance de l'IA : conférences, tables rondes, ateliers sur la gouvernance responsable de l'intelligence artificielle." />
+      {upcomingEvents.map((evt, i) => (
+        <JsonLd key={i} data={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": evt.title,
+          "description": evt.description,
+          "startDate": evt.date,
+          "location": evt.location === "En ligne"
+            ? { "@type": "VirtualLocation", "url": "https://gouvernance.ai/evenements" }
+            : { "@type": "Place", "name": evt.location, "address": evt.location },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Cercle de Gouvernance de l'IA",
+            "url": "https://gouvernance.ai",
+          },
+          "eventAttendanceMode": evt.location === "En ligne"
+            ? "https://schema.org/OnlineEventAttendanceMode"
+            : "https://schema.org/OfflineEventAttendanceMode",
+        }} />
+      ))}
       <div className="overflow-x-hidden">
       {/* HERO */}
       <section
