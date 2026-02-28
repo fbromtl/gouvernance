@@ -8,11 +8,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SEO } from "@/components/SEO";
 import { DocumentLibraryPreview } from "@/components/resources/DocumentLibraryPreview";
+import { VeilleShowcase } from "@/components/resources/VeilleShowcase";
 
 const outils = [
   "Checklist de conformité Loi 25 pour l'IA",
@@ -20,16 +19,6 @@ const outils = [
   "Template de politique d'IA générative",
   "FAQ juridique — IA et protection des données",
 ];
-
-const veilleContent = {
-  quebec:
-    "Loi 25 en vigueur, cadre MCN publié décembre 2025, 12 principes éthiques. Les organisations doivent adapter leurs pratiques de gouvernance IA aux exigences québécoises.",
-  canada:
-    "C-27 mort au feuilleton, LPRPDE/PIPEDA active, approche codes volontaires. Le Canada poursuit une stratégie d'IA responsable centrée sur les principes directeurs.",
-  ue: "AI Act en déploiement progressif 2024-2027, approche basée sur les risques. Classification par niveaux de risque : inacceptable, élevé, limité, minimal.",
-  international:
-    "OCDE, UNESCO, ISO 42001, IEEE 7000. Les cadres internationaux convergent vers des principes communs : transparence, redevabilité, équité.",
-};
 
 const etudesDeCas = [
   "Implantation d'un cadre de gouvernance IA dans une institution financière",
@@ -121,54 +110,7 @@ export function RessourcesPage() {
             </p>
           </div>
 
-          <Tabs defaultValue="quebec" className="w-full max-w-3xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto rounded-full bg-neutral-100 border border-neutral-200 p-1.5">
-              <TabsTrigger value="quebec" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                Québec
-              </TabsTrigger>
-              <TabsTrigger value="canada" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                Canada
-              </TabsTrigger>
-              <TabsTrigger value="ue" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                Union européenne
-              </TabsTrigger>
-              <TabsTrigger value="international" className="text-xs sm:text-sm py-2 rounded-full data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                International
-              </TabsTrigger>
-            </TabsList>
-            <div className="mt-6">
-              <TabsContent value="quebec" className="mt-0">
-                <Card className="rounded-3xl border border-neutral-200">
-                  <CardContent className="pt-6">
-                    <p className="text-neutral-600 leading-relaxed">{veilleContent.quebec}</p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="canada" className="mt-0">
-                <Card className="rounded-3xl border border-neutral-200">
-                  <CardContent className="pt-6">
-                    <p className="text-neutral-600 leading-relaxed">{veilleContent.canada}</p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="ue" className="mt-0">
-                <Card className="rounded-3xl border border-neutral-200">
-                  <CardContent className="pt-6">
-                    <p className="text-neutral-600 leading-relaxed">{veilleContent.ue}</p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="international" className="mt-0">
-                <Card className="rounded-3xl border border-neutral-200">
-                  <CardContent className="pt-6">
-                    <p className="text-neutral-600 leading-relaxed">
-                      {veilleContent.international}
-                    </p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </div>
-          </Tabs>
+          <VeilleShowcase />
 
           <div className="text-center mt-10">
             <Link
