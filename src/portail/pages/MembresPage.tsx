@@ -1,9 +1,10 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Search, Users } from "lucide-react";
+import { Search, Users, Lock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MemberCard } from "@/components/shared/MemberCard";
 import { useMembers } from "@/hooks/useMembers";
@@ -107,16 +108,77 @@ export default function MembresPage() {
   }
 
   /* ================================================================ */
-  /*  Observer redirect                                                */
+  /*  Observer FOMO teaser                                             */
   /* ================================================================ */
 
-  useEffect(() => {
-    if (isObserver) {
-      navigate("/billing", { replace: true });
-    }
-  }, [isObserver, navigate]);
+  if (isObserver) {
+    return (
+      <div className="space-y-8">
+        {/* Page header */}
+        <div>
+          <div className="flex items-center gap-3">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              {t("pageTitle")}
+            </h1>
+            <Badge variant="secondary" className="text-xs">
+              <Users className="h-3 w-3 mr-1" />
+              {t("memberCount", { count: members.length })}
+            </Badge>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">
+            {t("pageDescription")}
+          </p>
+        </div>
 
-  if (isObserver) return null;
+        {/* Blurred member cards with overlay */}
+        <div className="relative">
+          {/* Blurred cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 select-none" aria-hidden="true">
+            {[0, 1, 2].map((i) => (
+              <MemberCard
+                key={i}
+                blurred
+                member={{
+                  id: `placeholder-${i}`,
+                  full_name: null,
+                  avatar_url: null,
+                  job_title: null,
+                  bio: null,
+                  linkedin_url: null,
+                  member_slug: null,
+                  organization_name: null,
+                  plan: "member",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Centered overlay CTA */}
+          <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-[2px] rounded-xl">
+            <Card className="w-full max-w-md mx-4 shadow-xl border-brand-purple/20">
+              <CardContent className="flex flex-col items-center text-center p-8 space-y-4">
+                <div className="h-12 w-12 rounded-full bg-brand-purple/10 flex items-center justify-center">
+                  <Lock className="h-6 w-6 text-brand-purple" />
+                </div>
+                <h2 className="text-xl font-bold text-foreground">
+                  {t("teaser.title")}
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {t("teaser.description", { count: members.length })}
+                </p>
+                <Button
+                  className="bg-brand-purple hover:bg-brand-purple-dark text-white mt-2"
+                  onClick={() => navigate("/billing")}
+                >
+                  {t("teaser.cta")}
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   /* ================================================================ */
   /*  Full member directory                                            */
