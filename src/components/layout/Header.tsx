@@ -10,8 +10,6 @@ import {
   ChevronDown,
   ArrowRight,
   BookOpen,
-
-  FileText,
   Shield,
   Globe,
   Users,
