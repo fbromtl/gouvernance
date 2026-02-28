@@ -17,56 +17,40 @@ const ECOSYSTEM = [
   { name: "Montréal International", logo: "/logos/ecosystem/montreal-international.svg", url: "https://www.montrealinternational.com" },
 ];
 
-const CATEGORIES = [
-  "Recherche & Innovation",
-  "Gouvernement & Régulateurs",
-  "Industrie & Accélération",
-];
-
 export function EcosystemMarquee() {
   // Duplicate items for seamless loop
   const items = [...ECOSYSTEM, ...ECOSYSTEM];
 
   return (
-    <section className="bg-neutral-50 py-12 overflow-hidden">
+    <section className="bg-white py-16 overflow-hidden">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-xl font-semibold text-neutral-900 mb-3">
+      <div className="text-center mb-10">
+        <h2 className="text-lg font-semibold text-neutral-800">
           Découvrez l'écosystème
         </h2>
-        <div className="flex flex-wrap justify-center gap-2">
-          {CATEGORIES.map((cat) => (
-            <span
-              key={cat}
-              className="text-xs text-neutral-500 bg-neutral-100 rounded-full px-3 py-1"
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
       </div>
 
       {/* Marquee */}
-      <div className="relative group">
+      <div className="relative group max-w-4xl mx-auto overflow-hidden">
         {/* Edge masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-neutral-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-neutral-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling track */}
-        <div className="flex items-center gap-12 animate-marquee group-hover:[animation-play-state:paused]">
+        <div className="flex items-center gap-16 animate-marquee group-hover:[animation-play-state:paused]">
           {items.map((entity, i) => (
             <a
               key={`${entity.name}-${i}`}
               href={entity.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              className="shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-90 transition-all duration-300"
               title={entity.name}
             >
               <img
                 src={entity.logo}
                 alt={entity.name}
-                className="h-8 w-auto object-contain"
+                className="h-7 w-auto object-contain"
                 loading="lazy"
               />
             </a>
@@ -81,7 +65,7 @@ export function EcosystemMarquee() {
           to { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 40s linear infinite;
         }
         @media (prefers-reduced-motion: reduce) {
           .animate-marquee {
