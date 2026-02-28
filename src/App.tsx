@@ -9,9 +9,9 @@ import { HomePage } from "@/pages/HomePage";
 import { AProposPage } from "@/pages/AProposPage";
 import { ExpertsPage } from "@/pages/ExpertsPage";
 import { RessourcesPage } from "@/pages/RessourcesPage";
-import { EvenementsPage } from "@/pages/EvenementsPage";
+
 import { RejoindrePage } from "@/pages/RejoindrePage";
-import { OrganisationsPage } from "@/pages/OrganisationsPage";
+
 import { ActualitesPage } from "@/pages/ActualitesPage";
 import { ArticlePage } from "@/pages/ArticlePage";
 import { ContactPage } from "@/pages/ContactPage";
@@ -118,9 +118,9 @@ function App() {
             <Route path="/a-propos" element={<AProposPage />} />
             <Route path="/experts" element={<ExpertsPage />} />
             <Route path="/ressources" element={<RessourcesPage />} />
-            <Route path="/evenements" element={<EvenementsPage />} />
+
             <Route path="/rejoindre" element={<RejoindrePage />} />
-            <Route path="/organisations" element={<OrganisationsPage />} />
+
             <Route path="/actualites" element={<ActualitesPage />} />
             <Route path="/actualites/:slug" element={<ArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />

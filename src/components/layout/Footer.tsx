@@ -39,8 +39,6 @@ const footerColumns = [
     links: [
       { to: "/tarifs", label: "Tarifs" },
       { to: "/diagnostic", label: "Diagnostic IA" },
-      { to: "/organisations", label: "Organisations" },
-      { to: "/evenements", label: "Événements" },
       { to: "/contact", label: "Contact" },
     ],
   },

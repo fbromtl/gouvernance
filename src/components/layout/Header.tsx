@@ -10,13 +10,11 @@ import {
   ChevronDown,
   ArrowRight,
   BookOpen,
-  Wrench,
+
   FileText,
   Shield,
   Globe,
   Users,
-  Calendar,
-  Building2,
   Newspaper,
   LogIn,
   LogOut,
@@ -209,8 +207,6 @@ export function Header() {
           <div className="col-span-1 p-5 border-r border-border/40">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-1">Communauté</p>
             {[
-              { to: "/evenements", label: "Événements", icon: Calendar },
-              { to: "/organisations", label: "Organisations", icon: Building2 },
               { to: "/actualites", label: "Actualités", icon: Newspaper },
               { to: "/contact", label: "Contact", icon: Mail },
             ].map((item) => (
@@ -255,116 +251,11 @@ export function Header() {
   );
 
   /* ---------------------------------------------------------------- */
-  /*  MEGA DROPDOWN: RESSOURCES                                        */
-  /* ---------------------------------------------------------------- */
-
-  const renderRessourcesMega = () => (
-    <div
-      className={cn(
-        "absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 w-[640px]",
-        openDropdown === "ressources" ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
-      )}
-    >
-      <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-border/50 overflow-hidden">
-        <div className="grid grid-cols-2">
-          {/* Col 1 — Links */}
-          <div className="p-5">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3 px-2">Bibliothèque</p>
-            {[
-              { to: "/ressources", label: "Guides et cadres", icon: BookOpen, desc: "Documents et gabarits téléchargeables" },
-              { to: "/ressources#outils", label: "Boîte à outils", icon: Wrench, desc: "Checklists, modèles et FAQ juridique" },
-              { to: "/ressources#veille", label: "Veille réglementaire", icon: Globe, desc: "Suivi des lois et règlements" },
-              { to: "/ressources#etudes", label: "Études de cas", icon: FileText, desc: "Exemples concrets par secteur" },
-            ].map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={close}
-                className={cn(
-                  "flex items-start gap-3 rounded-xl px-2 py-2.5 transition-colors group hover:bg-primary/5",
-                  isActive(item.to) && "bg-primary/5"
-                )}
-              >
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary mt-0.5 group-hover:bg-primary/12 transition-colors">
-                  <item.icon className="size-3.5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</div>
-                  <div className="text-xs text-muted-foreground/70 mt-0.5 leading-relaxed">{item.desc}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Col 2 — Feature card */}
-          <div className="p-5 bg-muted/30 border-l border-border/40 flex flex-col">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3">Dernière publication</p>
-            <div className="rounded-xl overflow-hidden mb-3">
-              <img
-                src="/images-gouvernance-ai/business-strategy.jpg"
-                alt="Ressources"
-                className="w-full h-28 object-cover"
-              />
-            </div>
-            <p className="text-sm font-bold text-foreground mb-1">Guide Loi 25 & IA</p>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              Tout ce que vous devez savoir sur la conformité de vos systèmes d&apos;IA à la Loi 25.
-            </p>
-            <Link
-              to="/ressources"
-              onClick={close}
-              className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-            >
-              Toutes les ressources
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  /* ---------------------------------------------------------------- */
   /*  RENDER                                                           */
   /* ---------------------------------------------------------------- */
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* TOP UTILITY BAR */}
-      <div className={cn(
-        "bg-[#1e1a30] text-white transition-all duration-300 overflow-hidden",
-        scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
-      )}>
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-10 text-xs">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a href="mailto:info@gouvernance.ai" className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
-              <Mail className="size-3.5" />
-              <span className="hidden sm:inline">info@gouvernance.ai</span>
-            </a>
-            <a href="tel:+15145551234" className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
-              <Phone className="size-3.5" />
-              <span className="hidden sm:inline">+1 (514) 555-1234</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <span className="hidden md:inline text-white/50 text-[11px]">Suivez-nous</span>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-white/70 hover:text-[#0A66C2] transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="size-3.5" />
-              <span className="hidden sm:inline">LinkedIn</span>
-            </a>
-            <Separator orientation="vertical" className="h-4 bg-white/20" />
-            <Link to="/contact" className="text-white/70 hover:text-white transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {/* MAIN NAVIGATION BAR */}
       <div className={cn(
@@ -396,17 +287,9 @@ export function Header() {
                 {renderCercleMega()}
               </div>
 
-              {/* Ressources mega */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter("ressources")}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <DropdownTrigger id="ressources">Ressources</DropdownTrigger>
-                {renderRessourcesMega()}
-              </div>
+              <NavLink to="/ressources">Ressources</NavLink>
 
-              <NavLink to="/tarifs">Tarifs</NavLink>
+              <NavLink to="/tarifs">Adhésion</NavLink>
             </div>
 
             <Separator orientation="vertical" className="h-6 mx-3" />
@@ -588,19 +471,12 @@ export function Header() {
                     <MobileNavLink to="/a-propos#approche" sub>Notre approche</MobileNavLink>
                     <MobileNavLink to="/a-propos#gouvernance" sub>Gouvernance du cercle</MobileNavLink>
                     <MobileNavLink to="/experts" active={isActive("/experts")} sub>Nos experts</MobileNavLink>
-                    <MobileNavLink to="/evenements" active={isActive("/evenements")} sub>Événements</MobileNavLink>
-                    <MobileNavLink to="/organisations" active={isActive("/organisations")} sub>Organisations</MobileNavLink>
                     <MobileNavLink to="/actualites" active={isActive("/actualites")} sub>Actualités</MobileNavLink>
                   </MobileDropdown>
 
-                  <MobileDropdown label="Ressources" active={isActive("/ressources")}>
-                    <MobileNavLink to="/ressources" active={isActive("/ressources")} sub>Guides et cadres</MobileNavLink>
-                    <MobileNavLink to="/ressources#outils" sub>Boîte à outils</MobileNavLink>
-                    <MobileNavLink to="/ressources#veille" sub>Veille réglementaire</MobileNavLink>
-                    <MobileNavLink to="/ressources#etudes" sub>Études de cas</MobileNavLink>
-                  </MobileDropdown>
+                  <MobileNavLink to="/ressources" active={isActive("/ressources")}>Ressources</MobileNavLink>
 
-                  <MobileNavLink to="/tarifs" active={isActive("/tarifs")}>Tarifs</MobileNavLink>
+                  <MobileNavLink to="/tarifs" active={isActive("/tarifs")}>Adhésion</MobileNavLink>
                   <MobileNavLink to="/contact" active={isActive("/contact")}>Contact</MobileNavLink>
                 </nav>
 
