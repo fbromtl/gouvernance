@@ -2,21 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Menu,
-  Search,
   X,
-  Linkedin,
   Mail,
   Phone,
+  Linkedin,
   ChevronDown,
+  ChevronRight,
   LogIn,
   LogOut,
   LayoutDashboard,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
 
@@ -30,11 +28,10 @@ export function Header() {
   const { user, profile, signOut, loading: authLoading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [bannerVisible, setBannerVisible] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
+
   const avatarUrl =
     profile?.avatar_url ??
     user?.user_metadata?.avatar_url ??
@@ -73,14 +70,7 @@ export function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setSearchOpen(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchOpen]);
 
   const isActive = (path: string) => {
     const basePath = path.split("#")[0];
@@ -88,32 +78,27 @@ export function Header() {
     return location.pathname.startsWith(basePath);
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      console.log("Search:", searchQuery);
-      setSearchOpen(false);
-      setSearchQuery("");
-    }
-  };
-
   /* ---------------------------------------------------------------- */
-  /*  NAV LINK                                                         */
+  /*  NAV LINK (desktop)                                               */
   /* ---------------------------------------------------------------- */
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
     <Link
       to={to}
       className={cn(
-        "px-3 py-2 text-sm font-medium transition-colors relative",
-        "text-foreground/70 hover:text-foreground",
-        isActive(to) && "text-primary"
+        "relative px-4 py-2 text-[13px] font-semibold tracking-wide transition-colors duration-200",
+        "text-neutral-500 hover:text-neutral-950",
+        isActive(to) && "text-neutral-950"
       )}
     >
       {children}
-      {isActive(to) && (
-        <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />
-      )}
+      {/* Animated underline */}
+      <span
+        className={cn(
+          "absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-primary transition-transform duration-300 origin-left",
+          isActive(to) ? "scale-x-100" : "scale-x-0"
+        )}
+      />
     </Link>
   );
 
@@ -124,154 +109,162 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
 
+      {/* PROMOTIONAL BANNER */}
+      <div
+        className={cn(
+          "overflow-hidden transition-all duration-500 ease-out",
+          bannerVisible ? "max-h-12" : "max-h-0"
+        )}
+      >
+        <div className="bg-gradient-to-r from-purple-50 via-violet-50/80 to-purple-50 border-b border-purple-100/60">
+          <div className="mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-2.5 relative">
+            <p className="text-[13px] text-purple-900/80 font-medium">
+              <span className="hidden sm:inline">
+                Testez gratuitement notre outil de gouvernance IA
+              </span>
+              <span className="sm:hidden">
+                Essayez l&apos;outil gratuitement
+              </span>
+            </p>
+            <Link
+              to="/rejoindre"
+              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-purple-700 hover:text-purple-900 transition-colors"
+            >
+              Essayer
+              <ChevronRight className="size-3.5" />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setBannerVisible(false)}
+              className="absolute right-4 sm:right-6 lg:right-8 p-1 rounded-md text-purple-400 hover:text-purple-700 hover:bg-purple-100/60 transition-colors"
+              aria-label="Fermer la bannière"
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* MAIN NAVIGATION BAR */}
-      <div className={cn(
-        "bg-white/98 backdrop-blur-md border-b transition-shadow duration-300",
-        scrolled ? "shadow-md border-border/50" : "border-border/30 shadow-sm"
-      )}>
-        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center hover:opacity-85 transition-opacity shrink-0">
+      <div
+        className={cn(
+          "bg-white/98 backdrop-blur-md border-b transition-all duration-300",
+          scrolled ? "shadow-md border-border/50" : "border-border/30 shadow-sm"
+        )}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
+
+          {/* LOGO — left */}
+          <Link
+            to="/"
+            className="flex items-center hover:opacity-85 transition-opacity shrink-0"
+          >
             <img
               src="/logo.svg"
               alt="Cercle de Gouvernance de l'IA"
-              className="h-8 sm:h-10 w-auto"
+              className="h-8 sm:h-9 w-auto"
             />
           </Link>
 
-          {/* Desktop Navigation — Simplified: 4 items */}
-          <nav className="hidden lg:flex items-center">
-            <div className="flex items-center gap-0.5">
-              <NavLink to="/">Accueil</NavLink>
-              <NavLink to="/a-propos">Le Cercle</NavLink>
-              <NavLink to="/ressources">Ressources</NavLink>
-              <NavLink to="/actualites">Actualités</NavLink>
-              <NavLink to="/tarifs">Adhésion</NavLink>
-            </div>
-
-            <Separator orientation="vertical" className="h-6 mx-3" />
-
-            {/* Utility icons */}
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={() => setSearchOpen(!searchOpen)}
-                className="flex items-center justify-center size-9 rounded-full text-foreground/60 hover:text-foreground hover:bg-muted transition-colors"
-                aria-label="Rechercher"
-              >
-                <Search className="size-4" />
-              </button>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center size-9 rounded-full text-foreground/60 hover:text-[#0A66C2] hover:bg-blue-50 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="size-4" />
-              </a>
-            </div>
-
-            {/* CTA + Auth */}
-            <div className="flex items-center gap-2 ml-3">
-              {!authLoading && !user && (
-                <Link
-                  to="/connexion"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5"
-                >
-                  Se connecter
-                </Link>
-              )}
-
-              <Button asChild size="sm" className="px-5">
-                <Link to="/rejoindre">Inscription gratuite</Link>
-              </Button>
-
-              {!authLoading && user && (
-                <div className="relative" ref={userMenuRef}>
-                  <button
-                    type="button"
-                    onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
-                  >
-                    {avatarUrl ? (
-                      <img
-                        src={avatarUrl}
-                        alt={displayName}
-                        className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
-                        {initials}
-                      </div>
-                    )}
-                    <ChevronDown
-                      className={cn(
-                        "size-3 text-muted-foreground transition-transform duration-200",
-                        userMenuOpen && "rotate-180"
-                      )}
-                    />
-                  </button>
-
-                  {/* User dropdown */}
-                  <div
-                    className={cn(
-                      "absolute top-full right-0 mt-2 w-56 rounded-xl bg-white shadow-xl shadow-black/10 border border-border/50 overflow-hidden transition-all duration-200",
-                      userMenuOpen
-                        ? "opacity-100 visible translate-y-0"
-                        : "opacity-0 invisible -translate-y-2"
-                    )}
-                  >
-                    <div className="px-4 py-3 border-b border-border/40">
-                      <p className="text-sm font-medium text-foreground truncate">
-                        {displayName}
-                      </p>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {user.email}
-                      </p>
-                    </div>
-                    <div className="p-1.5">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setUserMenuOpen(false);
-                          navigate("/portail");
-                        }}
-                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors"
-                      >
-                        <LayoutDashboard className="size-4" />
-                        Mon portail
-                      </button>
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          setUserMenuOpen(false);
-                          await signOut();
-                        }}
-                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-red-600/80 hover:text-red-600 hover:bg-red-50 transition-colors"
-                      >
-                        <LogOut className="size-4" />
-                        Se déconnecter
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+          {/* NAV — center (desktop only) */}
+          <nav className="hidden lg:flex items-center gap-1">
+            <NavLink to="/">Accueil</NavLink>
+            <NavLink to="/a-propos">Le Cercle</NavLink>
+            <NavLink to="/ressources">Ressources</NavLink>
+            <NavLink to="/actualites">Actualités</NavLink>
+            <NavLink to="/tarifs">Adhésion</NavLink>
           </nav>
 
-          {/* Mobile / Tablet */}
-          <div className="flex lg:hidden items-center gap-1.5">
-            <button
-              type="button"
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="flex items-center justify-center size-9 rounded-full text-foreground/60 hover:text-foreground hover:bg-muted transition-colors"
-              aria-label="Rechercher"
-            >
-              <Search className="size-4" />
-            </button>
+          {/* AUTH — right (desktop only) */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            {!authLoading && !user && (
+              <Link
+                to="/connexion"
+                className="text-[13px] font-medium text-neutral-500 hover:text-neutral-950 transition-colors px-3 py-1.5"
+              >
+                Se connecter
+              </Link>
+            )}
 
+            <Button asChild size="sm" className="px-5 text-[13px] font-semibold">
+              <Link to="/rejoindre">Inscription gratuite</Link>
+            </Button>
+
+            {!authLoading && user && (
+              <div className="relative" ref={userMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
+                >
+                  {avatarUrl ? (
+                    <img
+                      src={avatarUrl}
+                      alt={displayName}
+                      className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
+                      {initials}
+                    </div>
+                  )}
+                  <ChevronDown
+                    className={cn(
+                      "size-3 text-muted-foreground transition-transform duration-200",
+                      userMenuOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+
+                {/* User dropdown */}
+                <div
+                  className={cn(
+                    "absolute top-full right-0 mt-2 w-56 rounded-xl bg-white shadow-xl shadow-black/10 border border-border/50 overflow-hidden transition-all duration-200",
+                    userMenuOpen
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2"
+                  )}
+                >
+                  <div className="px-4 py-3 border-b border-border/40">
+                    <p className="text-sm font-medium text-foreground truncate">
+                      {displayName}
+                    </p>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                  <div className="p-1.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setUserMenuOpen(false);
+                        navigate("/portail");
+                      }}
+                      className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors"
+                    >
+                      <LayoutDashboard className="size-4" />
+                      Mon portail
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        setUserMenuOpen(false);
+                        await signOut();
+                      }}
+                      className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-red-600/80 hover:text-red-600 hover:bg-red-50 transition-colors"
+                    >
+                      <LogOut className="size-4" />
+                      Se déconnecter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* MOBILE / TABLET — right */}
+          <div className="flex lg:hidden items-center gap-1.5">
             {!authLoading && !user && (
               <Link
                 to="/connexion"
@@ -316,8 +309,29 @@ export function Header() {
               <SheetContent side="right" className="w-[320px] sm:w-[380px] overflow-y-auto p-0">
                 {/* Mobile Header */}
                 <div className="px-6 pt-6 pb-4 border-b border-border/50">
-                  <img src="/logo.svg" alt="Cercle de Gouvernance de l'IA" className="h-8 w-auto" />
+                  <img
+                    src="/logo.svg"
+                    alt="Cercle de Gouvernance de l'IA"
+                    className="h-8 w-auto"
+                  />
                 </div>
+
+                {/* Mobile Promo Banner */}
+                {bannerVisible && (
+                  <div className="mx-4 mt-4 rounded-xl bg-purple-50/80 border border-purple-100/60 p-3">
+                    <p className="text-[13px] text-purple-900/80 font-medium mb-2">
+                      Testez gratuitement notre outil de gouvernance IA
+                    </p>
+                    <Link
+                      to="/rejoindre"
+                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-purple-700 hover:text-purple-900 transition-colors"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Essayer
+                      <ChevronRight className="size-3.5" />
+                    </Link>
+                  </div>
+                )}
 
                 {/* Mobile Nav */}
                 <nav className="px-4 py-4 space-y-1">
@@ -386,48 +400,32 @@ export function Header() {
                       </Link>
                     </Button>
                   )}
+
                   <div className="flex items-center gap-4 mt-4 justify-center">
-                    <a href="mailto:info@gouvernance.ai" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <a
+                      href="mailto:info@gouvernance.ai"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
                       <Mail className="size-4" />
                     </a>
-                    <a href="tel:+15145551234" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <a
+                      href="tel:+15145551234"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
                       <Phone className="size-4" />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[#0A66C2] transition-colors">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-[#0A66C2] transition-colors"
+                    >
                       <Linkedin className="size-4" />
                     </a>
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
-          </div>
-        </div>
-
-        {/* Search Bar (expandable) */}
-        <div className={cn(
-          "overflow-hidden transition-all duration-300 border-t",
-          searchOpen ? "max-h-16 border-border/30" : "max-h-0 border-transparent"
-        )}>
-          <div className="mx-auto max-w-2xl px-4 py-3">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-              <Input
-                ref={searchInputRef}
-                type="search"
-                placeholder="Rechercher sur le site..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-10 h-10 rounded-full border-border/60 focus-visible:ring-primary/30"
-              />
-              <button
-                type="button"
-                onClick={() => { setSearchOpen(false); setSearchQuery(""); }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Fermer la recherche"
-              >
-                <X className="size-4" />
-              </button>
-            </form>
           </div>
         </div>
       </div>
@@ -455,7 +453,9 @@ function MobileNavLink({
       to={to}
       className={cn(
         "block rounded-lg px-3 transition-colors",
-        sub ? "py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 ml-3" : "py-2.5 text-[15px] font-medium hover:bg-muted/50",
+        sub
+          ? "py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 ml-3"
+          : "py-2.5 text-[15px] font-medium hover:bg-muted/50",
         active && !sub && "text-primary bg-primary/5",
       )}
     >
@@ -463,4 +463,3 @@ function MobileNavLink({
     </Link>
   );
 }
-
