@@ -254,15 +254,15 @@ export function TarifsPage() {
           {
             "@type": "Offer",
             "name": "Membre",
-            "price": "149",
+            "price": "249",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
             "description": "Accès complet aux ressources et événements",
           },
           {
             "@type": "Offer",
-            "name": "Expert",
-            "price": "499",
+            "name": "Membre Expert",
+            "price": "879",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
             "description": "Accès premium avec accompagnement personnalisé",

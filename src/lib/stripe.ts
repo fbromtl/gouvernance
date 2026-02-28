@@ -41,8 +41,8 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   },
   member: {
     id: 'member',
-    monthlyPrice: 149,
-    yearlyPrice: 1430,
+    monthlyPrice: 249,
+    yearlyPrice: 2388,
     monthlyPriceId: 'price_1T3nfmGxmyz5JooX0eHr5UID',
     yearlyPriceId: 'price_1T3nfnGxmyz5JooXt3KF9w7O',
     maxMembers: 10,
@@ -52,8 +52,8 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   },
   expert: {
     id: 'expert',
-    monthlyPrice: 499,
-    yearlyPrice: 4790,
+    monthlyPrice: 879,
+    yearlyPrice: 8388,
     monthlyPriceId: 'price_1T3nfoGxmyz5JooXGE1vzOMQ',
     yearlyPriceId: 'price_1T3nfpGxmyz5JooXrBWeSha0',
     maxMembers: null,
@@ -88,20 +88,20 @@ export type Currency = 'CAD' | 'EUR' | 'USD';
 export const CURRENCY_PRICES: Record<Currency, Record<PlanId, { monthly: number; yearly: number }>> = {
   CAD: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 149, yearly: 1430 },
-    expert:   { monthly: 499, yearly: 4790 },
+    member:   { monthly: 249, yearly: 2388 },
+    expert:   { monthly: 879, yearly: 8388 },
     honorary: { monthly: 0, yearly: 0 },
   },
   EUR: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 89, yearly: 858 },
-    expert:   { monthly: 299, yearly: 2868 },
+    member:   { monthly: 149, yearly: 1430 },
+    expert:   { monthly: 529, yearly: 4990 },
     honorary: { monthly: 0, yearly: 0 },
   },
   USD: {
     observer: { monthly: 0, yearly: 0 },
-    member:   { monthly: 99, yearly: 950 },
-    expert:   { monthly: 349, yearly: 3348 },
+    member:   { monthly: 169, yearly: 1590 },
+    expert:   { monthly: 589, yearly: 5590 },
     honorary: { monthly: 0, yearly: 0 },
   },
 };
