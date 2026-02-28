@@ -112,7 +112,7 @@ export default function MembresPage() {
 
   useEffect(() => {
     if (isObserver) {
-      navigate("/adhesion", { replace: true });
+      navigate("/billing", { replace: true });
     }
   }, [isObserver, navigate]);
 

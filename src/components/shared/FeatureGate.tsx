@@ -18,7 +18,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
   // Redirect observers to the membership page
   useEffect(() => {
     if (!allowed && !silent) {
-      navigate('/adhesion', { replace: true });
+      navigate('/billing', { replace: true });
     }
   }, [allowed, silent, navigate]);
 
