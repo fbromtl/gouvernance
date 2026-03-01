@@ -4,8 +4,9 @@ export const authors: Record<string, Author> = {
   "florian-brobst": {
     name: "Florian Brobst",
     title: "Fondateur & Directeur",
-    bio: "Sp\u00e9cialiste en gouvernance de l\u2019intelligence artificielle, Florian accompagne les organisations dans la mise en place de cadres de gouvernance responsables et conformes aux r\u00e9glementations \u00e9mergentes.",
+    bio: "Spécialiste en gouvernance de l\u2019intelligence artificielle, Florian accompagne les organisations dans la mise en place de cadres de gouvernance responsables et conformes aux réglementations émergentes.",
     avatar: "/images/authors/florian-brobst.jpg",
+    linkedin: "https://www.linkedin.com/in/florian-mtl/",
   },
   "equipe-cercle": {
     name: "L\u2019\u00e9quipe du Cercle",

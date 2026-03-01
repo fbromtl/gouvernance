@@ -226,7 +226,14 @@ export function ArticlePage() {
                   {getInitials(author.name)}
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">{author.name}</div>
+                  <div className="font-semibold text-foreground flex items-center gap-2">
+                    {author.name}
+                    {author.linkedin && (
+                      <a href={author.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        <Linkedin className="size-4" />
+                      </a>
+                    )}
+                  </div>
                   <div className="text-sm text-muted-foreground">
                     {author.title} &middot; {formatDate(article.date)}
                   </div>
@@ -287,8 +294,13 @@ export function ArticlePage() {
                       {getInitials(author.name)}
                     </div>
                     <div>
-                      <div className="text-xl font-bold text-foreground">
+                      <div className="text-xl font-bold text-foreground flex items-center gap-2">
                         {author.name}
+                        {author.linkedin && (
+                          <a href={author.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Linkedin className="size-5" />
+                          </a>
+                        )}
                       </div>
                       <div className="text-muted-foreground">{author.title}</div>
                       {author.bio && (

@@ -28,6 +28,7 @@ export interface Author {
   title: string;
   bio: string;
   avatar: string;
+  linkedin?: string;
 }
 
 export const categoryLabels: Record<Category, string> = {
