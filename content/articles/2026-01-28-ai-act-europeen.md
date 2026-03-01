@@ -7,6 +7,7 @@ excerpt: "Avec l'entrée en vigueur progressive du règlement européen sur l'IA
 cover: /images/articles/ai-act-europe.jpg
 author: florian-brobst
 featured: false
+tags: "AI Act, Union europ\u00e9enne, r\u00e9glementation IA, conformit\u00e9, Canada, extraterritorialit\u00e9"
 ---
 
 ## Un règlement à portée extraterritoriale

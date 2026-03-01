@@ -15,6 +15,10 @@ interface SEOProps {
   publishedTime?: string;
   /** Author name for article pages */
   authorName?: string;
+  /** Article section / category */
+  articleSection?: string;
+  /** Article tags / keywords */
+  tags?: string[];
 }
 
 /**
@@ -29,6 +33,8 @@ export function SEO({
   noindex = false,
   publishedTime,
   authorName,
+  articleSection,
+  tags,
 }: SEOProps) {
   const { pathname } = useLocation();
 
@@ -79,23 +85,39 @@ export function SEO({
     setMeta("property", "og:description", desc);
     setMeta("property", "og:url", url);
     setMeta("property", "og:image", img);
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
     setMeta("property", "og:type", type);
 
     // Twitter
+    setMeta("name", "twitter:card", type === "article" ? "summary_large_image" : "summary");
     setMeta("name", "twitter:title", fullTitle);
     setMeta("name", "twitter:description", desc);
     setMeta("name", "twitter:image", img);
+
+    // Keywords
+    if (tags?.length) {
+      setMeta("name", "keywords", tags.join(", "));
+    }
 
     // Article-specific meta
     if (publishedTime) {
       setMeta("property", "article:published_time", publishedTime);
       setMeta("property", "article:author", authorName ?? "");
     }
+    if (articleSection) {
+      setMeta("property", "article:section", articleSection);
+    }
+    if (tags?.length) {
+      tags.forEach((tag, i) => {
+        setMeta("property", `article:tag:${i}`, tag);
+      });
+    }
 
     // Always set locale and site name
     setMeta("property", "og:locale", "fr_CA");
     setMeta("property", "og:site_name", SITE_NAME);
-  }, [fullTitle, desc, img, url, type, noindex, publishedTime, authorName]);
+  }, [fullTitle, desc, img, url, type, noindex, publishedTime, authorName, articleSection, tags]);
 
   return null;
 }
@@ -111,9 +133,12 @@ interface JsonLdProps {
 /**
  * Injects a JSON-LD script tag into <head> for structured data.
  */
+let jsonLdCounter = 0;
+
 export function JsonLd({ data }: JsonLdProps) {
   useEffect(() => {
-    const id = `jsonld-${JSON.stringify(data).slice(0, 40).replace(/\W/g, "")}`;
+    const type = String(data["@type"] ?? "unknown");
+    const id = `jsonld-${type.replace(/\W/g, "")}-${++jsonLdCounter}`;
     let script = document.getElementById(id) as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement("script");

@@ -5,8 +5,9 @@ date: "2025-12-12"
 category: evenement
 excerpt: "Le 5 décembre dernier, le Cercle a organisé sa première table ronde consacrée à l'intersection entre la Loi 25 sur la protection des renseignements personnels et le déploiement de l'IA."
 cover: /images/articles/table-ronde-loi25.jpg
-author: equipe-cercle
+author: florian-brobst
 featured: false
+tags: "Loi 25, protection des donn\u00e9es, table ronde, gouvernance IA, Qu\u00e9bec, renseignements personnels"
 ---
 
 ## Un premier événement très suivi

@@ -37,7 +37,7 @@ const footerColumns = [
     title: "Plateforme",
     icon: Shield,
     links: [
-      { to: "/tarifs", label: "Tarifs" },
+      { to: "/tarifs", label: "Adhésion" },
       { to: "/diagnostic", label: "Diagnostic IA" },
       { to: "/contact", label: "Contact" },
     ],
@@ -50,7 +50,6 @@ const footerColumns = [
       { to: "/ressources#outils", label: "Boîte à outils" },
       { to: "/ressources#veille", label: "Veille réglementaire" },
       { to: "/ressources#etudes", label: "Études de cas" },
-      { to: "/actualites", label: "Actualités" },
     ],
   },
 ];

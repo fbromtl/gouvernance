@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 import { SEO, JsonLd } from "@/components/SEO";
 
 import { getArticleBySlug, getRelatedArticles, getAuthor } from "@/lib/articles";
-import type { Article, Author } from "@/types/article";
+import type { Article, Author, Category } from "@/types/article";
 import { categoryLabels, categoryColors } from "@/types/article";
 
 function formatDate(date: string) {
@@ -109,9 +109,12 @@ export function ArticlePage() {
       <SEO
         title={article.title}
         description={article.excerpt}
+        image={article.cover?.startsWith("http") ? article.cover : `https://gouvernance.ai${article.cover}`}
         type="article"
         publishedTime={article.date}
         authorName={author?.name}
+        articleSection={categoryLabels[article.category as Category]}
+        tags={article.tags}
       />
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -120,6 +123,10 @@ export function ArticlePage() {
         "description": article.excerpt,
         "datePublished": article.date,
         "dateModified": article.date,
+        "inLanguage": "fr-CA",
+        "articleSection": categoryLabels[article.category as Category],
+        "keywords": article.tags?.join(", ") ?? "",
+        "wordCount": article.content.split(/\s+/).filter(Boolean).length,
         "author": author ? {
           "@type": "Person",
           "name": author.name,
@@ -128,12 +135,18 @@ export function ArticlePage() {
         "publisher": {
           "@type": "Organization",
           "name": "Cercle de Gouvernance de l'IA",
+          "url": "https://gouvernance.ai",
           "logo": {
             "@type": "ImageObject",
             "url": "https://gouvernance.ai/logo.svg",
           },
         },
-        "image": article.cover?.startsWith("http") ? article.cover : `https://gouvernance.ai${article.cover}`,
+        "image": {
+          "@type": "ImageObject",
+          "url": article.cover?.startsWith("http") ? article.cover : `https://gouvernance.ai${article.cover}`,
+          "width": 1200,
+          "height": 630,
+        },
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `https://gouvernance.ai/actualites/${article.slug}`,

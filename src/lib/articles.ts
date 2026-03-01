@@ -39,6 +39,7 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
 function parseArticle(raw: string): Article {
   const { data, content } = parseFrontmatter(raw);
   const wordCount = content.split(/\s+/).filter(Boolean).length;
+  const rawTags = (data.tags as string) ?? "";
   return {
     slug: data.slug as string,
     title: data.title as string,
@@ -48,6 +49,7 @@ function parseArticle(raw: string): Article {
     cover: data.cover as string,
     author: data.author as string,
     featured: (data.featured as boolean) ?? false,
+    tags: rawTags ? rawTags.split(",").map((t: string) => t.trim()).filter(Boolean) : [],
     content,
     readingTime: Math.max(1, Math.ceil(wordCount / 200)),
   };

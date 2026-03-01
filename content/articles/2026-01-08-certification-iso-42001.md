@@ -7,6 +7,7 @@ excerpt: "Alors que la norme ISO/IEC 42001 gagne en reconnaissance international
 cover: /images/articles/iso-42001.jpg
 author: florian-brobst
 featured: false
+tags: "ISO 42001, certification, norme internationale, gouvernance IA, conformit\u00e9, avantage concurrentiel"
 ---
 
 ## Au-delà de la conformité, un signal de confiance

@@ -15,6 +15,7 @@ export interface ArticleMeta {
   cover: string;
   author: string;
   featured: boolean;
+  tags: string[];
 }
 
 export interface Article extends ArticleMeta {

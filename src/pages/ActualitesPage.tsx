@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 import { getAllArticles, getFeaturedArticle, getAuthor } from "@/lib/articles";
 import type { Article, Category } from "@/types/article";
@@ -69,9 +69,41 @@ export function ActualitesPage() {
   return (
     <>
       <SEO
-        title="Actualités"
-        description="Suivez les dernières actualités en gouvernance de l'intelligence artificielle : réglementation, technologies, événements et publications."
+        title="Actualit\u00e9s"
+        description="Suivez les derni\u00e8res actualit\u00e9s en gouvernance de l'intelligence artificielle : r\u00e9glementation, technologies, \u00e9v\u00e9nements et publications."
+        tags={["gouvernance IA", "actualit\u00e9s", "r\u00e9glementation IA", "Loi 25", "ISO 42001", "AI Act", "\u00e9thique IA"]}
       />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Actualit\u00e9s — Cercle de Gouvernance de l'IA",
+        "description": "Suivez les derni\u00e8res actualit\u00e9s en gouvernance de l'intelligence artificielle.",
+        "url": "https://gouvernance.ai/actualites",
+        "inLanguage": "fr-CA",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cercle de Gouvernance de l'IA",
+          "url": "https://gouvernance.ai",
+          "logo": { "@type": "ImageObject", "url": "https://gouvernance.ai/logo.svg" },
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": allArticles.slice(0, 10).map((a, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "url": `https://gouvernance.ai/actualites/${a.slug}`,
+            "name": a.title,
+          })),
+        },
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Actualit\u00e9s" },
+        ],
+      }} />
       <div className="overflow-x-hidden">
         {/* HERO */}
         <section

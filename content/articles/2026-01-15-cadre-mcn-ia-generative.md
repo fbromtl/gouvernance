@@ -5,8 +5,9 @@ date: "2026-01-15"
 category: veille
 excerpt: "Le Secrétariat du Conseil du trésor publie une mise à jour du cadre de gestion des ressources informationnelles intégrant des lignes directrices spécifiques à l'IA générative."
 cover: /images/articles/mcn-generative.jpg
-author: equipe-cercle
+author: florian-brobst
 featured: false
+tags: "MCN, IA g\u00e9n\u00e9rative, cadre normatif, Qu\u00e9bec, Conseil du tr\u00e9sor, ressources informationnelles"
 ---
 
 ## Une mise à jour attendue par le milieu

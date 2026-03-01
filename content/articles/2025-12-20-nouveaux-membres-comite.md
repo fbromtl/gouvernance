@@ -5,8 +5,9 @@ date: "2025-12-20"
 category: nomination
 excerpt: "Le Cercle de Gouvernance de l'IA accueille trois experts reconnus au sein de son comité consultatif, renforçant ainsi son expertise dans les domaines juridique, technologique et éthique."
 cover: /images/articles/nouveaux-membres.jpg
-author: equipe-cercle
+author: florian-brobst
 featured: false
+tags: "comit\u00e9 consultatif, nomination, experts, gouvernance IA, \u00e9thique, droit du num\u00e9rique"
 ---
 
 ## Un comité renforcé pour 2026
