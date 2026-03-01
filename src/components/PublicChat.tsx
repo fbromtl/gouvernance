@@ -1,4 +1,6 @@
 import { useRef, useEffect, useState, type KeyboardEvent } from "react";
+import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import {
   MessageSquare,
   X,
@@ -7,6 +9,7 @@ import {
   Loader2,
   AlertCircle,
   Sparkles,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,6 +31,21 @@ const QUICK_REPLIES = [
 /*  Message bubble                                                     */
 /* ------------------------------------------------------------------ */
 
+function isInternalLink(href: string): string | null {
+  try {
+    const url = new URL(href, "https://gouvernance.ai");
+    if (
+      url.hostname === "gouvernance.ai" ||
+      url.hostname === "www.gouvernance.ai"
+    ) {
+      return url.pathname;
+    }
+  } catch {
+    if (href.startsWith("/")) return href;
+  }
+  return null;
+}
+
 function MessageBubble({ message }: { message: ChatMessage }) {
   const isUser = message.role === "user";
 
@@ -35,13 +53,62 @@ function MessageBubble({ message }: { message: ChatMessage }) {
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
         className={cn(
-          "max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed whitespace-pre-wrap",
+          "max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed",
           isUser
             ? "bg-[#ab54f3] text-white rounded-br-md"
             : "bg-neutral-100 text-neutral-900 rounded-bl-md"
         )}
       >
-        {message.content}
+        {isUser ? (
+          message.content
+        ) : (
+          <ReactMarkdown
+            components={{
+              p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+              strong: ({ children }) => (
+                <strong className="font-semibold">{children}</strong>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-inside mb-2 space-y-1 last:mb-0">
+                  {children}
+                </ol>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-inside mb-2 space-y-1 last:mb-0">
+                  {children}
+                </ul>
+              ),
+              li: ({ children }) => <li>{children}</li>,
+              a: ({ href, children }) => {
+                if (!href) return <>{children}</>;
+                const internal = isInternalLink(href);
+                if (internal) {
+                  return (
+                    <Link
+                      to={internal}
+                      className="inline-flex items-center gap-1 mt-2 px-3 py-1.5 rounded-full bg-[#ab54f3] text-white text-xs font-medium hover:bg-[#ab54f3]/90 transition-colors no-underline"
+                    >
+                      {children}
+                      <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  );
+                }
+                return (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#ab54f3] underline hover:text-[#ab54f3]/80"
+                  >
+                    {children}
+                  </a>
+                );
+              },
+            }}
+          >
+            {message.content}
+          </ReactMarkdown>
+        )}
       </div>
     </div>
   );
