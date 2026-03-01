@@ -14,6 +14,17 @@ import { cn } from "@/lib/utils";
 import { usePublicChat, type ChatMessage } from "@/hooks/usePublicChat";
 
 /* ------------------------------------------------------------------ */
+/*  Quick reply suggestions                                            */
+/* ------------------------------------------------------------------ */
+
+const QUICK_REPLIES = [
+  "Quels outils sont gratuits ?",
+  "Comment fonctionne le diagnostic ?",
+  "Quels sont vos plans tarifaires ?",
+  "J'ai des questions sur la gouvernance IA",
+];
+
+/* ------------------------------------------------------------------ */
 /*  Message bubble                                                     */
 /* ------------------------------------------------------------------ */
 
@@ -139,6 +150,21 @@ export function PublicChat() {
             {messages.map((msg) => (
               <MessageBubble key={msg.id} message={msg} />
             ))}
+
+            {/* Quick reply chips — visible only before first user message */}
+            {messages.length === 1 && !isStreaming && (
+              <div className="flex flex-wrap gap-2">
+                {QUICK_REPLIES.map((text) => (
+                  <button
+                    key={text}
+                    onClick={() => sendMessage(text)}
+                    className="border border-[#ab54f3] text-[#ab54f3] rounded-full text-xs px-3 py-1.5 hover:bg-[#ab54f3]/10 transition-colors cursor-pointer"
+                  >
+                    {text}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {isStreaming &&
               messages[messages.length - 1]?.content === "" && (
