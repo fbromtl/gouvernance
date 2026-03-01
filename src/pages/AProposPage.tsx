@@ -29,32 +29,6 @@ export function AProposPage() {
     },
   ];
 
-  const milestones = [
-    {
-      year: "2024",
-      title: "Genèse",
-      description:
-        "Constat du besoin d'un cadre structuré pour la gouvernance de l'IA au Québec et au Canada",
-    },
-    {
-      year: "2025",
-      title: "Fondation",
-      description:
-        "Création du Cercle de Gouvernance de l'IA, rassemblement des premiers experts",
-    },
-    {
-      year: "2025",
-      title: "Premiers travaux",
-      description:
-        "Publication de guides pratiques, premières tables rondes thématiques",
-    },
-    {
-      year: "2026",
-      title: "Expansion",
-      description:
-        "Ouverture aux organisations, lancement des programmes d'accompagnement",
-    },
-  ];
 
   const frameworks = [
     {
@@ -130,96 +104,134 @@ export function AProposPage() {
         </div>
       </section>
 
-      {/* SECTION: Notre mission (id="mission") — bg-white */}
-      <section id="mission" className="py-24 sm:py-32 bg-white scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-16 text-center">
-            Notre mission
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <div className="space-y-8">
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                Le Cercle de Gouvernance de l&apos;IA existe pour combler un besoin critique :
-                accompagner les organisations dans l&apos;adoption éthique, sécuritaire et
-                conforme de l&apos;intelligence artificielle. Face à l&apos;évolution rapide
-                de l&apos;IA et à la multiplication des cadres réglementaires, les dirigeants
-                ont besoin d&apos;un espace d&apos;échange structuré et de ressources pratiques
-                pour naviguer avec confiance.
+      {/* SECTION: Notre mission (id="mission") — Bento Grid */}
+      <section id="mission" className="overflow-hidden border-y bg-white border-neutral-200 pt-24 pb-24 relative scroll-mt-20">
+        <div className="z-10 max-w-7xl mr-auto ml-auto pr-6 pl-6 relative">
+          {/* Section header */}
+          <div className="flex flex-col w-full mb-12">
+            <div className="flex items-end justify-between w-full pb-5">
+              <div className="flex gap-x-2 items-center">
+                <span className="w-8 h-px bg-[#ab54f3]" />
+                <span className="uppercase text-xs font-bold text-[#ab54f3] tracking-[0.2em]">
+                  Notre mission
+                </span>
+              </div>
+            </div>
+            <div className="w-full h-px bg-neutral-200 mb-8" />
+          </div>
+
+          {/* Bento grid – 2 rows */}
+          {/* Row 1: Mission (left half) + Photo+Vision (right half) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Mission card */}
+            <div className="group flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between min-h-[340px]">
+              <div>
+                <div className="w-12 h-12 bg-[#ab54f3]/10 rounded-2xl flex items-center justify-center text-[#ab54f3] mb-6">
+                  <Shield className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl text-neutral-900 mb-4 tracking-tight leading-tight font-semibold">
+                  Notre mission
+                </h3>
+                <p className="text-neutral-500 leading-relaxed mb-4">
+                  Le Cercle de Gouvernance de l&apos;IA existe pour combler un besoin critique : <span className="text-neutral-700 font-medium">outiller les organisations avec des outils de gouvernance simples et faciles à utiliser</span>, afin que les dirigeants puissent sécuriser leurs projets IA.
+                </p>
+                <p className="text-neutral-500 leading-relaxed">
+                  Face à l&apos;évolution rapide de l&apos;IA et à la multiplication des cadres réglementaires, nous offrons un espace d&apos;échange structuré et des ressources pratiques pour une adoption éthique, sécuritaire et conforme.
+                </p>
+              </div>
+              <div className="pt-6 border-t border-neutral-100 mt-6">
+                <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                  Depuis 2024
+                </span>
+              </div>
+            </div>
+
+            {/* Photo + Vision card */}
+            <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-neutral-900 group hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
+              <img
+                src="/images-gouvernance-ai/businesspeople-meeting.jpg"
+                className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
+                alt="Réunion de gouvernance IA"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
+              <div className="absolute top-6 left-6">
+                <span className="inline-block px-3 py-1 bg-[#ab54f3] rounded-full text-[10px] font-bold uppercase tracking-widest text-white">
+                  Notre vision
+                </span>
+              </div>
+              <div className="absolute bottom-10 left-10 right-10 text-white">
+                <p className="text-2xl leading-tight font-semibold">
+                  Devenir la référence francophone en gouvernance de l&apos;IA, en produisant des outils concrets et accessibles pour que chaque dirigeant puisse gouverner l&apos;IA avec confiance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 2: 3 Values + Stats dark */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Transparence */}
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+                <Eye className="h-5 w-5" />
+              </div>
+              <h4 className="text-lg font-semibold text-neutral-900 mb-2">Transparence</h4>
+              <p className="text-sm text-neutral-500 leading-relaxed">
+                Nous documentons nos méthodologies et partageons ouvertement nos référentiels pour construire la confiance.
               </p>
-              <div className="flex items-start gap-4 rounded-2xl bg-purple-50 border border-purple-100 p-6">
-                <Eye className="size-6 text-purple-500 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold text-neutral-950 mb-2">Notre vision</h3>
-                  <p className="text-neutral-600 leading-relaxed">
-                    Devenir la référence francophone en matière de gouvernance de
-                    l&apos;intelligence artificielle, en rassemblant les meilleurs experts
-                    et en produisant des ressources concrètes et accessibles.
+            </div>
+
+            {/* Rigueur */}
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+                <Shield className="h-5 w-5" />
+              </div>
+              <h4 className="text-lg font-semibold text-neutral-900 mb-2">Rigueur</h4>
+              <p className="text-sm text-neutral-500 leading-relaxed">
+                Nos travaux s&apos;appuient sur des cadres reconnus et des processus de validation éprouvés.
+              </p>
+            </div>
+
+            {/* Collaboration */}
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+                <Users className="h-5 w-5" />
+              </div>
+              <h4 className="text-lg font-semibold text-neutral-900 mb-2">Collaboration</h4>
+              <p className="text-sm text-neutral-500 leading-relaxed">
+                Nous favorisons l&apos;échange entre experts et organisations pour une gouvernance collective.
+              </p>
+            </div>
+
+            {/* Stats dark */}
+            <div className="bg-neutral-950 px-8 py-8 rounded-[40px] flex flex-col justify-between text-white relative hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500 min-h-[220px]">
+              <span className="text-sm font-medium tracking-tight text-[#ab54f3] uppercase tracking-widest">
+                Le Cercle en chiffres
+              </span>
+              <div className="space-y-4 my-4">
+                <div className="group/link cursor-pointer">
+                  <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Experts</p>
+                  <p className="text-3xl font-bold group-hover/link:text-[#ab54f3] transition-colors">
+                    150+
+                  </p>
+                </div>
+                <div className="group/link cursor-pointer">
+                  <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Disciplines</p>
+                  <p className="text-3xl font-bold group-hover/link:text-[#ab54f3] transition-colors">
+                    15
                   </p>
                 </div>
               </div>
-              <div className="grid sm:grid-cols-3 gap-4">
-                {values.map((v) => (
-                  <Card key={v.title} className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
-                    <CardHeader className="pb-2">
-                      <Target className="size-6 text-purple-500 mb-2" />
-                      <CardTitle className="text-base">{v.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <CardDescription className="text-sm">{v.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl bg-purple-50 border border-purple-100 p-8 text-center">
-                  <div className="text-3xl font-bold text-purple-600 mb-1">150+</div>
-                  <div className="text-sm font-medium text-neutral-600">Experts</div>
-                </div>
-                <div className="rounded-2xl bg-purple-50 border border-purple-100 p-8 text-center">
-                  <div className="text-3xl font-bold text-purple-600 mb-1">15</div>
-                  <div className="text-sm font-medium text-neutral-600">Disciplines</div>
-                </div>
-              </div>
-              <div className="rounded-2xl bg-neutral-50 p-8 flex items-center justify-center">
-                <Users className="size-24 text-purple-200" />
-              </div>
+              <Link
+                to="/rejoindre"
+                className="w-full bg-white text-neutral-900 py-3 rounded-[20px] text-sm font-semibold hover:bg-[#ab54f3] hover:text-white transition-colors duration-300 text-center block"
+              >
+                Rejoindre le Cercle
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION: Notre histoire (id="histoire") — DARK bg-neutral-950 */}
-      <section id="histoire" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
-            Notre histoire
-          </h2>
-          <p className="text-lg text-neutral-400 text-center mb-16 max-w-2xl mx-auto">
-            Une trajectoire marquée par l&apos;engagement et l&apos;expertise collective.
-          </p>
-          <div className="relative">
-            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-purple-500/30" />
-            <div className="space-y-8">
-              {milestones.map((m) => (
-                <div key={`${m.year}-${m.title}`} className="relative flex gap-6 sm:gap-8 pl-12 sm:pl-16">
-                  <div className="absolute left-0 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold shrink-0">
-                    {m.year.slice(-2)}
-                  </div>
-                  <div className="flex-1 rounded-3xl bg-white/5 border border-white/10 p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className="rounded-full bg-white/10 text-neutral-300 border border-white/20 hover:bg-white/15">{m.year}</Badge>
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{m.title}</h3>
-                    <p className="text-neutral-400">{m.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION: Notre approche (id="approche") — bg-white */}
       <section id="approche" className="py-24 sm:py-32 bg-white scroll-mt-20">
