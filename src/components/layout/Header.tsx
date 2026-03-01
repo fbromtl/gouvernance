@@ -51,6 +51,11 @@ export function Header() {
     .toUpperCase()
     .slice(0, 2);
 
+  // Track broken avatar images so we fall back to initials
+  const [avatarError, setAvatarError] = useState(false);
+  useEffect(() => setAvatarError(false), [avatarUrl]);
+  const showAvatar = avatarUrl && !avatarError;
+
   // Close user menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -186,9 +191,11 @@ export function Header() {
               </Link>
             )}
 
-            <Button asChild size="sm" className="px-5 text-[13px] font-semibold">
-              <Link to="/rejoindre">Inscription gratuite</Link>
-            </Button>
+            {!authLoading && !user && (
+              <Button asChild size="sm" className="px-5 text-[13px] font-semibold">
+                <Link to="/rejoindre">Inscription gratuite</Link>
+              </Button>
+            )}
 
             {!authLoading && user && (
               <div className="relative" ref={userMenuRef}>
@@ -197,12 +204,13 @@ export function Header() {
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
                 >
-                  {avatarUrl ? (
+                  {showAvatar ? (
                     <img
                       src={avatarUrl}
                       alt={displayName}
                       className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
                       referrerPolicy="no-referrer"
+                      onError={() => setAvatarError(true)}
                     />
                   ) : (
                     <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
@@ -281,12 +289,13 @@ export function Header() {
                 onClick={() => navigate("/portail")}
                 className="flex items-center justify-center"
               >
-                {avatarUrl ? (
+                {showAvatar ? (
                   <img
                     src={avatarUrl}
                     alt={displayName}
                     className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
                     referrerPolicy="no-referrer"
+                    onError={() => setAvatarError(true)}
                   />
                 ) : (
                   <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
@@ -347,12 +356,13 @@ export function Header() {
                 <div className="px-6 py-4 border-t border-border/50 mt-2 space-y-3">
                   {!authLoading && user && (
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 mb-2">
-                      {avatarUrl ? (
+                      {showAvatar ? (
                         <img
                           src={avatarUrl}
                           alt={displayName}
                           className="size-9 rounded-full object-cover border-2 border-border/50"
                           referrerPolicy="no-referrer"
+                          onError={() => setAvatarError(true)}
                         />
                       ) : (
                         <div className="flex size-9 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-sm font-bold">
@@ -388,9 +398,11 @@ export function Header() {
                     </>
                   )}
 
-                  <Button asChild className="w-full">
-                    <Link to="/rejoindre">Inscription gratuite</Link>
-                  </Button>
+                  {!authLoading && !user && (
+                    <Button asChild className="w-full">
+                      <Link to="/rejoindre">Inscription gratuite</Link>
+                    </Button>
+                  )}
 
                   {!authLoading && !user && (
                     <Button asChild variant="outline" className="w-full gap-2">
