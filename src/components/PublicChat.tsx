@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState, type KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageSquare,
   X,
   Send,
   RotateCcw,
-  Loader2,
   AlertCircle,
   Sparkles,
   ArrowRight,
@@ -28,7 +28,35 @@ const QUICK_REPLIES = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Message bubble                                                     */
+/*  Typing indicator (3 bouncing dots)                                 */
+/* ------------------------------------------------------------------ */
+
+function TypingIndicator() {
+  return (
+    <div className="flex justify-start">
+      <div className="bg-neutral-50 border border-neutral-200/60 rounded-2xl rounded-bl-md px-4 py-3">
+        <div className="flex items-center gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <motion.span
+              key={i}
+              className="block h-2 w-2 rounded-full bg-[#ab54f3]/60"
+              animate={{ y: [0, -6, 0] }}
+              transition={{
+                duration: 0.6,
+                repeat: Infinity,
+                delay: i * 0.15,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Internal link detection                                            */
 /* ------------------------------------------------------------------ */
 
 function isInternalLink(href: string): string | null {
@@ -46,17 +74,36 @@ function isInternalLink(href: string): string | null {
   return null;
 }
 
-function MessageBubble({ message }: { message: ChatMessage }) {
+/* ------------------------------------------------------------------ */
+/*  Message bubble                                                     */
+/* ------------------------------------------------------------------ */
+
+function MessageBubble({
+  message,
+  index,
+}: {
+  message: ChatMessage;
+  index: number;
+}) {
   const isUser = message.role === "user";
 
   return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
+    <motion.div
+      initial={{ opacity: 0, x: isUser ? 20 : -20, y: 8 }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
+      transition={{
+        duration: 0.35,
+        delay: index === 0 ? 0 : 0.05,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      className={`flex ${isUser ? "justify-end" : "justify-start"}`}
+    >
       <div
         className={cn(
-          "max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed",
+          "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
           isUser
-            ? "bg-[#ab54f3] text-white rounded-br-md"
-            : "bg-neutral-100 text-neutral-900 rounded-bl-md"
+            ? "bg-gradient-to-r from-[#ab54f3] to-[#9333ea] text-white rounded-br-md shadow-sm"
+            : "bg-neutral-50 border border-neutral-200/60 text-neutral-900 rounded-bl-md"
         )}
       >
         {isUser ? (
@@ -64,7 +111,9 @@ function MessageBubble({ message }: { message: ChatMessage }) {
         ) : (
           <ReactMarkdown
             components={{
-              p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+              p: ({ children }) => (
+                <p className="mb-2 last:mb-0">{children}</p>
+              ),
               strong: ({ children }) => (
                 <strong className="font-semibold">{children}</strong>
               ),
@@ -110,7 +159,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
           </ReactMarkdown>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -135,7 +184,7 @@ export function PublicChat() {
 
   // Focus textarea when panel opens
   useEffect(() => {
-    if (open) setTimeout(() => textareaRef.current?.focus(), 100);
+    if (open) setTimeout(() => textareaRef.current?.focus(), 200);
   }, [open]);
 
   // Close on Escape
@@ -167,147 +216,211 @@ export function PublicChat() {
     messages[messages.length - 1]?.role === "assistant";
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
       {/* ---- Chat Panel ---- */}
-      {open && (
-        <div
-          className={cn(
-            "flex flex-col bg-white border border-neutral-200 rounded-2xl shadow-2xl",
-            "w-[380px] h-[520px]",
-            "animate-in slide-in-from-bottom-4 fade-in-0 duration-200"
-          )}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200 rounded-t-2xl bg-[#ab54f3] text-white">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold leading-tight">
-                  Assistant Gouvernance IA
-                </h3>
-                <p className="text-[11px] text-white/70 leading-tight">
-                  Posez vos questions
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={resetChat}
-                className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/20 transition-colors"
-                title="Nouvelle conversation"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-              </button>
-              <button
-                onClick={() => setOpen(false)}
-                className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/20 transition-colors"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Messages */}
-          <div
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+            className={cn(
+              "flex flex-col bg-white border border-neutral-200/80 shadow-2xl overflow-hidden",
+              // Mobile: fullscreen
+              "fixed inset-0 rounded-none",
+              // Desktop: floating panel
+              "sm:static sm:inset-auto sm:w-[400px] sm:h-[580px] sm:rounded-2xl"
+            )}
           >
-            {messages.map((msg) => (
-              <MessageBubble key={msg.id} message={msg} />
-            ))}
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3.5 bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] text-white shrink-0">
+              <div className="flex items-center gap-3">
+                {/* Animated avatar */}
+                <div className="relative">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <Sparkles className="h-4.5 w-4.5" />
+                    </motion.div>
+                  </div>
+                  {/* Green online dot */}
+                  <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500 border-2 border-[#ab54f3]" />
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold leading-tight">
+                    Assistant Gouvernance IA
+                  </h3>
+                  <p className="text-[11px] text-white/70 leading-tight mt-0.5">
+                    En ligne
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={resetChat}
+                  className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/20 transition-colors"
+                  title="Nouvelle conversation"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/20 transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
 
-            {/* Quick reply chips — visible only before first user message */}
-            {messages.length === 1 && !isStreaming && (
-              <div className="flex flex-wrap gap-2">
-                {QUICK_REPLIES.map((text) => (
-                  <button
-                    key={text}
-                    onClick={() => sendMessage(text)}
-                    className="border border-[#ab54f3] text-[#ab54f3] rounded-full text-xs px-3 py-1.5 hover:bg-[#ab54f3]/10 transition-colors cursor-pointer"
-                  >
-                    {text}
-                  </button>
-                ))}
+            {/* Messages */}
+            <div
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4 chat-scrollbar"
+            >
+              {messages.map((msg, i) => (
+                <MessageBubble key={msg.id} message={msg} index={i} />
+              ))}
+
+              {/* Quick reply chips — visible only before first user message */}
+              {messages.length === 1 && !isStreaming && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-wrap gap-2"
+                >
+                  {QUICK_REPLIES.map((text, i) => (
+                    <motion.button
+                      key={text}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + i * 0.08 }}
+                      onClick={() => sendMessage(text)}
+                      className="border border-[#ab54f3]/40 text-[#ab54f3] rounded-full text-xs px-3 py-1.5 hover:bg-[#ab54f3]/10 hover:border-[#ab54f3] transition-all duration-200 cursor-pointer"
+                    >
+                      {text}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
+
+              {/* Typing indicator */}
+              {isStreaming &&
+                messages[messages.length - 1]?.content === "" && (
+                  <TypingIndicator />
+                )}
+            </div>
+
+            {/* Error */}
+            {error && (
+              <div className="mx-4 mb-2 flex items-center gap-2 rounded-xl bg-red-50 border border-red-100 px-3 py-2 text-xs text-red-600">
+                <AlertCircle className="h-3 w-3 shrink-0" />
+                <span className="flex-1 truncate">{error}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-auto px-2 py-1 text-xs shrink-0"
+                  onClick={() => {
+                    const lastUserMsg = [...messages]
+                      .reverse()
+                      .find((m) => m.role === "user");
+                    if (lastUserMsg) sendMessage(lastUserMsg.content);
+                  }}
+                >
+                  Réessayer
+                </Button>
               </div>
             )}
 
-            {isStreaming &&
-              messages[messages.length - 1]?.content === "" && (
-                <div className="flex items-center gap-2 text-xs text-neutral-400">
-                  <Loader2 className="h-3 w-3 animate-spin" />
-                  Réflexion en cours…
-                </div>
-              )}
-          </div>
-
-          {/* Error */}
-          {error && (
-            <div className="mx-3 mb-2 flex items-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600">
-              <AlertCircle className="h-3 w-3 shrink-0" />
-              <span className="flex-1 truncate">{error}</span>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-auto px-2 py-1 text-xs shrink-0"
-                onClick={() => {
-                  const lastUserMsg = [...messages]
-                    .reverse()
-                    .find((m) => m.role === "user");
-                  if (lastUserMsg) sendMessage(lastUserMsg.content);
-                }}
-              >
-                Réessayer
-              </Button>
+            {/* Input */}
+            <div className="border-t border-neutral-100 p-4 shrink-0 bg-white">
+              <div className="flex gap-2.5">
+                <Textarea
+                  ref={textareaRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Posez votre question…"
+                  className="min-h-[44px] max-h-[100px] resize-none text-sm rounded-xl border-neutral-200 bg-neutral-50 focus:bg-white transition-colors"
+                  rows={1}
+                  disabled={isStreaming}
+                />
+                <Button
+                  size="icon"
+                  className={cn(
+                    "h-11 w-11 shrink-0 rounded-xl transition-all duration-200",
+                    "bg-gradient-to-r from-[#ab54f3] to-[#9333ea] hover:shadow-md",
+                    "disabled:opacity-40"
+                  )}
+                  onClick={handleSend}
+                  disabled={!input.trim() || isStreaming}
+                >
+                  {isStreaming ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <Sparkles className="h-4 w-4" />
+                    </motion.div>
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
             </div>
-          )}
-
-          {/* Input */}
-          <div className="border-t border-neutral-200 p-3">
-            <div className="flex gap-2">
-              <Textarea
-                ref={textareaRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Posez votre question…"
-                className="min-h-[40px] max-h-[100px] resize-none text-sm rounded-xl border-neutral-200"
-                rows={1}
-                disabled={isStreaming}
-              />
-              <Button
-                size="icon"
-                className="h-10 w-10 shrink-0 rounded-xl bg-[#ab54f3] hover:bg-[#ab54f3]/90"
-                onClick={handleSend}
-                disabled={!input.trim() || isStreaming}
-              >
-                {isStreaming ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Send className="h-4 w-4" />
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ---- Floating Bubble ---- */}
-      <button
+      <motion.button
         onClick={() => setOpen(!open)}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
         className={cn(
-          "group flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-200",
-          "bg-[#ab54f3] text-white hover:bg-[#ab54f3]/90 hover:shadow-xl hover:scale-105",
+          "group relative flex h-14 w-14 items-center justify-center rounded-full transition-shadow duration-300",
+          "bg-gradient-to-br from-[#ab54f3] to-[#9333ea] text-white shadow-xl hover:shadow-2xl",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ab54f3] focus-visible:ring-offset-2"
         )}
         aria-label={open ? "Fermer le chat" : "Ouvrir le chat"}
       >
-        {open ? (
-          <X className="h-6 w-6 transition-transform duration-200" />
-        ) : (
-          <MessageSquare className="h-6 w-6 transition-transform duration-200 group-hover:scale-110" />
-        )}
+        <AnimatePresence mode="wait">
+          {open ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="h-6 w-6" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <MessageSquare className="h-6 w-6" />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {hasUnread && !open && (
           <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4">
@@ -315,7 +428,7 @@ export function PublicChat() {
             <span className="relative inline-flex h-4 w-4 rounded-full bg-green-500 border-2 border-white" />
           </span>
         )}
-      </button>
+      </motion.button>
     </div>
   );
 }

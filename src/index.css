@@ -192,3 +192,22 @@
     scrollbar-color: var(--border) transparent;
   }
 }
+
+/* Chat scrollbar */
+.chat-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(171, 84, 243, 0.2) transparent;
+}
+.chat-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(171, 84, 243, 0.2);
+  border-radius: 10px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(171, 84, 243, 0.4);
+}
