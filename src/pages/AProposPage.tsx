@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import {
-  Target,
   Eye,
   Users,
   BookOpen,
@@ -14,22 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
 
 export function AProposPage() {
-  const values = [
-    {
-      title: "Transparence",
-      description: "Nous documentons nos méthodologies et partageons ouvertement nos référentiels pour construire la confiance.",
-    },
-    {
-      title: "Rigueur",
-      description: "Nos travaux s'appuient sur des cadres reconnus et des processus de validation éprouvés.",
-    },
-    {
-      title: "Collaboration",
-      description: "Nous favorisons l'échange entre experts et organisations pour une gouvernance collective.",
-    },
-  ];
-
-
   const frameworks = [
     {
       name: "Loi 25 (Québec)",
