@@ -38,6 +38,7 @@ function getSessionId(): string {
 }
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
 const WELCOME_MESSAGE =
   "Bonjour ! 👋 Je suis l'assistant du Cercle de Gouvernance de l'IA. Posez-moi vos questions sur la gouvernance IA, nos outils ou notre plateforme — je suis là pour vous aider !";
@@ -97,7 +98,10 @@ export function usePublicChat(): UsePublicChatReturn {
           `${SUPABASE_URL}/functions/v1/public-chat`,
           {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            },
             body: JSON.stringify({
               messages: historyForApi,
               sessionId: getSessionId(),
