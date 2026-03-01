@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, CheckCircle, X } from "lucide-react";
-import { BenefitsPanel } from "@/components/auth/BenefitsPanel";
-
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { useAuth } from "@/lib/auth";
@@ -86,7 +84,7 @@ export default function LoginPage() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
 
         {/* Floating card */}
-        <div className="relative w-full max-w-[440px] md:max-w-[820px] rounded-2xl bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col md:flex-row">
+        <div className="relative w-full max-w-[440px] rounded-2xl bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col">
 
           {/* Left side — form */}
           <div className="relative flex-1 min-w-0">
@@ -242,8 +240,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Right side — benefits */}
-          <BenefitsPanel title="Retrouvez votre portail" />
         </div>
       </div>
     </>
