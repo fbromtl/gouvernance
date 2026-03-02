@@ -82,12 +82,21 @@ function parseRSSItems(xml: string, source: string): RawArticle[] {
 async function fetchAllFeeds(): Promise<RawArticle[]> {
   const results = await Promise.allSettled(
     RSS_FEEDS.map(async (feed) => {
-      const res = await fetch(feed.url, {
-        headers: { "User-Agent": "GouvernanceIA-Veille/1.0" },
-      });
-      if (!res.ok) return [];
-      const xml = await res.text();
-      return parseRSSItems(xml, feed.source);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10_000);
+      try {
+        const res = await fetch(feed.url, {
+          headers: { "User-Agent": "GouvernanceIA-Veille/1.0" },
+          signal: controller.signal,
+        });
+        clearTimeout(timeout);
+        if (!res.ok) return [];
+        const xml = await res.text();
+        return parseRSSItems(xml, feed.source);
+      } catch {
+        clearTimeout(timeout);
+        return [];
+      }
     })
   );
 
@@ -183,7 +192,7 @@ ${JSON.stringify(articlesPayload)}`;
     body: JSON.stringify({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 512,
+      max_tokens: 1024,
       temperature: 0,
     }),
   });

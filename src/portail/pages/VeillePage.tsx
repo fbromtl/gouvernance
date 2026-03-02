@@ -110,6 +110,20 @@ function formatDate(dateStr: string, lang: string): string {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
+// Jurisdiction config (constant, outside component)
+const JURISDICTIONS: { key: Jurisdiction | "all"; color: string }[] = [
+  { key: "all", color: "" },
+  { key: "quebec", color: "bg-blue-100 text-blue-700" },
+  { key: "canada", color: "bg-red-100 text-red-700" },
+  { key: "eu", color: "bg-indigo-100 text-indigo-700" },
+  { key: "france", color: "bg-sky-100 text-sky-700" },
+  { key: "usa", color: "bg-amber-100 text-amber-700" },
+  { key: "international", color: "bg-neutral-100 text-neutral-700" },
+];
+
+const jurisdictionColor = (j: Jurisdiction): string =>
+  JURISDICTIONS.find((jc) => jc.key === j)?.color ?? "bg-neutral-100 text-neutral-700";
+
 export default function VeillePage() {
   const { t, i18n } = useTranslation("veille");
   const lang = i18n.language?.startsWith("en") ? "en" : "fr";
@@ -135,20 +149,6 @@ export default function VeillePage() {
   // Filter state
   const [activeJurisdiction, setActiveJurisdiction] = useState<Jurisdiction | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Jurisdiction config
-  const JURISDICTIONS: { key: Jurisdiction | "all"; color: string }[] = [
-    { key: "all", color: "" },
-    { key: "quebec", color: "bg-blue-100 text-blue-700" },
-    { key: "canada", color: "bg-red-100 text-red-700" },
-    { key: "eu", color: "bg-indigo-100 text-indigo-700" },
-    { key: "france", color: "bg-sky-100 text-sky-700" },
-    { key: "usa", color: "bg-amber-100 text-amber-700" },
-    { key: "international", color: "bg-neutral-100 text-neutral-700" },
-  ];
-
-  const jurisdictionColor = (j: Jurisdiction): string =>
-    JURISDICTIONS.find((jc) => jc.key === j)?.color ?? "bg-neutral-100 text-neutral-700";
 
   // Filtered articles
   const filteredArticles = useMemo(() => {
