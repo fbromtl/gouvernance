@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Newspaper,
@@ -8,6 +8,7 @@ import {
   Loader2,
   RefreshCw,
   AlertCircle,
+  Search,
 } from "lucide-react";
 import { supabase, supabaseConfigured } from "@/lib/supabase";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
@@ -15,6 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
@@ -27,12 +29,15 @@ import {
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
+type Jurisdiction = "quebec" | "canada" | "eu" | "france" | "usa" | "international";
+
 interface Article {
   title: string;
   link: string;
   pubDate: string;
   source: string;
   snippet: string;
+  jurisdiction: Jurisdiction;
 }
 
 /* ------------------------------------------------------------------ */
@@ -126,6 +131,47 @@ export default function VeillePage() {
     summary: string;
     loading: boolean;
   }>({ open: false, title: "", summary: "", loading: false });
+
+  // Filter state
+  const [activeJurisdiction, setActiveJurisdiction] = useState<Jurisdiction | "all">("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Jurisdiction config
+  const JURISDICTIONS: { key: Jurisdiction | "all"; color: string }[] = [
+    { key: "all", color: "" },
+    { key: "quebec", color: "bg-blue-100 text-blue-700" },
+    { key: "canada", color: "bg-red-100 text-red-700" },
+    { key: "eu", color: "bg-indigo-100 text-indigo-700" },
+    { key: "france", color: "bg-sky-100 text-sky-700" },
+    { key: "usa", color: "bg-amber-100 text-amber-700" },
+    { key: "international", color: "bg-neutral-100 text-neutral-700" },
+  ];
+
+  const jurisdictionColor = (j: Jurisdiction): string =>
+    JURISDICTIONS.find((jc) => jc.key === j)?.color ?? "bg-neutral-100 text-neutral-700";
+
+  // Filtered articles
+  const filteredArticles = useMemo(() => {
+    return articles.filter((a) => {
+      const matchJurisdiction =
+        activeJurisdiction === "all" || a.jurisdiction === activeJurisdiction;
+      const q = searchQuery.toLowerCase();
+      const matchSearch =
+        !q ||
+        a.title.toLowerCase().includes(q) ||
+        a.snippet.toLowerCase().includes(q);
+      return matchJurisdiction && matchSearch;
+    });
+  }, [articles, activeJurisdiction, searchQuery]);
+
+  // Counts per jurisdiction
+  const jurisdictionCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: articles.length };
+    for (const a of articles) {
+      counts[a.jurisdiction] = (counts[a.jurisdiction] ?? 0) + 1;
+    }
+    return counts;
+  }, [articles]);
 
   /* ------ Fetch articles ------ */
   const loadArticles = useCallback(async () => {
