@@ -240,19 +240,19 @@ Deno.serve(async (req: Request) => {
                   }
                 }
 
-                // Signal completion
-                if (parsed.type === "response.completed" && !completed) {
+                // Signal completion (success, incomplete, or failure)
+                if (
+                  (parsed.type === "response.completed" ||
+                   parsed.type === "response.incomplete" ||
+                   parsed.type === "response.failed" ||
+                   parsed.type === "error") &&
+                  !completed
+                ) {
+                  if (parsed.type === "response.failed" || parsed.type === "error") {
+                    console.error("OpenAI stream error:", JSON.stringify(parsed));
+                  }
                   completed = true;
                   controller.enqueue(encoder.encode("data: [DONE]\n\n"));
-                }
-
-                // Handle stream errors
-                if (parsed.type === "error") {
-                  console.error("OpenAI stream error:", parsed);
-                  if (!completed) {
-                    completed = true;
-                    controller.enqueue(encoder.encode("data: [DONE]\n\n"));
-                  }
                 }
               } catch {
                 // Skip malformed JSON chunks
