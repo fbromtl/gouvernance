@@ -24,6 +24,19 @@
     "source": "Source",
     "published": "Published on"
   },
+  "filters": {
+    "searchPlaceholder": "Search articles...",
+    "all": "All",
+    "quebec": "Quebec",
+    "canada": "Canada",
+    "eu": "EU",
+    "france": "France",
+    "usa": "USA",
+    "international": "International",
+    "resultsCount_one": "{{count}} result",
+    "resultsCount_other": "{{count}} results",
+    "noResults": "No articles match your filters."
+  },
   "help": {
     "title": "Understanding: Regulatory Watch",
     "why": "Regulatory Watch keeps you informed of the latest developments in AI governance. It automatically aggregates relevant news and uses AI to provide concise summaries.",

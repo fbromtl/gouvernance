@@ -24,6 +24,19 @@
     "source": "Source",
     "published": "Publié le"
   },
+  "filters": {
+    "searchPlaceholder": "Rechercher un article...",
+    "all": "Tous",
+    "quebec": "Québec",
+    "canada": "Canada",
+    "eu": "UE",
+    "france": "France",
+    "usa": "USA",
+    "international": "International",
+    "resultsCount_one": "{{count}} résultat",
+    "resultsCount_other": "{{count}} résultats",
+    "noResults": "Aucun article ne correspond à vos filtres."
+  },
   "help": {
     "title": "Comprendre : Veille réglementaire",
     "why": "La veille réglementaire vous permet de rester informé des dernières évolutions en matière de gouvernance de l'IA. Elle agrège automatiquement les actualités pertinentes et utilise l'IA pour vous fournir des résumés synthétiques.",
