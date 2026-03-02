@@ -135,10 +135,20 @@ export function HomePage() {
             </div>
 
             {/* Reassurance line */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-16 text-sm text-neutral-500">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm text-neutral-500">
               <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Gratuit</span>
               <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Sans carte de crédit</span>
               <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Diagnostic en 10 min</span>
+            </div>
+
+            {/* Quebec badge */}
+            <div className="flex justify-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3.5 py-1.5 rounded-full">
+                <span className="text-[#ab54f3] text-sm leading-none">⚜</span>
+                <span className="text-[11px] font-medium text-neutral-500">
+                  Fièrement québécois
+                </span>
+              </div>
             </div>
 
             {/* ── Social Proof Avatars ── */}
