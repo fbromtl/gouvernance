@@ -24,7 +24,7 @@
   "idealFor": {
     "observer": "Découvrez le Cercle et explorez la plateforme",
     "member": "Intégrez le Cercle et ses outils complets de gouvernance",
-    "expert": "Dirigez la gouvernance IA et bénéficiez d'un accompagnement dédié"
+    "expert": "Dirigez la gouvernance IA avec un accompagnement humain dédié et la marque de confiance du Cercle"
   },
   "features": {
     "dashboard": "Tableau de bord",
@@ -56,6 +56,8 @@
     "public_profile": "Page publique personnelle",
     "linkedin_badge": "Badge LinkedIn téléchargeable",
     "linkedin_share": "Partage LinkedIn",
+    "trust_mark": "Marque de confiance gouvernance.ai",
+    "dedicated_consultant": "Expert-conseil dédié en gouvernance IA",
     "priority_visibility": "Visibilité prioritaire dans l'annuaire"
   },
   "billing": {

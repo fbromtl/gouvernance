@@ -62,6 +62,8 @@ const MEMBER_FEATURES: PlanFeature[] = [
 ];
 
 const EXPERT_FEATURES: PlanFeature[] = [
+  { key: "trust_mark" },
+  { key: "dedicated_consultant" },
   { key: "monitoring" },
   { key: "data_catalog" },
   { key: "governance_structure" },
@@ -118,6 +120,8 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { type: "feature", key: "documents" },
   { type: "feature", key: "ai_chat" },
   { type: "feature", key: "export_pdf" },
+  { type: "feature", key: "trust_mark" },
+  { type: "feature", key: "dedicated_consultant" },
   { type: "feature", key: "monitoring" },
   { type: "feature", key: "data_catalog" },
   { type: "feature", key: "governance_structure" },
@@ -146,6 +150,8 @@ const PLAN_AVAILABILITY: Record<string, [boolean, boolean, boolean]> = {
   documents:             [false, true,  true],
   ai_chat:               [false, true,  true],
   export_pdf:            [false, true,  true],
+  trust_mark:            [false, false, true],
+  dedicated_consultant:  [false, false, true],
   monitoring:            [false, false, true],
   data_catalog:          [false, false, true],
   governance_structure:  [false, false, true],

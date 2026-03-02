@@ -24,7 +24,7 @@
   "idealFor": {
     "observer": "Discover the Circle and explore the platform",
     "member": "Join the Circle and its comprehensive governance tools",
-    "expert": "Lead AI governance with dedicated support"
+    "expert": "Lead AI governance with a dedicated consultant and the Circle's trust mark"
   },
   "features": {
     "dashboard": "Dashboard",
@@ -56,6 +56,8 @@
     "public_profile": "Personal public page",
     "linkedin_badge": "Downloadable LinkedIn badge",
     "linkedin_share": "LinkedIn sharing",
+    "trust_mark": "gouvernance.ai Trust Mark",
+    "dedicated_consultant": "Dedicated AI governance consultant",
     "priority_visibility": "Priority visibility in directory"
   },
   "billing": {
