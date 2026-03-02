@@ -428,18 +428,20 @@ export default function VeillePage() {
           </Card>
         )}
 
-        {!loadingArticles && !articlesError && articles.length === 0 && (
+        {!loadingArticles && !articlesError && filteredArticles.length === 0 && (
           <Card>
             <CardContent className="py-8 text-center text-muted-foreground">
               <Newspaper className="h-10 w-10 mx-auto mb-2 text-muted-foreground/40" />
-              <p className="text-sm">{t("articles.empty")}</p>
+              <p className="text-sm">
+                {articles.length > 0 ? t("filters.noResults") : t("articles.empty")}
+              </p>
             </CardContent>
           </Card>
         )}
 
-        {!loadingArticles && !articlesError && articles.length > 0 && (
+        {!loadingArticles && !articlesError && filteredArticles.length > 0 && (
           <div className="space-y-3">
-            {articles.map((article) => (
+            {filteredArticles.map((article) => (
               <Card
                 key={article.link}
                 className="group hover:shadow-md transition-shadow duration-200"
@@ -453,6 +455,12 @@ export default function VeillePage() {
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                         <Badge variant="outline" className="text-[10px] font-normal px-1.5 py-0">
                           {article.source}
+                        </Badge>
+                        <Badge
+                          variant="outline"
+                          className={`text-[10px] font-normal px-1.5 py-0 border-0 ${jurisdictionColor(article.jurisdiction)}`}
+                        >
+                          {t(`filters.${article.jurisdiction}`)}
                         </Badge>
                         <span>{formatDate(article.pubDate, lang)}</span>
                       </div>
