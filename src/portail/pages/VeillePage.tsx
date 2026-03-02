@@ -278,6 +278,48 @@ export default function VeillePage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
+      {/* ---- Filter Bar ---- */}
+      <div className="space-y-3">
+        {/* Search input */}
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder={t("filters.searchPlaceholder")}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9 h-9"
+          />
+        </div>
+
+        {/* Jurisdiction pills */}
+        <div className="flex flex-wrap gap-2">
+          {JURISDICTIONS.map(({ key }) => {
+            const count = jurisdictionCounts[key] ?? 0;
+            const isActive = activeJurisdiction === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveJurisdiction(key)}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                  isActive
+                    ? "bg-brand-purple text-white"
+                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                }`}
+              >
+                {t(`filters.${key}`)}
+                <span
+                  className={`text-[10px] ${
+                    isActive ? "text-white/70" : "text-neutral-400"
+                  }`}
+                >
+                  ({count})
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* ---- Weekly AI Summary ---- */}
       <Card className="border-brand-purple/20 bg-gradient-to-br from-brand-purple/5 to-transparent">
         <CardHeader className="pb-3">
