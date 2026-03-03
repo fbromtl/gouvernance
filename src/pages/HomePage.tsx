@@ -26,7 +26,6 @@ import { EcosystemMarquee } from "@/components/home/EcosystemMarquee";
 /* ================================================================== */
 
 export function HomePage() {
-  const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [stickyDismissed, setStickyDismissed] = useState(false);
@@ -896,7 +895,6 @@ export function HomePage() {
         {/*  PRICING                                                      */}
         {/* ============================================================ */}
         <section id="pricing" className="max-w-7xl mr-auto ml-auto pt-24 pr-6 pb-24 pl-6">
-          {/* Section header */}
           <div className="flex flex-col w-full mb-12">
             <div className="flex items-end justify-between w-full pb-5">
               <div className="flex gap-2 items-center">
@@ -905,164 +903,25 @@ export function HomePage() {
                   Tarification
                 </span>
               </div>
-              <Link
-                to="/tarifs"
-                className="group flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors"
-              >
-                Comparer les plans
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
             </div>
 
             <div className="w-full h-px bg-neutral-200 mb-8" />
 
-            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-              <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
-                Une tarification simple et transparente qui évolue avec vos ambitions
+            <div className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto">
+              <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight font-semibold">
+                Une tarification simple et transparente
               </h2>
-              <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
-                <p className="leading-relaxed text-base text-neutral-600">
-                  Choisissez le plan adapté à votre organisation. Le portail IAG est conçu pour
-                  vous accompagner de votre premier système IA à votre centième.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Billing toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <span className={`text-sm font-medium transition-colors ${!isYearly ? "text-neutral-950" : "text-neutral-400"}`}>
-              Mensuel
-            </span>
-            <button
-              type="button"
-              onClick={() => setIsYearly(!isYearly)}
-              className={`relative w-14 h-7 rounded-full transition-colors ${isYearly ? "bg-[#ab54f3]" : "bg-neutral-300"}`}
-            >
-              <span
-                className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${isYearly ? "translate-x-7" : "translate-x-0"}`}
-              />
-            </button>
-            <span className={`text-sm font-medium transition-colors ${isYearly ? "text-neutral-950" : "text-neutral-400"}`}>
-              Annuel
-            </span>
-            {isYearly && (
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
-                -17%
-              </span>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Observateur — 0$/mois */}
-            <div className="lg:col-span-1">
-              <div className="hover:shadow-md transition-shadow bg-white h-full border-neutral-200 border rounded-[32px] px-8 py-10 shadow-sm flex flex-col">
-                <h3 className="text-3xl tracking-tight mb-2 font-semibold">Observateur</h3>
-                <p className="text-neutral-500 mb-8 text-sm">
-                  Découvrez la plateforme de l&apos;extérieur.
-                </p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">0$</span>
-                  <span className="text-neutral-400 text-sm">/{isYearly ? "an" : "mois"}</span>
-                </div>
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {[
-                    "Dashboard de gouvernance",
-                    "Jusqu'à 3 systèmes IA",
-                    "Cycle de vie IA",
-                    "Veille réglementaire (lecture)",
-                    "1 membre",
-                  ].map((feat) => (
-                    <li key={feat} className="flex items-center gap-3 text-sm text-neutral-600">
-                      <Check className="h-5 w-5 text-neutral-950" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/inscription"
-                  className="hover:bg-neutral-50 transition-colors font-medium text-neutral-950 w-full border-neutral-200 border rounded-full pt-4 pb-4 text-center block"
-                >
-                  Commencer gratuitement
-                </Link>
-              </div>
-            </div>
-
-            {/* Membre — 99$/mois */}
-            <div className="lg:col-span-1">
-              <div className="hover:shadow-md transition-shadow bg-neutral-50 h-full border-[#ab54f3]/30 border-2 rounded-[32px] px-8 py-10 shadow-sm flex flex-col relative">
-                <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#ab54f3]/10 border border-[#ab54f3]/20 text-[10px] font-semibold text-[#ab54f3] uppercase tracking-widest">
-                  Populaire
-                </span>
-                <h3 className="text-3xl tracking-tight mb-2 font-semibold">Membre</h3>
-                <p className="text-neutral-500 mb-8 text-sm">
-                  Faites partie du Cercle de Gouvernance de l&apos;IA.
-                </p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{isYearly ? "990$" : "99$"}</span>
-                  <span className="text-neutral-400 text-sm">/{isYearly ? "an" : "mois"}</span>
-                </div>
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {[
-                    "Systèmes IA illimités",
-                    "Évaluations des risques",
-                    "Suivi des incidents",
-                    "Conformité réglementaire",
-                    "Assistant IA intégré",
-                    "Export PDF",
-                    "Jusqu'à 10 membres",
-                    "Répertoire membres & profil public",
-                  ].map((feat) => (
-                    <li key={feat} className="flex items-center gap-3 text-sm text-neutral-600">
-                      <Check className="h-5 w-5 text-neutral-950" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/inscription"
-                  className="hover:bg-neutral-800 transition-colors font-medium text-white bg-neutral-950 w-full rounded-full pt-4 pb-4 text-center block"
-                >
-                  Devenir Membre
-                </Link>
-              </div>
-            </div>
-
-            {/* Expert — 499$/mois */}
-            <div className="lg:col-span-1">
-              <div className="bg-neutral-950 border border-white/10 rounded-[32px] px-8 py-10 h-full text-white relative shadow-2xl overflow-hidden flex flex-col">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ab54f3]/20 blur-3xl" />
-                <h3 className="text-3xl tracking-tight mb-2 font-semibold">Membre Expert</h3>
-                <p className="text-neutral-400 mb-8 text-sm">
-                  Soyez reconnu et dirigez la gouvernance IA.
-                </p>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-5xl font-bold">{isYearly ? "4 990$" : "499$"}</span>
-                  <span className="text-neutral-500 text-sm">/{isYearly ? "an" : "mois"}</span>
-                </div>
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {[
-                    "Tout du plan Membre",
-                    "Monitoring avancé",
-                    "Catalogue de données",
-                    "Structure de gouvernance",
-                    "Support dédié",
-                    "Membres illimités",
-                    "Visibilité prioritaire",
-                  ].map((feat) => (
-                    <li key={feat} className="flex items-center gap-3 text-sm text-neutral-300">
-                      <Check className="h-5 w-5 text-[#ab54f3]" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/inscription"
-                  className="hover:opacity-90 transition-opacity font-medium text-white bg-[#ab54f3] w-full rounded-full pt-4 pb-4 text-center block"
-                >
-                  Devenir Expert
-                </Link>
-              </div>
+              <p className="leading-relaxed text-base text-neutral-600">
+                Choisissez le plan adapté à votre organisation. Le portail est conçu pour
+                vous accompagner de votre premier système IA à votre centième.
+              </p>
+              <Link
+                to="/tarifs"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:brightness-110 transition-all"
+              >
+                Voir les tarifs d&apos;adhésion
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
         </section>
