@@ -55,17 +55,17 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
     );
   };
 
-  // Preview mode -> show children (visible, no blur) + sticky trial banner
+  // Preview mode -> show children (visible through light overlay) + centered modal
   return (
     <div className="relative">
-      {/* Content — fully visible but non-interactive */}
+      {/* Content — visible but non-interactive */}
       <div className="select-none pointer-events-none" aria-disabled="true">
         {children}
       </div>
 
-      {/* Sticky trial banner at top */}
-      <div className="sticky bottom-4 z-30 flex justify-center pointer-events-none mt-6">
-        <div className="pointer-events-auto w-full max-w-md mx-4 bg-white/95 backdrop-blur-sm rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-300/40 p-8 text-center">
+      {/* Light overlay + centered modal */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/50">
+        <div className="w-full max-w-md mx-4 bg-white rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-300/40 p-8 text-center">
           {/* Lock icon */}
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ab54f3]/10">
             <Lock className="h-7 w-7 text-[#ab54f3]" />
