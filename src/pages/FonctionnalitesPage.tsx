@@ -25,6 +25,13 @@ import {
   ArrowRight,
   Circle,
   Sparkles,
+  Send,
+  Star,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Globe,
+  Link2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -189,6 +196,504 @@ function VendorsMockup() {
   );
 }
 
+/* ── Risks category mockups ── */
+
+function RisksMockup() {
+  const sections = [
+    { label: "A — Portée & impact", done: true },
+    { label: "B — Données & vie privée", done: true },
+    { label: "C — Transparence", done: true },
+    { label: "D — Fiabilité", progress: 60 },
+    { label: "E — Gouvernance", progress: 0 },
+    { label: "F — Droits fondamentaux", progress: 0 },
+  ];
+  return (
+    <MockupCard title="Évaluation des risques" icon={AlertTriangle}>
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">Score de risque</p>
+          <p className="text-2xl font-bold text-amber-500">68<span className="text-sm font-normal text-neutral-400">/100</span></p>
+        </div>
+        <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-600">Élevé</span>
+      </div>
+      <div className="space-y-2">
+        {sections.map((s) => (
+          <div key={s.label} className="flex items-center gap-3">
+            <div className="h-1.5 w-full rounded-full bg-neutral-100">
+              <div
+                className={`h-full rounded-full ${s.done ? "bg-emerald-500" : s.progress ? "bg-amber-400" : "bg-neutral-200"}`}
+                style={{ width: s.done ? "100%" : `${s.progress}%` }}
+              />
+            </div>
+            <span className="shrink-0 text-[10px] text-neutral-500 w-40 truncate">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function IncidentsMockup() {
+  const incidents = [
+    { title: "Hallucination chatbot client", severity: "Critique", sevColor: "text-red-600 bg-red-50", status: "Investigation", date: "28 fév" },
+    { title: "Fuite données entraînement", severity: "Élevé", sevColor: "text-amber-600 bg-amber-50", status: "Résolution", date: "25 fév" },
+    { title: "Biais détecté scoring crédit", severity: "Élevé", sevColor: "text-amber-600 bg-amber-50", status: "Post-mortem", date: "20 fév" },
+    { title: "Latence API recommandation", severity: "Moyen", sevColor: "text-blue-600 bg-blue-50", status: "Résolu", date: "15 fév" },
+  ];
+  return (
+    <MockupCard title="Incidents" icon={AlertCircle}>
+      <div className="space-y-2.5">
+        {incidents.map((inc) => (
+          <div key={inc.title} className="flex items-center justify-between rounded-lg border border-neutral-100 px-3 py-2.5">
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-neutral-800 truncate">{inc.title}</p>
+              <div className="mt-1 flex items-center gap-2">
+                <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${inc.sevColor}`}>{inc.severity}</span>
+                <span className="text-[10px] text-neutral-400">{inc.date}</span>
+              </div>
+            </div>
+            <span className="shrink-0 rounded bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-600">{inc.status}</span>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function BiasMockup() {
+  const findings = [
+    { type: "Impact disparate", system: "Tri CV", severity: "Critique", method: "Audit", status: "Remédiation", statusColor: "text-amber-600 bg-amber-50" },
+    { type: "Stéréotypage", system: "Chatbot RH", severity: "Élevé", method: "Test auto", status: "Identifié", statusColor: "text-red-600 bg-red-50" },
+    { type: "Hallucination", system: "Assistant", severity: "Moyen", method: "Plainte", status: "Résolu", statusColor: "text-emerald-600 bg-emerald-50" },
+  ];
+  return (
+    <MockupCard title="Analyse des biais" icon={Scale}>
+      <table className="w-full text-left text-xs">
+        <thead>
+          <tr className="border-b border-neutral-100 text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+            <th className="pb-2 pr-2">Type</th>
+            <th className="pb-2 pr-2">Système</th>
+            <th className="pb-2 pr-2">Détection</th>
+            <th className="pb-2">Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          {findings.map((f, i) => (
+            <tr key={i} className="border-b border-neutral-50 last:border-0">
+              <td className="py-2 pr-2 font-medium text-neutral-800">{f.type}</td>
+              <td className="py-2 pr-2 text-neutral-600">{f.system}</td>
+              <td className="py-2 pr-2">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{f.method}</span>
+              </td>
+              <td className="py-2">
+                <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${f.statusColor}`}>{f.status}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </MockupCard>
+  );
+}
+
+/* ── Compliance category mockups ── */
+
+function ComplianceMockup() {
+  const frameworks = [
+    { name: "Loi 25", score: 85, color: "#22c55e" },
+    { name: "EU AI Act", score: 62, color: "#f59e0b" },
+    { name: "NIST AI RMF", score: 78, color: "#22c55e" },
+    { name: "ISO 42001", score: 45, color: "#ef4444" },
+    { name: "RGPD", score: 91, color: "#22c55e" },
+  ];
+  return (
+    <MockupCard title="Conformité multi-cadres" icon={CheckCircle}>
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">Score global</p>
+          <p className="text-2xl font-bold text-emerald-500">72<span className="text-sm font-normal text-neutral-400">%</span></p>
+        </div>
+        <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-600">Conforme</span>
+      </div>
+      <div className="space-y-2.5">
+        {frameworks.map((fw) => (
+          <div key={fw.name} className="flex items-center gap-3">
+            <span className="w-20 shrink-0 text-[11px] font-medium text-neutral-700">{fw.name}</span>
+            <div className="h-2 flex-1 rounded-full bg-neutral-100">
+              <div className="h-full rounded-full transition-all" style={{ width: `${fw.score}%`, backgroundColor: fw.color }} />
+            </div>
+            <span className="w-8 shrink-0 text-right text-[11px] font-semibold tabular-nums" style={{ color: fw.color }}>{fw.score}%</span>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function PoliciesMockup() {
+  const policies = [
+    { name: "Charte IA générative", type: "GenAI", status: "Publié", statusColor: "text-emerald-600 bg-emerald-50", version: "v2.1" },
+    { name: "Procédure d'approbation", type: "Procédure", status: "En révision", statusColor: "text-amber-600 bg-amber-50", version: "v1.3" },
+    { name: "Politique de confidentialité IA", type: "Vie privée", status: "Brouillon", statusColor: "text-neutral-500 bg-neutral-100", version: "v0.2" },
+  ];
+  return (
+    <MockupCard title="Politiques & Procédures" icon={Shield}>
+      <div className="space-y-2.5">
+        {policies.map((p) => (
+          <div key={p.name} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-neutral-800">{p.name}</p>
+              <span className="text-[10px] text-neutral-400">{p.version}</span>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2">
+              <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{p.type}</span>
+              <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${p.statusColor}`}>{p.status}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function DecisionsMockup() {
+  const decisions = [
+    { title: "Go production — Chatbot V2", type: "Go/No-Go", impact: "Élevé", impactColor: "text-red-600 bg-red-50", status: "Approuvé", statusColor: "text-emerald-600" },
+    { title: "Exception RGPD — Pilote ML", type: "Exception", impact: "Moyen", impactColor: "text-amber-600 bg-amber-50", status: "En attente", statusColor: "text-amber-600" },
+    { title: "Suspension — Scoring V1", type: "Suspension", impact: "Critique", impactColor: "text-red-600 bg-red-50", status: "Implémenté", statusColor: "text-blue-600" },
+  ];
+  return (
+    <MockupCard title="Registre des décisions" icon={ClipboardCheck}>
+      <div className="space-y-2.5">
+        {decisions.map((d) => (
+          <div key={d.title} className="flex items-center justify-between rounded-lg border border-neutral-100 px-3 py-2.5">
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-neutral-800 truncate">{d.title}</p>
+              <div className="mt-1 flex items-center gap-2">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{d.type}</span>
+                <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${d.impactColor}`}>{d.impact}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
+              <CheckCircle className={`size-3 ${d.statusColor}`} />
+              <span className={`text-[10px] font-medium ${d.statusColor}`}>{d.status}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function DocumentsMockup() {
+  const docs = [
+    { name: "PIA_Assistant_RH.pdf", category: "Évaluation d'impact", size: "2.4 MB", date: "28 fév", icon: "📄" },
+    { name: "Audit_Biais_Q4.pdf", category: "Rapport d'audit", size: "1.8 MB", date: "15 fév", icon: "📊" },
+    { name: "Charte_IA_v2.docx", category: "Politique", size: "156 KB", date: "10 fév", icon: "📋" },
+    { name: "Formation_Loi25.pptx", category: "Formation", size: "5.1 MB", date: "02 fév", icon: "🎓" },
+  ];
+  return (
+    <MockupCard title="Documents" icon={FileText}>
+      <div className="space-y-2">
+        {docs.map((d) => (
+          <div key={d.name} className="flex items-center gap-3 rounded-lg border border-neutral-100 px-3 py-2">
+            <span className="text-lg">{d.icon}</span>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-medium text-neutral-800 truncate">{d.name}</p>
+              <p className="text-[10px] text-neutral-400">{d.category} · {d.size}</p>
+            </div>
+            <span className="text-[10px] text-neutral-400 shrink-0">{d.date}</span>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function AgentsMockup() {
+  const agents = [
+    { name: "Agent Conformité", autonomy: "A3", autonomyLabel: "Conditionnelle", risk: "R2", status: "Actif", statusColor: "text-emerald-600" },
+    { name: "Agent Veille", autonomy: "A2", autonomyLabel: "Limitée", risk: "R1", status: "Actif", statusColor: "text-emerald-600" },
+    { name: "Agent Audit", autonomy: "A4", autonomyLabel: "Haute", risk: "R3", status: "Suspendu", statusColor: "text-amber-600" },
+  ];
+  return (
+    <MockupCard title="Registre des agents IA" icon={Bot}>
+      <div className="space-y-2.5">
+        {agents.map((a) => (
+          <div key={a.name} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-neutral-800">{a.name}</p>
+              <span className="flex items-center gap-1">
+                <Circle className={`size-1.5 fill-current ${a.statusColor}`} />
+                <span className={`text-[10px] font-medium ${a.statusColor}`}>{a.status}</span>
+              </span>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2">
+              <span className="rounded bg-[#ab54f3]/10 px-1.5 py-0.5 text-[10px] font-semibold text-[#ab54f3]">{a.autonomy}</span>
+              <span className="text-[10px] text-neutral-500">{a.autonomyLabel}</span>
+              <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">Risque {a.risk}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+/* ── Operations category mockups ── */
+
+function TransparencyMockup() {
+  const entries = [
+    { type: "Scoring crédit", basis: "Consentement", level: "Automatisé", impact: "Élevé", impactColor: "text-red-600 bg-red-50" },
+    { type: "Tri candidatures", basis: "Intérêt légitime", level: "Semi-auto", impact: "Élevé", impactColor: "text-red-600 bg-red-50" },
+    { type: "Recommandation", basis: "Contrat", level: "Assisté", impact: "Faible", impactColor: "text-emerald-600 bg-emerald-50" },
+  ];
+  return (
+    <MockupCard title="Décisions automatisées" icon={Eye}>
+      <table className="w-full text-left text-xs">
+        <thead>
+          <tr className="border-b border-neutral-100 text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+            <th className="pb-2 pr-2">Décision</th>
+            <th className="pb-2 pr-2">Base légale</th>
+            <th className="pb-2 pr-2">Niveau</th>
+            <th className="pb-2">Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entries.map((e, i) => (
+            <tr key={i} className="border-b border-neutral-50 last:border-0">
+              <td className="py-2 pr-2 font-medium text-neutral-800">{e.type}</td>
+              <td className="py-2 pr-2 text-neutral-600">{e.basis}</td>
+              <td className="py-2 pr-2">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{e.level}</span>
+              </td>
+              <td className="py-2">
+                <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${e.impactColor}`}>{e.impact}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </MockupCard>
+  );
+}
+
+function MonitoringMockup() {
+  const metrics = [
+    { name: "Précision modèle", value: "94.2%", trend: "up" as const, delta: "+1.3%" },
+    { name: "Latence P95", value: "234ms", trend: "down" as const, delta: "-12ms" },
+    { name: "Dérive données", value: "0.08", trend: "stable" as const, delta: "±0.01" },
+    { name: "Volume requêtes", value: "12.4K", trend: "up" as const, delta: "+8%" },
+  ];
+  const TrendIcon = { up: TrendingUp, down: TrendingDown, stable: Minus };
+  const trendColor = { up: "text-emerald-500", down: "text-emerald-500", stable: "text-neutral-400" };
+  return (
+    <MockupCard title="Monitoring" icon={Activity}>
+      <div className="grid grid-cols-2 gap-2.5">
+        {metrics.map((m) => {
+          const TIcon = TrendIcon[m.trend];
+          return (
+            <div key={m.name} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-3 py-2.5">
+              <p className="text-[10px] text-neutral-400">{m.name}</p>
+              <p className="mt-0.5 text-lg font-bold text-neutral-800">{m.value}</p>
+              <div className="mt-0.5 flex items-center gap-1">
+                <TIcon className={`size-3 ${trendColor[m.trend]}`} />
+                <span className={`text-[10px] font-medium ${trendColor[m.trend]}`}>{m.delta}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </MockupCard>
+  );
+}
+
+function DataMockup() {
+  const datasets = [
+    { name: "Données clients CRM", source: "Interne", sensitivity: "Personnel", records: "145K", pii: true },
+    { name: "Historique transactions", source: "Interne", sensitivity: "Financier", records: "2.3M", pii: true },
+    { name: "Dataset entraînement NLP", source: "Synthétique", sensitivity: "Public", records: "500K", pii: false },
+  ];
+  return (
+    <MockupCard title="Catalogue de données" icon={Database}>
+      <div className="space-y-2.5">
+        {datasets.map((d) => (
+          <div key={d.name} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-neutral-800">{d.name}</p>
+              <span className="text-[10px] tabular-nums text-neutral-400">{d.records} enreg.</span>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2">
+              <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{d.source}</span>
+              <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">{d.sensitivity}</span>
+              {d.pii && <span className="rounded-full bg-red-50 px-1.5 py-0.5 text-[9px] font-semibold text-red-600">DCP</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function VeilleMockup() {
+  const articles = [
+    { title: "Loi 25 : nouvelles obligations pour les systèmes de décision automatisée", source: "Gazette officielle", date: "1 mars", tag: "Québec", tagColor: "text-blue-600 bg-blue-50" },
+    { title: "EU AI Act : entrée en vigueur des exigences pour les systèmes à haut risque", source: "EUR-Lex", date: "28 fév", tag: "EU", tagColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+    { title: "NIST publie la mise à jour du AI RMF Playbook", source: "NIST", date: "25 fév", tag: "USA", tagColor: "text-emerald-600 bg-emerald-50" },
+  ];
+  return (
+    <MockupCard title="Veille réglementaire" icon={Newspaper}>
+      <div className="space-y-2.5">
+        {articles.map((a) => (
+          <div key={a.title} className="rounded-lg border border-neutral-100 px-3 py-2.5">
+            <div className="flex items-center gap-2 mb-1">
+              <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${a.tagColor}`}>{a.tag}</span>
+              <span className="text-[10px] text-neutral-400">{a.date}</span>
+            </div>
+            <p className="text-xs font-medium text-neutral-800 leading-snug">{a.title}</p>
+            <p className="mt-0.5 text-[10px] text-neutral-400">{a.source}</p>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+/* ── Intelligence category mockups ── */
+
+function DashboardMockup() {
+  const kpis = [
+    { label: "Systèmes en production", value: "12", icon: Bot, trend: "+2", trendColor: "text-emerald-500" },
+    { label: "Score conformité", value: "72%", icon: CheckCircle, trend: "+5%", trendColor: "text-emerald-500" },
+    { label: "Incidents actifs", value: "3", icon: AlertCircle, trend: "-1", trendColor: "text-emerald-500" },
+    { label: "Systèmes haut risque", value: "4", icon: AlertTriangle, trend: "+1", trendColor: "text-red-500" },
+  ];
+  return (
+    <MockupCard title="Tableau de bord" icon={LayoutDashboard}>
+      <div className="grid grid-cols-2 gap-2.5">
+        {kpis.map((k) => {
+          const KIcon = k.icon;
+          return (
+            <div key={k.label} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-3 py-2.5">
+              <div className="flex items-center gap-1.5 mb-1">
+                <KIcon className="size-3 text-[#ab54f3]" />
+                <p className="text-[10px] text-neutral-400 truncate">{k.label}</p>
+              </div>
+              <div className="flex items-baseline gap-1.5">
+                <p className="text-xl font-bold text-neutral-800">{k.value}</p>
+                <span className={`text-[10px] font-medium ${k.trendColor}`}>{k.trend}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </MockupCard>
+  );
+}
+
+function AiChatMockup() {
+  return (
+    <MockupCard title="Assistant IA" icon={MessageSquare}>
+      <div className="space-y-3">
+        {/* User message */}
+        <div className="flex justify-end">
+          <div className="rounded-2xl rounded-br-md bg-[#ab54f3] px-3.5 py-2 max-w-[80%]">
+            <p className="text-xs text-white">Quelles sont nos obligations sous la Loi 25 pour notre chatbot IA ?</p>
+          </div>
+        </div>
+        {/* AI response */}
+        <div className="flex justify-start">
+          <div className="rounded-2xl rounded-bl-md bg-neutral-100 px-3.5 py-2 max-w-[85%]">
+            <p className="text-xs text-neutral-700 leading-relaxed">
+              Pour votre chatbot IA, la Loi 25 exige : <strong>transparence</strong> (informer que c'est une IA), <strong>consentement</strong> pour les données personnelles, et un <strong>mécanisme de contestation</strong> des décisions.
+            </p>
+          </div>
+        </div>
+        {/* Input */}
+        <div className="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-2">
+          <span className="flex-1 text-[11px] text-neutral-400">Posez votre question...</span>
+          <Send className="size-3.5 text-[#ab54f3]" />
+        </div>
+      </div>
+    </MockupCard>
+  );
+}
+
+/* ── Community category mockups ── */
+
+function MembersMockup() {
+  const members = [
+    { name: "Marie-Claude Trudel", role: "DPO", org: "Desjardins", tier: "Expert", tierColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+    { name: "Jean-François Roy", role: "VP Technologie", org: "Hydro-Québec", tier: "Membre", tierColor: "text-blue-600 bg-blue-50" },
+    { name: "Sophie Lavoie", role: "Dir. Conformité", org: "BNC", tier: "Expert", tierColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+  ];
+  return (
+    <MockupCard title="Répertoire des membres" icon={Users}>
+      <div className="space-y-2.5">
+        {members.map((m) => (
+          <div key={m.name} className="flex items-center gap-3 rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
+            <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4] text-white text-xs font-bold">
+              {m.name.split(" ").map(n => n[0]).join("")}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold text-neutral-800">{m.name}</p>
+              <p className="text-[10px] text-neutral-500">{m.role} · {m.org}</p>
+            </div>
+            <span className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-semibold ${m.tierColor}`}>{m.tier}</span>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function ProfileMockup() {
+  return (
+    <MockupCard title="Profil professionnel" icon={UserCircle}>
+      <div className="text-center">
+        <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4] text-white text-lg font-bold">
+          MC
+        </div>
+        <p className="mt-2.5 text-sm font-bold text-neutral-800">Marie-Claude Trudel</p>
+        <p className="text-[11px] text-neutral-500">Déléguée à la protection des données</p>
+        <p className="text-[10px] text-neutral-400">Desjardins · Montréal</p>
+        <div className="mt-3 flex items-center justify-center gap-2">
+          <span className="rounded-full bg-[#ab54f3]/10 px-2.5 py-0.5 text-[10px] font-semibold text-[#ab54f3]">Expert</span>
+          <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-semibold text-blue-600">Loi 25</span>
+          <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-600">RGPD</span>
+        </div>
+        <div className="mt-3 flex items-center justify-center gap-3 text-[10px] text-neutral-400">
+          <span className="flex items-center gap-1"><Star className="size-3 text-amber-400 fill-amber-400" /> 4.9</span>
+          <span className="flex items-center gap-1"><Link2 className="size-3" /> LinkedIn</span>
+          <span className="flex items-center gap-1"><Globe className="size-3" /> Site web</span>
+        </div>
+      </div>
+    </MockupCard>
+  );
+}
+
+function LibraryMockup() {
+  const resources = [
+    { name: "Guide Loi 25 & IA", type: "Guide", icon: "📘", downloads: "1.2K" },
+    { name: "Template PIA", type: "Modèle", icon: "📝", downloads: "890" },
+    { name: "Checklist EU AI Act", type: "Checklist", icon: "✅", downloads: "2.1K" },
+    { name: "Matrice de risques IA", type: "Outil", icon: "📊", downloads: "1.5K" },
+  ];
+  return (
+    <MockupCard title="Bibliothèque" icon={BookOpen}>
+      <div className="grid grid-cols-2 gap-2">
+        {resources.map((r) => (
+          <div key={r.name} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-3 py-2.5 text-center">
+            <span className="text-xl">{r.icon}</span>
+            <p className="mt-1 text-[11px] font-semibold text-neutral-800 leading-tight">{r.name}</p>
+            <p className="mt-0.5 text-[10px] text-neutral-400">{r.type} · {r.downloads}</p>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  STATIC DATA                                                         */
 /* ------------------------------------------------------------------ */
@@ -205,43 +710,43 @@ const CATEGORIES: Category[] = [
   {
     id: "risks",
     features: [
-      { key: "risks", icon: AlertTriangle },
-      { key: "incidents", icon: AlertCircle },
-      { key: "bias", icon: Scale },
+      { key: "risks", icon: AlertTriangle, mockup: RisksMockup },
+      { key: "incidents", icon: AlertCircle, mockup: IncidentsMockup },
+      { key: "bias", icon: Scale, mockup: BiasMockup },
     ],
   },
   {
     id: "compliance",
     features: [
-      { key: "compliance", icon: CheckCircle },
-      { key: "policies", icon: Shield },
-      { key: "decisions", icon: ClipboardCheck },
-      { key: "documents", icon: FileText },
-      { key: "agents", icon: Bot },
+      { key: "compliance", icon: CheckCircle, mockup: ComplianceMockup },
+      { key: "policies", icon: Shield, mockup: PoliciesMockup },
+      { key: "decisions", icon: ClipboardCheck, mockup: DecisionsMockup },
+      { key: "documents", icon: FileText, mockup: DocumentsMockup },
+      { key: "agents", icon: Bot, mockup: AgentsMockup },
     ],
   },
   {
     id: "operations",
     features: [
-      { key: "transparency", icon: Eye },
-      { key: "monitoring", icon: Activity },
-      { key: "data", icon: Database },
-      { key: "veille", icon: Newspaper },
+      { key: "transparency", icon: Eye, mockup: TransparencyMockup },
+      { key: "monitoring", icon: Activity, mockup: MonitoringMockup },
+      { key: "data", icon: Database, mockup: DataMockup },
+      { key: "veille", icon: Newspaper, mockup: VeilleMockup },
     ],
   },
   {
     id: "intelligence",
     features: [
-      { key: "dashboard", icon: LayoutDashboard },
-      { key: "aiChat", icon: MessageSquare },
+      { key: "dashboard", icon: LayoutDashboard, mockup: DashboardMockup },
+      { key: "aiChat", icon: MessageSquare, mockup: AiChatMockup },
     ],
   },
   {
     id: "community",
     features: [
-      { key: "members", icon: Users },
-      { key: "profile", icon: UserCircle },
-      { key: "library", icon: BookOpen },
+      { key: "members", icon: Users, mockup: MembersMockup },
+      { key: "profile", icon: UserCircle, mockup: ProfileMockup },
+      { key: "library", icon: BookOpen, mockup: LibraryMockup },
     ],
   },
 ];
