@@ -1,0 +1,126 @@
+{
+  "seo": {
+    "title": "Features",
+    "description": "Discover the 20 integrated modules of the AI governance portal: inventory, risks, compliance, transparency, monitoring and more."
+  },
+  "hero": {
+    "title": "Everything you need to govern your AI",
+    "subtitle": "20 integrated modules to inventory, assess, comply and manage your artificial intelligence systems.",
+    "cta": "Try for free",
+    "ctaSecondary": "View pricing"
+  },
+  "categories": {
+    "inventory": {
+      "title": "Inventory & Lifecycle",
+      "subtitle": "Catalog, track and manage your entire AI portfolio"
+    },
+    "risks": {
+      "title": "Risk Management",
+      "subtitle": "Assess, detect and remediate risks across your systems"
+    },
+    "compliance": {
+      "title": "Compliance & Governance",
+      "subtitle": "Align with frameworks and structure your governance"
+    },
+    "operations": {
+      "title": "Transparency & Operations",
+      "subtitle": "Monitor, document and ensure accountability continuously"
+    },
+    "intelligence": {
+      "title": "Dashboard & Intelligence",
+      "subtitle": "Steer your AI governance from a single command center"
+    },
+    "community": {
+      "title": "Community & Collaboration",
+      "subtitle": "Join a network of professionals committed to AI governance"
+    }
+  },
+  "features": {
+    "aiSystems": {
+      "title": "AI Systems Inventory",
+      "description": "Catalog all your AI systems in a few clicks. A step-by-step wizard captures type, scope, data used and owners. You instantly get a risk score and a complete view of your AI portfolio."
+    },
+    "lifecycle": {
+      "title": "Lifecycle Management",
+      "description": "Track every change — model update, vendor switch, suspension, decommissioning. A complete chronological log that proves your diligence and facilitates audits."
+    },
+    "vendors": {
+      "title": "Vendor Management",
+      "description": "Centralize your AI vendors: contracts, certifications, risk levels, SLAs. Spot critical dependencies and upcoming renewals at a glance."
+    },
+    "risks": {
+      "title": "Risk Assessments",
+      "description": "A structured 6-section questionnaire that automatically calculates each system's risk score. Results align with EU AI Act levels and generate the list of applicable requirements."
+    },
+    "incidents": {
+      "title": "Incident Management",
+      "description": "Report, triage and resolve AI incidents with a complete workflow. Severity tracking, assignment, investigation, post-mortem — everything documented for compliance."
+    },
+    "bias": {
+      "title": "Bias Analysis",
+      "description": "Identify and fix algorithmic biases: disparate impact, stereotyping, hallucinations. Each finding is tracked with its detection method, severity and remediation plan."
+    },
+    "compliance": {
+      "title": "Multi-Framework Compliance",
+      "description": "Assess your compliance simultaneously across 5 frameworks — Law 25, EU AI Act, NIST AI RMF, ISO 42001, GDPR. A global and per-framework score, with a prioritized remediation plan."
+    },
+    "policies": {
+      "title": "Policies & Procedures",
+      "description": "Create and version your AI governance policies: ethics charter, approval procedures, complaint handling. Built-in publication workflow (draft → review → published)."
+    },
+    "decisions": {
+      "title": "Decision Registry",
+      "description": "Document every governance decision — Go/No-Go, ethical arbitration, exception. Multi-level approval workflow with complete history and audit trail."
+    },
+    "documents": {
+      "title": "Document Management",
+      "description": "Centralize all your governance documents: policies, audit reports, impact assessments. AI-powered classification, versioning and instant search."
+    },
+    "agents": {
+      "title": "AI Agent Registry",
+      "description": "Catalog your AI agents with their autonomy level (A1 to A5), risk classification and usage policies. Trace every action with a detailed execution log."
+    },
+    "transparency": {
+      "title": "Transparency & Contestations",
+      "description": "Maintain an automated decisions registry compliant with Law 25 and GDPR. Handle contestations from affected individuals with a complete processing workflow."
+    },
+    "monitoring": {
+      "title": "Monitoring & Performance",
+      "description": "Monitor your AI systems continuously: performance, data drift, model drift, latency. Configure alert thresholds and receive real-time notifications."
+    },
+    "data": {
+      "title": "Data Governance",
+      "description": "Map your datasets: sources, categories, sensitivity, volumes. Document every data transfer with its legal basis and protection measures."
+    },
+    "veille": {
+      "title": "Regulatory Watch",
+      "description": "Stay informed of regulatory developments in Quebec, Canada and internationally. Automated news feed with jurisdiction filtering and impact analysis."
+    },
+    "dashboard": {
+      "title": "Centralized Dashboard",
+      "description": "Real-time overview: systems in production, compliance score, active incidents, high-risk systems. Multi-framework radar charts, incident timeline and pending actions."
+    },
+    "aiChat": {
+      "title": "Built-in AI Assistant",
+      "description": "Ask your governance questions to a specialized AI assistant. It knows your regulatory frameworks, systems and policies for contextualized answers."
+    },
+    "members": {
+      "title": "Member Directory",
+      "description": "Connect with Circle professionals. Browse profiles, expertise and organizations from the AI governance community."
+    },
+    "profile": {
+      "title": "Professional Profile",
+      "description": "Showcase your AI governance expertise with a public profile. LinkedIn badge, directory visibility and recognition of your skills."
+    },
+    "library": {
+      "title": "Resource Library",
+      "description": "Access templates, guides and best practices to structure your AI governance. A knowledge base shared by the community."
+    }
+  },
+  "cta": {
+    "title": "Ready to structure your AI governance?",
+    "subtitle": "Start free with the Observer plan. No credit card required.",
+    "primary": "Create my account",
+    "secondary": "Compare plans"
+  }
+}

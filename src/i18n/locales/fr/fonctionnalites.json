@@ -1,0 +1,126 @@
+{
+  "seo": {
+    "title": "Fonctionnalités",
+    "description": "Découvrez les 20 modules intégrés du portail de gouvernance IA : inventaire, risques, conformité, transparence, monitoring et plus encore."
+  },
+  "hero": {
+    "title": "Tout ce dont vous avez besoin pour gouverner votre IA",
+    "subtitle": "20 modules intégrés pour inventorier, évaluer, conformer et piloter vos systèmes d'intelligence artificielle.",
+    "cta": "Essayer gratuitement",
+    "ctaSecondary": "Voir les tarifs"
+  },
+  "categories": {
+    "inventory": {
+      "title": "Inventaire & Cycle de vie",
+      "subtitle": "Recensez, suivez et gérez l'ensemble de votre parc IA"
+    },
+    "risks": {
+      "title": "Gestion des risques",
+      "subtitle": "Évaluez, détectez et corrigez les risques de vos systèmes"
+    },
+    "compliance": {
+      "title": "Conformité & Gouvernance",
+      "subtitle": "Alignez-vous sur les référentiels et structurez votre gouvernance"
+    },
+    "operations": {
+      "title": "Transparence & Opérations",
+      "subtitle": "Surveillez, documentez et rendez des comptes en continu"
+    },
+    "intelligence": {
+      "title": "Tableau de bord & Intelligence",
+      "subtitle": "Pilotez votre gouvernance IA depuis un centre de commande unique"
+    },
+    "community": {
+      "title": "Communauté & Collaboration",
+      "subtitle": "Rejoignez un réseau de professionnels engagés en gouvernance IA"
+    }
+  },
+  "features": {
+    "aiSystems": {
+      "title": "Inventaire des systèmes IA",
+      "description": "Recensez tous vos systèmes d'IA en quelques clics. Un assistant pas-à-pas capture le type, la portée, les données utilisées et les responsables. Vous obtenez instantanément un score de risque et une vue complète de votre parc IA."
+    },
+    "lifecycle": {
+      "title": "Cycle de vie",
+      "description": "Tracez chaque changement — mise à jour de modèle, changement de fournisseur, suspension, décommissionnement. Un journal chronologique complet qui prouve votre diligence et facilite les audits."
+    },
+    "vendors": {
+      "title": "Gestion des fournisseurs",
+      "description": "Centralisez vos fournisseurs IA : contrats, certifications, niveaux de risque, SLA. Identifiez en un coup d'œil les dépendances critiques et les renouvellements à venir."
+    },
+    "risks": {
+      "title": "Évaluations des risques",
+      "description": "Un questionnaire structuré en 6 sections qui calcule automatiquement le score de risque de chaque système. Le résultat s'aligne sur les niveaux du EU AI Act et génère la liste des exigences applicables."
+    },
+    "incidents": {
+      "title": "Gestion des incidents",
+      "description": "Déclarez, triagez et résolvez les incidents IA avec un workflow complet. Suivi de la sévérité, assignation, investigation, post-mortem — tout est documenté pour la conformité."
+    },
+    "bias": {
+      "title": "Analyse des biais",
+      "description": "Identifiez et corrigez les biais algorithmiques : impact disparate, stéréotypage, hallucinations. Chaque constat est tracé avec sa méthode de détection, sa sévérité et son plan de remédiation."
+    },
+    "compliance": {
+      "title": "Conformité multi-cadres",
+      "description": "Évaluez votre conformité simultanément sur 5 référentiels — Loi 25, EU AI Act, NIST AI RMF, ISO 42001, RGPD. Un score global et par cadre, avec un plan de remédiation priorisé."
+    },
+    "policies": {
+      "title": "Politiques & Procédures",
+      "description": "Créez et versionnez vos politiques de gouvernance IA : charte éthique, procédures d'approbation, gestion des plaintes. Workflow de publication intégré (brouillon → révision → publié)."
+    },
+    "decisions": {
+      "title": "Registre des décisions",
+      "description": "Documentez chaque décision de gouvernance — Go/No-Go, arbitrage éthique, exception. Workflow d'approbation multi-niveaux avec historique complet et piste d'audit."
+    },
+    "documents": {
+      "title": "Gestion documentaire",
+      "description": "Centralisez tous vos documents de gouvernance : politiques, rapports d'audit, évaluations d'impact. Classification automatique par IA, versionnement et recherche instantanée."
+    },
+    "agents": {
+      "title": "Registre des agents IA",
+      "description": "Cataloguez vos agents IA avec leur niveau d'autonomie (A1 à A5), leur classification de risque et leurs politiques d'usage. Tracez chaque action avec un journal d'exécution détaillé."
+    },
+    "transparency": {
+      "title": "Transparence & Contestations",
+      "description": "Tenez un registre des décisions automatisées conforme à la Loi 25 et au RGPD. Gérez les contestations des personnes concernées avec un workflow de traitement complet."
+    },
+    "monitoring": {
+      "title": "Monitoring & Performance",
+      "description": "Surveillez vos systèmes IA en continu : performance, dérive de données, dérive de modèle, latence. Configurez des seuils d'alerte et recevez des notifications en temps réel."
+    },
+    "data": {
+      "title": "Gouvernance des données",
+      "description": "Cartographiez vos jeux de données : sources, catégories, sensibilité, volumes. Documentez chaque transfert de données avec sa base légale et ses mesures de protection."
+    },
+    "veille": {
+      "title": "Veille réglementaire",
+      "description": "Restez informé des évolutions réglementaires au Québec, au Canada et à l'international. Flux automatisé d'actualités avec filtrage par juridiction et analyse d'impact."
+    },
+    "dashboard": {
+      "title": "Tableau de bord centralisé",
+      "description": "Vue d'ensemble en temps réel : systèmes en production, score de conformité, incidents actifs, systèmes à haut risque. Graphiques radar multi-cadres, chronologie des incidents et actions en attente."
+    },
+    "aiChat": {
+      "title": "Assistant IA intégré",
+      "description": "Posez vos questions de gouvernance à un assistant IA spécialisé. Il connaît vos cadres réglementaires, vos systèmes et vos politiques pour des réponses contextualisées."
+    },
+    "members": {
+      "title": "Répertoire des membres",
+      "description": "Connectez-vous avec les professionnels du Cercle. Consultez les profils, expertises et organisations de la communauté de gouvernance IA."
+    },
+    "profile": {
+      "title": "Profil professionnel",
+      "description": "Affichez votre expertise en gouvernance IA avec un profil public. Badge LinkedIn, visibilité dans le répertoire et reconnaissance de vos compétences."
+    },
+    "library": {
+      "title": "Bibliothèque de ressources",
+      "description": "Accédez à des modèles, guides et bonnes pratiques pour structurer votre gouvernance IA. Une base de connaissances partagée par la communauté."
+    }
+  },
+  "cta": {
+    "title": "Prêt à structurer votre gouvernance IA ?",
+    "subtitle": "Commencez gratuitement avec le plan Observateur. Aucune carte de crédit requise.",
+    "primary": "Créer mon compte",
+    "secondary": "Comparer les plans"
+  }
+}
