@@ -21,7 +21,7 @@ const TRIAL_FEATURES = [
   'trialFeature4',
 ] as const;
 
-const PRICES = { monthly: 99, yearly: 990 } as const;
+const PRICES = { monthly: 249, yearlyPerMonth: 199, yearlyTotal: 2388 } as const;
 
 export function FeatureGate({ feature, children, silent = false }: FeatureGateProps) {
   const { hasFeature } = usePlanFeatures();
@@ -38,8 +38,6 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
   // Silent mode -> hide entirely
   if (silent) return null;
 
-  const price = PRICES[period];
-
   const handleTrial = () => {
     if (!profile?.organization_id) return;
     checkout.mutate(
@@ -47,7 +45,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
         plan: 'member',
         period,
         organizationId: profile.organization_id,
-        trialDays: 15,
+        trialDays: 30,
       },
       {
         onSuccess: (url) => {
@@ -138,11 +136,17 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
 
           {/* Price */}
           <div className="mt-4">
-            <span className="text-2xl font-bold text-neutral-900">
-              {period === 'monthly'
-                ? t('gate.priceMonthly', { price })
-                : t('gate.priceYearly', { price })}
-            </span>
+            <div className="flex items-baseline justify-center gap-1">
+              <span className="text-3xl font-extrabold text-neutral-900">
+                CA${period === 'yearly' ? PRICES.yearlyPerMonth : PRICES.monthly}
+              </span>
+              <span className="text-sm text-neutral-500">/ mois</span>
+            </div>
+            {period === 'yearly' && (
+              <p className="mt-1 text-xs text-neutral-500">
+                {t('gate.billedYearly', { price: PRICES.yearlyTotal.toLocaleString('fr-CA') })}
+              </p>
+            )}
             <p className="mt-1 text-xs text-neutral-400">{t('gate.afterTrial')}</p>
           </div>
 
