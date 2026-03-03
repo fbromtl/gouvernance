@@ -87,8 +87,11 @@
   "readyTitle": "Prêt à rejoindre le Cercle ?",
   "readySubtitle": "Rejoignez des professionnels qui font face aux mêmes défis. Accédez à la plateforme, l'annuaire et le réseau d'experts.",
   "startFree": "Commencer gratuitement",
-  "honoraryBanner": "Le Cercle accueille aussi des Membres Honoraires, sommités nommées par le Conseil d'administration.",
-  "honoraryLearnMore": "En savoir plus",
+  "honoraryBanner": {
+    "title": "Membre Honoraire",
+    "subtitle": "Vous œuvrez dans l'IA ? Contribuez au Cercle et accédez gratuitement à tous les modules.",
+    "cta": "Devenir Membre Honoraire"
+  },
   "perMonth": "/ mois",
   "billedYearly": "Facturé annuellement",
   "billedAnnually": "Facturé {{price}} {{symbol}}/an",

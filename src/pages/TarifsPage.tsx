@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Eye, Users, Crown, Shield } from "lucide-react";
+import { Check, X, ArrowRight, Eye, Users, Crown, Shield, Award } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -548,10 +548,23 @@ export function TarifsPage() {
       {/*  HONORARY MEMBERS BANNER                                       */}
       {/* ============================================================ */}
       <section className="pb-10 sm:pb-14">
-        <div className="mx-auto max-w-3xl text-center py-6 px-8 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 border border-slate-200 dark:border-slate-700">
-          <p className="text-sm text-muted-foreground">
-            {t("honoraryBanner")}
-          </p>
+        <div className="mx-auto max-w-3xl">
+          <Link
+            to="/membres-honoraires"
+            className="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 p-6 sm:p-8 text-center hover:border-brand-purple/40 hover:shadow-lg hover:shadow-purple-500/5 transition-all"
+          >
+            <div className="mx-auto mb-3 flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
+              <Award className="size-5 text-brand-purple" />
+            </div>
+            <h3 className="text-lg font-bold mb-1">{t("honoraryBanner.title")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-lg mx-auto">
+              {t("honoraryBanner.subtitle")}
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-purple group-hover:gap-2.5 transition-all">
+              {t("honoraryBanner.cta")}
+              <ArrowRight className="size-4" />
+            </span>
+          </Link>
         </div>
       </section>
 

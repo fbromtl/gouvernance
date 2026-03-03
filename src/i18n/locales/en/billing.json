@@ -87,8 +87,11 @@
   "readyTitle": "Ready to join the Circle?",
   "readySubtitle": "Join professionals facing the same challenges. Access the platform, directory and expert network.",
   "startFree": "Start for free",
-  "honoraryBanner": "The Circle also welcomes Honorary Members, luminaries nominated by the Board of Directors.",
-  "honoraryLearnMore": "Learn more",
+  "honoraryBanner": {
+    "title": "Honorary Member",
+    "subtitle": "Working in AI? Contribute to the Circle and get free access to all modules.",
+    "cta": "Become an Honorary Member"
+  },
   "perMonth": "/ month",
   "billedYearly": "Billed yearly",
   "billedAnnually": "Billed {{price}} {{symbol}}/year",
