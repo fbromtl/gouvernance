@@ -23,8 +23,8 @@ const SIZE_CLASSES = {
 export function MemberBadge({ plan, size = "md", className }: MemberBadgeProps) {
   const { t } = useTranslation("members");
 
-  // Free gets no badge
-  if (plan === "free") return null;
+  // Free/observer (legacy) gets no badge
+  if (plan === "free" || plan === "observer") return null;
 
   const style = BADGE_STYLES[plan] ?? BADGE_STYLES.member;
 
