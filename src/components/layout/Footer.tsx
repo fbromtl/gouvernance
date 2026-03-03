@@ -37,6 +37,7 @@ const footerColumns = [
     title: "Plateforme",
     icon: Shield,
     links: [
+      { to: "/fonctionnalites", label: "Fonctionnalités" },
       { to: "/tarifs", label: "Adhésion" },
       { to: "/diagnostic", label: "Diagnostic IA" },
       { to: "/contact", label: "Contact" },
