@@ -33,7 +33,7 @@
   "features": {
     "vendorQuestionnaire": {
       "title": "Questionnaire fournisseur automatique",
-      "description": "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité — le tout sans intervention manuelle.",
+      "description": "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité, le tout sans intervention manuelle.",
       "bullet1": "Envoi automatique par courriel",
       "bullet2": "Formulaire de sécurité personnalisable",
       "bullet3": "Suivi des réponses en temps réel",
@@ -41,7 +41,7 @@
     },
     "documentDrive": {
       "title": "Drive documentaire",
-      "description": "Un espace de stockage centralisé pour toutes vos politiques, procédures et documents de gouvernance IA. Versioning automatique, historique complet et accès contrôlé par rôle — votre mémoire organisationnelle, toujours accessible.",
+      "description": "Un espace de stockage centralisé pour toutes vos politiques, procédures et documents de gouvernance IA. Versioning automatique, historique complet et accès contrôlé par rôle. Votre mémoire organisationnelle, toujours accessible.",
       "bullet1": "Stockage sécurisé des politiques et procédures",
       "bullet2": "Versioning automatique des documents",
       "bullet3": "Historique complet des modifications",

@@ -50,7 +50,7 @@
     "hours": "{{count}}h ago",
     "days": "{{count}}d ago"
   },
-  "bibliothequeDescription": "AI governance frameworks, laws and guides — organized by jurisdiction.",
+  "bibliothequeDescription": "AI governance frameworks, laws and guides, organized by jurisdiction.",
   "search": "Search...",
   "searchPlaceholder": "Search for a system, incident, decision...",
   "placeholder": {

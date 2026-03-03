@@ -50,7 +50,7 @@
     "hours": "Il y a {{count}}h",
     "days": "Il y a {{count}}j"
   },
-  "bibliothequeDescription": "Cadres, lois et guides de gouvernance de l'IA — organisés par juridiction.",
+  "bibliothequeDescription": "Cadres, lois et guides de gouvernance de l'IA, organisés par juridiction.",
   "search": "Rechercher...",
   "searchPlaceholder": "Rechercher un système, incident, décision...",
   "placeholder": {

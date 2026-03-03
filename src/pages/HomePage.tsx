@@ -178,7 +178,7 @@ export function HomePage() {
               {/* Mockup header */}
               <header className="flex z-20 shrink-0 bg-white border-neutral-100 border-b pt-4 pr-6 pb-4 pl-6 items-center justify-between">
                 <h2 className="text-base font-semibold text-neutral-900 tracking-tight">
-                  Tableau de bord — Gouvernance IA
+                  Tableau de bord : Gouvernance IA
                 </h2>
                 <div className="flex items-center gap-4">
                   <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#ab54f3] rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-sm">
@@ -490,7 +490,7 @@ export function HomePage() {
               to="/inscription"
               className="inline-flex items-center gap-2 bg-neutral-950 text-white px-8 py-4 rounded-full font-medium hover:bg-neutral-800 transition-colors"
             >
-              Commencer maintenant — c&apos;est gratuit
+              Commencer maintenant, c&apos;est gratuit
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -996,7 +996,7 @@ export function HomePage() {
             to="/inscription"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
           >
-            Créer mon compte — C'est gratuit
+            Créer mon compte, c'est gratuit
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -1099,7 +1099,7 @@ export function HomePage() {
           <div className="fixed bottom-4 inset-x-4 z-40 mx-auto max-w-3xl animate-in slide-in-from-bottom duration-300">
             <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/95 backdrop-blur-md border border-neutral-200 shadow-lg px-6 py-3">
               <p className="text-sm font-medium text-neutral-700 hidden sm:block">
-                Évaluez votre maturité IA —{" "}
+                Évaluez votre maturité IA :{" "}
                 <span className="text-neutral-500">Gratuit, 10 minutes</span>
               </p>
               <p className="text-sm font-medium text-neutral-700 sm:hidden">

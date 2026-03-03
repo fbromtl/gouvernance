@@ -20,7 +20,7 @@
     "memberSince": "Member since {{date}}",
     "shareLinkedin": "Share on LinkedIn",
     "downloadBadge": "Download my badge",
-    "linkedinPost": "I'm a {{level}} of the AI Governance Circle — the leading community for responsible AI governance. 🤖🛡️",
+    "linkedinPost": "I'm a {{level}} of the AI Governance Circle, the leading community for responsible AI governance. 🤖🛡️",
     "backToDirectory": "Back to directory"
   },
   "badge": {

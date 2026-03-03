@@ -213,12 +213,12 @@ function VendorsMockup() {
 
 function RisksMockup() {
   const sections = [
-    { label: "A — Portée & impact", done: true },
-    { label: "B — Données & vie privée", done: true },
-    { label: "C — Transparence", done: true },
-    { label: "D — Fiabilité", progress: 60 },
-    { label: "E — Gouvernance", progress: 0 },
-    { label: "F — Droits fondamentaux", progress: 0 },
+    { label: "A. Portée et impact", done: true },
+    { label: "B. Données et vie privée", done: true },
+    { label: "C. Transparence", done: true },
+    { label: "D. Fiabilité", progress: 60 },
+    { label: "E. Gouvernance", progress: 0 },
+    { label: "F. Droits fondamentaux", progress: 0 },
   ];
   return (
     <MockupCard title="Évaluation des risques" icon={AlertTriangle}>
@@ -371,9 +371,9 @@ function PoliciesMockup() {
 
 function DecisionsMockup() {
   const decisions = [
-    { title: "Go production — Chatbot V2", type: "Go/No-Go", impact: "Élevé", impactColor: "text-red-600 bg-red-50", status: "Approuvé", statusColor: "text-emerald-600" },
-    { title: "Exception RGPD — Pilote ML", type: "Exception", impact: "Moyen", impactColor: "text-amber-600 bg-amber-50", status: "En attente", statusColor: "text-amber-600" },
-    { title: "Suspension — Scoring V1", type: "Suspension", impact: "Critique", impactColor: "text-red-600 bg-red-50", status: "Implémenté", statusColor: "text-blue-600" },
+    { title: "Go production : Chatbot V2", type: "Go/No-Go", impact: "Élevé", impactColor: "text-red-600 bg-red-50", status: "Approuvé", statusColor: "text-emerald-600" },
+    { title: "Exception RGPD : Pilote ML", type: "Exception", impact: "Moyen", impactColor: "text-amber-600 bg-amber-50", status: "En attente", statusColor: "text-amber-600" },
+    { title: "Suspension : Scoring V1", type: "Suspension", impact: "Critique", impactColor: "text-red-600 bg-red-50", status: "Implémenté", statusColor: "text-blue-600" },
   ];
   return (
     <MockupCard title="Registre des décisions" icon={ClipboardCheck}>
@@ -749,7 +749,7 @@ function LegalChatbotMockup() {
                   : "bg-neutral-100 text-neutral-400"
               }`}
             >
-              {j.code} — {j.label}
+              {j.code} - {j.label}
             </button>
           ))}
         </div>
@@ -859,7 +859,7 @@ function VendorQuestionnaireMockup() {
                     ))}
                   </div>
                 ) : (
-                  <span className="text-[10px] text-neutral-300">—</span>
+                  <span className="text-[10px] text-neutral-300">-</span>
                 )}
               </div>
             </div>
@@ -996,7 +996,7 @@ const NOUVEAUTES_SLIDES: NewFeatureSlide[] = [
     icon: BookOpenCheck,
     title: "Assistant juridique IA",
     description:
-      "Un chatbot spécialisé qui travaille exclusivement avec les textes de loi et documents juridiques officiels. Sélectionnez vos juridictions — Québec, Canada, Union européenne, France — et posez vos questions en langage naturel.",
+      "Un chatbot spécialisé qui travaille exclusivement avec les textes de loi et documents juridiques officiels. Sélectionnez vos juridictions (Québec, Canada, Union européenne, France) et posez vos questions en langage naturel.",
     secondaryDescription:
       "Chaque réponse cite ses sources légales avec les articles de loi pertinents. Idéal pour vérifier rapidement vos obligations réglementaires en matière d'IA.",
     tags: ["Loi 25", "C-27 / AIDA", "EU AI Act", "RGPD", "RLRQ"],
@@ -1007,7 +1007,7 @@ const NOUVEAUTES_SLIDES: NewFeatureSlide[] = [
     icon: ClipboardList,
     title: "Questionnaire fournisseur automatique",
     description:
-      "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité — le tout sans intervention manuelle.",
+      "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité, le tout sans intervention manuelle.",
     tags: ["Envoi automatique par courriel", "Formulaire personnalisable", "Suivi en temps réel", "Scoring automatique"],
     mockup: VendorQuestionnaireMockup,
   },

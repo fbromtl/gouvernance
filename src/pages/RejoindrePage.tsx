@@ -128,7 +128,7 @@ export function RejoindrePage() {
                 <span className="inline-flex items-center gap-2 rounded-full bg-[#ab54f3]/10 px-4 py-1.5 mb-6">
                   <Shield className="size-3.5 text-[#ab54f3]" />
                   <span className="text-xs font-semibold text-[#ab54f3] tracking-wide">
-                    Inscription gratuite — aucune carte de crédit
+                    Inscription gratuite, aucune carte de crédit
                   </span>
                 </span>
 
@@ -137,7 +137,7 @@ export function RejoindrePage() {
                 </h1>
 
                 <p className="text-lg text-neutral-600 mb-8 max-w-xl leading-relaxed">
-                  Le Cercle vous donne les outils pour inventorier, évaluer et sécuriser vos projets IA — en quelques minutes, pas en quelques mois.
+                  Le Cercle vous donne les outils pour inventorier, évaluer et sécuriser vos projets IA, en quelques minutes, pas en quelques mois.
                 </p>
 
                 <ul className="space-y-3 mb-8">

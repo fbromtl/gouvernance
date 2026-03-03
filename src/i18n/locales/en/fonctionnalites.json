@@ -42,7 +42,7 @@
     },
     "lifecycle": {
       "title": "Lifecycle Management",
-      "description": "Track every change — model update, vendor switch, suspension, decommissioning. A complete chronological log that proves your diligence and facilitates audits."
+      "description": "Track every change: model update, vendor switch, suspension, decommissioning. A complete chronological log that proves your diligence and facilitates audits."
     },
     "vendors": {
       "title": "Vendor Management",
@@ -54,7 +54,7 @@
     },
     "incidents": {
       "title": "Incident Management",
-      "description": "Report, triage and resolve AI incidents with a complete workflow. Severity tracking, assignment, investigation, post-mortem — everything documented for compliance."
+      "description": "Report, triage and resolve AI incidents with a complete workflow. Severity tracking, assignment, investigation, post-mortem: everything documented for compliance."
     },
     "bias": {
       "title": "Bias Analysis",
@@ -62,7 +62,7 @@
     },
     "compliance": {
       "title": "Multi-Framework Compliance",
-      "description": "Assess your compliance simultaneously across 5 frameworks — Law 25, EU AI Act, NIST AI RMF, ISO 42001, GDPR. A global and per-framework score, with a prioritized remediation plan."
+      "description": "Assess your compliance simultaneously across 5 frameworks: Law 25, EU AI Act, NIST AI RMF, ISO 42001, GDPR. A global and per-framework score, with a prioritized remediation plan."
     },
     "policies": {
       "title": "Policies & Procedures",
@@ -70,7 +70,7 @@
     },
     "decisions": {
       "title": "Decision Registry",
-      "description": "Document every governance decision — Go/No-Go, ethical arbitration, exception. Multi-level approval workflow with complete history and audit trail."
+      "description": "Document every governance decision: Go/No-Go, ethical arbitration, exception. Multi-level approval workflow with complete history and audit trail."
     },
     "documents": {
       "title": "Document Management",

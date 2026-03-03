@@ -34,7 +34,7 @@ export function ContactPage() {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "name": "Contact — Cercle de Gouvernance de l'IA",
+        "name": "Contact - Cercle de Gouvernance de l'IA",
         "url": "https://gouvernance.ai/contact",
         "mainEntity": {
           "@type": "Organization",

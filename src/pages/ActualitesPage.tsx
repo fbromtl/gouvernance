@@ -76,7 +76,7 @@ export function ActualitesPage() {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Actualit\u00e9s — Cercle de Gouvernance de l'IA",
+        "name": "Actualit\u00e9s - Cercle de Gouvernance de l'IA",
         "description": "Suivez les derni\u00e8res actualit\u00e9s en gouvernance de l'intelligence artificielle.",
         "url": "https://gouvernance.ai/actualites",
         "inLanguage": "fr-CA",

@@ -33,7 +33,7 @@
   "features": {
     "vendorQuestionnaire": {
       "title": "Automated Vendor Questionnaire",
-      "description": "Automatic sending of a security questionnaire to AI vendors. Collects certifications (ISO 27001, SOC 2…), data protection measures and compliance commitments — all without manual intervention.",
+      "description": "Automatic sending of a security questionnaire to AI vendors. Collects certifications (ISO 27001, SOC 2…), data protection measures and compliance commitments, all without manual intervention.",
       "bullet1": "Automatic email delivery",
       "bullet2": "Customizable security form",
       "bullet3": "Real-time response tracking",
@@ -41,7 +41,7 @@
     },
     "documentDrive": {
       "title": "Document Drive",
-      "description": "A centralized storage space for all your AI governance policies, procedures and documents. Automatic versioning, complete history and role-based access control — your organizational memory, always accessible.",
+      "description": "A centralized storage space for all your AI governance policies, procedures and documents. Automatic versioning, complete history and role-based access control. Your organizational memory, always accessible.",
       "bullet1": "Secure policy and procedure storage",
       "bullet2": "Automatic document versioning",
       "bullet3": "Complete modification history",

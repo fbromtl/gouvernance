@@ -67,7 +67,7 @@
     "scoreLabel": "{{score}} / 30",
     "detailsLocked": "Create your free account to unlock personalized recommendations by domain.",
     "ctaButton": "Unlock my full results",
-    "ctaSubtext": "Free — Sign in with Google in 10 seconds",
+    "ctaSubtext": "Free, sign in with Google in 10 seconds",
     "domains": {
       "inventory": "AI Inventory",
       "risk_assessment": "Risk Assessment",

@@ -42,7 +42,7 @@
     },
     "lifecycle": {
       "title": "Cycle de vie",
-      "description": "Tracez chaque changement — mise à jour de modèle, changement de fournisseur, suspension, décommissionnement. Un journal chronologique complet qui prouve votre diligence et facilite les audits."
+      "description": "Tracez chaque changement : mise à jour de modèle, changement de fournisseur, suspension, décommissionnement. Un journal chronologique complet qui prouve votre diligence et facilite les audits."
     },
     "vendors": {
       "title": "Gestion des fournisseurs",
@@ -54,7 +54,7 @@
     },
     "incidents": {
       "title": "Gestion des incidents",
-      "description": "Déclarez, triagez et résolvez les incidents IA avec un workflow complet. Suivi de la sévérité, assignation, investigation, post-mortem — tout est documenté pour la conformité."
+      "description": "Déclarez, triagez et résolvez les incidents IA avec un workflow complet. Suivi de la sévérité, assignation, investigation, post-mortem : tout est documenté pour la conformité."
     },
     "bias": {
       "title": "Analyse des biais",
@@ -62,7 +62,7 @@
     },
     "compliance": {
       "title": "Conformité multi-cadres",
-      "description": "Évaluez votre conformité simultanément sur 5 référentiels — Loi 25, EU AI Act, NIST AI RMF, ISO 42001, RGPD. Un score global et par cadre, avec un plan de remédiation priorisé."
+      "description": "Évaluez votre conformité simultanément sur 5 référentiels : Loi 25, EU AI Act, NIST AI RMF, ISO 42001, RGPD. Un score global et par cadre, avec un plan de remédiation priorisé."
     },
     "policies": {
       "title": "Politiques & Procédures",
@@ -70,7 +70,7 @@
     },
     "decisions": {
       "title": "Registre des décisions",
-      "description": "Documentez chaque décision de gouvernance — Go/No-Go, arbitrage éthique, exception. Workflow d'approbation multi-niveaux avec historique complet et piste d'audit."
+      "description": "Documentez chaque décision de gouvernance : Go/No-Go, arbitrage éthique, exception. Workflow d'approbation multi-niveaux avec historique complet et piste d'audit."
     },
     "documents": {
       "title": "Gestion documentaire",

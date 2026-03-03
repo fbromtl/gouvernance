@@ -242,7 +242,7 @@ export function TarifsPage() {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "Product",
-        "name": "Membership — Cercle de Gouvernance de l'IA",
+        "name": "Membership - Cercle de Gouvernance de l'IA",
         "description": "Accédez aux ressources, événements et au réseau d'experts en gouvernance de l'IA.",
         "brand": {
           "@type": "Organization",
