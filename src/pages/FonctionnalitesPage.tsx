@@ -1150,49 +1150,90 @@ function NouveautesSlider() {
       <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-emerald-500/8 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top row: badge + navigation */}
-        <div className="flex items-center justify-between mb-8">
-          <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/25 text-xs font-bold tracking-wide px-3 py-1">
-            <Zap className="size-3 mr-1" />
-            Nouveautés
-          </Badge>
+        {/* ── Section header ── */}
+        <div className="mb-12 sm:mb-14">
+          {/* Top label */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/25">
+              <Zap className="size-5 text-emerald-400" />
+            </div>
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                Nouveautés
+              </span>
+              <span className="ml-2 inline-flex items-center justify-center rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+                {total}
+              </span>
+            </div>
+          </div>
 
-          <div className="flex items-center gap-3">
-            {/* Dots */}
-            <div className="flex items-center gap-1.5">
-              {NOUVEAUTES_SLIDES.map((s, i) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => goTo(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "w-6 h-2 bg-emerald-400"
-                      : "size-2 bg-white/20 hover:bg-white/40"
-                  }`}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))}
+          {/* Title + nav row */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Dernières fonctionnalités
+              </h2>
+              <p className="mt-2 text-sm sm:text-base text-white/50 max-w-md">
+                Découvrez les modules récemment ajoutés à la plateforme.
+              </p>
             </div>
 
-            {/* Arrows */}
-            <div className="flex gap-1">
-              <button
-                type="button"
-                onClick={prev}
-                className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
-                aria-label="Précédent"
-              >
-                <ChevronLeft className="size-4" />
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
-                aria-label="Suivant"
-              >
-                <ChevronRight className="size-4" />
-              </button>
+            {/* Navigation controls */}
+            <div className="flex items-center gap-4 shrink-0">
+              {/* Slide titles as pills */}
+              <div className="hidden md:flex items-center gap-1.5">
+                {NOUVEAUTES_SLIDES.map((s, i) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
+                      i === current
+                        ? "bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-500/30"
+                        : "text-white/30 hover:text-white/60 hover:bg-white/5"
+                    }`}
+                  >
+                    {s.title.length > 22 ? `${s.title.slice(0, 22)}…` : s.title}
+                  </button>
+                ))}
+              </div>
+
+              {/* Dots (mobile) */}
+              <div className="flex md:hidden items-center gap-1.5">
+                {NOUVEAUTES_SLIDES.map((s, i) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === current
+                        ? "w-6 h-2 bg-emerald-400"
+                        : "size-2 bg-white/20 hover:bg-white/40"
+                    }`}
+                    aria-label={`Slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Arrows */}
+              <div className="flex gap-1.5">
+                <button
+                  type="button"
+                  onClick={prev}
+                  className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
+                  aria-label="Précédent"
+                >
+                  <ChevronLeft className="size-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
+                  aria-label="Suivant"
+                >
+                  <ChevronRight className="size-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
