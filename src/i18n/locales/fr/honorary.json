@@ -1,0 +1,66 @@
+{
+  "seo": {
+    "title": "Devenez Membre Honoraire — Cercle de Gouvernance IA",
+    "description": "Vous œuvrez dans l'IA ? Rejoignez le Cercle de Gouvernance en tant que Membre Honoraire et contribuez à façonner la gouvernance responsable de demain."
+  },
+  "hero": {
+    "title": "Devenez Membre Honoraire",
+    "subtitle": "Vous œuvrez dans l'IA ? Rejoignez le Cercle et contribuez à façonner la gouvernance responsable de demain."
+  },
+  "why": {
+    "title": "Pourquoi devenir Membre Honoraire ?",
+    "contribute": {
+      "title": "Contribuez",
+      "description": "Partagez votre expertise, vos idées et vos retours d'expérience pour améliorer les pratiques de gouvernance IA."
+    },
+    "participate": {
+      "title": "Participez",
+      "description": "Intervenez lors d'événements, webinaires et ateliers du Cercle. Influencez la feuille de route du produit."
+    },
+    "access": {
+      "title": "Accédez",
+      "description": "Accès complet à tous les modules du portail (niveau Expert), badge Honoraire, visibilité prioritaire dans l'annuaire."
+    }
+  },
+  "eligibility": {
+    "title": "Qui peut candidater ?",
+    "description": "Consultants, chercheurs, ingénieurs, juristes, éthiciens, responsables data/IA — tout professionnel qui œuvre dans le domaine de l'intelligence artificielle est invité à soumettre sa candidature."
+  },
+  "form": {
+    "title": "Soumettre ma candidature",
+    "fullName": "Nom complet",
+    "email": "Email professionnel",
+    "jobTitle": "Poste / Titre",
+    "organization": "Organisation",
+    "expertise": "Domaine d'expertise IA",
+    "expertiseOptions": {
+      "nlp": "Traitement du langage naturel (NLP)",
+      "vision": "Vision par ordinateur",
+      "mlops": "MLOps",
+      "ethics": "Éthique IA",
+      "compliance": "Conformité",
+      "data_science": "Data Science",
+      "research": "Recherche",
+      "other": "Autre"
+    },
+    "linkedin": "Profil LinkedIn (optionnel)",
+    "motivation": "En quelques lignes, comment souhaitez-vous contribuer au Cercle ?",
+    "submit": "Soumettre ma candidature",
+    "submitting": "Envoi en cours…"
+  },
+  "success": {
+    "title": "Candidature envoyée !",
+    "message": "Merci ! Votre candidature a été reçue. Notre équipe vous contactera sous 48h.",
+    "backHome": "Retour à l'accueil"
+  },
+  "error": {
+    "generic": "Une erreur est survenue. Veuillez réessayer.",
+    "network": "Erreur de connexion. Vérifiez votre connexion Internet."
+  },
+  "validation": {
+    "required": "Ce champ est requis.",
+    "email": "Adresse email invalide.",
+    "linkedinUrl": "URL LinkedIn invalide.",
+    "motivationMin": "Veuillez écrire au moins 20 caractères."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "seo": {
+    "title": "Become an Honorary Member — AI Governance Circle",
+    "description": "Working in AI? Join the Governance Circle as an Honorary Member and help shape responsible AI governance."
+  },
+  "hero": {
+    "title": "Become an Honorary Member",
+    "subtitle": "Working in AI? Join the Circle and help shape the responsible governance of tomorrow."
+  },
+  "why": {
+    "title": "Why become an Honorary Member?",
+    "contribute": {
+      "title": "Contribute",
+      "description": "Share your expertise, ideas, and feedback to improve AI governance practices."
+    },
+    "participate": {
+      "title": "Participate",
+      "description": "Speak at events, webinars, and workshops. Shape the product roadmap."
+    },
+    "access": {
+      "title": "Access",
+      "description": "Full access to all portal modules (Expert level), Honorary badge, priority visibility in the directory."
+    }
+  },
+  "eligibility": {
+    "title": "Who can apply?",
+    "description": "Consultants, researchers, engineers, lawyers, ethicists, data/AI leaders — any professional working in artificial intelligence is invited to apply."
+  },
+  "form": {
+    "title": "Submit my application",
+    "fullName": "Full name",
+    "email": "Professional email",
+    "jobTitle": "Job title",
+    "organization": "Organization",
+    "expertise": "AI expertise area",
+    "expertiseOptions": {
+      "nlp": "Natural Language Processing (NLP)",
+      "vision": "Computer Vision",
+      "mlops": "MLOps",
+      "ethics": "AI Ethics",
+      "compliance": "Compliance",
+      "data_science": "Data Science",
+      "research": "Research",
+      "other": "Other"
+    },
+    "linkedin": "LinkedIn profile (optional)",
+    "motivation": "In a few lines, how would you like to contribute to the Circle?",
+    "submit": "Submit my application",
+    "submitting": "Submitting…"
+  },
+  "success": {
+    "title": "Application sent!",
+    "message": "Thank you! Your application has been received. Our team will contact you within 48 hours.",
+    "backHome": "Back to home"
+  },
+  "error": {
+    "generic": "An error occurred. Please try again.",
+    "network": "Connection error. Check your Internet connection."
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Invalid email address.",
+    "linkedinUrl": "Invalid LinkedIn URL.",
+    "motivationMin": "Please write at least 20 characters."
+  }
+}
