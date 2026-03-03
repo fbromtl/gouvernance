@@ -55,29 +55,17 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
     );
   };
 
-  // Preview mode -> show children with blur + centered trial modal
+  // Preview mode -> show children (visible, no blur) + sticky trial banner
   return (
     <div className="relative">
-      {/* Content wrapper with blur overlay */}
-      <div className="relative overflow-hidden select-none pointer-events-none">
-        <div aria-hidden="true">
-          {children}
-        </div>
-
-        {/* Full blur overlay */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-            background: 'rgba(255,255,255,0.4)',
-          }}
-        />
+      {/* Content — fully visible but non-interactive */}
+      <div className="select-none pointer-events-none" aria-disabled="true">
+        {children}
       </div>
 
-      {/* Centered trial modal */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-        <div className="pointer-events-auto w-full max-w-md mx-4 bg-white rounded-2xl border border-neutral-100 shadow-xl shadow-neutral-200/50 p-8 text-center">
+      {/* Sticky trial banner at top */}
+      <div className="sticky bottom-4 z-30 flex justify-center pointer-events-none mt-6">
+        <div className="pointer-events-auto w-full max-w-md mx-4 bg-white/95 backdrop-blur-sm rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-300/40 p-8 text-center">
           {/* Lock icon */}
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ab54f3]/10">
             <Lock className="h-7 w-7 text-[#ab54f3]" />
