@@ -84,7 +84,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_POLICIES,
@@ -304,12 +304,10 @@ function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boole
           </p>
         </div>
         {!readOnly && (
-          <ActionGate>
-            <Button onClick={openCreate}>
-              <Plus className="mr-2 size-4" />
-              {t("policies.newPolicy")}
-            </Button>
-          </ActionGate>
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("policies.newPolicy")}
+          </Button>
         )}
       </div>
 
@@ -379,12 +377,10 @@ function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boole
               : t("policies.empty.description")}
           </p>
           {!hasActiveFilters && !readOnly && (
-            <ActionGate>
-              <Button className="mt-4" onClick={openCreate}>
-                <Plus className="mr-2 size-4" />
-                {t("policies.empty.action")}
-              </Button>
-            </ActionGate>
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("policies.empty.action")}
+            </Button>
           )}
         </div>
       ) : (
@@ -430,78 +426,66 @@ function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boole
                       <div className="flex items-center gap-1">
                         {p.status === "draft" && (
                           <>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => openEdit(p)}
-                                title={t("policies.actions.edit")}
-                              >
-                                <Pencil className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => handleSubmitForReview(p)}
-                                title={t("policies.actions.submitForReview")}
-                              >
-                                <Send className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => openEdit(p)}
+                              title={t("policies.actions.edit")}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleSubmitForReview(p)}
+                              title={t("policies.actions.submitForReview")}
+                            >
+                              <Send className="h-4 w-4" />
+                            </Button>
                           </>
                         )}
                         {p.status === "in_review" && (
                           <>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => openEdit(p)}
-                                title={t("policies.actions.edit")}
-                              >
-                                <Pencil className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() =>
-                                  setConfirmAction({ type: "publish", policy: p })
-                                }
-                                title={t("policies.actions.publish")}
-                              >
-                                <BookCheck className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => openEdit(p)}
+                              title={t("policies.actions.edit")}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() =>
+                                setConfirmAction({ type: "publish", policy: p })
+                              }
+                              title={t("policies.actions.publish")}
+                            >
+                              <BookCheck className="h-4 w-4" />
+                            </Button>
                           </>
                         )}
                         {p.status === "published" && (
                           <>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => handleNewVersion(p)}
-                                title={t("policies.actions.newVersion")}
-                              >
-                                <Copy className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
-                            <ActionGate>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() =>
-                                  setConfirmAction({ type: "archive", policy: p })
-                                }
-                                title={t("policies.actions.archive")}
-                              >
-                                <Archive className="h-4 w-4" />
-                              </Button>
-                            </ActionGate>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handleNewVersion(p)}
+                              title={t("policies.actions.newVersion")}
+                            >
+                              <Copy className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() =>
+                                setConfirmAction({ type: "archive", policy: p })
+                              }
+                              title={t("policies.actions.archive")}
+                            >
+                              <Archive className="h-4 w-4" />
+                            </Button>
                           </>
                         )}
                       </div>
@@ -756,12 +740,10 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
           </p>
         </div>
         {!readOnly && (
-          <ActionGate>
-            <Button onClick={openCreate}>
-              <Plus className="mr-2 size-4" />
-              {t("roles.assignRole")}
-            </Button>
-          </ActionGate>
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("roles.assignRole")}
+          </Button>
         )}
       </div>
 
@@ -790,12 +772,10 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
             {t("roles.empty.description")}
           </p>
           {!readOnly && (
-            <ActionGate>
-              <Button className="mt-4" onClick={openCreate}>
-                <Plus className="mr-2 size-4" />
-                {t("roles.empty.action")}
-              </Button>
-            </ActionGate>
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("roles.empty.action")}
+            </Button>
           )}
         </div>
       ) : (
@@ -863,25 +843,21 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
                     {!readOnly && (
                       <TableCell>
                         <div className="flex items-center gap-1">
-                          <ActionGate>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => openEdit(r)}
-                            >
-                              <Pencil className="h-4 w-4" />
-                            </Button>
-                          </ActionGate>
-                          <ActionGate>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="text-destructive hover:text-destructive"
-                              onClick={() => setDeletingRole(r)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </ActionGate>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => openEdit(r)}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-destructive hover:text-destructive"
+                            onClick={() => setDeletingRole(r)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
                         </div>
                       </TableCell>
                     )}
@@ -1174,12 +1150,10 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
           </p>
         </div>
         {!readOnly && (
-          <ActionGate>
-            <Button onClick={openCreate}>
-              <Plus className="mr-2 size-4" />
-              {t("committees.newCommittee")}
-            </Button>
-          </ActionGate>
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("committees.newCommittee")}
+          </Button>
         )}
       </div>
 
@@ -1202,12 +1176,10 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
             {t("committees.empty.description")}
           </p>
           {!readOnly && (
-            <ActionGate>
-              <Button className="mt-4" onClick={openCreate}>
-                <Plus className="mr-2 size-4" />
-                {t("committees.empty.action")}
-              </Button>
-            </ActionGate>
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("committees.empty.action")}
+            </Button>
           )}
         </div>
       ) : (
@@ -1250,25 +1222,21 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
                   {!readOnly && (
                     <TableCell>
                       <div className="flex items-center gap-1">
-                        <ActionGate>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => openEdit(c)}
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                        </ActionGate>
-                        <ActionGate>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="text-destructive hover:text-destructive"
-                            onClick={() => setDeletingCommittee(c)}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </ActionGate>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => openEdit(c)}
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:text-destructive"
+                          onClick={() => setDeletingCommittee(c)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
                       </div>
                     </TableCell>
                   )}
@@ -1331,12 +1299,10 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <Label>{t("committees.form.members")}</Label>
-                <ActionGate>
-                  <Button variant="outline" size="sm" onClick={addMember}>
-                    <Plus className="mr-1 h-3 w-3" />
-                    {t("committees.form.addMember")}
-                  </Button>
-                </ActionGate>
+                <Button variant="outline" size="sm" onClick={addMember}>
+                  <Plus className="mr-1 h-3 w-3" />
+                  {t("committees.form.addMember")}
+                </Button>
               </div>
               {fMembers.length === 0 && (
                 <p className="text-sm text-muted-foreground">
@@ -1453,6 +1419,7 @@ export default function GovernancePage() {
   const readOnly = !can("manage_policies");
 
   return (
+    <FeatureGate feature="governance_structure">
       <div className="space-y-6 p-4 md:p-6">
         <div>
           <div className="flex items-center gap-1.5">
@@ -1491,5 +1458,6 @@ export default function GovernancePage() {
           </TabsContent>
         </Tabs>
       </div>
+    </FeatureGate>
   );
 }

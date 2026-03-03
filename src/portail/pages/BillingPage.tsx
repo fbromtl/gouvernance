@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   AlertTriangle,
   Check,
+  Crown,
 } from "lucide-react";
 
 import { useAuth } from "@/lib/auth";
@@ -35,14 +36,16 @@ import { Label } from "@/components/ui/label";
 /* ------------------------------------------------------------------ */
 
 const PLAN_BADGE_COLORS: Record<PlanId, string> = {
-  free: "bg-gray-100 text-gray-700 border-gray-200",
+  observer: "bg-gray-100 text-gray-700 border-gray-200",
   member: "bg-brand-purple/10 text-brand-purple border-brand-purple/20",
+  expert: "bg-amber-100 text-amber-800 border-amber-200",
   honorary: "bg-slate-200 text-slate-700 border-slate-300",
 };
 
 const PLAN_LABELS: Record<PlanId, string> = {
-  free: "Gratuit",
+  observer: "Observateur",
   member: "Membre",
+  expert: "Expert",
   honorary: "Honoraire",
 };
 
@@ -74,11 +77,11 @@ const STATUS_BADGE: Record<string, { label: string; className: string }> = {
 };
 
 const PLAN_FEATURES: Record<PlanId, string[]> = {
-  free: [
+  observer: [
     "1 membre",
-    "Tableau de bord",
-    "Tous les modules en lecture",
-    "Donn\u00e9es de d\u00e9monstration",
+    "3 syst\u00e8mes IA",
+    "Tableau de bord basique",
+    "Registre IA",
   ],
   member: [
     "Jusqu'\u00e0 10 membres",
@@ -87,11 +90,19 @@ const PLAN_FEATURES: Record<PlanId, string[]> = {
     "Rapports de conformit\u00e9",
     "Support prioritaire",
   ],
+  expert: [
+    "Membres illimit\u00e9s",
+    "Syst\u00e8mes IA illimit\u00e9s",
+    "Toutes les fonctionnalit\u00e9s",
+    "SSO / SAML",
+    "Support d\u00e9di\u00e9",
+    "SLA garanti",
+  ],
   honorary: [
     "Membres illimit\u00e9s",
     "Syst\u00e8mes IA illimit\u00e9s",
     "Toutes les fonctionnalit\u00e9s",
-    "Acc\u00e8s Membre complet",
+    "Acc\u00e8s Expert complet",
   ],
 };
 
@@ -159,7 +170,7 @@ export default function BillingPage() {
     plansSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const currentPlan = subscription?.plan ?? "free";
+  const currentPlan = subscription?.plan ?? "observer";
 
   /* ================================================================ */
   /*  No org state                                                     */
@@ -252,12 +263,12 @@ export default function BillingPage() {
       />
 
       {/* ---- Current Plan Card ---- */}
-      {currentPlan === "free" ? (
+      {currentPlan === "observer" ? (
         /* Compact line for free-tier users — focus on upgrade */
         <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-muted-foreground">
           <span>{t("currentPlan.title", "Forfait actuel")} :</span>
-          <Badge variant="outline" className={PLAN_BADGE_COLORS.free}>
-            {PLAN_LABELS.free}
+          <Badge variant="outline" className={PLAN_BADGE_COLORS.observer}>
+            {PLAN_LABELS.observer}
           </Badge>
           <span className="text-xs">({t("plans.free", "Gratuit")})</span>
         </div>
@@ -335,7 +346,7 @@ export default function BillingPage() {
           </Button>
         )}
 
-        {currentPlan !== "member" && currentPlan !== "honorary" && (
+        {currentPlan !== "expert" && currentPlan !== "honorary" && (
           <Button onClick={scrollToPlans} className="bg-brand-purple hover:bg-brand-purple-dark">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             {t("actions.upgrade", "Mettre \u00e0 niveau")}
@@ -393,9 +404,9 @@ export default function BillingPage() {
         </div>
 
         {/* Plan cards grid */}
-        <div className={`grid gap-6 ${currentPlan === "free" ? "md:grid-cols-1" : "md:grid-cols-2"}`}>
-          {(currentPlan === "free"
-            ? PURCHASABLE_PLANS.filter((p) => p !== "free")
+        <div className={`grid gap-6 ${currentPlan === "observer" ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+          {(currentPlan === "observer"
+            ? PURCHASABLE_PLANS.filter((p) => p !== "observer")
             : PURCHASABLE_PLANS
           ).map((planId) => {
             const plan = PLANS[planId];
@@ -435,6 +446,9 @@ export default function BillingPage() {
                 <div className="space-y-4 flex-1">
                   {/* Plan name */}
                   <div className="flex items-center gap-2 pt-2">
+                    {planId === "expert" && (
+                      <Crown className="h-5 w-5 text-amber-500" />
+                    )}
                     <h3 className="text-lg font-semibold">
                       {PLAN_LABELS[planId]}
                     </h3>
@@ -472,7 +486,7 @@ export default function BillingPage() {
                     <Button variant="outline" disabled className="w-full">
                       {t("plans.current", "Forfait actuel")}
                     </Button>
-                  ) : planId === "free" ? (
+                  ) : planId === "observer" ? (
                     <Button
                       variant="outline"
                       className="w-full"
@@ -483,7 +497,11 @@ export default function BillingPage() {
                     </Button>
                   ) : (
                     <Button
-                      className="w-full bg-brand-purple hover:bg-brand-purple-dark"
+                      className={`w-full ${
+                        planId === "member"
+                          ? "bg-brand-purple hover:bg-brand-purple-dark"
+                          : "bg-amber-600 hover:bg-amber-700"
+                      }`}
                       onClick={() => handleChoosePlan(planId)}
                       disabled={createCheckout.isPending}
                     >
@@ -493,6 +511,13 @@ export default function BillingPage() {
                     </Button>
                   )}
 
+                  {planId === "expert" && !isCurrent && (
+                    <Button variant="link" asChild className="w-full text-sm">
+                      <a href="mailto:contact@gouvernanceai.ca">
+                        {t("plans.contactUs", "Contactez-nous")}
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </Card>
             );

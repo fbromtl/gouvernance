@@ -65,7 +65,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_DECISIONS } from "@/portail/demo";
 
@@ -267,6 +267,7 @@ export default function DecisionsPage() {
   };
 
   return (
+    <FeatureGate feature="decisions">
       <div className="space-y-6 p-4 md:p-6">
         <div>
           <div className="flex items-center gap-1.5">
@@ -313,12 +314,10 @@ export default function DecisionsPage() {
         </Select>
 
         {!readOnly && (
-          <ActionGate>
-            <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("create")}
-            </Button>
-          </ActionGate>
+          <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
+            <Plus className="h-4 w-4" />
+            {t("create")}
+          </Button>
         )}
       </div>
 
@@ -335,12 +334,10 @@ export default function DecisionsPage() {
           <p className="font-medium text-muted-foreground">{t("noDecisions")}</p>
           <p className="text-sm text-muted-foreground/70 mt-1">{t("noDecisionsDescription")}</p>
           {!readOnly && (
-            <ActionGate>
-              <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-                <Plus className="h-4 w-4" />
-                {t("create")}
-              </Button>
-            </ActionGate>
+            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
+              <Plus className="h-4 w-4" />
+              {t("create")}
+            </Button>
           )}
         </Card>
       ) : (
@@ -400,35 +397,25 @@ export default function DecisionsPage() {
                       </Button>
                       {!readOnly && d.status === "draft" && (
                         <>
-                          <ActionGate>
-                            <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEditDialog(d)}>
-                              <Pencil className="h-3.5 w-3.5" />
-                            </Button>
-                          </ActionGate>
-                          <ActionGate>
-                            <Button variant="ghost" size="icon" className="h-7 w-7 text-blue-600" onClick={() => handleSubmitForApproval(d.id)}>
-                              <Send className="h-3.5 w-3.5" />
-                            </Button>
-                          </ActionGate>
-                          <ActionGate>
-                            <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => setDeleteConfirm(d.id)}>
-                              <Trash2 className="h-3.5 w-3.5" />
-                            </Button>
-                          </ActionGate>
+                          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEditDialog(d)}>
+                            <Pencil className="h-3.5 w-3.5" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="h-7 w-7 text-blue-600" onClick={() => handleSubmitForApproval(d.id)}>
+                            <Send className="h-3.5 w-3.5" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => setDeleteConfirm(d.id)}>
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </Button>
                         </>
                       )}
                       {!readOnly && (d.status === "submitted" || d.status === "in_review") && (
                         <>
-                          <ActionGate>
-                            <Button variant="ghost" size="icon" className="h-7 w-7 text-green-600" onClick={() => handleApprove(d.id)}>
-                              <CheckCircle className="h-3.5 w-3.5" />
-                            </Button>
-                          </ActionGate>
-                          <ActionGate>
-                            <Button variant="ghost" size="icon" className="h-7 w-7 text-red-600" onClick={() => handleReject(d.id)}>
-                              <XCircle className="h-3.5 w-3.5" />
-                            </Button>
-                          </ActionGate>
+                          <Button variant="ghost" size="icon" className="h-7 w-7 text-green-600" onClick={() => handleApprove(d.id)}>
+                            <CheckCircle className="h-3.5 w-3.5" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="h-7 w-7 text-red-600" onClick={() => handleReject(d.id)}>
+                            <XCircle className="h-3.5 w-3.5" />
+                          </Button>
                         </>
                       )}
                     </div>
@@ -620,5 +607,6 @@ export default function DecisionsPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

@@ -22,7 +22,6 @@ import {
 } from "@/hooks/useLifecycleEvents";
 import type { LifecycleEvent } from "@/types/database";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
-import { ActionGate } from "@/components/shared/ActionGate";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -288,12 +287,10 @@ export default function LifecyclePage() {
           </p>
         </div>
         {!readOnly && (
-          <ActionGate>
-            <Button onClick={openCreate}>
-              <Plus className="h-4 w-4 mr-2" />
-              {t("create")}
-            </Button>
-          </ActionGate>
+          <Button onClick={openCreate}>
+            <Plus className="h-4 w-4 mr-2" />
+            {t("create")}
+          </Button>
         )}
       </div>
 
@@ -334,12 +331,10 @@ export default function LifecyclePage() {
             {t("noEventsDescription")}
           </p>
           {!readOnly && (
-            <ActionGate>
-              <Button className="mt-4" onClick={openCreate}>
-                <Plus className="h-4 w-4 mr-2" />
-                {t("create")}
-              </Button>
-            </ActionGate>
+            <Button className="mt-4" onClick={openCreate}>
+              <Plus className="h-4 w-4 mr-2" />
+              {t("create")}
+            </Button>
           )}
         </Card>
       ) : (
@@ -401,26 +396,22 @@ export default function LifecyclePage() {
                       </Button>
                       {!readOnly && (
                         <>
-                          <ActionGate>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => openEdit(evt)}
-                              title={t("edit")}
-                            >
-                              <Pencil className="h-4 w-4" />
-                            </Button>
-                          </ActionGate>
-                          <ActionGate>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => setDeleting(evt)}
-                              title={t("delete")}
-                            >
-                              <Trash2 className="h-4 w-4 text-destructive" />
-                            </Button>
-                          </ActionGate>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => openEdit(evt)}
+                            title={t("edit")}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => setDeleting(evt)}
+                            title={t("delete")}
+                          >
+                            <Trash2 className="h-4 w-4 text-destructive" />
+                          </Button>
                         </>
                       )}
                     </div>

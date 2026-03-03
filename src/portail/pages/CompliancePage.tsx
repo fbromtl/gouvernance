@@ -67,7 +67,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_COMPLIANCE_SCORES,
@@ -113,7 +113,8 @@ export default function CompliancePage() {
   const { isPreview } = useFeaturePreview("compliance");
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
+    <FeatureGate feature="compliance">
+      <div className="space-y-6 p-4 md:p-6">
         <div>
           <div className="flex items-center gap-1.5">
             <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
@@ -148,7 +149,8 @@ export default function CompliancePage() {
             <RemediationTab readOnly={readOnly} isPreview={isPreview} />
           </TabsContent>
         </Tabs>
-    </div>
+      </div>
+    </FeatureGate>
   );
 }
 
@@ -387,29 +389,25 @@ function FrameworksTab({ readOnly, isPreview }: { readOnly: boolean; isPreview: 
         {!readOnly && (
           <div className="flex gap-2 ml-auto">
             {selectedFramework !== "all" && (
-              <ActionGate>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleSeedFramework(selectedFramework)}
-                  disabled={seedFramework.isPending}
-                >
-                  <Sparkles className="h-4 w-4 mr-1" />
-                  {seedFramework.isPending ? t("matrix.initializing") : t("matrix.initFramework")}
-                </Button>
-              </ActionGate>
-            )}
-            <ActionGate>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={handleSeedAll}
-                disabled={seedAll.isPending}
+                onClick={() => handleSeedFramework(selectedFramework)}
+                disabled={seedFramework.isPending}
               >
                 <Sparkles className="h-4 w-4 mr-1" />
-                {seedAll.isPending ? t("matrix.initializing") : t("matrix.initAll")}
+                {seedFramework.isPending ? t("matrix.initializing") : t("matrix.initFramework")}
               </Button>
-            </ActionGate>
+            )}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleSeedAll}
+              disabled={seedAll.isPending}
+            >
+              <Sparkles className="h-4 w-4 mr-1" />
+              {seedAll.isPending ? t("matrix.initializing") : t("matrix.initAll")}
+            </Button>
           </div>
         )}
       </div>
@@ -654,12 +652,10 @@ function RemediationTab({ readOnly, isPreview }: { readOnly: boolean; isPreview:
         </Select>
 
         {!readOnly && (
-          <ActionGate>
-            <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("remediation.create")}
-            </Button>
-          </ActionGate>
+          <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
+            <Plus className="h-4 w-4" />
+            {t("remediation.create")}
+          </Button>
         )}
       </div>
 
@@ -670,12 +666,10 @@ function RemediationTab({ readOnly, isPreview }: { readOnly: boolean; isPreview:
           <p className="font-medium text-muted-foreground">{t("remediation.noActions")}</p>
           <p className="text-sm text-muted-foreground/70 mt-1">{t("remediation.noActionsDescription")}</p>
           {!readOnly && (
-            <ActionGate>
-              <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-                <Plus className="h-4 w-4" />
-                {t("remediation.create")}
-              </Button>
-            </ActionGate>
+            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
+              <Plus className="h-4 w-4" />
+              {t("remediation.create")}
+            </Button>
           )}
         </Card>
       ) : (
@@ -716,26 +710,22 @@ function RemediationTab({ readOnly, isPreview }: { readOnly: boolean; isPreview:
                   {!readOnly && (
                     <TableCell>
                       <div className="flex gap-1">
-                        <ActionGate>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                            onClick={() => openEditDialog(action)}
-                          >
-                            <Pencil className="h-3.5 w-3.5" />
-                          </Button>
-                        </ActionGate>
-                        <ActionGate>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7 text-destructive hover:text-destructive"
-                            onClick={() => setDeleteConfirm(action.id)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </Button>
-                        </ActionGate>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7"
+                          onClick={() => openEditDialog(action)}
+                        >
+                          <Pencil className="h-3.5 w-3.5" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7 text-destructive hover:text-destructive"
+                          onClick={() => setDeleteConfirm(action.id)}
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </Button>
                       </div>
                     </TableCell>
                   )}

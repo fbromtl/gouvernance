@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import type { ColumnDef } from "@tanstack/react-table";
 import { AlertTriangle, Bot, Plus, Search } from "lucide-react";
 
-import { ActionGate } from "@/components/shared/ActionGate";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DataTable, SortableHeader } from "@/components/shared/DataTable";
 import { RiskScoreGauge } from "@/components/shared/RiskScoreGauge";
@@ -216,12 +216,10 @@ export default function AiSystemsListPage() {
         helpNs="aiSystems"
         description={t("description")}
         actions={
-          <ActionGate>
-            <Button onClick={() => navigate("/ai-systems/new")}>
-              <Plus className="mr-2 size-4" />
-              {t("newSystem")}
-            </Button>
-          </ActionGate>
+          <Button onClick={() => navigate("/ai-systems/new")}>
+            <Plus className="mr-2 size-4" />
+            {t("newSystem")}
+          </Button>
         }
       />
 
@@ -282,25 +280,23 @@ export default function AiSystemsListPage() {
 
       {/* Table or Empty State */}
       {isEmpty ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="h-16 w-16 rounded-2xl bg-muted/80 flex items-center justify-center mb-5 shadow-sm">
-            <Bot className="h-7 w-7 text-muted-foreground/60" />
-          </div>
-          <h3 className="text-lg font-semibold mb-1.5 text-foreground">
-            {hasActiveFilters ? t("emptyFiltered.title") : t("empty.title")}
-          </h3>
-          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-6">
-            {hasActiveFilters ? t("emptyFiltered.description") : t("empty.description")}
-          </p>
-          {!hasActiveFilters && (
-            <ActionGate>
-              <Button onClick={() => navigate("/ai-systems/new")} size="sm" className="shadow-sm">
-                <Plus className="mr-2 size-4" />
-                {t("newSystem")}
-              </Button>
-            </ActionGate>
-          )}
-        </div>
+        <EmptyState
+          icon={Bot}
+          title={
+            hasActiveFilters
+              ? t("emptyFiltered.title")
+              : t("empty.title")
+          }
+          description={
+            hasActiveFilters
+              ? t("emptyFiltered.description")
+              : t("empty.description")
+          }
+          actionLabel={hasActiveFilters ? undefined : t("newSystem")}
+          onAction={
+            hasActiveFilters ? undefined : () => navigate("/ai-systems/new")
+          }
+        />
       ) : (
         <DataTable
           columns={columns}

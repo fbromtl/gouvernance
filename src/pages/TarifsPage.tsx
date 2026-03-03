@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Eye, Users, Shield } from "lucide-react";
+import { Check, X, ArrowRight, Eye, Users, Crown, Shield } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -34,46 +34,51 @@ interface PlanCardConfig {
 /*  PLAN CONFIGURATIONS                                                 */
 /* ------------------------------------------------------------------ */
 
-const FREE_FEATURES: PlanFeature[] = [
-  { key: "all_modules_readonly" },
-  { key: "demo_data" },
+const OBSERVER_FEATURES: PlanFeature[] = [
+  { key: "dashboard" },
+  { key: "ai_systems_limit", interpolation: { count: 3 } },
+  { key: "lifecycle" },
   { key: "veille_read" },
-  { key: "bibliotheque" },
-  { key: "members_cercle" },
-  { key: "ai_chat_limited", interpolation: { count: 3 } },
+  { key: "members", interpolation: { count: 1 } },
 ];
 
 const MEMBER_FEATURES: PlanFeature[] = [
-  { key: "all_modules_full" },
-  { key: "create_edit_delete" },
   { key: "ai_systems_unlimited" },
   { key: "risk_assessments" },
   { key: "incidents" },
   { key: "compliance" },
-  { key: "governance_structure" },
-  { key: "monitoring" },
-  { key: "data_catalog" },
   { key: "decisions" },
   { key: "bias" },
   { key: "transparency" },
   { key: "vendors" },
   { key: "documents" },
-  { key: "ai_chat_unlimited" },
+  { key: "ai_chat" },
   { key: "export_pdf" },
   { key: "support_email" },
-  { key: "members_unlimited" },
+  { key: "members_plural", interpolation: { count: 10 } },
   { key: "member_directory" },
   { key: "public_profile" },
   { key: "linkedin_badge" },
 ];
 
+const EXPERT_FEATURES: PlanFeature[] = [
+  { key: "trust_mark" },
+  { key: "dedicated_consultant" },
+  { key: "monitoring" },
+  { key: "data_catalog" },
+  { key: "governance_structure" },
+  { key: "support_dedicated" },
+  { key: "members_unlimited" },
+  { key: "priority_visibility" },
+];
+
 const PLAN_CONFIGS: PlanCardConfig[] = [
   {
-    id: "free",
+    id: "observer",
     icon: Eye,
-    features: FREE_FEATURES,
+    features: OBSERVER_FEATURES,
     ctaTo: "/inscription",
-    ctaLabel: "chooseFree",
+    ctaLabel: "choosePlan",
   },
   {
     id: "member",
@@ -81,6 +86,14 @@ const PLAN_CONFIGS: PlanCardConfig[] = [
     features: MEMBER_FEATURES,
     ctaTo: "/inscription",
     ctaLabel: "becomeMember",
+  },
+  {
+    id: "expert",
+    icon: Crown,
+    features: EXPERT_FEATURES,
+    ctaTo: "/inscription",
+    ctaLabel: "becomeExpert",
+    secondaryCta: { to: "/contact", label: "contactUs" },
   },
 ];
 
@@ -93,62 +106,62 @@ type ComparisonRow =
   | { type: "section"; labelKey: string };
 
 const COMPARISON_ROWS: ComparisonRow[] = [
-  { type: "section", labelKey: "accessLabel" },
-  { type: "feature", key: "all_modules" },
-  { type: "feature", key: "demo_data" },
-  { type: "feature", key: "create_edit_delete" },
-  { type: "section", labelKey: "modulesLabel" },
+  { type: "feature", key: "dashboard" },
   { type: "feature", key: "ai_systems" },
+  { type: "feature", key: "lifecycle" },
+  { type: "feature", key: "veille_read" },
   { type: "feature", key: "risk_assessments" },
   { type: "feature", key: "incidents" },
   { type: "feature", key: "compliance" },
-  { type: "feature", key: "governance_structure" },
   { type: "feature", key: "decisions" },
   { type: "feature", key: "bias" },
   { type: "feature", key: "transparency" },
   { type: "feature", key: "vendors" },
   { type: "feature", key: "documents" },
-  { type: "feature", key: "monitoring" },
-  { type: "feature", key: "data_catalog" },
-  { type: "feature", key: "lifecycle" },
-  { type: "section", labelKey: "toolsLabel" },
   { type: "feature", key: "ai_chat" },
   { type: "feature", key: "export_pdf" },
-  { type: "feature", key: "veille_read" },
+  { type: "feature", key: "trust_mark" },
+  { type: "feature", key: "dedicated_consultant" },
+  { type: "feature", key: "monitoring" },
+  { type: "feature", key: "data_catalog" },
+  { type: "feature", key: "governance_structure" },
+  { type: "feature", key: "support_community" },
+  { type: "feature", key: "support_email" },
+  { type: "feature", key: "support_dedicated" },
   { type: "section", labelKey: "communityLabel" },
   { type: "feature", key: "member_directory" },
   { type: "feature", key: "public_profile" },
   { type: "feature", key: "linkedin_badge" },
-  { type: "section", labelKey: "supportLabel" },
-  { type: "feature", key: "support_community" },
-  { type: "feature", key: "support_email" },
+  { type: "feature", key: "priority_visibility" },
 ];
 
-const PLAN_AVAILABILITY: Record<string, [boolean, boolean]> = {
-  all_modules:          [true,  true],
-  demo_data:            [true,  false],
-  create_edit_delete:   [false, true],
-  ai_systems:           [true,  true],
-  risk_assessments:     [true,  true],
-  incidents:            [true,  true],
-  compliance:           [true,  true],
-  governance_structure: [true,  true],
-  decisions:            [true,  true],
-  bias:                 [true,  true],
-  transparency:         [true,  true],
-  vendors:              [true,  true],
-  documents:            [true,  true],
-  monitoring:           [true,  true],
-  data_catalog:         [true,  true],
-  lifecycle:            [true,  true],
-  ai_chat:              [true,  true],
-  export_pdf:           [false, true],
-  veille_read:          [true,  true],
-  member_directory:     [false, true],
-  public_profile:       [false, true],
-  linkedin_badge:       [false, true],
-  support_community:    [true,  true],
-  support_email:        [false, true],
+const PLAN_AVAILABILITY: Record<string, [boolean, boolean, boolean]> = {
+  dashboard:             [true,  true,  true],
+  ai_systems:            [true,  true,  true],
+  lifecycle:             [true,  true,  true],
+  veille_read:           [true,  true,  true],
+  risk_assessments:      [false, true,  true],
+  incidents:             [false, true,  true],
+  compliance:            [false, true,  true],
+  decisions:             [false, true,  true],
+  bias:                  [false, true,  true],
+  transparency:          [false, true,  true],
+  vendors:               [false, true,  true],
+  documents:             [false, true,  true],
+  ai_chat:               [false, true,  true],
+  export_pdf:            [false, true,  true],
+  trust_mark:            [false, false, true],
+  dedicated_consultant:  [false, false, true],
+  monitoring:            [false, false, true],
+  data_catalog:          [false, false, true],
+  governance_structure:  [false, false, true],
+  support_community:     [true,  false, false],
+  support_email:         [false, true,  false],
+  support_dedicated:     [false, false, true],
+  member_directory:      [false, true,  true],
+  public_profile:        [false, true,  true],
+  linkedin_badge:        [false, true,  true],
+  priority_visibility:   [false, false, true],
 };
 
 /* ------------------------------------------------------------------ */
@@ -180,7 +193,7 @@ const fadeUp = {
 /*  PLAN ORDER FOR HIERARCHY                                            */
 /* ------------------------------------------------------------------ */
 
-const PLAN_ORDER: PlanId[] = ["free", "member", "honorary"];
+const PLAN_ORDER: PlanId[] = ["observer", "member", "expert", "honorary"];
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                           */
@@ -238,11 +251,11 @@ export function TarifsPage() {
         "offers": [
           {
             "@type": "Offer",
-            "name": "Gratuit",
+            "name": "Observateur",
             "price": "0",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
-            "description": "Accès en lecture seule à tous les modules avec données de démo",
+            "description": "Accès gratuit aux ressources de base",
           },
           {
             "@type": "Offer",
@@ -250,7 +263,15 @@ export function TarifsPage() {
             "price": "249",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
-            "description": "Accès complet à tous les modules — création, édition, export",
+            "description": "Accès complet aux ressources et événements",
+          },
+          {
+            "@type": "Offer",
+            "name": "Membre Expert",
+            "price": "879",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "description": "Accès premium avec accompagnement personnalisé",
           },
         ],
       }} />
@@ -365,7 +386,7 @@ export function TarifsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-4 items-start max-w-4xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-4 items-start"
           >
             {PLAN_CONFIGS.map((config) => {
               const plan = PLANS[config.id];
@@ -414,7 +435,9 @@ export function TarifsPage() {
                             "flex size-9 items-center justify-center rounded-lg",
                             isHighlighted
                               ? "bg-brand-purple/10 text-brand-purple"
-                              : "bg-muted text-muted-foreground"
+                              : config.id === "expert"
+                                ? "bg-amber-500/10 text-amber-600"
+                                : "bg-muted text-muted-foreground"
                           )}
                         >
                           <config.icon className="size-4.5" />
@@ -436,6 +459,11 @@ export function TarifsPage() {
 
                       {/* Price */}
                       <div className="mb-6">
+                        {config.id === "expert" && (
+                          <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">
+                            {t("startingAt")}
+                          </span>
+                        )}
                         <div className="flex items-baseline gap-1 mt-0.5">
                           <span className="text-4xl font-extrabold text-foreground tracking-tight">
                             {price === 0 ? `${currencySymbol(currency)}0` : `${currencySymbol(currency)}${price}`}
@@ -465,7 +493,9 @@ export function TarifsPage() {
                               ? "pointer-events-none opacity-60"
                               : isHighlighted
                                 ? "bg-brand-purple hover:bg-brand-purple-dark text-white shadow-md shadow-brand-purple/20"
-                                : ""
+                                : config.id === "expert"
+                                  ? "bg-foreground hover:bg-foreground/90 text-white"
+                                  : ""
                           )}
                           variant={cta.variant === "outline" ? "outline" : "default"}
                         >
@@ -486,9 +516,11 @@ export function TarifsPage() {
                       {/* Features */}
                       <div className="border-t border-border/40 pt-5">
                         <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                          {config.id === "free"
+                          {config.id === "observer"
                             ? t("included")
-                            : t("allFromFree")}
+                            : config.id === "member"
+                              ? t("allFromObserver")
+                              : t("allFromMember")}
                         </p>
                         <ul className="space-y-2.5">
                           {config.features.map((feat) => (
@@ -551,11 +583,11 @@ export function TarifsPage() {
             className="rounded-2xl border border-border/60 bg-white shadow-lg overflow-hidden"
           >
             {/* Table header */}
-            <div className="grid grid-cols-3 gap-0 border-b border-border/40 bg-muted/30">
+            <div className="grid grid-cols-4 gap-0 border-b border-border/40 bg-muted/30">
               <div className="p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 {t("featuresLabel")}
               </div>
-              {(["free", "member"] as const).map((planId) => (
+              {(["observer", "member", "expert"] as const).map((planId) => (
                 <div
                   key={planId}
                   className={cn(
@@ -581,9 +613,9 @@ export function TarifsPage() {
                 return (
                   <div
                     key={row.labelKey}
-                    className="grid grid-cols-3 gap-0 border-b border-border/40 bg-muted/30"
+                    className="grid grid-cols-4 gap-0 border-b border-border/40 bg-muted/30"
                   >
-                    <div className="col-span-3 p-3 sm:p-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    <div className="col-span-4 p-3 sm:p-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       {t(row.labelKey)}
                     </div>
                   </div>
@@ -595,7 +627,7 @@ export function TarifsPage() {
                 <div
                   key={row.key}
                   className={cn(
-                    "grid grid-cols-3 gap-0 border-b border-border/15 last:border-b-0 transition-colors",
+                    "grid grid-cols-4 gap-0 border-b border-border/15 last:border-b-0 transition-colors",
                     "hover:bg-muted/20",
                     i % 2 === 0 ? "bg-white" : "bg-muted/5"
                   )}

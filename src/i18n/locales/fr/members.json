@@ -25,12 +25,13 @@
   },
   "badge": {
     "member": "Membre",
+    "expert": "Expert",
     "honorary": "Honoraire"
   },
   "levels": {
-    "free": "Gratuit",
     "observer": "Observateur",
     "member": "Membre du Cercle",
+    "expert": "Membre Expert",
     "honorary": "Membre Honoraire"
   },
   "nav": "Membres du Cercle"

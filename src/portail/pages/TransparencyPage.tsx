@@ -61,7 +61,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_AUTOMATED_DECISIONS, DEMO_CONTESTATIONS } from "@/portail/demo";
 
@@ -185,6 +185,7 @@ export default function TransparencyPage() {
   const getSystemName = (id: string) => systems.find((s) => s.id === id)?.name ?? "—";
 
   return (
+    <FeatureGate feature="transparency">
       <div className="space-y-6">
         <div>
           <div className="flex items-center gap-1.5">
@@ -212,6 +213,7 @@ export default function TransparencyPage() {
           </TabsContent>
         </Tabs>
       </div>
+    </FeatureGate>
   );
 }
 
@@ -314,7 +316,7 @@ function RegistryTab({
           <Input placeholder={t("registry.title")} value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10" />
         </div>
         {!readOnly && (
-          <ActionGate><Button onClick={openCreate}><Plus className="h-4 w-4 mr-2" />{t("registry.create")}</Button></ActionGate>
+          <Button onClick={openCreate}><Plus className="h-4 w-4 mr-2" />{t("registry.create")}</Button>
         )}
       </div>
 
@@ -353,8 +355,8 @@ function RegistryTab({
                     <div className="flex items-center justify-end gap-1">
                       {!readOnly && (
                         <>
-                          <ActionGate><Button variant="ghost" size="icon" onClick={() => openEdit(e)}><Pencil className="h-4 w-4" /></Button></ActionGate>
-                          <ActionGate><Button variant="ghost" size="icon" onClick={() => setDeleting(e)}><Trash2 className="h-4 w-4 text-destructive" /></Button></ActionGate>
+                          <Button variant="ghost" size="icon" onClick={() => openEdit(e)}><Pencil className="h-4 w-4" /></Button>
+                          <Button variant="ghost" size="icon" onClick={() => setDeleting(e)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
                         </>
                       )}
                     </div>
@@ -577,7 +579,7 @@ function ContestationsTab({
           </SelectContent>
         </Select>
         {!readOnly && (
-          <ActionGate><Button onClick={openCreate}><Plus className="h-4 w-4 mr-2" />{t("contestation.create")}</Button></ActionGate>
+          <Button onClick={openCreate}><Plus className="h-4 w-4 mr-2" />{t("contestation.create")}</Button>
         )}
       </div>
 
@@ -616,7 +618,7 @@ function ContestationsTab({
                     <div className="flex items-center justify-end gap-1">
                       <Button variant="ghost" size="icon" onClick={() => setViewing(c)}><Eye className="h-4 w-4" /></Button>
                       {!readOnly && (
-                        <ActionGate><Button variant="ghost" size="icon" onClick={() => openEdit(c)}><Pencil className="h-4 w-4" /></Button></ActionGate>
+                        <Button variant="ghost" size="icon" onClick={() => openEdit(c)}><Pencil className="h-4 w-4" /></Button>
                       )}
                     </div>
                   </TableCell>

@@ -75,7 +75,7 @@ export default function DashboardPage() {
 
   // Subscription data for membership widget
   const { data: subscription } = useSubscription();
-  const plan: PlanId = (subscription?.plan as PlanId) ?? "free";
+  const plan: PlanId = (subscription?.plan as PlanId) ?? "observer";
 
   // Demo mode state (persisted in localStorage)
   const [demo, setDemo] = useState(readDemo);
@@ -240,7 +240,7 @@ export default function DashboardPage() {
       {/* ================================================================ */}
       {/*  Membership Widget                                                */}
       {/* ================================================================ */}
-      {plan !== "free" ? (
+      {plan !== "observer" ? (
         <PortalCard>
           <h3 className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-3">
             {t("membership.profileTitle", { defaultValue: "Votre profil de membre" })}

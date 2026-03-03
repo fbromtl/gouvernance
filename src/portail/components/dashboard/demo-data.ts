@@ -244,24 +244,24 @@ const incidentBase = {
 } satisfies Partial<Incident>;
 
 const incidentRows: { title: string; severity: string; status: string; month: number; category: string; incident_type: string }[] = [
-  { title: "Biais détecté dans le scoring crédit", severity: "critical", status: "investigating", month: 0, category: "ai", incident_type: "bias" },
-  { title: "Fuite de données personnelles via chatbot", severity: "high", status: "resolving", month: 0, category: "privacy", incident_type: "unauthorized_disclosure" },
-  { title: "Hallucination critique de l'assistant RH", severity: "high", status: "reported", month: 0, category: "ai", incident_type: "performance" },
-  { title: "Temps de réponse dégradé moteur fraude", severity: "medium", status: "resolved", month: 1, category: "ai", incident_type: "performance" },
-  { title: "Erreur de classification juridique", severity: "medium", status: "closed", month: 1, category: "ai", incident_type: "performance" },
-  { title: "Décision de crédit contestée par client", severity: "high", status: "closed", month: 1, category: "ai", incident_type: "ethics" },
-  { title: "Indisponibilité du service de recommandation", severity: "low", status: "closed", month: 2, category: "ai", incident_type: "availability" },
-  { title: "Dérive du modèle de fraude détectée", severity: "critical", status: "resolved", month: 2, category: "ai", incident_type: "performance" },
-  { title: "Résultat inexact analyse sentiments", severity: "low", status: "closed", month: 2, category: "ai", incident_type: "performance" },
-  { title: "Accès non autorisé aux logs ML", severity: "high", status: "closed", month: 3, category: "privacy", incident_type: "unauthorized_access" },
-  { title: "Données d'entraînement corrompues", severity: "medium", status: "closed", month: 3, category: "ai", incident_type: "security" },
-  { title: "Violation RGPD dans le pipeline NLP", severity: "critical", status: "closed", month: 3, category: "ai", incident_type: "compliance" },
-  { title: "Panne du modèle de vision industrielle", severity: "medium", status: "closed", month: 4, category: "ai", incident_type: "availability" },
-  { title: "Biais de genre détecté recommandation RH", severity: "high", status: "closed", month: 4, category: "ai", incident_type: "bias" },
-  { title: "Latence excessive chatbot client", severity: "low", status: "closed", month: 4, category: "ai", incident_type: "performance" },
-  { title: "Faux positifs excessifs détection fraude", severity: "medium", status: "closed", month: 5, category: "ai", incident_type: "performance" },
-  { title: "Problème de consentement collecte données", severity: "high", status: "closed", month: 5, category: "ai", incident_type: "compliance" },
-  { title: "Défaillance du monitoring en production", severity: "low", status: "closed", month: 5, category: "ai", incident_type: "availability" },
+  { title: "Biais détecté dans le scoring crédit", severity: "critical", status: "investigating", month: 0, category: "bias", incident_type: "bias_discrimination" },
+  { title: "Fuite de données personnelles via chatbot", severity: "high", status: "mitigating", month: 0, category: "data_breach", incident_type: "data_leak" },
+  { title: "Hallucination critique de l'assistant RH", severity: "high", status: "open", month: 0, category: "performance", incident_type: "model_error" },
+  { title: "Temps de réponse dégradé moteur fraude", severity: "medium", status: "resolved", month: 1, category: "performance", incident_type: "performance_degradation" },
+  { title: "Erreur de classification juridique", severity: "medium", status: "closed", month: 1, category: "performance", incident_type: "model_error" },
+  { title: "Décision de crédit contestée par client", severity: "high", status: "closed", month: 1, category: "bias", incident_type: "unfair_outcome" },
+  { title: "Indisponibilité du service de recommandation", severity: "low", status: "closed", month: 2, category: "availability", incident_type: "service_outage" },
+  { title: "Dérive du modèle de fraude détectée", severity: "critical", status: "resolved", month: 2, category: "performance", incident_type: "model_drift" },
+  { title: "Résultat inexact analyse sentiments", severity: "low", status: "closed", month: 2, category: "performance", incident_type: "model_error" },
+  { title: "Accès non autorisé aux logs ML", severity: "high", status: "closed", month: 3, category: "security", incident_type: "unauthorized_access" },
+  { title: "Données d'entraînement corrompues", severity: "medium", status: "closed", month: 3, category: "data_quality", incident_type: "data_corruption" },
+  { title: "Violation RGPD dans le pipeline NLP", severity: "critical", status: "closed", month: 3, category: "compliance", incident_type: "regulatory_violation" },
+  { title: "Panne du modèle de vision industrielle", severity: "medium", status: "closed", month: 4, category: "availability", incident_type: "service_outage" },
+  { title: "Biais de genre détecté recommandation RH", severity: "high", status: "closed", month: 4, category: "bias", incident_type: "bias_discrimination" },
+  { title: "Latence excessive chatbot client", severity: "low", status: "closed", month: 4, category: "performance", incident_type: "performance_degradation" },
+  { title: "Faux positifs excessifs détection fraude", severity: "medium", status: "closed", month: 5, category: "performance", incident_type: "model_error" },
+  { title: "Problème de consentement collecte données", severity: "high", status: "closed", month: 5, category: "compliance", incident_type: "regulatory_violation" },
+  { title: "Défaillance du monitoring en production", severity: "low", status: "closed", month: 5, category: "availability", incident_type: "service_outage" },
 ];
 
 export const DEMO_INCIDENTS: Incident[] = incidentRows.map((r, i) => ({
@@ -370,13 +370,13 @@ const biasBase = {
 } satisfies Partial<BiasFinding>;
 
 const biasRows: { title: string; bias_type: string; severity: string; status: string; daysAgo: number }[] = [
-  { title: "Discrimination âge dans le scoring crédit", bias_type: "disparate_impact", severity: "critical", status: "identified", daysAgo: 2 },
-  { title: "Biais de genre dans recommandations RH", bias_type: "disparate_impact", severity: "high", status: "in_remediation", daysAgo: 8 },
-  { title: "Sous-représentation régionale dans le modèle NLP", bias_type: "representation", severity: "medium", status: "in_remediation", daysAgo: 15 },
-  { title: "Biais socioéconomique détection fraude", bias_type: "historical", severity: "high", status: "identified", daysAgo: 5 },
-  { title: "Biais linguistique dans l'analyse sentiments", bias_type: "measurement", severity: "low", status: "resolved", daysAgo: 30 },
-  { title: "Disparité ethnique dans la vision industrielle", bias_type: "disparate_impact", severity: "critical", status: "in_remediation", daysAgo: 10 },
-  { title: "Biais de confirmation dans les recommandations", bias_type: "evaluation", severity: "medium", status: "resolved", daysAgo: 45 },
+  { title: "Discrimination âge dans le scoring crédit", bias_type: "age_discrimination", severity: "critical", status: "identified", daysAgo: 2 },
+  { title: "Biais de genre dans recommandations RH", bias_type: "gender_bias", severity: "high", status: "in_remediation", daysAgo: 8 },
+  { title: "Sous-représentation régionale dans le modèle NLP", bias_type: "geographic_bias", severity: "medium", status: "in_remediation", daysAgo: 15 },
+  { title: "Biais socioéconomique détection fraude", bias_type: "socioeconomic_bias", severity: "high", status: "identified", daysAgo: 5 },
+  { title: "Biais linguistique dans l'analyse sentiments", bias_type: "language_bias", severity: "low", status: "resolved", daysAgo: 30 },
+  { title: "Disparité ethnique dans la vision industrielle", bias_type: "racial_bias", severity: "critical", status: "in_remediation", daysAgo: 10 },
+  { title: "Biais de confirmation dans les recommandations", bias_type: "confirmation_bias", severity: "medium", status: "resolved", daysAgo: 45 },
 ];
 
 export const DEMO_BIAS_FINDINGS: BiasFinding[] = biasRows.map((r, i) => ({

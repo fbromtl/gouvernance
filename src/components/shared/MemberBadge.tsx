@@ -11,6 +11,7 @@ interface MemberBadgeProps {
 
 const BADGE_STYLES: Record<string, string> = {
   member: "bg-brand-purple/15 text-brand-purple border-brand-purple/30",
+  expert: "bg-amber-100 text-amber-700 border-amber-300",
   honorary: "bg-slate-200 text-slate-700 border-slate-300 shadow-inner",
 };
 
@@ -23,8 +24,8 @@ const SIZE_CLASSES = {
 export function MemberBadge({ plan, size = "md", className }: MemberBadgeProps) {
   const { t } = useTranslation("members");
 
-  // Free/observer (legacy) gets no badge
-  if (plan === "free" || plan === "observer") return null;
+  // Observer gets no badge
+  if (plan === "observer") return null;
 
   const style = BADGE_STYLES[plan] ?? BADGE_STYLES.member;
 

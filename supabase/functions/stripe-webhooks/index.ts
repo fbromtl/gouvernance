@@ -180,17 +180,6 @@ async function handleCheckoutCompleted(
   if (error) {
     console.error("checkout.session.completed: upsert error", error);
   }
-
-  // Clean demo data now that the user has upgraded to a paid plan
-  const { error: cleanError } = await supabase.rpc("clean_demo_data", {
-    p_org_id: organizationId,
-  });
-
-  if (cleanError) {
-    console.error("checkout.session.completed: clean_demo_data error", cleanError);
-  } else {
-    console.log(`Demo data cleaned for organization ${organizationId} after upgrade`);
-  }
 }
 
 async function handleSubscriptionUpdated(

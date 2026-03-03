@@ -20,7 +20,7 @@ import {
 
 import { useRiskAssessments } from "@/hooks/useRiskAssessments";
 import type { RiskAssessment } from "@/types/database";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_RISK_ASSESSMENTS } from "@/portail/demo";
 
@@ -100,83 +100,83 @@ export default function RiskAssessmentListPage() {
 
   if (!effectiveLoading && displayAssessments.length === 0) {
     return (
+      <FeatureGate feature="risk_assessments">
+        <div className="space-y-6">
+          <PageHeader
+            title={t("title")}
+            helpNs="riskAssessments"
+            description={t("description")}
+            actions={
+              <Button onClick={() => navigate("/risks/new")}>
+                <Plus className="mr-2 size-4" />
+                {t("newAssessment")}
+              </Button>
+            }
+          />
+          <EmptyState
+            icon={ShieldAlert}
+            title={t("empty.title")}
+            description={t("empty.description")}
+            actionLabel={t("empty.action")}
+            onAction={() => navigate("/risks/new")}
+          />
+        </div>
+      </FeatureGate>
+    );
+  }
+
+  return (
+    <FeatureGate feature="risk_assessments">
       <div className="space-y-6">
         <PageHeader
           title={t("title")}
           helpNs="riskAssessments"
           description={t("description")}
           actions={
-            <ActionGate>
-              <Button onClick={() => navigate("/risks/new")}>
-                <Plus className="mr-2 size-4" />
-                {t("newAssessment")}
-              </Button>
-            </ActionGate>
-          }
-        />
-        <EmptyState
-          icon={ShieldAlert}
-          title={t("empty.title")}
-          description={t("empty.description")}
-          actionLabel={t("empty.action")}
-          onAction={() => navigate("/risks/new")}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <PageHeader
-        title={t("title")}
-        helpNs="riskAssessments"
-        description={t("description")}
-        actions={
-          <ActionGate>
             <Button onClick={() => navigate("/risks/new")}>
               <Plus className="mr-2 size-4" />
               {t("newAssessment")}
             </Button>
-          </ActionGate>
-        }
-      />
+          }
+        />
 
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3">
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("columns.status")}</SelectItem>
-            <SelectItem value="draft">{t("statuses.draft")}</SelectItem>
-            <SelectItem value="submitted">{t("statuses.submitted")}</SelectItem>
-            <SelectItem value="in_review">{t("statuses.in_review")}</SelectItem>
-            <SelectItem value="approved">{t("statuses.approved")}</SelectItem>
-          </SelectContent>
-        </Select>
+        {/* Filters */}
+        <div className="flex flex-wrap items-center gap-3">
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("columns.status")}</SelectItem>
+              <SelectItem value="draft">{t("statuses.draft")}</SelectItem>
+              <SelectItem value="submitted">{t("statuses.submitted")}</SelectItem>
+              <SelectItem value="in_review">{t("statuses.in_review")}</SelectItem>
+              <SelectItem value="approved">{t("statuses.approved")}</SelectItem>
+            </SelectContent>
+          </Select>
 
-        <Select value={riskLevelFilter} onValueChange={setRiskLevelFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("columns.riskLevel")}</SelectItem>
-            <SelectItem value="minimal">{t("riskLevels.minimal")}</SelectItem>
-            <SelectItem value="limited">{t("riskLevels.limited")}</SelectItem>
-            <SelectItem value="high">{t("riskLevels.high")}</SelectItem>
-            <SelectItem value="critical">{t("riskLevels.critical")}</SelectItem>
-            <SelectItem value="prohibited">{t("riskLevels.prohibited")}</SelectItem>
-          </SelectContent>
-        </Select>
+          <Select value={riskLevelFilter} onValueChange={setRiskLevelFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("columns.riskLevel")}</SelectItem>
+              <SelectItem value="minimal">{t("riskLevels.minimal")}</SelectItem>
+              <SelectItem value="limited">{t("riskLevels.limited")}</SelectItem>
+              <SelectItem value="high">{t("riskLevels.high")}</SelectItem>
+              <SelectItem value="critical">{t("riskLevels.critical")}</SelectItem>
+              <SelectItem value="prohibited">{t("riskLevels.prohibited")}</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <DataTable
+          columns={columns}
+          data={filtered}
+          isLoading={effectiveLoading}
+          onRowClick={(row) => navigate(`/risks/${row.id}`)}
+        />
       </div>
-
-      <DataTable
-        columns={columns}
-        data={filtered}
-        isLoading={effectiveLoading}
-        onRowClick={(row) => navigate(`/risks/${row.id}`)}
-      />
-    </div>
+    </FeatureGate>
   );
 }

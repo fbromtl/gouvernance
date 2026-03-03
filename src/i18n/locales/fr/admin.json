@@ -26,9 +26,9 @@
     "save": "Sauvegarder",
     "plans": {
       "starter": "Starter",
-      "free": "Gratuit",
       "observer": "Observateur",
       "member": "Membre",
+      "expert": "Expert",
       "honorary": "Honoraire",
       "pro": "Professionnel",
       "enterprise": "Entreprise"

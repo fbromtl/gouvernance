@@ -17,7 +17,7 @@ export const stripeConfigured = Boolean(stripePublishableKey);
 /*  Plan definitions (shared between pricing page & billing page)      */
 /* ------------------------------------------------------------------ */
 
-export type PlanId = 'free' | 'member' | 'honorary';
+export type PlanId = 'observer' | 'member' | 'expert' | 'honorary';
 
 export interface PlanDefinition {
   id: PlanId;
@@ -32,12 +32,12 @@ export interface PlanDefinition {
 }
 
 export const PLANS: Record<PlanId, PlanDefinition> = {
-  free: {
-    id: 'free',
+  observer: {
+    id: 'observer',
     monthlyPrice: 0,
     yearlyPrice: 0,
     maxMembers: 1,
-    maxAiSystems: null,
+    maxAiSystems: 3,
   },
   member: {
     id: 'member',
@@ -50,6 +50,16 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     highlighted: true,
     badgeColor: 'brand-purple',
   },
+  expert: {
+    id: 'expert',
+    monthlyPrice: 879,
+    yearlyPrice: 8388,
+    monthlyPriceId: 'price_1T3nfoGxmyz5JooXGE1vzOMQ',
+    yearlyPriceId: 'price_1T3nfpGxmyz5JooXrBWeSha0',
+    maxMembers: null,
+    maxAiSystems: null,
+    badgeColor: 'amber-500',
+  },
   honorary: {
     id: 'honorary',
     monthlyPrice: 0,
@@ -61,11 +71,11 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
 };
 
 /** Plans that can be purchased via Stripe (excludes honorary) */
-export const PURCHASABLE_PLANS: PlanId[] = ['free', 'member'];
+export const PURCHASABLE_PLANS: PlanId[] = ['observer', 'member', 'expert'];
 
-/** honorary gets same access as member */
+/** honorary gets same access as expert */
 export function effectivePlan(plan: PlanId): PlanId {
-  return plan === 'honorary' ? 'member' : plan;
+  return plan === 'honorary' ? 'expert' : plan;
 }
 
 /* ------------------------------------------------------------------ */
@@ -77,18 +87,21 @@ export type Currency = 'CAD' | 'EUR' | 'USD';
 /** Fixed display prices per currency. CAD = source of truth. */
 export const CURRENCY_PRICES: Record<Currency, Record<PlanId, { monthly: number; yearly: number }>> = {
   CAD: {
-    free:     { monthly: 0, yearly: 0 },
+    observer: { monthly: 0, yearly: 0 },
     member:   { monthly: 249, yearly: 2388 },
+    expert:   { monthly: 879, yearly: 8388 },
     honorary: { monthly: 0, yearly: 0 },
   },
   EUR: {
-    free:     { monthly: 0, yearly: 0 },
+    observer: { monthly: 0, yearly: 0 },
     member:   { monthly: 149, yearly: 1430 },
+    expert:   { monthly: 529, yearly: 4990 },
     honorary: { monthly: 0, yearly: 0 },
   },
   USD: {
-    free:     { monthly: 0, yearly: 0 },
+    observer: { monthly: 0, yearly: 0 },
     member:   { monthly: 169, yearly: 1590 },
+    expert:   { monthly: 589, yearly: 5590 },
     honorary: { monthly: 0, yearly: 0 },
   },
 };

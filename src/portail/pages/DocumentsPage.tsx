@@ -45,7 +45,7 @@ import { ClassificationReview } from "@/portail/components/drive/ClassificationR
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
@@ -342,6 +342,7 @@ export default function DocumentsPage() {
 
   if (isError && !isPreview) {
     return (
+      <FeatureGate feature="documents">
         <div className="p-4 md:p-6">
           <Card className="p-8 text-center">
             <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
@@ -352,10 +353,12 @@ export default function DocumentsPage() {
             </p>
           </Card>
         </div>
+      </FeatureGate>
     );
   }
 
   return (
+    <FeatureGate feature="documents">
     <div className="flex flex-col gap-4 p-4 md:p-6 -mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8">
       {/* ---- Header ---- */}
       <div className="flex items-start justify-between gap-3 px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
@@ -381,12 +384,10 @@ export default function DocumentsPage() {
       {/* ---- Upload zone ---- */}
       {!readOnly && (
         <div className="px-4 sm:px-6 lg:px-8">
-          <ActionGate>
-            <DropZone
-              onFilesSelected={handleFilesSelected}
-              isUploading={uploadDocument.isPending}
-            />
-          </ActionGate>
+          <DropZone
+            onFilesSelected={handleFilesSelected}
+            isUploading={uploadDocument.isPending}
+          />
         </div>
       )}
 
@@ -673,19 +674,18 @@ export default function DocumentsPage() {
             <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
               {t("drive.cancel", { defaultValue: "Annuler" })}
             </Button>
-            <ActionGate>
-              <Button
-                variant="destructive"
-                onClick={() => deleteConfirm && handleDelete(deleteConfirm)}
-                disabled={deleteDocument.isPending}
-              >
-                <Trash2 className="h-4 w-4 mr-1.5" />
-                {t("delete")}
-              </Button>
-            </ActionGate>
+            <Button
+              variant="destructive"
+              onClick={() => deleteConfirm && handleDelete(deleteConfirm)}
+              disabled={deleteDocument.isPending}
+            >
+              <Trash2 className="h-4 w-4 mr-1.5" />
+              {t("delete")}
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

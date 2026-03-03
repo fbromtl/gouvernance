@@ -45,18 +45,19 @@ function stripeHeaders(): Record<string, string> {
 /**
  * Resolve the Stripe Price ID for a given plan + period combination.
  *
- * Only one paid plan exists: "member" (aliased as "pro" in the DB).
- *
  * Priority:
  *   1. Env-var based lookup (STRIPE_PRICE_MEMBER_MONTHLY, etc.)
  *   2. Legacy env-var names  (STRIPE_PRICE_PRO_MONTHLY, etc.)
  *   3. Hardcoded fallbacks   (from frontend PLANS definition)
  */
 function getPriceId(plan: string, period: string): string | null {
-  // Map plan names → env-var prefixes to try (member & pro are aliases)
+  // Map current plan names → env-var prefix (+ legacy aliases)
   const envPrefixes: Record<string, string[]> = {
-    member: ["MEMBER", "PRO"],
-    pro:    ["PRO", "MEMBER"],
+    member:     ["MEMBER", "PRO"],
+    expert:     ["EXPERT", "ENTERPRISE"],
+    // Legacy names (backward compat)
+    pro:        ["PRO", "MEMBER"],
+    enterprise: ["ENTERPRISE", "EXPERT"],
   };
 
   const prefixes = envPrefixes[plan];
@@ -72,13 +73,13 @@ function getPriceId(plan: string, period: string): string | null {
 
   // Hardcoded fallbacks (mirrors src/lib/stripe.ts PLANS)
   const hardcoded: Record<string, string> = {
-    member_monthly: "price_1T3nfmGxmyz5JooX0eHr5UID",
-    member_yearly:  "price_1T3nfnGxmyz5JooXt3KF9w7O",
+    member_monthly:  "price_1T3nfmGxmyz5JooX0eHr5UID",
+    member_yearly:   "price_1T3nfnGxmyz5JooXt3KF9w7O",
+    expert_monthly:  "price_1T3nfoGxmyz5JooXGE1vzOMQ",
+    expert_yearly:   "price_1T3nfpGxmyz5JooXrBWeSha0",
   };
 
-  // Normalize "pro" → "member" for hardcoded lookup
-  const lookupPlan = plan === "pro" ? "member" : plan;
-  return hardcoded[`${lookupPlan}_${period}`] ?? null;
+  return hardcoded[`${plan}_${period}`] ?? null;
 }
 
 /* ------------------------------------------------------------------ */

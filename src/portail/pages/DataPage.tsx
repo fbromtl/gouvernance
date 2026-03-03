@@ -65,7 +65,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { ActionGate } from "@/components/shared/ActionGate";
+import { FeatureGate } from "@/components/shared/FeatureGate";
 
 /* ================================================================== */
 /*  CONSTANTS                                                          */
@@ -473,18 +473,21 @@ export default function DataPage() {
 
   if ((dsError || trError) && !isPreview) {
     return (
-      <div className="space-y-6 p-4 md:p-6">
-        <Card className="p-8 text-center">
-          <Database className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-          </p>
-        </Card>
-      </div>
+      <FeatureGate feature="data_catalog">
+        <div className="space-y-6 p-4 md:p-6">
+          <Card className="p-8 text-center">
+            <Database className="h-8 w-8 text-destructive mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">
+              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+            </p>
+          </Card>
+        </div>
+      </FeatureGate>
     );
   }
 
   return (
+    <FeatureGate feature="data_catalog">
     <div className="space-y-6 p-4 md:p-6">
       {/* Header */}
       <div className="flex items-start gap-3">
@@ -550,12 +553,10 @@ export default function DataPage() {
             </Select>
 
             {!readOnly && (
-              <ActionGate>
-                <Button size="sm" className="ml-auto gap-1.5" onClick={openDsCreate}>
-                  <Plus className="h-4 w-4" />
-                  {t("create")}
-                </Button>
-              </ActionGate>
+              <Button size="sm" className="ml-auto gap-1.5" onClick={openDsCreate}>
+                <Plus className="h-4 w-4" />
+                {t("create")}
+              </Button>
             )}
           </div>
 
@@ -574,12 +575,10 @@ export default function DataPage() {
                 {t("noDatasetsDescription")}
               </p>
               {!readOnly && (
-                <ActionGate>
-                  <Button size="sm" className="mt-4 gap-1.5" onClick={openDsCreate}>
-                    <Plus className="h-4 w-4" />
-                    {t("create")}
-                  </Button>
-                </ActionGate>
+                <Button size="sm" className="mt-4 gap-1.5" onClick={openDsCreate}>
+                  <Plus className="h-4 w-4" />
+                  {t("create")}
+                </Button>
               )}
             </Card>
           ) : (
@@ -634,26 +633,22 @@ export default function DataPage() {
                           </Button>
                           {!readOnly && (
                             <>
-                              <ActionGate>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-7 w-7"
-                                  onClick={() => openDsEdit(ds)}
-                                >
-                                  <Pencil className="h-3.5 w-3.5" />
-                                </Button>
-                              </ActionGate>
-                              <ActionGate>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-7 w-7 text-destructive"
-                                  onClick={() => setDsDeleteConfirm(ds.id)}
-                                >
-                                  <Trash2 className="h-3.5 w-3.5" />
-                                </Button>
-                              </ActionGate>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => openDsEdit(ds)}
+                              >
+                                <Pencil className="h-3.5 w-3.5" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-destructive"
+                                onClick={() => setDsDeleteConfirm(ds.id)}
+                              >
+                                <Trash2 className="h-3.5 w-3.5" />
+                              </Button>
                             </>
                           )}
                         </div>
@@ -697,12 +692,10 @@ export default function DataPage() {
             </Select>
 
             {!readOnly && (
-              <ActionGate>
-                <Button size="sm" className="ml-auto gap-1.5" onClick={openTrCreate}>
-                  <Plus className="h-4 w-4" />
-                  {t("createTransfer")}
-                </Button>
-              </ActionGate>
+              <Button size="sm" className="ml-auto gap-1.5" onClick={openTrCreate}>
+                <Plus className="h-4 w-4" />
+                {t("createTransfer")}
+              </Button>
             )}
           </div>
 
@@ -721,12 +714,10 @@ export default function DataPage() {
                 {t("noTransfersDescription")}
               </p>
               {!readOnly && (
-                <ActionGate>
-                  <Button size="sm" className="mt-4 gap-1.5" onClick={openTrCreate}>
-                    <Plus className="h-4 w-4" />
-                    {t("createTransfer")}
-                  </Button>
-                </ActionGate>
+                <Button size="sm" className="mt-4 gap-1.5" onClick={openTrCreate}>
+                  <Plus className="h-4 w-4" />
+                  {t("createTransfer")}
+                </Button>
               )}
             </Card>
           ) : (
@@ -768,26 +759,22 @@ export default function DataPage() {
                         <div className="flex gap-1">
                           {!readOnly && (
                             <>
-                              <ActionGate>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-7 w-7"
-                                  onClick={() => openTrEdit(tr)}
-                                >
-                                  <Pencil className="h-3.5 w-3.5" />
-                                </Button>
-                              </ActionGate>
-                              <ActionGate>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-7 w-7 text-destructive"
-                                  onClick={() => setTrDeleteConfirm(tr.id)}
-                                >
-                                  <Trash2 className="h-3.5 w-3.5" />
-                                </Button>
-                              </ActionGate>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => openTrEdit(tr)}
+                              >
+                                <Pencil className="h-3.5 w-3.5" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-destructive"
+                                onClick={() => setTrDeleteConfirm(tr.id)}
+                              >
+                                <Trash2 className="h-3.5 w-3.5" />
+                              </Button>
                             </>
                           )}
                         </div>
@@ -1472,5 +1459,6 @@ export default function DataPage() {
         </DialogContent>
       </Dialog>
     </div>
+    </FeatureGate>
   );
 }

@@ -16,19 +16,21 @@ import type { PlanId } from "@/lib/stripe";
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-type FilterTab = "all" | "member" | "honorary";
+type FilterTab = "all" | "member" | "expert" | "honorary";
 
 const FILTER_TABS: { key: FilterTab; i18nKey: string }[] = [
   { key: "all", i18nKey: "filterAll" },
   { key: "member", i18nKey: "filterMember" },
+  { key: "expert", i18nKey: "filterExpert" },
   { key: "honorary", i18nKey: "filterHonorary" },
 ];
 
-/** Sort priority: honorary first (most prestige), then member */
+/** Sort priority: honorary first (most prestige), then expert, then member */
 const PLAN_PRESTIGE: Record<PlanId, number> = {
   honorary: 0,
-  member: 1,
-  free: 2,
+  expert: 1,
+  member: 2,
+  observer: 3,
 };
 
 /* ------------------------------------------------------------------ */
@@ -44,7 +46,7 @@ export default function MembresPage() {
   const [activeTab, setActiveTab] = useState<FilterTab>("all");
   const [search, setSearch] = useState("");
 
-  const isObserver = plan === "free";
+  const isObserver = plan === "observer";
 
   /* ---- Filtered + sorted members ---- */
   const filteredMembers = useMemo(() => {
@@ -68,7 +70,7 @@ export default function MembresPage() {
 
     // Sort by prestige (honorary first)
     result.sort(
-      (a, b) => (PLAN_PRESTIGE[a.plan] ?? 2) - (PLAN_PRESTIGE[b.plan] ?? 2)
+      (a, b) => (PLAN_PRESTIGE[a.plan] ?? 3) - (PLAN_PRESTIGE[b.plan] ?? 3)
     );
 
     return result;
