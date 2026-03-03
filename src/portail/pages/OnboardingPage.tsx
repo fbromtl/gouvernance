@@ -88,6 +88,11 @@ export default function OnboardingPage() {
       // Refresh the profile in auth context
       await refreshProfile();
 
+      // Seed demo data for the new organization (fire-and-forget)
+      supabase.functions.invoke("seed-demo-data").catch((err) => {
+        console.error("Failed to seed demo data:", err);
+      });
+
       // Navigate to dashboard
       navigate("/dashboard", { replace: true });
     } catch {
