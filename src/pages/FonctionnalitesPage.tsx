@@ -40,6 +40,11 @@ import {
   BarChart3,
   ChevronLeft,
   ChevronRight,
+  Server,
+  Cpu,
+  ScrollText,
+  Plug,
+  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -874,6 +879,103 @@ function VendorQuestionnaireMockup() {
   );
 }
 
+/* ── Serveur MCP mockup ── */
+
+function McpServerMockup() {
+  const events = [
+    {
+      time: "14:32:07",
+      agent: "Agent-Compliance",
+      type: "decision",
+      label: "Décision algorithmique",
+      detail: "Classification risque → Élevé (score 0.87)",
+      iconBg: "bg-amber-50",
+      iconColor: "text-amber-500",
+      Icon: Cpu,
+    },
+    {
+      time: "14:31:42",
+      agent: "Agent-Monitoring",
+      type: "change",
+      label: "Changement mécanisme",
+      detail: "Seuil de dérive mis à jour : 0.05 → 0.03",
+      iconBg: "bg-blue-50",
+      iconColor: "text-blue-500",
+      Icon: ScrollText,
+    },
+    {
+      time: "14:30:15",
+      agent: "Agent-Audit",
+      type: "declaration",
+      label: "Déclaration autonome",
+      detail: "Post-mortem incident #847 généré automatiquement",
+      iconBg: "bg-purple-50",
+      iconColor: "text-[#ab54f3]",
+      Icon: ShieldCheck,
+    },
+  ];
+
+  return (
+    <div className="w-full rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+            <Server className="size-3.5 text-white" />
+          </div>
+          <span className="text-sm font-semibold text-neutral-800">Serveur MCP</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600">
+            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Connecté
+          </span>
+          <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+            <Zap className="size-2.5 mr-0.5" />
+            NOUVEAU
+          </Badge>
+        </div>
+      </div>
+
+      {/* Protocol info bar */}
+      <div className="border-b border-neutral-100 px-5 py-2.5 flex items-center justify-between bg-neutral-50/50">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <Plug className="size-3 text-neutral-400" />
+            <span className="text-[10px] font-mono text-neutral-500">mcp://gouvernance.ai/v1</span>
+          </div>
+        </div>
+        <span className="text-[10px] text-neutral-400">3 agents connectés</span>
+      </div>
+
+      {/* Event log */}
+      <div className="divide-y divide-neutral-50">
+        {events.map((e, i) => (
+          <div key={i} className="px-5 py-3 flex items-start gap-3">
+            <div className={`flex size-7 shrink-0 items-center justify-center rounded-lg ${e.iconBg} mt-0.5`}>
+              <e.Icon className={`size-3.5 ${e.iconColor}`} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono text-neutral-400">{e.time}</span>
+                <span className="text-[10px] font-semibold text-neutral-600">{e.agent}</span>
+              </div>
+              <p className="text-[11px] font-semibold text-neutral-800 mt-0.5">{e.label}</p>
+              <p className="text-[10px] text-neutral-500 mt-0.5">{e.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-neutral-100 px-5 py-2.5 flex items-center justify-between bg-neutral-50/30">
+        <span className="text-[10px] text-neutral-400">Journal temps réel · 847 événements aujourd'hui</span>
+        <span className="text-[10px] font-semibold text-[#ab54f3]">Voir l'audit complet →</span>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  NOUVEAUTÉS SLIDES DATA                                              */
 /* ------------------------------------------------------------------ */
@@ -908,6 +1010,15 @@ const NOUVEAUTES_SLIDES: NewFeatureSlide[] = [
       "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité — le tout sans intervention manuelle.",
     tags: ["Envoi automatique par courriel", "Formulaire personnalisable", "Suivi en temps réel", "Scoring automatique"],
     mockup: VendorQuestionnaireMockup,
+  },
+  {
+    id: "mcp-server",
+    icon: Server,
+    title: "Serveur MCP pour agents IA",
+    description:
+      "Un serveur MCP (Model Context Protocol) permettant aux agents IA autonomes de déclarer leurs décisions algorithmiques et les changements dans leurs mécanismes. Traçabilité complète pour une gouvernance de l'autonomie IA.",
+    tags: ["Déclaration des décisions algorithmiques", "Journal des changements autonomes", "Intégration native agents IA", "Conformité et auditabilité"],
+    mockup: McpServerMockup,
   },
 ];
 
