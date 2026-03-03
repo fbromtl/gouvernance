@@ -35,6 +35,11 @@ import {
   MapPin,
   Zap,
   BookOpenCheck,
+  Mail,
+  ClipboardList,
+  BarChart3,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -779,6 +784,133 @@ function LegalChatbotMockup() {
   );
 }
 
+/* ── Questionnaire fournisseur mockup ── */
+
+function VendorQuestionnaireMockup() {
+  const vendors = [
+    { name: "OpenAI", email: "security@openai.com", status: "completed", score: 92, certs: ["SOC 2", "ISO 27001"] },
+    { name: "Anthropic", email: "compliance@anthropic.com", status: "pending", score: null, certs: [] },
+    { name: "Mistral AI", email: "dpo@mistral.ai", status: "in_progress", score: null, certs: ["ISO 27001"] },
+  ];
+
+  const statusConfig: Record<string, { label: string; bg: string; text: string }> = {
+    completed: { label: "Complété", bg: "bg-emerald-50", text: "text-emerald-600" },
+    pending: { label: "En attente", bg: "bg-amber-50", text: "text-amber-600" },
+    in_progress: { label: "En cours", bg: "bg-blue-50", text: "text-blue-600" },
+  };
+
+  return (
+    <div className="w-full rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+            <ClipboardList className="size-3.5 text-white" />
+          </div>
+          <span className="text-sm font-semibold text-neutral-800">Questionnaire fournisseur</span>
+        </div>
+        <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+          <Zap className="size-2.5 mr-0.5" />
+          NOUVEAU
+        </Badge>
+      </div>
+
+      {/* Vendor rows */}
+      <div className="divide-y divide-neutral-100">
+        {vendors.map((v) => {
+          const st = statusConfig[v.status];
+          return (
+            <div key={v.name} className="px-5 py-3 flex items-center gap-3">
+              {/* Avatar */}
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-[11px] font-bold text-neutral-600">
+                {v.name.charAt(0)}
+              </div>
+              {/* Info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-neutral-800 truncate">{v.name}</span>
+                  <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${st.bg} ${st.text}`}>
+                    {st.label}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <Mail className="size-2.5 text-neutral-400" />
+                  <span className="text-[10px] text-neutral-400 truncate">{v.email}</span>
+                </div>
+              </div>
+              {/* Score or certs */}
+              <div className="shrink-0 text-right">
+                {v.score !== null ? (
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1">
+                      <BarChart3 className="size-3 text-emerald-500" />
+                      <span className="text-xs font-bold text-emerald-600">{v.score}/100</span>
+                    </div>
+                  </div>
+                ) : v.certs.length > 0 ? (
+                  <div className="flex gap-1">
+                    {v.certs.map((c) => (
+                      <span key={c} className="rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-medium text-neutral-500">{c}</span>
+                    ))}
+                  </div>
+                ) : (
+                  <span className="text-[10px] text-neutral-300">—</span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer action */}
+      <div className="border-t border-neutral-100 px-5 py-3 flex items-center justify-between">
+        <span className="text-[10px] text-neutral-400">3 fournisseurs · 1 complété</span>
+        <div className="flex items-center gap-1.5 text-[#ab54f3]">
+          <Send className="size-3" />
+          <span className="text-[10px] font-semibold">Envoyer un rappel</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  NOUVEAUTÉS SLIDES DATA                                              */
+/* ------------------------------------------------------------------ */
+
+interface NewFeatureSlide {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  secondaryDescription?: string;
+  tags: string[];
+  mockup: () => ReactNode;
+}
+
+const NOUVEAUTES_SLIDES: NewFeatureSlide[] = [
+  {
+    id: "legal-chatbot",
+    icon: BookOpenCheck,
+    title: "Assistant juridique IA",
+    description:
+      "Un chatbot spécialisé qui travaille exclusivement avec les textes de loi et documents juridiques officiels. Sélectionnez vos juridictions — Québec, Canada, Union européenne, France — et posez vos questions en langage naturel.",
+    secondaryDescription:
+      "Chaque réponse cite ses sources légales avec les articles de loi pertinents. Idéal pour vérifier rapidement vos obligations réglementaires en matière d'IA.",
+    tags: ["Loi 25", "C-27 / AIDA", "EU AI Act", "RGPD", "RLRQ"],
+    mockup: LegalChatbotMockup,
+  },
+  {
+    id: "vendor-questionnaire",
+    icon: ClipboardList,
+    title: "Questionnaire fournisseur automatique",
+    description:
+      "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité — le tout sans intervention manuelle.",
+    tags: ["Envoi automatique par courriel", "Formulaire personnalisable", "Suivi en temps réel", "Scoring automatique"],
+    mockup: VendorQuestionnaireMockup,
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /*  STATIC DATA                                                         */
 /* ------------------------------------------------------------------ */
@@ -868,6 +1000,149 @@ const slideFromRight = {
   hidden: { opacity: 0, x: 30 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
+
+/* ------------------------------------------------------------------ */
+/*  NOUVEAUTÉS SLIDER                                                   */
+/* ------------------------------------------------------------------ */
+
+const SLIDE_INTERVAL = 7000; // 7s per slide
+
+function NouveautesSlider() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = NOUVEAUTES_SLIDES.length;
+
+  // Auto-advance
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % total);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, [paused, total]);
+
+  const goTo = (idx: number) => setCurrent(idx);
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
+  const next = () => setCurrent((c) => (c + 1) % total);
+
+  const slide = NOUVEAUTES_SLIDES[current];
+  const SlideIcon = slide.icon;
+  const SlideMockup = slide.mockup;
+
+  return (
+    <section
+      className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#1e1a30] py-16 sm:py-24"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Subtle glow */}
+      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-emerald-500/8 blur-[120px]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Top row: badge + navigation */}
+        <div className="flex items-center justify-between mb-8">
+          <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/25 text-xs font-bold tracking-wide px-3 py-1">
+            <Zap className="size-3 mr-1" />
+            Nouveautés
+          </Badge>
+
+          <div className="flex items-center gap-3">
+            {/* Dots */}
+            <div className="flex items-center gap-1.5">
+              {NOUVEAUTES_SLIDES.map((s, i) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-6 h-2 bg-emerald-400"
+                      : "size-2 bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Arrows */}
+            <div className="flex gap-1">
+              <button
+                type="button"
+                onClick={prev}
+                className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
+                aria-label="Précédent"
+              >
+                <ChevronLeft className="size-4" />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 hover:bg-white/10 hover:text-white transition-colors"
+                aria-label="Suivant"
+              >
+                <ChevronRight className="size-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide content */}
+        <motion.div
+          key={slide.id}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16"
+        >
+          {/* Text */}
+          <div>
+            <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+              <SlideIcon className="size-6 text-white" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              {slide.title}
+            </h2>
+            <p className="mt-4 text-base text-white/60 leading-relaxed max-w-lg">
+              {slide.description}
+            </p>
+            {slide.secondaryDescription && (
+              <p className="mt-3 text-base text-white/60 leading-relaxed max-w-lg">
+                {slide.secondaryDescription}
+              </p>
+            )}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {slide.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Mockup */}
+          <div>
+            <SlideMockup />
+          </div>
+        </motion.div>
+
+        {/* Progress bar */}
+        <div className="mt-10 h-0.5 w-full rounded-full bg-white/5">
+          <motion.div
+            key={`progress-${current}`}
+            className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#ab54f3]"
+            initial={{ width: "0%" }}
+            animate={{ width: paused ? undefined : "100%" }}
+            transition={{ duration: SLIDE_INTERVAL / 1000, ease: "linear" }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                           */
@@ -985,69 +1260,9 @@ export function FonctionnalitesPage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  NOUVEAUTÉS                                                   */}
+      {/*  NOUVEAUTÉS — auto-sliding carousel                            */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#1e1a30] py-16 sm:py-24">
-        {/* Subtle glow */}
-        <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-emerald-500/8 blur-[120px]" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Label */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-6"
-          >
-            <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/25 text-xs font-bold tracking-wide px-3 py-1">
-              <Zap className="size-3 mr-1" />
-              Nouveauté
-            </Badge>
-          </motion.div>
-
-          {/* Content: text left + mockup right */}
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            {/* Text */}
-            <motion.div
-              variants={slideFromLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-            >
-              <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
-                <BookOpenCheck className="size-6 text-white" />
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Assistant juridique IA
-              </h2>
-              <p className="mt-4 text-base text-white/60 leading-relaxed max-w-lg">
-                Un chatbot spécialisé qui travaille exclusivement avec les textes de loi et documents juridiques officiels. Sélectionnez vos juridictions — Québec, Canada, Union européenne, France — et posez vos questions en langage naturel.
-              </p>
-              <p className="mt-3 text-base text-white/60 leading-relaxed max-w-lg">
-                Chaque réponse cite ses sources légales avec les articles de loi pertinents. Idéal pour vérifier rapidement vos obligations réglementaires en matière d'IA.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">Loi 25</span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">C-27 / AIDA</span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">EU AI Act</span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">RGPD</span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">RLRQ</span>
-              </div>
-            </motion.div>
-
-            {/* Mockup */}
-            <motion.div
-              variants={slideFromRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-            >
-              <LegalChatbotMockup />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <NouveautesSlider />
 
       {/* ============================================================ */}
       {/*  STICKY CATEGORY NAV                                          */}
