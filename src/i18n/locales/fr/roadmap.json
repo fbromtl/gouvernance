@@ -1,0 +1,67 @@
+{
+  "pageTitle": "Fonctionnalités à venir",
+  "pageSubtitle": "Découvrez notre feuille de route pour faire évoluer la plateforme.",
+  "available": {
+    "title": "Déjà disponible",
+    "badge": "{{count}} modules"
+  },
+  "upcoming": {
+    "title": "Prochainement",
+    "badge": "En développement",
+    "tag": "À venir"
+  },
+  "cta": {
+    "title": "Vous souhaitez influencer notre feuille de route ?",
+    "subtitle": "Partagez vos besoins et suggestions pour les prochaines fonctionnalités.",
+    "button": "Nous contacter"
+  },
+  "modules": {
+    "aiSystems": { "title": "Registre des systèmes IA", "description": "Inventaire complet de vos systèmes d'intelligence artificielle" },
+    "risks": { "title": "Évaluation des risques", "description": "Analyse et cotation des risques liés à chaque système IA" },
+    "incidents": { "title": "Gestion des incidents", "description": "Signalement, suivi et résolution des incidents IA" },
+    "governance": { "title": "Gouvernance", "description": "Politiques, rôles et comités de gouvernance IA" },
+    "decisions": { "title": "Journal des décisions", "description": "Traçabilité de toutes les décisions relatives à l'IA" },
+    "compliance": { "title": "Conformité", "description": "Suivi de conformité multi-cadres (Loi 25, ISO 42001, EU AI Act)" },
+    "bias": { "title": "Biais & Équité", "description": "Détection et atténuation des biais algorithmiques" },
+    "transparency": { "title": "Transparence", "description": "Avis de transparence et registres publics" },
+    "lifecycle": { "title": "Cycle de vie", "description": "Suivi des phases de vie de chaque système IA" },
+    "vendors": { "title": "Fournisseurs", "description": "Gestion et évaluation des fournisseurs de solutions IA" },
+    "documents": { "title": "Documentation", "description": "Gestion des documents de gouvernance" },
+    "monitoring": { "title": "Monitoring", "description": "Surveillance en temps réel des performances et dérives" },
+    "data": { "title": "Données & EFVP", "description": "Registres de données et évaluations de vie privée" }
+  },
+  "features": {
+    "vendorQuestionnaire": {
+      "title": "Questionnaire fournisseur automatique",
+      "description": "Envoi automatique d'un questionnaire de sécurité aux fournisseurs d'IA. Collecte des certifications (ISO 27001, SOC 2…), des mesures de protection des données et des engagements de conformité — le tout sans intervention manuelle.",
+      "bullet1": "Envoi automatique par courriel",
+      "bullet2": "Formulaire de sécurité personnalisable",
+      "bullet3": "Suivi des réponses en temps réel",
+      "bullet4": "Scoring automatique du risque fournisseur"
+    },
+    "documentDrive": {
+      "title": "Drive documentaire",
+      "description": "Un espace de stockage centralisé pour toutes vos politiques, procédures et documents de gouvernance IA. Versioning automatique, historique complet et accès contrôlé par rôle — votre mémoire organisationnelle, toujours accessible.",
+      "bullet1": "Stockage sécurisé des politiques et procédures",
+      "bullet2": "Versioning automatique des documents",
+      "bullet3": "Historique complet des modifications",
+      "bullet4": "Accès contrôlé par rôle"
+    },
+    "legalChat": {
+      "title": "Assistant juridique IA (Chat RAG)",
+      "description": "Un chatbot spécialisé utilisant la génération augmentée par récupération (RAG) pour répondre à vos questions en s'appuyant exclusivement sur les textes de loi officiels. Sélectionnez vos juridictions et obtenez des réponses sourcées avec citations légales précises.",
+      "bullet1": "Recherche dans les corpus législatifs (Loi 25, C-27, EU AI Act, RGPD)",
+      "bullet2": "Sélection des juridictions : Québec, Canada, UE, France",
+      "bullet3": "Réponses avec citations d'articles de loi précis",
+      "bullet4": "Base de connaissances mise à jour en continu"
+    },
+    "mcpServer": {
+      "title": "Serveur MCP pour agents IA",
+      "description": "Un serveur MCP (Model Context Protocol) permettant aux agents IA autonomes de déclarer leurs décisions algorithmiques et les changements dans leurs mécanismes. Traçabilité complète pour une gouvernance de l'autonomie IA.",
+      "bullet1": "Déclaration automatique des décisions algorithmiques",
+      "bullet2": "Journal des changements dans les mécanismes autonomes",
+      "bullet3": "Intégration native avec les agents IA",
+      "bullet4": "Conformité et auditabilité des systèmes autonomes"
+    }
+  }
+}

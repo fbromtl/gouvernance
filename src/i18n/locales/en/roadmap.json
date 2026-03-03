@@ -1,0 +1,67 @@
+{
+  "pageTitle": "Upcoming Features",
+  "pageSubtitle": "Discover our roadmap to evolve the platform.",
+  "available": {
+    "title": "Already available",
+    "badge": "{{count}} modules"
+  },
+  "upcoming": {
+    "title": "Coming soon",
+    "badge": "In development",
+    "tag": "Coming soon"
+  },
+  "cta": {
+    "title": "Want to influence our roadmap?",
+    "subtitle": "Share your needs and suggestions for upcoming features.",
+    "button": "Contact us"
+  },
+  "modules": {
+    "aiSystems": { "title": "AI Systems Registry", "description": "Complete inventory of your artificial intelligence systems" },
+    "risks": { "title": "Risk Assessment", "description": "Analysis and scoring of risks associated with each AI system" },
+    "incidents": { "title": "Incident Management", "description": "Reporting, tracking and resolution of AI incidents" },
+    "governance": { "title": "Governance", "description": "Policies, roles and AI governance committees" },
+    "decisions": { "title": "Decision Log", "description": "Traceability of all AI-related decisions" },
+    "compliance": { "title": "Compliance", "description": "Multi-framework compliance tracking (Bill 25, ISO 42001, EU AI Act)" },
+    "bias": { "title": "Bias & Fairness", "description": "Detection and mitigation of algorithmic biases" },
+    "transparency": { "title": "Transparency", "description": "Transparency notices and public registries" },
+    "lifecycle": { "title": "Lifecycle", "description": "Tracking the lifecycle phases of each AI system" },
+    "vendors": { "title": "Vendors", "description": "Management and evaluation of AI solution providers" },
+    "documents": { "title": "Documentation", "description": "Governance document management" },
+    "monitoring": { "title": "Monitoring", "description": "Real-time performance and drift monitoring" },
+    "data": { "title": "Data & PIA", "description": "Data registries and privacy impact assessments" }
+  },
+  "features": {
+    "vendorQuestionnaire": {
+      "title": "Automated Vendor Questionnaire",
+      "description": "Automatic sending of a security questionnaire to AI vendors. Collects certifications (ISO 27001, SOC 2…), data protection measures and compliance commitments — all without manual intervention.",
+      "bullet1": "Automatic email delivery",
+      "bullet2": "Customizable security form",
+      "bullet3": "Real-time response tracking",
+      "bullet4": "Automatic vendor risk scoring"
+    },
+    "documentDrive": {
+      "title": "Document Drive",
+      "description": "A centralized storage space for all your AI governance policies, procedures and documents. Automatic versioning, complete history and role-based access control — your organizational memory, always accessible.",
+      "bullet1": "Secure policy and procedure storage",
+      "bullet2": "Automatic document versioning",
+      "bullet3": "Complete modification history",
+      "bullet4": "Role-based access control"
+    },
+    "legalChat": {
+      "title": "AI Legal Assistant (RAG Chat)",
+      "description": "A specialized chatbot using retrieval-augmented generation (RAG) to answer your questions based exclusively on official legal texts. Select your jurisdictions and get sourced answers with precise legal citations.",
+      "bullet1": "Search across legislative corpora (Bill 25, C-27, EU AI Act, GDPR)",
+      "bullet2": "Jurisdiction selection: Quebec, Canada, EU, France",
+      "bullet3": "Answers with precise legal article citations",
+      "bullet4": "Continuously updated knowledge base"
+    },
+    "mcpServer": {
+      "title": "MCP Server for AI Agents",
+      "description": "An MCP (Model Context Protocol) server enabling autonomous AI agents to declare their algorithmic decisions and mechanism changes. Complete traceability for autonomous AI governance.",
+      "bullet1": "Automatic algorithmic decision declaration",
+      "bullet2": "Autonomous mechanism change journal",
+      "bullet3": "Native AI agent integration",
+      "bullet4": "Autonomous system compliance and auditability"
+    }
+  }
+}
