@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -23,11 +23,14 @@ import {
   UserCircle,
   BookOpen,
   ArrowRight,
+  Circle,
+  Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { SEO, JsonLd } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 /* ------------------------------------------------------------------ */
 /*  TYPES                                                               */
@@ -36,11 +39,154 @@ import { Button } from "@/components/ui/button";
 interface Feature {
   key: string;
   icon: LucideIcon;
+  mockup?: () => ReactNode;
 }
 
 interface Category {
   id: string;
   features: Feature[];
+}
+
+/* ------------------------------------------------------------------ */
+/*  MOCKUP COMPONENTS                                                   */
+/* ------------------------------------------------------------------ */
+
+/** Shared mockup card wrapper */
+function MockupCard({ title, icon: Icon, children }: { title: string; icon: LucideIcon; children: ReactNode }) {
+  return (
+    <div className="w-full rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
+      {/* Header bar */}
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-[#ab54f3]/10">
+            <Icon className="size-3.5 text-[#ab54f3]" />
+          </div>
+          <span className="text-sm font-semibold text-neutral-800">{title}</span>
+        </div>
+        <Badge className="bg-[#ab54f3]/10 text-[#ab54f3] border-[#ab54f3]/20 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+          <Sparkles className="size-2.5 mr-0.5" />
+          IA
+        </Badge>
+      </div>
+      {/* Body */}
+      <div className="px-5 py-4">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Risk score bar */
+function RiskBar({ score, color }: { score: number; color: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="h-1.5 w-16 rounded-full bg-neutral-100">
+        <div className="h-full rounded-full" style={{ width: `${score}%`, backgroundColor: color }} />
+      </div>
+      <span className="text-[11px] font-semibold tabular-nums text-neutral-500">{score}</span>
+    </div>
+  );
+}
+
+function AiSystemsMockup() {
+  const systems = [
+    { name: "Assistant RH", type: "GenAI", status: "Production", score: 62, color: "#f59e0b" },
+    { name: "Détection fraude", type: "ML Prédictif", status: "Production", score: 78, color: "#ef4444" },
+    { name: "Moteur reco", type: "Recommandation", status: "Pilote", score: 25, color: "#22c55e" },
+    { name: "Tri CV", type: "NLP", status: "Production", score: 85, color: "#ef4444" },
+  ];
+  return (
+    <MockupCard title="Inventaire des systèmes IA" icon={Bot}>
+      <table className="w-full text-left text-xs">
+        <thead>
+          <tr className="border-b border-neutral-100 text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+            <th className="pb-2.5 pr-3">Système</th>
+            <th className="pb-2.5 pr-3">Type</th>
+            <th className="pb-2.5 pr-3">Statut</th>
+            <th className="pb-2.5">Risque</th>
+          </tr>
+        </thead>
+        <tbody>
+          {systems.map((s) => (
+            <tr key={s.name} className="border-b border-neutral-50 last:border-0">
+              <td className="py-2.5 pr-3 font-medium text-neutral-800">{s.name}</td>
+              <td className="py-2.5 pr-3">
+                <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-600">{s.type}</span>
+              </td>
+              <td className="py-2.5 pr-3">
+                <span className="inline-flex items-center gap-1">
+                  <Circle className="size-1.5 fill-current text-emerald-500" />
+                  <span className="text-neutral-600">{s.status}</span>
+                </span>
+              </td>
+              <td className="py-2.5">
+                <RiskBar score={s.score} color={s.color} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </MockupCard>
+  );
+}
+
+function LifecycleMockup() {
+  const events = [
+    { date: "28 fév", type: "Mise à jour modèle", label: "GPT-4o → GPT-4.5", color: "bg-[#ab54f3]" },
+    { date: "15 fév", type: "Changement fournisseur", label: "Migration Azure → AWS", color: "bg-blue-500" },
+    { date: "02 fév", type: "Audit interne", label: "Revue trimestrielle complétée", color: "bg-emerald-500" },
+    { date: "18 jan", type: "Extension périmètre", label: "Ajout département Marketing", color: "bg-amber-500" },
+  ];
+  return (
+    <MockupCard title="Journal du cycle de vie" icon={RefreshCw}>
+      <div className="space-y-0">
+        {events.map((ev, i) => (
+          <div key={i} className="relative flex gap-3 pb-4 last:pb-0">
+            {/* Timeline line */}
+            {i < events.length - 1 && (
+              <div className="absolute left-[7px] top-4 bottom-0 w-px bg-neutral-200" />
+            )}
+            {/* Dot */}
+            <div className={`relative mt-1 size-[15px] shrink-0 rounded-full ${ev.color} ring-4 ring-white`} />
+            {/* Content */}
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-medium text-neutral-400">{ev.date}</span>
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600">{ev.type}</span>
+              </div>
+              <p className="mt-0.5 text-xs text-neutral-700">{ev.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
+}
+
+function VendorsMockup() {
+  const vendors = [
+    { name: "OpenAI", type: "API / Modèle", risk: "Élevé", riskColor: "text-red-600 bg-red-50", contract: "Actif", cert: "SOC 2" },
+    { name: "Azure AI", type: "Infrastructure", risk: "Moyen", riskColor: "text-amber-600 bg-amber-50", contract: "Actif", cert: "ISO 27001" },
+    { name: "Dataiku", type: "Plateforme SaaS", risk: "Faible", riskColor: "text-emerald-600 bg-emerald-50", contract: "Évaluation", cert: "SOC 2, ISO" },
+  ];
+  return (
+    <MockupCard title="Fournisseurs IA" icon={Building2}>
+      <div className="space-y-3">
+        {vendors.map((v) => (
+          <div key={v.name} className="flex items-center justify-between rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
+            <div>
+              <p className="text-xs font-semibold text-neutral-800">{v.name}</p>
+              <p className="text-[10px] text-neutral-500">{v.type}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${v.riskColor}`}>{v.risk}</span>
+              <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-500">{v.cert}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </MockupCard>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -51,9 +197,9 @@ const CATEGORIES: Category[] = [
   {
     id: "inventory",
     features: [
-      { key: "aiSystems", icon: Bot },
-      { key: "lifecycle", icon: RefreshCw },
-      { key: "vendors", icon: Building2 },
+      { key: "aiSystems", icon: Bot, mockup: AiSystemsMockup },
+      { key: "lifecycle", icon: RefreshCw, mockup: LifecycleMockup },
+      { key: "vendors", icon: Building2, mockup: VendorsMockup },
     ],
   },
   {
@@ -121,6 +267,16 @@ const cardVariants = {
     y: 0,
     transition: { duration: 0.4, ease: "easeOut" as const },
   },
+};
+
+const slideFromLeft = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
+const slideFromRight = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
 
 /* ------------------------------------------------------------------ */
@@ -267,66 +423,114 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  FEATURE SECTIONS                                             */}
       {/* ============================================================ */}
-      {CATEGORIES.map((cat, catIdx) => (
-        <section
-          key={cat.id}
-          id={cat.id}
-          ref={(el) => {
-            sectionRefs.current[cat.id] = el;
-          }}
-          className={`scroll-mt-28 py-16 sm:py-24 ${
-            catIdx % 2 === 0 ? "bg-white" : "bg-neutral-50/60"
-          }`}
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Section header */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
-                {t(`categories.${cat.id}.title`)}
-              </h2>
-              <p className="mt-3 text-muted-foreground text-base max-w-xl mx-auto">
-                {t(`categories.${cat.id}.subtitle`)}
-              </p>
-            </motion.div>
+      {CATEGORIES.map((cat, catIdx) => {
+        const hasMockups = cat.features.some((f) => f.mockup);
 
-            {/* Feature cards grid */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-            >
-              {cat.features.map((feat) => {
-                const Icon = feat.icon;
-                return (
-                  <motion.div
-                    key={feat.key}
-                    variants={cardVariants}
-                    className="group rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#ab54f3]/40 hover:shadow-lg hover:shadow-[#ab54f3]/5"
-                  >
-                    <div className="mb-4 flex size-11 items-center justify-center rounded-xl bg-[#ab54f3]/10">
-                      <Icon className="size-5 text-[#ab54f3]" />
-                    </div>
-                    <h3 className="text-base font-bold text-foreground mb-2">
-                      {t(`features.${feat.key}.title`)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {t(`features.${feat.key}.description`)}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
-        </section>
-      ))}
+        return (
+          <section
+            key={cat.id}
+            id={cat.id}
+            ref={(el) => {
+              sectionRefs.current[cat.id] = el;
+            }}
+            className={`scroll-mt-28 py-16 sm:py-24 ${
+              catIdx % 2 === 0 ? "bg-white" : "bg-neutral-50/60"
+            }`}
+          >
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {/* Section header */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
+                  {t(`categories.${cat.id}.title`)}
+                </h2>
+                <p className="mt-3 text-muted-foreground text-base max-w-xl mx-auto">
+                  {t(`categories.${cat.id}.subtitle`)}
+                </p>
+              </motion.div>
+
+              {hasMockups ? (
+                /* ── Stacked layout: text left, mockup right ── */
+                <div className="space-y-20 sm:space-y-28">
+                  {cat.features.map((feat) => {
+                    const Icon = feat.icon;
+                    const Mockup = feat.mockup;
+                    return (
+                      <div
+                        key={feat.key}
+                        className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16"
+                      >
+                        {/* Text side */}
+                        <motion.div
+                          variants={slideFromLeft}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, margin: "-60px" }}
+                        >
+                          <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#ab54f3]/10">
+                            <Icon className="size-6 text-[#ab54f3]" />
+                          </div>
+                          <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+                            {t(`features.${feat.key}.title`)}
+                          </h3>
+                          <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-lg">
+                            {t(`features.${feat.key}.description`)}
+                          </p>
+                        </motion.div>
+
+                        {/* Mockup side */}
+                        <motion.div
+                          variants={slideFromRight}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, margin: "-60px" }}
+                        >
+                          {Mockup ? <Mockup /> : null}
+                        </motion.div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                /* ── Grid layout (categories without mockups) ── */
+                <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-40px" }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                >
+                  {cat.features.map((feat) => {
+                    const Icon = feat.icon;
+                    return (
+                      <motion.div
+                        key={feat.key}
+                        variants={cardVariants}
+                        className="group rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#ab54f3]/40 hover:shadow-lg hover:shadow-[#ab54f3]/5"
+                      >
+                        <div className="mb-4 flex size-11 items-center justify-center rounded-xl bg-[#ab54f3]/10">
+                          <Icon className="size-5 text-[#ab54f3]" />
+                        </div>
+                        <h3 className="text-base font-bold text-foreground mb-2">
+                          {t(`features.${feat.key}.title`)}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {t(`features.${feat.key}.description`)}
+                        </p>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </div>
+          </section>
+        );
+      })}
 
       {/* ============================================================ */}
       {/*  BOTTOM CTA                                                   */}
