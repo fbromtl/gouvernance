@@ -175,9 +175,9 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-1">
             <NavLink to="/">Accueil</NavLink>
             <NavLink to="/a-propos">Le Cercle</NavLink>
+            <NavLink to="/fonctionnalites">Fonctionnalités</NavLink>
             <NavLink to="/ressources">Ressources</NavLink>
             <NavLink to="/actualites">Actualités</NavLink>
-            <NavLink to="/fonctionnalites">Fonctionnalités</NavLink>
             <NavLink to="/tarifs">Adhésion</NavLink>
           </nav>
 
@@ -347,9 +347,9 @@ export function Header() {
                 <nav className="px-4 py-4 space-y-1">
                   <MobileNavLink to="/" active={isActive("/")}>Accueil</MobileNavLink>
                   <MobileNavLink to="/a-propos" active={isActive("/a-propos")}>Le Cercle</MobileNavLink>
+                  <MobileNavLink to="/fonctionnalites" active={isActive("/fonctionnalites")}>Fonctionnalités</MobileNavLink>
                   <MobileNavLink to="/ressources" active={isActive("/ressources")}>Ressources</MobileNavLink>
                   <MobileNavLink to="/actualites" active={isActive("/actualites")}>Actualités</MobileNavLink>
-                  <MobileNavLink to="/fonctionnalites" active={isActive("/fonctionnalites")}>Fonctionnalités</MobileNavLink>
                   <MobileNavLink to="/tarifs" active={isActive("/tarifs")}>Adhésion</MobileNavLink>
                   <MobileNavLink to="/contact" active={isActive("/contact")}>Contact</MobileNavLink>
                 </nav>
