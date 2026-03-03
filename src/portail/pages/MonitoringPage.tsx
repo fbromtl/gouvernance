@@ -21,7 +21,7 @@ import {
 } from "@/hooks/useMonitoring";
 import type { MonitoringMetric } from "@/types/database";
 import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
-import { FeatureGate } from "@/components/shared/FeatureGate";
+import { ActionGate } from "@/components/shared/ActionGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_MONITORING_METRICS,
@@ -311,21 +311,18 @@ export default function MonitoringPage() {
   /* --- render --- */
   if (isError) {
     return (
-      <FeatureGate feature="monitoring">
-        <div className="space-y-6">
-          <Card className="p-8 text-center">
-            <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">
-              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-            </p>
-          </Card>
-        </div>
-      </FeatureGate>
+      <div className="space-y-6">
+        <Card className="p-8 text-center">
+          <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </div>
     );
   }
 
   return (
-    <FeatureGate feature="monitoring">
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -392,10 +389,12 @@ export default function MonitoringPage() {
               </SelectContent>
             </Select>
             {!readOnly && (
-              <Button onClick={openCreateMetric}>
-                <Plus className="h-4 w-4 mr-2" />
-                {t("create")}
-              </Button>
+              <ActionGate>
+                <Button onClick={openCreateMetric}>
+                  <Plus className="h-4 w-4 mr-2" />
+                  {t("create")}
+                </Button>
+              </ActionGate>
             )}
           </div>
 
@@ -410,10 +409,12 @@ export default function MonitoringPage() {
                 {t("noMetricsDescription")}
               </p>
               {!readOnly && (
-                <Button className="mt-4" onClick={openCreateMetric}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  {t("create")}
-                </Button>
+                <ActionGate>
+                  <Button className="mt-4" onClick={openCreateMetric}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    {t("create")}
+                  </Button>
+                </ActionGate>
               )}
             </Card>
           ) : (
@@ -463,22 +464,26 @@ export default function MonitoringPage() {
                         <div className="flex items-center justify-end gap-1">
                           {!readOnly && (
                             <>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => openEditMetric(m)}
-                                title={t("edit")}
-                              >
-                                <Pencil className="h-4 w-4" />
-                              </Button>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => setDeleting(m)}
-                                title={t("delete")}
-                              >
-                                <Trash2 className="h-4 w-4 text-destructive" />
-                              </Button>
+                              <ActionGate>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  onClick={() => openEditMetric(m)}
+                                  title={t("edit")}
+                                >
+                                  <Pencil className="h-4 w-4" />
+                                </Button>
+                              </ActionGate>
+                              <ActionGate>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  onClick={() => setDeleting(m)}
+                                  title={t("delete")}
+                                >
+                                  <Trash2 className="h-4 w-4 text-destructive" />
+                                </Button>
+                              </ActionGate>
                             </>
                           )}
                         </div>
@@ -516,10 +521,12 @@ export default function MonitoringPage() {
               </SelectContent>
             </Select>
             {!readOnly && selectedMetricId && (
-              <Button onClick={openAddDataPoint}>
-                <Plus className="h-4 w-4 mr-2" />
-                {t("addDataPoint")}
-              </Button>
+              <ActionGate>
+                <Button onClick={openAddDataPoint}>
+                  <Plus className="h-4 w-4 mr-2" />
+                  {t("addDataPoint")}
+                </Button>
+              </ActionGate>
             )}
           </div>
 
@@ -540,10 +547,12 @@ export default function MonitoringPage() {
                 {t("noDataPointsDescription")}
               </p>
               {!readOnly && (
-                <Button className="mt-4" onClick={openAddDataPoint}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  {t("addDataPoint")}
-                </Button>
+                <ActionGate>
+                  <Button className="mt-4" onClick={openAddDataPoint}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    {t("addDataPoint")}
+                  </Button>
+                </ActionGate>
               )}
             </Card>
           ) : (
@@ -908,6 +917,5 @@ export default function MonitoringPage() {
         </DialogContent>
       </Dialog>
     </div>
-    </FeatureGate>
   );
 }

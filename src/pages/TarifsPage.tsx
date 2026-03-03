@@ -34,56 +34,51 @@ interface PlanCardConfig {
 /*  PLAN CONFIGURATIONS                                                 */
 /* ------------------------------------------------------------------ */
 
-const OBSERVER_FEATURES: PlanFeature[] = [
-  { key: "dashboard" },
-  { key: "ai_systems_limit", interpolation: { count: 3 } },
-  { key: "lifecycle" },
+const FREE_FEATURES: PlanFeature[] = [
+  { key: "all_modules_readonly" },
+  { key: "demo_data" },
   { key: "veille_read" },
-  { key: "members", interpolation: { count: 1 } },
+  { key: "bibliotheque" },
+  { key: "members_cercle" },
+  { key: "ai_chat_limited", interpolation: { count: 3 } },
 ];
 
 const MEMBER_FEATURES: PlanFeature[] = [
+  { key: "all_modules_full" },
+  { key: "create_edit_delete" },
   { key: "ai_systems_unlimited" },
   { key: "risk_assessments" },
   { key: "incidents" },
   { key: "compliance" },
+  { key: "governance_structure" },
+  { key: "monitoring" },
+  { key: "data_catalog" },
   { key: "decisions" },
   { key: "bias" },
   { key: "transparency" },
   { key: "vendors" },
   { key: "documents" },
-  { key: "ai_chat" },
+  { key: "ai_chat_unlimited" },
   { key: "export_pdf" },
   { key: "support_email" },
-  { key: "members_plural", interpolation: { count: 10 } },
+  { key: "members_unlimited" },
   { key: "member_directory" },
   { key: "public_profile" },
   { key: "linkedin_badge" },
-];
-
-const EXPERT_FEATURES: PlanFeature[] = [
-  { key: "trust_mark" },
-  { key: "dedicated_consultant" },
-  { key: "monitoring" },
-  { key: "data_catalog" },
-  { key: "governance_structure" },
-  { key: "support_dedicated" },
-  { key: "members_unlimited" },
-  { key: "priority_visibility" },
 ];
 
 const PLAN_CONFIGS: PlanCardConfig[] = [
   {
     id: "free",
     icon: Eye,
-    features: OBSERVER_FEATURES,
+    features: FREE_FEATURES,
     ctaTo: "/inscription",
-    ctaLabel: "choosePlan",
+    ctaLabel: "chooseFree",
   },
   {
     id: "member",
     icon: Users,
-    features: [...MEMBER_FEATURES, ...EXPERT_FEATURES],
+    features: MEMBER_FEATURES,
     ctaTo: "/inscription",
     ctaLabel: "becomeMember",
   },
@@ -98,62 +93,62 @@ type ComparisonRow =
   | { type: "section"; labelKey: string };
 
 const COMPARISON_ROWS: ComparisonRow[] = [
-  { type: "feature", key: "dashboard" },
+  { type: "section", labelKey: "accessLabel" },
+  { type: "feature", key: "all_modules" },
+  { type: "feature", key: "demo_data" },
+  { type: "feature", key: "create_edit_delete" },
+  { type: "section", labelKey: "modulesLabel" },
   { type: "feature", key: "ai_systems" },
-  { type: "feature", key: "lifecycle" },
-  { type: "feature", key: "veille_read" },
   { type: "feature", key: "risk_assessments" },
   { type: "feature", key: "incidents" },
   { type: "feature", key: "compliance" },
+  { type: "feature", key: "governance_structure" },
   { type: "feature", key: "decisions" },
   { type: "feature", key: "bias" },
   { type: "feature", key: "transparency" },
   { type: "feature", key: "vendors" },
   { type: "feature", key: "documents" },
-  { type: "feature", key: "ai_chat" },
-  { type: "feature", key: "export_pdf" },
-  { type: "feature", key: "trust_mark" },
-  { type: "feature", key: "dedicated_consultant" },
   { type: "feature", key: "monitoring" },
   { type: "feature", key: "data_catalog" },
-  { type: "feature", key: "governance_structure" },
-  { type: "feature", key: "support_community" },
-  { type: "feature", key: "support_email" },
-  { type: "feature", key: "support_dedicated" },
+  { type: "feature", key: "lifecycle" },
+  { type: "section", labelKey: "toolsLabel" },
+  { type: "feature", key: "ai_chat" },
+  { type: "feature", key: "export_pdf" },
+  { type: "feature", key: "veille_read" },
   { type: "section", labelKey: "communityLabel" },
   { type: "feature", key: "member_directory" },
   { type: "feature", key: "public_profile" },
   { type: "feature", key: "linkedin_badge" },
-  { type: "feature", key: "priority_visibility" },
+  { type: "section", labelKey: "supportLabel" },
+  { type: "feature", key: "support_community" },
+  { type: "feature", key: "support_email" },
 ];
 
 const PLAN_AVAILABILITY: Record<string, [boolean, boolean]> = {
-  dashboard:             [true,  true],
-  ai_systems:            [true,  true],
-  lifecycle:             [true,  true],
-  veille_read:           [true,  true],
-  risk_assessments:      [false, true],
-  incidents:             [false, true],
-  compliance:            [false, true],
-  decisions:             [false, true],
-  bias:                  [false, true],
-  transparency:          [false, true],
-  vendors:               [false, true],
-  documents:             [false, true],
-  ai_chat:               [false, true],
-  export_pdf:            [false, true],
-  trust_mark:            [false, true],
-  dedicated_consultant:  [false, true],
-  monitoring:            [false, true],
-  data_catalog:          [false, true],
-  governance_structure:  [false, true],
-  support_community:     [true,  false],
-  support_email:         [false, true],
-  support_dedicated:     [false, true],
-  member_directory:      [false, true],
-  public_profile:        [false, true],
-  linkedin_badge:        [false, true],
-  priority_visibility:   [false, true],
+  all_modules:          [true,  true],
+  demo_data:            [true,  false],
+  create_edit_delete:   [false, true],
+  ai_systems:           [true,  true],
+  risk_assessments:     [true,  true],
+  incidents:            [true,  true],
+  compliance:           [true,  true],
+  governance_structure: [true,  true],
+  decisions:            [true,  true],
+  bias:                 [true,  true],
+  transparency:         [true,  true],
+  vendors:              [true,  true],
+  documents:            [true,  true],
+  monitoring:           [true,  true],
+  data_catalog:         [true,  true],
+  lifecycle:            [true,  true],
+  ai_chat:              [true,  true],
+  export_pdf:           [false, true],
+  veille_read:          [true,  true],
+  member_directory:     [false, true],
+  public_profile:       [false, true],
+  linkedin_badge:       [false, true],
+  support_community:    [true,  true],
+  support_email:        [false, true],
 };
 
 /* ------------------------------------------------------------------ */
@@ -243,11 +238,11 @@ export function TarifsPage() {
         "offers": [
           {
             "@type": "Offer",
-            "name": "Observateur",
+            "name": "Gratuit",
             "price": "0",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
-            "description": "Accès gratuit aux ressources de base",
+            "description": "Accès en lecture seule à tous les modules avec données de démo",
           },
           {
             "@type": "Offer",
@@ -255,15 +250,7 @@ export function TarifsPage() {
             "price": "249",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock",
-            "description": "Accès complet aux ressources et événements",
-          },
-          {
-            "@type": "Offer",
-            "name": "Membre Expert",
-            "price": "879",
-            "priceCurrency": "CAD",
-            "availability": "https://schema.org/InStock",
-            "description": "Accès premium avec accompagnement personnalisé",
+            "description": "Accès complet à tous les modules — création, édition, export",
           },
         ],
       }} />
@@ -378,7 +365,7 @@ export function TarifsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-4 items-start max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-4 items-start max-w-4xl mx-auto"
           >
             {PLAN_CONFIGS.map((config) => {
               const plan = PLANS[config.id];

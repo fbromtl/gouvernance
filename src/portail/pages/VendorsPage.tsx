@@ -60,7 +60,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
+import { ActionGate } from "@/components/shared/ActionGate";
 
 /* ================================================================== */
 /*  CONSTANTS                                                          */
@@ -299,7 +299,6 @@ export default function VendorsPage() {
 
   if (isError && !isPreview) {
     return (
-      <FeatureGate feature="vendors">
         <div className="space-y-6 p-4 md:p-6">
           <Card className="p-8 text-center">
             <Building2 className="h-8 w-8 text-destructive mx-auto mb-2" />
@@ -308,12 +307,10 @@ export default function VendorsPage() {
             </p>
           </Card>
         </div>
-      </FeatureGate>
     );
   }
 
   return (
-    <FeatureGate feature="vendors">
     <div className="space-y-6 p-4 md:p-6">
       {/* Header */}
       <div className="flex items-start gap-3">
@@ -368,10 +365,12 @@ export default function VendorsPage() {
         </Select>
 
         {!readOnly && (
-          <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
-            <Plus className="h-4 w-4" />
-            {t("create")}
-          </Button>
+          <ActionGate>
+            <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
+              <Plus className="h-4 w-4" />
+              {t("create")}
+            </Button>
+          </ActionGate>
         )}
       </div>
 
@@ -390,10 +389,12 @@ export default function VendorsPage() {
             {t("noVendorsDescription")}
           </p>
           {!readOnly && (
-            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("create")}
-            </Button>
+            <ActionGate>
+              <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
+                <Plus className="h-4 w-4" />
+                {t("create")}
+              </Button>
+            </ActionGate>
           )}
         </Card>
       ) : (
@@ -470,22 +471,26 @@ export default function VendorsPage() {
                       </Button>
                       {!readOnly && (
                         <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                            onClick={() => openEditDialog(v)}
-                          >
-                            <Pencil className="h-3.5 w-3.5" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7 text-destructive"
-                            onClick={() => setDeleteConfirm(v.id)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </Button>
+                          <ActionGate>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                              onClick={() => openEditDialog(v)}
+                            >
+                              <Pencil className="h-3.5 w-3.5" />
+                            </Button>
+                          </ActionGate>
+                          <ActionGate>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7 text-destructive"
+                              onClick={() => setDeleteConfirm(v.id)}
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </Button>
+                          </ActionGate>
                         </>
                       )}
                     </div>
@@ -988,6 +993,5 @@ export default function VendorsPage() {
         </DialogContent>
       </Dialog>
     </div>
-    </FeatureGate>
   );
 }

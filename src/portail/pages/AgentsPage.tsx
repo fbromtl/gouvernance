@@ -43,6 +43,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ActionGate } from "@/components/shared/ActionGate";
 import CreateAgentDialog from "@/portail/components/agents/CreateAgentDialog";
 
 /* ================================================================== */
@@ -178,10 +179,12 @@ export default function AgentsPage() {
           </SelectContent>
         </Select>
 
-        <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
-          <Plus className="h-4 w-4" />
-          {t("create")}
-        </Button>
+        <ActionGate>
+          <Button size="sm" className="ml-auto gap-1.5" onClick={openCreateDialog}>
+            <Plus className="h-4 w-4" />
+            {t("create")}
+          </Button>
+        </ActionGate>
       </div>
 
       {/* Content */}
@@ -198,10 +201,12 @@ export default function AgentsPage() {
           <p className="text-sm text-muted-foreground/70 mt-1">
             {t("noAgentsDescription")}
           </p>
-          <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-            <Plus className="h-4 w-4" />
-            {t("create")}
-          </Button>
+          <ActionGate>
+            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
+              <Plus className="h-4 w-4" />
+              {t("create")}
+            </Button>
+          </ActionGate>
         </Card>
       ) : (
         <Card>
@@ -287,26 +292,30 @@ export default function AgentsPage() {
                         <Eye className="h-3.5 w-3.5" />
                       </Button>
                       {agent.status === "active" && (
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7 text-yellow-600"
-                          onClick={() => handleSuspend(agent)}
-                          title={t("actions.suspend")}
-                        >
-                          <ShieldOff className="h-3.5 w-3.5" />
-                        </Button>
+                        <ActionGate>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 text-yellow-600"
+                            onClick={() => handleSuspend(agent)}
+                            title={t("actions.suspend")}
+                          >
+                            <ShieldOff className="h-3.5 w-3.5" />
+                          </Button>
+                        </ActionGate>
                       )}
                       {(agent.status === "active" || agent.status === "suspended") && (
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7 text-destructive"
-                          onClick={() => handleRevoke(agent)}
-                          title={t("actions.revoke")}
-                        >
-                          <Ban className="h-3.5 w-3.5" />
-                        </Button>
+                        <ActionGate>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 text-destructive"
+                            onClick={() => handleRevoke(agent)}
+                            title={t("actions.revoke")}
+                          >
+                            <Ban className="h-3.5 w-3.5" />
+                          </Button>
+                        </ActionGate>
                       )}
                     </div>
                   </TableCell>
@@ -407,45 +416,51 @@ export default function AgentsPage() {
                 {/* Status actions */}
                 <div className="flex gap-2 pt-2">
                   {viewingAgent.status === "suspended" && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1.5"
-                      onClick={() => {
-                        handleReactivate(viewingAgent);
-                        setViewingAgent(null);
-                      }}
-                    >
-                      {t("actions.reactivate")}
-                    </Button>
+                    <ActionGate>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="gap-1.5"
+                        onClick={() => {
+                          handleReactivate(viewingAgent);
+                          setViewingAgent(null);
+                        }}
+                      >
+                        {t("actions.reactivate")}
+                      </Button>
+                    </ActionGate>
                   )}
                   {viewingAgent.status === "active" && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1.5 text-yellow-700 border-yellow-300 hover:bg-yellow-50"
-                      onClick={() => {
-                        handleSuspend(viewingAgent);
-                        setViewingAgent(null);
-                      }}
-                    >
-                      <ShieldOff className="h-3.5 w-3.5" />
-                      {t("actions.suspend")}
-                    </Button>
+                    <ActionGate>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="gap-1.5 text-yellow-700 border-yellow-300 hover:bg-yellow-50"
+                        onClick={() => {
+                          handleSuspend(viewingAgent);
+                          setViewingAgent(null);
+                        }}
+                      >
+                        <ShieldOff className="h-3.5 w-3.5" />
+                        {t("actions.suspend")}
+                      </Button>
+                    </ActionGate>
                   )}
                   {(viewingAgent.status === "active" || viewingAgent.status === "suspended") && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1.5 text-red-700 border-red-300 hover:bg-red-50"
-                      onClick={() => {
-                        handleRevoke(viewingAgent);
-                        setViewingAgent(null);
-                      }}
-                    >
-                      <Ban className="h-3.5 w-3.5" />
-                      {t("actions.revoke")}
-                    </Button>
+                    <ActionGate>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="gap-1.5 text-red-700 border-red-300 hover:bg-red-50"
+                        onClick={() => {
+                          handleRevoke(viewingAgent);
+                          setViewingAgent(null);
+                        }}
+                      >
+                        <Ban className="h-3.5 w-3.5" />
+                        {t("actions.revoke")}
+                      </Button>
+                    </ActionGate>
                   )}
                 </div>
 

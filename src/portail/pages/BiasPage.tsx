@@ -56,7 +56,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
+import { ActionGate } from "@/components/shared/ActionGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_BIAS_FINDINGS } from "@/portail/demo";
 /* ------------------------------------------------------------------ */
@@ -304,7 +304,6 @@ export default function BiasPage() {
 
   /* --- render --- */
   return (
-    <FeatureGate feature="bias">
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -319,10 +318,12 @@ export default function BiasPage() {
           <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
         </div>
         {!readOnly && (
-          <Button onClick={openCreate}>
-            <Plus className="h-4 w-4 mr-2" />
-            {t("create")}
-          </Button>
+          <ActionGate>
+            <Button onClick={openCreate}>
+              <Plus className="h-4 w-4 mr-2" />
+              {t("create")}
+            </Button>
+          </ActionGate>
         )}
       </div>
 
@@ -381,10 +382,12 @@ export default function BiasPage() {
           <h3 className="font-semibold text-lg">{t("noFindings")}</h3>
           <p className="text-sm text-muted-foreground mt-1">{t("noFindingsDescription")}</p>
           {!readOnly && (
-            <Button className="mt-4" onClick={openCreate}>
-              <Plus className="h-4 w-4 mr-2" />
-              {t("create")}
-            </Button>
+            <ActionGate>
+              <Button className="mt-4" onClick={openCreate}>
+                <Plus className="h-4 w-4 mr-2" />
+                {t("create")}
+              </Button>
+            </ActionGate>
           )}
         </Card>
       ) : (
@@ -425,12 +428,16 @@ export default function BiasPage() {
                       </Button>
                       {!readOnly && (
                         <>
-                          <Button variant="ghost" size="icon" onClick={() => openEdit(f)} title={t("edit")}>
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" onClick={() => setDeleting(f)} title={t("delete")}>
-                            <Trash2 className="h-4 w-4 text-destructive" />
-                          </Button>
+                          <ActionGate>
+                            <Button variant="ghost" size="icon" onClick={() => openEdit(f)} title={t("edit")}>
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </ActionGate>
+                          <ActionGate>
+                            <Button variant="ghost" size="icon" onClick={() => setDeleting(f)} title={t("delete")}>
+                              <Trash2 className="h-4 w-4 text-destructive" />
+                            </Button>
+                          </ActionGate>
                         </>
                       )}
                     </div>
@@ -711,6 +718,5 @@ export default function BiasPage() {
         </DialogContent>
       </Dialog>
     </div>
-    </FeatureGate>
   );
 }
