@@ -8,23 +8,20 @@
   "yearlyDiscount": "Économisez 20 %",
   "month": "/ mois",
   "year": "/ an",
-  "observer": "Observateur",
+  "free": "Gratuit",
   "member": "Membre",
-  "expert": "Membre Expert",
   "honorary": "Membre Honoraire",
   "currentPlan": "Niveau actuel",
   "choosePlan": "Commencer gratuitement",
   "becomeMember": "Devenir Membre",
-  "becomeExpert": "Devenir Expert",
   "upgrade": "Mettre à niveau",
   "downgrade": "Rétrograder",
   "contactUs": "Contactez-nous",
   "startingAt": "À partir de",
   "recommended": "Recommandé",
   "idealFor": {
-    "observer": "Découvrez le Cercle et explorez la plateforme",
-    "member": "Intégrez le Cercle et ses outils complets de gouvernance",
-    "expert": "Dirigez la gouvernance IA avec un accompagnement humain dédié et la marque de confiance du Cercle"
+    "free": "Découvrez le Cercle et explorez la plateforme",
+    "member": "Intégrez le Cercle et ses outils complets de gouvernance"
   },
   "features": {
     "dashboard": "Tableau de bord",
@@ -78,6 +75,7 @@
     "canceledMessage": "Le paiement a été annulé."
   },
   "included": "Inclus",
+  "allFromFree": "Tout du Gratuit, plus :",
   "allFromObserver": "Tout de l'Observateur, plus :",
   "allFromMember": "Tout du Membre, plus :",
   "comparisonTitle": "Comparaison détaillée",

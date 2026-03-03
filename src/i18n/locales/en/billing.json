@@ -8,23 +8,20 @@
   "yearlyDiscount": "Save 20%",
   "month": "/ month",
   "year": "/ year",
-  "observer": "Observer",
+  "free": "Free",
   "member": "Member",
-  "expert": "Expert Member",
   "honorary": "Honorary Member",
   "currentPlan": "Current level",
   "choosePlan": "Start for free",
   "becomeMember": "Become a Member",
-  "becomeExpert": "Become an Expert",
   "upgrade": "Upgrade",
   "downgrade": "Downgrade",
   "contactUs": "Contact us",
   "startingAt": "Starting at",
   "recommended": "Recommended",
   "idealFor": {
-    "observer": "Discover the Circle and explore the platform",
-    "member": "Join the Circle and its comprehensive governance tools",
-    "expert": "Lead AI governance with a dedicated consultant and the Circle's trust mark"
+    "free": "Discover the Circle and explore the platform",
+    "member": "Join the Circle and its comprehensive governance tools"
   },
   "features": {
     "dashboard": "Dashboard",
@@ -78,6 +75,7 @@
     "canceledMessage": "Payment was canceled."
   },
   "included": "Included",
+  "allFromFree": "Everything from Free, plus:",
   "allFromObserver": "Everything from Observer, plus:",
   "allFromMember": "Everything from Member, plus:",
   "comparisonTitle": "Detailed comparison",

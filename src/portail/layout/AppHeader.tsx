@@ -87,7 +87,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
   const location = useLocation();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const { data: subscription } = useSubscription();
-  const currentPlan = (subscription?.plan ?? "observer") as PlanId;
+  const currentPlan = (subscription?.plan ?? "free") as PlanId;
 
   const initials = profile?.full_name
     ? profile.full_name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)

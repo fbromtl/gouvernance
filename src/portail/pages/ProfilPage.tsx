@@ -61,7 +61,7 @@ export default function ProfilPage() {
   const { t: tMembers } = useTranslation("members");
   const { data: subscription } = useSubscription();
 
-  const currentPlan: PlanId = (subscription?.plan as PlanId) ?? "observer";
+  const currentPlan: PlanId = (subscription?.plan as PlanId) ?? "free";
 
   const [fullName, setFullName] = useState(
     profile?.full_name ?? user?.user_metadata?.full_name ?? ""
@@ -131,7 +131,7 @@ export default function ProfilPage() {
     const shouldGenerateSlug =
       !profile?.member_slug &&
       trimmedName &&
-      currentPlan !== "observer";
+      currentPlan !== "free";
     const memberSlug = shouldGenerateSlug ? slugify(trimmedName) : undefined;
 
     const result = await updateProfile({
@@ -421,7 +421,7 @@ export default function ProfilPage() {
           )}
 
           {/* Upgrade CTA for observers */}
-          {currentPlan === "observer" && (
+          {currentPlan === "free" && (
             <div className="flex items-center justify-between rounded-xl bg-muted/40 border border-border/40 p-4">
               <div>
                 <p className="text-sm font-medium text-foreground">

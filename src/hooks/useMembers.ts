@@ -58,7 +58,7 @@ export function useMembers() {
         linkedin_url: p.linkedin_url,
         member_slug: p.member_slug,
         organization_name: p.organization_id ? orgMap.get(p.organization_id) ?? null : null,
-        plan: p.organization_id ? planMap.get(p.organization_id) ?? "observer" : "observer",
+        plan: p.organization_id ? planMap.get(p.organization_id) ?? "free" : "free",
       }));
     },
     enabled: !!profile,
@@ -91,7 +91,7 @@ export function useMemberBySlug(slug: string | undefined) {
       if (error || !profile) return null;
 
       let orgName: string | null = null;
-      let plan: PlanId = "observer";
+      let plan: PlanId = "free";
 
       if (profile.organization_id) {
         const [orgRes, subRes] = await Promise.all([
@@ -99,7 +99,7 @@ export function useMemberBySlug(slug: string | undefined) {
           supabase.from("subscriptions").select("plan").eq("organization_id", profile.organization_id).single(),
         ]);
         orgName = orgRes.data?.name ?? null;
-        plan = (subRes.data?.plan as PlanId) ?? "observer";
+        plan = (subRes.data?.plan as PlanId) ?? "free";
       }
 
       return {

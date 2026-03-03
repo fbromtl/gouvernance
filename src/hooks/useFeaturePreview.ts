@@ -8,6 +8,6 @@ import { usePlanFeatures } from './usePlanFeatures';
 export function useFeaturePreview(feature: string) {
   const { hasFeature, plan } = usePlanFeatures();
   const isPreview = !hasFeature(feature);
-  const requiredPlan = plan === 'observer' ? 'Membre' : 'Membre Expert';
+  const requiredPlan = plan === 'free' ? 'Membre' : 'Membre';
   return { isPreview, requiredPlan, plan };
 }

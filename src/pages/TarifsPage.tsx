@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Eye, Users, Crown, Shield } from "lucide-react";
+import { Check, X, ArrowRight, Eye, Users, Shield } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -74,7 +74,7 @@ const EXPERT_FEATURES: PlanFeature[] = [
 
 const PLAN_CONFIGS: PlanCardConfig[] = [
   {
-    id: "observer",
+    id: "free",
     icon: Eye,
     features: OBSERVER_FEATURES,
     ctaTo: "/inscription",
@@ -83,17 +83,9 @@ const PLAN_CONFIGS: PlanCardConfig[] = [
   {
     id: "member",
     icon: Users,
-    features: MEMBER_FEATURES,
+    features: [...MEMBER_FEATURES, ...EXPERT_FEATURES],
     ctaTo: "/inscription",
     ctaLabel: "becomeMember",
-  },
-  {
-    id: "expert",
-    icon: Crown,
-    features: EXPERT_FEATURES,
-    ctaTo: "/inscription",
-    ctaLabel: "becomeExpert",
-    secondaryCta: { to: "/contact", label: "contactUs" },
   },
 ];
 
@@ -135,33 +127,33 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { type: "feature", key: "priority_visibility" },
 ];
 
-const PLAN_AVAILABILITY: Record<string, [boolean, boolean, boolean]> = {
-  dashboard:             [true,  true,  true],
-  ai_systems:            [true,  true,  true],
-  lifecycle:             [true,  true,  true],
-  veille_read:           [true,  true,  true],
-  risk_assessments:      [false, true,  true],
-  incidents:             [false, true,  true],
-  compliance:            [false, true,  true],
-  decisions:             [false, true,  true],
-  bias:                  [false, true,  true],
-  transparency:          [false, true,  true],
-  vendors:               [false, true,  true],
-  documents:             [false, true,  true],
-  ai_chat:               [false, true,  true],
-  export_pdf:            [false, true,  true],
-  trust_mark:            [false, false, true],
-  dedicated_consultant:  [false, false, true],
-  monitoring:            [false, false, true],
-  data_catalog:          [false, false, true],
-  governance_structure:  [false, false, true],
-  support_community:     [true,  false, false],
-  support_email:         [false, true,  false],
-  support_dedicated:     [false, false, true],
-  member_directory:      [false, true,  true],
-  public_profile:        [false, true,  true],
-  linkedin_badge:        [false, true,  true],
-  priority_visibility:   [false, false, true],
+const PLAN_AVAILABILITY: Record<string, [boolean, boolean]> = {
+  dashboard:             [true,  true],
+  ai_systems:            [true,  true],
+  lifecycle:             [true,  true],
+  veille_read:           [true,  true],
+  risk_assessments:      [false, true],
+  incidents:             [false, true],
+  compliance:            [false, true],
+  decisions:             [false, true],
+  bias:                  [false, true],
+  transparency:          [false, true],
+  vendors:               [false, true],
+  documents:             [false, true],
+  ai_chat:               [false, true],
+  export_pdf:            [false, true],
+  trust_mark:            [false, true],
+  dedicated_consultant:  [false, true],
+  monitoring:            [false, true],
+  data_catalog:          [false, true],
+  governance_structure:  [false, true],
+  support_community:     [true,  false],
+  support_email:         [false, true],
+  support_dedicated:     [false, true],
+  member_directory:      [false, true],
+  public_profile:        [false, true],
+  linkedin_badge:        [false, true],
+  priority_visibility:   [false, true],
 };
 
 /* ------------------------------------------------------------------ */
@@ -193,7 +185,7 @@ const fadeUp = {
 /*  PLAN ORDER FOR HIERARCHY                                            */
 /* ------------------------------------------------------------------ */
 
-const PLAN_ORDER: PlanId[] = ["observer", "member", "expert", "honorary"];
+const PLAN_ORDER: PlanId[] = ["free", "member", "honorary"];
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                           */
@@ -386,7 +378,7 @@ export function TarifsPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-4 items-start"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-4 items-start max-w-4xl mx-auto"
           >
             {PLAN_CONFIGS.map((config) => {
               const plan = PLANS[config.id];
@@ -435,9 +427,7 @@ export function TarifsPage() {
                             "flex size-9 items-center justify-center rounded-lg",
                             isHighlighted
                               ? "bg-brand-purple/10 text-brand-purple"
-                              : config.id === "expert"
-                                ? "bg-amber-500/10 text-amber-600"
-                                : "bg-muted text-muted-foreground"
+                              : "bg-muted text-muted-foreground"
                           )}
                         >
                           <config.icon className="size-4.5" />
@@ -459,11 +449,6 @@ export function TarifsPage() {
 
                       {/* Price */}
                       <div className="mb-6">
-                        {config.id === "expert" && (
-                          <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">
-                            {t("startingAt")}
-                          </span>
-                        )}
                         <div className="flex items-baseline gap-1 mt-0.5">
                           <span className="text-4xl font-extrabold text-foreground tracking-tight">
                             {price === 0 ? `${currencySymbol(currency)}0` : `${currencySymbol(currency)}${price}`}
@@ -493,9 +478,7 @@ export function TarifsPage() {
                               ? "pointer-events-none opacity-60"
                               : isHighlighted
                                 ? "bg-brand-purple hover:bg-brand-purple-dark text-white shadow-md shadow-brand-purple/20"
-                                : config.id === "expert"
-                                  ? "bg-foreground hover:bg-foreground/90 text-white"
-                                  : ""
+                                : ""
                           )}
                           variant={cta.variant === "outline" ? "outline" : "default"}
                         >
@@ -516,11 +499,9 @@ export function TarifsPage() {
                       {/* Features */}
                       <div className="border-t border-border/40 pt-5">
                         <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                          {config.id === "observer"
+                          {config.id === "free"
                             ? t("included")
-                            : config.id === "member"
-                              ? t("allFromObserver")
-                              : t("allFromMember")}
+                            : t("allFromFree")}
                         </p>
                         <ul className="space-y-2.5">
                           {config.features.map((feat) => (
@@ -583,11 +564,11 @@ export function TarifsPage() {
             className="rounded-2xl border border-border/60 bg-white shadow-lg overflow-hidden"
           >
             {/* Table header */}
-            <div className="grid grid-cols-4 gap-0 border-b border-border/40 bg-muted/30">
+            <div className="grid grid-cols-3 gap-0 border-b border-border/40 bg-muted/30">
               <div className="p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 {t("featuresLabel")}
               </div>
-              {(["observer", "member", "expert"] as const).map((planId) => (
+              {(["free", "member"] as const).map((planId) => (
                 <div
                   key={planId}
                   className={cn(
@@ -613,9 +594,9 @@ export function TarifsPage() {
                 return (
                   <div
                     key={row.labelKey}
-                    className="grid grid-cols-4 gap-0 border-b border-border/40 bg-muted/30"
+                    className="grid grid-cols-3 gap-0 border-b border-border/40 bg-muted/30"
                   >
-                    <div className="col-span-4 p-3 sm:p-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    <div className="col-span-3 p-3 sm:p-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       {t(row.labelKey)}
                     </div>
                   </div>
@@ -627,7 +608,7 @@ export function TarifsPage() {
                 <div
                   key={row.key}
                   className={cn(
-                    "grid grid-cols-4 gap-0 border-b border-border/15 last:border-b-0 transition-colors",
+                    "grid grid-cols-3 gap-0 border-b border-border/15 last:border-b-0 transition-colors",
                     "hover:bg-muted/20",
                     i % 2 === 0 ? "bg-white" : "bg-muted/5"
                   )}
