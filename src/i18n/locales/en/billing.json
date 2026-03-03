@@ -92,6 +92,9 @@
   "billedAnnually": "Billed {{price}} {{symbol}}/year",
   "noCommitment": "No commitment",
   "communityBanner": "+150 AI governance professionals — lawyers, CISOs, DPOs, compliance officers — exchange and collaborate within the Circle.",
+  "actionGate": {
+    "tooltip": "Upgrade to Member plan to unlock this action"
+  },
   "gate": {
     "title": "Members only",
     "description": "This feature is available with the {{plan}} level or higher.",

@@ -92,6 +92,9 @@
   "billedAnnually": "Facturé {{price}} {{symbol}}/an",
   "noCommitment": "Sans engagement",
   "communityBanner": "+150 professionnels en gouvernance de l'IA — juristes, CISO, DPO, responsables conformité — échangent et collaborent au sein du Cercle.",
+  "actionGate": {
+    "tooltip": "Passez au plan Membre pour débloquer cette action"
+  },
   "gate": {
     "title": "Réservé aux Membres",
     "description": "Cette fonctionnalité est disponible avec le niveau {{plan}} ou supérieur.",
