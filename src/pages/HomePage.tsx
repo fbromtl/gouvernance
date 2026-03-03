@@ -262,7 +262,7 @@ export function HomePage() {
 
             {/* ── Social Proof ── */}
             <div className="mt-12 pt-6 w-full">
-              <p className="uppercase text-xs font-semibold text-white/40 tracking-[0.2em] text-center mb-5">
+              <p className="uppercase text-xs font-semibold text-neutral-900 tracking-[0.2em] text-center mb-5">
                 Aligné sur les cadres de référence internationaux
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
