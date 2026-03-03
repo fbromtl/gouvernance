@@ -32,6 +32,9 @@ import {
   Minus,
   Globe,
   Link2,
+  MapPin,
+  Zap,
+  BookOpenCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -694,6 +697,88 @@ function LibraryMockup() {
   );
 }
 
+/* ── Nouveautés mockup ── */
+
+function LegalChatbotMockup() {
+  const jurisdictions = [
+    { code: "QC", label: "Québec", active: true },
+    { code: "CA", label: "Canada", active: true },
+    { code: "EU", label: "Union européenne", active: false },
+    { code: "FR", label: "France", active: false },
+  ];
+  return (
+    <div className="w-full rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+            <BookOpenCheck className="size-3.5 text-white" />
+          </div>
+          <span className="text-sm font-semibold text-neutral-800">Assistant juridique IA</span>
+        </div>
+        <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+          <Zap className="size-2.5 mr-0.5" />
+          NOUVEAU
+        </Badge>
+      </div>
+
+      {/* Jurisdiction selector */}
+      <div className="border-b border-neutral-100 px-5 py-3">
+        <div className="flex items-center gap-2 mb-2">
+          <MapPin className="size-3 text-neutral-400" />
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400">Juridictions sélectionnées</span>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {jurisdictions.map((j) => (
+            <button
+              key={j.code}
+              type="button"
+              className={`rounded-full px-2.5 py-1 text-[10px] font-semibold transition-colors ${
+                j.active
+                  ? "bg-[#ab54f3]/10 text-[#ab54f3] ring-1 ring-[#ab54f3]/20"
+                  : "bg-neutral-100 text-neutral-400"
+              }`}
+            >
+              {j.code} — {j.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Chat body */}
+      <div className="px-5 py-4 space-y-3">
+        {/* User question */}
+        <div className="flex justify-end">
+          <div className="rounded-2xl rounded-br-md bg-[#ab54f3] px-3.5 py-2 max-w-[80%]">
+            <p className="text-xs text-white">Quelles sont les obligations de transparence pour les décisions automatisées au Québec ?</p>
+          </div>
+        </div>
+        {/* AI answer with source badges */}
+        <div className="flex justify-start">
+          <div className="rounded-2xl rounded-bl-md bg-neutral-100 px-3.5 py-2.5 max-w-[85%]">
+            <p className="text-xs text-neutral-700 leading-relaxed">
+              En vertu de la <strong>Loi 25</strong> (art. 12.1), toute décision fondée exclusivement sur un traitement automatisé doit être communiquée à la personne concernée, avec le droit de <strong>soumettre des observations</strong> et de <strong>demander une révision humaine</strong>.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              <span className="inline-flex items-center gap-1 rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">
+                <FileText className="size-2.5" /> Loi 25, art. 12.1
+              </span>
+              <span className="inline-flex items-center gap-1 rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">
+                <FileText className="size-2.5" /> RLRQ c. P-39.1
+              </span>
+            </div>
+          </div>
+        </div>
+        {/* Input */}
+        <div className="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-2">
+          <span className="flex-1 text-[11px] text-neutral-400">Posez une question juridique...</span>
+          <Send className="size-3.5 text-[#ab54f3]" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  STATIC DATA                                                         */
 /* ------------------------------------------------------------------ */
@@ -896,6 +981,71 @@ export function FonctionnalitesPage() {
               <Link to="/tarifs">{t("hero.ctaSecondary")}</Link>
             </Button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  NOUVEAUTÉS                                                   */}
+      {/* ============================================================ */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#1e1a30] py-16 sm:py-24">
+        {/* Subtle glow */}
+        <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-emerald-500/8 blur-[120px]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Label */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-6"
+          >
+            <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/25 text-xs font-bold tracking-wide px-3 py-1">
+              <Zap className="size-3 mr-1" />
+              Nouveauté
+            </Badge>
+          </motion.div>
+
+          {/* Content: text left + mockup right */}
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Text */}
+            <motion.div
+              variants={slideFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+            >
+              <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+                <BookOpenCheck className="size-6 text-white" />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Assistant juridique IA
+              </h2>
+              <p className="mt-4 text-base text-white/60 leading-relaxed max-w-lg">
+                Un chatbot spécialisé qui travaille exclusivement avec les textes de loi et documents juridiques officiels. Sélectionnez vos juridictions — Québec, Canada, Union européenne, France — et posez vos questions en langage naturel.
+              </p>
+              <p className="mt-3 text-base text-white/60 leading-relaxed max-w-lg">
+                Chaque réponse cite ses sources légales avec les articles de loi pertinents. Idéal pour vérifier rapidement vos obligations réglementaires en matière d'IA.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">Loi 25</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">C-27 / AIDA</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">EU AI Act</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">RGPD</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">RLRQ</span>
+              </div>
+            </motion.div>
+
+            {/* Mockup */}
+            <motion.div
+              variants={slideFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+            >
+              <LegalChatbotMockup />
+            </motion.div>
+          </div>
         </div>
       </section>
 
