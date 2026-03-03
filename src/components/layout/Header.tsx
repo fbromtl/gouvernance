@@ -133,7 +133,7 @@ export function Header() {
             </p>
             <Link
               to="/rejoindre"
-              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-purple-700 hover:text-purple-900 transition-colors"
+              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-purple-900 hover:text-purple-950 transition-colors"
             >
               Essayer
               <ChevronRight className="size-3.5" />
@@ -334,7 +334,7 @@ export function Header() {
                     </p>
                     <Link
                       to="/rejoindre"
-                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-purple-700 hover:text-purple-900 transition-colors"
+                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-purple-900 hover:text-purple-950 transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       Essayer
