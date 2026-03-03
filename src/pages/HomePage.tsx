@@ -263,15 +263,15 @@ export function HomePage() {
 
             {/* ── Social Proof ── */}
             <div className="mt-12 pt-6 w-full">
-              <p className="uppercase text-sm font-medium text-zinc-400 tracking-wide text-center mb-6">
+              <p className="uppercase text-xs font-semibold text-white/40 tracking-[0.2em] text-center mb-5">
                 Aligné sur les cadres de référence internationaux
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
                 {["Loi 25", "EU AI Act", "NIST AI RMF", "ISO 42001", "RGPD", "OCDE"].map(
                   (framework) => (
                     <span
                       key={framework}
-                      className="text-sm font-bold text-neutral-300 uppercase tracking-widest hover:text-neutral-500 transition-colors"
+                      className="rounded-lg bg-white/95 px-4 py-2 text-xs font-bold text-[#252243] uppercase tracking-wider shadow-sm backdrop-blur-sm"
                     >
                       {framework}
                     </span>
