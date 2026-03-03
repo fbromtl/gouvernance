@@ -19,6 +19,7 @@ import {
   Cpu,
   ArrowRight,
   Sparkles,
+  BookOpenCheck,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -74,6 +75,21 @@ const upcomingFeatures = [
     color: "text-amber-600",
     bgColor: "bg-amber-50",
     borderAccent: "hover:border-amber-200",
+  },
+  {
+    icon: BookOpenCheck,
+    title: "Assistant juridique IA (Chat RAG)",
+    description:
+      "Un chatbot spécialisé utilisant la génération augmentée par récupération (RAG) pour répondre à vos questions en s\u2019appuyant exclusivement sur les textes de loi officiels. Sélectionnez vos juridictions et obtenez des réponses sourcées avec citations légales précises.",
+    bullets: [
+      "Recherche dans les corpus législatifs (Loi 25, C-27, EU AI Act, RGPD)",
+      "Sélection des juridictions : Québec, Canada, UE, France",
+      "Réponses avec citations d\u2019articles de loi précis",
+      "Base de connaissances mise à jour en continu",
+    ],
+    color: "text-teal-600",
+    bgColor: "bg-teal-50",
+    borderAccent: "hover:border-teal-200",
   },
   {
     icon: Cpu,
