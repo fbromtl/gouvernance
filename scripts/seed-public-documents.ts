@@ -16,17 +16,17 @@ import * as path from "path";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const RAG_ROOT = "C:/Users/fbrom/OneDrive/Desktop/Gouvernance/RAG";
+const RAG_ROOT = "C:/Users/fbrom/OneDrive/Desktop/Gouvernance/siteweb/RAG";
 const PUBLIC_DIR = path.resolve("public/documents");
 
 const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
 
 const JURISDICTION_MAP: Record<string, string> = {
-  "Québec": "quebec",
-  "Canada": "canada",
-  "Europe": "europe",
-  "France": "france",
-  "USA": "usa",
+  "Québec_PDF": "quebec",
+  "Canada_PDF": "canada",
+  "Europe_PDF": "europe",
+  "France_PDF": "france",
+  "USA_PDF": "usa",
 };
 
 function getFileType(filename: string): "pdf" | "html" {
