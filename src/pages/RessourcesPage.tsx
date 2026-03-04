@@ -73,7 +73,7 @@ export function RessourcesPage() {
         }}
       >
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-950 mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-950 mb-6">
             Ressources
           </h1>
           <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -95,7 +95,7 @@ export function RessourcesPage() {
               <Sparkles className="size-3 mr-1" />
               Acc&egrave;s gratuit
             </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Bo&icirc;te &agrave; outils
             </h2>
             <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
@@ -165,7 +165,7 @@ export function RessourcesPage() {
       <section id="veille" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4">
               Veille réglementaire
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">

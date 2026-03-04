@@ -202,7 +202,7 @@ export function DiagnosticPage() {
             </div>
 
             {/* Question */}
-            <h2 className="mb-3 text-center text-xl font-bold text-neutral-900 sm:text-2xl lg:text-3xl">
+            <h2 className="font-serif mb-3 text-center text-xl font-bold text-neutral-900 sm:text-2xl lg:text-3xl">
               {t(`questions.${currentKey}.question`)}
             </h2>
             <p className="mb-10 text-center text-sm text-neutral-500 sm:text-base">

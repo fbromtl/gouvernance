@@ -15,7 +15,7 @@ export function AccessibilitePage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
               <Accessibility className="size-6" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
+            <h1 className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
               Accessibilité
             </h1>
           </div>

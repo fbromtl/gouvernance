@@ -119,7 +119,7 @@ export function ActualitesPage() {
           }}
         >
           <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
               Actualités
             </h1>
             <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -226,7 +226,7 @@ export function ActualitesPage() {
         <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez informé
             </h2>
             <p className="text-neutral-400 text-lg mb-8">
@@ -288,7 +288,7 @@ function FeaturedCard({ article }: { article: Article }) {
                 </span>
               </div>
 
-              <h2 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+              <h2 className="font-serif text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                 {article.title}
               </h2>
 
@@ -370,7 +370,7 @@ function ArticleCard({ article }: { article: Article }) {
               {formatDate(article.date)}
             </span>
           </div>
-          <h2 className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
+          <h2 className="font-serif text-lg font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
             {article.title}
           </h2>
         </CardHeader>

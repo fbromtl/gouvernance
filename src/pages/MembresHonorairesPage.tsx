@@ -137,7 +137,7 @@ export function MembresHonorairesPage() {
             <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
               <Award className="size-8 text-emerald-400" />
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
               {t("hero.title")}
             </h1>
             <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
@@ -197,7 +197,7 @@ export function MembresHonorairesPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
               {t("eligibility.title")}
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -232,7 +232,7 @@ export function MembresHonorairesPage() {
             ) : (
               /* Form */
               <div className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm">
-                <h2 className="text-xl sm:text-2xl font-bold mb-8 text-center">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold mb-8 text-center">
                   {t("form.title")}
                 </h2>
 

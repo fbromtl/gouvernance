@@ -1170,7 +1170,7 @@ function NouveautesSlider() {
           {/* Title + nav row */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 Dernières fonctionnalités
               </h2>
               <p className="mt-2 text-sm sm:text-base text-white/50 max-w-md">
@@ -1252,7 +1252,7 @@ function NouveautesSlider() {
             <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#57886c]">
               <SlideIcon className="size-6 text-white" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight">
               {slide.title}
             </h2>
             <p className="mt-4 text-base text-white/60 leading-relaxed max-w-lg">
@@ -1468,7 +1468,7 @@ export function FonctionnalitesPage() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
                   {t(`categories.${cat.id}.title`)}
                 </h2>
                 <p className="mt-3 text-muted-foreground text-base max-w-xl mx-auto">
@@ -1567,7 +1567,7 @@ export function FonctionnalitesPage() {
           viewport={{ once: true }}
           className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             {t("cta.title")}
           </h2>
           <p className="mt-4 text-base text-white/65 max-w-xl mx-auto leading-relaxed">

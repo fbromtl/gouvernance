@@ -201,7 +201,7 @@ export function DiagnosticResultsPage() {
             <Sparkles className="h-4 w-4" />
             {t("results.subtitle")}
           </div>
-          <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
+          <h1 className="font-serif text-2xl font-bold text-neutral-900 sm:text-3xl">
             {t("results.title")}
           </h1>
         </motion.div>

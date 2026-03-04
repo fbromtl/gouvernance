@@ -132,7 +132,7 @@ export function RejoindrePage() {
                   </span>
                 </span>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 mb-6 leading-[1.1]">
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 mb-6 leading-[1.1]">
                   Votre gouvernance IA repose encore sur des tableurs et des documents Word ?
                 </h1>
 
@@ -218,7 +218,7 @@ export function RejoindrePage() {
               </div>
               <div className="w-full h-px bg-neutral-200 mb-8" />
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-                <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
+                <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
                   Tout ce qu&apos;il faut pour démarrer votre gouvernance IA
                 </h2>
                 <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
@@ -336,7 +336,7 @@ export function RejoindrePage() {
               </div>
               <div className="w-full h-px bg-neutral-200 mb-8" />
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-                <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
+                <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
                   Des outils avancés pour les organisations ambitieuses
                 </h2>
                 <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
@@ -376,7 +376,7 @@ export function RejoindrePage() {
         <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] py-20 sm:py-28">
           <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#57886c]/10 blur-[120px]" />
           <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
               Prêt à sécuriser vos projets IA ?
             </h2>
             <p className="text-lg text-white/65 max-w-xl mx-auto leading-relaxed mb-8">

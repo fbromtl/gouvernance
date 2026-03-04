@@ -77,7 +77,7 @@ export function AProposPage() {
         }}
       >
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             À propos du Cercle
           </h1>
           <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -219,7 +219,7 @@ export function AProposPage() {
       {/* SECTION: Notre approche (id="approche") — bg-white */}
       <section id="approche" className="py-24 sm:py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4 text-center">
             Notre approche
           </h2>
           <p className="text-lg text-neutral-600 text-center mb-16 max-w-2xl mx-auto">
@@ -253,7 +253,7 @@ export function AProposPage() {
       {/* SECTION: Gouvernance du cercle (id="gouvernance") — DARK bg-[#0e0f19] */}
       <section id="gouvernance" className="py-24 sm:py-32 bg-[#0e0f19] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Gouvernance du cercle
           </h2>
           <p className="text-lg text-neutral-400 text-center mb-16 max-w-2xl mx-auto">

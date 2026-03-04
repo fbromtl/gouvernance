@@ -64,7 +64,7 @@ export function ContactPage() {
         }}
       >
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Contact
           </h1>
           <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -163,7 +163,7 @@ export function ContactPage() {
             {/* Info - right (dark section) */}
             <div className="space-y-8">
               <div className="rounded-3xl bg-[#0e0f19] p-8 sm:p-10">
-                <h2 className="text-2xl font-bold text-white mb-6">
+                <h2 className="font-serif text-2xl font-bold text-white mb-6">
                   Nos coordonnées
                 </h2>
                 <div className="space-y-6">

@@ -30,7 +30,7 @@ export function MemberPublicPage() {
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-muted">
             <UserX className="h-8 w-8 text-muted-foreground" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">
+          <h1 className="font-serif text-2xl font-bold text-foreground">
             Membre introuvable
           </h1>
           <p className="text-muted-foreground max-w-sm">
@@ -93,7 +93,7 @@ export function MemberPublicPage() {
 
             {/* Name & title */}
             <div className="space-y-1">
-              <h1 className="text-2xl font-bold text-foreground">
+              <h1 className="font-serif text-2xl font-bold text-foreground">
                 {member.full_name}
               </h1>
               {(member.job_title || member.organization_name) && (

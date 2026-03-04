@@ -580,7 +580,7 @@ export function TarifsPage() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
               {t("comparisonTitle")}
             </h2>
             <p className="mt-3 text-muted-foreground text-base max-w-xl mx-auto">
@@ -685,7 +685,7 @@ export function TarifsPage() {
           viewport={{ once: true }}
           className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             {t("readyTitle")}
           </h2>
           <p className="mt-4 text-base text-white/65 max-w-xl mx-auto leading-relaxed">

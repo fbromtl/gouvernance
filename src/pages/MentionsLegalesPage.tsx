@@ -8,7 +8,7 @@ export function MentionsLegalesPage() {
       <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
             Mentions légales
           </h1>
           <p className="text-neutral-500">
@@ -18,7 +18,7 @@ export function MentionsLegalesPage() {
 
         <div className="space-y-8 text-foreground">
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
               Éditeur du site
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -31,7 +31,7 @@ export function MentionsLegalesPage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
               Hébergement
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -44,7 +44,7 @@ export function MentionsLegalesPage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
               Propriété intellectuelle
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ export function MentionsLegalesPage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
               Limitation de responsabilité
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -75,7 +75,7 @@ export function MentionsLegalesPage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
               Droit applicable
             </h2>
             <p className="text-muted-foreground leading-relaxed">

@@ -10,7 +10,7 @@ export function ConfidentialitePage() {
       <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
+          <h1 className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 mb-4">
             Politique de confidentialité
           </h1>
           <p className="text-neutral-500">
@@ -29,7 +29,7 @@ export function ConfidentialitePage() {
           </p>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Collecte d&apos;informations</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Collecte d&apos;informations</h2>
             <p className="text-muted-foreground leading-relaxed">
               Nous pouvons collecter des renseignements personnels lorsque vous nous contactez par
               formulaire, courriel ou inscription à notre infolettre. Ces informations peuvent
@@ -42,7 +42,7 @@ export function ConfidentialitePage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Utilisation</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Utilisation</h2>
             <p className="text-muted-foreground leading-relaxed">
               Les renseignements personnels recueillis sont utilisés pour répondre à vos demandes,
               gérer votre inscription à notre infolettre, vous fournir des informations sur nos
@@ -54,7 +54,7 @@ export function ConfidentialitePage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Cookies</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Cookies</h2>
             <p className="text-muted-foreground leading-relaxed">
               Notre site peut utiliser des cookies pour améliorer l&apos;expérience de navigation,
               analyser le trafic et mémoriser vos préférences. Les cookies essentiels sont
@@ -67,7 +67,7 @@ export function ConfidentialitePage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Vos droits</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Vos droits</h2>
             <p className="text-muted-foreground leading-relaxed">
               Conformément à la Loi 25 et aux lois applicables en matière de protection des
               renseignements personnels, vous disposez du droit d&apos;accéder à vos données
@@ -80,7 +80,7 @@ export function ConfidentialitePage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Loi 25 et conformité</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Loi 25 et conformité</h2>
             <p className="text-muted-foreground leading-relaxed">
               En tant qu&apos;organisation basée au Québec, nous nous conformons à la Loi 25 et
               aux principes de protection des renseignements personnels qu&apos;elle établit. Nous
@@ -92,7 +92,7 @@ export function ConfidentialitePage() {
           <Separator />
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">Contact</h2>
+            <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Contact</h2>
             <p className="text-muted-foreground leading-relaxed">
               Pour toute question concernant cette politique de confidentialité ou pour exercer
               vos droits, veuillez nous contacter via la page{" "}

@@ -65,7 +65,7 @@ export function ArticlePage() {
         <SEO title="Article non trouv\u00e9" />
         <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
           <Newspaper className="size-16 text-muted-foreground/40 mb-6" />
-          <h1 className="text-2xl font-bold text-foreground mb-2">
+          <h1 className="font-serif text-2xl font-bold text-foreground mb-2">
             Article non trouv\u00e9
           </h1>
           <p className="text-muted-foreground mb-6">
@@ -194,7 +194,7 @@ export function ArticlePage() {
             </div>
 
             {/* 3. Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-6">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-6">
               {article.title}
             </h1>
 
@@ -320,7 +320,7 @@ export function ArticlePage() {
         {relatedArticles.length > 0 && (
           <section className="py-16 bg-neutral-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold text-foreground mb-8">
+              <h2 className="font-serif text-2xl font-bold text-foreground mb-8">
                 Articles similaires
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -376,7 +376,7 @@ export function ArticlePage() {
         <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez inform\u00e9
             </h2>
             <p className="text-neutral-400 text-lg mb-8">
