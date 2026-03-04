@@ -4,7 +4,7 @@
 > **Audience:** Non-technical users (compliance officers, risk managers, executives)
 > **Stack:** React 19, Tailwind CSS 4, shadcn/ui (new-york style), Lucide icons, i18next (fr/en)
 > **Brand palette:** Purple #ab54f3 (primary), Teal #14b8a6 (accent/success), Navy #1e1a30 (dark), Blue #312dee (links), Amber #f59e0b (warnings)
-> **Font:** Plus Jakarta Sans
+> **Font:** DM Sans (primary), Crimson Text (serif accent)
 
 ---
 
