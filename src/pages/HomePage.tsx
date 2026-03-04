@@ -97,7 +97,7 @@ export function HomePage() {
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl md:text-7xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-semibold">
+            <h1 className="font-serif text-5xl md:text-7xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-semibold">
               Gouvernez l&apos;IA avec{" "}
               <span className="text-[#57886c]">confiance</span> et conformité
             </h1>
@@ -305,7 +305,7 @@ export function HomePage() {
               <div className="w-full h-px bg-neutral-200 mb-8" />
 
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-                <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
+                <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
                   La précision réglementaire est le moteur de chaque déploiement IA réussi.
                 </h2>
                 <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
@@ -439,7 +439,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 max-w-3xl mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 max-w-3xl mb-16">
             Trois étapes pour piloter votre gouvernance IA
           </h2>
 
@@ -515,7 +515,7 @@ export function HomePage() {
               <div className="w-full h-px bg-neutral-200 mb-8" />
 
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-                <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
+                <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
                   Tout ce qu&apos;il faut pour piloter votre gouvernance IA
                 </h2>
                 <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
@@ -768,7 +768,7 @@ export function HomePage() {
                 </div>
                 <div className="w-full h-px bg-neutral-200 mb-8" />
                 <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-16">
-                  <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
+                  <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight max-w-3xl font-semibold">
                     Bâtissez la confiance avec une gouvernance IA que vos parties prenantes apprécient
                   </h2>
                   <div className="lg:max-w-sm flex-shrink-0 lg:pt-2">
@@ -901,7 +901,7 @@ export function HomePage() {
             <div className="w-full h-px bg-neutral-200 mb-8" />
 
             <div className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto">
-              <h2 className="md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight font-semibold">
+              <h2 className="font-serif md:text-4xl lg:text-5xl leading-[1.05] text-3xl text-neutral-900 tracking-tight font-semibold">
                 Une tarification simple et transparente
               </h2>
               <p className="leading-relaxed text-base text-neutral-600">
@@ -933,7 +933,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-12">
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-12">
             Tout ce que vous devez savoir
           </h2>
 
@@ -1034,7 +1034,7 @@ export function HomePage() {
                   </span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1] mb-8 font-semibold">
+                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1] mb-8 font-semibold">
                   Bâtissez la confiance avec une gouvernance IA{" "}
                   <span className="text-[#57886c]">transparente</span>
                 </h2>
