@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import { AppIconRail } from "./AppIconRail";
 import { AppSidebar } from "./AppSidebar";
 import { AppHeader } from "./AppHeader";
+import { getCategoryForPath } from "./nav-config";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
 import { usePageContext } from "@/hooks/usePageContext";
@@ -13,18 +15,45 @@ export function PortailLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
 
+  const [activeCategory, setActiveCategory] = useState(() => getCategoryForPath(pathname));
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  // Auto-sync: when route changes, update active category
+  useEffect(() => {
+    setActiveCategory(getCategoryForPath(pathname));
+  }, [pathname]);
+
+  // When clicking a category in the rail: select it and ensure sidebar is visible
+  const handleCategoryChange = (category: string) => {
+    if (category === activeCategory) {
+      // Toggle sidebar visibility if clicking same category
+      setSidebarVisible((v) => !v);
+    } else {
+      setActiveCategory(category);
+      setSidebarVisible(true);
+    }
+  };
+
   const pageContext = usePageContext();
   const { messages, sendMessage, isStreaming, error, resetChat } =
     useAiChat(pageContext);
 
   return (
     <div className="flex h-screen overflow-hidden bg-neutral-50/50">
-      {/* Desktop sidebar */}
+      {/* Desktop: Icon Rail + Detail Sidebar */}
       <div className="hidden lg:flex">
-        <AppSidebar
-          collapsed={sidebarCollapsed}
-          onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        <AppIconRail
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
         />
+        {sidebarVisible && (
+          <AppSidebar
+            collapsed={sidebarCollapsed}
+            onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+            activeCategory={activeCategory}
+            filteredMode
+          />
+        )}
       </div>
 
       {/* Mobile sidebar */}
