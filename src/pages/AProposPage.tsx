@@ -136,7 +136,7 @@ export function AProposPage() {
                 className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
                 alt="Réunion de gouvernance IA"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f19] via-transparent to-transparent" />
               <div className="absolute top-6 left-6">
                 <span className="inline-block px-3 py-1 bg-[#57886c] rounded-full text-[10px] font-bold uppercase tracking-widest text-white">
                   Notre vision
@@ -237,7 +237,7 @@ export function AProposPage() {
                     {f.origin}
                   </Badge>
                   <CardTitle className="text-base flex items-center gap-2">
-                    <BookOpen className="size-4 text-emerald-500 shrink-0" />
+                    <BookOpen className="size-4 text-[#57886c] shrink-0" />
                     {f.name}
                   </CardTitle>
                 </CardHeader>
@@ -262,21 +262,21 @@ export function AProposPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
-              <Shield className="size-8 text-emerald-400 mb-4" />
+              <Shield className="size-8 text-[#81a684] mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Comité directeur</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[0].description}
               </p>
             </div>
             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
-              <FileCheck className="size-8 text-emerald-400 mb-4" />
+              <FileCheck className="size-8 text-[#81a684] mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Charte éthique</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[1].description}
               </p>
             </div>
             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
-              <Users className="size-8 text-emerald-400 mb-4" />
+              <Users className="size-8 text-[#81a684] mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Processus décisionnel</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[2].description}
