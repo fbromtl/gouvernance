@@ -128,9 +128,9 @@ export function HomePage() {
 
             {/* Reassurance line */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm text-neutral-500">
-              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Gratuit</span>
-              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Sans carte de crédit</span>
-              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-emerald-500" /> Diagnostic en 10 min</span>
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Gratuit</span>
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Sans carte de crédit</span>
+              <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Diagnostic en 10 min</span>
             </div>
 
             {/* Quebec badge */}
@@ -187,7 +187,7 @@ export function HomePage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     { label: "Systèmes IA", value: "24", change: "+3", color: "text-[#57886c]" },
-                    { label: "Score Conformité", value: "87%", change: "+5%", color: "text-emerald-500" },
+                    { label: "Score Conformité", value: "87%", change: "+5%", color: "text-[#57886c]" },
                     { label: "Incidents actifs", value: "2", change: "-1", color: "text-amber-500" },
                     { label: "Risque élevé", value: "3", change: "0", color: "text-red-500" },
                   ].map((kpi) => (
@@ -322,7 +322,7 @@ export function HomePage() {
               {/* Card 1: Conformité */}
               <div className="group flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 bg-neutral-50 h-[520px] border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between">
                 <div>
-                  <div className="w-12 h-12 bg-[#57886c]/10 rounded-2xl flex items-center justify-center text-[#57886c] mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#57886c]/10 to-[#81a684]/15 rounded-2xl flex items-center justify-center text-[#57886c] mb-8">
                     <Lock className="h-6 w-6" />
                   </div>
                   <h3 className="text-2xl text-neutral-900 mb-6 tracking-tight leading-tight font-semibold">
@@ -385,7 +385,7 @@ export function HomePage() {
               {/* Card 4: Expert Support dark */}
               <div className="bg-[#0e0f19] p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative transition-all duration-500">
                 <div className="flex justify-between items-start">
-                  <span className="text-lg font-medium tracking-tight text-[#57886c]">
+                  <span className="text-lg font-medium tracking-tight text-[#81a684]">
                     Accompagnement Expert
                   </span>
                   <div className="p-2 bg-white/10 rounded-full">
@@ -468,10 +468,10 @@ export function HomePage() {
               },
             ].map((step) => (
               <div key={step.num} className="relative text-center">
-                <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-neutral-50 border border-neutral-200 mb-6 relative z-10">
+                <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#57886c]/5 border border-[#57886c]/15 mb-6 relative z-10">
                   <step.icon className="w-8 h-8 text-[#57886c]" />
                 </div>
-                <p className="text-5xl font-bold text-neutral-100 mb-3">{step.num}</p>
+                <p className="text-5xl font-bold text-[#57886c]/10 mb-3">{step.num}</p>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-2">{step.title}</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed max-w-xs mx-auto">{step.desc}</p>
               </div>
@@ -481,7 +481,7 @@ export function HomePage() {
           <div className="text-center mt-14">
             <Link
               to="/inscription"
-              className="inline-flex items-center gap-2 bg-[#0e0f19] text-white px-8 py-4 rounded-full font-medium hover:bg-[#1a1f2e] transition-colors"
+              className="inline-flex items-center gap-2 bg-[#466060] text-white px-8 py-4 rounded-full font-medium hover:bg-[#0e0f19] transition-colors"
             >
               Commencer maintenant, c&apos;est gratuit
               <ArrowRight className="w-4 h-4" />
@@ -532,7 +532,7 @@ export function HomePage() {
               {/* Card 1: Registre IA (vertical) */}
               <article className="lg:col-span-1 group relative flex flex-col justify-between overflow-hidden bg-white border border-neutral-200 rounded-[32px] p-8 hover:shadow-lg transition-all duration-300">
                 <div className="relative z-10">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-[#57886c] text-xs font-semibold tracking-medium mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#57886c]/10 text-[#57886c] text-xs font-semibold tracking-medium mb-6">
                     Registre IA
                   </div>
                   <h3 className="text-neutral-900 text-2xl tracking-tight mb-3 font-semibold">
@@ -555,10 +555,10 @@ export function HomePage() {
                   </div>
                   <div className="space-y-2">
                     {[
-                      { name: "Chatbot Support", type: "GenAI", risk: "Limité", color: "bg-blue-100 text-blue-600" },
+                      { name: "Chatbot Support", type: "GenAI", risk: "Limité", color: "bg-[#466060]/15 text-[#466060]" },
                       { name: "Scoring Crédit", type: "ML", risk: "Élevé", color: "bg-red-100 text-red-600" },
                       { name: "Tri CV Auto", type: "ML", risk: "Élevé", color: "bg-red-100 text-red-600" },
-                      { name: "Recommandation", type: "ML", risk: "Minimal", color: "bg-emerald-100 text-emerald-600" },
+                      { name: "Recommandation", type: "ML", risk: "Minimal", color: "bg-[#81a684]/20 text-[#57886c]" },
                     ].map((sys) => (
                       <div
                         key={sys.name}
@@ -581,7 +581,7 @@ export function HomePage() {
               {/* Card 2: Évaluation des Risques (horizontal) */}
               <article className="lg:col-span-2 group relative flex flex-col justify-between overflow-hidden bg-white border border-neutral-200 rounded-[32px] p-8 hover:shadow-lg transition-all duration-300">
                 <div className="relative z-10 max-w-lg">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold tracking-medium mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#57886c]/10 text-[#57886c] text-xs font-semibold tracking-medium mb-6">
                     Évaluation des Risques
                   </div>
                   <h3 className="text-neutral-900 text-2xl tracking-tight mb-3 font-semibold">
@@ -610,7 +610,7 @@ export function HomePage() {
                             ? "bg-amber-200"
                             : score >= 2
                               ? "bg-yellow-100"
-                              : "bg-emerald-100";
+                              : "bg-[#81a684]/20";
                       const hasSystem = [3, 8, 11, 17, 22].includes(i);
                       return (
                         <div key={i} className={`${bg} rounded-md flex items-center justify-center relative`}>
@@ -627,7 +627,7 @@ export function HomePage() {
               {/* Card 3: Conformité (horizontal) */}
               <article className="lg:col-span-2 group relative flex flex-col justify-between overflow-hidden bg-white border border-neutral-200 rounded-[32px] p-8 hover:shadow-lg transition-all duration-300">
                 <div className="relative z-10 max-w-lg">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-neutral-100 text-neutral-600 text-xs font-semibold tracking-medium mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#466060]/10 text-[#466060] text-xs font-semibold tracking-medium mb-6">
                     Suivi de Conformité
                   </div>
                   <h3 className="text-neutral-900 text-2xl tracking-tight mb-3 font-semibold">
@@ -651,9 +651,9 @@ export function HomePage() {
                     </div>
                     <div className="flex-1 overflow-hidden">
                       {[
-                        { name: "Loi 25", score: "92%", color: "bg-emerald-500" },
+                        { name: "Loi 25", score: "92%", color: "bg-[#57886c]" },
                         { name: "EU AI Act", score: "78%", color: "bg-amber-500" },
-                        { name: "NIST AI RMF", score: "85%", color: "bg-emerald-500" },
+                        { name: "NIST AI RMF", score: "85%", color: "bg-[#57886c]" },
                         { name: "ISO 42001", score: "71%", color: "bg-amber-500" },
                       ].map((fw) => (
                         <div
@@ -673,7 +673,7 @@ export function HomePage() {
               {/* Card 4: Diagnostic (vertical) */}
               <article className="lg:col-span-1 group relative flex flex-col justify-between overflow-hidden bg-white border border-neutral-200 rounded-[32px] p-8 hover:shadow-lg transition-all duration-300">
                 <div className="relative z-10">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-semibold tracking-medium mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#466060]/10 text-[#466060] text-xs font-semibold tracking-medium mb-6">
                     Diagnostic
                   </div>
                   <h3 className="text-neutral-900 text-2xl tracking-tight mb-3 font-semibold">
@@ -742,7 +742,7 @@ export function HomePage() {
                   key={stat.label}
                   className={`text-center ${i > 0 ? "lg:border-l lg:border-neutral-200" : ""}`}
                 >
-                  <p className="text-4xl md:text-5xl font-bold text-neutral-950 mb-2">{stat.value}</p>
+                  <p className="text-4xl md:text-5xl font-bold text-[#0e0f19] mb-2">{stat.value}</p>
                   <p className="text-sm text-neutral-500">{stat.label}</p>
                 </div>
               ))}
@@ -785,7 +785,7 @@ export function HomePage() {
               {/* Testimonial 1 */}
               <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#57886c]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
                 <div>
-                  <div className="flex gap-1 mb-6 text-[#57886c]">
+                  <div className="flex gap-1 mb-6 text-[#f59e0b]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.07-31-51.07,31a16,16,0,0,1-23.84-17.34l13.51-58.6-45.1-39.36A16,16,0,0,1,30.5,87.49l59.6-5.49L113.84,26a16,16,0,0,1,28.32,0L165.9,82l59.6,5.49a16,16,0,0,1,9,26.89Z" />
@@ -813,7 +813,7 @@ export function HomePage() {
               </div>
 
               {/* Testimonial 2 – highlighted */}
-              <div className="group bg-[#57886c] p-8 rounded-[40px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2">
+              <div className="group bg-gradient-to-br from-[#57886c] to-[#466060] p-8 rounded-[40px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2">
                 <div>
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-2xl mb-8 backdrop-blur-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 256 256">
@@ -833,7 +833,7 @@ export function HomePage() {
                   />
                   <div>
                     <div className="font-bold text-white text-base">Jean-Pierre Martin</div>
-                    <div className="text-emerald-100 text-xs font-medium uppercase tracking-wider">
+                    <div className="text-white/70 text-xs font-medium uppercase tracking-wider">
                       VP Innovation, Groupe Média
                     </div>
                   </div>
@@ -843,7 +843,7 @@ export function HomePage() {
               {/* Testimonial 3 */}
               <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#57886c]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
                 <div>
-                  <div className="flex gap-1 mb-6 text-[#57886c]">
+                  <div className="flex gap-1 mb-6 text-[#f59e0b]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.07-31-51.07,31a16,16,0,0,1-23.84-17.34l13.51-58.6-45.1-39.36A16,16,0,0,1,30.5,87.49l59.6-5.49L113.84,26a16,16,0,0,1,28.32,0L165.9,82l59.6,5.49a16,16,0,0,1,9,26.89Z" />
@@ -998,10 +998,10 @@ export function HomePage() {
         {/*  REGULATORY URGENCY BANNER                                    */}
         {/* ============================================================ */}
         <section className="max-w-7xl mx-auto px-6 pb-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#57886c]/5 border border-[#57886c]/20 rounded-2xl px-8 py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#f8c7cc]/10 border border-[#f8c7cc]/30 rounded-2xl px-8 py-6">
             <div className="flex items-center gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#57886c]/10 flex items-center justify-center">
-                <AlertTriangle className="w-5 h-5 text-[#57886c]" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#f8c7cc]/20 flex items-center justify-center">
+                <AlertTriangle className="w-5 h-5 text-[#c4707a]" />
               </div>
               <p className="text-sm md:text-base text-neutral-700 font-medium">
                 La Loi 25 est en vigueur. L&apos;EU AI Act entre en application.{" "}
@@ -1026,6 +1026,7 @@ export function HomePage() {
             <div className="overflow-hidden lg:p-24 text-center bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-12 py-12 relative shadow-sm">
               {/* Background glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(87,136,108,0.07),transparent_50%)] pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_100%_100%,rgba(248,199,204,0.08),transparent_60%)] pointer-events-none" />
 
               <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#57886c]/10 border border-[#57886c]/20 mb-10">
