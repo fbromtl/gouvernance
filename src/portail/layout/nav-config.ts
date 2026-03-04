@@ -17,6 +17,8 @@ import {
   Newspaper,
   BookOpen,
   Users,
+  CreditCard,
+  Map,
 } from "lucide-react";
 
 export interface NavItem {
@@ -43,7 +45,7 @@ export const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: st
   governance: Shield,
   risks: AlertTriangle,
   operations: Activity,
-  community: Users,
+  organization: Building2,
 };
 
 export const navGroups: NavGroup[] = [
@@ -54,6 +56,7 @@ export const navGroups: NavGroup[] = [
       { key: "dashboard", path: "/dashboard", icon: LayoutDashboard, ready: true },
       { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
       { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
+      { key: "roadmap", path: "/roadmap", icon: Map, ready: true },
     ],
   },
   {
@@ -73,8 +76,6 @@ export const navGroups: NavGroup[] = [
       { key: "decisions", path: "/decisions", icon: ClipboardCheck, permission: "approve_decisions", ready: true },
       { key: "compliance", path: "/compliance", icon: CheckCircle, permission: "manage_compliance", ready: true },
       { key: "documents", path: "/documents", icon: FileText, ready: true },
-      { key: "agents", path: "/agents", icon: Bot, ready: true },
-      { key: "agentTraces", path: "/agent-traces", icon: Activity, ready: true },
     ],
   },
   {
@@ -93,13 +94,17 @@ export const navGroups: NavGroup[] = [
       { key: "transparency", path: "/transparency", icon: Eye, ready: true },
       { key: "monitoring", path: "/monitoring", icon: Activity, permission: "configure_monitoring", ready: true },
       { key: "data", path: "/data", icon: Database, ready: true },
+      { key: "agents", path: "/agents", icon: Bot, ready: true },
+      { key: "agentTraces", path: "/agent-traces", icon: Activity, ready: true },
     ],
   },
   {
-    labelKey: "sections.community",
-    category: "community",
+    labelKey: "sections.organization",
+    category: "organization",
     items: [
       { key: "members", path: "/membres", icon: Users, ready: true },
+      { key: "admin", path: "/admin", icon: Building2, ready: true },
+      { key: "billing", path: "/billing", icon: CreditCard, ready: true },
     ],
   },
 ];
