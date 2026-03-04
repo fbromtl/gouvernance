@@ -11,6 +11,7 @@ import {
   LogIn,
   LogOut,
   LayoutDashboard,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -123,7 +124,8 @@ export function Header() {
       >
         <div className="bg-[#466060]">
           <div className="mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-2.5 relative">
-            <p className="text-[13px] text-white font-medium">
+            <p className="text-[13px] text-white font-medium flex items-center gap-2">
+              <Sparkles className="size-3.5 animate-[pulse_3s_ease-in-out_infinite] opacity-80" />
               <span className="hidden sm:inline">
                 Testez gratuitement notre outil de gouvernance IA
               </span>
