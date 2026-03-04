@@ -179,7 +179,7 @@ export function DiagnosticResultsPage() {
 
   if (!result) {
     return (
-      <div className="flex min-h-screen items-center justify-center" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
+      <div className="flex min-h-screen items-center justify-center" style={{ background: "radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 50% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%), white" }}>
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-[#57886c]" />
       </div>
     );
@@ -189,7 +189,7 @@ export function DiagnosticResultsPage() {
   const VISIBLE_COUNT = 3; // Show only first 3 domains, blur the rest
 
   return (
-    <div className="min-h-screen" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
+    <div className="min-h-screen" style={{ background: "radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 50% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%), white" }}>
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
         {/* ── Header ─────────────────────────────────── */}
         <motion.div

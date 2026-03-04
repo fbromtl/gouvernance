@@ -145,7 +145,7 @@ export function DiagnosticPage() {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
+    <div className="fixed inset-0 flex flex-col" style={{ background: "radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 50% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%), white" }}>
       {/* ── Top Bar ────────────────────────────────────── */}
       <div className="relative z-10 flex items-center justify-between px-4 pt-4 sm:px-6 sm:pt-6">
         <button
