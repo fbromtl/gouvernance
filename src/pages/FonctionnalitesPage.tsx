@@ -1142,26 +1142,26 @@ function NouveautesSlider() {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#0e0f19] py-16 sm:py-24"
+      className="relative overflow-hidden bg-[#0e0f19] py-16 sm:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       {/* Subtle glow */}
-      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-emerald-500/8 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 size-[400px] rounded-full bg-[#57886c]/8 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ── Section header ── */}
         <div className="mb-12 sm:mb-14">
           {/* Top label */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/25">
-              <Zap className="size-5 text-emerald-400" />
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[#57886c]/15 ring-1 ring-[#57886c]/25">
+              <Zap className="size-5 text-[#81a684]" />
             </div>
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#81a684]">
                 Nouveautés
               </span>
-              <span className="ml-2 inline-flex items-center justify-center rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+              <span className="ml-2 inline-flex items-center justify-center rounded-full bg-[#57886c]/20 px-2 py-0.5 text-[10px] font-bold text-[#81a684]">
                 {total}
               </span>
             </div>
@@ -1189,7 +1189,7 @@ function NouveautesSlider() {
                     onClick={() => goTo(i)}
                     className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-300 ${
                       i === current
-                        ? "bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-500/30"
+                        ? "bg-[#57886c]/20 text-[#81a684] ring-1 ring-[#57886c]/30"
                         : "text-white/30 hover:text-white/60 hover:bg-white/5"
                     }`}
                   >
@@ -1207,7 +1207,7 @@ function NouveautesSlider() {
                     onClick={() => goTo(i)}
                     className={`rounded-full transition-all duration-300 ${
                       i === current
-                        ? "w-6 h-2 bg-emerald-400"
+                        ? "w-6 h-2 bg-[#81a684]"
                         : "size-2 bg-white/20 hover:bg-white/40"
                     }`}
                     aria-label={`Slide ${i + 1}`}
@@ -1285,7 +1285,7 @@ function NouveautesSlider() {
         <div className="mt-10 h-0.5 w-full rounded-full bg-white/5">
           <motion.div
             key={`progress-${current}`}
-            className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#57886c]"
+            className="h-full rounded-full bg-gradient-to-r from-[#81a684] to-[#57886c]"
             initial={{ width: "0%" }}
             animate={{ width: paused ? undefined : "100%" }}
             transition={{ duration: SLIDE_INTERVAL / 1000, ease: "linear" }}
@@ -1360,8 +1360,8 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] pt-32 pb-20 sm:pt-36 sm:pb-24">
-        {/* Radial purple glow */}
+      <section className="relative overflow-hidden bg-[#0e0f19] pt-32 pb-20 sm:pt-36 sm:pb-24">
+        {/* Radial forest glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-[#57886c]/15 blur-[140px]" />
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -1557,7 +1557,7 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  BOTTOM CTA                                                   */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-[#0e0f19] py-16 sm:py-24">
         <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#57886c]/10 blur-[120px]" />
 
         <motion.div
