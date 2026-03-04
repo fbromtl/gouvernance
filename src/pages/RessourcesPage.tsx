@@ -91,7 +91,7 @@ export function RessourcesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
           <div className="text-center mb-16">
-            <Badge className="rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-4">
+            <Badge className="rounded-full bg-[#57886c]/10 text-[#81a684] border border-[#57886c]/20 mb-4">
               <Sparkles className="size-3 mr-1" />
               Acc&egrave;s gratuit
             </Badge>
@@ -111,10 +111,10 @@ export function RessourcesPage() {
               return (
                 <div
                   key={outil.title}
-                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300"
+                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 hover:border-[#57886c]/30 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#57886c]/10 text-[#81a684] group-hover:bg-[#57886c]/20 transition-colors">
                       <Icon className="size-5" />
                     </div>
                     <div className="min-w-0">

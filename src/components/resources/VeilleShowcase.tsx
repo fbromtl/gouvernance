@@ -24,9 +24,9 @@ export function VeilleShowcase() {
         }
         @keyframes veillePulseBtn {
           0%,14%,22%,100% { box-shadow: 0 0 0 0 transparent; }
-          16%              { box-shadow: 0 0 0 0 rgba(139,92,246,.5); }
-          19%              { box-shadow: 0 0 0 6px rgba(139,92,246,.2); }
-          21%              { box-shadow: 0 0 0 10px rgba(139,92,246,0); }
+          16%              { box-shadow: 0 0 0 0 rgba(87,136,108,.5); }
+          19%              { box-shadow: 0 0 0 6px rgba(87,136,108,.2); }
+          21%              { box-shadow: 0 0 0 10px rgba(87,136,108,0); }
         }
         @keyframes veilleSummaryIn {
           0%,23%,78%,100% { opacity:0; max-height:0; padding-top:0; padding-bottom:0; margin-top:0; }
@@ -61,9 +61,9 @@ export function VeilleShowcase() {
         }
         @keyframes veilleOrgPulse {
           0%,66%,74%,100% { box-shadow: 0 0 0 0 transparent; }
-          68%              { box-shadow: 0 0 0 0 rgba(59,130,246,.5); }
-          71%              { box-shadow: 0 0 0 6px rgba(59,130,246,.2); }
-          73%              { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
+          68%              { box-shadow: 0 0 0 0 rgba(87,136,108,.5); }
+          71%              { box-shadow: 0 0 0 6px rgba(87,136,108,.2); }
+          73%              { box-shadow: 0 0 0 10px rgba(87,136,108,0); }
         }
         @keyframes veilleOrgBadge {
           0%,72%,88%,100% { opacity:0; transform:translateY(4px); }
@@ -84,12 +84,12 @@ export function VeilleShowcase() {
         {/* ── Mockup header ── */}
         <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <Newspaper className="h-4 w-4 text-emerald-500" />
+            <Newspaper className="h-4 w-4 text-[#57886c]" />
             <span className="text-sm font-semibold text-neutral-800">
               Veille réglementaire
             </span>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#57886c]/10 px-2 py-0.5 text-[10px] font-bold text-[#57886c]">
             <Sparkles className="h-3 w-3" />
             IA
           </span>
@@ -118,7 +118,7 @@ export function VeilleShowcase() {
             {/* Action buttons */}
             <div className="flex items-center gap-2">
               <button
-                className="veille-anim inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700"
+                className="veille-anim inline-flex items-center gap-1.5 rounded-lg bg-[#57886c]/5 border border-[#57886c]/20 px-3 py-1.5 text-[11px] font-medium text-[#57886c]"
                 style={{ animation: "veillePulseBtn 12s ease-in-out infinite" }}
                 tabIndex={-1}
               >
@@ -150,10 +150,10 @@ export function VeilleShowcase() {
 
           {/* ── AI Summary panel (slides in after button pulse) ── */}
           <div
-            className="veille-anim rounded-xl border border-emerald-200 bg-emerald-50/50 px-4 overflow-hidden"
+            className="veille-anim rounded-xl border border-[#57886c]/20 bg-[#57886c]/5 px-4 overflow-hidden"
             style={{ animation: "veilleSummaryIn 12s ease-in-out infinite" }}
           >
-            <p className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wide mb-2 flex items-center gap-1">
+            <p className="text-[10px] font-semibold text-[#57886c] uppercase tracking-wide mb-2 flex items-center gap-1">
               <Sparkles className="h-3 w-3" />
               Résumé IA
             </p>
@@ -170,7 +170,7 @@ export function VeilleShowcase() {
                     animation: `veilleBullet${i + 1} 12s ease-in-out infinite`,
                   }}
                 >
-                  <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                  <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[#81a684]" />
                   <p className="text-[11px] text-neutral-700 leading-relaxed">
                     {text}
                   </p>
