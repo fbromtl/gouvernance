@@ -178,7 +178,7 @@ export default function ProfilPage() {
       {/* ============================================================ */}
       <div className="rounded-2xl border border-border/50 bg-card overflow-hidden">
         {/* Banner */}
-        <div className="h-28 bg-gradient-to-r from-brand-forest via-brand-teal to-[#0e0f19] relative">
+        <div className="h-28 bg-brand-forest relative">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         </div>
 

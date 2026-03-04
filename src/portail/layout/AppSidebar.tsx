@@ -136,7 +136,7 @@ export function AppSidebar({ collapsed, onToggle, activeCategory, filteredMode }
               collapsed && "justify-center"
             )}
           >
-            <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-brand-forest to-brand-teal flex items-center justify-center shrink-0 shadow-sm shadow-brand-forest/20">
+            <div className="relative h-8 w-8 rounded-lg bg-brand-forest flex items-center justify-center shrink-0 shadow-sm shadow-brand-forest/20">
               <Sparkles className="h-4 w-4 text-white" />
             </div>
             {!collapsed && (

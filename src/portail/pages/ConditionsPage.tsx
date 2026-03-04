@@ -40,7 +40,7 @@ export default function ConditionsPage() {
         {/* Card */}
         <div className="rounded-2xl border border-border/50 bg-card shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-br from-brand-forest via-brand-teal to-[#0e0f19] p-6 sm:p-8 text-white">
+          <div className="bg-brand-forest p-6 sm:p-8 text-white">
             <div className="flex items-center gap-3 mb-3">
               <div className="flex size-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
                 <ScrollText className="size-5" />

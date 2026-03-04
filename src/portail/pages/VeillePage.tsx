@@ -321,7 +321,7 @@ export default function VeillePage() {
       </div>
 
       {/* ---- Weekly AI Summary ---- */}
-      <Card className="border-brand-forest/20 bg-gradient-to-br from-brand-forest/5 to-transparent">
+      <Card className="border-brand-forest/20 bg-brand-forest/5">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">

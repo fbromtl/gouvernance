@@ -286,7 +286,7 @@ export default function DashboardPage() {
           </div>
         </PortalCard>
       ) : (
-        <div className="rounded-2xl bg-gradient-to-br from-brand-forest via-brand-forest/90 to-brand-teal p-6 text-white">
+        <div className="rounded-2xl bg-brand-forest p-6 text-white">
           {/* Title */}
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="h-5 w-5 text-white/80" />

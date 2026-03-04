@@ -406,7 +406,7 @@ export function TarifsPage() {
                 >
                   {/* Gradient border for highlighted */}
                   {isHighlighted && (
-                    <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-brand-forest via-brand-sage to-brand-teal" />
+                    <div className="absolute -inset-[2px] rounded-2xl bg-brand-forest" />
                   )}
 
                   <div
@@ -420,7 +420,7 @@ export function TarifsPage() {
                   >
                     {/* Recommended badge */}
                     {isHighlighted && (
-                      <div className="bg-gradient-to-r from-brand-forest to-brand-teal py-2 text-center">
+                      <div className="bg-brand-forest py-2 text-center">
                         <span className="text-xs font-bold text-white uppercase tracking-wider">
                           {t("recommended")}
                         </span>
