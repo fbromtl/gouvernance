@@ -1360,16 +1360,24 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-[#0e0f19] pt-32 pb-20 sm:pt-36 sm:pb-24">
-        {/* Radial forest glow */}
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-[#57886c]/15 blur-[140px]" />
-
+      <section
+        className="relative overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
+          `,
+        }}
+      >
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight"
+            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight"
           >
             {t("hero.title")}
           </motion.h1>
@@ -1378,7 +1386,7 @@ export function FonctionnalitesPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="mt-4 text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed"
           >
             {t("hero.subtitle")}
           </motion.p>
@@ -1403,7 +1411,7 @@ export function FonctionnalitesPage() {
               asChild
               variant="outline"
               size="lg"
-              className="border-white/20 text-white hover:bg-white/10 hover:text-white px-7 h-11 text-sm font-semibold"
+              className="border-neutral-300 text-neutral-700 hover:bg-neutral-100 px-7 h-11 text-sm font-semibold"
             >
               <Link to="/tarifs">{t("hero.ctaSecondary")}</Link>
             </Button>
