@@ -373,7 +373,7 @@ export function RejoindrePage() {
         {/* ============================================================ */}
         {/*  SECTION 5 — FINAL CTA BANNER                                  */}
         {/* ============================================================ */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] py-20 sm:py-28">
+        <section className="relative overflow-hidden bg-[#0e0f19] py-20 sm:py-28">
           <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#57886c]/10 blur-[120px]" />
           <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">

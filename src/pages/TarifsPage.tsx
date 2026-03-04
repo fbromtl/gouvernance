@@ -279,7 +279,7 @@ export function TarifsPage() {
       {/* ============================================================ */}
       {/*  HERO — compact, everything above the fold                    */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <section className="relative overflow-hidden bg-[#0e0f19] pt-32 pb-20 sm:pt-36 sm:pb-24">
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-brand-forest/20 blur-[100px]" />
         <div className="pointer-events-none absolute -bottom-32 -left-32 size-64 rounded-full bg-brand-teal/15 blur-[80px]" />
@@ -675,7 +675,7 @@ export function TarifsPage() {
       {/* ============================================================ */}
       {/*  BOTTOM CTA                                                    */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-[#0e0f19] py-16 sm:py-24">
         <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-brand-forest/10 blur-[120px]" />
 
         <motion.div
