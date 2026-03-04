@@ -121,9 +121,9 @@ export function Header() {
           bannerVisible ? "max-h-12" : "max-h-0"
         )}
       >
-        <div className="bg-gradient-to-r from-emerald-50 via-emerald-50/80 to-emerald-50 border-b border-emerald-100/60">
+        <div className="bg-[#466060]">
           <div className="mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-2.5 relative">
-            <p className="text-[13px] text-emerald-900/80 font-medium">
+            <p className="text-[13px] text-white font-medium">
               <span className="hidden sm:inline">
                 Testez gratuitement notre outil de gouvernance IA
               </span>
@@ -133,7 +133,7 @@ export function Header() {
             </p>
             <Link
               to="/rejoindre"
-              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-emerald-900 hover:text-emerald-950 transition-colors"
+              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-white hover:text-white/80 transition-colors"
             >
               Essayer
               <ChevronRight className="size-3.5" />
@@ -141,7 +141,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setBannerVisible(false)}
-              className="absolute right-4 sm:right-6 lg:right-8 p-1 rounded-md text-emerald-400 hover:text-emerald-700 hover:bg-emerald-100/60 transition-colors"
+              className="absolute right-4 sm:right-6 lg:right-8 p-1 rounded-md text-white/60 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Fermer la bannière"
             >
               <X className="size-3.5" />
