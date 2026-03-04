@@ -21,13 +21,27 @@ import { navGroups, type NavItem, type NavGroup } from "./nav-config";
 interface AppSidebarProps {
   collapsed: boolean;
   onToggle: () => void;
+  /** When set, only items from this category are shown (desktop dual-sidebar mode) */
+  activeCategory?: string;
+  /** When true, the sidebar is in filtered mode (has icon rail next to it) */
+  filteredMode?: boolean;
 }
 
-export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
+export function AppSidebar({ collapsed, onToggle, activeCategory, filteredMode }: AppSidebarProps) {
   const { t } = useTranslation("portail");
   const location = useLocation();
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + "/");
+
+  // Filter groups when in dual-sidebar mode
+  const displayGroups = activeCategory
+    ? navGroups.filter((g) => g.category === activeCategory)
+    : navGroups;
+
+  // Get the active group name for the header
+  const activeCategoryLabel = activeCategory
+    ? navGroups.find((g) => g.category === activeCategory)?.labelKey
+    : null;
 
   /* ------ render a single nav link ------ */
   function renderItem(item: NavItem) {
@@ -111,35 +125,50 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
       <aside
         className={cn(
           "flex flex-col border-r border-neutral-100 bg-white transition-all duration-300 ease-in-out",
-          collapsed ? "w-[60px]" : "w-[250px]"
+          collapsed ? "w-[60px]" : filteredMode ? "w-[220px]" : "w-[250px]"
         )}
       >
         {/* ---- Brand Header ---- */}
-        <div
-          className={cn(
-            "flex items-center gap-3 border-b border-neutral-100 px-3 h-14 shrink-0",
-            collapsed && "justify-center"
-          )}
-        >
-          <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-brand-purple to-brand-purple-dark flex items-center justify-center shrink-0 shadow-sm shadow-brand-purple/20">
-            <Sparkles className="h-4 w-4 text-white" />
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col min-w-0">
-              <span className="font-bold text-sm tracking-tight truncate text-neutral-900">
-                {t("brandName")}
-              </span>
-              <span className="text-[10px] text-neutral-400 -mt-0.5 font-medium">
-                {t("brandTagline")}
-              </span>
+        {!filteredMode ? (
+          <div
+            className={cn(
+              "flex items-center gap-3 border-b border-neutral-100 px-3 h-14 shrink-0",
+              collapsed && "justify-center"
+            )}
+          >
+            <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-brand-purple to-brand-purple-dark flex items-center justify-center shrink-0 shadow-sm shadow-brand-purple/20">
+              <Sparkles className="h-4 w-4 text-white" />
             </div>
-          )}
-        </div>
+            {!collapsed && (
+              <div className="flex flex-col min-w-0">
+                <span className="font-bold text-sm tracking-tight truncate text-neutral-900">
+                  {t("brandName")}
+                </span>
+                <span className="text-[10px] text-neutral-400 -mt-0.5 font-medium">
+                  {t("brandTagline")}
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div
+            className={cn(
+              "flex items-center gap-2 border-b border-neutral-100 px-3 h-14 shrink-0",
+              collapsed && "justify-center"
+            )}
+          >
+            {!collapsed && activeCategoryLabel && (
+              <span className="font-semibold text-sm text-neutral-900 truncate">
+                {t(activeCategoryLabel)}
+              </span>
+            )}
+          </div>
+        )}
 
         {/* ---- Navigation ---- */}
         <ScrollArea className="flex-1 py-1.5">
           <nav className="flex flex-col px-2">
-            {navGroups.map(renderGroup)}
+            {displayGroups.map(renderGroup)}
           </nav>
         </ScrollArea>
 
