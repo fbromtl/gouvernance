@@ -87,7 +87,7 @@ export function RessourcesPage() {
       <DocumentLibraryPreview />
 
       {/* SECTION: Boîte à outils */}
-      <section id="outils" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
+      <section id="outils" className="py-24 sm:py-32 bg-[#0e0f19] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
           <div className="text-center mb-16">

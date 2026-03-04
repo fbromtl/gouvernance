@@ -130,7 +130,7 @@ export function AProposPage() {
             </div>
 
             {/* Photo + Vision card */}
-            <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-neutral-900 group hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
+            <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-[#0e0f19] group hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
               <img
                 src="/images-gouvernance-ai/businesspeople-meeting.jpg"
                 className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
@@ -186,7 +186,7 @@ export function AProposPage() {
             </div>
 
             {/* Stats dark */}
-            <div className="bg-neutral-950 px-8 py-8 rounded-[40px] flex flex-col justify-between text-white relative hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 min-h-[220px]">
+            <div className="bg-[#0e0f19] px-8 py-8 rounded-[40px] flex flex-col justify-between text-white relative hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 min-h-[220px]">
               <span className="text-sm font-medium tracking-tight text-[#57886c] uppercase tracking-widest">
                 Le Cercle en chiffres
               </span>
@@ -250,8 +250,8 @@ export function AProposPage() {
         </div>
       </section>
 
-      {/* SECTION: Gouvernance du cercle (id="gouvernance") — DARK bg-neutral-950 */}
-      <section id="gouvernance" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
+      {/* SECTION: Gouvernance du cercle (id="gouvernance") — DARK bg-[#0e0f19] */}
+      <section id="gouvernance" className="py-24 sm:py-32 bg-[#0e0f19] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Gouvernance du cercle

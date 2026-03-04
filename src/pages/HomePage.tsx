@@ -341,7 +341,7 @@ export function HomePage() {
               </div>
 
               {/* Card 2: Image card */}
-              <div className="relative rounded-[40px] overflow-hidden h-[520px] bg-neutral-900 group">
+              <div className="relative rounded-[40px] overflow-hidden h-[520px] bg-[#0e0f19] group">
                 <img
                   src="/images-gouvernance-ai/ceo-analysing.jpg"
                   className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
@@ -376,14 +376,14 @@ export function HomePage() {
                 </div>
                 <Link
                   to="/portail"
-                  className="w-full bg-neutral-900 text-white py-4 rounded-[20px] text-sm font-semibold hover:bg-[#57886c] transition-colors duration-300 shadow-lg shadow-neutral-200 text-center block"
+                  className="w-full bg-[#0e0f19] text-white py-4 rounded-[20px] text-sm font-semibold hover:bg-[#57886c] transition-colors duration-300 shadow-lg shadow-neutral-200 text-center block"
                 >
                   Voir le portail
                 </Link>
               </div>
 
               {/* Card 4: Expert Support dark */}
-              <div className="bg-neutral-950 p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative transition-all duration-500">
+              <div className="bg-[#0e0f19] p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative transition-all duration-500">
                 <div className="flex justify-between items-start">
                   <span className="text-lg font-medium tracking-tight text-[#57886c]">
                     Accompagnement Expert
@@ -481,7 +481,7 @@ export function HomePage() {
           <div className="text-center mt-14">
             <Link
               to="/inscription"
-              className="inline-flex items-center gap-2 bg-neutral-950 text-white px-8 py-4 rounded-full font-medium hover:bg-neutral-800 transition-colors"
+              className="inline-flex items-center gap-2 bg-[#0e0f19] text-white px-8 py-4 rounded-full font-medium hover:bg-[#1a1f2e] transition-colors"
             >
               Commencer maintenant, c&apos;est gratuit
               <ArrowRight className="w-4 h-4" />
@@ -877,7 +877,7 @@ export function HomePage() {
         <div className="text-center py-10">
           <Link
             to="/inscription"
-            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-7 py-3 text-sm font-semibold text-white shadow-lg hover:bg-neutral-800 transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0e0f19] px-7 py-3 text-sm font-semibold text-white shadow-lg hover:bg-[#1a1f2e] transition-all"
           >
             Commencer mon évaluation gratuite
             <ArrowRight className="w-4 h-4" />
@@ -1047,7 +1047,7 @@ export function HomePage() {
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center justify-center">
                   <Link
                     to="/diagnostic"
-                    className="w-full sm:w-auto bg-neutral-900 text-white px-10 py-4 rounded-full text-sm font-medium hover:bg-neutral-800 transition-all shadow-xl shadow-neutral-200/50 flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto bg-[#0e0f19] text-white px-10 py-4 rounded-full text-sm font-medium hover:bg-[#1a1f2e] transition-all shadow-xl shadow-neutral-200/50 flex items-center justify-center gap-2"
                   >
                     Lancer le diagnostic gratuit
                     <Zap className="w-4 h-4 fill-current" />

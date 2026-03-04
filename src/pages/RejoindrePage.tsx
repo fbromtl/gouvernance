@@ -249,7 +249,7 @@ export function RejoindrePage() {
             <div className="text-center mt-12">
               <Link
                 to="/inscription"
-                className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white shadow-lg hover:bg-neutral-800 transition-all"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0e0f19] px-7 py-3.5 text-sm font-semibold text-white shadow-lg hover:bg-[#1a1f2e] transition-all"
               >
                 Commencer gratuitement
                 <ArrowRight className="size-4" />
@@ -261,7 +261,7 @@ export function RejoindrePage() {
         {/* ============================================================ */}
         {/*  SECTION 3 — COMMUNITY & DIAGNOSTIC (DARK)                    */}
         {/* ============================================================ */}
-        <section className="py-24 sm:py-32 bg-neutral-950">
+        <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Community card */}

@@ -373,7 +373,7 @@ export function ArticlePage() {
         )}
 
         {/* 12. Newsletter CTA */}
-        <section className="py-24 sm:py-32 bg-neutral-950">
+        <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">

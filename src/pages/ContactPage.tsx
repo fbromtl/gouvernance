@@ -162,7 +162,7 @@ export function ContactPage() {
 
             {/* Info - right (dark section) */}
             <div className="space-y-8">
-              <div className="rounded-3xl bg-neutral-950 p-8 sm:p-10">
+              <div className="rounded-3xl bg-[#0e0f19] p-8 sm:p-10">
                 <h2 className="text-2xl font-bold text-white mb-6">
                   Nos coordonnées
                 </h2>

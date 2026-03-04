@@ -85,7 +85,7 @@ export function ExpertsPage() {
       </section>
 
       {/* SECTION: Comités thématiques */}
-      <section id="comites" className="py-24 sm:py-32 bg-neutral-950 scroll-mt-20">
+      <section id="comites" className="py-24 sm:py-32 bg-[#0e0f19] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Comités thématiques
