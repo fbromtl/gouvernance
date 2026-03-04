@@ -12,6 +12,7 @@ import {
   LogOut,
   LayoutDashboard,
   Sparkles,
+  UserCircle,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -188,8 +189,9 @@ export function Header() {
             {!authLoading && !user && (
               <Link
                 to="/connexion"
-                className="text-[13px] font-medium text-neutral-500 hover:text-neutral-950 transition-colors px-3 py-1.5"
+                className="inline-flex items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-950 transition-colors px-3 py-1.5"
               >
+                <UserCircle className="size-4" />
                 Se connecter
               </Link>
             )}
