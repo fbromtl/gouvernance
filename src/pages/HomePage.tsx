@@ -80,10 +80,10 @@ export function HomePage() {
           style={{
             backgroundColor: "#ffffff",
             backgroundImage: `
-              radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%),
-              radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%),
-              radial-gradient(at 100% 100%, hsla(250,100%,92%,1) 0, transparent 50%),
-              radial-gradient(at 0% 100%, hsla(220,100%,96%,1) 0, transparent 50%)
+              radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
+              radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
+              radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
+              radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
             `,
           }}
         >
