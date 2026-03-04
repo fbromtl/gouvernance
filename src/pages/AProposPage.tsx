@@ -94,8 +94,8 @@ export function AProposPage() {
           <div className="flex flex-col w-full mb-12">
             <div className="flex items-end justify-between w-full pb-5">
               <div className="flex gap-x-2 items-center">
-                <span className="w-8 h-px bg-[#ab54f3]" />
-                <span className="uppercase text-xs font-bold text-[#ab54f3] tracking-[0.2em]">
+                <span className="w-8 h-px bg-[#57886c]" />
+                <span className="uppercase text-xs font-bold text-[#57886c] tracking-[0.2em]">
                   Notre mission
                 </span>
               </div>
@@ -107,9 +107,9 @@ export function AProposPage() {
           {/* Row 1: Mission (left half) + Photo+Vision (right half) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* Mission card */}
-            <div className="group flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between min-h-[340px]">
+            <div className="group flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between min-h-[340px]">
               <div>
-                <div className="w-12 h-12 bg-[#ab54f3]/10 rounded-2xl flex items-center justify-center text-[#ab54f3] mb-6">
+                <div className="w-12 h-12 bg-[#57886c]/10 rounded-2xl flex items-center justify-center text-[#57886c] mb-6">
                   <Shield className="h-6 w-6" />
                 </div>
                 <h3 className="text-2xl text-neutral-900 mb-4 tracking-tight leading-tight font-semibold">
@@ -130,7 +130,7 @@ export function AProposPage() {
             </div>
 
             {/* Photo + Vision card */}
-            <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-neutral-900 group hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
+            <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-neutral-900 group hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
               <img
                 src="/images-gouvernance-ai/businesspeople-meeting.jpg"
                 className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
@@ -138,7 +138,7 @@ export function AProposPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
               <div className="absolute top-6 left-6">
-                <span className="inline-block px-3 py-1 bg-[#ab54f3] rounded-full text-[10px] font-bold uppercase tracking-widest text-white">
+                <span className="inline-block px-3 py-1 bg-[#57886c] rounded-full text-[10px] font-bold uppercase tracking-widest text-white">
                   Notre vision
                 </span>
               </div>
@@ -153,8 +153,8 @@ export function AProposPage() {
           {/* Row 2: 3 Values + Stats dark */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Transparence */}
-            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
-              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#57886c]/10 rounded-xl flex items-center justify-center text-[#57886c] mb-5">
                 <Eye className="h-5 w-5" />
               </div>
               <h4 className="text-lg font-semibold text-neutral-900 mb-2">Transparence</h4>
@@ -164,8 +164,8 @@ export function AProposPage() {
             </div>
 
             {/* Rigueur */}
-            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
-              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#57886c]/10 rounded-xl flex items-center justify-center text-[#57886c] mb-5">
                 <Shield className="h-5 w-5" />
               </div>
               <h4 className="text-lg font-semibold text-neutral-900 mb-2">Rigueur</h4>
@@ -175,8 +175,8 @@ export function AProposPage() {
             </div>
 
             {/* Collaboration */}
-            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500">
-              <div className="w-10 h-10 bg-[#ab54f3]/10 rounded-xl flex items-center justify-center text-[#ab54f3] mb-5">
+            <div className="group bg-neutral-50 border border-neutral-200/60 rounded-[40px] px-8 py-8 flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
+              <div className="w-10 h-10 bg-[#57886c]/10 rounded-xl flex items-center justify-center text-[#57886c] mb-5">
                 <Users className="h-5 w-5" />
               </div>
               <h4 className="text-lg font-semibold text-neutral-900 mb-2">Collaboration</h4>
@@ -186,27 +186,27 @@ export function AProposPage() {
             </div>
 
             {/* Stats dark */}
-            <div className="bg-neutral-950 px-8 py-8 rounded-[40px] flex flex-col justify-between text-white relative hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500 min-h-[220px]">
-              <span className="text-sm font-medium tracking-tight text-[#ab54f3] uppercase tracking-widest">
+            <div className="bg-neutral-950 px-8 py-8 rounded-[40px] flex flex-col justify-between text-white relative hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 min-h-[220px]">
+              <span className="text-sm font-medium tracking-tight text-[#57886c] uppercase tracking-widest">
                 Le Cercle en chiffres
               </span>
               <div className="space-y-4 my-4">
                 <div className="group/link cursor-pointer">
                   <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Experts</p>
-                  <p className="text-3xl font-bold group-hover/link:text-[#ab54f3] transition-colors">
+                  <p className="text-3xl font-bold group-hover/link:text-[#57886c] transition-colors">
                     150+
                   </p>
                 </div>
                 <div className="group/link cursor-pointer">
                   <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Disciplines</p>
-                  <p className="text-3xl font-bold group-hover/link:text-[#ab54f3] transition-colors">
+                  <p className="text-3xl font-bold group-hover/link:text-[#57886c] transition-colors">
                     15
                   </p>
                 </div>
               </div>
               <Link
                 to="/rejoindre"
-                className="w-full bg-white text-neutral-900 py-3 rounded-[20px] text-sm font-semibold hover:bg-[#ab54f3] hover:text-white transition-colors duration-300 text-center block"
+                className="w-full bg-white text-neutral-900 py-3 rounded-[20px] text-sm font-semibold hover:bg-[#57886c] hover:text-white transition-colors duration-300 text-center block"
               >
                 Rejoindre le Cercle
               </Link>
@@ -230,14 +230,14 @@ export function AProposPage() {
             {frameworks.map((f) => (
               <Card
                 key={f.name}
-                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 group"
+                className="rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <CardHeader className="pb-2">
                   <Badge variant="outline" className="w-fit mb-2 text-xs rounded-full">
                     {f.origin}
                   </Badge>
                   <CardTitle className="text-base flex items-center gap-2">
-                    <BookOpen className="size-4 text-purple-500 shrink-0" />
+                    <BookOpen className="size-4 text-emerald-500 shrink-0" />
                     {f.name}
                   </CardTitle>
                 </CardHeader>
@@ -261,22 +261,22 @@ export function AProposPage() {
             l&apos;efficacité de nos actions.
           </p>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
-              <Shield className="size-8 text-purple-400 mb-4" />
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
+              <Shield className="size-8 text-emerald-400 mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Comité directeur</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[0].description}
               </p>
             </div>
-            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
-              <FileCheck className="size-8 text-purple-400 mb-4" />
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
+              <FileCheck className="size-8 text-emerald-400 mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Charte éthique</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[1].description}
               </p>
             </div>
-            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
-              <Users className="size-8 text-purple-400 mb-4" />
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-6 hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
+              <Users className="size-8 text-emerald-400 mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Processus décisionnel</h3>
               <p className="text-neutral-400 leading-relaxed">
                 {gouvernanceItems[2].description}
@@ -286,7 +286,7 @@ export function AProposPage() {
           <div className="text-center">
             <Link
               to="/rejoindre"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
             >
               Rejoindre le Cercle
               <ArrowRight className="size-4" />

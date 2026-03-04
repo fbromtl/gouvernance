@@ -149,8 +149,8 @@ export default function DashboardPage() {
       icon: Bot,
       value: String(productionSystems),
       path: "/ai-systems",
-      color: "text-brand-purple",
-      bgColor: "bg-brand-purple/10",
+      color: "text-brand-forest",
+      bgColor: "bg-brand-forest/10",
       trend: null as null | "up" | "down" | "neutral",
     },
     {
@@ -183,7 +183,7 @@ export default function DashboardPage() {
   ];
 
   const quickModules = [
-    { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length, color: "text-brand-purple", bgColor: "bg-brand-purple/10" },
+    { key: "aiSystems", icon: Bot, path: "/ai-systems", count: aiSystems.length, color: "text-brand-forest", bgColor: "bg-brand-forest/10" },
     { key: "risks", icon: ShieldAlert, path: "/risks", count: null, color: "text-amber-600", bgColor: "bg-amber-50" },
     { key: "incidents", icon: AlertCircle, path: "/incidents", count: incidents.length, color: "text-red-600", bgColor: "bg-red-50" },
     { key: "compliance", icon: FileText, path: "/compliance", count: null, color: "text-emerald-600", bgColor: "bg-emerald-50" },
@@ -210,7 +210,7 @@ export default function DashboardPage() {
         {/* Demo mode toggle */}
         <div className="flex items-center gap-2.5 shrink-0 pt-1">
           {demo && (
-            <Badge className="bg-brand-purple/15 text-brand-purple border-brand-purple/30 text-[10px] font-bold tracking-wider animate-pulse">
+            <Badge className="bg-brand-forest/15 text-brand-forest border-brand-forest/30 text-[10px] font-bold tracking-wider animate-pulse">
               {t("demoBadge")}
             </Badge>
           )}
@@ -218,8 +218,8 @@ export default function DashboardPage() {
             htmlFor="demo-toggle"
             className="flex items-center gap-2 cursor-pointer select-none"
           >
-            <FlaskConical className={`h-4 w-4 transition-colors ${demo ? "text-brand-purple" : "text-neutral-400"}`} />
-            <span className={`text-xs font-medium transition-colors ${demo ? "text-brand-purple" : "text-neutral-500"}`}>
+            <FlaskConical className={`h-4 w-4 transition-colors ${demo ? "text-brand-forest" : "text-neutral-400"}`} />
+            <span className={`text-xs font-medium transition-colors ${demo ? "text-brand-forest" : "text-neutral-500"}`}>
               {t("demoMode")}
             </span>
           </label>
@@ -227,7 +227,7 @@ export default function DashboardPage() {
             id="demo-toggle"
             checked={demo}
             onCheckedChange={toggleDemo}
-            className="data-[state=checked]:bg-brand-purple"
+            className="data-[state=checked]:bg-brand-forest"
           />
         </div>
       </div>
@@ -270,7 +270,7 @@ export default function DashboardPage() {
             {profile?.member_slug ? (
               <Link
                 to={`/membres/${profile.member_slug}`}
-                className="inline-flex items-center gap-1 text-xs font-medium text-brand-purple hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-medium text-brand-forest hover:underline"
               >
                 {t("membership.viewPublicPage", { defaultValue: "Voir ma page publique" })}
                 <ArrowRight className="h-3 w-3" />
@@ -286,7 +286,7 @@ export default function DashboardPage() {
           </div>
         </PortalCard>
       ) : (
-        <div className="rounded-2xl bg-gradient-to-br from-brand-purple via-brand-purple/90 to-indigo-600 p-6 text-white">
+        <div className="rounded-2xl bg-gradient-to-br from-brand-forest via-brand-forest/90 to-brand-teal p-6 text-white">
           {/* Title */}
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="h-5 w-5 text-white/80" />
@@ -325,7 +325,7 @@ export default function DashboardPage() {
           <Button
             asChild
             size="sm"
-            className="bg-white text-brand-purple hover:bg-white/90 font-semibold shadow-md"
+            className="bg-white text-brand-forest hover:bg-white/90 font-semibold shadow-md"
           >
             <Link to="/billing" className="gap-1.5">
               {t("membership.joinCta", { defaultValue: "Devenir Membre" })}
@@ -422,7 +422,7 @@ export default function DashboardPage() {
                   <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
                     {t(`modules.${mod.key}.description`)}
                   </p>
-                  <div className="flex items-center gap-1 mt-3 text-xs font-medium text-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center gap-1 mt-3 text-xs font-medium text-brand-forest opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span>{t("viewModule", { defaultValue: "Ouvrir" })}</span>
                     <ArrowRight className="h-3 w-3" />
                   </div>

@@ -279,10 +279,10 @@ export function TarifsPage() {
       {/* ============================================================ */}
       {/*  HERO — compact, everything above the fold                    */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#1e1a30] to-[#2d1f4e] pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] pt-32 pb-20 sm:pt-36 sm:pb-24">
         {/* Decorative blobs */}
-        <div className="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-brand-purple/20 blur-[100px]" />
-        <div className="pointer-events-none absolute -bottom-32 -left-32 size-64 rounded-full bg-brand-purple-dark/15 blur-[80px]" />
+        <div className="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-brand-forest/20 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 -left-32 size-64 rounded-full bg-brand-teal/15 blur-[80px]" />
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -291,7 +291,7 @@ export function TarifsPage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 mb-6 border border-white/10"
           >
-            <Shield className="size-3.5 text-brand-purple-light" />
+            <Shield className="size-3.5 text-brand-sage" />
             <span className="text-xs font-medium text-white/70 tracking-wide">
               {t("yearlyDiscount")}
             </span>
@@ -327,7 +327,7 @@ export function TarifsPage() {
               className={cn(
                 "rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300",
                 !isYearly
-                  ? "bg-white text-[#1e1a30] shadow-lg"
+                  ? "bg-white text-[#0e0f19] shadow-lg"
                   : "text-white/60 hover:text-white"
               )}
             >
@@ -339,7 +339,7 @@ export function TarifsPage() {
               className={cn(
                 "rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 flex items-center gap-2",
                 isYearly
-                  ? "bg-white text-[#1e1a30] shadow-lg"
+                  ? "bg-white text-[#0e0f19] shadow-lg"
                   : "text-white/60 hover:text-white"
               )}
             >
@@ -406,21 +406,21 @@ export function TarifsPage() {
                 >
                   {/* Gradient border for highlighted */}
                   {isHighlighted && (
-                    <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-brand-purple via-brand-purple-light to-brand-purple-dark" />
+                    <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-brand-forest via-brand-sage to-brand-teal" />
                   )}
 
                   <div
                     className={cn(
                       "relative rounded-2xl bg-white border overflow-hidden transition-all duration-300",
-                      "hover:shadow-xl hover:shadow-brand-purple/5 hover:-translate-y-0.5",
+                      "hover:shadow-xl hover:shadow-brand-forest/5 hover:-translate-y-0.5",
                       isHighlighted
-                        ? "border-transparent shadow-2xl shadow-brand-purple/10"
+                        ? "border-transparent shadow-2xl shadow-brand-forest/10"
                         : "border-border/60 shadow-lg shadow-black/5"
                     )}
                   >
                     {/* Recommended badge */}
                     {isHighlighted && (
-                      <div className="bg-gradient-to-r from-brand-purple to-brand-purple-dark py-2 text-center">
+                      <div className="bg-gradient-to-r from-brand-forest to-brand-teal py-2 text-center">
                         <span className="text-xs font-bold text-white uppercase tracking-wider">
                           {t("recommended")}
                         </span>
@@ -434,7 +434,7 @@ export function TarifsPage() {
                           className={cn(
                             "flex size-9 items-center justify-center rounded-lg",
                             isHighlighted
-                              ? "bg-brand-purple/10 text-brand-purple"
+                              ? "bg-brand-forest/10 text-brand-forest"
                               : config.id === "expert"
                                 ? "bg-amber-500/10 text-amber-600"
                                 : "bg-muted text-muted-foreground"
@@ -446,7 +446,7 @@ export function TarifsPage() {
                           {t(config.id)}
                         </h3>
                         {isCurrentPlan && (
-                          <Badge variant="secondary" className="ml-auto text-[10px] font-bold bg-brand-purple/10 text-brand-purple border-0">
+                          <Badge variant="secondary" className="ml-auto text-[10px] font-bold bg-brand-forest/10 text-brand-forest border-0">
                             {t("currentPlan")}
                           </Badge>
                         )}
@@ -492,7 +492,7 @@ export function TarifsPage() {
                             isCurrentPlan
                               ? "pointer-events-none opacity-60"
                               : isHighlighted
-                                ? "bg-brand-purple hover:bg-brand-purple-dark text-white shadow-md shadow-brand-purple/20"
+                                ? "bg-brand-forest hover:bg-brand-teal text-white shadow-md shadow-brand-forest/20"
                                 : config.id === "expert"
                                   ? "bg-foreground hover:bg-foreground/90 text-white"
                                   : ""
@@ -551,16 +551,16 @@ export function TarifsPage() {
         <div className="mx-auto max-w-3xl">
           <Link
             to="/membres-honoraires"
-            className="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 p-6 sm:p-8 text-center hover:border-brand-purple/40 hover:shadow-lg hover:shadow-purple-500/5 transition-all"
+            className="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50 p-6 sm:p-8 text-center hover:border-brand-forest/40 hover:shadow-lg hover:shadow-[#57886c]/5 transition-all"
           >
-            <div className="mx-auto mb-3 flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
-              <Award className="size-5 text-brand-purple" />
+            <div className="mx-auto mb-3 flex size-10 items-center justify-center rounded-xl bg-brand-forest/10">
+              <Award className="size-5 text-brand-forest" />
             </div>
             <h3 className="text-lg font-bold mb-1">{t("honoraryBanner.title")}</h3>
             <p className="text-sm text-muted-foreground mb-4 max-w-lg mx-auto">
               {t("honoraryBanner.subtitle")}
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-purple group-hover:gap-2.5 transition-all">
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-forest group-hover:gap-2.5 transition-all">
               {t("honoraryBanner.cta")}
               <ArrowRight className="size-4" />
             </span>
@@ -606,7 +606,7 @@ export function TarifsPage() {
                   className={cn(
                     "p-4 text-center text-sm font-bold",
                     planId === "member"
-                      ? "text-brand-purple bg-brand-purple/5"
+                      ? "text-brand-forest bg-brand-forest/5"
                       : "text-foreground"
                   )}
                 >
@@ -653,7 +653,7 @@ export function TarifsPage() {
                       key={colIdx}
                       className={cn(
                         "p-3 sm:p-3.5 flex items-center justify-center",
-                        colIdx === 1 && "bg-brand-purple/[0.02]"
+                        colIdx === 1 && "bg-brand-forest/[0.02]"
                       )}
                     >
                       {has ? (
@@ -675,8 +675,8 @@ export function TarifsPage() {
       {/* ============================================================ */}
       {/*  BOTTOM CTA                                                    */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#1e1a30] to-[#2d1f4e] py-16 sm:py-24">
-        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-brand-purple/10 blur-[120px]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0f0b1a] via-[#0e0f19] to-[#2d1f4e] py-16 sm:py-24">
+        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-brand-forest/10 blur-[120px]" />
 
         <motion.div
           variants={fadeUp}
@@ -695,7 +695,7 @@ export function TarifsPage() {
             <Button
               asChild
               size="lg"
-              className="bg-brand-purple hover:bg-brand-purple-dark text-white shadow-xl shadow-brand-purple/25 px-7 h-11 text-sm font-semibold"
+              className="bg-brand-forest hover:bg-brand-teal text-white shadow-xl shadow-brand-forest/25 px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("startFree")}

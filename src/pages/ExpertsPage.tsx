@@ -98,7 +98,7 @@ export function ExpertsPage() {
             {committees.map((com) => (
               <Card
                 key={com.title}
-                className="bg-white/5 border border-white/10 rounded-3xl hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300"
+                className="bg-white/5 border border-white/10 rounded-3xl hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300"
               >
                 <CardHeader>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">

@@ -138,7 +138,7 @@ function statusColor(s: string) {
     case "resolved":
       return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "accepted_risk":
-      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
+      return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400";
     default:
       return "bg-muted text-muted-foreground";
   }
@@ -311,7 +311,7 @@ export default function BiasPage() {
         <div>
           <div className="flex items-center gap-1.5">
             <h1 className="text-2xl font-bold flex items-center gap-2">
-              <Scale className="h-6 w-6 text-brand-purple" />
+              <Scale className="h-6 w-6 text-brand-forest" />
               {t("pageTitle")}
             </h1>
             <SectionHelpButton ns="bias" />

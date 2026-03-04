@@ -59,9 +59,9 @@ export function ToolkitShowcase() {
         /* ── Phase 3: Generate button pulse (33-42%) ── */
         @keyframes tkBtnPulse {
           0%,33%,42%,100% { box-shadow: 0 0 0 0 transparent; }
-          36%              { box-shadow: 0 0 0 0 rgba(171,84,243,.5); }
-          39%              { box-shadow: 0 0 0 8px rgba(171,84,243,.15); }
-          41%              { box-shadow: 0 0 0 12px rgba(171,84,243,0); }
+          36%              { box-shadow: 0 0 0 0 rgba(87,136,108,.5); }
+          39%              { box-shadow: 0 0 0 8px rgba(87,136,108,.15); }
+          41%              { box-shadow: 0 0 0 12px rgba(87,136,108,0); }
         }
         @keyframes tkBtnIn {
           0%,30%  { opacity:0; transform:translateY(6px); }
@@ -132,12 +132,12 @@ export function ToolkitShowcase() {
         {/* ── Mockup header ── */}
         <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <FileText className="h-4 w-4 text-violet-500" />
+            <FileText className="h-4 w-4 text-emerald-500" />
             <span className="text-sm font-semibold text-neutral-800">
               Générateur de documents
             </span>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-600">
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
             <Sparkles className="h-3 w-3" />
             IA
           </span>
@@ -189,22 +189,22 @@ export function ToolkitShowcase() {
               <label className="block text-[10px] font-semibold text-neutral-500 uppercase tracking-wide mb-1">
                 Type de document
               </label>
-              <div className="rounded-lg border border-violet-200 bg-violet-50/50 px-3 py-2 relative h-[34px] overflow-hidden">
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 px-3 py-2 relative h-[34px] overflow-hidden">
                 {/* Cycling text options */}
                 <span
-                  className="toolkit-anim absolute inset-x-3 text-sm text-violet-700 font-medium"
+                  className="toolkit-anim absolute inset-x-3 text-sm text-emerald-700 font-medium"
                   style={{ animation: "tkDocText1 12s ease-in-out infinite" }}
                 >
                   Politique d&apos;IA générative
                 </span>
                 <span
-                  className="toolkit-anim absolute inset-x-3 text-sm text-violet-700 font-medium"
+                  className="toolkit-anim absolute inset-x-3 text-sm text-emerald-700 font-medium"
                   style={{ animation: "tkDocText2 12s ease-in-out infinite" }}
                 >
                   Code d&apos;éthique IA
                 </span>
                 <span
-                  className="toolkit-anim absolute inset-x-3 text-sm text-violet-700 font-medium"
+                  className="toolkit-anim absolute inset-x-3 text-sm text-emerald-700 font-medium"
                   style={{ animation: "tkDocFinal 12s ease-in-out infinite" }}
                 >
                   Charte d&apos;utilisation de l&apos;IA
@@ -219,7 +219,7 @@ export function ToolkitShowcase() {
             style={{ animation: "tkBtnIn 12s ease-in-out infinite" }}
           >
             <button
-              className="toolkit-anim w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-4 py-2.5 text-sm font-semibold text-white"
+              className="toolkit-anim w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#57886c] to-[#466060] px-4 py-2.5 text-sm font-semibold text-white"
               style={{ animation: "tkBtnPulse 12s ease-in-out infinite" }}
               tabIndex={-1}
             >
@@ -234,7 +234,7 @@ export function ToolkitShowcase() {
             style={{ animation: "tkProgressBar 12s ease-in-out infinite" }}
           >
             <div
-              className="toolkit-anim h-full rounded-full bg-gradient-to-r from-violet-400 to-violet-600"
+              className="toolkit-anim h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600"
               style={{ animation: "tkProgressFill 12s ease-in-out infinite" }}
             />
           </div>
@@ -251,7 +251,7 @@ export function ToolkitShowcase() {
                 className="toolkit-anim flex items-center gap-2"
                 style={{ animation: `${anim} 12s ease-in-out infinite` }}
               >
-                <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
                 <p className="text-[11px] text-neutral-600">{text}</p>
               </div>
             ))}
@@ -265,8 +265,8 @@ export function ToolkitShowcase() {
             {/* PDF header */}
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-violet-100 flex items-center justify-center">
-                  <FileText className="h-4 w-4 text-violet-600" />
+                <div className="h-8 w-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+                  <FileText className="h-4 w-4 text-emerald-600" />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-neutral-800 leading-tight">

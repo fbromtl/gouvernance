@@ -39,7 +39,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
         className={cn(
           "max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed whitespace-pre-wrap",
           isUser
-            ? "bg-brand-purple text-white rounded-br-md"
+            ? "bg-brand-forest text-white rounded-br-md"
             : "bg-muted text-foreground rounded-bl-md"
         )}
       >
@@ -123,7 +123,7 @@ export function FloatingChat({
           )}
         >
           {/* Panel header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 rounded-t-2xl bg-brand-purple text-white">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 rounded-t-2xl bg-brand-forest text-white">
             <div className="flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
                 <Sparkles className="h-4 w-4" />
@@ -209,7 +209,7 @@ export function FloatingChat({
               />
               <Button
                 size="icon"
-                className="h-10 w-10 shrink-0 rounded-xl bg-brand-purple hover:bg-brand-purple/90"
+                className="h-10 w-10 shrink-0 rounded-xl bg-brand-forest hover:bg-brand-forest/90"
                 onClick={handleSend}
                 disabled={!input.trim() || isStreaming}
               >
@@ -229,8 +229,8 @@ export function FloatingChat({
         onClick={() => setOpen(!open)}
         className={cn(
           "group flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-200",
-          "bg-brand-purple text-white hover:bg-brand-purple/90 hover:shadow-xl hover:scale-105",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2",
+          "bg-brand-forest text-white hover:bg-brand-forest/90 hover:shadow-xl hover:scale-105",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2",
           open && "rotate-0"
         )}
         aria-label={open ? "Fermer le chat" : "Ouvrir le chat"}

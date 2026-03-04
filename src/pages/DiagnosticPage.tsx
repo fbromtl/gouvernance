@@ -173,7 +173,7 @@ export function DiagnosticPage() {
       <div className="mx-4 mt-3 sm:mx-6">
         <div className="h-1 w-full overflow-hidden rounded-full bg-neutral-200">
           <motion.div
-            className="h-full rounded-full bg-[#ab54f3]"
+            className="h-full rounded-full bg-[#57886c]"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -196,8 +196,8 @@ export function DiagnosticPage() {
           >
             {/* Icon */}
             <div className="mb-6 flex justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#ab54f3]/10 sm:h-20 sm:w-20">
-                <Icon className="h-8 w-8 text-[#ab54f3] sm:h-10 sm:w-10" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#57886c]/10 sm:h-20 sm:w-20">
+                <Icon className="h-8 w-8 text-[#57886c] sm:h-10 sm:w-10" />
               </div>
             </div>
 
@@ -221,9 +221,9 @@ export function DiagnosticPage() {
                     onClick={() => handleAnswer(option.value)}
                     className={`group relative w-full rounded-2xl border px-5 py-4 text-left transition-all duration-200 ${
                       isSelected
-                        ? "border-[#ab54f3] bg-[#ab54f3]/5 shadow-md shadow-purple-500/10 text-neutral-900"
+                        ? "border-[#57886c] bg-[#57886c]/5 shadow-md shadow-[#57886c]/10 text-neutral-900"
                         : wasPreviouslySelected
-                          ? "border-[#ab54f3]/50 bg-[#ab54f3]/5 text-neutral-900"
+                          ? "border-[#57886c]/50 bg-[#57886c]/5 text-neutral-900"
                           : "border-neutral-200 bg-white shadow-sm text-neutral-700 hover:border-neutral-300 hover:shadow-md hover:bg-neutral-50"
                     }`}
                   >
@@ -231,9 +231,9 @@ export function DiagnosticPage() {
                       <span
                         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold transition-colors ${
                           isSelected
-                            ? "bg-[#ab54f3] text-white"
+                            ? "bg-[#57886c] text-white"
                             : wasPreviouslySelected
-                              ? "bg-[#ab54f3]/60 text-white"
+                              ? "bg-[#57886c]/60 text-white"
                               : "bg-neutral-100 text-neutral-500 group-hover:bg-neutral-200"
                         }`}
                       >

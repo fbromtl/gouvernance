@@ -75,7 +75,7 @@ function getLevelColor(level: string): string {
     case "avance":
       return "#22c55e";
     case "exemplaire":
-      return "#ab54f3";
+      return "#57886c";
     default:
       return "#6b7280";
   }

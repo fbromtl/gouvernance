@@ -78,9 +78,9 @@ const upcomingFeatures: {
   {
     icon: Cpu,
     key: "mcpServer",
-    color: "text-purple-600",
-    bgColor: "bg-purple-50",
-    borderAccent: "hover:border-purple-200",
+    color: "text-emerald-600",
+    bgColor: "bg-emerald-50",
+    borderAccent: "hover:border-emerald-200",
   },
 ];
 
@@ -95,8 +95,8 @@ export default function RoadmapPage() {
     <div className="space-y-10">
       {/* Page header */}
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-purple/10">
-          <Sparkles className="h-5 w-5 text-brand-purple" />
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-forest/10">
+          <Sparkles className="h-5 w-5 text-brand-forest" />
         </div>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
@@ -142,11 +142,11 @@ export default function RoadmapPage() {
       {/* ============================================================ */}
       <section>
         <div className="flex items-center gap-2.5 mb-5">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-purple/10">
-            <Clock className="h-4 w-4 text-brand-purple" />
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-forest/10">
+            <Clock className="h-4 w-4 text-brand-forest" />
           </div>
           <h2 className="text-lg font-semibold tracking-tight">{t("upcoming.title")}</h2>
-          <Badge variant="secondary" className="bg-brand-purple/10 text-brand-purple border-brand-purple/20 text-xs">
+          <Badge variant="secondary" className="bg-brand-forest/10 text-brand-forest border-brand-forest/20 text-xs">
             {t("upcoming.badge")}
           </Badge>
         </div>
@@ -173,7 +173,7 @@ export default function RoadmapPage() {
                 <ul className="space-y-2.5">
                   {[1, 2, 3, 4].map((n) => (
                     <li key={n} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <CheckCircle className="h-3.5 w-3.5 mt-0.5 shrink-0 text-brand-purple/50" />
+                      <CheckCircle className="h-3.5 w-3.5 mt-0.5 shrink-0 text-brand-forest/50" />
                       <span className="leading-tight">{t(`features.${feature.key}.bullet${n}`)}</span>
                     </li>
                   ))}

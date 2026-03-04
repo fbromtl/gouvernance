@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
           className={cn(
             "px-2.5 py-1.5 transition-colors",
             i18n.language === lang.code
-              ? "bg-brand-purple text-white"
+              ? "bg-brand-forest text-white"
               : "bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground"
           )}
         >

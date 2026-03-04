@@ -53,7 +53,7 @@ function CategoryItem({
         className={cn(
           "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors",
           isSelected && !selectedSubcategory
-            ? "bg-brand-purple/10 text-brand-purple font-medium"
+            ? "bg-brand-forest/10 text-brand-forest font-medium"
             : "text-foreground/70 hover:bg-muted hover:text-foreground"
         )}
       >
@@ -89,7 +89,7 @@ function CategoryItem({
                 className={cn(
                   "flex w-full items-center gap-2 rounded-md px-2 py-1 text-xs transition-colors",
                   isSubSelected
-                    ? "bg-brand-purple/10 text-brand-purple font-medium"
+                    ? "bg-brand-forest/10 text-brand-forest font-medium"
                     : "text-foreground/60 hover:bg-muted hover:text-foreground"
                 )}
               >
@@ -135,7 +135,7 @@ export function CategorySidebar({
         className={cn(
           "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors",
           selectedCategory === null
-            ? "bg-brand-purple/10 text-brand-purple font-medium"
+            ? "bg-brand-forest/10 text-brand-forest font-medium"
             : "text-foreground/70 hover:bg-muted hover:text-foreground"
         )}
       >
@@ -175,7 +175,7 @@ export function CategorySidebar({
         className={cn(
           "flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm transition-colors",
           selectedCategory === "__uncategorized__"
-            ? "bg-brand-purple/10 text-brand-purple font-medium"
+            ? "bg-brand-forest/10 text-brand-forest font-medium"
             : "text-foreground/70 hover:bg-muted hover:text-foreground"
         )}
       >

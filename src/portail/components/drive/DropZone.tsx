@@ -108,12 +108,12 @@ export function DropZone({
           className={cn(
             "flex items-center gap-2 rounded-lg border-2 border-dashed px-4 py-2.5 cursor-pointer transition-colors",
             isDragOver
-              ? "border-brand-purple bg-brand-purple/5"
-              : "border-border/60 hover:border-brand-purple/50 hover:bg-muted/30"
+              ? "border-brand-forest bg-brand-forest/5"
+              : "border-border/60 hover:border-brand-forest/50 hover:bg-muted/30"
           )}
         >
           {isUploading ? (
-            <Loader2 className="h-4 w-4 animate-spin text-brand-purple" />
+            <Loader2 className="h-4 w-4 animate-spin text-brand-forest" />
           ) : (
             <Upload className="h-4 w-4 text-muted-foreground" />
           )}
@@ -148,23 +148,23 @@ export function DropZone({
         className={cn(
           "flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-8 cursor-pointer transition-all",
           isDragOver
-            ? "border-brand-purple bg-brand-purple/5 scale-[1.01]"
-            : "border-border/60 hover:border-brand-purple/50 hover:bg-muted/20"
+            ? "border-brand-forest bg-brand-forest/5 scale-[1.01]"
+            : "border-border/60 hover:border-brand-forest/50 hover:bg-muted/20"
         )}
       >
         <div
           className={cn(
             "flex h-14 w-14 items-center justify-center rounded-full transition-colors",
-            isDragOver ? "bg-brand-purple/10" : "bg-muted"
+            isDragOver ? "bg-brand-forest/10" : "bg-muted"
           )}
         >
           {isUploading ? (
-            <Loader2 className="h-6 w-6 animate-spin text-brand-purple" />
+            <Loader2 className="h-6 w-6 animate-spin text-brand-forest" />
           ) : (
             <FileUp
               className={cn(
                 "h-6 w-6 transition-colors",
-                isDragOver ? "text-brand-purple" : "text-muted-foreground"
+                isDragOver ? "text-brand-forest" : "text-muted-foreground"
               )}
             />
           )}

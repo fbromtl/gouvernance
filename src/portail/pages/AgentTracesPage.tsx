@@ -60,7 +60,7 @@ const EVENT_TYPE_COLORS: Record<string, string> = {
 const DECISION_TYPE_COLORS: Record<string, string> = {
   D1: "bg-gray-100 text-gray-800",
   D2: "bg-blue-100 text-blue-800",
-  D3: "bg-purple-100 text-purple-800",
+  D3: "bg-emerald-100 text-emerald-800",
   D4: "bg-red-100 text-red-800",
 };
 
@@ -228,7 +228,7 @@ export default function AgentTracesPage() {
                   <TableRow key={trace.id}>
                     <TableCell>
                       <button
-                        className="text-sm font-medium text-left hover:text-brand-purple transition-colors font-mono"
+                        className="text-sm font-medium text-left hover:text-brand-forest transition-colors font-mono"
                         onClick={() => setViewingTrace(trace)}
                       >
                         {trace.trace_id.slice(0, 12)}...

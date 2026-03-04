@@ -40,7 +40,7 @@ export function SectionHelpButton({ ns, size = "sm" }: SectionHelpButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center justify-center rounded-full text-muted-foreground/60 hover:text-brand-purple hover:bg-brand-purple/10 transition-colors duration-200 p-1 -ml-0.5"
+        className="inline-flex items-center justify-center rounded-full text-muted-foreground/60 hover:text-brand-forest hover:bg-brand-forest/10 transition-colors duration-200 p-1 -ml-0.5"
         aria-label={tc("help.openHelp", { defaultValue: "Comprendre cette section" })}
         title={tc("help.openHelp", { defaultValue: "Comprendre cette section" })}
       >
@@ -51,8 +51,8 @@ export function SectionHelpButton({ ns, size = "sm" }: SectionHelpButtonProps) {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-lg">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-purple/10">
-                <HelpCircle className="h-4 w-4 text-brand-purple" />
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-forest/10">
+                <HelpCircle className="h-4 w-4 text-brand-forest" />
               </div>
               {title}
             </DialogTitle>
@@ -62,7 +62,7 @@ export function SectionHelpButton({ ns, size = "sm" }: SectionHelpButtonProps) {
             {why && (
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-                  <Target className="h-4 w-4 text-brand-purple" />
+                  <Target className="h-4 w-4 text-brand-forest" />
                   {tc("help.whyTitle", { defaultValue: "Pourquoi cette section ?" })}
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed pl-6">

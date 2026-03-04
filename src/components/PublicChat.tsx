@@ -39,7 +39,7 @@ function TypingIndicator() {
           {[0, 1, 2].map((i) => (
             <motion.span
               key={i}
-              className="block h-2 w-2 rounded-full bg-[#ab54f3]/60"
+              className="block h-2 w-2 rounded-full bg-[#57886c]/60"
               animate={{ y: [0, -6, 0] }}
               transition={{
                 duration: 0.6,
@@ -102,7 +102,7 @@ function MessageBubble({
         className={cn(
           "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
           isUser
-            ? "bg-gradient-to-r from-[#ab54f3] to-[#9333ea] text-white rounded-br-md shadow-sm"
+            ? "bg-gradient-to-r from-[#57886c] to-[#466060] text-white rounded-br-md shadow-sm"
             : "bg-neutral-50 border border-neutral-200/60 text-neutral-900 rounded-bl-md"
         )}
       >
@@ -135,7 +135,7 @@ function MessageBubble({
                   return (
                     <Link
                       to={internal}
-                      className="inline-flex items-center gap-1 mt-2 px-3 py-1.5 rounded-full bg-[#ab54f3] text-white text-xs font-medium hover:bg-[#ab54f3]/90 transition-colors no-underline"
+                      className="inline-flex items-center gap-1 mt-2 px-3 py-1.5 rounded-full bg-[#57886c] text-white text-xs font-medium hover:bg-[#57886c]/90 transition-colors no-underline"
                     >
                       {children}
                       <ArrowRight className="h-3 w-3" />
@@ -147,7 +147,7 @@ function MessageBubble({
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#ab54f3] underline hover:text-[#ab54f3]/80"
+                    className="text-[#57886c] underline hover:text-[#57886c]/80"
                   >
                     {children}
                   </a>
@@ -234,7 +234,7 @@ export function PublicChat() {
             )}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3.5 bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] text-white shrink-0">
+            <div className="flex items-center justify-between px-4 py-3.5 bg-gradient-to-r from-[#57886c] to-[#466060] text-white shrink-0">
               <div className="flex items-center gap-3">
                 {/* Animated avatar */}
                 <div className="relative">
@@ -253,7 +253,7 @@ export function PublicChat() {
                   {/* Green online dot */}
                   <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500 border-2 border-[#ab54f3]" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500 border-2 border-[#57886c]" />
                   </span>
                 </div>
                 <div>
@@ -306,7 +306,7 @@ export function PublicChat() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 + i * 0.08 }}
                       onClick={() => sendMessage(text)}
-                      className="border border-[#ab54f3]/40 text-[#ab54f3] rounded-full text-xs px-3 py-1.5 hover:bg-[#ab54f3]/10 hover:border-[#ab54f3] transition-all duration-200 cursor-pointer"
+                      className="border border-[#57886c]/40 text-[#57886c] rounded-full text-xs px-3 py-1.5 hover:bg-[#57886c]/10 hover:border-[#57886c] transition-all duration-200 cursor-pointer"
                     >
                       {text}
                     </motion.button>
@@ -359,7 +359,7 @@ export function PublicChat() {
                   size="icon"
                   className={cn(
                     "h-11 w-11 shrink-0 rounded-xl transition-all duration-200",
-                    "bg-gradient-to-r from-[#ab54f3] to-[#9333ea] hover:shadow-md",
+                    "bg-gradient-to-r from-[#57886c] to-[#466060] hover:shadow-md",
                     "disabled:opacity-40"
                   )}
                   onClick={handleSend}
@@ -393,8 +393,8 @@ export function PublicChat() {
         whileTap={{ scale: 0.95 }}
         className={cn(
           "group relative flex h-14 w-14 items-center justify-center rounded-full transition-shadow duration-300",
-          "bg-gradient-to-br from-[#ab54f3] to-[#9333ea] text-white shadow-xl hover:shadow-2xl",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ab54f3] focus-visible:ring-offset-2"
+          "bg-gradient-to-br from-[#57886c] to-[#466060] text-white shadow-xl hover:shadow-2xl",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57886c] focus-visible:ring-offset-2"
         )}
         aria-label={open ? "Fermer le chat" : "Ouvrir le chat"}
       >

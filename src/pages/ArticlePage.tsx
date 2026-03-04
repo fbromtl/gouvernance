@@ -174,7 +174,7 @@ export function ArticlePage() {
                 onError={() => setCoverError(true)}
               />
             ) : (
-              <div className="w-full max-h-96 h-64 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+              <div className="w-full max-h-96 h-64 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
                 <Newspaper className="size-16 text-white/60" />
               </div>
             )}
@@ -220,7 +220,7 @@ export function ArticlePage() {
                   />
                 ) : null}
                 <div
-                  className="size-10 rounded-full bg-purple-600 text-white text-sm font-semibold items-center justify-center"
+                  className="size-10 rounded-full bg-emerald-600 text-white text-sm font-semibold items-center justify-center"
                   style={{ display: author.avatar ? "none" : "flex" }}
                 >
                   {getInitials(author.name)}
@@ -288,7 +288,7 @@ export function ArticlePage() {
                       />
                     ) : null}
                     <div
-                      className="size-16 rounded-full bg-purple-600 text-white text-lg font-semibold items-center justify-center shrink-0"
+                      className="size-16 rounded-full bg-emerald-600 text-white text-lg font-semibold items-center justify-center shrink-0"
                       style={{ display: author.avatar ? "none" : "flex" }}
                     >
                       {getInitials(author.name)}
@@ -330,7 +330,7 @@ export function ArticlePage() {
                     to={`/actualites/${related.slug}`}
                     className="group"
                   >
-                    <Card className="rounded-2xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
+                    <Card className="rounded-2xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
                       {related.cover ? (
                         <img
                           src={related.cover}
@@ -341,7 +341,7 @@ export function ArticlePage() {
                           }}
                         />
                       ) : (
-                        <div className="aspect-[16/9] w-full bg-gradient-to-br from-purple-600 to-purple-800 rounded-t-2xl flex items-center justify-center">
+                        <div className="aspect-[16/9] w-full bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-t-2xl flex items-center justify-center">
                           <Newspaper className="size-10 text-white/60" />
                         </div>
                       )}
@@ -375,7 +375,7 @@ export function ArticlePage() {
         {/* 12. Newsletter CTA */}
         <section className="py-24 sm:py-32 bg-neutral-950">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Newspaper className="size-10 text-purple-400 mx-auto mb-4 opacity-80" />
+            <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez inform\u00e9
             </h2>
@@ -384,7 +384,7 @@ export function ArticlePage() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
             >
               Nous contacter
               <ArrowRight className="size-4" />

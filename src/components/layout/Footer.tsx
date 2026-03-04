@@ -58,7 +58,7 @@ const footerColumns = [
 const socialLinks = [
   { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin, hoverClass: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" },
   { href: "https://x.com", label: "X (Twitter)", icon: Twitter, hoverClass: "hover:bg-foreground hover:border-foreground" },
-  { href: "mailto:info@gouvernance.ai", label: "Courriel", icon: Mail, hoverClass: "hover:bg-brand-purple hover:border-brand-purple" },
+  { href: "mailto:info@gouvernance.ai", label: "Courriel", icon: Mail, hoverClass: "hover:bg-brand-forest hover:border-brand-forest" },
 ];
 
 const legalLinks = [
@@ -91,7 +91,7 @@ export function Footer() {
       {/* ============================================================ */}
       {/*  MAIN FOOTER                                                  */}
       {/* ============================================================ */}
-      <div className="bg-[#1e1a30]">
+      <div className="bg-[#0e0f19]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Top section */}
           <div className="py-12 lg:py-16 grid gap-10 lg:gap-8 lg:grid-cols-12">
@@ -116,8 +116,8 @@ export function Footer() {
                   href="mailto:info@gouvernance.ai"
                   className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
                 >
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-purple/20 transition-colors">
-                    <Mail className="size-3.5 text-brand-purple-light" />
+                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-forest/20 transition-colors">
+                    <Mail className="size-3.5 text-brand-sage" />
                   </span>
                   info@gouvernance.ai
                 </a>
@@ -125,14 +125,14 @@ export function Footer() {
                   href="tel:+15145551234"
                   className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
                 >
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-purple/20 transition-colors">
-                    <Phone className="size-3.5 text-brand-purple-light" />
+                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-forest/20 transition-colors">
+                    <Phone className="size-3.5 text-brand-sage" />
                   </span>
                   +1 (514) 555-1234
                 </a>
                 <div className="flex items-center gap-2.5 text-sm text-white/55">
                   <span className="flex items-center justify-center size-8 rounded-lg bg-white/8">
-                    <MapPin className="size-3.5 text-brand-purple-light" />
+                    <MapPin className="size-3.5 text-brand-sage" />
                   </span>
                   Montréal, Québec, Canada
                 </div>
@@ -146,7 +146,7 @@ export function Footer() {
                 return (
                 <div key={col.title}>
                   <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
-                    <Icon className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
+                    <Icon className="size-3.5 shrink-0 text-brand-forest" aria-hidden />
                     {col.title}
                   </h3>
                   <ul className="space-y-2.5">
@@ -169,7 +169,7 @@ export function Footer() {
             {/* Newsletter column */}
             <div className="lg:col-span-3">
               <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80 mb-4">
-                <Mail className="size-3.5 shrink-0 text-brand-purple" aria-hidden />
+                <Mail className="size-3.5 shrink-0 text-brand-forest" aria-hidden />
                 Infolettre
               </h3>
               <p className="text-sm text-white/50 leading-relaxed mb-4">
@@ -184,7 +184,7 @@ export function Footer() {
                     name="email"
                     placeholder="votre@email.com"
                     required
-                    className="pl-10 bg-white/8 border-white/15 text-white placeholder:text-white/35 focus-visible:ring-brand-purple/50 focus-visible:border-brand-purple/40 h-11 rounded-lg"
+                    className="pl-10 bg-white/8 border-white/15 text-white placeholder:text-white/35 focus-visible:ring-brand-forest/50 focus-visible:border-brand-forest/40 h-11 rounded-lg"
                   />
                 </div>
                 <Button type="submit" className="w-full gap-2">

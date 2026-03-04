@@ -41,7 +41,7 @@ function FileIcon({ mimeType, className }: { mimeType: string | null; className?
     return <FileSpreadsheet className={cn("text-green-500", className)} />;
   }
   if (["png", "jpg", "jpeg", "webp"].includes(ext)) {
-    return <FileImage className={cn("text-purple-500", className)} />;
+    return <FileImage className={cn("text-emerald-500", className)} />;
   }
   return <File className={cn("text-gray-400", className)} />;
 }
@@ -70,7 +70,7 @@ export function FileCard({ document: doc, onView, onDelete, onDownload }: FileCa
       onClick={() => onView(doc)}
       className={cn(
         "group relative flex flex-col gap-2 rounded-xl border border-border/60 bg-card p-4 cursor-pointer",
-        "transition-all hover:shadow-md hover:border-brand-purple/30 hover:-translate-y-0.5"
+        "transition-all hover:shadow-md hover:border-brand-forest/30 hover:-translate-y-0.5"
       )}
     >
       {/* Top row: icon + extension badge + menu */}
@@ -80,7 +80,7 @@ export function FileCard({ document: doc, onView, onDelete, onDownload }: FileCa
             <FileIcon mimeType={doc.mime_type} className="h-5 w-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-medium leading-tight line-clamp-2 group-hover:text-brand-purple transition-colors">
+            <h3 className="text-sm font-medium leading-tight line-clamp-2 group-hover:text-brand-forest transition-colors">
               {doc.title}
             </h3>
             <p className="text-[11px] text-muted-foreground mt-0.5">

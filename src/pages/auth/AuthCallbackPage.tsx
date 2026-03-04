@@ -88,7 +88,7 @@ export default function AuthCallbackPage() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col items-center gap-3">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-purple border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-forest border-t-transparent" />
         <span className="text-sm text-muted-foreground">
           Authentification en cours...
         </span>

@@ -177,7 +177,7 @@ export default function LoginPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="nom@entreprise.ca"
-                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                       />
                     </div>
 
@@ -192,7 +192,7 @@ export default function LoginPage() {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           placeholder="Mot de passe"
-                          className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                          className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                         />
                         <button
                           type="button"
@@ -206,7 +206,7 @@ export default function LoginPage() {
                       <div className="mt-1.5 text-right">
                         <Link
                           to="/mot-de-passe-oublie"
-                          className="text-xs font-medium text-brand-purple hover:text-brand-purple-dark transition-colors"
+                          className="text-xs font-medium text-brand-forest hover:text-brand-teal transition-colors"
                         >
                           Mot de passe oublié ?
                         </Link>
@@ -232,7 +232,7 @@ export default function LoginPage() {
                 Pas encore de compte ?{" "}
                 <Link
                   to="/inscription"
-                  className="font-semibold text-brand-purple hover:text-brand-purple-dark transition-colors"
+                  className="font-semibold text-brand-forest hover:text-brand-teal transition-colors"
                 >
                   Inscription gratuite
                 </Link>

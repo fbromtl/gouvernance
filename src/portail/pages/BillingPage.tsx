@@ -37,7 +37,7 @@ import { Label } from "@/components/ui/label";
 
 const PLAN_BADGE_COLORS: Record<PlanId, string> = {
   observer: "bg-gray-100 text-gray-700 border-gray-200",
-  member: "bg-brand-purple/10 text-brand-purple border-brand-purple/20",
+  member: "bg-brand-forest/10 text-brand-forest border-brand-forest/20",
   expert: "bg-amber-100 text-amber-800 border-amber-200",
   honorary: "bg-slate-200 text-slate-700 border-slate-300",
 };
@@ -347,7 +347,7 @@ export default function BillingPage() {
         )}
 
         {currentPlan !== "expert" && currentPlan !== "honorary" && (
-          <Button onClick={scrollToPlans} className="bg-brand-purple hover:bg-brand-purple-dark">
+          <Button onClick={scrollToPlans} className="bg-brand-forest hover:bg-brand-teal">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             {t("actions.upgrade", "Mettre \u00e0 niveau")}
           </Button>
@@ -420,14 +420,14 @@ export default function BillingPage() {
                 key={planId}
                 className={`relative flex flex-col p-6 ${
                   plan.highlighted
-                    ? "border-brand-purple ring-1 ring-brand-purple/20"
+                    ? "border-brand-forest ring-1 ring-brand-forest/20"
                     : ""
                 } ${isCurrent ? "bg-muted/30" : ""}`}
               >
                 {/* Highlight badge */}
                 {plan.highlighted && !isCurrent && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-brand-purple text-white">
+                    <Badge className="bg-brand-forest text-white">
                       {t("plans.popular", "Populaire")}
                     </Badge>
                   </div>
@@ -499,7 +499,7 @@ export default function BillingPage() {
                     <Button
                       className={`w-full ${
                         planId === "member"
-                          ? "bg-brand-purple hover:bg-brand-purple-dark"
+                          ? "bg-brand-forest hover:bg-brand-teal"
                           : "bg-amber-600 hover:bg-amber-700"
                       }`}
                       onClick={() => handleChoosePlan(planId)}

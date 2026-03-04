@@ -87,7 +87,7 @@ const IMPACTS = ["low", "medium", "high", "critical"] as const;
 const STATUS_COLORS: Record<string, string> = {
   draft: "bg-gray-100 text-gray-800 border-gray-200",
   submitted: "bg-blue-100 text-blue-800 border-blue-200",
-  in_review: "bg-purple-100 text-purple-800 border-purple-200",
+  in_review: "bg-emerald-100 text-emerald-800 border-emerald-200",
   approved: "bg-green-100 text-green-800 border-green-200",
   rejected: "bg-red-100 text-red-800 border-red-200",
   implemented: "bg-emerald-100 text-emerald-800 border-emerald-200",
@@ -108,7 +108,7 @@ const TYPE_COLORS: Record<string, string> = {
   go_nogo: "bg-green-100 text-green-800 border-green-200",
   substantial_change: "bg-orange-100 text-orange-800 border-orange-200",
   scale_deployment: "bg-blue-100 text-blue-800 border-blue-200",
-  vendor_change: "bg-purple-100 text-purple-800 border-purple-200",
+  vendor_change: "bg-emerald-100 text-emerald-800 border-emerald-200",
   policy_adjustment: "bg-yellow-100 text-yellow-800 border-yellow-200",
   ethical_arbitration: "bg-pink-100 text-pink-800 border-pink-200",
   suspension: "bg-red-100 text-red-800 border-red-200",
@@ -359,7 +359,7 @@ export default function DecisionsPage() {
                 <TableRow key={d.id}>
                   <TableCell>
                     <button
-                      className="text-sm font-medium text-left hover:text-brand-purple transition-colors"
+                      className="text-sm font-medium text-left hover:text-brand-forest transition-colors"
                       onClick={() => setViewingDecision(d)}
                     >
                       {d.title}

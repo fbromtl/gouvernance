@@ -54,20 +54,20 @@ export function AppSidebar({ collapsed, onToggle, activeCategory, filteredMode }
         className={cn(
           "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
           active
-            ? "bg-[#ab54f3]/8 text-[#ab54f3] shadow-[inset_0_0_0_1px_rgba(171,84,243,0.10)]"
+            ? "bg-[#57886c]/8 text-[#57886c] shadow-[inset_0_0_0_1px_rgba(87,136,108,0.10)]"
             : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-900",
           collapsed && "justify-center px-2"
         )}
       >
         {/* Active indicator bar */}
         {active && (
-          <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-r-full bg-brand-purple shadow-[2px_0_8px_rgba(171,84,243,0.3)]" />
+          <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-r-full bg-brand-forest shadow-[2px_0_8px_rgba(87,136,108,0.3)]" />
         )}
 
         <Icon
           className={cn(
             "h-[18px] w-[18px] shrink-0 transition-colors duration-200",
-            active ? "text-[#ab54f3]" : "text-neutral-400 group-hover:text-neutral-700"
+            active ? "text-[#57886c]" : "text-neutral-400 group-hover:text-neutral-700"
           )}
         />
 
@@ -75,7 +75,7 @@ export function AppSidebar({ collapsed, onToggle, activeCategory, filteredMode }
           <>
             <span className="flex-1 truncate">{t(`nav.${item.key}`)}</span>
             {item.badge && (
-              <Badge className="ml-auto bg-brand-purple/15 text-brand-purple border-brand-purple/30 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+              <Badge className="ml-auto bg-brand-forest/15 text-brand-forest border-brand-forest/30 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
                 {item.badge}
               </Badge>
             )}
@@ -136,7 +136,7 @@ export function AppSidebar({ collapsed, onToggle, activeCategory, filteredMode }
               collapsed && "justify-center"
             )}
           >
-            <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-brand-purple to-brand-purple-dark flex items-center justify-center shrink-0 shadow-sm shadow-brand-purple/20">
+            <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-brand-forest to-brand-teal flex items-center justify-center shrink-0 shadow-sm shadow-brand-forest/20">
               <Sparkles className="h-4 w-4 text-white" />
             </div>
             {!collapsed && (

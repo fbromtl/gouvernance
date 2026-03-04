@@ -67,8 +67,8 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
       <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/50">
         <div className="w-full max-w-md mx-4 bg-white rounded-2xl border border-neutral-200 shadow-2xl shadow-neutral-300/40 p-8 text-center">
           {/* Lock icon */}
-          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ab54f3]/10">
-            <Lock className="h-7 w-7 text-[#ab54f3]" />
+          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#57886c]/10">
+            <Lock className="h-7 w-7 text-[#57886c]" />
           </div>
 
           {/* Title */}
@@ -99,7 +99,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
               className={cn(
                 'rounded-full px-4 py-1.5 text-xs font-medium transition-colors',
                 period === 'monthly'
-                  ? 'bg-[#ab54f3] text-white shadow-sm'
+                  ? 'bg-[#57886c] text-white shadow-sm'
                   : 'text-neutral-500 hover:text-neutral-700',
               )}
             >
@@ -111,7 +111,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
               className={cn(
                 'rounded-full px-4 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5',
                 period === 'yearly'
-                  ? 'bg-[#ab54f3] text-white shadow-sm'
+                  ? 'bg-[#57886c] text-white shadow-sm'
                   : 'text-neutral-500 hover:text-neutral-700',
               )}
             >
@@ -140,7 +140,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
 
           {/* CTA button */}
           <Button
-            className="mt-6 w-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] text-white rounded-full shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all font-semibold"
+            className="mt-6 w-full bg-gradient-to-r from-[#57886c] to-[#466060] text-white rounded-full shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all font-semibold"
             onClick={handleTrial}
             disabled={checkout.isPending}
           >

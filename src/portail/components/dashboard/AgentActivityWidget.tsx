@@ -108,7 +108,7 @@ export default function AgentActivityWidget() {
               {/* Footer link */}
               <Link
                 to="/agent-traces"
-                className="inline-flex items-center gap-1 text-xs font-medium text-brand-purple hover:underline mt-1"
+                className="inline-flex items-center gap-1 text-xs font-medium text-brand-forest hover:underline mt-1"
               >
                 {t("widgets.agentActivity.viewJournal")}
                 <ArrowRight className="h-3 w-3" />

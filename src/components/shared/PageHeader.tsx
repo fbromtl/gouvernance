@@ -15,8 +15,8 @@ export function PageHeader({ title, description, actions, icon: Icon, helpNs }: 
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-start gap-3">
         {Icon && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-purple/10 mt-0.5">
-            <Icon className="h-5 w-5 text-brand-purple" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-forest/10 mt-0.5">
+            <Icon className="h-5 w-5 text-brand-forest" />
           </div>
         )}
         <div>

@@ -228,7 +228,7 @@ export default function RegisterPage() {
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Nom complet"
-                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                       />
                     </div>
 
@@ -242,7 +242,7 @@ export default function RegisterPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="nom@entreprise.ca"
-                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                       />
                     </div>
 
@@ -257,7 +257,7 @@ export default function RegisterPage() {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           placeholder="Mot de passe (min. 8 car.)"
-                          className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                          className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-11 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                         />
                         <button
                           type="button"
@@ -290,7 +290,7 @@ export default function RegisterPage() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirmer le mot de passe"
-                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                        className="w-full h-11 rounded-xl border border-neutral-200 bg-white pl-10 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                       />
                       {confirmPassword && password === confirmPassword && (
                         <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />
@@ -322,7 +322,7 @@ export default function RegisterPage() {
                 Déjà un compte ?{" "}
                 <Link
                   to="/connexion"
-                  className="font-semibold text-brand-purple hover:text-brand-purple-dark transition-colors"
+                  className="font-semibold text-brand-forest hover:text-brand-teal transition-colors"
                 >
                   Se connecter
                 </Link>

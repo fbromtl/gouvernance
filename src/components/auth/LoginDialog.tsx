@@ -57,8 +57,8 @@ export function LoginDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 mb-2">
-            <Lock className="h-6 w-6 text-purple-600" />
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 mb-2">
+            <Lock className="h-6 w-6 text-emerald-600" />
           </div>
           <DialogTitle className="text-center">
             Connexion requise
@@ -149,7 +149,7 @@ export function LoginDialog({
             Pas encore de compte ?{" "}
             <a
               href="/rejoindre"
-              className="text-purple-600 hover:underline"
+              className="text-emerald-600 hover:underline"
             >
               Rejoindre le Cercle
             </a>

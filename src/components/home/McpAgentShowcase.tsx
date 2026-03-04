@@ -20,9 +20,9 @@ export function McpAgentShowcase() {
       <style>{`
         @keyframes mcpPulse {
           0%,17%,31%,100% { box-shadow: 0 0 0 0 transparent; }
-          18%              { box-shadow: 0 0 0 0 rgba(171,84,243,.5); }
-          24%              { box-shadow: 0 0 0 8px rgba(171,84,243,.25); }
-          30%              { box-shadow: 0 0 0 12px rgba(171,84,243,0); }
+          18%              { box-shadow: 0 0 0 0 rgba(87,136,108,.5); }
+          24%              { box-shadow: 0 0 0 8px rgba(87,136,108,.25); }
+          30%              { box-shadow: 0 0 0 12px rgba(87,136,108,0); }
         }
         @keyframes mcpSlideIn {
           0%,27%,100%  { opacity:0; transform:translateY(16px) scale(.96); }
@@ -64,7 +64,7 @@ export function McpAgentShowcase() {
           {/* ── Left column: marketing text ── */}
           <div>
             {/* Badge */}
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ab54f3]/10 px-3 py-1 text-xs font-semibold tracking-wide uppercase text-[#ab54f3] mb-6">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#57886c]/10 px-3 py-1 text-xs font-semibold tracking-wide uppercase text-[#57886c] mb-6">
               <Zap className="h-3.5 w-3.5" />
               Nouveau
             </span>
@@ -72,7 +72,7 @@ export function McpAgentShowcase() {
             {/* Title */}
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-neutral-900 mb-5 leading-[1.15]">
               Connectez vos agents IA via le serveur{" "}
-              <span className="text-[#ab54f3]">MCP</span>
+              <span className="text-[#57886c]">MCP</span>
             </h2>
 
             {/* Description */}
@@ -86,7 +86,7 @@ export function McpAgentShowcase() {
             {/* CTA */}
             <Link
               to="/ressources"
-              className="group inline-flex items-center gap-2 text-[#ab54f3] font-medium hover:text-[#8b3fd4] transition-colors"
+              className="group inline-flex items-center gap-2 text-[#57886c] font-medium hover:text-[#466060] transition-colors"
             >
               Découvrir le MCP
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -99,7 +99,7 @@ export function McpAgentShowcase() {
               {/* Mockup header */}
               <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
                 <div className="flex items-center gap-2">
-                  <Activity className="h-4 w-4 text-[#ab54f3]" />
+                  <Activity className="h-4 w-4 text-[#57886c]" />
                   <span className="text-sm font-semibold text-neutral-800">
                     Activité des agents
                   </span>
@@ -109,7 +109,7 @@ export function McpAgentShowcase() {
                 <div className="relative">
                   <Bell className="h-4 w-4 text-neutral-400" />
                   <span
-                    className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#ab54f3] text-[9px] font-bold text-white"
+                    className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#57886c] text-[9px] font-bold text-white"
                     style={{ animation: "mcpBadge 8s ease-in-out infinite" }}
                   >
                     1
@@ -163,8 +163,8 @@ export function McpAgentShowcase() {
                   style={{ animation: "mcpAppear 8s ease-in-out infinite" }}
                 >
                   <div className="flex items-center gap-2.5">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ab54f3]/10">
-                      <Server className="h-4 w-4 text-[#ab54f3]" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#57886c]/10">
+                      <Server className="h-4 w-4 text-[#57886c]" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-neutral-800">

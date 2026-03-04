@@ -12,7 +12,7 @@ export function AccessibilitePage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
               <Accessibility className="size-6" />
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
@@ -41,7 +41,7 @@ export function AccessibilitePage() {
           <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="size-5 text-purple-500" />
+                <CheckCircle className="size-5 text-emerald-500" />
                 Normes suivies
               </CardTitle>
             </CardHeader>
@@ -92,7 +92,7 @@ export function AccessibilitePage() {
           <Card className="rounded-3xl border border-neutral-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Mail className="size-5 text-purple-500" />
+                <Mail className="size-5 text-emerald-500" />
                 Retour et suggestions
               </CardTitle>
               <CardDescription>

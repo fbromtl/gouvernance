@@ -103,7 +103,7 @@ export default function OnboardingPage() {
         {/* Card */}
         <div className="rounded-2xl border border-border/50 bg-card shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-br from-brand-purple via-brand-purple-dark to-[#1e1a30] p-6 sm:p-8 text-white">
+          <div className="bg-gradient-to-br from-brand-forest via-brand-teal to-[#0e0f19] p-6 sm:p-8 text-white">
             <div className="flex items-center gap-3 mb-3">
               <div className="flex size-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
                 <Sparkles className="size-5" />

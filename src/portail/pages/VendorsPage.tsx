@@ -317,7 +317,7 @@ export default function VendorsPage() {
     <div className="space-y-6 p-4 md:p-6">
       {/* Header */}
       <div className="flex items-start gap-3">
-        <Building2 className="h-7 w-7 text-brand-purple mt-0.5" />
+        <Building2 className="h-7 w-7 text-brand-forest mt-0.5" />
         <div>
           <div className="flex items-center gap-1.5">
             <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
@@ -414,7 +414,7 @@ export default function VendorsPage() {
                 <TableRow key={v.id}>
                   <TableCell>
                     <button
-                      className="text-sm font-medium text-left hover:text-brand-purple transition-colors"
+                      className="text-sm font-medium text-left hover:text-brand-forest transition-colors"
                       onClick={() => setViewingVendor(v)}
                     >
                       {v.name}

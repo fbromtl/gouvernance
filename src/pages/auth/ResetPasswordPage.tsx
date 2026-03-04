@@ -153,7 +153,7 @@ export default function ResetPasswordPage() {
         <SEO title="Nouveau mot de passe" description="Choisissez un nouveau mot de passe." noindex={true} />
         <div className="min-h-[calc(100dvh-120px)] flex items-center justify-center p-4">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-purple border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-forest border-t-transparent" />
             <span className="text-sm text-muted-foreground">
               Vérification du lien...
             </span>
@@ -219,7 +219,7 @@ export default function ResetPasswordPage() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Minimum 8 caractères"
                       autoFocus
-                      className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-11 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                      className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-11 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                     />
                     <button
                       type="button"
@@ -246,7 +246,7 @@ export default function ResetPasswordPage() {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Retapez le mot de passe"
-                      className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-4 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple transition-colors"
+                      className="w-full h-11 rounded-xl border border-border/60 bg-background pl-10 pr-4 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest transition-colors"
                     />
                     {confirmPassword && password === confirmPassword && (
                       <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-green-500" />

@@ -90,7 +90,7 @@ export function HomePage() {
           <div className="text-center max-w-7xl mr-auto ml-auto pr-6 pl-6">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3 py-1 rounded-full mb-8">
-              <span className="flex h-2 w-2 rounded-full bg-[#ab54f3] animate-pulse" />
+              <span className="flex h-2 w-2 rounded-full bg-[#57886c] animate-pulse" />
               <span className="text-[10px] font-semibold tracking-widest uppercase text-neutral-500">
                 Gouvernance IA Responsable
               </span>
@@ -99,7 +99,7 @@ export function HomePage() {
             {/* Title */}
             <h1 className="text-5xl md:text-7xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-semibold">
               Gouvernez l&apos;IA avec{" "}
-              <span className="text-[#ab54f3]">confiance</span> et conformité
+              <span className="text-[#57886c]">confiance</span> et conformité
             </h1>
 
             {/* Subtitle */}
@@ -112,10 +112,10 @@ export function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center w-full max-w-2xl mx-auto">
               <Link
                 to="/inscription"
-                className="group inline-flex items-center gap-2 font-medium text-white bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] rounded-full py-4 px-8 relative shadow-lg overflow-hidden transition-all duration-300 hover:shadow-[#ab54f3]/50"
+                className="group inline-flex items-center gap-2 font-medium text-white bg-gradient-to-r from-[#57886c] to-[#466060] rounded-full py-4 px-8 relative shadow-lg overflow-hidden transition-all duration-300 hover:shadow-[#57886c]/50"
                 style={{
                   boxShadow:
-                    "0 15px 33px -12px rgba(171,84,243,0.6), inset 0 4px 6.3px rgba(255,255,255,0.3), inset 0 -5px 6.3px rgba(0,0,0,0.1)",
+                    "0 15px 33px -12px rgba(87,136,108,0.6), inset 0 4px 6.3px rgba(255,255,255,0.3), inset 0 -5px 6.3px rgba(0,0,0,0.1)",
                 }}
               >
                 <div className="group-hover:translate-y-0 transition-transform duration-300 bg-white/10 absolute inset-0 translate-y-full" />
@@ -143,7 +143,7 @@ export function HomePage() {
             {/* Quebec badge */}
             <div className="flex justify-center mb-16">
               <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3.5 py-1.5 rounded-full">
-                <span className="text-[#ab54f3] text-sm leading-none">⚜</span>
+                <span className="text-[#57886c] text-sm leading-none">⚜</span>
                 <span className="text-[11px] font-medium text-neutral-500">
                   Fièrement québécois
                 </span>
@@ -181,7 +181,7 @@ export function HomePage() {
                   Tableau de bord : Gouvernance IA
                 </h2>
                 <div className="flex items-center gap-4">
-                  <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#ab54f3] rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-sm">
+                  <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#57886c] rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-sm">
                     <Shield className="h-3.5 w-3.5" />
                     Conforme
                   </span>
@@ -193,7 +193,7 @@ export function HomePage() {
                 {/* KPI Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { label: "Systèmes IA", value: "24", change: "+3", color: "text-[#ab54f3]" },
+                    { label: "Systèmes IA", value: "24", change: "+3", color: "text-[#57886c]" },
                     { label: "Score Conformité", value: "87%", change: "+5%", color: "text-emerald-500" },
                     { label: "Incidents actifs", value: "2", change: "-1", color: "text-amber-500" },
                     { label: "Risque élevé", value: "3", change: "0", color: "text-red-500" },
@@ -222,11 +222,11 @@ export function HomePage() {
                     </p>
                     <div className="flex items-end gap-3 h-28 px-2">
                       {[
-                        { label: "Loi 25", h: "h-24", color: "bg-[#ab54f3]" },
-                        { label: "EU AI", h: "h-20", color: "bg-[#ab54f3]/80" },
-                        { label: "NIST", h: "h-16", color: "bg-[#ab54f3]/60" },
-                        { label: "ISO", h: "h-22", color: "bg-[#ab54f3]/70" },
-                        { label: "RGPD", h: "h-18", color: "bg-[#ab54f3]/50" },
+                        { label: "Loi 25", h: "h-24", color: "bg-[#57886c]" },
+                        { label: "EU AI", h: "h-20", color: "bg-[#57886c]/80" },
+                        { label: "NIST", h: "h-16", color: "bg-[#57886c]/60" },
+                        { label: "ISO", h: "h-22", color: "bg-[#57886c]/70" },
+                        { label: "RGPD", h: "h-18", color: "bg-[#57886c]/50" },
                       ].map((bar) => (
                         <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
                           <div className={`w-full ${bar.h} ${bar.color} rounded-t-lg`} />
@@ -270,7 +270,7 @@ export function HomePage() {
                   (framework) => (
                     <span
                       key={framework}
-                      className="rounded-lg bg-white/95 px-4 py-2 text-xs font-bold text-[#252243] uppercase tracking-wider shadow-sm backdrop-blur-sm"
+                      className="rounded-lg bg-white/95 px-4 py-2 text-xs font-bold text-[#1a1a2e] uppercase tracking-wider shadow-sm backdrop-blur-sm"
                     >
                       {framework}
                     </span>
@@ -295,14 +295,14 @@ export function HomePage() {
             <div className="flex flex-col w-full mb-12">
               <div className="flex items-end justify-between w-full pb-5">
                 <div className="flex gap-x-2 items-center">
-                  <span className="w-8 h-px bg-[#ab54f3]" />
-                  <span className="uppercase text-xs font-bold text-[#ab54f3] tracking-[0.2em]">
+                  <span className="w-8 h-px bg-[#57886c]" />
+                  <span className="uppercase text-xs font-bold text-[#57886c] tracking-[0.2em]">
                     Pourquoi le Cercle ?
                   </span>
                 </div>
                 <Link
                   to="/a-propos"
-                  className="group flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors"
+                  className="group flex items-center gap-2 text-sm font-medium text-[#57886c] hover:text-[#466060] transition-colors"
                 >
                   En savoir plus
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -327,9 +327,9 @@ export function HomePage() {
             {/* Bento grid – 4 columns */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Card 1: Conformité */}
-              <div className="group flex flex-col hover:shadow-xl hover:shadow-[#ab54f3]/5 transition-all duration-500 bg-neutral-50 h-[520px] border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between">
+              <div className="group flex flex-col hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500 bg-neutral-50 h-[520px] border-neutral-200/60 border rounded-[40px] px-10 py-10 justify-between">
                 <div>
-                  <div className="w-12 h-12 bg-[#ab54f3]/10 rounded-2xl flex items-center justify-center text-[#ab54f3] mb-8">
+                  <div className="w-12 h-12 bg-[#57886c]/10 rounded-2xl flex items-center justify-center text-[#57886c] mb-8">
                     <Lock className="h-6 w-6" />
                   </div>
                   <h3 className="text-2xl text-neutral-900 mb-6 tracking-tight leading-tight font-semibold">
@@ -356,7 +356,7 @@ export function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
                 <div className="absolute bottom-10 left-10 text-white pr-10">
-                  <span className="inline-block px-3 py-1 bg-[#ab54f3] rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                  <span className="inline-block px-3 py-1 bg-[#57886c] rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
                     Temps réel
                   </span>
                   <p className="text-2xl leading-tight font-semibold">
@@ -368,31 +368,31 @@ export function HomePage() {
               {/* Card 3: Score circle */}
               <div className="flex flex-col overflow-hidden group bg-neutral-50 h-[520px] border-neutral-200 border rounded-[40px] px-10 py-10 relative shadow-sm items-center justify-between">
                 <div className="text-center">
-                  <span className="text-xs text-[#ab54f3] font-bold block mb-2 uppercase tracking-[0.2em]">
+                  <span className="text-xs text-[#57886c] font-bold block mb-2 uppercase tracking-[0.2em]">
                     Score de conformité
                   </span>
                   <span className="text-xl font-medium text-neutral-900">Fiabilité garantie</span>
                 </div>
                 <div className="flex w-56 h-56 relative items-center justify-center">
-                  <div className="absolute inset-0 bg-[#ab54f3]/5 rounded-full animate-pulse" />
+                  <div className="absolute inset-0 bg-[#57886c]/5 rounded-full animate-pulse" />
                   <div className="absolute inset-0 border-[14px] border-neutral-100 rounded-full" />
                   <div
-                    className="border-[14px] border-t-transparent border-r-transparent border-[#ab54f3] rounded-full absolute inset-0 -rotate-45"
+                    className="border-[14px] border-t-transparent border-r-transparent border-[#57886c] rounded-full absolute inset-0 -rotate-45"
                   />
                   <div className="text-5xl tracking-tighter text-neutral-900 font-bold">98%</div>
                 </div>
                 <Link
                   to="/portail"
-                  className="w-full bg-neutral-900 text-white py-4 rounded-[20px] text-sm font-semibold hover:bg-[#ab54f3] transition-colors duration-300 shadow-lg shadow-neutral-200 text-center block"
+                  className="w-full bg-neutral-900 text-white py-4 rounded-[20px] text-sm font-semibold hover:bg-[#57886c] transition-colors duration-300 shadow-lg shadow-neutral-200 text-center block"
                 >
                   Voir le portail
                 </Link>
               </div>
 
               {/* Card 4: Expert Support dark */}
-              <div className="bg-neutral-950 p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative hover:shadow-2xl hover:shadow-[#ab54f3]/20 transition-all duration-500">
+              <div className="bg-neutral-950 p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative hover:shadow-2xl hover:shadow-[#57886c]/20 transition-all duration-500">
                 <div className="flex justify-between items-start">
-                  <span className="text-lg font-medium tracking-tight text-[#ab54f3]">
+                  <span className="text-lg font-medium tracking-tight text-[#57886c]">
                     Accompagnement Expert
                   </span>
                   <div className="p-2 bg-white/10 rounded-full">
@@ -405,13 +405,13 @@ export function HomePage() {
                 <div className="space-y-6">
                   <div className="group/link cursor-pointer">
                     <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Experts réseau</p>
-                    <p className="text-lg font-medium border-b border-white/10 pb-2 group-hover/link:text-[#ab54f3] transition-colors">
+                    <p className="text-lg font-medium border-b border-white/10 pb-2 group-hover/link:text-[#57886c] transition-colors">
                       150+ spécialistes
                     </p>
                   </div>
                   <div className="group/link cursor-pointer">
                     <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Disciplines</p>
-                    <p className="text-lg font-medium group-hover/link:text-[#ab54f3] transition-colors">
+                    <p className="text-lg font-medium group-hover/link:text-[#57886c] transition-colors">
                       15 domaines couverts
                     </p>
                   </div>
@@ -425,7 +425,7 @@ export function HomePage() {
         <div className="text-center py-10 bg-white">
           <Link
             to="/inscription"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
           >
             Rejoindre le Cercle gratuitement
             <ArrowRight className="w-4 h-4" />
@@ -439,8 +439,8 @@ export function HomePage() {
           {/* Section header */}
           <div className="flex items-end justify-between w-full pb-5 mb-8">
             <div className="flex gap-2 items-center">
-              <span className="w-8 h-px bg-[#ab54f3]" />
-              <span className="uppercase text-xs font-semibold text-[#ab54f3] tracking-[0.2em]">
+              <span className="w-8 h-px bg-[#57886c]" />
+              <span className="uppercase text-xs font-semibold text-[#57886c] tracking-[0.2em]">
                 Comment ça marche
               </span>
             </div>
@@ -476,7 +476,7 @@ export function HomePage() {
             ].map((step) => (
               <div key={step.num} className="relative text-center">
                 <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-neutral-50 border border-neutral-200 mb-6 relative z-10">
-                  <step.icon className="w-8 h-8 text-[#ab54f3]" />
+                  <step.icon className="w-8 h-8 text-[#57886c]" />
                 </div>
                 <p className="text-5xl font-bold text-neutral-100 mb-3">{step.num}</p>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-2">{step.title}</h3>
@@ -505,14 +505,14 @@ export function HomePage() {
             <div className="flex flex-col w-full pb-12">
               <div className="flex items-end justify-between w-full pb-5">
                 <div className="flex gap-2 items-center">
-                  <span className="w-8 h-px bg-[#ab54f3]" />
-                  <span className="uppercase text-xs font-bold text-[#ab54f3] tracking-[0.2em]">
+                  <span className="w-8 h-px bg-[#57886c]" />
+                  <span className="uppercase text-xs font-bold text-[#57886c] tracking-[0.2em]">
                     Fonctionnalités clés
                   </span>
                 </div>
                 <Link
                   to="/ressources"
-                  className="group flex items-center gap-2 text-sm font-medium text-[#ab54f3] hover:text-[#8b3fd4] transition-colors"
+                  className="group flex items-center gap-2 text-sm font-medium text-[#57886c] hover:text-[#466060] transition-colors"
                 >
                   Voir les ressources
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -539,7 +539,7 @@ export function HomePage() {
               {/* Card 1: Registre IA (vertical) */}
               <article className="lg:col-span-1 group relative flex flex-col justify-between overflow-hidden bg-white border border-neutral-200 rounded-[32px] p-8 hover:shadow-lg transition-all duration-300">
                 <div className="relative z-10">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-50 text-[#ab54f3] text-xs font-semibold tracking-medium mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-[#57886c] text-xs font-semibold tracking-medium mb-6">
                     Registre IA
                   </div>
                   <h3 className="text-neutral-900 text-2xl tracking-tight mb-3 font-semibold">
@@ -555,7 +555,7 @@ export function HomePage() {
                   <div className="flex items-center justify-between mb-4 bg-white rounded-lg p-2 shadow-sm border border-neutral-100">
                     <span className="text-[10px] font-semibold text-neutral-900">24 systèmes</span>
                     <div className="flex gap-1.5">
-                      <span className="px-2 py-0.5 bg-[#ab54f3]/10 text-[#ab54f3] text-[8px] font-bold rounded-full">
+                      <span className="px-2 py-0.5 bg-[#57886c]/10 text-[#57886c] text-[8px] font-bold rounded-full">
                         Filtrer
                       </span>
                     </div>
@@ -571,7 +571,7 @@ export function HomePage() {
                         key={sys.name}
                         className="flex items-center gap-3 px-3 py-2 bg-white rounded-lg border border-neutral-100 shadow-sm"
                       >
-                        <div className="w-1.5 h-6 rounded-full bg-[#ab54f3]/40" />
+                        <div className="w-1.5 h-6 rounded-full bg-[#57886c]/40" />
                         <div className="flex-1 min-w-0">
                           <p className="text-[10px] font-semibold text-neutral-900 truncate">{sys.name}</p>
                           <p className="text-[8px] text-neutral-400">{sys.type}</p>
@@ -622,7 +622,7 @@ export function HomePage() {
                       return (
                         <div key={i} className={`${bg} rounded-md flex items-center justify-center relative`}>
                           {hasSystem && (
-                            <div className="w-3 h-3 bg-[#ab54f3] rounded-full shadow-md shadow-[#ab54f3]/30" />
+                            <div className="w-3 h-3 bg-[#57886c] rounded-full shadow-md shadow-[#57886c]/30" />
                           )}
                         </div>
                       );
@@ -651,7 +651,7 @@ export function HomePage() {
                     <div className="px-4 py-3 border-b border-neutral-100 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-bold text-neutral-900">Cadres réglementaires</span>
-                        <span className="px-1.5 py-0.5 rounded-full bg-[#ab54f3]/10 text-[#ab54f3] text-[8px] font-bold">
+                        <span className="px-1.5 py-0.5 rounded-full bg-[#57886c]/10 text-[#57886c] text-[8px] font-bold">
                           5
                         </span>
                       </div>
@@ -696,7 +696,7 @@ export function HomePage() {
                   <div className="w-full h-full bg-white rounded-xl shadow-sm border border-neutral-200 flex flex-col p-4">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="flex-1 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-                        <div className="w-3/5 h-full bg-[#ab54f3] rounded-full" />
+                        <div className="w-3/5 h-full bg-[#57886c] rounded-full" />
                       </div>
                       <span className="text-[9px] font-bold text-neutral-400">6/10</span>
                     </div>
@@ -709,13 +709,13 @@ export function HomePage() {
                           key={opt}
                           className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-[9px] font-medium ${
                             i === 0
-                              ? "border-[#ab54f3] bg-[#ab54f3]/5 text-[#ab54f3]"
+                              ? "border-[#57886c] bg-[#57886c]/5 text-[#57886c]"
                               : "border-neutral-200 text-neutral-600"
                           }`}
                         >
                           <div
                             className={`w-3 h-3 rounded-full border-2 ${
-                              i === 0 ? "border-[#ab54f3] bg-[#ab54f3]" : "border-neutral-300"
+                              i === 0 ? "border-[#57886c] bg-[#57886c]" : "border-neutral-300"
                             }`}
                           >
                             {i === 0 && (
@@ -767,8 +767,8 @@ export function HomePage() {
               <div className="flex flex-col w-full mb-12">
                 <div className="flex items-end justify-between w-full pb-5">
                   <div className="flex gap-2 items-center">
-                    <span className="w-8 h-px bg-[#ab54f3]" />
-                    <span className="uppercase text-xs font-bold text-[#ab54f3] tracking-[0.2em]">
+                    <span className="w-8 h-px bg-[#57886c]" />
+                    <span className="uppercase text-xs font-bold text-[#57886c] tracking-[0.2em]">
                       Témoignages
                     </span>
                   </div>
@@ -790,9 +790,9 @@ export function HomePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Testimonial 1 */}
-              <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#ab54f3]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
+              <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#57886c]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
                 <div>
-                  <div className="flex gap-1 mb-6 text-[#ab54f3]">
+                  <div className="flex gap-1 mb-6 text-[#57886c]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.07-31-51.07,31a16,16,0,0,1-23.84-17.34l13.51-58.6-45.1-39.36A16,16,0,0,1,30.5,87.49l59.6-5.49L113.84,26a16,16,0,0,1,28.32,0L165.9,82l59.6,5.49a16,16,0,0,1,9,26.89Z" />
@@ -820,7 +820,7 @@ export function HomePage() {
               </div>
 
               {/* Testimonial 2 – highlighted */}
-              <div className="group bg-gradient-to-br from-[#ab54f3] to-[#8b3fd4] p-8 rounded-[40px] flex flex-col justify-between shadow-2xl shadow-[#ab54f3]/20 transition-all duration-500 hover:-translate-y-2">
+              <div className="group bg-gradient-to-br from-[#57886c] to-[#466060] p-8 rounded-[40px] flex flex-col justify-between shadow-2xl shadow-[#57886c]/20 transition-all duration-500 hover:-translate-y-2">
                 <div>
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-2xl mb-8 backdrop-blur-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 256 256">
@@ -840,7 +840,7 @@ export function HomePage() {
                   />
                   <div>
                     <div className="font-bold text-white text-base">Jean-Pierre Martin</div>
-                    <div className="text-purple-100 text-xs font-medium uppercase tracking-wider">
+                    <div className="text-emerald-100 text-xs font-medium uppercase tracking-wider">
                       VP Innovation, Groupe Média
                     </div>
                   </div>
@@ -848,9 +848,9 @@ export function HomePage() {
               </div>
 
               {/* Testimonial 3 */}
-              <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#ab54f3]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
+              <div className="group flex flex-col hover:bg-white hover:shadow-xl hover:shadow-[#57886c]/10 transition-all duration-500 bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-8 py-8 justify-between">
                 <div>
-                  <div className="flex gap-1 mb-6 text-[#ab54f3]">
+                  <div className="flex gap-1 mb-6 text-[#57886c]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
                         <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.07-31-51.07,31a16,16,0,0,1-23.84-17.34l13.51-58.6-45.1-39.36A16,16,0,0,1,30.5,87.49l59.6-5.49L113.84,26a16,16,0,0,1,28.32,0L165.9,82l59.6,5.49a16,16,0,0,1,9,26.89Z" />
@@ -898,8 +898,8 @@ export function HomePage() {
           <div className="flex flex-col w-full mb-12">
             <div className="flex items-end justify-between w-full pb-5">
               <div className="flex gap-2 items-center">
-                <span className="w-8 h-px bg-[#ab54f3]" />
-                <span className="uppercase text-xs font-semibold text-[#ab54f3] tracking-[0.2em]">
+                <span className="w-8 h-px bg-[#57886c]" />
+                <span className="uppercase text-xs font-semibold text-[#57886c] tracking-[0.2em]">
                   Tarification
                 </span>
               </div>
@@ -917,7 +917,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/tarifs"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:brightness-110 transition-all"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all"
               >
                 Voir les tarifs d&apos;adhésion
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -933,8 +933,8 @@ export function HomePage() {
           {/* Section header */}
           <div className="flex items-end justify-between w-full pb-5 mb-8">
             <div className="flex gap-2 items-center">
-              <span className="w-8 h-px bg-[#ab54f3]" />
-              <span className="uppercase text-xs font-semibold text-[#ab54f3] tracking-[0.2em]">
+              <span className="w-8 h-px bg-[#57886c]" />
+              <span className="uppercase text-xs font-semibold text-[#57886c] tracking-[0.2em]">
                 Questions fréquentes
               </span>
             </div>
@@ -994,7 +994,7 @@ export function HomePage() {
         <div className="text-center py-10">
           <Link
             to="/inscription"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
           >
             Créer mon compte, c'est gratuit
             <ArrowRight className="w-4 h-4" />
@@ -1005,10 +1005,10 @@ export function HomePage() {
         {/*  REGULATORY URGENCY BANNER                                    */}
         {/* ============================================================ */}
         <section className="max-w-7xl mx-auto px-6 pb-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#ab54f3]/5 border border-[#ab54f3]/20 rounded-2xl px-8 py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#57886c]/5 border border-[#57886c]/20 rounded-2xl px-8 py-6">
             <div className="flex items-center gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#ab54f3]/10 flex items-center justify-center">
-                <AlertTriangle className="w-5 h-5 text-[#ab54f3]" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#57886c]/10 flex items-center justify-center">
+                <AlertTriangle className="w-5 h-5 text-[#57886c]" />
               </div>
               <p className="text-sm md:text-base text-neutral-700 font-medium">
                 La Loi 25 est en vigueur. L&apos;EU AI Act entre en application.{" "}
@@ -1017,7 +1017,7 @@ export function HomePage() {
             </div>
             <Link
               to="/inscription"
-              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#ab54f3] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-purple-500/20 hover:shadow-purple-500/40 hover:brightness-110 transition-all whitespace-nowrap"
+              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#57886c] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#57886c]/20 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all whitespace-nowrap"
             >
               Vérifier maintenant
               <ArrowRight className="w-4 h-4" />
@@ -1032,18 +1032,18 @@ export function HomePage() {
           <div className="max-w-7xl z-10 mr-auto ml-auto pt-0 pr-6 pb-0 pl-6 relative">
             <div className="overflow-hidden lg:p-24 text-center bg-neutral-50 border-neutral-200/60 border rounded-[40px] px-12 py-12 relative shadow-sm">
               {/* Background glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(171,84,243,0.07),transparent_50%)] pointer-events-none" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(87,136,108,0.07),transparent_50%)] pointer-events-none" />
 
               <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ab54f3]/10 border border-[#ab54f3]/20 mb-10">
-                  <span className="text-[10px] font-semibold text-[#ab54f3] uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#57886c]/10 border border-[#57886c]/20 mb-10">
+                  <span className="text-[10px] font-semibold text-[#57886c] uppercase tracking-widest">
                     Pilotez votre IA
                   </span>
                 </div>
 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl text-neutral-900 tracking-tight leading-[1.1] mb-8 font-semibold">
                   Bâtissez la confiance avec une gouvernance IA{" "}
-                  <span className="text-[#ab54f3]">transparente</span>
+                  <span className="text-[#57886c]">transparente</span>
                 </h2>
 
                 <p className="text-lg text-neutral-600 mb-12 leading-relaxed max-w-2xl">
@@ -1070,15 +1070,15 @@ export function HomePage() {
 
                 <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-neutral-400">
                   <div className="flex items-center gap-2">
-                    <Shield className="h-[18px] w-[18px] text-[#ab54f3]" />
+                    <Shield className="h-[18px] w-[18px] text-[#57886c]" />
                     <span className="text-xs font-medium uppercase tracking-wider">Multi-framework</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CreditCard className="h-[18px] w-[18px] text-[#ab54f3]" />
+                    <CreditCard className="h-[18px] w-[18px] text-[#57886c]" />
                     <span className="text-xs font-medium uppercase tracking-wider">Sans carte requise</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="h-[18px] w-[18px] text-[#ab54f3]" />
+                    <Users className="h-[18px] w-[18px] text-[#57886c]" />
                     <span className="text-xs font-medium uppercase tracking-wider">150+ experts</span>
                   </div>
                 </div>
@@ -1108,7 +1108,7 @@ export function HomePage() {
               <div className="flex items-center gap-2">
                 <Link
                   to="/inscription"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-purple-500/25 hover:shadow-purple-500/40 transition-all whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all whitespace-nowrap"
                 >
                   S'inscrire
                   <ArrowRight className="w-3.5 h-3.5" />

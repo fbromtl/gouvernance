@@ -78,12 +78,12 @@ function MockupCard({ title, icon: Icon, children }: { title: string; icon: Luci
       {/* Header bar */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-[#ab54f3]/10">
-            <Icon className="size-3.5 text-[#ab54f3]" />
+          <div className="flex size-7 items-center justify-center rounded-lg bg-[#57886c]/10">
+            <Icon className="size-3.5 text-[#57886c]" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">{title}</span>
         </div>
-        <Badge className="bg-[#ab54f3]/10 text-[#ab54f3] border-[#ab54f3]/20 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
+        <Badge className="bg-[#57886c]/10 text-[#57886c] border-[#57886c]/20 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
           <Sparkles className="size-2.5 mr-0.5" />
           IA
         </Badge>
@@ -152,7 +152,7 @@ function AiSystemsMockup() {
 
 function LifecycleMockup() {
   const events = [
-    { date: "28 fév", type: "Mise à jour modèle", label: "GPT-4o → GPT-4.5", color: "bg-[#ab54f3]" },
+    { date: "28 fév", type: "Mise à jour modèle", label: "GPT-4o → GPT-4.5", color: "bg-[#57886c]" },
     { date: "15 fév", type: "Changement fournisseur", label: "Migration Azure → AWS", color: "bg-blue-500" },
     { date: "02 fév", type: "Audit interne", label: "Revue trimestrielle complétée", color: "bg-emerald-500" },
     { date: "18 jan", type: "Extension périmètre", label: "Ajout département Marketing", color: "bg-amber-500" },
@@ -442,7 +442,7 @@ function AgentsMockup() {
               </span>
             </div>
             <div className="mt-1.5 flex items-center gap-2">
-              <span className="rounded bg-[#ab54f3]/10 px-1.5 py-0.5 text-[10px] font-semibold text-[#ab54f3]">{a.autonomy}</span>
+              <span className="rounded bg-[#57886c]/10 px-1.5 py-0.5 text-[10px] font-semibold text-[#57886c]">{a.autonomy}</span>
               <span className="text-[10px] text-neutral-500">{a.autonomyLabel}</span>
               <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] text-neutral-600">Risque {a.risk}</span>
             </div>
@@ -551,7 +551,7 @@ function DataMockup() {
 function VeilleMockup() {
   const articles = [
     { title: "Loi 25 : nouvelles obligations pour les systèmes de décision automatisée", source: "Gazette officielle", date: "1 mars", tag: "Québec", tagColor: "text-blue-600 bg-blue-50" },
-    { title: "EU AI Act : entrée en vigueur des exigences pour les systèmes à haut risque", source: "EUR-Lex", date: "28 fév", tag: "EU", tagColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+    { title: "EU AI Act : entrée en vigueur des exigences pour les systèmes à haut risque", source: "EUR-Lex", date: "28 fév", tag: "EU", tagColor: "text-[#57886c] bg-[#57886c]/10" },
     { title: "NIST publie la mise à jour du AI RMF Playbook", source: "NIST", date: "25 fév", tag: "USA", tagColor: "text-emerald-600 bg-emerald-50" },
   ];
   return (
@@ -589,7 +589,7 @@ function DashboardMockup() {
           return (
             <div key={k.label} className="rounded-xl border border-neutral-100 bg-neutral-50/50 px-3 py-2.5">
               <div className="flex items-center gap-1.5 mb-1">
-                <KIcon className="size-3 text-[#ab54f3]" />
+                <KIcon className="size-3 text-[#57886c]" />
                 <p className="text-[10px] text-neutral-400 truncate">{k.label}</p>
               </div>
               <div className="flex items-baseline gap-1.5">
@@ -610,7 +610,7 @@ function AiChatMockup() {
       <div className="space-y-3">
         {/* User message */}
         <div className="flex justify-end">
-          <div className="rounded-2xl rounded-br-md bg-[#ab54f3] px-3.5 py-2 max-w-[80%]">
+          <div className="rounded-2xl rounded-br-md bg-[#57886c] px-3.5 py-2 max-w-[80%]">
             <p className="text-xs text-white">Quelles sont nos obligations sous la Loi 25 pour notre chatbot IA ?</p>
           </div>
         </div>
@@ -625,7 +625,7 @@ function AiChatMockup() {
         {/* Input */}
         <div className="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-2">
           <span className="flex-1 text-[11px] text-neutral-400">Posez votre question...</span>
-          <Send className="size-3.5 text-[#ab54f3]" />
+          <Send className="size-3.5 text-[#57886c]" />
         </div>
       </div>
     </MockupCard>
@@ -636,16 +636,16 @@ function AiChatMockup() {
 
 function MembersMockup() {
   const members = [
-    { name: "Marie-Claude Trudel", role: "DPO", org: "Desjardins", tier: "Expert", tierColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+    { name: "Marie-Claude Trudel", role: "DPO", org: "Desjardins", tier: "Expert", tierColor: "text-[#57886c] bg-[#57886c]/10" },
     { name: "Jean-François Roy", role: "VP Technologie", org: "Hydro-Québec", tier: "Membre", tierColor: "text-blue-600 bg-blue-50" },
-    { name: "Sophie Lavoie", role: "Dir. Conformité", org: "BNC", tier: "Expert", tierColor: "text-[#ab54f3] bg-[#ab54f3]/10" },
+    { name: "Sophie Lavoie", role: "Dir. Conformité", org: "BNC", tier: "Expert", tierColor: "text-[#57886c] bg-[#57886c]/10" },
   ];
   return (
     <MockupCard title="Répertoire des membres" icon={Users}>
       <div className="space-y-2.5">
         {members.map((m) => (
           <div key={m.name} className="flex items-center gap-3 rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
-            <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4] text-white text-xs font-bold">
+            <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] text-white text-xs font-bold">
               {m.name.split(" ").map(n => n[0]).join("")}
             </div>
             <div className="min-w-0 flex-1">
@@ -664,14 +664,14 @@ function ProfileMockup() {
   return (
     <MockupCard title="Profil professionnel" icon={UserCircle}>
       <div className="text-center">
-        <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4] text-white text-lg font-bold">
+        <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] text-white text-lg font-bold">
           MC
         </div>
         <p className="mt-2.5 text-sm font-bold text-neutral-800">Marie-Claude Trudel</p>
         <p className="text-[11px] text-neutral-500">Déléguée à la protection des données</p>
         <p className="text-[10px] text-neutral-400">Desjardins · Montréal</p>
         <div className="mt-3 flex items-center justify-center gap-2">
-          <span className="rounded-full bg-[#ab54f3]/10 px-2.5 py-0.5 text-[10px] font-semibold text-[#ab54f3]">Expert</span>
+          <span className="rounded-full bg-[#57886c]/10 px-2.5 py-0.5 text-[10px] font-semibold text-[#57886c]">Expert</span>
           <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10px] font-semibold text-blue-600">Loi 25</span>
           <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-600">RGPD</span>
         </div>
@@ -721,7 +721,7 @@ function LegalChatbotMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
             <BookOpenCheck className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Assistant juridique IA</span>
@@ -745,7 +745,7 @@ function LegalChatbotMockup() {
               type="button"
               className={`rounded-full px-2.5 py-1 text-[10px] font-semibold transition-colors ${
                 j.active
-                  ? "bg-[#ab54f3]/10 text-[#ab54f3] ring-1 ring-[#ab54f3]/20"
+                  ? "bg-[#57886c]/10 text-[#57886c] ring-1 ring-[#57886c]/20"
                   : "bg-neutral-100 text-neutral-400"
               }`}
             >
@@ -759,7 +759,7 @@ function LegalChatbotMockup() {
       <div className="px-5 py-4 space-y-3">
         {/* User question */}
         <div className="flex justify-end">
-          <div className="rounded-2xl rounded-br-md bg-[#ab54f3] px-3.5 py-2 max-w-[80%]">
+          <div className="rounded-2xl rounded-br-md bg-[#57886c] px-3.5 py-2 max-w-[80%]">
             <p className="text-xs text-white">Quelles sont les obligations de transparence pour les décisions automatisées au Québec ?</p>
           </div>
         </div>
@@ -782,7 +782,7 @@ function LegalChatbotMockup() {
         {/* Input */}
         <div className="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-2">
           <span className="flex-1 text-[11px] text-neutral-400">Posez une question juridique...</span>
-          <Send className="size-3.5 text-[#ab54f3]" />
+          <Send className="size-3.5 text-[#57886c]" />
         </div>
       </div>
     </div>
@@ -809,7 +809,7 @@ function VendorQuestionnaireMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
             <ClipboardList className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Questionnaire fournisseur</span>
@@ -870,7 +870,7 @@ function VendorQuestionnaireMockup() {
       {/* Footer action */}
       <div className="border-t border-neutral-100 px-5 py-3 flex items-center justify-between">
         <span className="text-[10px] text-neutral-400">3 fournisseurs · 1 complété</span>
-        <div className="flex items-center gap-1.5 text-[#ab54f3]">
+        <div className="flex items-center gap-1.5 text-[#57886c]">
           <Send className="size-3" />
           <span className="text-[10px] font-semibold">Envoyer un rappel</span>
         </div>
@@ -909,8 +909,8 @@ function McpServerMockup() {
       type: "declaration",
       label: "Déclaration autonome",
       detail: "Post-mortem incident #847 généré automatiquement",
-      iconBg: "bg-purple-50",
-      iconColor: "text-[#ab54f3]",
+      iconBg: "bg-emerald-50",
+      iconColor: "text-[#57886c]",
       Icon: ShieldCheck,
     },
   ];
@@ -920,7 +920,7 @@ function McpServerMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
             <Server className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Serveur MCP</span>
@@ -970,7 +970,7 @@ function McpServerMockup() {
       {/* Footer */}
       <div className="border-t border-neutral-100 px-5 py-2.5 flex items-center justify-between bg-neutral-50/30">
         <span className="text-[10px] text-neutral-400">Journal temps réel · 847 événements aujourd'hui</span>
-        <span className="text-[10px] font-semibold text-[#ab54f3]">Voir l'audit complet →</span>
+        <span className="text-[10px] font-semibold text-[#57886c]">Voir l'audit complet →</span>
       </div>
     </div>
   );
@@ -1142,7 +1142,7 @@ function NouveautesSlider() {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#1e1a30] py-16 sm:py-24"
+      className="relative overflow-hidden bg-gradient-to-b from-[#0f0d1a] to-[#0e0f19] py-16 sm:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -1249,7 +1249,7 @@ function NouveautesSlider() {
         >
           {/* Text */}
           <div>
-            <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ab54f3] to-[#7c2cd4]">
+            <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#57886c] to-[#466060]">
               <SlideIcon className="size-6 text-white" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -1285,7 +1285,7 @@ function NouveautesSlider() {
         <div className="mt-10 h-0.5 w-full rounded-full bg-white/5">
           <motion.div
             key={`progress-${current}`}
-            className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#ab54f3]"
+            className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#57886c]"
             initial={{ width: "0%" }}
             animate={{ width: paused ? undefined : "100%" }}
             transition={{ duration: SLIDE_INTERVAL / 1000, ease: "linear" }}
@@ -1360,9 +1360,9 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30] pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] pt-32 pb-20 sm:pt-36 sm:pb-24">
         {/* Radial purple glow */}
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-[#ab54f3]/15 blur-[140px]" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-[#57886c]/15 blur-[140px]" />
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
@@ -1392,7 +1392,7 @@ export function FonctionnalitesPage() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#ab54f3]/25 px-7 h-11 text-sm font-semibold"
+              className="bg-gradient-to-r from-[#57886c] to-[#466060] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#57886c]/25 px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("hero.cta")}
@@ -1432,7 +1432,7 @@ export function FonctionnalitesPage() {
               onClick={() => scrollToSection(cat.id)}
               className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat.id
-                  ? "bg-[#ab54f3]/10 text-[#ab54f3] shadow-sm"
+                  ? "bg-[#57886c]/10 text-[#57886c] shadow-sm"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
               }`}
             >
@@ -1494,8 +1494,8 @@ export function FonctionnalitesPage() {
                           whileInView="visible"
                           viewport={{ once: true, margin: "-60px" }}
                         >
-                          <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#ab54f3]/10">
-                            <Icon className="size-6 text-[#ab54f3]" />
+                          <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#57886c]/10">
+                            <Icon className="size-6 text-[#57886c]" />
                           </div>
                           <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
                             {t(`features.${feat.key}.title`)}
@@ -1533,10 +1533,10 @@ export function FonctionnalitesPage() {
                       <motion.div
                         key={feat.key}
                         variants={cardVariants}
-                        className="group rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#ab54f3]/40 hover:shadow-lg hover:shadow-[#ab54f3]/5"
+                        className="group rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#57886c]/40 hover:shadow-lg hover:shadow-[#57886c]/5"
                       >
-                        <div className="mb-4 flex size-11 items-center justify-center rounded-xl bg-[#ab54f3]/10">
-                          <Icon className="size-5 text-[#ab54f3]" />
+                        <div className="mb-4 flex size-11 items-center justify-center rounded-xl bg-[#57886c]/10">
+                          <Icon className="size-5 text-[#57886c]" />
                         </div>
                         <h3 className="text-base font-bold text-foreground mb-2">
                           {t(`features.${feat.key}.title`)}
@@ -1557,8 +1557,8 @@ export function FonctionnalitesPage() {
       {/* ============================================================ */}
       {/*  BOTTOM CTA                                                   */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1e1a30] via-[#252243] to-[#1e1a30] py-16 sm:py-24">
-        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#ab54f3]/10 blur-[120px]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] py-16 sm:py-24">
+        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#57886c]/10 blur-[120px]" />
 
         <motion.div
           variants={fadeUp}
@@ -1577,7 +1577,7 @@ export function FonctionnalitesPage() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#ab54f3]/25 px-7 h-11 text-sm font-semibold"
+              className="bg-gradient-to-r from-[#57886c] to-[#466060] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#57886c]/25 px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("cta.primary")}

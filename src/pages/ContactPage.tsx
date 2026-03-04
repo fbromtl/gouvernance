@@ -144,7 +144,7 @@ export function ContactPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
                     >
                       Envoyer
                       <ArrowRight className="size-4" />
@@ -168,7 +168,7 @@ export function ContactPage() {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-emerald-400">
                       <Mail className="size-5" />
                     </div>
                     <div>
@@ -177,7 +177,7 @@ export function ContactPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-emerald-400">
                       <Phone className="size-5" />
                     </div>
                     <div>
@@ -186,7 +186,7 @@ export function ContactPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-purple-400">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-emerald-400">
                       <MapPin className="size-5" />
                     </div>
                     <div>
@@ -202,7 +202,7 @@ export function ContactPage() {
               </div>
 
               {/* Map placeholder */}
-              <Card className="overflow-hidden rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300">
+              <Card className="overflow-hidden rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
                 <CardContent className="p-0">
                   <div className="aspect-[4/3] bg-neutral-50 flex items-center justify-center">
                     <div className="text-center p-8">

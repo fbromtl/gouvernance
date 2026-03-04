@@ -121,9 +121,9 @@ export function Header() {
           bannerVisible ? "max-h-12" : "max-h-0"
         )}
       >
-        <div className="bg-gradient-to-r from-purple-50 via-violet-50/80 to-purple-50 border-b border-purple-100/60">
+        <div className="bg-gradient-to-r from-emerald-50 via-emerald-50/80 to-emerald-50 border-b border-emerald-100/60">
           <div className="mx-auto max-w-7xl flex items-center justify-center px-4 sm:px-6 lg:px-8 py-2.5 relative">
-            <p className="text-[13px] text-purple-900/80 font-medium">
+            <p className="text-[13px] text-emerald-900/80 font-medium">
               <span className="hidden sm:inline">
                 Testez gratuitement notre outil de gouvernance IA
               </span>
@@ -133,7 +133,7 @@ export function Header() {
             </p>
             <Link
               to="/rejoindre"
-              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-purple-900 hover:text-purple-950 transition-colors"
+              className="ml-3 inline-flex items-center gap-1 text-[13px] font-semibold text-emerald-900 hover:text-emerald-950 transition-colors"
             >
               Essayer
               <ChevronRight className="size-3.5" />
@@ -141,7 +141,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setBannerVisible(false)}
-              className="absolute right-4 sm:right-6 lg:right-8 p-1 rounded-md text-purple-400 hover:text-purple-700 hover:bg-purple-100/60 transition-colors"
+              className="absolute right-4 sm:right-6 lg:right-8 p-1 rounded-md text-emerald-400 hover:text-emerald-700 hover:bg-emerald-100/60 transition-colors"
               aria-label="Fermer la bannière"
             >
               <X className="size-3.5" />
@@ -209,12 +209,12 @@ export function Header() {
                     <img
                       src={avatarUrl}
                       alt={displayName}
-                      className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
+                      className="size-8 rounded-full object-cover border-2 border-brand-forest/30"
                       referrerPolicy="no-referrer"
                       onError={() => setAvatarError(true)}
                     />
                   ) : (
-                    <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
+                    <div className="flex size-8 items-center justify-center rounded-full bg-brand-forest/10 text-brand-forest text-xs font-bold">
                       {initials}
                     </div>
                   )}
@@ -294,12 +294,12 @@ export function Header() {
                   <img
                     src={avatarUrl}
                     alt={displayName}
-                    className="size-8 rounded-full object-cover border-2 border-brand-purple/30"
+                    className="size-8 rounded-full object-cover border-2 border-brand-forest/30"
                     referrerPolicy="no-referrer"
                     onError={() => setAvatarError(true)}
                   />
                 ) : (
-                  <div className="flex size-8 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-xs font-bold">
+                  <div className="flex size-8 items-center justify-center rounded-full bg-brand-forest/10 text-brand-forest text-xs font-bold">
                     {initials}
                   </div>
                 )}
@@ -328,13 +328,13 @@ export function Header() {
 
                 {/* Mobile Promo Banner */}
                 {bannerVisible && (
-                  <div className="mx-4 mt-4 rounded-xl bg-purple-50/80 border border-purple-100/60 p-3">
-                    <p className="text-[13px] text-purple-900/80 font-medium mb-2">
+                  <div className="mx-4 mt-4 rounded-xl bg-emerald-50/80 border border-emerald-100/60 p-3">
+                    <p className="text-[13px] text-emerald-900/80 font-medium mb-2">
                       Testez gratuitement notre outil de gouvernance IA
                     </p>
                     <Link
                       to="/rejoindre"
-                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-purple-900 hover:text-purple-950 transition-colors"
+                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-emerald-900 hover:text-emerald-950 transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       Essayer
@@ -367,7 +367,7 @@ export function Header() {
                           onError={() => setAvatarError(true)}
                         />
                       ) : (
-                        <div className="flex size-9 items-center justify-center rounded-full bg-brand-purple/10 text-brand-purple text-sm font-bold">
+                        <div className="flex size-9 items-center justify-center rounded-full bg-brand-forest/10 text-brand-forest text-sm font-bold">
                           {initials}
                         </div>
                       )}

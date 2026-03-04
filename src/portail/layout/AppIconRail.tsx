@@ -16,7 +16,7 @@ export function AppIconRail({ activeCategory, onCategoryChange }: AppIconRailPro
 
   return (
     <TooltipProvider delayDuration={0}>
-      <aside className="flex w-16 flex-col items-center bg-gradient-to-b from-[#7c2cd4] via-[#ab54f3] to-[#7c2cd4] py-3 shrink-0">
+      <aside className="flex w-16 flex-col items-center bg-[#0e0f19] py-3 shrink-0">
         {/* ---- Logo ---- */}
         <Link
           to="/dashboard"
@@ -46,7 +46,7 @@ export function AppIconRail({ activeCategory, onCategoryChange }: AppIconRailPro
                   >
                     {/* Active indicator — left bar */}
                     {isActive && (
-                      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-r-full bg-white shadow-[2px_0_8px_rgba(255,255,255,0.3)]" />
+                      <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-r-full bg-[#81a684] shadow-[2px_0_10px_rgba(129,166,132,0.55)]" />
                     )}
 
                     {Icon && <Icon className="h-[22px] w-[22px]" />}

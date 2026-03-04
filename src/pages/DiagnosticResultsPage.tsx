@@ -68,7 +68,7 @@ function getLevelColor(level: string): string {
     case "avance":
       return "#22c55e";
     case "exemplaire":
-      return "#ab54f3";
+      return "#57886c";
     default:
       return "#6b7280";
   }
@@ -180,7 +180,7 @@ export function DiagnosticResultsPage() {
   if (!result) {
     return (
       <div className="flex min-h-screen items-center justify-center" style={{ background: "radial-gradient(at 0% 0%, hsla(270,100%,93%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(250,100%,90%,0.5) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(340,100%,93%,0.4) 0, transparent 50%), white" }}>
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-[#ab54f3]" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-[#57886c]" />
       </div>
     );
   }
@@ -197,7 +197,7 @@ export function DiagnosticResultsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-2 text-center"
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#ab54f3]/10 px-4 py-1.5 text-sm font-medium text-[#ab54f3]">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#57886c]/10 px-4 py-1.5 text-sm font-medium text-[#57886c]">
             <Sparkles className="h-4 w-4" />
             {t("results.subtitle")}
           </div>
@@ -269,7 +269,7 @@ export function DiagnosticResultsPage() {
             </p>
             <Link
               to="/connexion"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all hover:shadow-purple-500/40"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#57886c] to-[#466060] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 transition-all hover:shadow-[#57886c]/40"
             >
               {t("results.ctaButton")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

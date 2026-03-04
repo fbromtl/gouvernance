@@ -125,7 +125,7 @@ function FileClassificationForm({
   if (file.isAnalyzing) {
     return (
       <div className="flex items-center gap-3 rounded-lg border border-border/60 bg-muted/30 p-4">
-        <Loader2 className="h-5 w-5 animate-spin text-brand-purple shrink-0" />
+        <Loader2 className="h-5 w-5 animate-spin text-brand-forest shrink-0" />
         <div>
           <p className="text-sm font-medium">{file.document.file_name}</p>
           <p className="text-xs text-muted-foreground">
@@ -294,7 +294,7 @@ export function ClassificationReview({
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-brand-purple" />
+            <Sparkles className="h-5 w-5 text-brand-forest" />
             {t("drive.classificationTitle", {
               defaultValue: "Classification des documents",
             })}

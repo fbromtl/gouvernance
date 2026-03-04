@@ -48,7 +48,7 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
     maxMembers: 10,
     maxAiSystems: null,
     highlighted: true,
-    badgeColor: 'brand-purple',
+    badgeColor: 'brand-forest',
   },
   expert: {
     id: 'expert',

@@ -363,7 +363,7 @@ export default function DocumentsPage() {
       {/* ---- Header ---- */}
       <div className="flex items-start justify-between gap-3 px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
         <div className="flex items-start gap-3">
-          <FolderOpen className="h-7 w-7 text-brand-purple mt-0.5" />
+          <FolderOpen className="h-7 w-7 text-brand-forest mt-0.5" />
           <div>
             <div className="flex items-center gap-1.5">
               <h1 className="text-2xl font-bold tracking-tight">

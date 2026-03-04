@@ -332,7 +332,7 @@ export default function MonitoringPage() {
         <div>
           <div className="flex items-center gap-1.5">
             <h1 className="text-2xl font-bold flex items-center gap-2">
-              <Activity className="h-6 w-6 text-brand-purple" />
+              <Activity className="h-6 w-6 text-brand-forest" />
               {t("pageTitle")}
             </h1>
             <SectionHelpButton ns="monitoring" />

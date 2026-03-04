@@ -155,10 +155,10 @@ export default function MembresPage() {
 
           {/* Centered overlay CTA */}
           <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-[2px] rounded-xl">
-            <Card className="w-full max-w-md mx-4 shadow-xl border-brand-purple/20">
+            <Card className="w-full max-w-md mx-4 shadow-xl border-brand-forest/20">
               <CardContent className="flex flex-col items-center text-center p-8 space-y-4">
-                <div className="h-12 w-12 rounded-full bg-brand-purple/10 flex items-center justify-center">
-                  <Lock className="h-6 w-6 text-brand-purple" />
+                <div className="h-12 w-12 rounded-full bg-brand-forest/10 flex items-center justify-center">
+                  <Lock className="h-6 w-6 text-brand-forest" />
                 </div>
                 <h2 className="text-xl font-bold text-foreground">
                   {t("teaser.title")}
@@ -167,7 +167,7 @@ export default function MembresPage() {
                   {t("teaser.description", { count: members.length })}
                 </p>
                 <Button
-                  className="bg-brand-purple hover:bg-brand-purple-dark text-white mt-2"
+                  className="bg-brand-forest hover:bg-brand-teal text-white mt-2"
                   onClick={() => navigate("/billing")}
                 >
                   {t("teaser.cta")}

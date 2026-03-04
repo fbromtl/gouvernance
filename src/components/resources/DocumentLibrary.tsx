@@ -53,7 +53,7 @@ export function DocumentLibrary({ mode = "public" }: { mode?: "public" | "portai
             transition={{ duration: 0.5 }}
             className="text-center mb-10"
           >
-            <Badge variant="outline" className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium border-purple-200 text-purple-700 bg-purple-50">
+            <Badge variant="outline" className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium border-emerald-200 text-emerald-700 bg-emerald-50">
               Bibliothèque documentaire
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
@@ -98,8 +98,8 @@ export function DocumentLibrary({ mode = "public" }: { mode?: "public" | "portai
                         >
                           <AccordionTrigger className="hover:no-underline py-5">
                             <div className="flex items-center gap-3 text-left">
-                              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-100 shrink-0">
-                                <FileText className="h-4 w-4 text-purple-600" />
+                              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 shrink-0">
+                                <FileText className="h-4 w-4 text-emerald-600" />
                               </div>
                               <div>
                                 <p className="font-semibold text-sm">{cat.name}</p>
@@ -145,7 +145,7 @@ export function DocumentLibrary({ mode = "public" }: { mode?: "public" | "portai
 
 function DocumentCard({ doc, onConsult, mode = "public" }: { doc: PublicDocument; onConsult: () => void; mode?: "public" | "portail" }) {
   return (
-    <Card className="rounded-xl border-neutral-200 hover:border-purple-200 transition-colors">
+    <Card className="rounded-xl border-neutral-200 hover:border-emerald-200 transition-colors">
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
@@ -159,19 +159,19 @@ function DocumentCard({ doc, onConsult, mode = "public" }: { doc: PublicDocument
               <ul className="space-y-1 text-xs text-muted-foreground">
                 {doc.summary_purpose && (
                   <li className="flex gap-1.5">
-                    <span className="text-purple-400 shrink-0">•</span>
+                    <span className="text-emerald-400 shrink-0">•</span>
                     <span>{doc.summary_purpose}</span>
                   </li>
                 )}
                 {doc.summary_content && (
                   <li className="flex gap-1.5">
-                    <span className="text-purple-400 shrink-0">•</span>
+                    <span className="text-emerald-400 shrink-0">•</span>
                     <span>{doc.summary_content}</span>
                   </li>
                 )}
                 {doc.summary_governance && (
                   <li className="flex gap-1.5">
-                    <span className="text-purple-400 shrink-0">•</span>
+                    <span className="text-emerald-400 shrink-0">•</span>
                     <span>{doc.summary_governance}</span>
                   </li>
                 )}
@@ -181,7 +181,7 @@ function DocumentCard({ doc, onConsult, mode = "public" }: { doc: PublicDocument
           <Button
             variant="ghost"
             size="sm"
-            className="shrink-0 gap-1 text-purple-600 hover:text-purple-700 hover:bg-purple-50"
+            className="shrink-0 gap-1 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
             onClick={onConsult}
           >
             {mode === "portail" ? (

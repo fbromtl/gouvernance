@@ -149,7 +149,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
             <Button variant="ghost" size="icon" className="relative h-8 w-8 text-neutral-400 hover:text-neutral-900">
               <Bell className="h-4 w-4" />
               {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-purple px-1 text-[10px] font-bold text-white shadow-sm shadow-brand-purple/30">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-forest px-1 text-[10px] font-bold text-white shadow-sm shadow-brand-forest/30">
                   {unreadCount > 9 ? "9+" : unreadCount}
                 </span>
               )}
@@ -163,7 +163,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-auto px-2 py-1 text-xs text-brand-purple hover:text-brand-purple"
+                  className="h-auto px-2 py-1 text-xs text-brand-forest hover:text-brand-forest"
                   onClick={() => markAllAsRead()}
                 >
                   <Check className="mr-1 h-3 w-3" />
@@ -188,7 +188,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
                     key={n.id}
                     type="button"
                     className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-muted/50 ${
-                      !n.read ? "bg-brand-purple/[0.03]" : ""
+                      !n.read ? "bg-brand-forest/[0.03]" : ""
                     }`}
                     onClick={() => {
                       if (!n.read) markAsRead(n.id);
@@ -232,7 +232,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
             <Button variant="ghost" className="flex items-center gap-2 px-2 h-8">
               <Avatar className="h-7 w-7">
                 <AvatarImage src={profile?.avatar_url ?? undefined} />
-                <AvatarFallback className="text-xs font-semibold bg-brand-purple/10 text-brand-purple">
+                <AvatarFallback className="text-xs font-semibold bg-brand-forest/10 text-brand-forest">
                   {initials}
                 </AvatarFallback>
               </Avatar>

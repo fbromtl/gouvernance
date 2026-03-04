@@ -225,7 +225,7 @@ export function ActualitesPage() {
         {/* NEWSLETTER CTA */}
         <section className="py-24 sm:py-32 bg-neutral-950">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Newspaper className="size-10 text-purple-400 mx-auto mb-4 opacity-80" />
+            <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez informé
             </h2>
@@ -234,7 +234,7 @@ export function ActualitesPage() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
             >
               Nous contacter <ArrowRight className="size-4" />
             </Link>
@@ -255,7 +255,7 @@ function FeaturedCard({ article }: { article: Article }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to={`/actualites/${article.slug}`}
-          className="group block rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-300 overflow-hidden"
+          className="group block rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-300 overflow-hidden"
         >
           <div className="grid md:grid-cols-2 gap-0">
             {/* Cover image */}
@@ -266,8 +266,8 @@ function FeaturedCard({ article }: { article: Article }) {
                 className="absolute inset-0 w-full h-full object-cover rounded-t-3xl md:rounded-t-none md:rounded-l-3xl"
                 onError={handleImgError}
               />
-              <div className="hidden absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 items-center justify-center rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
-                <Newspaper className="size-10 text-purple-300" />
+              <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+                <Newspaper className="size-10 text-emerald-300" />
               </div>
             </div>
 
@@ -305,8 +305,8 @@ function FeaturedCard({ article }: { article: Article }) {
                       className="size-8 rounded-full object-cover"
                       onError={handleImgError}
                     />
-                    <div className="hidden absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 items-center justify-center rounded-full">
-                      <span className="text-xs font-bold text-purple-400">
+                    <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-full">
+                      <span className="text-xs font-bold text-emerald-400">
                         {author.name.charAt(0)}
                       </span>
                     </div>
@@ -340,7 +340,7 @@ function ArticleCard({ article }: { article: Article }) {
   const author = getAuthor(article.author);
 
   return (
-    <Card className="group rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col overflow-hidden">
+    <Card className="group rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col overflow-hidden">
       <Link to={`/actualites/${article.slug}`} className="flex flex-col h-full">
         {/* Cover image */}
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -350,8 +350,8 @@ function ArticleCard({ article }: { article: Article }) {
             className="absolute inset-0 w-full h-full object-cover rounded-t-2xl"
             onError={handleImgError}
           />
-          <div className="hidden absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 items-center justify-center">
-            <Newspaper className="size-10 text-purple-300" />
+          <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center">
+            <Newspaper className="size-10 text-emerald-300" />
           </div>
         </div>
 
@@ -388,8 +388,8 @@ function ArticleCard({ article }: { article: Article }) {
                   className="size-6 rounded-full object-cover"
                   onError={handleImgError}
                 />
-                <div className="hidden absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 items-center justify-center rounded-full">
-                  <span className="text-[10px] font-bold text-purple-400">
+                <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-full">
+                  <span className="text-[10px] font-bold text-emerald-400">
                     {author.name.charAt(0)}
                   </span>
                 </div>

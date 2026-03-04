@@ -46,7 +46,7 @@ export function MemberCard({ member, blurred = false }: MemberCardProps) {
     <Card className="p-5 text-center space-y-3 hover:shadow-lg transition-shadow duration-200">
       <Avatar className="mx-auto h-16 w-16">
         <AvatarImage src={member.avatar_url ?? undefined} />
-        <AvatarFallback className="text-lg font-semibold bg-brand-purple/10 text-brand-purple">
+        <AvatarFallback className="text-lg font-semibold bg-brand-forest/10 text-brand-forest">
           {initials}
         </AvatarFallback>
       </Avatar>

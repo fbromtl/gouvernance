@@ -1,14 +1,14 @@
 // Brand-aligned chart colors for Recharts
 export const CHART_COLORS = {
-  purple: "#ab54f3",
-  purpleLight: "#c084fc",
-  teal: "#14b8a6",
+  purple: "#57886c",
+  purpleLight: "#81a684",
+  teal: "#f8c7cc",
   amber: "#f59e0b",
   red: "#ef4444",
   blue: "#3b82f6",
   emerald: "#10b981",
   orange: "#f97316",
-  indigo: "#6366f1",
+  indigo: "#466060",
   pink: "#ec4899",
 } as const;
 
@@ -33,25 +33,25 @@ export const SEVERITY_COLORS: Record<string, string> = {
 export const STATUS_COLORS: Record<string, string> = {
   draft: "#9ca3af",
   submitted: "#3b82f6",
-  in_review: "#6366f1",
+  in_review: "#466060",
   approved: "#10b981",
   rejected: "#ef4444",
-  implemented: "#14b8a6",
+  implemented: "#f8c7cc",
 };
 
 // Compliance framework colors for radar
 export const FRAMEWORK_COLORS: Record<string, string> = {
-  LOI_25: "#ab54f3",
+  LOI_25: "#57886c",
   EU_AI_ACT: "#3b82f6",
-  NIST_AI_RMF: "#14b8a6",
+  NIST_AI_RMF: "#f8c7cc",
   ISO_42001: "#f59e0b",
   RGPD: "#ec4899",
 };
 
 // Color palette for generic series (system types, departments, etc.)
 export const SERIES_COLORS = [
-  "#ab54f3", "#3b82f6", "#14b8a6", "#f59e0b", "#ef4444",
-  "#ec4899", "#6366f1", "#f97316", "#10b981", "#8b5cf6",
+  "#57886c", "#3b82f6", "#f8c7cc", "#f59e0b", "#ef4444",
+  "#ec4899", "#466060", "#f97316", "#10b981", "#57886c",
   "#06b6d4", "#84cc16",
 ] as const;
 

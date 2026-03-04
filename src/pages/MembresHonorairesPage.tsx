@@ -130,12 +130,12 @@ export function MembresHonorairesPage() {
       />
 
       {/* ── Hero ───────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#1e1a30] via-[#252243] to-[#1e1a30] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(171,84,243,0.15),_transparent_60%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] py-20 sm:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(87,136,108,0.15),_transparent_60%)]" />
         <div className="relative mx-auto max-w-3xl px-4 text-center">
           <motion.div variants={fadeUp} initial="hidden" animate="visible">
             <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
-              <Award className="size-8 text-purple-400" />
+              <Award className="size-8 text-emerald-400" />
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
               {t("hero.title")}
@@ -173,8 +173,8 @@ export function MembresHonorairesPage() {
                 variants={fadeUp}
                 className="rounded-2xl border border-border bg-card p-6 sm:p-8 text-center"
               >
-                <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-brand-purple/10">
-                  <Icon className="size-6 text-brand-purple" />
+                <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-brand-forest/10">
+                  <Icon className="size-6 text-brand-forest" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">
                   {t(`why.${key}.title`)}
@@ -369,7 +369,7 @@ export function MembresHonorairesPage() {
                         type="submit"
                         size="lg"
                         disabled={form.formState.isSubmitting}
-                        className="rounded-full bg-gradient-to-r from-[#ab54f3] to-[#7c2cd4] px-8 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:brightness-110 transition-all"
+                        className="rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-8 text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all"
                       >
                         {form.formState.isSubmitting ? (
                           <>

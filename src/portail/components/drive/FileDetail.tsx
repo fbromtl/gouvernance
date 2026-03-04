@@ -57,7 +57,7 @@ export function FileDetail({
           <>
             <SheetHeader>
               <SheetTitle className="flex items-start gap-3">
-                <FileText className="h-5 w-5 text-brand-purple shrink-0 mt-0.5" />
+                <FileText className="h-5 w-5 text-brand-forest shrink-0 mt-0.5" />
                 <span>{doc.title}</span>
               </SheetTitle>
               <SheetDescription>

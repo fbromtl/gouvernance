@@ -84,12 +84,12 @@ export function VeilleShowcase() {
         {/* ── Mockup header ── */}
         <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <Newspaper className="h-4 w-4 text-violet-500" />
+            <Newspaper className="h-4 w-4 text-emerald-500" />
             <span className="text-sm font-semibold text-neutral-800">
               Veille réglementaire
             </span>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-600">
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
             <Sparkles className="h-3 w-3" />
             IA
           </span>
@@ -118,7 +118,7 @@ export function VeilleShowcase() {
             {/* Action buttons */}
             <div className="flex items-center gap-2">
               <button
-                className="veille-anim inline-flex items-center gap-1.5 rounded-lg bg-violet-50 border border-violet-200 px-3 py-1.5 text-[11px] font-medium text-violet-700"
+                className="veille-anim inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700"
                 style={{ animation: "veillePulseBtn 12s ease-in-out infinite" }}
                 tabIndex={-1}
               >
@@ -150,10 +150,10 @@ export function VeilleShowcase() {
 
           {/* ── AI Summary panel (slides in after button pulse) ── */}
           <div
-            className="veille-anim rounded-xl border border-violet-200 bg-violet-50/50 px-4 overflow-hidden"
+            className="veille-anim rounded-xl border border-emerald-200 bg-emerald-50/50 px-4 overflow-hidden"
             style={{ animation: "veilleSummaryIn 12s ease-in-out infinite" }}
           >
-            <p className="text-[10px] font-semibold text-violet-600 uppercase tracking-wide mb-2 flex items-center gap-1">
+            <p className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wide mb-2 flex items-center gap-1">
               <Sparkles className="h-3 w-3" />
               Résumé IA
             </p>
@@ -170,7 +170,7 @@ export function VeilleShowcase() {
                     animation: `veilleBullet${i + 1} 12s ease-in-out infinite`,
                   }}
                 >
-                  <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                  <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
                   <p className="text-[11px] text-neutral-700 leading-relaxed">
                     {text}
                   </p>

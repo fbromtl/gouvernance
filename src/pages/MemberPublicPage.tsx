@@ -17,7 +17,7 @@ export function MemberPublicPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-purple" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-forest" />
       </div>
     );
   }
@@ -86,7 +86,7 @@ export function MemberPublicPage() {
             {/* Avatar */}
             <Avatar className="mx-auto h-24 w-24">
               <AvatarImage src={member.avatar_url ?? undefined} />
-              <AvatarFallback className="text-2xl font-bold bg-brand-purple/10 text-brand-purple">
+              <AvatarFallback className="text-2xl font-bold bg-brand-forest/10 text-brand-forest">
                 {initials}
               </AvatarFallback>
             </Avatar>

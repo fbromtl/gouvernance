@@ -48,122 +48,133 @@
   --font-sans: "DM Sans", "system-ui", "-apple-system", "sans-serif";
   --font-serif: "Crimson Text", "Georgia", "serif";
 
-  /* Custom brand colors */
-  --color-brand-purple: #ab54f3;
-  --color-brand-purple-light: #c084fc;
-  --color-brand-purple-dark: #7c2cd4;
-  --color-brand-navy: #1e1a30;
-  --color-brand-navy-light: #252243;
-  --color-brand-blue: #312dee;
-  --color-brand-teal: #14b8a6;
+  /* Brand colors — Nature palette (Coolors) */
+  --color-brand-forest: #57886c;
+  --color-brand-sage: #81a684;
+  --color-brand-teal: #466060;
+  --color-brand-ink: #0e0f19;
+  --color-brand-rose: #f8c7cc;
   --color-brand-amber: #f59e0b;
+
+  /* Legacy aliases — map old names to new values */
+  --color-brand-purple: #57886c;
+  --color-brand-purple-light: #81a684;
+  --color-brand-purple-dark: #466060;
+  --color-brand-navy: #0e0f19;
+  --color-brand-navy-light: #1a1a2e;
+  --color-brand-blue: #57886c;
+  --color-brand-teal-accent: #f8c7cc;
 }
 
 /*
-  Palette professionnelle construite autour de rgb(171, 84, 243) / #ab54f3
-  
-  Couleurs du logo :
-  - #1e1a30 (navy très sombre)     → fonds sombres, header, footer
-  - #252243 (violet-navy foncé)    → texte principal sur fond clair
-  - #312dee (bleu vif)             → liens, accents secondaires
-  - #9755ee / #9e68f2 (violet)     → couleur dominante
-  - #ab54f3 (violet cible)         → PRIMARY - boutons, CTA, icônes
+  Palette Nature — Coolors
+  https://coolors.co/f8c7cc-81a684-57886c-466060-0e0f19
 
-  Complémentaires :
-  - Teal #14b8a6                   → ACCENT - badges, succès, contrastes
-  - Ambre #f59e0b                  → highlights, étoiles, alertes
-  - Bleu logo #312dee              → liens, focus rings
+  Couleurs de marque :
+  - #57886c (vert forêt)       → PRIMARY — boutons, CTA, liens, items actifs
+  - #81a684 (sauge)            → indicateur actif rail, hover léger, badges
+  - #466060 (sarcelle sombre)  → variante foncée, gradients, hover sombre
+  - #0e0f19 (encre noire)      → rail bg, fonds sombres, header/footer
+  - #f8c7cc (rose poudré)      → ACCENT — notifications, highlights
+
+  Sémantique (standard GRC) :
+  - #ef4444 critique  · #f97316 élevé  · #f59e0b moyen  · #10b981 faible
+  - #3b82f6 info
+
+  Neutres chauds :
+  - #f7f6f4 (fond off-white)  · #e8e6e1 (bordures)  · #f0eeea (bordures subtiles)
+  - #1a1a1a (texte primaire)   · #5c5a56 (secondaire) · #8a8780 (tertiaire)
 */
 
 :root {
   --radius: 0.625rem;
 
-  /* Fonds & texte */
-  --background: oklch(0.985 0.005 290);
-  --foreground: oklch(0.18 0.04 285);
+  /* Fonds & texte — neutres chauds */
+  --background: oklch(0.975 0.003 80);
+  --foreground: oklch(0.15 0.01 80);
 
   /* Cartes */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 285);
+  --card-foreground: oklch(0.15 0.01 80);
 
   /* Popovers */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 285);
+  --popover-foreground: oklch(0.15 0.01 80);
 
-  /* PRIMARY — violet dominant #ab54f3 */
-  --primary: oklch(0.55 0.24 300);
+  /* PRIMARY — vert forêt #57886c */
+  --primary: oklch(0.55 0.08 160);
   --primary-foreground: oklch(0.99 0 0);
 
-  /* SECONDARY — violet très clair */
-  --secondary: oklch(0.955 0.025 295);
-  --secondary-foreground: oklch(0.30 0.10 295);
+  /* SECONDARY — vert très clair */
+  --secondary: oklch(0.955 0.015 160);
+  --secondary-foreground: oklch(0.35 0.06 160);
 
-  /* MUTED — gris-violet neutre */
-  --muted: oklch(0.955 0.015 290);
-  --muted-foreground: oklch(0.50 0.03 285);
+  /* MUTED — gris-beige neutre */
+  --muted: oklch(0.955 0.005 80);
+  --muted-foreground: oklch(0.50 0.01 80);
 
-  /* ACCENT — teal complémentaire #14b8a6 */
-  --accent: oklch(0.68 0.14 175);
-  --accent-foreground: oklch(0.99 0 0);
+  /* ACCENT — rose poudré #f8c7cc */
+  --accent: oklch(0.86 0.05 15);
+  --accent-foreground: oklch(0.30 0.08 15);
 
   /* Destructive */
   --destructive: oklch(0.577 0.245 27.325);
 
-  /* Bordures & inputs */
-  --border: oklch(0.91 0.01 290);
-  --input: oklch(0.91 0.01 290);
-  --ring: oklch(0.55 0.24 300);
+  /* Bordures & inputs — tons chauds */
+  --border: oklch(0.92 0.005 80);
+  --input: oklch(0.92 0.005 80);
+  --ring: oklch(0.55 0.08 160);
 
   /* Charts */
-  --chart-1: oklch(0.55 0.24 300);
-  --chart-2: oklch(0.68 0.14 175);
-  --chart-3: oklch(0.65 0.18 265);
+  --chart-1: oklch(0.55 0.08 160);
+  --chart-2: oklch(0.86 0.05 15);
+  --chart-3: oklch(0.65 0.06 160);
   --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.60 0.20 330);
+  --chart-5: oklch(0.45 0.05 180);
 
   /* Sidebar */
-  --sidebar: oklch(0.98 0.005 290);
-  --sidebar-foreground: oklch(0.18 0.04 285);
-  --sidebar-primary: oklch(0.55 0.24 300);
+  --sidebar: oklch(0.98 0.003 80);
+  --sidebar-foreground: oklch(0.15 0.01 80);
+  --sidebar-primary: oklch(0.55 0.08 160);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.955 0.025 295);
-  --sidebar-accent-foreground: oklch(0.30 0.10 295);
-  --sidebar-border: oklch(0.91 0.01 290);
-  --sidebar-ring: oklch(0.55 0.24 300);
+  --sidebar-accent: oklch(0.955 0.015 160);
+  --sidebar-accent-foreground: oklch(0.35 0.06 160);
+  --sidebar-border: oklch(0.92 0.005 80);
+  --sidebar-ring: oklch(0.55 0.08 160);
 }
 
 .dark {
-  --background: oklch(0.14 0.03 285);
-  --foreground: oklch(0.96 0.005 290);
-  --card: oklch(0.19 0.035 285);
-  --card-foreground: oklch(0.96 0.005 290);
-  --popover: oklch(0.19 0.035 285);
-  --popover-foreground: oklch(0.96 0.005 290);
-  --primary: oklch(0.68 0.22 300);
-  --primary-foreground: oklch(0.14 0.03 285);
-  --secondary: oklch(0.23 0.04 285);
-  --secondary-foreground: oklch(0.96 0.005 290);
-  --muted: oklch(0.23 0.04 285);
-  --muted-foreground: oklch(0.65 0.03 285);
-  --accent: oklch(0.68 0.14 175);
-  --accent-foreground: oklch(0.96 0.005 290);
+  --background: oklch(0.14 0.01 80);
+  --foreground: oklch(0.96 0.003 80);
+  --card: oklch(0.19 0.01 80);
+  --card-foreground: oklch(0.96 0.003 80);
+  --popover: oklch(0.19 0.01 80);
+  --popover-foreground: oklch(0.96 0.003 80);
+  --primary: oklch(0.65 0.08 160);
+  --primary-foreground: oklch(0.14 0.01 80);
+  --secondary: oklch(0.23 0.01 80);
+  --secondary-foreground: oklch(0.96 0.003 80);
+  --muted: oklch(0.23 0.01 80);
+  --muted-foreground: oklch(0.65 0.01 80);
+  --accent: oklch(0.86 0.05 15);
+  --accent-foreground: oklch(0.96 0.003 80);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.68 0.22 300);
-  --chart-1: oklch(0.68 0.22 300);
-  --chart-2: oklch(0.68 0.14 175);
-  --chart-3: oklch(0.65 0.18 265);
+  --ring: oklch(0.65 0.08 160);
+  --chart-1: oklch(0.65 0.08 160);
+  --chart-2: oklch(0.86 0.05 15);
+  --chart-3: oklch(0.65 0.06 160);
   --chart-4: oklch(0.75 0.15 80);
-  --chart-5: oklch(0.60 0.20 330);
-  --sidebar: oklch(0.19 0.035 285);
-  --sidebar-foreground: oklch(0.96 0.005 290);
-  --sidebar-primary: oklch(0.68 0.22 300);
-  --sidebar-primary-foreground: oklch(0.96 0.005 290);
-  --sidebar-accent: oklch(0.23 0.04 285);
-  --sidebar-accent-foreground: oklch(0.96 0.005 290);
+  --chart-5: oklch(0.45 0.05 180);
+  --sidebar: oklch(0.19 0.01 80);
+  --sidebar-foreground: oklch(0.96 0.003 80);
+  --sidebar-primary: oklch(0.65 0.08 160);
+  --sidebar-primary-foreground: oklch(0.96 0.003 80);
+  --sidebar-accent: oklch(0.23 0.01 80);
+  --sidebar-accent-foreground: oklch(0.96 0.003 80);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.68 0.22 300);
+  --sidebar-ring: oklch(0.65 0.08 160);
 }
 
 @layer base {
@@ -174,7 +185,7 @@
     @apply bg-background text-foreground antialiased;
     background-image: radial-gradient(
       ellipse 80% 60% at 50% -10%,
-      oklch(0.94 0.02 290 / 40%) 0%,
+      oklch(0.94 0.01 160 / 30%) 0%,
       transparent 70%
     );
     background-attachment: fixed;
@@ -197,7 +208,7 @@
 /* Chat scrollbar */
 .chat-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(171, 84, 243, 0.2) transparent;
+  scrollbar-color: rgba(87, 136, 108, 0.2) transparent;
 }
 .chat-scrollbar::-webkit-scrollbar {
   width: 5px;
@@ -206,9 +217,9 @@
   background: transparent;
 }
 .chat-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(171, 84, 243, 0.2);
+  background: rgba(87, 136, 108, 0.2);
   border-radius: 10px;
 }
 .chat-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(171, 84, 243, 0.4);
+  background: rgba(87, 136, 108, 0.4);
 }

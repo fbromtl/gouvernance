@@ -111,10 +111,10 @@ export function RessourcesPage() {
               return (
                 <div
                   key={outil.title}
-                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all duration-300"
+                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 group-hover:bg-purple-500/20 transition-colors">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
                       <Icon className="size-5" />
                     </div>
                     <div className="min-w-0">
@@ -148,7 +148,7 @@ export function RessourcesPage() {
               </p>
               <Link
                 to="/rejoindre"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
               >
                 Acc&eacute;der aux outils gratuitement
                 <ArrowRight className="size-4" />
@@ -179,7 +179,7 @@ export function RessourcesPage() {
           <div className="text-center mt-10">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ab54f3] to-[#8b3fd4] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
             >
               Recevoir les mises à jour réglementaires
               <ArrowRight className="size-4" />

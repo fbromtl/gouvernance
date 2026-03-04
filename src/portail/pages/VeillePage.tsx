@@ -270,7 +270,7 @@ export default function VeillePage() {
           <h1 className="text-2xl font-bold tracking-tight">
             {t("pageTitle")}
           </h1>
-          <Badge className="bg-brand-purple/15 text-brand-purple border-brand-purple/30 text-[10px] font-bold tracking-wider">
+          <Badge className="bg-brand-forest/15 text-brand-forest border-brand-forest/30 text-[10px] font-bold tracking-wider">
             IA
           </Badge>
           <SectionHelpButton ns="veille" />
@@ -302,7 +302,7 @@ export default function VeillePage() {
                 onClick={() => setActiveJurisdiction(key)}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                   isActive
-                    ? "bg-brand-purple text-white"
+                    ? "bg-brand-forest text-white"
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                 }`}
               >
@@ -321,12 +321,12 @@ export default function VeillePage() {
       </div>
 
       {/* ---- Weekly AI Summary ---- */}
-      <Card className="border-brand-purple/20 bg-gradient-to-br from-brand-purple/5 to-transparent">
+      <Card className="border-brand-forest/20 bg-gradient-to-br from-brand-forest/5 to-transparent">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-purple/10">
-                <Sparkles className="h-4 w-4 text-brand-purple" />
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-forest/10">
+                <Sparkles className="h-4 w-4 text-brand-forest" />
               </div>
               {t("weeklySummary.title")}
             </CardTitle>
@@ -385,7 +385,7 @@ export default function VeillePage() {
               </p>
               <Button
                 onClick={() => generateWeeklySummary(articles)}
-                className="gap-2 bg-brand-purple hover:bg-brand-purple/90"
+                className="gap-2 bg-brand-forest hover:bg-brand-forest/90"
               >
                 <Sparkles className="h-4 w-4" />
                 {t("weeklySummary.generate")}
@@ -449,7 +449,7 @@ export default function VeillePage() {
                 <CardContent className="py-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm leading-snug mb-1 group-hover:text-brand-purple transition-colors">
+                      <h3 className="font-medium text-sm leading-snug mb-1 group-hover:text-brand-forest transition-colors">
                         {article.title}
                       </h3>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
@@ -515,8 +515,8 @@ export default function VeillePage() {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-base">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-purple/10">
-                <FileText className="h-3.5 w-3.5 text-brand-purple" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-forest/10">
+                <FileText className="h-3.5 w-3.5 text-brand-forest" />
               </div>
               {t("articles.summaryTitle")}
             </DialogTitle>

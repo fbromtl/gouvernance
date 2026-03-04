@@ -10,7 +10,7 @@ interface MemberBadgeProps {
 }
 
 const BADGE_STYLES: Record<string, string> = {
-  member: "bg-brand-purple/15 text-brand-purple border-brand-purple/30",
+  member: "bg-brand-forest/15 text-brand-forest border-brand-forest/30",
   expert: "bg-amber-100 text-amber-700 border-amber-300",
   honorary: "bg-slate-200 text-slate-700 border-slate-300 shadow-inner",
 };

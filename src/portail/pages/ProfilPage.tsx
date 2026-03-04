@@ -178,7 +178,7 @@ export default function ProfilPage() {
       {/* ============================================================ */}
       <div className="rounded-2xl border border-border/50 bg-card overflow-hidden">
         {/* Banner */}
-        <div className="h-28 bg-gradient-to-r from-brand-purple via-brand-purple-dark to-[#1e1a30] relative">
+        <div className="h-28 bg-gradient-to-r from-brand-forest via-brand-teal to-[#0e0f19] relative">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         </div>
 
@@ -195,7 +195,7 @@ export default function ProfilPage() {
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <div className="flex size-24 items-center justify-center rounded-2xl bg-brand-purple/10 text-brand-purple text-2xl font-bold border-4 border-card shadow-lg">
+                <div className="flex size-24 items-center justify-center rounded-2xl bg-brand-forest/10 text-brand-forest text-2xl font-bold border-4 border-card shadow-lg">
                   {initials}
                 </div>
               )}
@@ -238,8 +238,8 @@ export default function ProfilPage() {
       {/* ============================================================ */}
       <div className="rounded-2xl border border-border/50 bg-card p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
-            <User className="size-5 text-brand-purple" />
+          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-forest/10">
+            <User className="size-5 text-brand-forest" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">
@@ -319,8 +319,8 @@ export default function ProfilPage() {
       {/* ============================================================ */}
       <div className="rounded-2xl border border-border/50 bg-card p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
-            <Crown className="size-5 text-brand-purple" />
+          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-forest/10">
+            <Crown className="size-5 text-brand-forest" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">
@@ -407,11 +407,11 @@ export default function ProfilPage() {
 
           {/* Public page link */}
           {profile?.member_slug && (
-            <div className="flex items-center gap-2 rounded-xl bg-brand-purple/5 border border-brand-purple/10 p-3">
-              <ExternalLink className="size-4 text-brand-purple shrink-0" />
+            <div className="flex items-center gap-2 rounded-xl bg-brand-forest/5 border border-brand-forest/10 p-3">
+              <ExternalLink className="size-4 text-brand-forest shrink-0" />
               <Link
                 to={`/membres/${profile.member_slug}`}
-                className="text-sm font-medium text-brand-purple hover:underline"
+                className="text-sm font-medium text-brand-forest hover:underline"
               >
                 {i18n.language === "en"
                   ? "View my public page"
@@ -438,7 +438,7 @@ export default function ProfilPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="shrink-0 gap-1.5 border-brand-purple/30 text-brand-purple hover:bg-brand-purple/5"
+                className="shrink-0 gap-1.5 border-brand-forest/30 text-brand-forest hover:bg-brand-forest/5"
                 onClick={() => navigate("/billing")}
               >
                 <Crown className="size-3.5" />
@@ -454,8 +454,8 @@ export default function ProfilPage() {
       {/* ============================================================ */}
       <div className="rounded-2xl border border-border/50 bg-card p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-purple/10">
-            <Shield className="size-5 text-brand-purple" />
+          <div className="flex size-10 items-center justify-center rounded-xl bg-brand-forest/10">
+            <Shield className="size-5 text-brand-forest" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground">

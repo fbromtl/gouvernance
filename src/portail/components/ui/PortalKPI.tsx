@@ -36,7 +36,7 @@ export function PortalKPI({ icon: Icon, label, value, color, bgColor, href, tren
         <p className="text-3xl font-bold tracking-tight text-neutral-900">{value}</p>
         <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mt-1">{label}</p>
       </div>
-      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-[#ab54f3]/40 group-hover:w-full transition-all duration-500" />
+      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-[#57886c]/40 group-hover:w-full transition-all duration-500" />
     </div>
   );
 
