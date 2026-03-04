@@ -269,7 +269,7 @@ export function DiagnosticResultsPage() {
             </p>
             <Link
               to="/connexion"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#57886c] to-[#466060] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 transition-all hover:shadow-[#57886c]/40"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#57886c] px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#466060]"
             >
               {t("results.ctaButton")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

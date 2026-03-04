@@ -229,7 +229,7 @@ export function FloatingChat({
         onClick={() => setOpen(!open)}
         className={cn(
           "group flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-200",
-          "bg-brand-forest text-white hover:bg-brand-forest/90 hover:shadow-xl hover:scale-105",
+          "bg-brand-forest text-white hover:bg-brand-forest/90",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest focus-visible:ring-offset-2",
           open && "rotate-0"
         )}

@@ -369,7 +369,7 @@ export function MembresHonorairesPage() {
                         type="submit"
                         size="lg"
                         disabled={form.formState.isSubmitting}
-                        className="rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-8 text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all"
+                        className="rounded-full bg-[#57886c] hover:bg-[#466060] px-8 text-white transition-all"
                       >
                         {form.formState.isSubmitting ? (
                           <>

@@ -29,7 +29,7 @@ interface BenefitsPanelProps {
 
 export function BenefitsPanel({ title = "Pourquoi nous rejoindre ?" }: BenefitsPanelProps) {
   return (
-    <div className="hidden md:flex flex-col justify-center w-[320px] shrink-0 bg-gradient-to-br from-[#7c3aed] via-[#6d28d9] to-[#4f46e5] p-8 text-white">
+    <div className="hidden md:flex flex-col justify-center w-[320px] shrink-0 bg-[#57886c] p-8 text-white">
       <h2 className="text-lg font-semibold mb-8">{title}</h2>
 
       <div className="space-y-6">

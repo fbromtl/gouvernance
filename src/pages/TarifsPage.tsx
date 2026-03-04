@@ -695,7 +695,7 @@ export function TarifsPage() {
             <Button
               asChild
               size="lg"
-              className="bg-brand-forest hover:bg-brand-teal text-white shadow-xl shadow-brand-forest/25 px-7 h-11 text-sm font-semibold"
+              className="bg-brand-forest hover:bg-brand-teal text-white px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("startFree")}

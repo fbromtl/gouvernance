@@ -154,7 +154,7 @@ export function RejoindrePage() {
                 <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
                   <Link
                     to="/inscription"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3.5 text-sm font-semibold text-white transition-all"
                   >
                     Créer mon compte gratuitement
                     <ArrowRight className="size-4" />
@@ -385,7 +385,7 @@ export function RejoindrePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/inscription"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-8 py-4 text-sm font-semibold text-white transition-all"
               >
                 Créer mon compte gratuitement
                 <ArrowRight className="size-4" />

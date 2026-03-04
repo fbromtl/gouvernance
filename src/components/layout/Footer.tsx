@@ -205,7 +205,7 @@ export function Footer() {
                       rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className={cn(
                         "flex items-center justify-center size-9 rounded-lg border border-white/15 text-white/60 transition-all duration-200",
-                        "hover:text-white hover:scale-105",
+                        "hover:text-white",
                         social.hoverClass
                       )}
                       aria-label={social.label}

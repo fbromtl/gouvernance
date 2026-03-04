@@ -140,7 +140,7 @@ export function FeatureGate({ feature, children, silent = false }: FeatureGatePr
 
           {/* CTA button */}
           <Button
-            className="mt-6 w-full bg-gradient-to-r from-[#57886c] to-[#466060] text-white rounded-full shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all font-semibold"
+            className="mt-6 w-full bg-[#57886c] text-white rounded-full transition-all font-semibold"
             onClick={handleTrial}
             disabled={checkout.isPending}
           >

@@ -144,7 +144,7 @@ export function ContactPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3 text-sm font-semibold text-white transition-all"
                     >
                       Envoyer
                       <ArrowRight className="size-4" />

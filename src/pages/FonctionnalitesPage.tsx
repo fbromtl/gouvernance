@@ -645,7 +645,7 @@ function MembersMockup() {
       <div className="space-y-2.5">
         {members.map((m) => (
           <div key={m.name} className="flex items-center gap-3 rounded-xl border border-neutral-100 bg-neutral-50/50 px-4 py-3">
-            <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] text-white text-xs font-bold">
+            <div className="flex size-9 items-center justify-center rounded-full bg-[#57886c] text-white text-xs font-bold">
               {m.name.split(" ").map(n => n[0]).join("")}
             </div>
             <div className="min-w-0 flex-1">
@@ -664,7 +664,7 @@ function ProfileMockup() {
   return (
     <MockupCard title="Profil professionnel" icon={UserCircle}>
       <div className="text-center">
-        <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] text-white text-lg font-bold">
+        <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-[#57886c] text-white text-lg font-bold">
           MC
         </div>
         <p className="mt-2.5 text-sm font-bold text-neutral-800">Marie-Claude Trudel</p>
@@ -721,7 +721,7 @@ function LegalChatbotMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-[#57886c]">
             <BookOpenCheck className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Assistant juridique IA</span>
@@ -809,7 +809,7 @@ function VendorQuestionnaireMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-[#57886c]">
             <ClipboardList className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Questionnaire fournisseur</span>
@@ -920,7 +920,7 @@ function McpServerMockup() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#57886c] to-[#466060]">
+          <div className="flex size-7 items-center justify-center rounded-lg bg-[#57886c]">
             <Server className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold text-neutral-800">Serveur MCP</span>
@@ -1249,7 +1249,7 @@ function NouveautesSlider() {
         >
           {/* Text */}
           <div>
-            <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#57886c] to-[#466060]">
+            <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#57886c]">
               <SlideIcon className="size-6 text-white" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -1392,7 +1392,7 @@ export function FonctionnalitesPage() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#57886c] to-[#466060] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#57886c]/25 px-7 h-11 text-sm font-semibold"
+              className="bg-[#57886c] hover:bg-[#466060] text-white px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("hero.cta")}
@@ -1577,7 +1577,7 @@ export function FonctionnalitesPage() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#57886c] to-[#466060] hover:from-[#9b44e3] hover:to-[#6c1cc4] text-white shadow-xl shadow-[#57886c]/25 px-7 h-11 text-sm font-semibold"
+              className="bg-[#57886c] hover:bg-[#466060] text-white px-7 h-11 text-sm font-semibold"
             >
               <Link to="/inscription">
                 {t("cta.primary")}

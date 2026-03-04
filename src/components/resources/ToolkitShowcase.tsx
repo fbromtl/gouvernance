@@ -219,7 +219,7 @@ export function ToolkitShowcase() {
             style={{ animation: "tkBtnIn 12s ease-in-out infinite" }}
           >
             <button
-              className="toolkit-anim w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#57886c] to-[#466060] px-4 py-2.5 text-sm font-semibold text-white"
+              className="toolkit-anim w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#57886c] px-4 py-2.5 text-sm font-semibold text-white"
               style={{ animation: "tkBtnPulse 12s ease-in-out infinite" }}
               tabIndex={-1}
             >

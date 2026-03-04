@@ -234,7 +234,7 @@ export function ActualitesPage() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3 text-sm font-semibold text-white transition-all"
             >
               Nous contacter <ArrowRight className="size-4" />
             </Link>

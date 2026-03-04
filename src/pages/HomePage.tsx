@@ -112,17 +112,10 @@ export function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center w-full max-w-2xl mx-auto">
               <Link
                 to="/inscription"
-                className="group inline-flex items-center gap-2 font-medium text-white bg-gradient-to-r from-[#57886c] to-[#466060] rounded-full py-4 px-8 relative shadow-lg overflow-hidden transition-all duration-300 hover:shadow-[#57886c]/50"
-                style={{
-                  boxShadow:
-                    "0 15px 33px -12px rgba(87,136,108,0.6), inset 0 4px 6.3px rgba(255,255,255,0.3), inset 0 -5px 6.3px rgba(0,0,0,0.1)",
-                }}
+                className="inline-flex items-center gap-2 font-medium text-white bg-[#57886c] rounded-full py-4 px-8 transition-all duration-300 hover:bg-[#466060]"
               >
-                <div className="group-hover:translate-y-0 transition-transform duration-300 bg-white/10 absolute inset-0 translate-y-full" />
-                <span className="relative flex items-center gap-2">
-                  Créer mon compte gratuit
-                  <ArrowRight className="w-4 h-4" />
-                </span>
+                Créer mon compte gratuit
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/diagnostic"
@@ -390,7 +383,7 @@ export function HomePage() {
               </div>
 
               {/* Card 4: Expert Support dark */}
-              <div className="bg-neutral-950 p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative hover:shadow-2xl hover:shadow-[#57886c]/20 transition-all duration-500">
+              <div className="bg-neutral-950 p-10 rounded-[40px] flex flex-col justify-between h-[520px] text-white relative transition-all duration-500">
                 <div className="flex justify-between items-start">
                   <span className="text-lg font-medium tracking-tight text-[#57886c]">
                     Accompagnement Expert
@@ -425,7 +418,7 @@ export function HomePage() {
         <div className="text-center py-10 bg-white">
           <Link
             to="/inscription"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3 text-sm font-semibold text-white transition-all"
           >
             Rejoindre le Cercle gratuitement
             <ArrowRight className="w-4 h-4" />
@@ -820,7 +813,7 @@ export function HomePage() {
               </div>
 
               {/* Testimonial 2 – highlighted */}
-              <div className="group bg-gradient-to-br from-[#57886c] to-[#466060] p-8 rounded-[40px] flex flex-col justify-between shadow-2xl shadow-[#57886c]/20 transition-all duration-500 hover:-translate-y-2">
+              <div className="group bg-[#57886c] p-8 rounded-[40px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2">
                 <div>
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-2xl mb-8 backdrop-blur-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 256 256">
@@ -917,7 +910,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/tarifs"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-8 py-4 text-sm font-semibold text-white transition-all"
               >
                 Voir les tarifs d&apos;adhésion
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -994,7 +987,7 @@ export function HomePage() {
         <div className="text-center py-10">
           <Link
             to="/inscription"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3 text-sm font-semibold text-white transition-all"
           >
             Créer mon compte, c'est gratuit
             <ArrowRight className="w-4 h-4" />
@@ -1017,7 +1010,7 @@ export function HomePage() {
             </div>
             <Link
               to="/inscription"
-              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#57886c] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#57886c]/20 hover:shadow-[#57886c]/40 hover:brightness-110 transition-all whitespace-nowrap"
+              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-5 py-2.5 text-sm font-semibold text-white transition-all whitespace-nowrap"
             >
               Vérifier maintenant
               <ArrowRight className="w-4 h-4" />
@@ -1108,7 +1101,7 @@ export function HomePage() {
               <div className="flex items-center gap-2">
                 <Link
                   to="/inscription"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#57886c] to-[#466060] px-5 py-2 text-sm font-semibold text-white shadow-md shadow-[#57886c]/25 hover:shadow-[#57886c]/40 transition-all whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-5 py-2 text-sm font-semibold text-white transition-all whitespace-nowrap"
                 >
                   S'inscrire
                   <ArrowRight className="w-3.5 h-3.5" />

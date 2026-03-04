@@ -102,7 +102,7 @@ function MessageBubble({
         className={cn(
           "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
           isUser
-            ? "bg-gradient-to-r from-[#57886c] to-[#466060] text-white rounded-br-md shadow-sm"
+            ? "bg-[#57886c] text-white rounded-br-md shadow-sm"
             : "bg-neutral-50 border border-neutral-200/60 text-neutral-900 rounded-bl-md"
         )}
       >
@@ -234,7 +234,7 @@ export function PublicChat() {
             )}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3.5 bg-gradient-to-r from-[#57886c] to-[#466060] text-white shrink-0">
+            <div className="flex items-center justify-between px-4 py-3.5 bg-[#57886c] text-white shrink-0">
               <div className="flex items-center gap-3">
                 {/* Animated avatar */}
                 <div className="relative">
@@ -359,7 +359,7 @@ export function PublicChat() {
                   size="icon"
                   className={cn(
                     "h-11 w-11 shrink-0 rounded-xl transition-all duration-200",
-                    "bg-gradient-to-r from-[#57886c] to-[#466060] hover:shadow-md",
+                    "bg-[#57886c] hover:shadow-md",
                     "disabled:opacity-40"
                   )}
                   onClick={handleSend}
@@ -389,11 +389,10 @@ export function PublicChat() {
       {/* ---- Floating Bubble ---- */}
       <motion.button
         onClick={() => setOpen(!open)}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
+        whileTap={{ scale: 0.97 }}
         className={cn(
-          "group relative flex h-14 w-14 items-center justify-center rounded-full transition-shadow duration-300",
-          "bg-gradient-to-br from-[#57886c] to-[#466060] text-white shadow-xl hover:shadow-2xl",
+          "group relative flex h-14 w-14 items-center justify-center rounded-full transition-colors duration-300",
+          "bg-[#57886c] text-white hover:bg-[#466060]",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57886c] focus-visible:ring-offset-2"
         )}
         aria-label={open ? "Fermer le chat" : "Ouvrir le chat"}
