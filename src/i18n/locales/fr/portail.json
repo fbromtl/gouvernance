@@ -38,6 +38,16 @@
     "main": "Principal",
     "modules": "Modules"
   },
+  "rail": {
+    "overview": "Aperçu",
+    "inventory": "Inventaire",
+    "governance": "Gouv.",
+    "risks": "Risques",
+    "operations": "Ops",
+    "community": "Équipe",
+    "backToSite": "Site",
+    "settings": "Profil"
+  },
   "backToSite": "Retour au site",
   "openMenu": "Ouvrir le menu",
   "collapseMenu": "Réduire",

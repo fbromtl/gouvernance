@@ -38,6 +38,16 @@
     "main": "Main",
     "modules": "Modules"
   },
+  "rail": {
+    "overview": "Overview",
+    "inventory": "Inventory",
+    "governance": "Gov.",
+    "risks": "Risks",
+    "operations": "Ops",
+    "community": "Team",
+    "backToSite": "Site",
+    "settings": "Profile"
+  },
   "backToSite": "Back to site",
   "openMenu": "Open menu",
   "collapseMenu": "Collapse",
