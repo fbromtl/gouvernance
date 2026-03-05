@@ -59,13 +59,24 @@ export function RessourcesPage() {
     <>
       <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils et veille réglementaire pour la gouvernance de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
-      {/* HERO — fond beige */}
-      <section className="pt-32 pb-20 bg-[#f7f6f4]">
+      {/* HERO */}
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
+          `,
+        }}
+      >
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1a1a1a] mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             Ressources
           </h1>
-          <p className="text-lg sm:text-xl text-[#5c5a56] max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Guides pratiques, outils et veille réglementaire pour structurer votre gouvernance de
             l&apos;IA.
           </p>
