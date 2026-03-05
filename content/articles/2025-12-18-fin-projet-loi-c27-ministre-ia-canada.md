@@ -22,7 +22,7 @@ Dans un geste significatif, le premier ministre Mark Carney a nommé le premier 
 
 Le mandat de ce nouveau ministre inclut l'élaboration d'une stratégie nationale renouvelée en matière d'IA, le positionnement du Canada à l'avant-garde de la révolution de l'IA, la coordination des investissements fédéraux en IA et le développement d'un cadre réglementaire approprié.
 
-Pour le Québec, cette nomination est à la fois une opportunité et un défi. Une opportunité, car elle ouvre la porte à une coordination fédérale-provinciale plus structurée en matière de gouvernance de l'IA. Un défi, car le Québec devra veiller à ce que ses compétences provinciales soient respectées et que ses spécificités — juridiques, linguistiques et culturelles — soient prises en compte dans la stratégie fédérale.
+Pour le Québec, cette nomination est à la fois une opportunité et un défi. Une opportunité, car elle ouvre la porte à une coordination fédérale-provinciale plus structurée en matière de gouvernance de l'IA. Un défi, car le Québec devra veiller à ce que ses compétences provinciales soient respectées et que ses spécificités, juridiques, linguistiques et culturelles, soient prises en compte dans la stratégie fédérale.
 
 ## L'investissement fédéral de 925,6 millions de dollars
 
@@ -40,7 +40,7 @@ Le Québec, grâce à la Loi 25 et à son cadre de protection des droits de la p
 
 L'échec du projet C-27 offre des enseignements pour l'avenir. La LIAD avait été critiquée pour sa portée trop large, pour le manque de précision de certaines obligations et pour l'insuffisance des mécanismes de mise en application. Certains observateurs estimaient que la loi accordait trop de pouvoir discrétionnaire au ministre de l'Innovation pour définir les détails de la réglementation par voie réglementaire, plutôt que de les inscrire dans la loi elle-même.
 
-Le prochain cadre fédéral devra tirer les leçons de ces critiques en offrant des obligations claires et prévisibles, en établissant des mécanismes d'application indépendants et dotés de ressources adéquates, en s'articulant de manière cohérente avec les cadres provinciaux existants — en particulier celui du Québec — et en prévoyant des mécanismes d'adaptation à l'évolution rapide des technologies.
+Le prochain cadre fédéral devra tirer les leçons de ces critiques en offrant des obligations claires et prévisibles, en établissant des mécanismes d'application indépendants et dotés de ressources adéquates, en s'articulant de manière cohérente avec les cadres provinciaux existants, en particulier celui du Québec, et en prévoyant des mécanismes d'adaptation à l'évolution rapide des technologies.
 
 ## La relation fédérale-provinciale en matière de gouvernance de l'IA
 

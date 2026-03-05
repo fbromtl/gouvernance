@@ -14,7 +14,7 @@ tags: "gouvernance, intelligence artificielle, Québec, introduction, écosystè
 
 Le Québec s'est imposé au fil de la dernière décennie comme un pôle mondial de l'intelligence artificielle. Porté par un écosystème de recherche exceptionnel, des investissements publics et privés majeurs et une concentration unique de talents, le territoire québécois est devenu un terrain fertile pour le développement et le déploiement de technologies d'IA. Mais cette avancée technologique s'accompagne d'un impératif incontournable : celui de gouverner l'IA de manière responsable, équitable et transparente.
 
-La gouvernance de l'intelligence artificielle ne se limite pas à un exercice réglementaire. Elle englobe l'ensemble des mécanismes — juridiques, éthiques, organisationnels et techniques — par lesquels une société encadre le développement, le déploiement et l'utilisation des systèmes d'IA. Pour le Québec, cet enjeu revêt une importance particulière compte tenu de son positionnement international, de ses valeurs sociales distinctes et de son cadre juridique propre au sein de la fédération canadienne.
+La gouvernance de l'intelligence artificielle ne se limite pas à un exercice réglementaire. Elle englobe l'ensemble des mécanismes, juridiques, éthiques, organisationnels et techniques, par lesquels une société encadre le développement, le déploiement et l'utilisation des systèmes d'IA. Pour le Québec, cet enjeu revêt une importance particulière compte tenu de son positionnement international, de ses valeurs sociales distinctes et de son cadre juridique propre au sein de la fédération canadienne.
 
 ## Le contexte québécois : forces et particularités
 
@@ -36,7 +36,7 @@ Ces questions ne sont pas abstraites. Elles ont des conséquences concrètes sur
 
 La gouvernance de l'IA au Québec s'articule autour de plusieurs dimensions complémentaires.
 
-La dimension juridique et réglementaire concerne l'adoption et l'application de lois, règlements et normes qui encadrent le développement et l'utilisation de l'IA. Au Québec, cela inclut non seulement le cadre provincial — notamment la Loi 25 et les pouvoirs de la Commission d'accès à l'information — mais aussi l'interaction avec le cadre fédéral canadien et les normes internationales émergentes, comme le Règlement européen sur l'IA.
+La dimension juridique et réglementaire concerne l'adoption et l'application de lois, règlements et normes qui encadrent le développement et l'utilisation de l'IA. Au Québec, cela inclut non seulement le cadre provincial, notamment la Loi 25 et les pouvoirs de la Commission d'accès à l'information, mais aussi l'interaction avec le cadre fédéral canadien et les normes internationales émergentes, comme le Règlement européen sur l'IA.
 
 La dimension éthique porte sur les principes et les valeurs qui doivent guider la conception et le déploiement des systèmes d'IA. Le Québec a été pionnier dans ce domaine, notamment avec la Déclaration de Montréal pour un développement responsable de l'intelligence artificielle, publiée en 2018, qui propose un ensemble de principes éthiques issus d'une démarche de cocréation citoyenne.
 
@@ -52,7 +52,7 @@ Par ailleurs, le Québec doit composer avec sa réalité linguistique. Les syst�
 
 ## Une série pour approfondir
 
-Cette série de vingt articles se propose d'explorer en profondeur les multiples facettes de la gouvernance de l'intelligence artificielle au Québec. Nous examinerons le cadre juridique applicable, les enjeux éthiques spécifiques, les défis sectoriels — en santé, en éducation, dans le marché du travail et dans la fonction publique — ainsi que les pistes de solution qui se dessinent. Nous nous pencherons sur le rôle des institutions québécoises, sur les comparaisons internationales et sur les perspectives d'avenir.
+Cette série de vingt articles se propose d'explorer en profondeur les multiples facettes de la gouvernance de l'intelligence artificielle au Québec. Nous examinerons le cadre juridique applicable, les enjeux éthiques spécifiques, les défis sectoriels, en santé, en éducation, dans le marché du travail et dans la fonction publique, ainsi que les pistes de solution qui se dessinent. Nous nous pencherons sur le rôle des institutions québécoises, sur les comparaisons internationales et sur les perspectives d'avenir.
 
 Chaque article s'adresse aux professionnels et aux décideurs qui souhaitent comprendre les enjeux de la gouvernance de l'IA dans le contexte québécois et qui cherchent des repères pour orienter leurs propres pratiques. L'objectif n'est pas de fournir des réponses définitives, mais d'offrir un éclairage rigoureux et nuancé sur un sujet qui façonnera l'avenir de la société québécoise.
 

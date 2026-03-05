@@ -18,7 +18,7 @@ Pour le Québec, l'AI Act n'est pas seulement un règlement étranger : c'est un
 
 ## L'approche par les risques : un modèle transposable
 
-L'architecture fondée sur le risque de l'AI Act offre un cadre logique que le Québec pourrait adapter. La classification en quatre niveaux — risque inacceptable (interdit), haut risque (obligations strictes), risque limité (transparence) et risque minimal (libre) — permet de concentrer les obligations réglementaires là où les enjeux sont les plus critiques, sans imposer de fardeau disproportionné aux applications à faible risque.
+L'architecture fondée sur le risque de l'AI Act offre un cadre logique que le Québec pourrait adapter. La classification en quatre niveaux, risque inacceptable (interdit), haut risque (obligations strictes), risque limité (transparence) et risque minimal (libre), permet de concentrer les obligations réglementaires là où les enjeux sont les plus critiques, sans imposer de fardeau disproportionné aux applications à faible risque.
 
 Pour le Québec, une classification adaptée pourrait tenir compte des spécificités locales. Les systèmes d'IA utilisés dans le réseau de la santé québécois, dans les services sociaux, dans l'éducation et dans la justice pourraient être classés comme à haut risque, avec des obligations proportionnées. Les systèmes de recommandation de contenu et les agents conversationnels pourraient relever de la catégorie de risque limité, avec des obligations de transparence.
 
@@ -46,7 +46,7 @@ La coordination entre les autorités nationales de surveillance reste un défi. 
 
 ## L'effet Bruxelles et ses implications pour le Québec
 
-L'AI Act exerce un « effet Bruxelles » — une influence normative qui dépasse les frontières de l'UE. Les entreprises technologiques internationales tendent à aligner leurs pratiques sur les normes les plus exigeantes pour simplifier leur conformité mondiale. Les entreprises québécoises qui adoptent les standards de l'AI Act se positionnent donc avantageusement pour opérer dans un environnement réglementaire mondial convergent.
+L'AI Act exerce un « effet Bruxelles », une influence normative qui dépasse les frontières de l'UE. Les entreprises technologiques internationales tendent à aligner leurs pratiques sur les normes les plus exigeantes pour simplifier leur conformité mondiale. Les entreprises québécoises qui adoptent les standards de l'AI Act se positionnent donc avantageusement pour opérer dans un environnement réglementaire mondial convergent.
 
 Cet effet représente aussi une opportunité stratégique pour le Québec. En alignant son propre cadre sur les principes de l'AI Act tout en l'adaptant à ses spécificités, le Québec faciliterait les échanges commerciaux avec l'Europe, attirerait des entreprises soucieuses de conformité et renforcerait sa crédibilité internationale en matière de gouvernance de l'IA.
 

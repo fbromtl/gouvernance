@@ -30,11 +30,11 @@ L'intelligence artificielle pose des défis inédits à la CAI, qui doit adapter
 
 La complexité technique des systèmes d'IA constitue le défi le plus immédiat. L'évaluation de la conformité d'un système d'apprentissage profond aux exigences de la loi requiert des connaissances spécialisées en science des données, en apprentissage automatique et en sécurité informatique. La CAI doit pouvoir compter sur des équipes pluridisciplinaires capables de comprendre et d'analyser les aspects techniques des systèmes qu'elle supervise.
 
-L'évolution rapide des technologies rend difficile l'adaptation des cadres d'interprétation et des pratiques de surveillance. Les systèmes d'IA évoluent continuellement — de nouveaux modèles, de nouvelles applications, de nouvelles pratiques émergent à un rythme soutenu. La CAI doit développer une capacité de veille technologique et d'anticipation pour rester pertinente dans un environnement en constante mutation.
+L'évolution rapide des technologies rend difficile l'adaptation des cadres d'interprétation et des pratiques de surveillance. Les systèmes d'IA évoluent continuellement, de nouveaux modèles, de nouvelles applications, de nouvelles pratiques émergent à un rythme soutenu. La CAI doit développer une capacité de veille technologique et d'anticipation pour rester pertinente dans un environnement en constante mutation.
 
 Le volume des systèmes d'IA déployés au Québec dépasse largement la capacité d'examen individuel de la CAI. Une approche fondée sur le risque, concentrant les efforts de surveillance sur les systèmes les plus susceptibles de porter atteinte aux droits des personnes, est indispensable. La CAI doit développer des critères de priorisation clairs et transparents pour orienter ses activités de surveillance.
 
-La dimension transfrontalière de l'IA complique l'exercice de la compétence de la CAI. Les systèmes d'IA sont souvent développés à l'étranger et les données peuvent être stockées et traitées dans plusieurs juridictions. La coopération avec les autorités de protection des données d'autres juridictions — le Commissariat à la protection de la vie privée du Canada, les autorités européennes, les autorités américaines — est essentielle pour exercer une surveillance efficace.
+La dimension transfrontalière de l'IA complique l'exercice de la compétence de la CAI. Les systèmes d'IA sont souvent développés à l'étranger et les données peuvent être stockées et traitées dans plusieurs juridictions. La coopération avec les autorités de protection des données d'autres juridictions, le Commissariat à la protection de la vie privée du Canada, les autorités européennes, les autorités américaines, est essentielle pour exercer une surveillance efficace.
 
 ## La CAI et les EFVP
 

@@ -20,13 +20,13 @@ L'Union européenne a adopté le Règlement sur l'intelligence artificielle (RIA
 
 Les systèmes à risque inacceptable sont interdits. Cela inclut les systèmes de crédit social, la manipulation subliminale, l'exploitation de vulnérabilités et certaines formes de reconnaissance faciale en temps réel dans les espaces publics.
 
-Les systèmes à haut risque — utilisés dans les infrastructures critiques, l'éducation, l'emploi, les services essentiels, la justice et la gestion de l'immigration — sont soumis à des obligations strictes en matière de gestion des risques, de qualité des données, de documentation technique, de transparence, de surveillance humaine et de robustesse.
+Les systèmes à haut risque, utilisés dans les infrastructures critiques, l'éducation, l'emploi, les services essentiels, la justice et la gestion de l'immigration, sont soumis à des obligations strictes en matière de gestion des risques, de qualité des données, de documentation technique, de transparence, de surveillance humaine et de robustesse.
 
 Les systèmes à risque limité sont soumis à des obligations de transparence, notamment l'obligation d'informer les utilisateurs qu'ils interagissent avec un système d'IA.
 
 Les systèmes à risque minimal ne sont soumis à aucune obligation spécifique.
 
-Le RIA est complété par le Règlement général sur la protection des données (RGPD), qui encadre le traitement des données personnelles et qui a exercé une influence mondiale sur la législation en matière de vie privée — y compris sur la Loi 25 au Québec.
+Le RIA est complété par le Règlement général sur la protection des données (RGPD), qui encadre le traitement des données personnelles et qui a exercé une influence mondiale sur la législation en matière de vie privée, y compris sur la Loi 25 au Québec.
 
 L'approche européenne se caractérise par sa dimension prescriptive, son champ d'application extraterritorial (elle s'applique aux systèmes déployés ou ayant des effets dans l'UE, quel que soit le lieu d'établissement du fournisseur), son mécanisme de sanctions dissuasif (amendes pouvant atteindre 35 millions d'euros ou 7 % du chiffre d'affaires mondial) et l'établissement de structures de gouvernance dédiées, dont le Bureau européen de l'IA.
 
@@ -46,7 +46,7 @@ L'approche québécoise en matière de gouvernance de l'IA se situe entre le mod
 
 Comme l'Europe, le Québec dispose d'un cadre législatif de protection des données personnelles robuste et contraignant (la Loi 25), qui impose des obligations significatives aux organisations utilisant l'IA. Comme l'Europe, le Québec valorise la protection des droits fondamentaux et l'encadrement public des technologies.
 
-Comme les États-Unis, le Québec n'a pas (encore) adopté de législation spécifique à l'IA. Le cadre applicable résulte de l'application de lois existantes — protection des données, droits de la personne, responsabilité civile — aux systèmes d'IA.
+Comme les États-Unis, le Québec n'a pas (encore) adopté de législation spécifique à l'IA. Le cadre applicable résulte de l'application de lois existantes, protection des données, droits de la personne, responsabilité civile, aux systèmes d'IA.
 
 L'approche québécoise se distingue par plusieurs éléments propres. La tradition de droit civil, fondée sur le Code civil du Québec, offre des mécanismes de responsabilité et de protection distincts de la common law en vigueur dans le reste du Canada et aux États-Unis. La démarche participative de la Déclaration de Montréal constitue une innovation en matière de cocréation de principes éthiques pour l'IA. La dualité des compétences fédérale et provinciale crée un cadre de gouvernance multi-niveaux qui peut être source de complexité mais aussi de complémentarité.
 

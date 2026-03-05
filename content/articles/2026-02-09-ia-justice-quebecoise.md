@@ -24,9 +24,9 @@ La rédaction juridique assistée par l'IA générative gagne en popularité. Le
 
 Les outils de prédiction des issues judiciaires analysent les données historiques des tribunaux pour estimer la probabilité de succès d'une action en justice, les montants probables de dommages ou les peines susceptibles d'être imposées. Ces outils peuvent informer les décisions stratégiques des avocats et de leurs clients, mais ils risquent aussi de créer une prophétie auto-réalisatrice si les acteurs du système judiciaire alignent leur comportement sur les prédictions algorithmiques.
 
-Les systèmes d'évaluation du risque dans le domaine pénal — utilisés dans certaines juridictions pour informer les décisions de mise en liberté, de détermination de la peine ou de libération conditionnelle — sont les applications les plus controversées. L'outil COMPAS, utilisé dans plusieurs États américains, a fait l'objet de critiques pour ses biais raciaux documentés.
+Les systèmes d'évaluation du risque dans le domaine pénal, utilisés dans certaines juridictions pour informer les décisions de mise en liberté, de détermination de la peine ou de libération conditionnelle, sont les applications les plus controversées. L'outil COMPAS, utilisé dans plusieurs États américains, a fait l'objet de critiques pour ses biais raciaux documentés.
 
-L'automatisation des tâches administratives — gestion des calendriers, traitement des documents, notifications aux parties — peut améliorer l'efficacité du système judiciaire et libérer du temps pour les fonctions qui requièrent un jugement humain.
+L'automatisation des tâches administratives, gestion des calendriers, traitement des documents, notifications aux parties, peut améliorer l'efficacité du système judiciaire et libérer du temps pour les fonctions qui requièrent un jugement humain.
 
 ## Les risques pour les droits fondamentaux
 
@@ -34,7 +34,7 @@ L'utilisation de l'IA dans le système judiciaire comporte des risques spécifiq
 
 Le droit à l'égalité (article 10 de la Charte québécoise) peut être compromis par des systèmes d'IA qui reproduisent des biais historiques. Si les données judiciaires reflètent des disparités dans le traitement des groupes racialisés, des femmes ou des personnes à faible revenu, les modèles d'IA entraînés sur ces données risquent de perpétuer ces disparités.
 
-Le droit à une audience impartiale (article 23) suppose un décideur qui exerce un jugement indépendant. Si un juge s'appuie de manière excessive sur les recommandations d'un système d'IA, son indépendance de jugement peut être compromise — un phénomène connu sous le nom de « biais d'automatisation », la tendance à accorder une confiance excessive aux recommandations algorithmiques.
+Le droit à une audience impartiale (article 23) suppose un décideur qui exerce un jugement indépendant. Si un juge s'appuie de manière excessive sur les recommandations d'un système d'IA, son indépendance de jugement peut être compromise, un phénomène connu sous le nom de « biais d'automatisation », la tendance à accorder une confiance excessive aux recommandations algorithmiques.
 
 Le droit de connaître les motifs d'une décision est un principe fondamental de la justice naturelle. Lorsqu'un système d'IA contribue à une décision judiciaire, le justiciable doit pouvoir comprendre cette contribution. Les modèles d'IA de type « boîte noire », dont le fonctionnement interne est opaque, posent un défi direct à ce principe.
 

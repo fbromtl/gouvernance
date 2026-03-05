@@ -20,7 +20,7 @@ La réalité est sans équivoque : les technologies d'IA les plus utilisées au 
 
 Cette dépendance a des implications concrètes en matière de gouvernance. Les données des organisations et des citoyens québécois sont stockées et traitées sur des infrastructures situées en dehors du Québec, soumises à des juridictions étrangères. Les algorithmes qui recommandent, filtrent et orientent l'information consommée par les Québécois sont conçus selon des logiques commerciales et culturelles qui ne correspondent pas nécessairement aux valeurs et aux priorités québécoises. Les décisions de conception et de politique d'utilisation de ces technologies sont prises unilatéralement par des entreprises étrangères, sans consultation des utilisateurs et des régulateurs québécois.
 
-La dépendance envers les plateformes d'infonuagique est particulièrement préoccupante. La majorité des organisations québécoises — y compris des organismes publics — utilisent des services infonuagiques pour héberger leurs données et faire fonctionner leurs applications. Le transfert des données vers des serveurs situés à l'étranger expose ces données aux lois de surveillance étrangères, notamment le CLOUD Act américain, qui permet aux autorités américaines d'accéder aux données stockées par des entreprises américaines, quel que soit le lieu de stockage.
+La dépendance envers les plateformes d'infonuagique est particulièrement préoccupante. La majorité des organisations québécoises, y compris des organismes publics, utilisent des services infonuagiques pour héberger leurs données et faire fonctionner leurs applications. Le transfert des données vers des serveurs situés à l'étranger expose ces données aux lois de surveillance étrangères, notamment le CLOUD Act américain, qui permet aux autorités américaines d'accéder aux données stockées par des entreprises américaines, quel que soit le lieu de stockage.
 
 ## Les dimensions de la souveraineté numérique en IA
 
@@ -48,9 +48,9 @@ La coopération internationale, notamment au sein de la francophonie, offre des 
 
 ## Les limites de la souveraineté numérique
 
-Il serait illusoire de prétendre à une souveraineté numérique absolue dans un monde interconnecté. Le Québec n'a ni les ressources ni la taille de marché nécessaires pour développer l'ensemble de ses propres technologies d'IA. La dépendance envers des technologies étrangères est en partie inévitable et en partie bénéfique — les meilleurs chercheurs et les meilleures technologies du monde contribuent à l'écosystème québécois de l'IA.
+Il serait illusoire de prétendre à une souveraineté numérique absolue dans un monde interconnecté. Le Québec n'a ni les ressources ni la taille de marché nécessaires pour développer l'ensemble de ses propres technologies d'IA. La dépendance envers des technologies étrangères est en partie inévitable et en partie bénéfique, les meilleurs chercheurs et les meilleures technologies du monde contribuent à l'écosystème québécois de l'IA.
 
-L'enjeu n'est pas l'autarcie technologique, mais la maîtrise stratégique. Le Québec doit identifier les domaines où la souveraineté est critique — protection des données, services publics essentiels, infrastructures stratégiques — et concentrer ses efforts sur ces priorités. Pour les autres domaines, une dépendance maîtrisée, encadrée par des contrats rigoureux et des exigences réglementaires claires, peut constituer une approche pragmatique.
+L'enjeu n'est pas l'autarcie technologique, mais la maîtrise stratégique. Le Québec doit identifier les domaines où la souveraineté est critique, protection des données, services publics essentiels, infrastructures stratégiques, et concentrer ses efforts sur ces priorités. Pour les autres domaines, une dépendance maîtrisée, encadrée par des contrats rigoureux et des exigences réglementaires claires, peut constituer une approche pragmatique.
 
 ## La gouvernance de la dépendance
 

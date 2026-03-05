@@ -44,7 +44,7 @@ Les outils de terminologie et de normalisation linguistique assistés par l'IA p
 
 Les entreprises québécoises qui adoptent des outils d'IA font face à un dilemme pratique. Les solutions d'IA les plus performantes et les plus accessibles sont souvent développées en anglais, par des entreprises américaines ou internationales. L'obligation de travailler en français peut sembler entrer en tension avec la volonté d'utiliser les outils les plus avancés.
 
-Cette tension est en réalité un appel à l'innovation. Le développement de solutions d'IA de qualité en français représente une opportunité de marché pour les entreprises québécoises, non seulement au Québec, mais aussi dans l'ensemble de la francophonie mondiale — un marché de plus de 300 millions de locuteurs. Les entreprises qui investissent dans l'IA francophone se positionnent sur un créneau stratégique à long terme.
+Cette tension est en réalité un appel à l'innovation. Le développement de solutions d'IA de qualité en français représente une opportunité de marché pour les entreprises québécoises, non seulement au Québec, mais aussi dans l'ensemble de la francophonie mondiale, un marché de plus de 300 millions de locuteurs. Les entreprises qui investissent dans l'IA francophone se positionnent sur un créneau stratégique à long terme.
 
 Les obligations de la Charte de la langue française s'appliquent aussi aux fournisseurs de solutions d'IA qui opèrent au Québec. Les contrats avec des fournisseurs technologiques doivent inclure des exigences de qualité de service en français, des engagements d'adaptation aux particularités du français québécois et des mécanismes de vérification de la performance linguistique.
 

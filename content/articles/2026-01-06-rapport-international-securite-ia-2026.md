@@ -16,17 +16,17 @@ Le deuxième Rapport international sur la sécurité de l'intelligence artificie
 
 ## Les constats principaux du rapport
 
-Le rapport identifie plusieurs tendances préoccupantes. Les capacités des systèmes d'IA progressent à un rythme qui dépasse les prévisions antérieures. Les modèles de fondation les plus récents démontrent des capacités de raisonnement, de planification et de résolution de problèmes qui se rapprochent — dans certains domaines spécifiques — des capacités humaines. Cette progression rapide rend les cadres de gouvernance existants insuffisants.
+Le rapport identifie plusieurs tendances préoccupantes. Les capacités des systèmes d'IA progressent à un rythme qui dépasse les prévisions antérieures. Les modèles de fondation les plus récents démontrent des capacités de raisonnement, de planification et de résolution de problèmes qui se rapprochent, dans certains domaines spécifiques, des capacités humaines. Cette progression rapide rend les cadres de gouvernance existants insuffisants.
 
 Le rapport souligne l'émergence de capacités autonomes chez les systèmes d'IA les plus avancés. Certains modèles sont désormais capables de formuler et de poursuivre des objectifs de manière autonome, de décomposer des problèmes complexes en sous-tâches, d'utiliser des outils externes et d'interagir avec leur environnement numérique. Ces capacités, lorsqu'elles sont déployées dans des agents autonomes, créent des risques qui n'existaient pas avec les systèmes d'IA passifs.
 
-La concentration du développement de l'IA avancée entre les mains d'un petit nombre d'entreprises — principalement américaines et chinoises — est identifiée comme un risque systémique. Cette concentration crée des dépendances géopolitiques, limite la diversité des approches et des valeurs intégrées dans les systèmes, et rend la gouvernance mondiale plus difficile.
+La concentration du développement de l'IA avancée entre les mains d'un petit nombre d'entreprises, principalement américaines et chinoises, est identifiée comme un risque systémique. Cette concentration crée des dépendances géopolitiques, limite la diversité des approches et des valeurs intégrées dans les systèmes, et rend la gouvernance mondiale plus difficile.
 
 Les risques de mauvaise utilisation se sont matérialisés. Le rapport documente l'utilisation croissante de l'IA pour la désinformation à grande échelle, les cyberattaques sophistiquées, la surveillance de masse et la manipulation comportementale. Les capacités de l'IA en matière de synthèse chimique et biologique sont également identifiées comme un risque émergent nécessitant une attention urgente.
 
 ## L'évaluation des risques à long terme
 
-Le rapport aborde pour la première fois de manière systématique les risques à long terme de l'IA, y compris le scénario dans lequel des systèmes d'IA extrêmement capables pourraient poursuivre des objectifs mal alignés avec les intérêts humains. Sans tomber dans l'alarmisme, les experts constatent que les mécanismes actuels d'alignement des systèmes d'IA — les techniques qui permettent de s'assurer que les systèmes agissent conformément aux intentions de leurs concepteurs — restent insuffisants face aux capacités croissantes des modèles.
+Le rapport aborde pour la première fois de manière systématique les risques à long terme de l'IA, y compris le scénario dans lequel des systèmes d'IA extrêmement capables pourraient poursuivre des objectifs mal alignés avec les intérêts humains. Sans tomber dans l'alarmisme, les experts constatent que les mécanismes actuels d'alignement des systèmes d'IA, les techniques qui permettent de s'assurer que les systèmes agissent conformément aux intentions de leurs concepteurs, restent insuffisants face aux capacités croissantes des modèles.
 
 Le rapport recommande un investissement massif dans la recherche sur l'alignement et la sécurité des systèmes d'IA, comparable en ampleur aux investissements consacrés au développement des capacités elles-mêmes. Cette recommandation concerne directement le Québec, où Mila et d'autres institutions mènent des recherches de pointe dans ce domaine.
 
@@ -44,13 +44,13 @@ Le rapport a plusieurs implications directes pour le Québec. En matière de pol
 
 En matière de réglementation, le rapport renforce l'argument en faveur d'un cadre québécois de gouvernance fondé sur les risques, avec des obligations proportionnelles aux capacités et aux contextes d'utilisation des systèmes d'IA. Les critères de classification des risques proposés par le rapport pourraient informer la conception d'un cadre québécois.
 
-En matière de coopération internationale, le rapport souligne la nécessité d'une coordination entre les juridictions. Le Québec, en participant aux forums internationaux de gouvernance de l'IA — y compris à travers sa participation à des initiatives francophones — peut contribuer à façonner les normes internationales tout en défendant ses intérêts spécifiques.
+En matière de coopération internationale, le rapport souligne la nécessité d'une coordination entre les juridictions. Le Québec, en participant aux forums internationaux de gouvernance de l'IA, y compris à travers sa participation à des initiatives francophones, peut contribuer à façonner les normes internationales tout en défendant ses intérêts spécifiques.
 
 En matière de préparation, le rapport invite les gouvernements à développer des plans de préparation aux scénarios de risque liés à l'IA, y compris des mécanismes de réponse rapide aux incidents impliquant des systèmes d'IA avancés. Le Québec devrait évaluer sa propre préparation à ces scénarios et identifier les lacunes à combler.
 
 ## La position du Québec dans l'écosystème mondial
 
-Le rapport situe le Québec dans un contexte mondial où les grandes puissances technologiques — États-Unis, Chine, Union européenne — se livrent une concurrence intense pour le leadership en IA. Le Québec, tout en ne pouvant rivaliser en termes de ressources financières avec ces acteurs, dispose d'atouts significatifs : un écosystème de recherche de premier plan, une tradition de réflexion éthique sur l'IA — incarnée par la Déclaration de Montréal — et un cadre juridique qui offre un socle solide pour une gouvernance responsable.
+Le rapport situe le Québec dans un contexte mondial où les grandes puissances technologiques, États-Unis, Chine, Union européenne, se livrent une concurrence intense pour le leadership en IA. Le Québec, tout en ne pouvant rivaliser en termes de ressources financières avec ces acteurs, dispose d'atouts significatifs : un écosystème de recherche de premier plan, une tradition de réflexion éthique sur l'IA, incarnée par la Déclaration de Montréal, et un cadre juridique qui offre un socle solide pour une gouvernance responsable.
 
 La stratégie québécoise devrait miser sur ces avantages comparatifs pour se positionner comme un modèle de gouvernance responsable de l'IA, capable d'influencer les normes internationales tout en protégeant les intérêts de ses citoyens.
 

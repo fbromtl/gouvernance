@@ -12,7 +12,7 @@ tags: "AIDA, projet de loi C-27, Canada, réglementation IA, intelligence artifi
 
 ## Un cadre attendu depuis longtemps
 
-Alors que l'Union européenne a déjà mis en application son AI Act, le Canada avance à son rythme avec le **projet de loi C-27**, dont la **Partie 3 — Artificial Intelligence and Data Act (AIDA)** — constitue la première tentative de légiférer spécifiquement sur l'intelligence artificielle au niveau fédéral.
+Alors que l'Union européenne a déjà mis en application son AI Act, le Canada avance à son rythme avec le **projet de loi C-27**, dont la **Partie 3, Artificial Intelligence and Data Act (AIDA)**, constitue la première tentative de légiférer spécifiquement sur l'intelligence artificielle au niveau fédéral.
 
 Ce texte, qui a franchi de nouvelles étapes au Parlement en début d'année, vise à encadrer le développement et le déploiement des systèmes d'IA à « incidence élevée » tout en favorisant l'innovation responsable.
 
@@ -41,6 +41,6 @@ Au Cercle, nous recommandons aux organisations de commencer dès maintenant à :
 
 ## Un calendrier à surveiller
 
-Bien que le texte final puisse encore évoluer, les organisations prudentes ne devraient pas attendre son adoption définitive pour agir. Les cadres de gouvernance mis en place aujourd'hui — registre des systèmes IA, évaluations d'impact, politiques internes — seront directement réutilisables pour se conformer à la future loi.
+Bien que le texte final puisse encore évoluer, les organisations prudentes ne devraient pas attendre son adoption définitive pour agir. Les cadres de gouvernance mis en place aujourd'hui, registre des systèmes IA, évaluations d'impact, politiques internes, seront directement réutilisables pour se conformer à la future loi.
 
 Le Cercle de Gouvernance de l'IA continuera de suivre l'évolution de ce projet de loi et d'accompagner ses membres dans leur préparation.

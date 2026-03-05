@@ -32,11 +32,11 @@ Le gouvernement canadien a lancé des consultations sur la modernisation du droi
 
 ## Les enjeux pour les créateurs québécois
 
-Les créateurs québécois — auteurs, musiciens, artistes visuels, cinéastes, journalistes — sont directement concernés par ces développements. Leurs œuvres, publiées en ligne ou numérisées, ont potentiellement été utilisées pour entraîner des modèles d'IA sans leur consentement ni compensation.
+Les créateurs québécois, auteurs, musiciens, artistes visuels, cinéastes, journalistes, sont directement concernés par ces développements. Leurs œuvres, publiées en ligne ou numérisées, ont potentiellement été utilisées pour entraîner des modèles d'IA sans leur consentement ni compensation.
 
 L'industrie culturelle québécoise, déjà fragilisée par la numérisation et la concurrence des plateformes internationales, fait face à une nouvelle menace. Les systèmes d'IA générative peuvent produire des textes, de la musique et des images qui rivalisent avec les créations humaines, à un coût marginal quasi nul. Sans mécanismes de rémunération équitable, le modèle économique de la création culturelle est compromis.
 
-Les sociétés de gestion collective québécoises — la SODRAC, Copibec, la SOCAN — jouent un rôle crucial dans la protection des droits des créateurs. Elles doivent adapter leurs mandats et leurs outils pour couvrir les usages liés à l'IA, négocier des licences avec les entreprises d'IA et redistribuer les revenus aux ayants droit.
+Les sociétés de gestion collective québécoises, la SODRAC, Copibec, la SOCAN, jouent un rôle crucial dans la protection des droits des créateurs. Elles doivent adapter leurs mandats et leurs outils pour couvrir les usages liés à l'IA, négocier des licences avec les entreprises d'IA et redistribuer les revenus aux ayants droit.
 
 ## Les enjeux pour les développeurs d'IA québécois
 
@@ -56,4 +56,4 @@ Le Québec devrait plaider auprès du gouvernement fédéral pour une modernisat
 
 ## Conclusion
 
-La bataille juridique entre les titulaires de droits d'auteur et les entreprises d'IA redéfinira les règles de la création, de l'innovation et de la culture pour les décennies à venir. Le Québec, avec sa richesse culturelle et son écosystème d'IA dynamique, a un intérêt vital à ce que ces règles soient équilibrées — protégeant les créateurs sans étouffer l'innovation. Les décisions qui seront rendues dans les prochains mois façonneront cet équilibre.
+La bataille juridique entre les titulaires de droits d'auteur et les entreprises d'IA redéfinira les règles de la création, de l'innovation et de la culture pour les décennies à venir. Le Québec, avec sa richesse culturelle et son écosystème d'IA dynamique, a un intérêt vital à ce que ces règles soient équilibrées, protégeant les créateurs sans étouffer l'innovation. Les décisions qui seront rendues dans les prochains mois façonneront cet équilibre.

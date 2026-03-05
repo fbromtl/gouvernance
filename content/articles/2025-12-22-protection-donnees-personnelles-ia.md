@@ -48,7 +48,7 @@ Pour le Québec, cette approche présente un intérêt particulier dans le domai
 
 ## La surveillance et l'application
 
-L'efficacité du cadre de protection des données dépend en grande partie de la capacité de l'organisme de surveillance — la CAI — à exercer ses fonctions de manière effective. La Loi 25 a renforcé les pouvoirs de la CAI, mais celle-ci doit disposer des ressources humaines et techniques nécessaires pour comprendre et évaluer les systèmes d'IA, mener des enquêtes sur des pratiques complexes de traitement de données et accompagner les organisations dans leur démarche de conformité.
+L'efficacité du cadre de protection des données dépend en grande partie de la capacité de l'organisme de surveillance, la CAI, à exercer ses fonctions de manière effective. La Loi 25 a renforcé les pouvoirs de la CAI, mais celle-ci doit disposer des ressources humaines et techniques nécessaires pour comprendre et évaluer les systèmes d'IA, mener des enquêtes sur des pratiques complexes de traitement de données et accompagner les organisations dans leur démarche de conformité.
 
 Le développement de compétences techniques au sein de la CAI est un enjeu stratégique. L'évaluation de la conformité d'un système d'IA exige des connaissances spécialisées en apprentissage automatique, en science des données et en sécurité informatique. La CAI doit pouvoir compter sur des équipes capables de comprendre les aspects techniques des systèmes qu'elle est chargée de surveiller.
 
@@ -64,4 +64,4 @@ Les organisations québécoises qui développent ou utilisent des systèmes d'IA
 
 ## Conclusion
 
-La protection des données personnelles à l'ère de l'IA est un enjeu fondamental pour le Québec. Le cadre juridique actuel, renforcé par la Loi 25, fournit des outils solides, mais les organisations doivent aller au-delà de la conformité minimale pour gagner et maintenir la confiance des citoyens. Les solutions existent — techniques de protection avancées, approches de conception responsable, mécanismes de gouvernance interne — et les organisations qui les adoptent se positionnent non seulement comme conformes, mais comme des leaders de l'IA responsable.
+La protection des données personnelles à l'ère de l'IA est un enjeu fondamental pour le Québec. Le cadre juridique actuel, renforcé par la Loi 25, fournit des outils solides, mais les organisations doivent aller au-delà de la conformité minimale pour gagner et maintenir la confiance des citoyens. Les solutions existent, techniques de protection avancées, approches de conception responsable, mécanismes de gouvernance interne, et les organisations qui les adoptent se positionnent non seulement comme conformes, mais comme des leaders de l'IA responsable.

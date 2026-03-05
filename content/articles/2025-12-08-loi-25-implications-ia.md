@@ -30,7 +30,7 @@ En matière d'IA, les finalités du traitement peuvent être complexes, multiple
 
 Les organisations doivent donc adopter des pratiques rigoureuses en matière de gestion du consentement : informer clairement les personnes sur les usages prévus de leurs données dans les systèmes d'IA, obtenir un nouveau consentement en cas de changement de finalité, mettre en place des mécanismes effectifs de retrait du consentement et documenter l'ensemble du processus.
 
-La Loi 25 prévoit toutefois des exceptions au consentement, notamment pour l'utilisation de renseignements dépersonnalisés à des fins de recherche, de production de statistiques ou d'études. Ces exceptions peuvent faciliter certains projets d'IA, à condition que le processus de dépersonnalisation soit véritablement efficace — un défi technique de taille compte tenu des risques de réidentification inhérents aux jeux de données complexes.
+La Loi 25 prévoit toutefois des exceptions au consentement, notamment pour l'utilisation de renseignements dépersonnalisés à des fins de recherche, de production de statistiques ou d'études. Ces exceptions peuvent faciliter certains projets d'IA, à condition que le processus de dépersonnalisation soit véritablement efficace, un défi technique de taille compte tenu des risques de réidentification inhérents aux jeux de données complexes.
 
 ## Le droit à la transparence des décisions automatisées
 

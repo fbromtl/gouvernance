@@ -12,21 +12,21 @@ tags: "cybersécurité, phishing, rançongiciel, défense, PME, dark LLMs, vuln�
 
 ## Une transformation du paysage des menaces
 
-L'intelligence artificielle transforme en profondeur le paysage de la cybersécurité — autant du côté des attaquants que des défenseurs. Les cybercriminels exploitent l'IA pour automatiser et sophistiquer leurs attaques, tandis que les équipes de sécurité déploient des systèmes d'IA pour détecter et contrer ces menaces en temps réel. Cette course aux armements technologique a des implications directes pour les organisations québécoises et pour la gouvernance de l'IA dans la province.
+L'intelligence artificielle transforme en profondeur le paysage de la cybersécurité, autant du côté des attaquants que des défenseurs. Les cybercriminels exploitent l'IA pour automatiser et sophistiquer leurs attaques, tandis que les équipes de sécurité déploient des systèmes d'IA pour détecter et contrer ces menaces en temps réel. Cette course aux armements technologique a des implications directes pour les organisations québécoises et pour la gouvernance de l'IA dans la province.
 
 ## L'IA comme vecteur de menaces
 
-L'utilisation de l'IA par les cybercriminels a franchi un seuil qualitatif. Les attaques d'hameçonnage (phishing) générées par l'IA sont désormais d'une qualité linguistique et d'une personnalisation qui les rendent pratiquement indistinguables des communications légitimes. Les courriels frauduleux ne contiennent plus les fautes grossières qui permettaient aux utilisateurs de les identifier — ils sont rédigés dans un français impeccable, adaptés au contexte de la cible et exploitent des informations personnelles extraites des réseaux sociaux et des bases de données compromises.
+L'utilisation de l'IA par les cybercriminels a franchi un seuil qualitatif. Les attaques d'hameçonnage (phishing) générées par l'IA sont désormais d'une qualité linguistique et d'une personnalisation qui les rendent pratiquement indistinguables des communications légitimes. Les courriels frauduleux ne contiennent plus les fautes grossières qui permettaient aux utilisateurs de les identifier, ils sont rédigés dans un français impeccable, adaptés au contexte de la cible et exploitent des informations personnelles extraites des réseaux sociaux et des bases de données compromises.
 
 Les deepfakes vocaux et vidéo sont utilisés pour des fraudes sophistiquées. Des cas documentés montrent des employés transférant des sommes importantes après avoir reçu des instructions vocales qui reproduisaient parfaitement la voix de leur supérieur hiérarchique. La technologie de clonage vocal ne nécessite que quelques secondes d'enregistrement pour produire un double convaincant.
 
 Les rançongiciels (ransomware) alimentés par l'IA sont capables de s'adapter en temps réel aux défenses des systèmes ciblés, d'identifier automatiquement les données les plus sensibles pour maximiser la pression sur les victimes et de se propager de manière optimale dans les réseaux. Les groupes cybercriminels utilisent également l'IA pour découvrir des vulnérabilités dans les systèmes informatiques plus rapidement que les équipes de sécurité ne peuvent les corriger.
 
-Le développement d'outils d'IA malveillants dédiés — parfois appelés « dark LLMs » — fournit aux criminels des assistants capables de générer du code malveillant, de planifier des attaques et de contourner les mesures de sécurité. Ces outils, disponibles sur le dark web, démocratisent l'accès à des capacités offensives autrefois réservées aux acteurs les plus sophistiqués.
+Le développement d'outils d'IA malveillants dédiés, parfois appelés « dark LLMs », fournit aux criminels des assistants capables de générer du code malveillant, de planifier des attaques et de contourner les mesures de sécurité. Ces outils, disponibles sur le dark web, démocratisent l'accès à des capacités offensives autrefois réservées aux acteurs les plus sophistiqués.
 
 ## L'IA comme outil de défense
 
-En parallèle, l'IA renforce considérablement les capacités de cyberdéfense. Les systèmes de détection d'intrusion basés sur l'IA analysent des volumes massifs de données réseau en temps réel pour identifier des comportements anormaux qui échapperaient aux systèmes traditionnels fondés sur des signatures connues. L'apprentissage automatique permet de détecter des menaces inédites — les « zero-day » — en reconnaissant des patterns d'activité suspecte.
+En parallèle, l'IA renforce considérablement les capacités de cyberdéfense. Les systèmes de détection d'intrusion basés sur l'IA analysent des volumes massifs de données réseau en temps réel pour identifier des comportements anormaux qui échapperaient aux systèmes traditionnels fondés sur des signatures connues. L'apprentissage automatique permet de détecter des menaces inédites, les « zero-day », en reconnaissant des patterns d'activité suspecte.
 
 L'automatisation de la réponse aux incidents réduit le temps entre la détection d'une menace et sa neutralisation, un facteur critique lorsque les attaques se propagent en minutes. Les systèmes d'IA peuvent isoler automatiquement les segments de réseau compromis, bloquer les connexions suspectes et alerter les équipes de sécurité avec des informations contextualisées.
 
@@ -36,7 +36,7 @@ L'analyse prédictive permet d'anticiper les attaques en identifiant les tendanc
 
 Le Québec présente des vulnérabilités particulières dans ce contexte. Le réseau de la santé, qui gère des données extrêmement sensibles et dont les systèmes informatiques sont parfois vétustes, constitue une cible de choix. Les attaques par rançongiciel contre des établissements de santé ont des conséquences potentiellement mortelles lorsqu'elles perturbent les soins aux patients.
 
-Le secteur public québécois, en pleine transformation numérique, déploie des systèmes d'IA dans des contextes qui touchent directement les citoyens — services sociaux, fiscalité, justice. La sécurité de ces systèmes est une condition préalable à la confiance publique.
+Le secteur public québécois, en pleine transformation numérique, déploie des systèmes d'IA dans des contextes qui touchent directement les citoyens, services sociaux, fiscalité, justice. La sécurité de ces systèmes est une condition préalable à la confiance publique.
 
 Les PME québécoises, qui constituent la grande majorité du tissu économique, disposent rarement d'équipes de cybersécurité dédiées et sont particulièrement vulnérables. Elles sont souvent perçues par les cybercriminels comme des cibles faciles et comme des portes d'entrée vers les grandes organisations avec lesquelles elles sont connectées dans les chaînes d'approvisionnement.
 

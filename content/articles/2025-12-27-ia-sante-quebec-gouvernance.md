@@ -3,7 +3,7 @@ title: "L'intelligence artificielle dans le secteur de la santé au Québec : go
 slug: ia-sante-quebec-gouvernance
 date: "2025-12-27"
 category: analyse
-excerpt: "L'IA promet de transformer le système de santé québécois — imagerie médicale, génomique, gestion hospitalière. Mais le déploiement en santé soulève des enjeux de gouvernance critiques liés aux données sensibles et à la sécurité des patients."
+excerpt: "L'IA promet de transformer le système de santé québécois, imagerie médicale, génomique, gestion hospitalière. Mais le déploiement en santé soulève des enjeux de gouvernance critiques liés aux données sensibles et à la sécurité des patients."
 cover: /images/articles/ia-sante-quebec.jpg
 author: florian-brobst
 featured: false
@@ -28,7 +28,7 @@ La santé mentale et le soutien psychologique constituent un domaine émergent. 
 
 La gouvernance de l'IA en santé au Québec s'inscrit dans un cadre réglementaire complexe, au croisement de plusieurs législations. La Loi sur les services de santé et les services sociaux encadre la prestation des soins et la gestion des établissements. La Loi sur l'accès aux documents des organismes publics et la Loi 25 s'appliquent au traitement des données personnelles de santé. La Loi sur les renseignements de santé, si elle est adoptée, viendrait compléter ce cadre avec des dispositions spécifiques aux données de santé.
 
-Au niveau fédéral, la réglementation de Santé Canada sur les instruments médicaux s'applique aux logiciels d'IA qui répondent à la définition d'instrument médical — c'est-à-dire ceux qui sont destinés à être utilisés pour le diagnostic, le traitement, l'atténuation ou la prévention de maladies. Cette réglementation impose des exigences de sécurité, d'efficacité et de qualité qui doivent être satisfaites avant la mise en marché.
+Au niveau fédéral, la réglementation de Santé Canada sur les instruments médicaux s'applique aux logiciels d'IA qui répondent à la définition d'instrument médical, c'est-à-dire ceux qui sont destinés à être utilisés pour le diagnostic, le traitement, l'atténuation ou la prévention de maladies. Cette réglementation impose des exigences de sécurité, d'efficacité et de qualité qui doivent être satisfaites avant la mise en marché.
 
 Les comités d'éthique de la recherche des établissements de santé québécois jouent un rôle important dans l'évaluation des projets de recherche impliquant l'IA. Leurs protocoles d'évaluation doivent toutefois être adaptés pour prendre en compte les spécificités de l'IA, notamment les enjeux de réutilisation des données et de consentement dynamique.
 
@@ -38,7 +38,7 @@ La sensibilité des données de santé constitue l'enjeu le plus fondamental. Le
 
 L'interopérabilité des systèmes constitue un défi technique et organisationnel majeur. Le système de santé québécois est fragmenté en de multiples établissements et réseaux, chacun utilisant des systèmes d'information différents. Le développement de l'IA en santé suppose une capacité de partage de données qui se heurte aux silos organisationnels et aux incompatibilités techniques existantes. Le Dossier Santé Québec et les efforts de normalisation des données de santé constituent des avancées importantes, mais beaucoup reste à faire.
 
-La validation clinique des systèmes d'IA pose des défis méthodologiques spécifiques. Les méthodes traditionnelles d'évaluation clinique — essais contrôlés randomisés, études de cohorte — ne s'appliquent pas toujours facilement aux systèmes d'IA, qui évoluent continuellement et dont les performances peuvent varier selon les populations et les contextes d'utilisation. Des approches de validation adaptées doivent être développées pour s'assurer que les systèmes d'IA déployés en milieu clinique sont sûrs et efficaces.
+La validation clinique des systèmes d'IA pose des défis méthodologiques spécifiques. Les méthodes traditionnelles d'évaluation clinique, essais contrôlés randomisés, études de cohorte, ne s'appliquent pas toujours facilement aux systèmes d'IA, qui évoluent continuellement et dont les performances peuvent varier selon les populations et les contextes d'utilisation. Des approches de validation adaptées doivent être développées pour s'assurer que les systèmes d'IA déployés en milieu clinique sont sûrs et efficaces.
 
 La confiance des professionnels de santé est un facteur déterminant de l'adoption de l'IA. Les médecins, les infirmières et les autres professionnels de la santé doivent comprendre le fonctionnement des outils d'IA, avoir confiance dans leur fiabilité et être en mesure d'exercer leur jugement clinique en complément de l'analyse algorithmique. La formation des professionnels de santé à l'IA et la mise en place de protocoles clairs d'utilisation sont essentielles.
 

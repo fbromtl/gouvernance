@@ -30,7 +30,7 @@ La Loi 25 introduit aussi le droit à l'explication pour les décisions fondées
 
 ## La Loi sur l'accès aux documents des organismes publics
 
-Cette loi, également modernisée par la Loi 25, encadre le traitement des renseignements personnels par les organismes publics québécois. Elle impose des obligations analogues à celles du secteur privé, adaptées au contexte gouvernemental. Pour les organismes publics qui déploient des systèmes d'IA — que ce soit dans la prestation de services aux citoyens, la gestion des ressources ou l'aide à la décision —, cette loi constitue le cadre de référence incontournable.
+Cette loi, également modernisée par la Loi 25, encadre le traitement des renseignements personnels par les organismes publics québécois. Elle impose des obligations analogues à celles du secteur privé, adaptées au contexte gouvernemental. Pour les organismes publics qui déploient des systèmes d'IA, que ce soit dans la prestation de services aux citoyens, la gestion des ressources ou l'aide à la décision, cette loi constitue le cadre de référence incontournable.
 
 Les organismes publics doivent notamment désigner un responsable de la protection des renseignements personnels, tenir un inventaire de leurs fichiers de renseignements personnels et réaliser des EFVP pour tout projet technologique impliquant des données personnelles. Ces obligations prennent une importance accrue dans le contexte de la transformation numérique de l'État québécois, où l'IA est de plus en plus intégrée aux processus administratifs.
 
@@ -60,4 +60,4 @@ Plusieurs pistes d'amélioration méritent d'être explorées : l'adoption d'un 
 
 ## Conclusion
 
-Le cadre juridique québécois applicable à l'IA est en pleine évolution. S'il offre déjà des protections significatives — notamment grâce à la Loi 25 et à la Charte des droits et libertés —, il devra continuer à s'adapter pour répondre aux défis posés par des technologies toujours plus puissantes et omniprésentes. Pour les professionnels et les décideurs, la compréhension de ce cadre n'est pas un luxe : c'est une nécessité opérationnelle et stratégique. La conformité juridique constitue le socle minimal sur lequel peut se construire une gouvernance véritablement responsable de l'intelligence artificielle.
+Le cadre juridique québécois applicable à l'IA est en pleine évolution. S'il offre déjà des protections significatives, notamment grâce à la Loi 25 et à la Charte des droits et libertés, il devra continuer à s'adapter pour répondre aux défis posés par des technologies toujours plus puissantes et omniprésentes. Pour les professionnels et les décideurs, la compréhension de ce cadre n'est pas un luxe : c'est une nécessité opérationnelle et stratégique. La conformité juridique constitue le socle minimal sur lequel peut se construire une gouvernance véritablement responsable de l'intelligence artificielle.

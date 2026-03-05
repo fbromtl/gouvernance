@@ -22,7 +22,7 @@ La transparence sur le recours à l'IA consiste à informer les personnes qu'un 
 
 L'explicabilité des décisions va plus loin que la simple notification. Elle implique la capacité de fournir une explication compréhensible des raisons pour lesquelles un système d'IA a produit un résultat donné. Pour un professionnel, il s'agit de comprendre les facteurs qui ont influencé la décision. Pour une personne affectée, il s'agit de comprendre pourquoi elle a reçu tel résultat plutôt qu'un autre.
 
-L'auditabilité concerne la possibilité pour des tiers — organismes de surveillance, auditeurs indépendants, chercheurs — d'examiner le fonctionnement d'un système d'IA pour vérifier sa conformité aux normes et aux principes éthiques. Cette dimension est essentielle pour la reddition de comptes et la confiance institutionnelle.
+L'auditabilité concerne la possibilité pour des tiers, organismes de surveillance, auditeurs indépendants, chercheurs, d'examiner le fonctionnement d'un système d'IA pour vérifier sa conformité aux normes et aux principes éthiques. Cette dimension est essentielle pour la reddition de comptes et la confiance institutionnelle.
 
 La traçabilité implique la capacité de retracer les données, les processus et les décisions qui ont mené à un résultat donné. Elle est indispensable pour enquêter sur des problèmes, corriger des erreurs et établir les responsabilités.
 
@@ -40,13 +40,13 @@ L'explicabilité algorithmique est un champ de recherche actif auquel les instit
 
 Les méthodes post hoc produisent des explications après que le modèle a pris sa décision. LIME (Local Interpretable Model-agnostic Explanations) et SHAP (SHapley Additive exPlanations) sont des techniques qui identifient les facteurs ayant le plus contribué à une décision particulière. Ces méthodes ont l'avantage de s'appliquer à n'importe quel type de modèle, mais leurs explications sont des approximations qui ne reflètent pas nécessairement le fonctionnement réel du modèle.
 
-Les modèles interprétables par conception — arbres de décision, modèles linéaires, systèmes à base de règles — offrent une transparence intrinsèque, car leurs processus décisionnels sont directement compréhensibles. Toutefois, ces modèles peuvent être moins performants que les modèles complexes pour certaines tâches. La recherche s'efforce de développer des modèles qui combinent interprétabilité et haute performance.
+Les modèles interprétables par conception, arbres de décision, modèles linéaires, systèmes à base de règles, offrent une transparence intrinsèque, car leurs processus décisionnels sont directement compréhensibles. Toutefois, ces modèles peuvent être moins performants que les modèles complexes pour certaines tâches. La recherche s'efforce de développer des modèles qui combinent interprétabilité et haute performance.
 
 Les explications contrefactuelles répondent à la question « qu'est-ce qui aurait dû changer pour que la décision soit différente ? ». Cette approche est particulièrement utile pour les personnes affectées par une décision, car elle leur indique les leviers d'action à leur disposition.
 
 ## La transparence dans le secteur public québécois
 
-L'utilisation de l'IA dans les organismes publics québécois soulève des exigences de transparence renforcées. La Loi sur l'accès aux documents des organismes publics garantit aux citoyens un droit d'accès aux documents détenus par les organismes publics. L'application de ce droit aux systèmes d'IA — code source, données d'entraînement, paramètres du modèle, résultats d'évaluation — est un enjeu émergent qui devra être clarifié.
+L'utilisation de l'IA dans les organismes publics québécois soulève des exigences de transparence renforcées. La Loi sur l'accès aux documents des organismes publics garantit aux citoyens un droit d'accès aux documents détenus par les organismes publics. L'application de ce droit aux systèmes d'IA, code source, données d'entraînement, paramètres du modèle, résultats d'évaluation, est un enjeu émergent qui devra être clarifié.
 
 Plusieurs gouvernements dans le monde ont adopté des registres d'algorithmes publics, qui documentent les systèmes d'IA utilisés dans la prise de décision gouvernementale. Le Québec pourrait s'inspirer de ces initiatives pour établir un registre des systèmes d'IA déployés dans l'administration publique, décrivant leur finalité, leur fonctionnement général, les données utilisées et les mécanismes de contrôle en place.
 
@@ -54,7 +54,7 @@ Plusieurs gouvernements dans le monde ont adopté des registres d'algorithmes pu
 
 L'un des obstacles les plus fréquemment invoqués à la transparence algorithmique est la protection du secret commercial. Les entreprises qui développent des systèmes d'IA considèrent souvent leurs algorithmes et leurs données comme des actifs stratégiques qu'elles ne souhaitent pas divulguer. Cette tension entre transparence et secret commercial est un enjeu de gouvernance majeur.
 
-Plusieurs pistes permettent de concilier ces exigences. L'audit par des tiers indépendants permet de vérifier le fonctionnement d'un système sans en divulguer les détails au public. La transparence sur les résultats — performances, métriques d'équité, taux d'erreur — peut fournir des informations utiles sans révéler les mécanismes internes du système. Les environnements d'audit sécurisés (sandboxes) permettent aux organismes de surveillance d'examiner les systèmes dans des conditions contrôlées.
+Plusieurs pistes permettent de concilier ces exigences. L'audit par des tiers indépendants permet de vérifier le fonctionnement d'un système sans en divulguer les détails au public. La transparence sur les résultats, performances, métriques d'équité, taux d'erreur, peut fournir des informations utiles sans révéler les mécanismes internes du système. Les environnements d'audit sécurisés (sandboxes) permettent aux organismes de surveillance d'examiner les systèmes dans des conditions contrôlées.
 
 ## Recommandations
 

@@ -18,7 +18,7 @@ L'intelligence artificielle transforme le marché du travail à une vitesse et a
 
 Le marché du travail québécois connaît une transformation numérique qui s'accélère. L'automatisation touche des secteurs variés : le commerce de détail avec les caisses automatiques et les systèmes de recommandation, le secteur manufacturier avec la robotique avancée et la maintenance prédictive, les services financiers avec le traitement automatisé des demandes et la détection de fraude, le transport et la logistique avec l'optimisation des routes et les systèmes autonomes, et les services professionnels avec les outils d'aide à la rédaction, à l'analyse et à la recherche.
 
-Contrairement aux vagues d'automatisation précédentes, qui touchaient principalement les tâches manuelles et répétitives, l'IA contemporaine — en particulier l'IA générative — affecte aussi des emplois à forte composante cognitive. Les professions liées à la rédaction, à la traduction, au graphisme, à la programmation et à l'analyse de données sont directement touchées. Cette évolution modifie la cartographie des emplois vulnérables et des compétences recherchées.
+Contrairement aux vagues d'automatisation précédentes, qui touchaient principalement les tâches manuelles et répétitives, l'IA contemporaine, en particulier l'IA générative, affecte aussi des emplois à forte composante cognitive. Les professions liées à la rédaction, à la traduction, au graphisme, à la programmation et à l'analyse de données sont directement touchées. Cette évolution modifie la cartographie des emplois vulnérables et des compétences recherchées.
 
 ## Les impacts sur l'emploi : au-delà des prédictions alarmistes
 
@@ -38,11 +38,11 @@ L'évaluation automatisée de la performance des employés, fondée sur des mét
 
 ## La formation et la requalification
 
-La formation professionnelle et la requalification de la main-d'œuvre constituent le levier le plus important pour répondre aux transformations du marché du travail induites par l'IA. Le Québec dispose d'un réseau d'institutions de formation — cégeps, universités, organismes de formation continue, comités sectoriels de main-d'œuvre — qui doit être mobilisé pour accompagner les travailleurs dans cette transition.
+La formation professionnelle et la requalification de la main-d'œuvre constituent le levier le plus important pour répondre aux transformations du marché du travail induites par l'IA. Le Québec dispose d'un réseau d'institutions de formation, cégeps, universités, organismes de formation continue, comités sectoriels de main-d'œuvre, qui doit être mobilisé pour accompagner les travailleurs dans cette transition.
 
 La Commission des partenaires du marché du travail (CPMT) et les comités sectoriels de main-d'œuvre ont un rôle clé à jouer dans l'identification des besoins en compétences, la conception de programmes de formation adaptés et le soutien aux travailleurs en transition. Le Fonds de développement et de reconnaissance des compétences de la main-d'œuvre, alimenté par la contribution des employeurs (la loi du 1 %), constitue un outil de financement important pour la formation continue.
 
-Les programmes de formation doivent aller au-delà des compétences techniques en IA. Les compétences transversales — pensée critique, créativité, communication, collaboration, résolution de problèmes complexes — seront de plus en plus valorisées dans un marché du travail où l'IA prend en charge les tâches routinières. La littératie numérique et la capacité à travailler avec des outils d'IA constituent des compétences de base que tous les travailleurs devraient acquérir.
+Les programmes de formation doivent aller au-delà des compétences techniques en IA. Les compétences transversales, pensée critique, créativité, communication, collaboration, résolution de problèmes complexes, seront de plus en plus valorisées dans un marché du travail où l'IA prend en charge les tâches routinières. La littératie numérique et la capacité à travailler avec des outils d'IA constituent des compétences de base que tous les travailleurs devraient acquérir.
 
 ## Le rôle des syndicats et des relations de travail
 
@@ -52,7 +52,7 @@ Certaines conventions collectives intègrent déjà des clauses relatives à l'i
 
 ## L'IA et l'entrepreneuriat au Québec
 
-L'IA offre également des opportunités pour l'entrepreneuriat au Québec. La demande croissante pour des solutions d'IA adaptées aux besoins des entreprises québécoises — notamment en français — crée des marchés pour les start-ups et les PME innovantes. Les programmes de soutien à l'entrepreneuriat technologique, comme ceux offerts par Investissement Québec, le Mouvement Desjardins et les incubateurs universitaires, contribuent à dynamiser cet écosystème.
+L'IA offre également des opportunités pour l'entrepreneuriat au Québec. La demande croissante pour des solutions d'IA adaptées aux besoins des entreprises québécoises, notamment en français, crée des marchés pour les start-ups et les PME innovantes. Les programmes de soutien à l'entrepreneuriat technologique, comme ceux offerts par Investissement Québec, le Mouvement Desjardins et les incubateurs universitaires, contribuent à dynamiser cet écosystème.
 
 Toutefois, l'accès des PME aux technologies d'IA reste un défi. Les coûts de développement et de déploiement, le manque de compétences internes et la difficulté à identifier les cas d'usage pertinents freinent l'adoption. Des programmes d'accompagnement et de soutien financier ciblés sont nécessaires pour démocratiser l'accès à l'IA au sein du tissu économique québécois.
 

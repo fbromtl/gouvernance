@@ -16,7 +16,7 @@ L'intelligence artificielle est souvent présentée comme une technologie immat�
 
 ## La consommation énergétique de l'IA
 
-L'entraînement des grands modèles d'IA est un processus extrêmement énergivore. Un seul cycle d'entraînement d'un grand modèle de langage peut consommer autant d'électricité que des centaines de foyers pendant une année. Et l'entraînement n'est que la partie la plus visible de la consommation : l'inférence — c'est-à-dire l'utilisation quotidienne des modèles pour répondre aux requêtes des utilisateurs — représente une consommation cumulative qui peut dépasser celle de l'entraînement.
+L'entraînement des grands modèles d'IA est un processus extrêmement énergivore. Un seul cycle d'entraînement d'un grand modèle de langage peut consommer autant d'électricité que des centaines de foyers pendant une année. Et l'entraînement n'est que la partie la plus visible de la consommation : l'inférence, c'est-à-dire l'utilisation quotidienne des modèles pour répondre aux requêtes des utilisateurs, représente une consommation cumulative qui peut dépasser celle de l'entraînement.
 
 Les centres de données, qui hébergent les serveurs nécessaires au fonctionnement de l'IA, sont de grands consommateurs d'électricité et d'eau de refroidissement. Leur expansion rapide, alimentée par la demande croissante en IA, exerce une pression sur les réseaux électriques et les ressources en eau. Au Québec, la demande de nouveaux centres de données a explosé ces dernières années, attirée par les tarifs compétitifs de l'hydroélectricité et le climat froid qui réduit les besoins de refroidissement.
 
@@ -24,13 +24,13 @@ Les centres de données, qui hébergent les serveurs nécessaires au fonctionnem
 
 Le Québec dispose d'un avantage significatif en matière d'empreinte carbone de l'IA : son électricité provient à plus de 95 % de sources renouvelables, principalement l'hydroélectricité. Cet atout fait du Québec l'une des juridictions les plus propres au monde pour l'exploitation de centres de données et, par extension, pour le fonctionnement de systèmes d'IA.
 
-Toutefois, cet avantage ne dispense pas d'une réflexion approfondie sur la gouvernance environnementale de l'IA. La capacité de production d'Hydro-Québec, bien que considérable, n'est pas illimitée. La demande croissante des centres de données entre en concurrence avec d'autres besoins en électricité — l'électrification des transports, le chauffage, l'industrie manufacturière. Hydro-Québec a d'ailleurs dû réexaminer sa politique d'allocation de puissance face à l'afflux de demandes.
+Toutefois, cet avantage ne dispense pas d'une réflexion approfondie sur la gouvernance environnementale de l'IA. La capacité de production d'Hydro-Québec, bien que considérable, n'est pas illimitée. La demande croissante des centres de données entre en concurrence avec d'autres besoins en électricité, l'électrification des transports, le chauffage, l'industrie manufacturière. Hydro-Québec a d'ailleurs dû réexaminer sa politique d'allocation de puissance face à l'afflux de demandes.
 
 La construction de nouveaux barrages hydroélectriques a des impacts environnementaux propres : inondation de territoires, perturbation des écosystèmes aquatiques, émissions de méthane par les réservoirs et impacts sur les communautés autochtones dont les territoires ancestraux sont affectés. L'expansion de la capacité de production hydroélectrique pour répondre à la demande de l'IA doit être évaluée à l'aune de ces impacts.
 
 ## L'empreinte matérielle
 
-L'empreinte environnementale de l'IA ne se limite pas à la consommation d'énergie. La fabrication des puces électroniques spécialisées (GPU, TPU) nécessaires au fonctionnement de l'IA requiert des terres rares et des métaux dont l'extraction est souvent associée à des dommages environnementaux et sociaux considérables. Le cycle de vie des équipements informatiques — de la fabrication à la mise au rebut — génère des déchets électroniques qui posent des défis de gestion significatifs.
+L'empreinte environnementale de l'IA ne se limite pas à la consommation d'énergie. La fabrication des puces électroniques spécialisées (GPU, TPU) nécessaires au fonctionnement de l'IA requiert des terres rares et des métaux dont l'extraction est souvent associée à des dommages environnementaux et sociaux considérables. Le cycle de vie des équipements informatiques, de la fabrication à la mise au rebut, génère des déchets électroniques qui posent des défis de gestion significatifs.
 
 La consommation d'eau est un autre enjeu environnemental important. Les centres de données utilisent d'importants volumes d'eau pour le refroidissement de leurs équipements. Bien que le climat nordique du Québec réduise ces besoins, l'expansion des centres de données dans la région de Montréal et ailleurs au Québec soulève des questions de gestion durable de la ressource en eau.
 
@@ -56,7 +56,7 @@ La réglementation des centres de données pourrait inclure des exigences d'effi
 
 ## L'évaluation coût-bénéfice environnementale
 
-Chaque projet d'IA devrait faire l'objet d'une évaluation coût-bénéfice environnementale, mettant en balance les gains attendus — économiques, sociaux, environnementaux — et l'empreinte écologique du système. Un système d'IA qui optimise la consommation énergétique d'un réseau de bâtiments peut générer des économies d'énergie supérieures à sa propre consommation. En revanche, un système d'IA qui génère du contenu publicitaire additionnel peut avoir un bilan environnemental net négatif.
+Chaque projet d'IA devrait faire l'objet d'une évaluation coût-bénéfice environnementale, mettant en balance les gains attendus, économiques, sociaux, environnementaux, et l'empreinte écologique du système. Un système d'IA qui optimise la consommation énergétique d'un réseau de bâtiments peut générer des économies d'énergie supérieures à sa propre consommation. En revanche, un système d'IA qui génère du contenu publicitaire additionnel peut avoir un bilan environnemental net négatif.
 
 Cette approche coût-bénéfice devrait être intégrée dans les évaluations d'impact algorithmique et dans les processus de décision des organisations québécoises.
 

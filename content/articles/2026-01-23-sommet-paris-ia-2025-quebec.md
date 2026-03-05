@@ -20,7 +20,7 @@ Le Sommet de Paris a produit plusieurs résultats concrets. La Déclaration sur 
 
 L'annonce de la création d'un réseau d'instituts de sécurité de l'IA (AI Safety Institutes) a été l'un des développements les plus significatifs. Ce réseau vise à coordonner les efforts de recherche et d'évaluation de la sécurité des systèmes d'IA avancés à l'échelle internationale. La participation du Canada à ce réseau est directement pertinente pour le Québec.
 
-L'engagement en faveur de l'IA pour le développement durable a été un thème central. Plusieurs initiatives ont été lancées pour orienter le développement de l'IA vers la résolution des grands défis mondiaux — changements climatiques, santé, éducation — plutôt que vers la seule maximisation des profits.
+L'engagement en faveur de l'IA pour le développement durable a été un thème central. Plusieurs initiatives ont été lancées pour orienter le développement de l'IA vers la résolution des grands défis mondiaux, changements climatiques, santé, éducation, plutôt que vers la seule maximisation des profits.
 
 La question de l'IA et du monde du travail a fait l'objet de discussions approfondies. Les participants ont reconnu la nécessité de politiques proactives pour gérer la transition du marché du travail face à l'automatisation par l'IA, incluant des investissements massifs dans la formation et la reconversion professionnelle.
 
@@ -34,19 +34,19 @@ Ces divisions rendent la construction d'un cadre de gouvernance mondial cohéren
 
 Plusieurs enseignements du Sommet de Paris sont directement exploitables par le Québec.
 
-La validation de l'approche fondée sur les risques renforce la pertinence d'un cadre québécois qui calibre les obligations en fonction des niveaux de risque des systèmes d'IA. Le consensus émergent autour de cette approche — malgré les désaccords sur les détails — offre au Québec une base solide pour concevoir son propre modèle.
+La validation de l'approche fondée sur les risques renforce la pertinence d'un cadre québécois qui calibre les obligations en fonction des niveaux de risque des systèmes d'IA. Le consensus émergent autour de cette approche, malgré les désaccords sur les détails, offre au Québec une base solide pour concevoir son propre modèle.
 
 L'importance de la coopération internationale est un message clair du sommet. Le Québec ne peut pas gouverner l'IA en vase clos. La participation active aux forums internationaux, aux réseaux de recherche et aux initiatives de normalisation est indispensable pour rester informé, influencer les développements et assurer l'interopérabilité du cadre québécois avec les cadres internationaux.
 
 La dimension francophone de la gouvernance de l'IA, mise en avant par la présidence française du sommet, est une opportunité pour le Québec. La province peut jouer un rôle de leadership dans le développement d'outils d'IA en français, de corpus de données francophones et de normes de gouvernance qui tiennent compte des spécificités linguistiques et culturelles de la francophonie.
 
-Le lien entre IA et développement durable ouvre des perspectives pour le Québec, qui dispose d'avantages significatifs en énergie propre pour alimenter les infrastructures d'IA. Le positionnement du Québec comme lieu de développement d'une IA durable — alimentée par l'hydroélectricité et encadrée par une gouvernance responsable — pourrait constituer un avantage compétitif distinctif.
+Le lien entre IA et développement durable ouvre des perspectives pour le Québec, qui dispose d'avantages significatifs en énergie propre pour alimenter les infrastructures d'IA. Le positionnement du Québec comme lieu de développement d'une IA durable, alimentée par l'hydroélectricité et encadrée par une gouvernance responsable, pourrait constituer un avantage compétitif distinctif.
 
 ## L'IA inclusive : un enjeu pour le Québec
 
 Le Sommet de Paris a mis en relief l'enjeu de l'inclusivité dans le développement et la gouvernance de l'IA. Les pays du Sud global, les petites et moyennes entreprises, les communautés linguistiques minoritaires et les populations vulnérables risquent d'être marginalisés dans la révolution de l'IA si des mesures proactives ne sont pas prises.
 
-Pour le Québec, cet enjeu se traduit de plusieurs manières. Les communautés autochtones du Québec doivent être associées au développement et à la gouvernance de l'IA, en particulier lorsque des systèmes d'IA sont déployés dans des domaines qui les concernent — santé, services sociaux, gestion du territoire. Les PME québécoises doivent avoir accès à des outils d'IA abordables et à un accompagnement adapté. Les travailleurs dont les emplois sont menacés par l'automatisation doivent bénéficier de programmes de transition inclusifs.
+Pour le Québec, cet enjeu se traduit de plusieurs manières. Les communautés autochtones du Québec doivent être associées au développement et à la gouvernance de l'IA, en particulier lorsque des systèmes d'IA sont déployés dans des domaines qui les concernent, santé, services sociaux, gestion du territoire. Les PME québécoises doivent avoir accès à des outils d'IA abordables et à un accompagnement adapté. Les travailleurs dont les emplois sont menacés par l'automatisation doivent bénéficier de programmes de transition inclusifs.
 
 ## Les engagements du Canada au sommet
 
@@ -56,4 +56,4 @@ Le Québec devrait veiller à ce que les engagements pris par le Canada au nivea
 
 ## Conclusion
 
-Le Sommet de Paris sur l'IA a confirmé que la gouvernance de l'intelligence artificielle est devenue un enjeu géopolitique de premier plan. Dans ce paysage complexe, le Québec dispose d'atouts significatifs — expertise en recherche, tradition éthique, énergie propre, bilinguisme — qui peuvent lui permettre de jouer un rôle influent. Mais cela exige une stratégie claire, des investissements ciblés et une participation active aux forums internationaux où les règles du jeu sont en train d'être écrites.
+Le Sommet de Paris sur l'IA a confirmé que la gouvernance de l'intelligence artificielle est devenue un enjeu géopolitique de premier plan. Dans ce paysage complexe, le Québec dispose d'atouts significatifs, expertise en recherche, tradition éthique, énergie propre, bilinguisme, qui peuvent lui permettre de jouer un rôle influent. Mais cela exige une stratégie claire, des investissements ciblés et une participation active aux forums internationaux où les règles du jeu sont en train d'être écrites.

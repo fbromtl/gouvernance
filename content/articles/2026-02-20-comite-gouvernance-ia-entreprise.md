@@ -12,7 +12,7 @@ tags: "comité de gouvernance, entreprise, stratégie IA, organisation, bonnes p
 
 ## Pourquoi un comité dédié ?
 
-Trop d'organisations tentent encore de gérer la gouvernance de l'IA au sein de structures existantes — comités TI, comités de conformité, ou pire, de manière ad hoc. Cette approche montre rapidement ses limites face à la transversalité des enjeux de l'IA.
+Trop d'organisations tentent encore de gérer la gouvernance de l'IA au sein de structures existantes, comités TI, comités de conformité, ou pire, de manière ad hoc. Cette approche montre rapidement ses limites face à la transversalité des enjeux de l'IA.
 
 Un **comité de gouvernance de l'IA** dédié permet de centraliser les décisions, d'assurer une cohérence stratégique et de créer une véritable culture de responsabilité algorithmique au sein de l'organisation.
 

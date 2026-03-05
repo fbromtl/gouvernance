@@ -12,7 +12,7 @@ tags: "biais, équité, discrimination, algorithmes, Charte des droits, inclusio
 
 ## Le miroir déformant des algorithmes
 
-Les systèmes d'intelligence artificielle, contrairement à une idée répandue, ne sont pas neutres ni objectifs. Ils reflètent — et parfois amplifient — les biais présents dans les données sur lesquelles ils sont entraînés, dans les choix de conception de leurs développeurs et dans les structures sociales qu'ils modélisent. La question des biais algorithmiques est un enjeu de gouvernance fondamental pour le Québec, une société qui affirme des valeurs d'équité, d'inclusion et de respect des droits de la personne.
+Les systèmes d'intelligence artificielle, contrairement à une idée répandue, ne sont pas neutres ni objectifs. Ils reflètent, et parfois amplifient, les biais présents dans les données sur lesquelles ils sont entraînés, dans les choix de conception de leurs développeurs et dans les structures sociales qu'ils modélisent. La question des biais algorithmiques est un enjeu de gouvernance fondamental pour le Québec, une société qui affirme des valeurs d'équité, d'inclusion et de respect des droits de la personne.
 
 ## Comprendre les biais algorithmiques
 
@@ -26,7 +26,7 @@ Au Québec, les biais algorithmiques peuvent se manifester dans de nombreux sect
 
 Les communautés racisées et les personnes issues de l'immigration sont particulièrement exposées aux biais algorithmiques dans les domaines de l'emploi, du logement, du crédit et des services publics. Des systèmes d'IA utilisés pour le tri de candidatures, l'évaluation du risque de crédit ou l'allocation de logements sociaux peuvent reproduire des schémas discriminatoires enracinés dans les données historiques.
 
-Les Premiers Peuples du Québec — les Premières Nations et les Inuit — sont confrontés à des risques spécifiques. La sous-représentation des populations autochtones dans les jeux de données, combinée aux effets cumulatifs de la discrimination systémique, peut conduire à des systèmes d'IA qui desservent ces communautés de manière disproportionnée. L'utilisation de l'IA dans les services sociaux, la justice et la santé peut avoir des conséquences graves pour des populations déjà marginalisées.
+Les Premiers Peuples du Québec, les Premières Nations et les Inuit, sont confrontés à des risques spécifiques. La sous-représentation des populations autochtones dans les jeux de données, combinée aux effets cumulatifs de la discrimination systémique, peut conduire à des systèmes d'IA qui desservent ces communautés de manière disproportionnée. L'utilisation de l'IA dans les services sociaux, la justice et la santé peut avoir des conséquences graves pour des populations déjà marginalisées.
 
 Les personnes en situation de handicap peuvent être discriminées par des systèmes d'IA qui ne prennent pas en compte la diversité des capacités et des modes d'interaction. Les systèmes de reconnaissance vocale moins performants pour les personnes ayant des troubles de la parole, les interfaces visuelles inaccessibles aux personnes malvoyantes ou les algorithmes de recrutement pénalisant les parcours professionnels atypiques sont autant d'exemples de biais d'exclusion.
 
@@ -46,11 +46,11 @@ La Loi 25 contribue indirectement à la lutte contre les biais algorithmiques en
 
 La communauté de recherche québécoise, notamment au sein de Mila et d'IVADO, contribue activement au développement de méthodes techniques pour détecter et atténuer les biais algorithmiques.
 
-Les audits algorithmiques permettent d'évaluer systématiquement les performances d'un système d'IA pour différents groupes de la population. En mesurant les écarts de performance — taux d'erreur, taux de faux positifs, taux de faux négatifs — entre les groupes, ces audits peuvent révéler des biais qui ne seraient pas apparents dans une évaluation globale du système.
+Les audits algorithmiques permettent d'évaluer systématiquement les performances d'un système d'IA pour différents groupes de la population. En mesurant les écarts de performance, taux d'erreur, taux de faux positifs, taux de faux négatifs, entre les groupes, ces audits peuvent révéler des biais qui ne seraient pas apparents dans une évaluation globale du système.
 
 Les techniques de débiaisage visent à réduire les biais à différentes étapes du processus d'apprentissage. Le prétraitement des données peut corriger des déséquilibres de représentation. L'apprentissage sous contraintes d'équité impose des critères de non-discrimination dans l'optimisation du modèle. Le post-traitement des résultats ajuste les seuils de décision pour équilibrer les performances entre les groupes.
 
-Ces techniques ne sont toutefois pas des solutions magiques. Le choix d'une définition d'équité — et il en existe de nombreuses, parfois mutuellement incompatibles — est un choix de valeurs, pas un choix technique. Les organisations doivent engager une réflexion éthique sur la définition d'équité la plus appropriée à leur contexte, en consultation avec les parties prenantes affectées.
+Ces techniques ne sont toutefois pas des solutions magiques. Le choix d'une définition d'équité, et il en existe de nombreuses, parfois mutuellement incompatibles, est un choix de valeurs, pas un choix technique. Les organisations doivent engager une réflexion éthique sur la définition d'équité la plus appropriée à leur contexte, en consultation avec les parties prenantes affectées.
 
 ## Vers une gouvernance proactive de l'équité algorithmique
 

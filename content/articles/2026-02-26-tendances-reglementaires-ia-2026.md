@@ -38,7 +38,7 @@ Les organisations qui ont anticipé en mettant en place des cadres de gouvernanc
 
 ## 3. La norme ISO 42001 devient un standard de marché
 
-La certification **ISO/IEC 42001** n'est plus un simple avantage concurrentiel — elle devient progressivement une **exigence contractuelle**. Nous observons une tendance claire :
+La certification **ISO/IEC 42001** n'est plus un simple avantage concurrentiel, elle devient progressivement une **exigence contractuelle**. Nous observons une tendance claire :
 
 - Les grands donneurs d'ordres intègrent la certification dans leurs appels d'offres
 - Les investisseurs demandent des preuves de gouvernance IA structurée
@@ -69,4 +69,4 @@ L'IA générative, avec ses risques spécifiques (hallucinations, propriété in
 
 Face à cette accélération réglementaire, notre conseil est clair : **structurez votre gouvernance maintenant**. Les organisations qui attendent l'adoption définitive des lois pour agir accumulent une dette de conformité qui sera coûteuse à résorber.
 
-Les outils du Cercle — registre des systèmes IA, grilles d'évaluation des risques, modèles de politiques — sont conçus pour vous permettre de démarrer rapidement et de vous adapter au fur et à mesure que le cadre réglementaire se précise.
+Les outils du Cercle, registre des systèmes IA, grilles d'évaluation des risques, modèles de politiques, sont conçus pour vous permettre de démarrer rapidement et de vous adapter au fur et à mesure que le cadre réglementaire se précise.

@@ -18,7 +18,7 @@ Le système éducatif québécois, du préscolaire à l'université, est confron
 
 L'IA s'introduit dans l'éducation québécoise par de multiples canaux. Les systèmes d'apprentissage adaptatif ajustent le contenu pédagogique au rythme et au niveau de chaque apprenant, offrant une expérience de formation personnalisée. Les outils de correction automatisée soulagent le personnel enseignant de tâches répétitives, leur permettant de consacrer davantage de temps à l'accompagnement individuel. Les agents conversationnels et les tuteurs intelligents offrent un soutien en dehors des heures de cours.
 
-L'irruption de l'IA générative — les grands modèles de langage capables de produire du texte, du code et des contenus multimédias — a provoqué une onde de choc dans le milieu éducatif. Ces outils remettent en question les méthodes traditionnelles d'évaluation fondées sur la production écrite et soulèvent des questions fondamentales sur la nature de l'apprentissage et sur les compétences que l'école doit développer.
+L'irruption de l'IA générative, les grands modèles de langage capables de produire du texte, du code et des contenus multimédias, a provoqué une onde de choc dans le milieu éducatif. Ces outils remettent en question les méthodes traditionnelles d'évaluation fondées sur la production écrite et soulèvent des questions fondamentales sur la nature de l'apprentissage et sur les compétences que l'école doit développer.
 
 L'analyse de l'apprentissage (learning analytics) utilise les traces numériques laissées par les apprenants sur les plateformes éducatives pour identifier les élèves à risque de décrochage, optimiser les parcours de formation et évaluer l'efficacité des interventions pédagogiques. Ces applications peuvent contribuer à la réussite éducative, mais elles soulèvent des questions de surveillance et de profilage des élèves.
 
@@ -58,7 +58,7 @@ Les programmes de formation initiale et continue des enseignants doivent intégr
 
 ## Recommandations
 
-Le Québec devrait élaborer une politique claire sur l'utilisation de l'IA en éducation, définissant les principes directeurs, les responsabilités des acteurs et les mécanismes de gouvernance. Cette politique devrait être élaborée en consultation avec l'ensemble des parties prenantes — enseignants, directions d'établissement, parents, élèves, chercheurs et fournisseurs technologiques. Elle devrait être régulièrement révisée pour s'adapter à l'évolution rapide des technologies.
+Le Québec devrait élaborer une politique claire sur l'utilisation de l'IA en éducation, définissant les principes directeurs, les responsabilités des acteurs et les mécanismes de gouvernance. Cette politique devrait être élaborée en consultation avec l'ensemble des parties prenantes, enseignants, directions d'établissement, parents, élèves, chercheurs et fournisseurs technologiques. Elle devrait être régulièrement révisée pour s'adapter à l'évolution rapide des technologies.
 
 ## Conclusion
 

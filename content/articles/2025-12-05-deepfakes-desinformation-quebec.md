@@ -12,7 +12,7 @@ tags: "deepfakes, désinformation, démocratie, médias, détection, littératie
 
 ## Une menace en pleine expansion
 
-Les deepfakes — ces contenus synthétiques générés par l'intelligence artificielle qui reproduisent de manière hyperréaliste l'apparence et la voix de personnes réelles — sont passés en quelques années d'une curiosité technologique à une menace sociétale majeure. Le Comité consultatif du Conseil des droits de l'homme de l'ONU, réuni en février 2026 à Genève, a qualifié les deepfakes et la désinformation personnalisée de « graves menaces pour la liberté d'expression et le discours démocratique ». Pour le Québec, société démocratique francophone avec un paysage médiatique distinct, les enjeux sont considérables.
+Les deepfakes, ces contenus synthétiques générés par l'intelligence artificielle qui reproduisent de manière hyperréaliste l'apparence et la voix de personnes réelles, sont passés en quelques années d'une curiosité technologique à une menace sociétale majeure. Le Comité consultatif du Conseil des droits de l'homme de l'ONU, réuni en février 2026 à Genève, a qualifié les deepfakes et la désinformation personnalisée de « graves menaces pour la liberté d'expression et le discours démocratique ». Pour le Québec, société démocratique francophone avec un paysage médiatique distinct, les enjeux sont considérables.
 
 ## L'état de la menace
 
@@ -24,7 +24,7 @@ Les applications malveillantes se multiplient. La désinformation politique util
 
 La réponse réglementaire aux deepfakes s'accélère au niveau international. Aux États-Unis, le TAKE IT DOWN Act, signé en mai 2025, criminalise la publication de deepfakes intimes non consensuels avec des peines pouvant atteindre deux ans d'emprisonnement. Les législatures des 50 États ont introduit des projets de loi sur les deepfakes sexuels, et 169 lois ont été adoptées depuis 2022. Le Règlement européen sur l'IA, dont les règles de transparence entreront en vigueur en août 2026, exigera que les contenus générés par IA soient marqués de manière lisible par machine et clairement identifiés comme synthétiques.
 
-Au Canada et au Québec, le cadre spécifique aux deepfakes est encore embryonnaire. Le Code criminel canadien offre des protections contre certaines utilisations — la diffamation, le harcèlement, la fraude — mais il n'existe pas de disposition spécifiquement adaptée aux contenus synthétiques. Le droit civil québécois, avec ses protections du droit à l'image, à la réputation et à la vie privée, offre des recours, mais leur application aux deepfakes n'a pas encore été éprouvée devant les tribunaux.
+Au Canada et au Québec, le cadre spécifique aux deepfakes est encore embryonnaire. Le Code criminel canadien offre des protections contre certaines utilisations, la diffamation, le harcèlement, la fraude, mais il n'existe pas de disposition spécifiquement adaptée aux contenus synthétiques. Le droit civil québécois, avec ses protections du droit à l'image, à la réputation et à la vie privée, offre des recours, mais leur application aux deepfakes n'a pas encore été éprouvée devant les tribunaux.
 
 ## Les enjeux pour la démocratie québécoise
 
@@ -38,7 +38,7 @@ La dimension linguistique ajoute une couche de complexité. Les outils de détec
 
 La lutte contre les deepfakes exige une approche multidimensionnelle combinant la technologie, le droit, l'éducation et la coopération institutionnelle.
 
-Sur le plan technologique, les systèmes de détection de deepfakes basés sur l'IA — qui analysent les incohérences visuelles, audio et temporelles des contenus synthétiques — se perfectionnent, mais ils sont engagés dans une course aux armements permanente avec les techniques de création. Les standards de provenance du contenu, comme ceux développés par la Coalition for Content Provenance and Authenticity (C2PA), permettent d'attacher des métadonnées cryptographiques aux contenus authentiques, créant une chaîne de confiance vérifiable.
+Sur le plan technologique, les systèmes de détection de deepfakes basés sur l'IA, qui analysent les incohérences visuelles, audio et temporelles des contenus synthétiques, se perfectionnent, mais ils sont engagés dans une course aux armements permanente avec les techniques de création. Les standards de provenance du contenu, comme ceux développés par la Coalition for Content Provenance and Authenticity (C2PA), permettent d'attacher des métadonnées cryptographiques aux contenus authentiques, créant une chaîne de confiance vérifiable.
 
 Sur le plan juridique, le Québec devrait envisager des dispositions spécifiques sur la création et la diffusion de deepfakes malveillants, des obligations de marquage des contenus synthétiques pour les plateformes et les créateurs, des mécanismes de retrait rapide des deepfakes signalés, et un renforcement des recours civils pour les victimes de deepfakes.
 

@@ -26,7 +26,7 @@ Les données de santé sont parmi les plus sensibles qui existent. Leur utilisat
 
 ### Risques vitaux
 
-Contrairement à d'autres secteurs, une erreur algorithmique en santé peut avoir des conséquences directes sur la vie des patients. Un système de diagnostic qui produit un faux négatif, un algorithme de dosage qui se trompe — les enjeux sont littéralement vitaux.
+Contrairement à d'autres secteurs, une erreur algorithmique en santé peut avoir des conséquences directes sur la vie des patients. Un système de diagnostic qui produit un faux négatif, un algorithme de dosage qui se trompe, les enjeux sont littéralement vitaux.
 
 ### Équité d'accès
 

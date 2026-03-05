@@ -28,11 +28,11 @@ Montréal s'est imposée comme l'une des capitales mondiales de l'intelligence a
 
 Mila, fondé et longtemps dirigé par Yoshua Bengio, lauréat du prix Turing, est l'un des plus importants laboratoires de recherche en apprentissage profond au monde. Avec des centaines de chercheurs et d'étudiants, l'institut produit une recherche de premier plan et forme la prochaine génération de spécialistes de l'IA. Au-delà de la recherche fondamentale, Mila s'est engagé activement dans la réflexion sur les enjeux sociétaux de l'IA, notamment à travers ses travaux sur l'IA sûre et bénéfique.
 
-IVADO, l'Institut de valorisation des données, fédère l'expertise de plusieurs universités montréalaises — l'Université de Montréal, Polytechnique Montréal et HEC Montréal — pour promouvoir l'utilisation des données et de l'IA dans tous les secteurs de l'économie. Son rôle de pont entre la recherche et l'industrie est crucial pour le transfert des connaissances et le développement de solutions concrètes.
+IVADO, l'Institut de valorisation des données, fédère l'expertise de plusieurs universités montréalaises, l'Université de Montréal, Polytechnique Montréal et HEC Montréal, pour promouvoir l'utilisation des données et de l'IA dans tous les secteurs de l'économie. Son rôle de pont entre la recherche et l'industrie est crucial pour le transfert des connaissances et le développement de solutions concrètes.
 
 Scale AI, la supergrappe canadienne axée sur l'intelligence artificielle et les chaînes d'approvisionnement, soutient des projets collaboratifs entre l'industrie et la recherche. Elle contribue à l'adoption de l'IA par les entreprises québécoises et canadiennes, tout en finançant des programmes de formation et de développement des talents.
 
-À ces institutions s'ajoutent des dizaines de laboratoires universitaires, de centres de recherche collégiaux (CCTT), de start-ups et d'entreprises établies qui contribuent à la vitalité de l'écosystème. Les grandes entreprises technologiques internationales — Google, Meta, Microsoft, Samsung, entre autres — ont établi des laboratoires de recherche en IA à Montréal, attirées par la concentration de talents et l'environnement de recherche favorable.
+À ces institutions s'ajoutent des dizaines de laboratoires universitaires, de centres de recherche collégiaux (CCTT), de start-ups et d'entreprises établies qui contribuent à la vitalité de l'écosystème. Les grandes entreprises technologiques internationales, Google, Meta, Microsoft, Samsung, entre autres, ont établi des laboratoires de recherche en IA à Montréal, attirées par la concentration de talents et l'environnement de recherche favorable.
 
 ## L'OBVIA : la dimension sociétale
 
@@ -44,7 +44,7 @@ Les travaux de l'OBVIA alimentent directement la réflexion sur la gouvernance d
 
 Initiative phare de la démarche québécoise en matière d'éthique de l'IA, la Déclaration de Montréal pour un développement responsable de l'intelligence artificielle a été publiée en décembre 2018 au terme d'une démarche participative d'une ampleur sans précédent. Pilotée par l'Université de Montréal, cette démarche a mobilisé des citoyens, des experts, des organisations de la société civile et des acteurs industriels dans une réflexion collective sur les principes devant guider le développement de l'IA.
 
-La Déclaration propose dix principes fondamentaux — bien-être, autonomie, protection de l'intimité et de la vie privée, solidarité, participation démocratique, équité, inclusion de la diversité, prudence, responsabilité et développement soutenable. Ces principes ne sont pas juridiquement contraignants, mais ils ont exercé une influence significative sur la réflexion québécoise et internationale en matière de gouvernance de l'IA.
+La Déclaration propose dix principes fondamentaux, bien-être, autonomie, protection de l'intimité et de la vie privée, solidarité, participation démocratique, équité, inclusion de la diversité, prudence, responsabilité et développement soutenable. Ces principes ne sont pas juridiquement contraignants, mais ils ont exercé une influence significative sur la réflexion québécoise et internationale en matière de gouvernance de l'IA.
 
 ## La formation et le développement des talents
 

@@ -12,7 +12,7 @@ tags: "littératie, éducation, citoyenneté, curriculum, formation, AI Act, dé
 
 ## Au-delà de la compétence technique
 
-La littératie en intelligence artificielle — la capacité des citoyens à comprendre, évaluer et interagir de manière éclairée avec les systèmes d'IA — est devenue un enjeu démocratique fondamental. L'AI Act européen l'a reconnu en imposant, depuis février 2025, des obligations de littératie en IA aux organisations qui déploient ou utilisent des systèmes d'IA. Cette exigence européenne reflète un constat simple : dans un monde où l'IA influence les décisions qui touchent chaque aspect de la vie quotidienne, des citoyens qui ne comprennent pas cette technologie sont des citoyens vulnérables.
+La littératie en intelligence artificielle, la capacité des citoyens à comprendre, évaluer et interagir de manière éclairée avec les systèmes d'IA, est devenue un enjeu démocratique fondamental. L'AI Act européen l'a reconnu en imposant, depuis février 2025, des obligations de littératie en IA aux organisations qui déploient ou utilisent des systèmes d'IA. Cette exigence européenne reflète un constat simple : dans un monde où l'IA influence les décisions qui touchent chaque aspect de la vie quotidienne, des citoyens qui ne comprennent pas cette technologie sont des citoyens vulnérables.
 
 ## Qu'est-ce que la littératie en IA ?
 
@@ -22,9 +22,9 @@ Cette définition fonctionnelle est essentielle. L'objectif n'est pas de former 
 
 ## L'état de la littératie en IA au Québec
 
-Le Québec ne dispose pas de données systématiques sur le niveau de littératie en IA de sa population. Cependant, plusieurs indicateurs suggèrent que la situation est préoccupante. La littératie numérique de base — la capacité à utiliser les technologies de l'information de manière compétente — demeure inégale, avec des écarts significatifs selon l'âge, le niveau de scolarité, la région et le statut socio-économique.
+Le Québec ne dispose pas de données systématiques sur le niveau de littératie en IA de sa population. Cependant, plusieurs indicateurs suggèrent que la situation est préoccupante. La littératie numérique de base, la capacité à utiliser les technologies de l'information de manière compétente, demeure inégale, avec des écarts significatifs selon l'âge, le niveau de scolarité, la région et le statut socio-économique.
 
-Si la littératie numérique est une condition préalable à la littératie en IA, elle n'est pas suffisante. De nombreux utilisateurs compétents avec les outils numériques n'ont qu'une compréhension vague de ce qu'est l'IA, de comment elle fonctionne et des implications de son utilisation. La perception de l'IA dans la population oscille entre la fascination — alimentée par le marketing des entreprises technologiques — et la crainte — nourrie par les représentations dystopiques dans la culture populaire. Ni l'une ni l'autre de ces attitudes ne constitue une base saine pour un engagement citoyen éclairé.
+Si la littératie numérique est une condition préalable à la littératie en IA, elle n'est pas suffisante. De nombreux utilisateurs compétents avec les outils numériques n'ont qu'une compréhension vague de ce qu'est l'IA, de comment elle fonctionne et des implications de son utilisation. La perception de l'IA dans la population oscille entre la fascination, alimentée par le marketing des entreprises technologiques, et la crainte, nourrie par les représentations dystopiques dans la culture populaire. Ni l'une ni l'autre de ces attitudes ne constitue une base saine pour un engagement citoyen éclairé.
 
 ## L'éducation formelle : intégrer l'IA dans le curriculum
 
@@ -32,9 +32,9 @@ Le système éducatif québécois a un rôle central à jouer dans le développe
 
 Au primaire, l'initiation à la pensée algorithmique et aux concepts de base de l'IA peut se faire de manière ludique et concrète, à travers des activités qui montrent comment les machines « apprennent », comment les recommandations sont générées et comment les données sont utilisées. Des programmes pédagogiques adaptés existent déjà et peuvent être intégrés dans les cours de mathématiques, de sciences et d'éthique.
 
-Au secondaire, la littératie en IA devrait devenir plus structurée, avec des modules qui couvrent les fondements de l'IA — apprentissage automatique, données, algorithmes —, les enjeux éthiques et sociaux de l'IA, l'esprit critique face aux contenus générés par l'IA et la protection de la vie privée à l'ère numérique. Le programme d'éthique et culture religieuse — en cours de transformation — et le cours de culture et citoyenneté québécoise offrent des cadres naturels pour intégrer ces apprentissages.
+Au secondaire, la littératie en IA devrait devenir plus structurée, avec des modules qui couvrent les fondements de l'IA, apprentissage automatique, données, algorithmes, les enjeux éthiques et sociaux de l'IA, l'esprit critique face aux contenus générés par l'IA et la protection de la vie privée à l'ère numérique. Le programme d'éthique et culture religieuse, en cours de transformation, et le cours de culture et citoyenneté québécoise offrent des cadres naturels pour intégrer ces apprentissages.
 
-Au postsecondaire, les programmes de toutes les disciplines — pas seulement l'informatique — devraient intégrer une composante de littératie en IA adaptée à leur domaine. Les futurs médecins, avocats, gestionnaires, enseignants et travailleurs sociaux utiliseront tous l'IA dans leur pratique professionnelle et doivent y être préparés.
+Au postsecondaire, les programmes de toutes les disciplines, pas seulement l'informatique, devraient intégrer une composante de littératie en IA adaptée à leur domaine. Les futurs médecins, avocats, gestionnaires, enseignants et travailleurs sociaux utiliseront tous l'IA dans leur pratique professionnelle et doivent y être préparés.
 
 La formation des enseignants est un préalable critique. Les enseignants eux-mêmes doivent être formés aux enjeux de l'IA pour pouvoir transmettre cette compréhension à leurs élèves. Des programmes de développement professionnel spécifiques, développés en partenariat avec des experts en IA et en pédagogie, sont nécessaires.
 
@@ -46,7 +46,7 @@ Les employeurs ont un rôle important à jouer en offrant des formations sur l'I
 
 ## La littératie en IA pour les décideurs publics
 
-Les élus, les hauts fonctionnaires et les gestionnaires publics qui prennent des décisions sur l'adoption et la gouvernance de l'IA doivent eux-mêmes posséder un niveau adéquat de littératie en IA. Des programmes de formation spécifiques pour les décideurs publics — qui couvrent non seulement les aspects techniques mais aussi les implications juridiques, éthiques et sociales de l'IA — sont indispensables pour assurer une gouvernance éclairée.
+Les élus, les hauts fonctionnaires et les gestionnaires publics qui prennent des décisions sur l'adoption et la gouvernance de l'IA doivent eux-mêmes posséder un niveau adéquat de littératie en IA. Des programmes de formation spécifiques pour les décideurs publics, qui couvrent non seulement les aspects techniques mais aussi les implications juridiques, éthiques et sociales de l'IA, sont indispensables pour assurer une gouvernance éclairée.
 
 L'Assemblée nationale du Québec, les ministères et les organismes publics devraient investir dans la formation de leur personnel aux enjeux de l'IA. Le Bureau de la transformation numérique gouvernementale pourrait jouer un rôle de coordination dans cet effort.
 
@@ -62,4 +62,4 @@ Le Québec devrait intégrer la littératie en IA dans le curriculum scolaire à
 
 ## Conclusion
 
-La littératie en IA n'est pas un luxe — c'est une condition de la citoyenneté démocratique au XXIe siècle. Un citoyen qui ne comprend pas comment l'IA influence sa vie ne peut ni exercer pleinement ses droits, ni participer de manière éclairée au débat public sur la gouvernance de cette technologie. Le Québec, en investissant massivement dans la littératie en IA, ne fait pas que préparer sa population au marché du travail de demain — il protège sa démocratie.
+La littératie en IA n'est pas un luxe, c'est une condition de la citoyenneté démocratique au XXIe siècle. Un citoyen qui ne comprend pas comment l'IA influence sa vie ne peut ni exercer pleinement ses droits, ni participer de manière éclairée au débat public sur la gouvernance de cette technologie. Le Québec, en investissant massivement dans la littératie en IA, ne fait pas que préparer sa population au marché du travail de demain, il protège sa démocratie.

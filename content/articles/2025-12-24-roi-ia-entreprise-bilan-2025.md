@@ -16,11 +16,11 @@ L'enthousiasme autour de l'intelligence artificielle a généré des investissem
 
 ## L'état des lieux mondial
 
-Les données convergent : la majorité des projets d'IA en entreprise peinent à dépasser le stade du prototype ou du projet pilote. Le passage à la production à grande échelle — le fameux « scaling » — reste l'obstacle principal. Les raisons sont multiples : la qualité insuffisante des données, l'absence d'intégration avec les processus existants, le manque de compétences internes et la sous-estimation des coûts d'infrastructure et de maintenance.
+Les données convergent : la majorité des projets d'IA en entreprise peinent à dépasser le stade du prototype ou du projet pilote. Le passage à la production à grande échelle, le fameux « scaling », reste l'obstacle principal. Les raisons sont multiples : la qualité insuffisante des données, l'absence d'intégration avec les processus existants, le manque de compétences internes et la sous-estimation des coûts d'infrastructure et de maintenance.
 
-Les grandes entreprises technologiques elles-mêmes admettent que le retour sur leurs investissements massifs en IA — des centaines de milliards de dollars en infrastructure de calcul — ne se matérialisera pas avant plusieurs années. Cette réalité contraste avec le discours marketing ambiant qui présente l'IA comme une solution immédiate à tous les défis organisationnels.
+Les grandes entreprises technologiques elles-mêmes admettent que le retour sur leurs investissements massifs en IA, des centaines de milliards de dollars en infrastructure de calcul, ne se matérialisera pas avant plusieurs années. Cette réalité contraste avec le discours marketing ambiant qui présente l'IA comme une solution immédiate à tous les défis organisationnels.
 
-Le phénomène du « AI washing » — la tendance des entreprises à surestimer leur utilisation de l'IA dans leurs communications — complique encore l'évaluation objective des résultats. Plusieurs entreprises ont fait l'objet de sanctions réglementaires aux États-Unis pour avoir induit les investisseurs en erreur sur leurs capacités réelles en IA.
+Le phénomène du « AI washing », la tendance des entreprises à surestimer leur utilisation de l'IA dans leurs communications, complique encore l'évaluation objective des résultats. Plusieurs entreprises ont fait l'objet de sanctions réglementaires aux États-Unis pour avoir induit les investisseurs en erreur sur leurs capacités réelles en IA.
 
 ## Le portrait québécois
 
@@ -42,7 +42,7 @@ La gestion du changement est un facteur critique souvent négligé. L'adoption d
 
 ## Les implications pour la gouvernance
 
-Ce bilan a des implications directes pour la gouvernance de l'IA au Québec. Un cadre de gouvernance efficace ne doit pas seulement encadrer les risques de l'IA — il doit aussi favoriser une adoption éclairée et productive.
+Ce bilan a des implications directes pour la gouvernance de l'IA au Québec. Un cadre de gouvernance efficace ne doit pas seulement encadrer les risques de l'IA, il doit aussi favoriser une adoption éclairée et productive.
 
 Les obligations de transparence et de documentation, souvent perçues comme des contraintes, peuvent en réalité contribuer au succès des projets en forçant les organisations à clarifier leurs objectifs, à documenter leurs hypothèses et à évaluer rigoureusement leurs résultats. La gouvernance, bien conçue, n'est pas un frein à l'innovation mais un catalyseur de qualité.
 
@@ -50,7 +50,7 @@ Le Québec pourrait envisager des mécanismes de soutien spécifiques pour accom
 
 ## Le piège de l'inaction
 
-Si le bilan actuel invite à la prudence, il ne justifie pas l'inaction. Les organisations qui n'investissent pas dans la compréhension et l'expérimentation de l'IA risquent de se trouver désavantagées lorsque la technologie atteindra sa maturité. L'enjeu n'est pas de tout miser sur l'IA aujourd'hui, mais de développer les capacités — compétences, données, processus — qui permettront d'en tirer parti demain.
+Si le bilan actuel invite à la prudence, il ne justifie pas l'inaction. Les organisations qui n'investissent pas dans la compréhension et l'expérimentation de l'IA risquent de se trouver désavantagées lorsque la technologie atteindra sa maturité. L'enjeu n'est pas de tout miser sur l'IA aujourd'hui, mais de développer les capacités, compétences, données, processus, qui permettront d'en tirer parti demain.
 
 Pour les organisations québécoises, l'approche la plus sage consiste à investir de manière progressive et mesurée, en commençant par les applications où la valeur est la plus évidente et les risques les plus maîtrisables. L'automatisation de tâches répétitives, l'analyse prédictive à partir de données existantes et l'amélioration du service client sont des points d'entrée éprouvés.
 

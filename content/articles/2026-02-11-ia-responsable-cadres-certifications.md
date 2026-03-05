@@ -56,11 +56,11 @@ L'engagement de la direction est un prérequis. L'IA responsable doit être port
 
 La gouvernance organisationnelle implique la désignation de responsables, la création de comités d'éthique ou de gouvernance de l'IA, et l'établissement de processus décisionnels clairs pour l'évaluation et l'approbation des projets d'IA.
 
-L'évaluation des risques, à travers des processus structurés d'analyse d'impact — EFVP, évaluation d'impact algorithmique, analyse de risques — permet d'identifier les enjeux et de mettre en place des mesures d'atténuation avant le déploiement des systèmes.
+L'évaluation des risques, à travers des processus structurés d'analyse d'impact, EFVP, évaluation d'impact algorithmique, analyse de risques, permet d'identifier les enjeux et de mettre en place des mesures d'atténuation avant le déploiement des systèmes.
 
 La documentation et la traçabilité sont essentielles pour assurer la reddition de comptes. Les organisations doivent documenter les choix de conception, les données utilisées, les évaluations réalisées et les décisions prises tout au long du cycle de vie des systèmes d'IA.
 
-La formation et la sensibilisation du personnel — des développeurs aux dirigeants en passant par les utilisateurs — sont indispensables pour créer une culture organisationnelle de responsabilité en matière d'IA.
+La formation et la sensibilisation du personnel, des développeurs aux dirigeants en passant par les utilisateurs, sont indispensables pour créer une culture organisationnelle de responsabilité en matière d'IA.
 
 Le suivi et l'amélioration continue reconnaissent que l'IA responsable est un processus dynamique. Les systèmes d'IA doivent être surveillés en continu pour détecter les dérives de performance, les biais émergents et les impacts imprévus.
 
@@ -68,7 +68,7 @@ Le suivi et l'amélioration continue reconnaissent que l'IA responsable est un p
 
 La mise en œuvre de l'IA responsable se heurte à plusieurs obstacles pratiques. Le coût de la conformité peut être prohibitif pour les PME, qui constituent l'essentiel du tissu économique québécois. La pénurie de professionnels compétents en éthique de l'IA et en audit algorithmique freine le développement de l'expertise interne. La multiplication des cadres et des normes crée une complexité que les organisations peinent à naviguer.
 
-Des programmes de soutien ciblés — accompagnement technique, subventions, mutualisation des coûts — sont nécessaires pour rendre l'IA responsable accessible à l'ensemble des organisations québécoises, pas seulement aux grandes entreprises disposant de ressources abondantes.
+Des programmes de soutien ciblés, accompagnement technique, subventions, mutualisation des coûts, sont nécessaires pour rendre l'IA responsable accessible à l'ensemble des organisations québécoises, pas seulement aux grandes entreprises disposant de ressources abondantes.
 
 ## Conclusion
 

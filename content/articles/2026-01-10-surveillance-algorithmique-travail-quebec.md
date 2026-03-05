@@ -16,7 +16,7 @@ L'intelligence artificielle a transformé la surveillance en milieu de travail d
 
 ## L'étendue de la surveillance algorithmique
 
-Les outils de surveillance algorithmique au travail englobent désormais un spectre très large de technologies. Les logiciels de suivi de productivité enregistrent les frappes au clavier, les mouvements de souris, les applications utilisées, le temps passé sur chaque tâche et les captures d'écran automatiques — parfois à intervalles de quelques minutes. Les systèmes d'analyse des communications scrutent les courriels, les messages instantanés et les appels téléphoniques pour évaluer le ton, la fréquence et le contenu des échanges.
+Les outils de surveillance algorithmique au travail englobent désormais un spectre très large de technologies. Les logiciels de suivi de productivité enregistrent les frappes au clavier, les mouvements de souris, les applications utilisées, le temps passé sur chaque tâche et les captures d'écran automatiques, parfois à intervalles de quelques minutes. Les systèmes d'analyse des communications scrutent les courriels, les messages instantanés et les appels téléphoniques pour évaluer le ton, la fréquence et le contenu des échanges.
 
 Les technologies biométriques se répandent dans les milieux de travail physiques : reconnaissance faciale pour le contrôle d'accès et le suivi des présences, analyse des expressions faciales pour évaluer l'engagement lors des réunions vidéo, capteurs de mouvement pour optimiser les déplacements dans les entrepôts et les usines.
 
@@ -32,15 +32,15 @@ Le Code civil du Québec impose le respect de la réputation et de la vie privé
 
 La Loi 25, en modernisant le cadre de protection des renseignements personnels, renforce les obligations de transparence et de consentement pour la collecte et l'utilisation de données personnelles, y compris en milieu de travail. L'obligation de réaliser une évaluation des facteurs relatifs à la vie privée (EFVP) pour les projets impliquant des renseignements personnels s'applique aux systèmes de surveillance algorithmique.
 
-Le droit du travail québécois — le Code du travail, la Loi sur les normes du travail, la Loi sur la santé et la sécurité du travail — ne contient pas de dispositions spécifiques à la surveillance algorithmique. Cependant, les principes généraux de bonne foi, de non-discrimination et de respect de la dignité s'appliquent.
+Le droit du travail québécois, le Code du travail, la Loi sur les normes du travail, la Loi sur la santé et la sécurité du travail, ne contient pas de dispositions spécifiques à la surveillance algorithmique. Cependant, les principes généraux de bonne foi, de non-discrimination et de respect de la dignité s'appliquent.
 
 ## Les zones grises juridiques
 
-Malgré ces protections, plusieurs zones grises subsistent. La surveillance des travailleurs en télétravail à leur domicile soulève des questions complexes sur la frontière entre l'espace professionnel et l'espace privé. Lorsqu'un employeur installe un logiciel de surveillance sur l'ordinateur d'un employé qui travaille de chez lui, la captation d'écran peut révéler des informations relevant de la vie privée — consultations médicales en ligne, communications personnelles, activités de navigation.
+Malgré ces protections, plusieurs zones grises subsistent. La surveillance des travailleurs en télétravail à leur domicile soulève des questions complexes sur la frontière entre l'espace professionnel et l'espace privé. Lorsqu'un employeur installe un logiciel de surveillance sur l'ordinateur d'un employé qui travaille de chez lui, la captation d'écran peut révéler des informations relevant de la vie privée, consultations médicales en ligne, communications personnelles, activités de navigation.
 
 La notion de consentement en contexte d'emploi est problématique. Le déséquilibre de pouvoir inhérent à la relation d'emploi rend le consentement du travailleur suspect : un employé peut difficilement refuser une surveillance que son employeur présente comme obligatoire sans craindre des répercussions. La Loi 25 reconnaît ce problème en exigeant que le consentement soit « manifeste, libre et éclairé », mais l'application concrète de ces critères en contexte d'emploi reste à préciser.
 
-L'utilisation de l'IA pour des décisions d'emploi — embauche, évaluation, promotion, licenciement — soulève des enjeux de discrimination. Les systèmes algorithmiques peuvent reproduire des biais historiques présents dans les données d'entraînement, pénalisant systématiquement certains groupes. La Charte québécoise interdit la discrimination dans l'emploi, mais la détection et la preuve de discrimination algorithmique posent des défis techniques considérables.
+L'utilisation de l'IA pour des décisions d'emploi, embauche, évaluation, promotion, licenciement, soulève des enjeux de discrimination. Les systèmes algorithmiques peuvent reproduire des biais historiques présents dans les données d'entraînement, pénalisant systématiquement certains groupes. La Charte québécoise interdit la discrimination dans l'emploi, mais la détection et la preuve de discrimination algorithmique posent des défis techniques considérables.
 
 ## Les implications pour la santé des travailleurs
 
@@ -52,7 +52,7 @@ La Commission des normes, de l'équité, de la santé et de la sécurité du tra
 
 Les syndicats québécois sont des acteurs clés dans l'encadrement de la surveillance algorithmique. La négociation collective permet d'intégrer des clauses spécifiques sur l'utilisation des technologies de surveillance, les droits d'accès des employés aux données collectées, les limites de l'utilisation des données à des fins disciplinaires et les mécanismes de contestation des décisions algorithmiques.
 
-Plusieurs conventions collectives québécoises commencent à intégrer des dispositions relatives à l'IA et à la surveillance technologique, mais la pratique reste émergente. Les centrales syndicales québécoises — la FTQ, la CSN, la CSQ — ont un rôle de sensibilisation et de formation auprès de leurs membres sur ces enjeux.
+Plusieurs conventions collectives québécoises commencent à intégrer des dispositions relatives à l'IA et à la surveillance technologique, mais la pratique reste émergente. Les centrales syndicales québécoises, la FTQ, la CSN, la CSQ, ont un rôle de sensibilisation et de formation auprès de leurs membres sur ces enjeux.
 
 ## Recommandations
 
