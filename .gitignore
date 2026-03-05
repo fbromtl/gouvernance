@@ -13,6 +13,10 @@ dist-ssr
 *.local
 .env
 
+# Generated templates
+public/templates/
+src/data/templates-index.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
