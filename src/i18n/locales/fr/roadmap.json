@@ -10,10 +10,30 @@
     "badge": "En développement",
     "tag": "À venir"
   },
-  "cta": {
-    "title": "Vous souhaitez influencer notre feuille de route ?",
-    "subtitle": "Partagez vos besoins et suggestions pour les prochaines fonctionnalités.",
-    "button": "Nous contacter"
+  "form": {
+    "title": "Proposer une fonctionnalité",
+    "nameLabel": "Votre nom",
+    "namePlaceholder": "Jean Dupont",
+    "emailLabel": "Courriel",
+    "emailPlaceholder": "jean@exemple.com",
+    "categoryLabel": "Catégorie",
+    "categoryPlaceholder": "Sélectionnez une catégorie",
+    "categories": {
+      "newModule": "Nouveau module",
+      "improvement": "Amélioration existante",
+      "integration": "Intégration tierce",
+      "reporting": "Rapports & Tableaux de bord",
+      "other": "Autre"
+    },
+    "featureTitleLabel": "Titre de la fonctionnalité",
+    "featureTitlePlaceholder": "Ex: Export PDF des évaluations",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Décrivez la fonctionnalité souhaitée, le problème qu'elle résout et son importance pour votre organisation…",
+    "submit": "Soumettre ma suggestion",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "successTitle": "Merci pour votre suggestion !",
+    "successMessage": "Votre proposition a bien été enregistrée. Notre équipe l'examinera et vous tiendra informé de son avancement.",
+    "another": "Soumettre une autre suggestion"
   },
   "modules": {
     "aiSystems": { "title": "Registre des systèmes IA", "description": "Inventaire complet de vos systèmes d'intelligence artificielle" },

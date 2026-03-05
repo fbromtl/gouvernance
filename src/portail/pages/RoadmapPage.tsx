@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Bot,
@@ -18,17 +18,28 @@ import {
   Send,
   Archive,
   Cpu,
-  ArrowRight,
   Sparkles,
   BookOpenCheck,
   Newspaper,
   BookOpen,
   Library,
+  Lightbulb,
+  Loader2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 /* ================================================================== */
 /*  DATA                                                               */
@@ -95,8 +106,43 @@ const upcomingFeatures: {
 /*  COMPONENT                                                          */
 /* ================================================================== */
 
+const FORM_CATEGORIES = [
+  "newModule",
+  "improvement",
+  "integration",
+  "reporting",
+  "other",
+] as const;
+
 export default function RoadmapPage() {
   const { t } = useTranslation("roadmap");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [category, setCategory] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormError(null);
+    setSubmitting(true);
+    try {
+      const formData = new FormData(e.currentTarget);
+      formData.set("form-name", "feature-request");
+      formData.set("category", category);
+      const body = new URLSearchParams(formData as unknown as Record<string, string>);
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error(`${res.status}`);
+      setSubmitted(true);
+    } catch {
+      setFormError(t("form.error"));
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="space-y-10">
@@ -192,24 +238,121 @@ export default function RoadmapPage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  SECTION 3 — CTA                                              */}
+      {/*  SECTION 3 — Feature request form                              */}
       {/* ============================================================ */}
-      <Card className="bg-muted/40 border-dashed border-border/60">
-        <CardContent className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6">
-          <div>
-            <p className="font-semibold text-foreground">{t("cta.title")}</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t("cta.subtitle")}
-            </p>
+      <section>
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-violet-50">
+            <Lightbulb className="h-4 w-4 text-violet-600" />
           </div>
-          <Button asChild className="shrink-0 gap-2 shadow-sm">
-            <Link to="/contact">
-              {t("cta.button")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
+          <h2 className="text-lg font-semibold tracking-tight">{t("form.title")}</h2>
+        </div>
+
+        <Card className="border-border/60">
+          <CardContent className="p-6">
+            {submitted ? (
+              <div className="flex flex-col items-center justify-center py-8 text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 mb-4">
+                  <CheckCircle className="h-6 w-6 text-emerald-600" />
+                </div>
+                <p className="font-semibold text-lg">{t("form.successTitle")}</p>
+                <p className="text-sm text-muted-foreground mt-1 max-w-md">
+                  {t("form.successMessage")}
+                </p>
+                <Button
+                  variant="outline"
+                  className="mt-4"
+                  onClick={() => setSubmitted(false)}
+                >
+                  {t("form.another")}
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <input type="hidden" name="form-name" value="feature-request" />
+                <p className="hidden">
+                  <label>
+                    Ne pas remplir : <input name="bot-field" />
+                  </label>
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="fr-name">{t("form.nameLabel")}</Label>
+                    <Input
+                      id="fr-name"
+                      name="name"
+                      required
+                      placeholder={t("form.namePlaceholder")}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="fr-email">{t("form.emailLabel")}</Label>
+                    <Input
+                      id="fr-email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder={t("form.emailPlaceholder")}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>{t("form.categoryLabel")}</Label>
+                    <Select value={category} onValueChange={setCategory} required>
+                      <SelectTrigger>
+                        <SelectValue placeholder={t("form.categoryPlaceholder")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {FORM_CATEGORIES.map((cat) => (
+                          <SelectItem key={cat} value={cat}>
+                            {t(`form.categories.${cat}`)}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="fr-title">{t("form.featureTitleLabel")}</Label>
+                    <Input
+                      id="fr-title"
+                      name="title"
+                      required
+                      placeholder={t("form.featureTitlePlaceholder")}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="fr-description">{t("form.descriptionLabel")}</Label>
+                  <Textarea
+                    id="fr-description"
+                    name="description"
+                    required
+                    rows={4}
+                    placeholder={t("form.descriptionPlaceholder")}
+                  />
+                </div>
+
+                {formError && (
+                  <p className="text-sm text-destructive">{formError}</p>
+                )}
+
+                <Button type="submit" disabled={submitting} className="gap-2">
+                  {submitting ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                  {t("form.submit")}
+                </Button>
+              </form>
+            )}
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 }

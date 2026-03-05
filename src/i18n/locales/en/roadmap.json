@@ -10,10 +10,30 @@
     "badge": "In development",
     "tag": "Coming soon"
   },
-  "cta": {
-    "title": "Want to influence our roadmap?",
-    "subtitle": "Share your needs and suggestions for upcoming features.",
-    "button": "Contact us"
+  "form": {
+    "title": "Suggest a Feature",
+    "nameLabel": "Your name",
+    "namePlaceholder": "Jane Doe",
+    "emailLabel": "Email",
+    "emailPlaceholder": "jane@example.com",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select a category",
+    "categories": {
+      "newModule": "New module",
+      "improvement": "Existing improvement",
+      "integration": "Third-party integration",
+      "reporting": "Reports & Dashboards",
+      "other": "Other"
+    },
+    "featureTitleLabel": "Feature title",
+    "featureTitlePlaceholder": "E.g.: PDF export for assessments",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Describe the feature you'd like, the problem it solves, and why it matters to your organization…",
+    "submit": "Submit my suggestion",
+    "error": "An error occurred. Please try again.",
+    "successTitle": "Thank you for your suggestion!",
+    "successMessage": "Your proposal has been recorded. Our team will review it and keep you informed of its progress.",
+    "another": "Submit another suggestion"
   },
   "modules": {
     "aiSystems": { "title": "AI Systems Registry", "description": "Complete inventory of your artificial intelligence systems" },
