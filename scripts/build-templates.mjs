@@ -208,12 +208,21 @@ async function main() {
   console.log("=== build-templates ===");
   console.log(`Source : ${SOURCE_DIR}`);
 
-  // 1. Verify source directory exists
+  // 1. Verify source directory exists — skip gracefully in CI if pre-built
   try {
     await fs.access(SOURCE_DIR);
   } catch {
-    console.error(`ERROR: Source directory not found: ${SOURCE_DIR}`);
-    process.exit(1);
+    // Check if the index already exists (pre-built locally and committed)
+    try {
+      await fs.access(OUT_INDEX);
+      console.log(`Source directory not found — using pre-built index at ${OUT_INDEX}`);
+      console.log("Skipping template build (already generated).");
+      process.exit(0);
+    } catch {
+      console.error(`ERROR: Source directory not found: ${SOURCE_DIR}`);
+      console.error("And no pre-built index exists. Run build-templates locally first.");
+      process.exit(1);
+    }
   }
 
   // 2. Collect all .docx files recursively
