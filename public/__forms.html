@@ -1,0 +1,24 @@
+<!--
+  Netlify Forms detection file for React SPA.
+  Netlify parses this at deploy time to discover form schemas.
+  This file is never served to users.
+-->
+<html>
+<head><title>Forms</title></head>
+<body>
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input type="text" name="prenom" />
+    <input type="email" name="email" />
+    <input type="text" name="organisme" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="newsletter" />
+    <input name="bot-field" />
+    <input type="email" name="email" />
+  </form>
+</body>
+</html>

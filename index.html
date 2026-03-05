@@ -98,13 +98,17 @@
   </head>
   <body>
     <!-- Netlify Forms: hidden forms for SPA detection -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
       <input type="text" name="prenom" />
       <input type="email" name="email" />
       <input type="text" name="organisme" />
       <textarea name="message"></textarea>
     </form>
-    <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+    <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input name="bot-field" />
       <input type="email" name="email" />
     </form>
 
