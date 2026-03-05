@@ -59,20 +59,13 @@ export function RessourcesPage() {
     <>
       <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils et veille réglementaire pour la gouvernance de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
-      {/* HERO — Immersive photo */}
-      <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">
-        <img
-          src="/images-gouvernance-ai/overhead-desk-network-diagram.jpg"
-          alt="Bureau stratégique avec diagramme de gouvernance"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/85 via-[#0e0f19]/70 to-[#0e0f19]/50" />
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6">
+      {/* HERO — fond beige */}
+      <section className="pt-32 pb-20 bg-[#f7f6f4]">
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1a1a1a] mb-6">
             Ressources
           </h1>
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-[#5c5a56] max-w-2xl mx-auto">
             Guides pratiques, outils et veille réglementaire pour structurer votre gouvernance de
             l&apos;IA.
           </p>
