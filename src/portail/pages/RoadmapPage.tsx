@@ -21,6 +21,9 @@ import {
   ArrowRight,
   Sparkles,
   BookOpenCheck,
+  Newspaper,
+  BookOpen,
+  Library,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -45,6 +48,10 @@ const availableModules: { icon: LucideIcon; key: string }[] = [
   { icon: FolderOpen, key: "documents" },
   { icon: Activity, key: "monitoring" },
   { icon: Database, key: "data" },
+  { icon: Newspaper, key: "veille" },
+  { icon: BookOpen, key: "bibliotheque" },
+  { icon: Library, key: "modeles" },
+  { icon: Cpu, key: "agents" },
 ];
 
 const upcomingFeatures: {

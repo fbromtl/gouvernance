@@ -28,7 +28,11 @@
     "vendors": { "title": "Vendors", "description": "Management and evaluation of AI solution providers" },
     "documents": { "title": "Documentation", "description": "Governance document management" },
     "monitoring": { "title": "Monitoring", "description": "Real-time performance and drift monitoring" },
-    "data": { "title": "Data & PIA", "description": "Data registries and privacy impact assessments" }
+    "data": { "title": "Data & PIA", "description": "Data registries and privacy impact assessments" },
+    "veille": { "title": "Regulatory Monitoring", "description": "Automated monitoring of AI governance news by jurisdiction" },
+    "bibliotheque": { "title": "Document Library", "description": "Central repository of ready-to-use documents, policies and procedures" },
+    "modeles": { "title": "Document Templates", "description": "Customizable templates for governance policies, assessments and reports" },
+    "agents": { "title": "AI Agents & Traces", "description": "Registry of autonomous agents and log of their activities and decisions" }
   },
   "features": {
     "vendorQuestionnaire": {

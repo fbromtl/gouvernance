@@ -28,7 +28,11 @@
     "vendors": { "title": "Fournisseurs", "description": "Gestion et évaluation des fournisseurs de solutions IA" },
     "documents": { "title": "Documentation", "description": "Gestion des documents de gouvernance" },
     "monitoring": { "title": "Monitoring", "description": "Surveillance en temps réel des performances et dérives" },
-    "data": { "title": "Données & EFVP", "description": "Registres de données et évaluations de vie privée" }
+    "data": { "title": "Données & EFVP", "description": "Registres de données et évaluations de vie privée" },
+    "veille": { "title": "Veille réglementaire", "description": "Surveillance automatisée des actualités en gouvernance IA par juridiction" },
+    "bibliotheque": { "title": "Bibliothèque documentaire", "description": "Répertoire central de documents, politiques et procédures prêts à l'emploi" },
+    "modeles": { "title": "Modèles de documents", "description": "Gabarits personnalisables pour politiques, évaluations et rapports de gouvernance" },
+    "agents": { "title": "Agents IA & Traces", "description": "Registre des agents autonomes et journal de leurs activités et décisions" }
   },
   "features": {
     "vendorQuestionnaire": {
