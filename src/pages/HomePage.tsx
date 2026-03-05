@@ -98,8 +98,9 @@ export function HomePage() {
 
             {/* Title */}
             <h1 className="font-serif text-5xl md:text-7xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-semibold">
-              Gouvernez l&apos;IA avec{" "}
-              <span className="text-[#57886c]">confiance</span> et conformité
+              Gérez vos systèmes d&apos;IA.<br />
+              En <span className="text-[#57886c]">conformité</span>.<br />
+              Sans <span className="text-[#57886c]">complexité</span>.
             </h1>
 
             {/* Subtitle */}
