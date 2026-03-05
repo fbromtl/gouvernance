@@ -153,131 +153,169 @@ export function Header() {
         </div>
       </div>
 
-      {/* MAIN NAVIGATION BAR */}
+      {/* MAIN HEADER */}
       <div
         className={cn(
           "bg-white/98 backdrop-blur-md border-b transition-all duration-300",
           scrolled ? "shadow-md border-border/50" : "border-border/30 shadow-sm"
         )}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
 
-          {/* LOGO — left */}
-          <Link
-            to="/"
-            className="flex items-center hover:opacity-85 transition-opacity shrink-0"
-          >
-            <img
-              src="/logo.svg"
-              alt="Gouvernance"
-              className="h-8 sm:h-9 w-auto"
-            />
-          </Link>
-
-          {/* NAV — center (desktop only) */}
-          <nav className="hidden lg:flex items-center gap-1">
-            <NavLink to="/">Accueil</NavLink>
-            <NavLink to="/a-propos">Le Cercle</NavLink>
-            <NavLink to="/fonctionnalites">Fonctionnalités</NavLink>
-            <NavLink to="/ressources">Ressources</NavLink>
-            <NavLink to="/actualites">Actualités</NavLink>
-            <NavLink to="/tarifs">Adhésion</NavLink>
-          </nav>
-
-          {/* AUTH — right (desktop only) */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            {!authLoading && !user && (
-              <Link
-                to="/connexion"
-                className="inline-flex items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-950 transition-colors px-3 py-1.5"
-              >
-                <UserCircle className="size-4" />
-                Se connecter
+        {/* ─── DESKTOP LOGO ROW — collapses on scroll ─── */}
+        <div
+          className={cn(
+            "hidden lg:block overflow-hidden transition-all duration-300 ease-out",
+            scrolled ? "max-h-0 opacity-0" : "max-h-28 opacity-100"
+          )}
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-center py-5 border-b border-border/30">
+              <Link to="/" className="hover:opacity-85 transition-opacity">
+                <img src="/logo.svg" alt="Gouvernance" className="h-10 w-auto" />
               </Link>
-            )}
+            </div>
+          </div>
+        </div>
 
-            {!authLoading && !user && (
-              <Button asChild size="sm" className="px-5 text-[13px] font-semibold">
-                <Link to="/rejoindre">Inscription gratuite</Link>
-              </Button>
+        {/* ─── NAVIGATION BAR ─── */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div
+            className={cn(
+              "flex items-center transition-all duration-300",
+              "h-[72px] lg:h-12"
             )}
+          >
 
-            {!authLoading && user && (
-              <div className="relative" ref={userMenuRef}>
-                <button
-                  type="button"
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
+            {/* MOBILE: Logo left (always visible < lg) */}
+            <Link
+              to="/"
+              className="flex lg:hidden items-center hover:opacity-85 transition-opacity shrink-0"
+            >
+              <img src="/logo.svg" alt="Gouvernance" className="h-8 sm:h-9 w-auto" />
+            </Link>
+
+            {/* DESKTOP: Small logo — only when scrolled */}
+            <Link
+              to="/"
+              className={cn(
+                "hidden items-center hover:opacity-85 transition-all duration-300 shrink-0 mr-6",
+                scrolled ? "lg:flex" : "lg:invisible lg:w-0 lg:mr-0"
+              )}
+            >
+              <img
+                src="/logo.svg"
+                alt="Gouvernance"
+                className={cn(
+                  "w-auto transition-all duration-300",
+                  scrolled ? "h-7" : "h-0"
+                )}
+              />
+            </Link>
+
+            {/* NAV — center (desktop only) */}
+            <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+              <NavLink to="/">Accueil</NavLink>
+              <NavLink to="/a-propos">Le Cercle</NavLink>
+              <NavLink to="/fonctionnalites">Fonctionnalités</NavLink>
+              <NavLink to="/ressources">Ressources</NavLink>
+              <NavLink to="/actualites">Actualités</NavLink>
+              <NavLink to="/tarifs">Adhésion</NavLink>
+            </nav>
+
+            {/* AUTH — right (desktop only) */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
+              {!authLoading && !user && (
+                <Link
+                  to="/connexion"
+                  className="inline-flex items-center gap-1.5 text-[13px] font-medium text-neutral-500 hover:text-neutral-950 transition-colors px-3 py-1.5"
                 >
-                  {showAvatar ? (
-                    <img
-                      src={avatarUrl}
-                      alt={displayName}
-                      className="size-8 rounded-full object-cover border-2 border-brand-forest/30"
-                      referrerPolicy="no-referrer"
-                      onError={() => setAvatarError(true)}
-                    />
-                  ) : (
-                    <div className="flex size-8 items-center justify-center rounded-full bg-brand-forest/10 text-brand-forest text-xs font-bold">
-                      {initials}
-                    </div>
-                  )}
-                  <ChevronDown
-                    className={cn(
-                      "size-3 text-muted-foreground transition-transform duration-200",
-                      userMenuOpen && "rotate-180"
+                  <UserCircle className="size-4" />
+                  Se connecter
+                </Link>
+              )}
+
+              {!authLoading && !user && (
+                <Button asChild size="sm" className="px-5 text-[13px] font-semibold">
+                  <Link to="/rejoindre">Inscription gratuite</Link>
+                </Button>
+              )}
+
+              {!authLoading && user && (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-2 rounded-full px-1 py-1 hover:bg-muted/60 transition-colors"
+                  >
+                    {showAvatar ? (
+                      <img
+                        src={avatarUrl}
+                        alt={displayName}
+                        className="size-8 rounded-full object-cover border-2 border-brand-forest/30"
+                        referrerPolicy="no-referrer"
+                        onError={() => setAvatarError(true)}
+                      />
+                    ) : (
+                      <div className="flex size-8 items-center justify-center rounded-full bg-brand-forest/10 text-brand-forest text-xs font-bold">
+                        {initials}
+                      </div>
                     )}
-                  />
-                </button>
+                    <ChevronDown
+                      className={cn(
+                        "size-3 text-muted-foreground transition-transform duration-200",
+                        userMenuOpen && "rotate-180"
+                      )}
+                    />
+                  </button>
 
-                {/* User dropdown */}
-                <div
-                  className={cn(
-                    "absolute top-full right-0 mt-2 w-56 rounded-xl bg-white shadow-xl shadow-black/10 border border-border/50 overflow-hidden transition-all duration-200",
-                    userMenuOpen
-                      ? "opacity-100 visible translate-y-0"
-                      : "opacity-0 invisible -translate-y-2"
-                  )}
-                >
-                  <div className="px-4 py-3 border-b border-border/40">
-                    <p className="text-sm font-medium text-foreground truncate">
-                      {displayName}
-                    </p>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {user.email}
-                    </p>
-                  </div>
-                  <div className="p-1.5">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setUserMenuOpen(false);
-                        navigate("/portail");
-                      }}
-                      className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors"
-                    >
-                      <LayoutDashboard className="size-4" />
-                      Mon portail
-                    </button>
-                    <button
-                      type="button"
-                      onClick={async () => {
-                        setUserMenuOpen(false);
-                        await signOut();
-                      }}
-                      className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-red-600/80 hover:text-red-600 hover:bg-red-50 transition-colors"
-                    >
-                      <LogOut className="size-4" />
-                      Se déconnecter
-                    </button>
+                  {/* User dropdown */}
+                  <div
+                    className={cn(
+                      "absolute top-full right-0 mt-2 w-56 rounded-xl bg-white shadow-xl shadow-black/10 border border-border/50 overflow-hidden transition-all duration-200",
+                      userMenuOpen
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    )}
+                  >
+                    <div className="px-4 py-3 border-b border-border/40">
+                      <p className="text-sm font-medium text-foreground truncate">
+                        {displayName}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                    <div className="p-1.5">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setUserMenuOpen(false);
+                          navigate("/portail");
+                        }}
+                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors"
+                      >
+                        <LayoutDashboard className="size-4" />
+                        Mon portail
+                      </button>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          setUserMenuOpen(false);
+                          await signOut();
+                        }}
+                        className="flex items-center gap-2.5 w-full rounded-lg px-3 py-2 text-sm text-red-600/80 hover:text-red-600 hover:bg-red-50 transition-colors"
+                      >
+                        <LogOut className="size-4" />
+                        Se déconnecter
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* MOBILE / TABLET — right */}
-          <div className="flex lg:hidden items-center gap-1.5">
+            {/* MOBILE / TABLET — right */}
+            <div className="flex lg:hidden items-center gap-1.5 ml-auto">
             {!authLoading && !user && (
               <Link
                 to="/connexion"
@@ -446,6 +484,7 @@ export function Header() {
             </Sheet>
           </div>
         </div>
+      </div>
       </div>
     </header>
   );
