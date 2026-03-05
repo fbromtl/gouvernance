@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Linkedin,
@@ -72,13 +73,33 @@ const legalLinks = [
 /* ------------------------------------------------------------------ */
 
 export function Footer() {
-  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [nlSubmitted, setNlSubmitted] = useState(false);
+  const [nlSubmitting, setNlSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const email = new FormData(form).get("email");
-    if (email) {
-      console.log("Newsletter signup:", email);
+    if (!email) return;
+    setNlSubmitting(true);
+    try {
+      const body = new URLSearchParams({
+        "form-name": "newsletter",
+        email: email.toString(),
+      });
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error(`${res.status}`);
+      setNlSubmitted(true);
       form.reset();
+    } catch {
+      // Silent fail — form still resets
+      form.reset();
+    } finally {
+      setNlSubmitting(false);
     }
   };
 
@@ -176,7 +197,12 @@ export function Footer() {
                 Recevez nos analyses, guides et actualités en gouvernance de l&apos;IA directement
                 dans votre boîte de réception.
               </p>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              {nlSubmitted ? (
+                <p className="text-sm text-brand-sage">Merci ! Vous êtes inscrit(e) à notre infolettre.</p>
+              ) : (
+              <form onSubmit={handleNewsletterSubmit} className="space-y-3" data-netlify="true" name="newsletter">
+                <input type="hidden" name="form-name" value="newsletter" />
+                <p className="hidden"><label>Ne pas remplir : <input name="bot-field" /></label></p>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-white/30" />
                   <Input
@@ -187,11 +213,12 @@ export function Footer() {
                     className="pl-10 bg-white/8 border-white/15 text-white placeholder:text-white/35 focus-visible:ring-brand-forest/50 focus-visible:border-brand-forest/40 h-11 rounded-lg"
                   />
                 </div>
-                <Button type="submit" className="w-full gap-2">
+                <Button type="submit" disabled={nlSubmitting} className="w-full gap-2">
                   <Send className="size-3.5" />
-                  S&apos;inscrire à l&apos;infolettre
+                  {nlSubmitting ? "Envoi…" : "S'inscrire à l'infolettre"}
                 </Button>
               </form>
+              )}
 
               {/* Social links */}
               <div className="mt-6">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, Phone, Users } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Users, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,10 +15,31 @@ export function ContactPage() {
     organisme: "",
     message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const body = new URLSearchParams({
+        "form-name": "contact",
+        ...formData,
+      });
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error(`${res.status}`);
+      setSubmitted(true);
+    } catch {
+      setError("Une erreur est survenue. Veuillez réessayer ou nous contacter par courriel.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -82,7 +103,20 @@ export function ContactPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {submitted ? (
+                  <div className="text-center py-12 space-y-4">
+                    <CheckCircle2 className="size-12 text-[#57886c] mx-auto" />
+                    <h3 className="text-xl font-semibold text-neutral-900">Message envoyé !</h3>
+                    <p className="text-neutral-500 max-w-sm mx-auto">
+                      Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.
+                    </p>
+                  </div>
+                ) : (
+                <form onSubmit={handleSubmit} className="space-y-6" data-netlify="true" name="contact">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p className="hidden">
+                    <label>Ne pas remplir : <input name="bot-field" /></label>
+                  </p>
                   <div className="space-y-2">
                     <Label htmlFor="prenom">
                       Prénom <span className="text-destructive">*</span>
@@ -137,12 +171,16 @@ export function ContactPage() {
                       className="min-h-[120px] resize-y"
                     />
                   </div>
+                  {error && (
+                    <p className="text-sm text-destructive">{error}</p>
+                  )}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] px-7 py-3 text-sm font-semibold text-white transition-all"
+                      disabled={submitting}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#57886c] hover:bg-[#466060] disabled:opacity-60 px-7 py-3 text-sm font-semibold text-white transition-all"
                     >
-                      Envoyer
+                      {submitting ? "Envoi en cours…" : "Envoyer"}
                       <ArrowRight className="size-4" />
                     </button>
                     <Button asChild variant="outline" size="lg" className="rounded-full px-8">
@@ -153,6 +191,7 @@ export function ContactPage() {
                     </Button>
                   </div>
                 </form>
+                )}
               </CardContent>
             </Card>
 
