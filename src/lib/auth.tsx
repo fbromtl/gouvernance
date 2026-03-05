@@ -36,6 +36,7 @@ interface AuthContextType {
   loading: boolean;
   signInWithGoogle: () => Promise<AuthResult>;
   signInWithMicrosoft: () => Promise<AuthResult>;
+  signInWithLinkedin: () => Promise<AuthResult>;
   signInWithEmail: (email: string, password: string) => Promise<AuthResult>;
   signUpWithEmail: (email: string, password: string, fullName: string) => Promise<AuthResult>;
   resetPassword: (email: string) => Promise<AuthResult>;
@@ -192,6 +193,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const signInWithLinkedin = async (): Promise<AuthResult> => {
+    if (!supabaseConfigured) {
+      return { success: false, error: "Supabase n'est pas configuré." };
+    }
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "linkedin_oidc",
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+      if (error) return { success: false, error: error.message };
+      if (data?.url) window.location.href = data.url;
+      return { success: true };
+    } catch {
+      return { success: false, error: "Erreur inattendue lors de la connexion LinkedIn." };
+    }
+  };
+
   const signInWithEmail = async (email: string, password: string): Promise<AuthResult> => {
     if (!supabaseConfigured) {
       return { success: false, error: "Supabase n'est pas configuré." };
@@ -302,6 +322,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading,
         signInWithGoogle,
         signInWithMicrosoft,
+        signInWithLinkedin,
         signInWithEmail,
         signUpWithEmail,
         resetPassword,

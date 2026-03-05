@@ -20,6 +20,14 @@ function GoogleIcon({ className }: { className?: string }) {
   );
 }
 
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="#0A66C2">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 function MicrosoftIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 21 21">
@@ -38,7 +46,7 @@ function MicrosoftIcon({ className }: { className?: string }) {
 export default function LoginPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { signInWithEmail, signInWithGoogle, signInWithMicrosoft } = useAuth();
+  const { signInWithEmail, signInWithGoogle, signInWithMicrosoft, signInWithLinkedin } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,6 +56,7 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [microsoftLoading, setMicrosoftLoading] = useState(false);
+  const [linkedinLoading, setLinkedinLoading] = useState(false);
 
   const verified = searchParams.get("verified") === "true";
 
@@ -84,6 +93,16 @@ export default function LoginPage() {
     if (!result.success) {
       setError(result.error ?? "Erreur de connexion Microsoft.");
       setMicrosoftLoading(false);
+    }
+  };
+
+  const handleLinkedinLogin = async () => {
+    setError(null);
+    setLinkedinLoading(true);
+    const result = await signInWithLinkedin();
+    if (!result.success) {
+      setError(result.error ?? "Erreur de connexion LinkedIn.");
+      setLinkedinLoading(false);
     }
   };
 
@@ -155,6 +174,18 @@ export default function LoginPage() {
                   <MicrosoftIcon className="size-5 shrink-0" />
                   <span className="flex-1 text-center">
                     {microsoftLoading ? "Redirection..." : "Continuer avec Microsoft"}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleLinkedinLogin}
+                  disabled={linkedinLoading || googleLoading || microsoftLoading || submitting}
+                  className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
+                >
+                  <LinkedinIcon className="size-5 shrink-0" />
+                  <span className="flex-1 text-center">
+                    {linkedinLoading ? "Redirection..." : "Continuer avec LinkedIn"}
                   </span>
                 </button>
 
