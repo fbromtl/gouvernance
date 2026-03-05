@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
+import { Logo } from "@/components/layout/Logo";
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -167,11 +168,7 @@ export function Header() {
             to="/"
             className="flex items-center hover:opacity-85 transition-opacity shrink-0"
           >
-            <img
-              src="/logo.svg"
-              alt="Cercle de Gouvernance de l'IA"
-              className="h-8 sm:h-9 w-auto"
-            />
+            <Logo />
           </Link>
 
           {/* NAV — center (desktop only) */}
@@ -323,22 +320,18 @@ export function Header() {
               <SheetContent side="right" className="w-[320px] sm:w-[380px] overflow-y-auto p-0">
                 {/* Mobile Header */}
                 <div className="px-6 pt-6 pb-4 border-b border-border/50">
-                  <img
-                    src="/logo.svg"
-                    alt="Cercle de Gouvernance de l'IA"
-                    className="h-8 w-auto"
-                  />
+                  <Logo className="h-8 w-auto" />
                 </div>
 
                 {/* Mobile Promo Banner */}
                 {bannerVisible && (
-                  <div className="mx-4 mt-4 rounded-xl bg-emerald-50/80 border border-emerald-100/60 p-3">
-                    <p className="text-[13px] text-emerald-900/80 font-medium mb-2">
+                  <div className="mx-4 mt-4 rounded-xl bg-[#57886c]/5 border border-[#57886c]/15 p-3">
+                    <p className="text-[13px] text-[#466060] font-medium mb-2">
                       Testez gratuitement notre outil de gouvernance IA
                     </p>
                     <Link
                       to="/rejoindre"
-                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-emerald-900 hover:text-emerald-950 transition-colors"
+                      className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#57886c] hover:text-[#466060] transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       Essayer

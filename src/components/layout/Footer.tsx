@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/layout/Logo";
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
@@ -98,11 +99,7 @@ export function Footer() {
             {/* Brand column */}
             <div className="lg:col-span-4">
               <Link to="/" className="inline-block hover:opacity-90 transition-opacity">
-                <img
-                  src="/logo-light.svg"
-                  alt="Cercle de Gouvernance de l'IA"
-                  className="h-10 w-auto"
-                />
+                <Logo variant="light" className="h-10 w-auto" />
               </Link>
               <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-sm">
                 Le Cercle de Gouvernance de l&apos;IA accompagne les dirigeants dans l&apos;adoption

@@ -5,6 +5,7 @@ import { Mail, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { useAuth } from "@/lib/auth";
+import { Logo } from "@/components/layout/Logo";
 
 export default function ForgotPasswordPage() {
   const { resetPassword } = useAuth();
@@ -75,7 +76,7 @@ export default function ForgotPasswordPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
-            <img src="/logo.svg" alt="Gouvernance IA" className="h-10 w-auto mx-auto" />
+            <Logo className="h-10 w-auto mx-auto" />
           </Link>
           <h1 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
             Mot de passe oublié
