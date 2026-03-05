@@ -225,7 +225,7 @@ export function ActualitesPage() {
         {/* NEWSLETTER CTA */}
         <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
+            <Newspaper className="size-10 text-brand-sage mx-auto mb-4 opacity-80" />
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez informé
             </h2>
@@ -266,8 +266,8 @@ function FeaturedCard({ article }: { article: Article }) {
                 className="absolute inset-0 w-full h-full object-cover rounded-t-3xl md:rounded-t-none md:rounded-l-3xl"
                 onError={handleImgError}
               />
-              <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
-                <Newspaper className="size-10 text-emerald-300" />
+              <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+                <Newspaper className="size-10 text-brand-sage" />
               </div>
             </div>
 
@@ -305,8 +305,8 @@ function FeaturedCard({ article }: { article: Article }) {
                       className="size-8 rounded-full object-cover"
                       onError={handleImgError}
                     />
-                    <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-full">
-                      <span className="text-xs font-bold text-emerald-400">
+                    <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center rounded-full">
+                      <span className="text-xs font-bold text-brand-sage">
                         {author.name.charAt(0)}
                       </span>
                     </div>
@@ -350,8 +350,8 @@ function ArticleCard({ article }: { article: Article }) {
             className="absolute inset-0 w-full h-full object-cover rounded-t-2xl"
             onError={handleImgError}
           />
-          <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center">
-            <Newspaper className="size-10 text-emerald-300" />
+          <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center">
+            <Newspaper className="size-10 text-brand-sage" />
           </div>
         </div>
 
@@ -388,8 +388,8 @@ function ArticleCard({ article }: { article: Article }) {
                   className="size-6 rounded-full object-cover"
                   onError={handleImgError}
                 />
-                <div className="hidden absolute inset-0 bg-gradient-to-br from-emerald-100 to-emerald-200 items-center justify-center rounded-full">
-                  <span className="text-[10px] font-bold text-emerald-400">
+                <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center rounded-full">
+                  <span className="text-[10px] font-bold text-brand-sage">
                     {author.name.charAt(0)}
                   </span>
                 </div>

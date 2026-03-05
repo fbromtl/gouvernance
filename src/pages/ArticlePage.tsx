@@ -174,7 +174,7 @@ export function ArticlePage() {
                 onError={() => setCoverError(true)}
               />
             ) : (
-              <div className="w-full max-h-96 h-64 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
+              <div className="w-full max-h-96 h-64 rounded-2xl bg-gradient-to-br from-brand-forest to-brand-teal flex items-center justify-center">
                 <Newspaper className="size-16 text-white/60" />
               </div>
             )}
@@ -220,7 +220,7 @@ export function ArticlePage() {
                   />
                 ) : null}
                 <div
-                  className="size-10 rounded-full bg-emerald-600 text-white text-sm font-semibold items-center justify-center"
+                  className="size-10 rounded-full bg-brand-forest text-white text-sm font-semibold items-center justify-center"
                   style={{ display: author.avatar ? "none" : "flex" }}
                 >
                   {getInitials(author.name)}
@@ -288,7 +288,7 @@ export function ArticlePage() {
                       />
                     ) : null}
                     <div
-                      className="size-16 rounded-full bg-emerald-600 text-white text-lg font-semibold items-center justify-center shrink-0"
+                      className="size-16 rounded-full bg-brand-forest text-white text-lg font-semibold items-center justify-center shrink-0"
                       style={{ display: author.avatar ? "none" : "flex" }}
                     >
                       {getInitials(author.name)}
@@ -341,7 +341,7 @@ export function ArticlePage() {
                           }}
                         />
                       ) : (
-                        <div className="aspect-[16/9] w-full bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-t-2xl flex items-center justify-center">
+                        <div className="aspect-[16/9] w-full bg-gradient-to-br from-brand-forest to-brand-teal rounded-t-2xl flex items-center justify-center">
                           <Newspaper className="size-10 text-white/60" />
                         </div>
                       )}
@@ -375,7 +375,7 @@ export function ArticlePage() {
         {/* 12. Newsletter CTA */}
         <section className="py-24 sm:py-32 bg-[#0e0f19]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Newspaper className="size-10 text-emerald-400 mx-auto mb-4 opacity-80" />
+            <Newspaper className="size-10 text-brand-sage mx-auto mb-4 opacity-80" />
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
               Restez inform\u00e9
             </h2>

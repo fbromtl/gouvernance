@@ -41,10 +41,10 @@ export const categoryLabels: Record<Category, string> = {
 };
 
 export const categoryColors: Record<Category, string> = {
-  communique: "bg-brand-forest/20 text-brand-forest border-brand-forest/40",
-  analyse: "bg-primary/15 text-primary border-primary/30",
-  veille: "border-muted-foreground text-muted-foreground",
-  opinion: "bg-primary/15 text-primary border-primary/30",
-  nomination: "bg-brand-forest/20 text-brand-forest border-brand-forest/40",
-  evenement: "bg-primary/15 text-primary border-primary/30",
+  communique: "bg-brand-forest/15 text-brand-forest border-brand-forest/30",
+  analyse: "bg-brand-teal/15 text-brand-teal border-brand-teal/30",
+  veille: "bg-neutral-100 text-neutral-600 border-neutral-300",
+  opinion: "bg-brand-forest/15 text-brand-forest border-brand-forest/30",
+  nomination: "bg-brand-sage/15 text-brand-sage border-brand-sage/30",
+  evenement: "bg-brand-rose/20 text-brand-teal border-brand-rose/40",
 };
