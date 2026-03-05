@@ -177,9 +177,10 @@ export function RejoindrePage() {
               <div className="lg:col-span-2 relative">
                 <div className="relative rounded-[32px] overflow-hidden shadow-2xl shadow-[#57886c]/10">
                   <img
-                    src="/images-gouvernance-ai/businesspeople-meeting.jpg"
+                    src="/images-gouvernance-ai/femmes-affaires-conference.jpg"
                     className="w-full h-[400px] lg:h-[480px] object-cover"
-                    alt="Professionnels collaborant sur la gouvernance IA"
+                    alt="Conférence de professionnelles en gouvernance IA"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/40 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
@@ -259,10 +260,17 @@ export function RejoindrePage() {
         </section>
 
         {/* ============================================================ */}
-        {/*  SECTION 3 — COMMUNITY & DIAGNOSTIC (DARK)                    */}
+        {/*  SECTION 3 — COMMUNITY & DIAGNOSTIC (DARK) + photo bg        */}
         {/* ============================================================ */}
-        <section className="py-24 sm:py-32 bg-[#0e0f19]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-24 sm:py-32 overflow-hidden">
+          <img
+            src="/images-gouvernance-ai/personnes-soiree-networking.jpg"
+            alt="Événement de réseautage professionnel"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-[#0e0f19]/90" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Community card */}
               <div className="rounded-[40px] bg-white/5 border border-white/10 p-10 hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
@@ -347,6 +355,17 @@ export function RejoindrePage() {
               </div>
             </div>
 
+            {/* Image accent — analytics */}
+            <div className="relative rounded-[32px] overflow-hidden mb-12 h-[240px] sm:h-[300px]">
+              <img
+                src="/images-gouvernance-ai/professional-multiple-screens.jpg"
+                alt="Professionnelle analysant des données de gouvernance IA"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+            </div>
+
             {/* Grid 2x2 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {advancedTools.map((tool) => (
@@ -371,11 +390,18 @@ export function RejoindrePage() {
         </section>
 
         {/* ============================================================ */}
-        {/*  SECTION 5 — FINAL CTA BANNER                                  */}
+        {/*  SECTION 5 — FINAL CTA BANNER with photo                      */}
         {/* ============================================================ */}
-        <section className="relative overflow-hidden bg-[#0e0f19] py-20 sm:py-28">
+        <section className="relative overflow-hidden py-20 sm:py-28">
+          <img
+            src="/images-gouvernance-ai/person-holding-glass-panel-ai.jpg"
+            alt="Innovation en intelligence artificielle"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-[#0e0f19]/80" />
           <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[#57886c]/10 blur-[120px]" />
-          <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
               Prêt à sécuriser vos projets IA ?
             </h2>

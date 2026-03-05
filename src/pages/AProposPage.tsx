@@ -63,24 +63,20 @@ export function AProposPage() {
     <>
       <SEO title="À propos" description="Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA. Un réseau d'experts dédié à la gouvernance responsable de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
-      {/* HERO SECTION */}
-      <section
-        className="overflow-hidden pt-32 pb-20 relative"
-        style={{
-          backgroundColor: "#ffffff",
-          backgroundImage: `
-            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
-          `,
-        }}
-      >
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
+      {/* HERO SECTION — Immersive photo */}
+      <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">
+        <img
+          src="/images-gouvernance-ai/professional-silhouette-digital-display.jpg"
+          alt="Vision stratégique de la gouvernance IA"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/85 via-[#0e0f19]/70 to-[#0e0f19]/50" />
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
             À propos du Cercle
           </h1>
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
             Une communauté d&apos;experts engagés pour une gouvernance responsable de
             l&apos;intelligence artificielle.
           </p>
@@ -132,9 +128,10 @@ export function AProposPage() {
             {/* Photo + Vision card */}
             <div className="relative rounded-[40px] overflow-hidden min-h-[340px] h-[400px] lg:h-auto bg-[#0e0f19] group hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-500">
               <img
-                src="/images-gouvernance-ai/businesspeople-meeting.jpg"
+                src="/images-gouvernance-ai/four-professionals-circular-table.jpg"
                 className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000"
-                alt="Réunion de gouvernance IA"
+                alt="Cercle de professionnels en réunion de gouvernance IA"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f19] via-transparent to-transparent" />
               <div className="absolute top-6 left-6">
@@ -222,10 +219,22 @@ export function AProposPage() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 mb-4 text-center">
             Notre approche
           </h2>
-          <p className="text-lg text-neutral-600 text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-600 text-center mb-12 max-w-2xl mx-auto">
             Notre méthodologie s&apos;appuie sur les cadres de référence les plus reconnus
             au niveau international, adaptés à la réalité québécoise et canadienne.
           </p>
+
+          {/* Image accent — signature compliance */}
+          <div className="relative rounded-[32px] overflow-hidden mb-16 h-[280px] sm:h-[340px]">
+            <img
+              src="/images-gouvernance-ai/executive-signing-document.jpg"
+              alt="Signature de conformité réglementaire"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {frameworks.map((f) => (
               <Card
@@ -250,9 +259,16 @@ export function AProposPage() {
         </div>
       </section>
 
-      {/* SECTION: Gouvernance du cercle (id="gouvernance") — DARK bg-[#0e0f19] */}
-      <section id="gouvernance" className="py-24 sm:py-32 bg-[#0e0f19] scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* SECTION: Gouvernance du cercle (id="gouvernance") — Immersive photo bg */}
+      <section id="gouvernance" className="relative py-24 sm:py-32 scroll-mt-20 overflow-hidden">
+        <img
+          src="/images-gouvernance-ai/aerial-view-circular-table.jpg"
+          alt="Vue aérienne d'une réunion de gouvernance"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[#0e0f19]/85" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-center">
             Gouvernance du cercle
           </h2>

@@ -59,24 +59,20 @@ export function RessourcesPage() {
     <>
       <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils et veille réglementaire pour la gouvernance de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
-      {/* HERO */}
-      <section
-        className="overflow-hidden pt-32 pb-20 relative"
-        style={{
-          backgroundColor: "#ffffff",
-          backgroundImage: `
-            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
-          `,
-        }}
-      >
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-950 mb-6">
+      {/* HERO — Immersive photo */}
+      <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">
+        <img
+          src="/images-gouvernance-ai/overhead-desk-network-diagram.jpg"
+          alt="Bureau stratégique avec diagramme de gouvernance"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/85 via-[#0e0f19]/70 to-[#0e0f19]/50" />
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6">
             Ressources
           </h1>
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
             Guides pratiques, outils et veille réglementaire pour structurer votre gouvernance de
             l&apos;IA.
           </p>
@@ -129,6 +125,20 @@ export function RessourcesPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Image accent — data analysis */}
+          <div className="relative rounded-[24px] overflow-hidden mb-16 h-[220px] sm:h-[280px]">
+            <img
+              src="/images-gouvernance-ai/hands-hovering-glowing-data.jpg"
+              alt="Analyse de données de gouvernance IA"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/60 to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <p className="text-white/90 text-sm font-semibold uppercase tracking-widest">Pilotez vos données IA</p>
+            </div>
           </div>
 
           {/* Animation showcase + CTA */}

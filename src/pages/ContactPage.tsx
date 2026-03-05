@@ -50,24 +50,20 @@ export function ContactPage() {
         }
       }} />
       <div className="overflow-x-hidden">
-      {/* Hero */}
-      <section
-        className="overflow-hidden pt-32 pb-20 relative"
-        style={{
-          backgroundColor: "#ffffff",
-          backgroundImage: `
-            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
-            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
-          `,
-        }}
-      >
-        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
+      {/* Hero — Immersive photo */}
+      <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">
+        <img
+          src="/images-gouvernance-ai/two-professionals-conversation.jpg"
+          alt="Deux professionnels discutant de gouvernance IA"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/85 via-[#0e0f19]/70 to-[#0e0f19]/40" />
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
             Contact
           </h1>
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
             Échangez avec le Cercle de Gouvernance de l&apos;IA. Posez vos questions, partagez vos défis ou rejoignez notre communauté.
           </p>
         </div>
@@ -201,22 +197,15 @@ export function ContactPage() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <Card className="overflow-hidden rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300">
-                <CardContent className="p-0">
-                  <div className="aspect-[4/3] bg-neutral-50 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <MapPin className="size-12 mx-auto text-neutral-300 mb-4" />
-                      <p className="text-neutral-500 font-medium">
-                        Carte à venir
-                      </p>
-                      <p className="text-sm text-neutral-400 mt-1">
-                        Intégration Google Maps ou OpenStreetMap
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Consultation image */}
+              <div className="rounded-3xl overflow-hidden">
+                <img
+                  src="/images-gouvernance-ai/professional-showing-laptop.jpg"
+                  alt="Consultation en gouvernance IA"
+                  className="w-full h-auto object-cover aspect-[4/3] rounded-3xl"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
