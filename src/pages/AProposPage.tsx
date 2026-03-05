@@ -63,20 +63,24 @@ export function AProposPage() {
     <>
       <SEO title="À propos" description="Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA. Un réseau d'experts dédié à la gouvernance responsable de l'intelligence artificielle." />
       <div className="overflow-x-hidden">
-      {/* HERO SECTION — Immersive photo */}
-      <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">
-        <img
-          src="/images-gouvernance-ai/professional-silhouette-digital-display.jpg"
-          alt="Vision stratégique de la gouvernance IA"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0f19]/85 via-[#0e0f19]/70 to-[#0e0f19]/50" />
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+      {/* HERO */}
+      <section
+        className="overflow-hidden pt-32 pb-20 relative"
+        style={{
+          backgroundColor: "#ffffff",
+          backgroundImage: `
+            radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 100% 100%, #E9E0D1 0, transparent 50%),
+            radial-gradient(at 0% 100%, #E9E0D1 0, transparent 50%)
+          `,
+        }}
+      >
+        <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-6">
             À propos du Cercle
           </h1>
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto">
             Une communauté d&apos;experts engagés pour une gouvernance responsable de
             l&apos;intelligence artificielle.
           </p>
