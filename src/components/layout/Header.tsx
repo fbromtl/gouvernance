@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth";
-import { Logo } from "@/components/layout/Logo";
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
@@ -168,7 +167,11 @@ export function Header() {
             to="/"
             className="flex items-center hover:opacity-85 transition-opacity shrink-0"
           >
-            <Logo />
+            <img
+              src="/logo.svg"
+              alt="Gouvernance"
+              className="h-8 sm:h-9 w-auto"
+            />
           </Link>
 
           {/* NAV — center (desktop only) */}
@@ -320,7 +323,11 @@ export function Header() {
               <SheetContent side="right" className="w-[320px] sm:w-[380px] overflow-y-auto p-0">
                 {/* Mobile Header */}
                 <div className="px-6 pt-6 pb-4 border-b border-border/50">
-                  <Logo className="h-8 w-auto" />
+                  <img
+                    src="/logo.svg"
+                    alt="Gouvernance"
+                    className="h-8 w-auto"
+                  />
                 </div>
 
                 {/* Mobile Promo Banner */}
