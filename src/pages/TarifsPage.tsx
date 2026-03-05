@@ -344,7 +344,7 @@ export function TarifsPage() {
               )}
             >
               {t("yearly")}
-              <Badge className="bg-emerald-500 text-white text-[10px] px-2 py-0.5 rounded-full border-0 font-bold">
+              <Badge className="bg-brand-forest text-white text-[10px] px-2 py-0.5 rounded-full border-0 font-bold">
                 -20%
               </Badge>
             </button>
@@ -525,8 +525,8 @@ export function TarifsPage() {
                         <ul className="space-y-2.5">
                           {config.features.map((feat) => (
                             <li key={feat.key} className="flex items-start gap-2">
-                              <div className="flex size-4.5 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 mt-0.5">
-                                <Check className="size-3 text-emerald-600" />
+                              <div className="flex size-4.5 shrink-0 items-center justify-center rounded-full bg-brand-forest/10 mt-0.5">
+                                <Check className="size-3 text-brand-forest" />
                               </div>
                               <span className="text-[13px] text-foreground/80 leading-snug">
                                 {t(`features.${feat.key}`, feat.interpolation ?? {})}
@@ -657,8 +657,8 @@ export function TarifsPage() {
                       )}
                     >
                       {has ? (
-                        <div className="flex size-5.5 items-center justify-center rounded-full bg-emerald-500/10">
-                          <Check className="size-3 text-emerald-600" />
+                        <div className="flex size-5.5 items-center justify-center rounded-full bg-brand-forest/10">
+                          <Check className="size-3 text-brand-forest" />
                         </div>
                       ) : (
                         <X className="size-3.5 text-muted-foreground/25" />
