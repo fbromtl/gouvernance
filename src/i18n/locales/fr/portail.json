@@ -25,7 +25,8 @@
     "billing": "Adhésion & Facturation",
     "members": "Membres du Cercle",
     "agents": "Agents IA",
-    "agentTraces": "Traces Agent"
+    "agentTraces": "Traces Agent",
+    "modeles": "Modèles de documents"
   },
   "sections": {
     "overview": "Vue d'ensemble",

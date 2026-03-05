@@ -94,6 +94,7 @@ import VeillePage from "@/portail/pages/VeillePage";
 
 // Module: Bibliothèque documentaire
 import BibliothecPage from "@/portail/pages/BibliothecPage";
+import ModelesBibliothequePage from "@/portail/pages/ModelesBibliothequePage";
 
 // Diagnostic public (standalone)
 import { DiagnosticPage } from "@/pages/DiagnosticPage";
@@ -162,6 +163,7 @@ function App() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/veille" element={<VeillePage />} />
               <Route path="/bibliotheque" element={<BibliothecPage />} />
+              <Route path="/modeles" element={<ModelesBibliothequePage />} />
               <Route path="/profile" element={<ProfilPage />} />
 
               {/* Module: AI Systems */}

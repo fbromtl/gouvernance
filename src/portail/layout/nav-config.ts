@@ -19,6 +19,7 @@ import {
   Users,
   CreditCard,
   Map,
+  Library,
 } from "lucide-react";
 
 export interface NavItem {
@@ -56,6 +57,7 @@ export const navGroups: NavGroup[] = [
       { key: "dashboard", path: "/dashboard", icon: LayoutDashboard, ready: true },
       { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
       { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
+      { key: "modeles", path: "/modeles", icon: Library, ready: true },
       { key: "roadmap", path: "/roadmap", icon: Map, ready: true },
     ],
   },

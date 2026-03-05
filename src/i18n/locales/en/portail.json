@@ -25,7 +25,8 @@
     "billing": "Membership & Billing",
     "members": "Circle Members",
     "agents": "AI Agents",
-    "agentTraces": "Agent Traces"
+    "agentTraces": "Agent Traces",
+    "modeles": "Document Templates"
   },
   "sections": {
     "overview": "Overview",
