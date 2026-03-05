@@ -155,12 +155,18 @@ function detectFrameworks(html) {
   return [...new Set(found)];
 }
 
-/** Extract the first paragraph text from HTML as a description. */
+/** Extract the first meaningful paragraph text from HTML as a description. */
 function extractDescription(html) {
-  const match = html.match(/<p[^>]*>(.*?)<\/p>/is);
-  if (!match) return "";
-  // Strip inner HTML tags and trim
-  return match[1].replace(/<[^>]+>/g, "").trim();
+  const paragraphs = html.matchAll(/<p[^>]*>(.*?)<\/p>/gis);
+  for (const match of paragraphs) {
+    const text = match[1].replace(/<[^>]+>/g, "").trim();
+    // Skip empty, placeholders, and very short fragments
+    if (!text || text.length < 20) continue;
+    if (/^\[.*\]$/.test(text)) continue; // skip [NOM_ORGANISATION] etc.
+    // Truncate to ~200 chars
+    return text.length > 200 ? text.slice(0, 200).replace(/\s+\S*$/, "…") : text;
+  }
+  return "";
 }
 
 /**
