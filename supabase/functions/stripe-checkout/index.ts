@@ -73,10 +73,10 @@ function getPriceId(plan: string, period: string): string | null {
 
   // Hardcoded fallbacks (mirrors src/lib/stripe.ts PLANS)
   const hardcoded: Record<string, string> = {
-    member_monthly:  "price_1T3nfmGxmyz5JooX0eHr5UID",
-    member_yearly:   "price_1T3nfnGxmyz5JooXt3KF9w7O",
-    expert_monthly:  "price_1T3nfoGxmyz5JooXGE1vzOMQ",
-    expert_yearly:   "price_1T3nfpGxmyz5JooXrBWeSha0",
+    member_monthly:  "price_1T7iKEGu82aZFyznGIZzX3ad",
+    member_yearly:   "price_1T7iKFGu82aZFyzngH7GPyRZ",
+    expert_monthly:  "price_1T7iKGGu82aZFyznASiSF75u",
+    expert_yearly:   "price_1T7iKGGu82aZFyznaKBKD2Hj",
   };
 
   return hardcoded[`${plan}_${period}`] ?? null;
