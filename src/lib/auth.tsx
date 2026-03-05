@@ -35,6 +35,7 @@ interface AuthContextType {
   profile: Profile | null;
   loading: boolean;
   signInWithGoogle: () => Promise<AuthResult>;
+  signInWithMicrosoft: () => Promise<AuthResult>;
   signInWithEmail: (email: string, password: string) => Promise<AuthResult>;
   signUpWithEmail: (email: string, password: string, fullName: string) => Promise<AuthResult>;
   resetPassword: (email: string) => Promise<AuthResult>;
@@ -171,6 +172,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const signInWithMicrosoft = async (): Promise<AuthResult> => {
+    if (!supabaseConfigured) {
+      return { success: false, error: "Supabase n'est pas configuré." };
+    }
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: "azure",
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+          scopes: "openid profile email",
+        },
+      });
+      if (error) return { success: false, error: error.message };
+      if (data?.url) window.location.href = data.url;
+      return { success: true };
+    } catch {
+      return { success: false, error: "Erreur inattendue lors de la connexion Microsoft." };
+    }
+  };
+
   const signInWithEmail = async (email: string, password: string): Promise<AuthResult> => {
     if (!supabaseConfigured) {
       return { success: false, error: "Supabase n'est pas configuré." };
@@ -280,6 +301,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         profile,
         loading,
         signInWithGoogle,
+        signInWithMicrosoft,
         signInWithEmail,
         signUpWithEmail,
         resetPassword,

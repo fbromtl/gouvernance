@@ -38,7 +38,7 @@ function MicrosoftIcon({ className }: { className?: string }) {
 export default function LoginPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { signInWithEmail, signInWithGoogle } = useAuth();
+  const { signInWithEmail, signInWithGoogle, signInWithMicrosoft } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,6 +47,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [microsoftLoading, setMicrosoftLoading] = useState(false);
 
   const verified = searchParams.get("verified") === "true";
 
@@ -73,6 +74,16 @@ export default function LoginPage() {
     if (!result.success) {
       setError(result.error ?? "Erreur de connexion Google.");
       setGoogleLoading(false);
+    }
+  };
+
+  const handleMicrosoftLogin = async () => {
+    setError(null);
+    setMicrosoftLoading(true);
+    const result = await signInWithMicrosoft();
+    if (!result.success) {
+      setError(result.error ?? "Erreur de connexion Microsoft.");
+      setMicrosoftLoading(false);
     }
   };
 
@@ -137,11 +148,14 @@ export default function LoginPage() {
 
                 <button
                   type="button"
-                  disabled
+                  onClick={handleMicrosoftLogin}
+                  disabled={microsoftLoading || googleLoading || submitting}
                   className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
                 >
                   <MicrosoftIcon className="size-5 shrink-0" />
-                  <span className="flex-1 text-center">Continuer avec Microsoft</span>
+                  <span className="flex-1 text-center">
+                    {microsoftLoading ? "Redirection..." : "Continuer avec Microsoft"}
+                  </span>
                 </button>
 
                 <button

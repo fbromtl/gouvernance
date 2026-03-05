@@ -38,7 +38,7 @@ function MicrosoftIcon({ className }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 
 export default function RegisterPage() {
-  const { signUpWithEmail, signInWithGoogle } = useAuth();
+  const { signUpWithEmail, signInWithGoogle, signInWithMicrosoft } = useAuth();
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -49,6 +49,7 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [microsoftLoading, setMicrosoftLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const passwordStrength = (() => {
@@ -97,6 +98,16 @@ export default function RegisterPage() {
     if (!result.success) {
       setError(result.error ?? "Erreur de connexion Google.");
       setGoogleLoading(false);
+    }
+  };
+
+  const handleMicrosoftLogin = async () => {
+    setError(null);
+    setMicrosoftLoading(true);
+    const result = await signInWithMicrosoft();
+    if (!result.success) {
+      setError(result.error ?? "Erreur de connexion Microsoft.");
+      setMicrosoftLoading(false);
     }
   };
 
@@ -188,11 +199,14 @@ export default function RegisterPage() {
 
                 <button
                   type="button"
-                  disabled
+                  onClick={handleMicrosoftLogin}
+                  disabled={microsoftLoading || googleLoading || submitting}
                   className="flex w-full items-center h-12 rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 transition-colors disabled:opacity-50"
                 >
                   <MicrosoftIcon className="size-5 shrink-0" />
-                  <span className="flex-1 text-center">Continuer avec Microsoft</span>
+                  <span className="flex-1 text-center">
+                    {microsoftLoading ? "Redirection..." : "Continuer avec Microsoft"}
+                  </span>
                 </button>
 
                 <button
