@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "01-strategie-ia",
+    "number": 1,
+    "title": "Strategie IA",
+    "filename": "01-Strategie_IA.docx",
+    "description": "Stratégie IA de l'organisation",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "OCDE"
+    ],
+    "htmlPath": "/templates/01-strategie-ia.html",
+    "docxPath": "/templates/docx/01-Strategie_IA.docx"
+  },
+  {
+    "id": "02-politique-gouvernance-ia",
+    "number": 2,
+    "title": "Politique Gouvernance IA",
+    "filename": "02-Politique_Gouvernance_IA.docx",
+    "description": "Politique de gouvernance IA",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/02-politique-gouvernance-ia.html",
+    "docxPath": "/templates/docx/02-Politique_Gouvernance_IA.docx"
+  },
+  {
+    "id": "03-charte-ia",
+    "number": 3,
+    "title": "Charte IA",
+    "filename": "03-Charte_IA.docx",
+    "description": "Charte de l'intelligence artificielle",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "charte",
+    "typeLabel": "Charte",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "OCDE"
+    ],
+    "htmlPath": "/templates/03-charte-ia.html",
+    "docxPath": "/templates/docx/03-Charte_IA.docx"
+  },
+  {
+    "id": "04-feuille-de-route-ia",
+    "number": 4,
+    "title": "Feuille de Route IA",
+    "filename": "04-Feuille_de_Route_IA.docx",
+    "description": "Feuille de route IA (Roadmap)",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/04-feuille-de-route-ia.html",
+    "docxPath": "/templates/docx/04-Feuille_de_Route_IA.docx"
+  },
+  {
+    "id": "05-cadre-de-reference-ia",
+    "number": 5,
+    "title": "Cadre de Reference IA",
+    "filename": "05-Cadre_de_Reference_IA.docx",
+    "description": "Cadre de référence IA",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/05-cadre-de-reference-ia.html",
+    "docxPath": "/templates/docx/05-Cadre_de_Reference_IA.docx"
+  },
+  {
+    "id": "06-comite-ia-mandat",
+    "number": 6,
+    "title": "Comite IA Mandat",
+    "filename": "06-Comite_IA_Mandat.docx",
+    "description": "Comité IA - Mandat et composition",
+    "category": "gouvernance-strategique",
+    "categoryLabel": "Gouvernance stratégique",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/06-comite-ia-mandat.html",
+    "docxPath": "/templates/docx/06-Comite_IA_Mandat.docx"
+  },
+  {
+    "id": "07-code-ethique-ia",
+    "number": 7,
+    "title": "Code Ethique IA",
+    "filename": "07-Code_Ethique_IA.docx",
+    "description": "Code d'éthique de l'intelligence artificielle",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "charte",
+    "typeLabel": "Charte",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "OCDE"
+    ],
+    "htmlPath": "/templates/07-code-ethique-ia.html",
+    "docxPath": "/templates/docx/07-Code_Ethique_IA.docx"
+  },
+  {
+    "id": "08-principes-ia-responsable",
+    "number": 8,
+    "title": "Principes IA Responsable",
+    "filename": "08-Principes_IA_Responsable.docx",
+    "description": "Principes directeurs de l'intelligence artificielle responsable",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/08-principes-ia-responsable.html",
+    "docxPath": "/templates/docx/08-Principes_IA_Responsable.docx"
+  },
+  {
+    "id": "09-guide-biais-algorithmiques",
+    "number": 9,
+    "title": "Guide Biais Algorithmiques",
+    "filename": "09-Guide_Biais_Algorithmiques.docx",
+    "description": "Guide complet sur les biais algorithmiques et leur attenuation",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/09-guide-biais-algorithmiques.html",
+    "docxPath": "/templates/docx/09-Guide_Biais_Algorithmiques.docx"
+  },
+  {
+    "id": "10-politique-transparence-explicabilite",
+    "number": 10,
+    "title": "Politique Transparence Explicabilite",
+    "filename": "10-Politique_Transparence_Explicabilite.docx",
+    "description": "Politique de transparence et d'explicabilité des systèmes d'IA",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/10-politique-transparence-explicabilite.html",
+    "docxPath": "/templates/docx/10-Politique_Transparence_Explicabilite.docx"
+  },
+  {
+    "id": "11-politique-supervision-humaine",
+    "number": 11,
+    "title": "Politique Supervision Humaine",
+    "filename": "11-Politique_Supervision_Humaine.docx",
+    "description": "Politique de supervision humaine des systèmes d'IA",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/11-politique-supervision-humaine.html",
+    "docxPath": "/templates/docx/11-Politique_Supervision_Humaine.docx"
+  },
+  {
+    "id": "12-cadre-evaluation-ethique",
+    "number": 12,
+    "title": "Cadre Evaluation Ethique",
+    "filename": "12-Cadre_Evaluation_Ethique.docx",
+    "description": "Cadre d'évaluation éthique des projets d'intelligence artificielle",
+    "category": "ethique-valeurs",
+    "categoryLabel": "Éthique & Valeurs",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/12-cadre-evaluation-ethique.html",
+    "docxPath": "/templates/docx/12-Cadre_Evaluation_Ethique.docx"
+  },
+  {
+    "id": "13-charte-utilisation-ia",
+    "number": 13,
+    "title": "Charte Utilisation IA",
+    "filename": "13-Charte_Utilisation_IA.docx",
+    "description": "Charte d'utilisation de l'IA",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "charte",
+    "typeLabel": "Charte",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/13-charte-utilisation-ia.html",
+    "docxPath": "/templates/docx/13-Charte_Utilisation_IA.docx"
+  },
+  {
+    "id": "14-guide-outils-ia-generatifs",
+    "number": 14,
+    "title": "Guide Outils IA Generatifs",
+    "filename": "14-Guide_Outils_IA_Generatifs.docx",
+    "description": "Guide d'utilisation des outils IA génératifs",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/14-guide-outils-ia-generatifs.html",
+    "docxPath": "/templates/docx/14-Guide_Outils_IA_Generatifs.docx"
+  },
+  {
+    "id": "15-politique-usage-acceptable-ia",
+    "number": 15,
+    "title": "Politique Usage Acceptable IA",
+    "filename": "15-Politique_Usage_Acceptable_IA.docx",
+    "description": "Politique d'usage acceptable de l'IA",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/15-politique-usage-acceptable-ia.html",
+    "docxPath": "/templates/docx/15-Politique_Usage_Acceptable_IA.docx"
+  },
+  {
+    "id": "16-guide-bonnes-pratiques-par-dept",
+    "number": 16,
+    "title": "Guide Bonnes Pratiques Par Dept",
+    "filename": "16-Guide_Bonnes_Pratiques_Par_Dept.docx",
+    "description": "Guide des bonnes pratiques par département",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/16-guide-bonnes-pratiques-par-dept.html",
+    "docxPath": "/templates/docx/16-Guide_Bonnes_Pratiques_Par_Dept.docx"
+  },
+  {
+    "id": "17-catalogue-cas-usage-ia",
+    "number": 17,
+    "title": "Catalogue Cas Usage IA",
+    "filename": "17-Catalogue_Cas_Usage_IA.docx",
+    "description": "Catalogue des cas d'usage IA",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "catalogue",
+    "typeLabel": "Catalogue",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/17-catalogue-cas-usage-ia.html",
+    "docxPath": "/templates/docx/17-Catalogue_Cas_Usage_IA.docx"
+  },
+  {
+    "id": "18-procedure-nouveaux-outils-ia",
+    "number": 18,
+    "title": "Procedure Nouveaux Outils IA",
+    "filename": "18-Procedure_Nouveaux_Outils_IA.docx",
+    "description": "Procédure d'évaluation des nouveaux outils IA",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/18-procedure-nouveaux-outils-ia.html",
+    "docxPath": "/templates/docx/18-Procedure_Nouveaux_Outils_IA.docx"
+  },
+  {
+    "id": "19-guide-prompt-engineering",
+    "number": 19,
+    "title": "Guide Prompt Engineering",
+    "filename": "19-Guide_Prompt_Engineering.docx",
+    "description": "Guide complet de Prompt Engineering",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/19-guide-prompt-engineering.html",
+    "docxPath": "/templates/docx/19-Guide_Prompt_Engineering.docx"
+  },
+  {
+    "id": "20-politique-ia-communications-externes",
+    "number": 20,
+    "title": "Politique IA Communications Externes",
+    "filename": "20-Politique_IA_Communications_Externes.docx",
+    "description": "Politique d'utilisation de l'IA dans les communications externes",
+    "category": "utilisation-pratiques",
+    "categoryLabel": "Utilisation & Pratiques",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/20-politique-ia-communications-externes.html",
+    "docxPath": "/templates/docx/20-Politique_IA_Communications_Externes.docx"
+  },
+  {
+    "id": "21-politique-securite-information-ia",
+    "number": 21,
+    "title": "Politique Securite Information IA",
+    "filename": "21-Politique_Securite_Information_IA.docx",
+    "description": "Politique de sécurité de l'information liée à l'IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/21-politique-securite-information-ia.html",
+    "docxPath": "/templates/docx/21-Politique_Securite_Information_IA.docx"
+  },
+  {
+    "id": "22-politique-confidentialite-donnees-ia",
+    "number": 22,
+    "title": "Politique Confidentialite Donnees IA",
+    "filename": "22-Politique_Confidentialite_Donnees_IA.docx",
+    "description": "Politique de confidentialité des données et IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/22-politique-confidentialite-donnees-ia.html",
+    "docxPath": "/templates/docx/22-Politique_Confidentialite_Donnees_IA.docx"
+  },
+  {
+    "id": "23-eivp-pia",
+    "number": 23,
+    "title": "EIVP PIA",
+    "filename": "23-EIVP_PIA.docx",
+    "description": "Évaluation d'impact sur la vie privée (EIVP/PIA)",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/23-eivp-pia.html",
+    "docxPath": "/templates/docx/23-EIVP_PIA.docx"
+  },
+  {
+    "id": "24-classification-donnees-ia",
+    "number": 24,
+    "title": "Classification Donnees IA",
+    "filename": "24-Classification_Donnees_IA.docx",
+    "description": "Classification des données IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/24-classification-donnees-ia.html",
+    "docxPath": "/templates/docx/24-Classification_Donnees_IA.docx"
+  },
+  {
+    "id": "25-guide-securisation-modeles-ia",
+    "number": 25,
+    "title": "Guide Securisation Modeles IA",
+    "filename": "25-Guide_Securisation_Modeles_IA.docx",
+    "description": "Guide de sécurisation des modèles IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/25-guide-securisation-modeles-ia.html",
+    "docxPath": "/templates/docx/25-Guide_Securisation_Modeles_IA.docx"
+  },
+  {
+    "id": "26-politique-retention-donnees-ia",
+    "number": 26,
+    "title": "Politique Retention Donnees IA",
+    "filename": "26-Politique_Retention_Donnees_IA.docx",
+    "description": "Politique de rétention des données IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/26-politique-retention-donnees-ia.html",
+    "docxPath": "/templates/docx/26-Politique_Retention_Donnees_IA.docx"
+  },
+  {
+    "id": "27-registre-traitements-ia",
+    "number": 27,
+    "title": "Registre Traitements IA",
+    "filename": "27-Registre_Traitements_IA.docx",
+    "description": "Registre des traitements IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/27-registre-traitements-ia.html",
+    "docxPath": "/templates/docx/27-Registre_Traitements_IA.docx"
+  },
+  {
+    "id": "28-politique-gestion-acces-ia",
+    "number": 28,
+    "title": "Politique Gestion Acces IA",
+    "filename": "28-Politique_Gestion_Acces_IA.docx",
+    "description": "Politique de gestion des accès IA",
+    "category": "securite-confidentialite",
+    "categoryLabel": "Sécurité & Confidentialité",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/28-politique-gestion-acces-ia.html",
+    "docxPath": "/templates/docx/28-Politique_Gestion_Acces_IA.docx"
+  },
+  {
+    "id": "29-cadre-gestion-risques-ia",
+    "number": 29,
+    "title": "Cadre Gestion Risques IA",
+    "filename": "29-Cadre_Gestion_Risques_IA.docx",
+    "description": "cadre de gestion des risques IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/29-cadre-gestion-risques-ia.html",
+    "docxPath": "/templates/docx/29-Cadre_Gestion_Risques_IA.docx"
+  },
+  {
+    "id": "30-registre-risques-ia",
+    "number": 30,
+    "title": "Registre Risques IA",
+    "filename": "30-Registre_Risques_IA.docx",
+    "description": "registre des risques IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/30-registre-risques-ia.html",
+    "docxPath": "/templates/docx/30-Registre_Risques_IA.docx"
+  },
+  {
+    "id": "31-matrice-evaluation-risques-ia",
+    "number": 31,
+    "title": "Matrice Evaluation Risques IA",
+    "filename": "31-Matrice_Evaluation_Risques_IA.docx",
+    "description": "matrice d'évaluation des risques IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "matrice",
+    "typeLabel": "Matrice",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/31-matrice-evaluation-risques-ia.html",
+    "docxPath": "/templates/docx/31-Matrice_Evaluation_Risques_IA.docx"
+  },
+  {
+    "id": "32-plan-continuite-ia",
+    "number": 32,
+    "title": "Plan Continuite IA",
+    "filename": "32-Plan_Continuite_IA.docx",
+    "description": "Plan de continuité des activités lie à l'IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/32-plan-continuite-ia.html",
+    "docxPath": "/templates/docx/32-Plan_Continuite_IA.docx"
+  },
+  {
+    "id": "33-procedure-incidents-ia",
+    "number": 33,
+    "title": "Procedure Incidents IA",
+    "filename": "33-Procedure_Incidents_IA.docx",
+    "description": "Procedure de gestion des incidents IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/33-procedure-incidents-ia.html",
+    "docxPath": "/templates/docx/33-Procedure_Incidents_IA.docx"
+  },
+  {
+    "id": "34-plan-reponse-biais",
+    "number": 34,
+    "title": "Plan Reponse Biais",
+    "filename": "34-Plan_Reponse_Biais.docx",
+    "description": "Plan de réponse aux biais détectés",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/34-plan-reponse-biais.html",
+    "docxPath": "/templates/docx/34-Plan_Reponse_Biais.docx"
+  },
+  {
+    "id": "35-processus-signalement-ia",
+    "number": 35,
+    "title": "Processus Signalement IA",
+    "filename": "35-Processus_Signalement_IA.docx",
+    "description": "processus de signalement des problemes IA",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/35-processus-signalement-ia.html",
+    "docxPath": "/templates/docx/35-Processus_Signalement_IA.docx"
+  },
+  {
+    "id": "36-plan-retrait-ia",
+    "number": 36,
+    "title": "Plan Retrait IA",
+    "filename": "36-Plan_Retrait_IA.docx",
+    "description": "Plan de retrait - Decommissioning",
+    "category": "gestion-risques",
+    "categoryLabel": "Gestion des risques",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/36-plan-retrait-ia.html",
+    "docxPath": "/templates/docx/36-Plan_Retrait_IA.docx"
+  },
+  {
+    "id": "37-registre-conformite-ia",
+    "number": 37,
+    "title": "Registre Conformite IA",
+    "filename": "37-Registre_Conformite_IA.docx",
+    "description": "registre de conformité IA",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/37-registre-conformite-ia.html",
+    "docxPath": "/templates/docx/37-Registre_Conformite_IA.docx"
+  },
+  {
+    "id": "38-checklist-conformite-ia",
+    "number": 38,
+    "title": "Checklist Conformite IA",
+    "filename": "38-Checklist_Conformite_IA.docx",
+    "description": "Checklist de conformité réglementaire IA",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "checklist",
+    "typeLabel": "Checklist",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/38-checklist-conformite-ia.html",
+    "docxPath": "/templates/docx/38-Checklist_Conformite_IA.docx"
+  },
+  {
+    "id": "39-guide-conformite-loi25",
+    "number": 39,
+    "title": "Guide Conformite Loi25",
+    "filename": "39-Guide_Conformite_Loi25.docx",
+    "description": "Guide de conformité Loi 25 et IA",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/39-guide-conformite-loi25.html",
+    "docxPath": "/templates/docx/39-Guide_Conformite_Loi25.docx"
+  },
+  {
+    "id": "40-guide-conformite-c27-liad",
+    "number": 40,
+    "title": "Guide Conformite C27 LIAD",
+    "filename": "40-Guide_Conformite_C27_LIAD.docx",
+    "description": "Guide de conformité Loi C-27 (LIAD) et IA",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/40-guide-conformite-c27-liad.html",
+    "docxPath": "/templates/docx/40-Guide_Conformite_C27_LIAD.docx"
+  },
+  {
+    "id": "41-politique-conformite-rgpd-ia",
+    "number": 41,
+    "title": "Politique Conformite RGPD IA",
+    "filename": "41-Politique_Conformite_RGPD_IA.docx",
+    "description": "Politique de conformité RGPD et IA",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/41-politique-conformite-rgpd-ia.html",
+    "docxPath": "/templates/docx/41-Politique_Conformite_RGPD_IA.docx"
+  },
+  {
+    "id": "42-cadre-audit-ia",
+    "number": 42,
+    "title": "Cadre Audit IA",
+    "filename": "42-Cadre_Audit_IA.docx",
+    "description": "méthodologie et criteres pour les audits internes et externes des systèmes d'intelligence artificielle",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/42-cadre-audit-ia.html",
+    "docxPath": "/templates/docx/42-Cadre_Audit_IA.docx"
+  },
+  {
+    "id": "43-rapport-audit-ia-gabarit",
+    "number": 43,
+    "title": "Rapport Audit IA Gabarit",
+    "filename": "43-Rapport_Audit_IA_Gabarit.docx",
+    "description": "Rapport d'audit IA - Gabarit",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "rapport",
+    "typeLabel": "Rapport",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/43-rapport-audit-ia-gabarit.html",
+    "docxPath": "/templates/docx/43-Rapport_Audit_IA_Gabarit.docx"
+  },
+  {
+    "id": "44-registre-decisions-automatisees",
+    "number": 44,
+    "title": "Registre Decisions Automatisees",
+    "filename": "44-Registre_Decisions_Automatisees.docx",
+    "description": "registre des décisions automatisees",
+    "category": "conformite-legale",
+    "categoryLabel": "Conformité & Légale",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/44-registre-decisions-automatisees.html",
+    "docxPath": "/templates/docx/44-Registre_Decisions_Automatisees.docx"
+  },
+  {
+    "id": "45-politique-approvisionnement-ia",
+    "number": 45,
+    "title": "Politique Approvisionnement IA",
+    "filename": "45-Politique_Approvisionnement_IA.docx",
+    "description": "Politique d'approvisionnement en solutions IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/45-politique-approvisionnement-ia.html",
+    "docxPath": "/templates/docx/45-Politique_Approvisionnement_IA.docx"
+  },
+  {
+    "id": "46-grille-evaluation-fournisseurs-ia",
+    "number": 46,
+    "title": "Grille Evaluation Fournisseurs IA",
+    "filename": "46-Grille_Evaluation_Fournisseurs_IA.docx",
+    "description": "Grille d'évaluation des fournisseurs IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "grille",
+    "typeLabel": "Grille",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD",
+      "ISO 27001"
+    ],
+    "htmlPath": "/templates/46-grille-evaluation-fournisseurs-ia.html",
+    "docxPath": "/templates/docx/46-Grille_Evaluation_Fournisseurs_IA.docx"
+  },
+  {
+    "id": "47-clauses-contractuelles-ia",
+    "number": 47,
+    "title": "Clauses Contractuelles IA",
+    "filename": "47-Clauses_Contractuelles_IA.docx",
+    "description": "Clauses contractuelles types pour l'IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD",
+      "ISO 27001"
+    ],
+    "htmlPath": "/templates/47-clauses-contractuelles-ia.html",
+    "docxPath": "/templates/docx/47-Clauses_Contractuelles_IA.docx"
+  },
+  {
+    "id": "48-registre-fournisseurs-ia",
+    "number": 48,
+    "title": "Registre Fournisseurs IA",
+    "filename": "48-Registre_Fournisseurs_IA.docx",
+    "description": "Registre des fournisseurs et solutions IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "ISO 27001"
+    ],
+    "htmlPath": "/templates/48-registre-fournisseurs-ia.html",
+    "docxPath": "/templates/docx/48-Registre_Fournisseurs_IA.docx"
+  },
+  {
+    "id": "49-grille-risques-fournisseurs-ia",
+    "number": 49,
+    "title": "Grille Risques Fournisseurs IA",
+    "filename": "49-Grille_Risques_Fournisseurs_IA.docx",
+    "description": "Grille d'évaluation des risques fournisseurs IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "grille",
+    "typeLabel": "Grille",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD",
+      "ISO 27001"
+    ],
+    "htmlPath": "/templates/49-grille-risques-fournisseurs-ia.html",
+    "docxPath": "/templates/docx/49-Grille_Risques_Fournisseurs_IA.docx"
+  },
+  {
+    "id": "50-politique-diligence-raisonnable-ia",
+    "number": 50,
+    "title": "Politique Diligence Raisonnable IA",
+    "filename": "50-Politique_Diligence_Raisonnable_IA.docx",
+    "description": "Politique de diligence raisonnable IA",
+    "category": "approvisionnement",
+    "categoryLabel": "Approvisionnement",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/50-politique-diligence-raisonnable-ia.html",
+    "docxPath": "/templates/docx/50-Politique_Diligence_Raisonnable_IA.docx"
+  },
+  {
+    "id": "51-plan-formation-ia",
+    "number": 51,
+    "title": "Plan Formation IA",
+    "filename": "51-Plan_Formation_IA.docx",
+    "description": "Plan de formation a l'intelligence artificielle",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/51-plan-formation-ia.html",
+    "docxPath": "/templates/docx/51-Plan_Formation_IA.docx"
+  },
+  {
+    "id": "52-programme-sensibilisation-ia",
+    "number": 52,
+    "title": "Programme Sensibilisation IA",
+    "filename": "52-Programme_Sensibilisation_IA.docx",
+    "description": "Programme de sensibilisation a l'IA",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/52-programme-sensibilisation-ia.html",
+    "docxPath": "/templates/docx/52-Programme_Sensibilisation_IA.docx"
+  },
+  {
+    "id": "53-guide-integration-nouveaux-employes-ia",
+    "number": 53,
+    "title": "Guide Integration Nouveaux Employes IA",
+    "filename": "53-Guide_Integration_Nouveaux_Employes_IA.docx",
+    "description": "Guide d'intégration IA",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/53-guide-integration-nouveaux-employes-ia.html",
+    "docxPath": "/templates/docx/53-Guide_Integration_Nouveaux_Employes_IA.docx"
+  },
+  {
+    "id": "54-matrice-competences-ia",
+    "number": 54,
+    "title": "Matrice Competences IA",
+    "filename": "54-Matrice_Competences_IA.docx",
+    "description": "Matrice de compétences en IA",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "matrice",
+    "typeLabel": "Matrice",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/54-matrice-competences-ia.html",
+    "docxPath": "/templates/docx/54-Matrice_Competences_IA.docx"
+  },
+  {
+    "id": "55-politique-impact-ia-emploi",
+    "number": 55,
+    "title": "Politique Impact IA Emploi",
+    "filename": "55-Politique_Impact_IA_Emploi.docx",
+    "description": "Politique d'impact de l'IA sur l'emploi",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/55-politique-impact-ia-emploi.html",
+    "docxPath": "/templates/docx/55-Politique_Impact_IA_Emploi.docx"
+  },
+  {
+    "id": "56-formulaire-attestation-formation-ia",
+    "number": 56,
+    "title": "Formulaire Attestation Formation IA",
+    "filename": "56-Formulaire_Attestation_Formation_IA.docx",
+    "description": "Formulaire d'attestation de formation IA",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "formulaire",
+    "typeLabel": "Formulaire",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/56-formulaire-attestation-formation-ia.html",
+    "docxPath": "/templates/docx/56-Formulaire_Attestation_Formation_IA.docx"
+  },
+  {
+    "id": "57-guide-gestionnaire-ia",
+    "number": 57,
+    "title": "Guide Gestionnaire IA",
+    "filename": "57-Guide_Gestionnaire_IA.docx",
+    "description": "Guide du gestionnaire sur l'IA",
+    "category": "rh-formation",
+    "categoryLabel": "RH & Formation",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/57-guide-gestionnaire-ia.html",
+    "docxPath": "/templates/docx/57-Guide_Gestionnaire_IA.docx"
+  },
+  {
+    "id": "58-inventaire-systemes-ia",
+    "number": 58,
+    "title": "Inventaire Systemes IA",
+    "filename": "58-Inventaire_Systemes_IA.docx",
+    "description": "Inventaire des Systemes IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "registre",
+    "typeLabel": "Registre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/58-inventaire-systemes-ia.html",
+    "docxPath": "/templates/docx/58-Inventaire_Systemes_IA.docx"
+  },
+  {
+    "id": "59-fiche-technique-model-card",
+    "number": 59,
+    "title": "Fiche Technique Model Card",
+    "filename": "59-Fiche_Technique_Model_Card.docx",
+    "description": "Fiche Technique - Model Card",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "fiche",
+    "typeLabel": "Fiche",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/59-fiche-technique-model-card.html",
+    "docxPath": "/templates/docx/59-Fiche_Technique_Model_Card.docx"
+  },
+  {
+    "id": "60-documentation-data-card",
+    "number": 60,
+    "title": "Documentation Data Card",
+    "filename": "60-Documentation_Data_Card.docx",
+    "description": "Data Card - Documentation des Données d'Entrainement",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "RGPD"
+    ],
+    "htmlPath": "/templates/60-documentation-data-card.html",
+    "docxPath": "/templates/docx/60-Documentation_Data_Card.docx"
+  },
+  {
+    "id": "61-procedure-deploiement-ia",
+    "number": 61,
+    "title": "Procedure Deploiement IA",
+    "filename": "61-Procedure_Deploiement_IA.docx",
+    "description": "Procédure de Déploiement des Systemes IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/61-procedure-deploiement-ia.html",
+    "docxPath": "/templates/docx/61-Procedure_Deploiement_IA.docx"
+  },
+  {
+    "id": "62-processus-approbation-projets-ia",
+    "number": 62,
+    "title": "Processus Approbation Projets IA",
+    "filename": "62-Processus_Approbation_Projets_IA.docx",
+    "description": "Procèssus d'Approbation des Projets IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/62-processus-approbation-projets-ia.html",
+    "docxPath": "/templates/docx/62-Processus_Approbation_Projets_IA.docx"
+  },
+  {
+    "id": "63-plan-monitoring-modeles",
+    "number": 63,
+    "title": "Plan Monitoring Modeles",
+    "filename": "63-Plan_Monitoring_Modeles.docx",
+    "description": "Plan de Monitoring et Surveillance des Modeles IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/63-plan-monitoring-modeles.html",
+    "docxPath": "/templates/docx/63-Plan_Monitoring_Modeles.docx"
+  },
+  {
+    "id": "64-procedure-test-validation-ia",
+    "number": 64,
+    "title": "Procedure Test Validation IA",
+    "filename": "64-Procedure_Test_Validation_IA.docx",
+    "description": "Procédure de Test et Validation des Modeles IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/64-procedure-test-validation-ia.html",
+    "docxPath": "/templates/docx/64-Procedure_Test_Validation_IA.docx"
+  },
+  {
+    "id": "65-architecture-technique-ia",
+    "number": 65,
+    "title": "Architecture Technique IA",
+    "filename": "65-Architecture_Technique_IA.docx",
+    "description": "Architecture Technique des Systemes IA",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "document",
+    "typeLabel": "Document",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/65-architecture-technique-ia.html",
+    "docxPath": "/templates/docx/65-Architecture_Technique_IA.docx"
+  },
+  {
+    "id": "66-journal-modifications-changelog",
+    "number": 66,
+    "title": "Journal Modifications Changelog",
+    "filename": "66-Journal_Modifications_Changelog.docx",
+    "description": "Journal des Modifications des Modeles IA - Changelog",
+    "category": "documentation-technique",
+    "categoryLabel": "Documentation technique",
+    "type": "journal",
+    "typeLabel": "Journal",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/66-journal-modifications-changelog.html",
+    "docxPath": "/templates/docx/66-Journal_Modifications_Changelog.docx"
+  },
+  {
+    "id": "67-politique-pi-ia",
+    "number": 67,
+    "title": "Politique PI IA",
+    "filename": "67-Politique_PI_IA.docx",
+    "description": "Politique de propriété intellectuelle liee a l'IA",
+    "category": "propriete-intellectuelle",
+    "categoryLabel": "Propriété intellectuelle",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/67-politique-pi-ia.html",
+    "docxPath": "/templates/docx/67-Politique_PI_IA.docx"
+  },
+  {
+    "id": "68-guide-droits-auteur-ia",
+    "number": 68,
+    "title": "Guide Droits Auteur IA",
+    "filename": "68-Guide_Droits_Auteur_IA.docx",
+    "description": "Guide sur les droits d'auteur et le contenu généré par IA",
+    "category": "propriete-intellectuelle",
+    "categoryLabel": "Propriété intellectuelle",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/68-guide-droits-auteur-ia.html",
+    "docxPath": "/templates/docx/68-Guide_Droits_Auteur_IA.docx"
+  },
+  {
+    "id": "69-politique-divulgation-ia",
+    "number": 69,
+    "title": "Politique Divulgation IA",
+    "filename": "69-Politique_Divulgation_IA.docx",
+    "description": "Politique de divulgation de l'utilisation de l'IA",
+    "category": "propriete-intellectuelle",
+    "categoryLabel": "Propriété intellectuelle",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/69-politique-divulgation-ia.html",
+    "docxPath": "/templates/docx/69-Politique_Divulgation_IA.docx"
+  },
+  {
+    "id": "70-politique-licences-modeles-ia",
+    "number": 70,
+    "title": "Politique Licences Modeles IA",
+    "filename": "70-Politique_Licences_Modeles_IA.docx",
+    "description": "Politique de gestion des licences de modèles IA",
+    "category": "propriete-intellectuelle",
+    "categoryLabel": "Propriété intellectuelle",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/70-politique-licences-modeles-ia.html",
+    "docxPath": "/templates/docx/70-Politique_Licences_Modeles_IA.docx"
+  },
+  {
+    "id": "71-criteres-qualite-sorties-ia",
+    "number": 71,
+    "title": "Criteres Qualite Sorties IA",
+    "filename": "71-Criteres_Qualite_Sorties_IA.docx",
+    "description": "Critères de qualité des sorties IA",
+    "category": "qualite-amelioration",
+    "categoryLabel": "Qualité & Amélioration",
+    "type": "cadre",
+    "typeLabel": "Cadre",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/71-criteres-qualite-sorties-ia.html",
+    "docxPath": "/templates/docx/71-Criteres_Qualite_Sorties_IA.docx"
+  },
+  {
+    "id": "72-tableau-bord-kpi-ia",
+    "number": 72,
+    "title": "Tableau Bord KPI IA",
+    "filename": "72-Tableau_Bord_KPI_IA.docx",
+    "description": "Tableau de bord et indicateurs de performance IA",
+    "category": "qualite-amelioration",
+    "categoryLabel": "Qualité & Amélioration",
+    "type": "matrice",
+    "typeLabel": "Matrice",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/72-tableau-bord-kpi-ia.html",
+    "docxPath": "/templates/docx/72-Tableau_Bord_KPI_IA.docx"
+  },
+  {
+    "id": "73-processus-revision-periodique-ia",
+    "number": 73,
+    "title": "Processus Revision Periodique IA",
+    "filename": "73-Processus_Revision_Periodique_IA.docx",
+    "description": "Procèssus de revision périodique des systèmes IA",
+    "category": "qualite-amelioration",
+    "categoryLabel": "Qualité & Amélioration",
+    "type": "procedure",
+    "typeLabel": "Procédure",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/73-processus-revision-periodique-ia.html",
+    "docxPath": "/templates/docx/73-Processus_Revision_Periodique_IA.docx"
+  },
+  {
+    "id": "74-modele-retour-experience-ia",
+    "number": 74,
+    "title": "Modele Retour Experience IA",
+    "filename": "74-Modele_Retour_Experience_IA.docx",
+    "description": "Modele de retour d'experience (REX) IA",
+    "category": "qualite-amelioration",
+    "categoryLabel": "Qualité & Amélioration",
+    "type": "formulaire",
+    "typeLabel": "Formulaire",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/74-modele-retour-experience-ia.html",
+    "docxPath": "/templates/docx/74-Modele_Retour_Experience_IA.docx"
+  },
+  {
+    "id": "75-politique-amelioration-continue-ia",
+    "number": 75,
+    "title": "Politique Amelioration Continue IA",
+    "filename": "75-Politique_Amelioration_Continue_IA.docx",
+    "description": "Politique d'amelioration continue de l'IA",
+    "category": "qualite-amelioration",
+    "categoryLabel": "Qualité & Amélioration",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "NIST AI RMF"
+    ],
+    "htmlPath": "/templates/75-politique-amelioration-continue-ia.html",
+    "docxPath": "/templates/docx/75-Politique_Amelioration_Continue_IA.docx"
+  },
+  {
+    "id": "76-plan-communication-ia",
+    "number": 76,
+    "title": "Plan Communication IA",
+    "filename": "76-Plan_Communication_IA.docx",
+    "description": "Plan de communication sur l'IA",
+    "category": "communication-changement",
+    "categoryLabel": "Communication & Changement",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "ISO 42001"
+    ],
+    "htmlPath": "/templates/76-plan-communication-ia.html",
+    "docxPath": "/templates/docx/76-Plan_Communication_IA.docx"
+  },
+  {
+    "id": "77-faq-interne-ia",
+    "number": 77,
+    "title": "FAQ Interne IA",
+    "filename": "77-FAQ_Interne_IA.docx",
+    "description": "FAQ interne sur l'IA",
+    "category": "communication-changement",
+    "categoryLabel": "Communication & Changement",
+    "type": "faq",
+    "typeLabel": "FAQ",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/77-faq-interne-ia.html",
+    "docxPath": "/templates/docx/77-FAQ_Interne_IA.docx"
+  },
+  {
+    "id": "78-plan-gestion-changement-ia",
+    "number": 78,
+    "title": "Plan Gestion Changement IA",
+    "filename": "78-Plan_Gestion_Changement_IA.docx",
+    "description": "Plan de gestion du changement lie a l'IA",
+    "category": "communication-changement",
+    "categoryLabel": "Communication & Changement",
+    "type": "plan",
+    "typeLabel": "Plan",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/78-plan-gestion-changement-ia.html",
+    "docxPath": "/templates/docx/78-Plan_Gestion_Changement_IA.docx"
+  },
+  {
+    "id": "79-guide-communication-externe-ia",
+    "number": 79,
+    "title": "Guide Communication Externe IA",
+    "filename": "79-Guide_Communication_Externe_IA.docx",
+    "description": "Guide de communication externe sur l'IA",
+    "category": "communication-changement",
+    "categoryLabel": "Communication & Changement",
+    "type": "guide",
+    "typeLabel": "Guide",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act"
+    ],
+    "htmlPath": "/templates/79-guide-communication-externe-ia.html",
+    "docxPath": "/templates/docx/79-Guide_Communication_Externe_IA.docx"
+  },
+  {
+    "id": "80-politique-engagement-parties-prenantes-ia",
+    "number": 80,
+    "title": "Politique Engagement Parties Prenantes IA",
+    "filename": "80-Politique_Engagement_Parties_Prenantes_IA.docx",
+    "description": "Politique d'engagement des parties prenantes",
+    "category": "communication-changement",
+    "categoryLabel": "Communication & Changement",
+    "type": "politique",
+    "typeLabel": "Politique",
+    "frameworks": [
+      "Loi 25",
+      "C-27 / AIDA",
+      "EU AI Act",
+      "ISO 42001"
+    ],
+    "htmlPath": "/templates/80-politique-engagement-parties-prenantes-ia.html",
+    "docxPath": "/templates/docx/80-Politique_Engagement_Parties_Prenantes_IA.docx"
+  }
+]
