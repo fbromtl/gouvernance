@@ -111,6 +111,17 @@
       <input name="bot-field" />
       <input type="email" name="email" />
     </form>
+    <form name="honorary-application" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="honorary-application" />
+      <input name="bot-field" />
+      <input type="text" name="fullName" />
+      <input type="email" name="email" />
+      <input type="text" name="jobTitle" />
+      <input type="text" name="organization" />
+      <input type="text" name="expertise" />
+      <input type="url" name="linkedin" />
+      <textarea name="motivation"></textarea>
+    </form>
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

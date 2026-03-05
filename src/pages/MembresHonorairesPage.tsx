@@ -25,7 +25,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SEO } from "@/components/SEO";
-import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
 /*  Animations                                                         */
@@ -112,10 +111,17 @@ export function MembresHonorairesPage() {
   const onSubmit = async (data: FormValues) => {
     setServerError(null);
     try {
-      const { error } = await supabase.functions.invoke("honorary-application", {
-        body: data,
+      const body = new URLSearchParams({
+        "form-name": "honorary-application",
+        ...data,
+        linkedin: data.linkedin ?? "",
       });
-      if (error) throw error;
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error(`${res.status}`);
       setSubmitted(true);
     } catch {
       setServerError(t("error.generic"));
