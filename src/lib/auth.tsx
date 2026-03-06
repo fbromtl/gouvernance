@@ -123,18 +123,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      const authUser = session?.user ?? null;
-      setUser(authUser);
-      if (authUser) {
-        fetchOrCreateProfile(authUser).finally(() => setLoading(false));
-      } else {
-        setLoading(false);
-      }
-    }).catch(() => {
-      setLoading(false);
-    });
-
+    // Single listener — onAuthStateChange fires INITIAL_SESSION on startup,
+    // so there's no need for a separate getSession() call (which caused a
+    // double fetch / race condition).
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {

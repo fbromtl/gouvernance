@@ -98,7 +98,7 @@ export default function DashboardPage() {
   const decisions = demo ? DEMO_DECISIONS : liveDecisions;
   const biasFindings = demo ? DEMO_BIAS_FINDINGS : liveBiasFindings;
 
-  const firstName = profile?.full_name?.split(" ")[0] ?? t("welcomeFallback");
+  const firstName = profile?.full_name?.split(" ")[0]?.trim() || t("welcomeFallback");
 
   if (isLoading) {
     return (
