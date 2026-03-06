@@ -6,6 +6,8 @@ import { AppHeader } from "./AppHeader";
 import { BottomTabBar } from "./BottomTabBar";
 import { getCategoryForPath } from "./nav-config";
 import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
+import { OfflineBanner } from "@/components/OfflineBanner";
+import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { usePageContext } from "@/hooks/usePageContext";
 import { useAiChat } from "@/hooks/useAiChat";
 import { FloatingChat } from "@/portail/components/FloatingChat";
@@ -54,6 +56,8 @@ export function PortailLayout() {
 
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
+        <PWAInstallPrompt />
+        <OfflineBanner />
         <AppHeader />
         <main className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-4 pb-20 lg:py-8 lg:pb-8">

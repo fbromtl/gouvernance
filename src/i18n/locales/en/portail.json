@@ -70,5 +70,10 @@
   },
   "mobileNav": {
     "subpagesTitle": "Navigate"
+  },
+  "offlineBanner": "Offline mode — showing cached data",
+  "installPrompt": {
+    "message": "Install GiA on your device for quick access",
+    "install": "Install"
   }
 }
