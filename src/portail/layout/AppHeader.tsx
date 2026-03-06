@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, LogOut, User, Settings, Check, ChevronRight, Rocket, CreditCard } from "lucide-react";
+import { Bell, Menu, LogOut, User, Settings, Check, ChevronRight, Rocket, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -19,6 +19,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { MemberBadge } from "@/components/shared/MemberBadge";
 import { useSubscription } from "@/hooks/useSubscription";
 import type { PlanId } from "@/lib/stripe";
+
+interface AppHeaderProps {
+  onMobileMenuToggle: () => void;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Relative time helper                                                */
@@ -74,7 +78,7 @@ const ROUTE_LABELS: Record<string, string> = {
   membres: "nav.members",
 };
 
-export function AppHeader() {
+export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
   const { t } = useTranslation("portail");
   const { t: tc } = useTranslation("common");
   const { profile, signOut } = useAuth();
@@ -102,10 +106,14 @@ export function AppHeader() {
     <header className="flex items-center justify-between border-b border-neutral-100 bg-white px-4 lg:px-6 h-14 shrink-0">
       {/* Left section: mobile menu + breadcrumbs */}
       <div className="flex items-center gap-3 min-w-0">
-        {/* Mobile: show current page title */}
-        <span className="lg:hidden text-sm font-semibold text-neutral-900 truncate">
-          {breadcrumbs.length > 0 ? breadcrumbs[breadcrumbs.length - 1].label : ""}
-        </span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden shrink-0 h-8 w-8"
+          onClick={onMobileMenuToggle}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
 
         {/* Breadcrumbs — desktop only */}
         <nav className="hidden lg:flex items-center gap-1 text-sm min-w-0" aria-label="Breadcrumb">

@@ -1,35 +1,17 @@
 {
   "name": "Cercle de Gouvernance de l'IA",
-  "short_name": "GiA",
-  "description": "Plateforme de gouvernance responsable de l'intelligence artificielle",
-  "start_url": "/dashboard",
+  "short_name": "Gouvernance IA",
+  "description": "Gouvernance responsable de l'intelligence artificielle",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#57886c",
-  "background_color": "#f7f6f4",
+  "theme_color": "#6c3baa",
+  "background_color": "#ffffff",
   "lang": "fr",
-  "orientation": "portrait-primary",
-  "categories": ["business", "productivity"],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
-    },
-    {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-maskable-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ]
 }

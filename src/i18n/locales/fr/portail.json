@@ -67,13 +67,5 @@
   "placeholder": {
     "title": "En cours de développement",
     "description": "Ce module sera disponible prochainement."
-  },
-  "mobileNav": {
-    "subpagesTitle": "Naviguer"
-  },
-  "offlineBanner": "Mode hors ligne — donnees de la derniere visite",
-  "installPrompt": {
-    "message": "Installez GiA sur votre appareil pour un acces rapide",
-    "install": "Installer"
   }
 }

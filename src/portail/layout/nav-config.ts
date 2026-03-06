@@ -49,16 +49,6 @@ export const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: st
   organization: Building2,
 };
 
-/** Default route for each category (used by mobile bottom tab bar) */
-export const CATEGORY_DEFAULT_ROUTES: Record<string, string> = {
-  overview: "/dashboard",
-  inventory: "/ai-systems",
-  governance: "/governance",
-  risks: "/risks",
-  operations: "/monitoring",
-  organization: "/membres",
-};
-
 export const navGroups: NavGroup[] = [
   {
     labelKey: "sections.overview",
