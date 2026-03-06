@@ -18,7 +18,6 @@ import {
   Bot,
   CheckCircle,
   AlertCircle,
-  Activity,
   TrendingUp,
   TrendingDown,
 } from "lucide-react";
