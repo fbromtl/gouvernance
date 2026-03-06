@@ -87,11 +87,9 @@ export function HomePage() {
             `,
           }}
         >
-          <div className="max-w-7xl mr-auto ml-auto pr-6 pl-6">
-            {/* ── Hero Split: Text + Phone Mockup ── */}
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-              {/* Left column: text content */}
-              <div className="flex-1 text-center">
+          <div className="max-w-7xl mr-auto ml-auto pr-6 pl-6 relative">
+            {/* ── Hero: Centered text + absolute phone mockup ── */}
+            <div className="text-center">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3 py-1 rounded-full mb-8">
                   <span className="flex h-2 w-2 rounded-full bg-[#57886c] animate-pulse" />
@@ -170,10 +168,10 @@ export function HomePage() {
                     <span className="font-semibold text-neutral-700">150+ organisations</span> nous font confiance
                   </p>
                 </div>
-              </div>
+            </div>
 
-              {/* Right column: Floating Phone Mockup */}
-              <div className="hidden md:flex items-center justify-end flex-shrink-0 lg:-mr-8">
+            {/* Floating Phone Mockup — absolute positioned on right */}
+            <div className="hidden lg:flex items-center absolute right-0 top-1/2 -translate-y-1/2 -mr-2">
                 <div className="animate-phone-float">
                   {/* Phone frame */}
                   <div className="relative w-[280px] h-[580px] bg-[#1a1a1a] rounded-[3rem] p-[10px] shadow-2xl shadow-black/20">
@@ -262,7 +260,6 @@ export function HomePage() {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
 
             {/* ── Dashboard Mockup ── */}
