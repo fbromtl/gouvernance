@@ -1,6 +1,11 @@
 {
   "pageTitle": "Regulatory Watch",
   "pageDescription": "Follow the latest news on artificial intelligence governance.",
+  "tabs": {
+    "feed": "Feed",
+    "favorites": "Favorites",
+    "organization": "Organization"
+  },
   "weeklySummary": {
     "title": "AI Weekly Summary",
     "subtitle": "Key regulatory developments and AI governance news",
@@ -22,7 +27,34 @@
     "summaryTitle": "AI Summary",
     "close": "Close",
     "source": "Source",
-    "published": "Published on"
+    "published": "Published on",
+    "save": "Save",
+    "saved": "Saved",
+    "unsave": "Remove",
+    "shareToOrg": "Share to org",
+    "sharedToOrg": "Shared",
+    "generateSummary": "Generate AI summary",
+    "regenerateSummary": "Regenerate"
+  },
+  "sheet": {
+    "originalSnippet": "Original excerpt",
+    "readOriginal": "Read original article",
+    "aiSummary": "AI Summary",
+    "notes": "Notes",
+    "notesPlaceholder": "Add your notes about this article…",
+    "actions": "Actions",
+    "favorite": "Favorite",
+    "shareOrg": "Share with organization",
+    "assignTo": "Assign to",
+    "assignNone": "Unassigned",
+    "status": "Status",
+    "saveFirst": "Save the article to access notes and actions.",
+    "sharedBy": "Shared by"
+  },
+  "statuses": {
+    "unread": "Unread",
+    "read": "Read",
+    "archived": "Archived"
   },
   "filters": {
     "searchPlaceholder": "Search articles...",
@@ -35,11 +67,26 @@
     "international": "International",
     "resultsCount_one": "{{count}} result",
     "resultsCount_other": "{{count}} results",
-    "noResults": "No articles match your filters."
+    "noResults": "No articles match your filters.",
+    "allStatuses": "All statuses"
+  },
+  "empty": {
+    "favoritesTitle": "No favorites",
+    "favoritesDescription": "Save articles from the feed to find them here.",
+    "orgTitle": "No shared articles",
+    "orgDescription": "Articles shared by your organization members will appear here."
+  },
+  "toast": {
+    "saved": "Article saved",
+    "removed": "Article removed from favorites",
+    "shared": "Article shared with organization",
+    "unshared": "Share removed",
+    "updated": "Article updated",
+    "error": "An error occurred"
   },
   "help": {
     "title": "Understanding: Regulatory Watch",
     "why": "Regulatory Watch keeps you informed of the latest developments in AI governance. It automatically aggregates relevant news and uses AI to provide concise summaries.",
-    "how": "1. Check the AI summary at the top for a weekly overview.\n2. Browse recent articles in the list.\n3. Click 'Summarize' to get an AI summary of an article.\n4. Click 'Read article' to access the full source."
+    "how": "1. Check the AI summary at the top for a weekly overview.\n2. Save important articles to your favorites.\n3. Share relevant articles with your organization.\n4. Add notes and assign follow-up on shared articles."
   }
 }

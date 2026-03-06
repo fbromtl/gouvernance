@@ -1,6 +1,11 @@
 {
   "pageTitle": "Veille réglementaire",
   "pageDescription": "Suivez les dernières actualités en gouvernance de l'intelligence artificielle.",
+  "tabs": {
+    "feed": "Flux",
+    "favorites": "Favoris",
+    "organization": "Organisation"
+  },
   "weeklySummary": {
     "title": "Résumé IA de la semaine",
     "subtitle": "Principales évolutions réglementaires et actualités en gouvernance IA",
@@ -22,7 +27,34 @@
     "summaryTitle": "Résumé IA",
     "close": "Fermer",
     "source": "Source",
-    "published": "Publié le"
+    "published": "Publié le",
+    "save": "Sauvegarder",
+    "saved": "Sauvegardé",
+    "unsave": "Retirer",
+    "shareToOrg": "Partager à l'org",
+    "sharedToOrg": "Partagé",
+    "generateSummary": "Générer le résumé IA",
+    "regenerateSummary": "Régénérer"
+  },
+  "sheet": {
+    "originalSnippet": "Extrait original",
+    "readOriginal": "Lire l'article original",
+    "aiSummary": "Résumé IA",
+    "notes": "Notes",
+    "notesPlaceholder": "Ajoutez vos notes sur cet article…",
+    "actions": "Actions",
+    "favorite": "Favori",
+    "shareOrg": "Partager à l'organisation",
+    "assignTo": "Assigner à",
+    "assignNone": "Non assigné",
+    "status": "Statut",
+    "saveFirst": "Sauvegardez l'article pour accéder aux notes et actions.",
+    "sharedBy": "Partagé par"
+  },
+  "statuses": {
+    "unread": "Non lu",
+    "read": "Lu",
+    "archived": "Archivé"
   },
   "filters": {
     "searchPlaceholder": "Rechercher un article...",
@@ -35,11 +67,26 @@
     "international": "International",
     "resultsCount_one": "{{count}} résultat",
     "resultsCount_other": "{{count}} résultats",
-    "noResults": "Aucun article ne correspond à vos filtres."
+    "noResults": "Aucun article ne correspond à vos filtres.",
+    "allStatuses": "Tous les statuts"
+  },
+  "empty": {
+    "favoritesTitle": "Aucun favori",
+    "favoritesDescription": "Sauvegardez des articles depuis le flux pour les retrouver ici.",
+    "orgTitle": "Aucun article partagé",
+    "orgDescription": "Les articles partagés par les membres de votre organisation apparaîtront ici."
+  },
+  "toast": {
+    "saved": "Article sauvegardé",
+    "removed": "Article retiré des favoris",
+    "shared": "Article partagé à l'organisation",
+    "unshared": "Partage retiré",
+    "updated": "Article mis à jour",
+    "error": "Une erreur est survenue"
   },
   "help": {
     "title": "Comprendre : Veille réglementaire",
     "why": "La veille réglementaire vous permet de rester informé des dernières évolutions en matière de gouvernance de l'IA. Elle agrège automatiquement les actualités pertinentes et utilise l'IA pour vous fournir des résumés synthétiques.",
-    "how": "1. Consultez le résumé IA en haut de page pour un aperçu hebdomadaire.\n2. Parcourez les articles récents dans la liste.\n3. Cliquez sur « Résumer » pour obtenir un résumé IA d'un article.\n4. Cliquez sur « Lire l'article » pour accéder à la source complète."
+    "how": "1. Consultez le résumé IA en haut de page pour un aperçu hebdomadaire.\n2. Sauvegardez les articles importants dans vos favoris.\n3. Partagez les articles pertinents avec votre organisation.\n4. Ajoutez des notes et assignez un suivi aux articles partagés."
   }
 }
