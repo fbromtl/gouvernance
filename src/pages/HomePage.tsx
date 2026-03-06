@@ -15,6 +15,12 @@ import {
   BarChart3,
   ChevronDown,
   AlertTriangle,
+  Bot,
+  CheckCircle,
+  AlertCircle,
+  Activity,
+  TrendingUp,
+  TrendingDown,
 } from "lucide-react";
 
 import { SEO, JsonLd } from "@/components/SEO";
@@ -167,84 +173,206 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* ── Dashboard Mockup ── */}
-            <div className="overflow-hidden flex flex-col bg-white max-w-6xl border-neutral-200/60 border rounded-2xl mr-auto ml-auto relative shadow-2xl">
-              {/* Mockup header */}
-              <header className="flex z-20 shrink-0 bg-white border-neutral-100 border-b pt-4 pr-6 pb-4 pl-6 items-center justify-between">
-                <h2 className="text-base font-semibold text-neutral-900 tracking-tight">
-                  Tableau de bord : Gouvernance IA
-                </h2>
-                <div className="flex items-center gap-4">
-                  <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#57886c] rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-sm">
-                    <Shield className="h-3.5 w-3.5" />
-                    Conforme
-                  </span>
-                </div>
-              </header>
+            {/* ── Dashboard Mockup + Phone ── */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Desktop dashboard */}
+              <div className="overflow-hidden flex flex-col bg-white border-neutral-200/60 border rounded-2xl relative shadow-2xl">
+                {/* Mockup header */}
+                <header className="flex z-20 shrink-0 bg-white border-neutral-100 border-b pt-4 pr-6 pb-4 pl-6 items-center justify-between">
+                  <h2 className="text-base font-semibold text-neutral-900 tracking-tight">
+                    Tableau de bord : Gouvernance IA
+                  </h2>
+                  <div className="flex items-center gap-4">
+                    <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-[#57886c] rounded-lg pt-2 pr-4 pb-2 pl-4 shadow-sm">
+                      <Shield className="h-3.5 w-3.5" />
+                      Conforme
+                    </span>
+                  </div>
+                </header>
 
-              {/* Mockup content */}
-              <div className="p-6 space-y-6">
-                {/* KPI Row */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { label: "Systèmes IA", value: "24", change: "+3", color: "text-[#57886c]" },
-                    { label: "Score Conformité", value: "87%", change: "+5%", color: "text-[#57886c]" },
-                    { label: "Incidents actifs", value: "2", change: "-1", color: "text-amber-500" },
-                    { label: "Risque élevé", value: "3", change: "0", color: "text-red-500" },
-                  ].map((kpi) => (
-                    <div
-                      key={kpi.label}
-                      className="bg-neutral-50 rounded-xl p-4 border border-neutral-100"
-                    >
-                      <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-2">
-                        {kpi.label}
-                      </p>
-                      <div className="flex items-baseline gap-2">
-                        <span className={`text-2xl font-bold ${kpi.color}`}>{kpi.value}</span>
-                        <span className="text-xs text-neutral-400">{kpi.change}</span>
+                {/* Dashboard content */}
+                <div className="p-5 sm:p-6 space-y-5">
+                  {/* KPI Row — enhanced with icons and trend arrows */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                    {[
+                      { label: "Systèmes IA", value: "24", change: "+3", up: true, color: "text-[#57886c]", bg: "bg-[#57886c]/8", Icon: Bot },
+                      { label: "Score Conformité", value: "87%", change: "+5%", up: true, color: "text-[#57886c]", bg: "bg-[#57886c]/8", Icon: CheckCircle },
+                      { label: "Incidents actifs", value: "2", change: "-1", up: false, color: "text-amber-500", bg: "bg-amber-50", Icon: AlertCircle },
+                      { label: "Risque élevé", value: "3", change: "stable", up: false, color: "text-red-500", bg: "bg-red-50", Icon: AlertTriangle },
+                    ].map((kpi) => (
+                      <div
+                        key={kpi.label}
+                        className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm"
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
+                            {kpi.label}
+                          </p>
+                          <div className={`w-7 h-7 rounded-lg ${kpi.bg} flex items-center justify-center`}>
+                            <kpi.Icon className={`h-3.5 w-3.5 ${kpi.color}`} />
+                          </div>
+                        </div>
+                        <div className="flex items-baseline gap-2">
+                          <span className={`text-2xl font-bold ${kpi.color}`}>{kpi.value}</span>
+                          <span className={`text-xs font-medium flex items-center gap-0.5 ${kpi.up ? "text-emerald-500" : "text-neutral-400"}`}>
+                            {kpi.up ? <TrendingUp className="h-3 w-3" /> : kpi.change !== "stable" ? <TrendingDown className="h-3 w-3" /> : null}
+                            {kpi.change}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
 
-                {/* Chart area + sidebar */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {/* Chart placeholder */}
-                  <div className="md:col-span-2 bg-neutral-50 rounded-xl p-4 border border-neutral-100 h-48">
+                  {/* Compliance progress bars */}
+                  <div className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm">
                     <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">
-                      Conformité par cadre
+                      Conformité par référentiel
                     </p>
-                    <div className="flex items-end gap-3 h-28 px-2">
+                    <div className="space-y-3">
                       {[
-                        { label: "Loi 25", h: "h-24", color: "bg-[#57886c]" },
-                        { label: "EU AI", h: "h-20", color: "bg-[#57886c]/80" },
-                        { label: "NIST", h: "h-16", color: "bg-[#57886c]/60" },
-                        { label: "ISO", h: "h-22", color: "bg-[#57886c]/70" },
-                        { label: "RGPD", h: "h-18", color: "bg-[#57886c]/50" },
-                      ].map((bar) => (
-                        <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
-                          <div className={`w-full ${bar.h} ${bar.color} rounded-t-lg`} />
-                          <span className="text-[8px] text-neutral-400">{bar.label}</span>
+                        { label: "Loi 25 (Québec)", value: 92 },
+                        { label: "EU AI Act", value: 78 },
+                        { label: "NIST AI RMF", value: 85 },
+                        { label: "ISO 42001", value: 71 },
+                      ].map((item) => (
+                        <div key={item.label} className="flex items-center gap-3">
+                          <span className="text-xs font-medium text-neutral-600 w-28 sm:w-36 truncate">{item.label}</span>
+                          <div className="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-[#57886c] rounded-full"
+                              style={{ width: `${item.value}%` }}
+                            />
+                          </div>
+                          <span className="text-xs font-bold text-neutral-700 w-10 text-right">{item.value}%</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Risk list */}
-                  <div className="bg-neutral-50 rounded-xl p-4 border border-neutral-100 h-48">
-                    <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">
-                      Systèmes à risque
-                    </p>
-                    <div className="space-y-3">
+                  {/* Chart + Activity timeline */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Bar chart */}
+                    <div className="md:col-span-2 bg-white rounded-xl p-4 border border-neutral-100 shadow-sm h-48">
+                      <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">
+                        Conformité par cadre
+                      </p>
+                      <div className="flex items-end gap-3 h-28 px-2">
+                        {[
+                          { label: "Loi 25", h: "h-24", color: "bg-[#57886c]" },
+                          { label: "EU AI", h: "h-20", color: "bg-[#57886c]/80" },
+                          { label: "NIST", h: "h-16", color: "bg-[#57886c]/60" },
+                          { label: "ISO", h: "h-22", color: "bg-[#57886c]/70" },
+                          { label: "RGPD", h: "h-18", color: "bg-[#57886c]/50" },
+                        ].map((bar) => (
+                          <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
+                            <div className={`w-full ${bar.h} ${bar.color} rounded-t-lg transition-all`} />
+                            <span className="text-[8px] text-neutral-400">{bar.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Activity timeline */}
+                    <div className="bg-white rounded-xl p-4 border border-neutral-100 shadow-sm h-48">
+                      <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-4">
+                        Activité récente
+                      </p>
+                      <div className="space-y-3.5">
+                        {[
+                          { text: "Évaluation terminée — Chatbot RH", time: "il y a 2h", dot: "bg-emerald-400" },
+                          { text: "Incident résolu — API Scoring", time: "il y a 5h", dot: "bg-blue-400" },
+                          { text: "Nouveau système — IA Recrutement", time: "il y a 1j", dot: "bg-[#57886c]" },
+                        ].map((item) => (
+                          <div key={item.text} className="flex gap-2.5">
+                            <div className="flex flex-col items-center">
+                              <span className={`w-2 h-2 rounded-full ${item.dot} mt-1 shrink-0`} />
+                              <span className="w-px flex-1 bg-neutral-100" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-[11px] font-medium text-neutral-700 leading-tight truncate">{item.text}</p>
+                              <p className="text-[9px] text-neutral-400 mt-0.5">{item.time}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Floating Phone Mockup ── */}
+              <div className="hidden md:block absolute -bottom-12 -right-6 lg:-right-10 z-10 animate-phone-float">
+                {/* Phone frame — white/silver */}
+                <div className="w-[200px] lg:w-[220px] bg-white border border-neutral-200 rounded-[2.5rem] p-[6px] shadow-xl shadow-black/10">
+                  {/* Notch */}
+                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white rounded-full z-10 border border-neutral-100" />
+                  {/* Screen */}
+                  <div className="w-full bg-neutral-50 rounded-[2.1rem] overflow-hidden flex flex-col" style={{ aspectRatio: "9/19" }}>
+                    {/* App header */}
+                    <div className="flex items-center justify-between px-4 pt-8 pb-2 bg-white border-b border-neutral-100">
+                      <span className="text-[10px] font-bold text-neutral-900 tracking-tight">GiA</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        <span className="text-[8px] text-neutral-400">En ligne</span>
+                      </div>
+                    </div>
+
+                    {/* Mobile dashboard content */}
+                    <div className="flex-1 px-2.5 py-2.5 space-y-2 overflow-hidden">
+                      {/* Mini KPIs */}
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <div className="bg-white rounded-lg p-2 border border-neutral-100">
+                          <p className="text-[6px] font-bold text-neutral-400 uppercase tracking-widest mb-0.5">Conformité</p>
+                          <span className="text-sm font-bold text-[#57886c]">87%</span>
+                        </div>
+                        <div className="bg-white rounded-lg p-2 border border-neutral-100">
+                          <p className="text-[6px] font-bold text-neutral-400 uppercase tracking-widest mb-0.5">Systèmes</p>
+                          <span className="text-sm font-bold text-[#57886c]">24</span>
+                        </div>
+                      </div>
+
+                      {/* Mini donut chart */}
+                      <div className="bg-white rounded-lg p-2.5 border border-neutral-100 flex items-center gap-3">
+                        <svg width="36" height="36" viewBox="0 0 36 36" className="shrink-0">
+                          <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e5e5" strokeWidth="4" />
+                          <circle cx="18" cy="18" r="14" fill="none" stroke="#57886c" strokeWidth="4"
+                            strokeDasharray="76.4 87.96" strokeDashoffset="22" strokeLinecap="round" />
+                          <text x="18" y="20" textAnchor="middle" className="text-[8px] font-bold fill-neutral-700">87%</text>
+                        </svg>
+                        <div>
+                          <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">Score global</p>
+                          <p className="text-[8px] text-neutral-600 mt-0.5">4/5 cadres conformes</p>
+                        </div>
+                      </div>
+
+                      {/* Mini notifications */}
+                      <div className="bg-white rounded-lg p-2 border border-neutral-100 space-y-1.5">
+                        <p className="text-[6px] font-bold text-neutral-400 uppercase tracking-widest">Notifications</p>
+                        {[
+                          { text: "Évaluation terminée", dot: "bg-emerald-400" },
+                          { text: "Incident résolu", dot: "bg-blue-400" },
+                        ].map((n) => (
+                          <div key={n.text} className="flex items-center gap-1.5">
+                            <span className={`w-1.5 h-1.5 rounded-full ${n.dot} shrink-0`} />
+                            <span className="text-[8px] text-neutral-600 truncate">{n.text}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom tab bar */}
+                    <div className="flex items-center justify-around px-2 py-1.5 border-t border-neutral-100 bg-white shrink-0">
                       {[
-                        { name: "Chatbot RH", risk: "Élevé", color: "bg-red-100 text-red-600" },
-                        { name: "Scoring crédit", risk: "Critique", color: "bg-red-200 text-red-700" },
-                        { name: "Tri CV auto", risk: "Modéré", color: "bg-amber-100 text-amber-600" },
-                      ].map((sys) => (
-                        <div key={sys.name} className="flex items-center justify-between">
-                          <span className="text-xs font-medium text-neutral-700">{sys.name}</span>
-                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${sys.color}`}>
-                            {sys.risk}
+                        { label: "Accueil", active: true },
+                        { label: "IA", active: false },
+                        { label: "Risques", active: false },
+                        { label: "Conformité", active: false },
+                        { label: "Plus", active: false },
+                      ].map((tab) => (
+                        <div key={tab.label} className="flex flex-col items-center gap-0.5">
+                          <div className={`w-3 h-3 rounded ${tab.active ? "bg-[#57886c]" : "bg-neutral-200"}`} />
+                          <span className={`text-[5px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
+                            {tab.label}
                           </span>
                         </div>
                       ))}

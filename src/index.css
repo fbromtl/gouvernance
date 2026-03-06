@@ -223,3 +223,12 @@
 .chat-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(87, 136, 108, 0.4);
 }
+
+/* Phone mockup float animation */
+@keyframes phone-float {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50%      { transform: translateY(-8px) rotate(3deg); }
+}
+.animate-phone-float {
+  animation: phone-float 4s ease-in-out infinite;
+}
