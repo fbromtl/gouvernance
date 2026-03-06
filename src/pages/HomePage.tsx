@@ -97,7 +97,7 @@ export function HomePage() {
             </div>
 
             {/* Title */}
-            <h1 className="font-serif text-4xl md:text-6xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-normal">
+            <h1 className="font-serif text-4xl md:text-6xl tracking-tight text-neutral-900 mb-6 max-w-4xl mx-auto leading-[1.1] font-semibold">
               Gérez vos systèmes d&apos;IA.<br />
               En <span className="text-[#57886c]">conformité</span>.<br />
               Sans <span className="text-[#57886c]">complexité</span>.
