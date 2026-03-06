@@ -2,6 +2,15 @@ import "@testing-library/jest-dom/vitest";
 import { server } from "./mocks/server";
 import { cleanup } from "@testing-library/react";
 
+// Polyfill ResizeObserver for jsdom (used by Radix UI components)
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  } as any;
+}
+
 vi.stubEnv("VITE_SUPABASE_URL", "https://test.supabase.co");
 vi.stubEnv("VITE_SUPABASE_ANON_KEY", "test-anon-key");
 

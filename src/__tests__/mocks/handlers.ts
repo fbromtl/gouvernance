@@ -17,6 +17,7 @@ const tables = [
   // Legacy aliases (kept for any remaining references)
   "monitoring_alerts", "monitoring_kpis",
   "data_sources", "committees", "policies", "audit_log",
+  "user_roles",
 ];
 
 export const handlers = tables.flatMap((table) => [
