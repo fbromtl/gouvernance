@@ -16,7 +16,7 @@ vi.mock("@/lib/auth", async () => {
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => key,
-    i18n: { language: "fr", changeLanguage: vi.fn() },
+    i18n: { language: "fr", changeLanguage: vi.fn(), t: (key: string) => key },
   }),
   Trans: ({ children }: any) => children,
   initReactI18next: { type: "3rdParty", init: vi.fn() },
