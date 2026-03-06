@@ -30,10 +30,8 @@
   },
   "sections": {
     "overview": "Overview",
-    "inventory": "AI Inventory",
-    "governance": "Governance & Compliance",
-    "risks": "Risk Management",
-    "operations": "Monitoring & Oversight",
+    "registry": "AI Registry",
+    "compliance": "Compliance & Oversight",
     "organization": "My Organization",
     "settings": "Settings",
     "main": "Main",
@@ -41,10 +39,8 @@
   },
   "rail": {
     "overview": "Home",
-    "inventory": "Inventory",
-    "governance": "Compliance",
-    "risks": "Risks",
-    "operations": "Oversight",
+    "registry": "Registry",
+    "compliance": "Compliance",
     "organization": "Org.",
     "backToSite": "Site",
     "settings": "Profile"

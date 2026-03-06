@@ -30,10 +30,8 @@
   },
   "sections": {
     "overview": "Vue d'ensemble",
-    "inventory": "Inventaire IA",
-    "governance": "Gouvernance & Conformité",
-    "risks": "Gestion des risques",
-    "operations": "Pilotage & Suivi",
+    "registry": "Registre IA",
+    "compliance": "Conformité & Pilotage",
     "organization": "Mon organisation",
     "settings": "Paramètres",
     "main": "Principal",
@@ -41,10 +39,8 @@
   },
   "rail": {
     "overview": "Accueil",
-    "inventory": "Inventaire",
-    "governance": "Conformité",
-    "risks": "Risques",
-    "operations": "Pilotage",
+    "registry": "Registre",
+    "compliance": "Conformité",
     "organization": "Org.",
     "backToSite": "Site",
     "settings": "Profil"
