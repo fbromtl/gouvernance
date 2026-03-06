@@ -9,3 +9,7 @@ export * from "./vendors";
 export * from "./documents";
 export * from "./monitoring";
 export * from "./agents";
+export * from "./bias";
+export * from "./transparency";
+export * from "./lifecycle";
+export * from "./data";

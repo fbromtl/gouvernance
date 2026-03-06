@@ -1,0 +1,57 @@
+import type { Dataset, DataTransfer } from "@/types/database";
+
+export const mockDatasets: Dataset[] = [
+  {
+    id: "ds-001",
+    organization_id: "org-001",
+    name: "Données clients 2024",
+    description: "Ensemble de données clients pour l'entraînement",
+    source: "internal",
+    classification: "confidential",
+    status: "active",
+    record_count: 50000,
+    ai_system_ids: ["ais-001"],
+    data_types: ["personal", "financial"],
+    retention_period: "5 years",
+    legal_basis: "consent",
+    created_by: "user-001",
+    updated_by: "user-001",
+    created_at: "2025-01-01T09:00:00Z",
+    updated_at: "2025-01-01T09:00:00Z",
+  } as Dataset,
+  {
+    id: "ds-002",
+    organization_id: "org-001",
+    name: "Logs de production",
+    description: "Journaux d'exécution du modèle en production",
+    source: "automated",
+    classification: "internal",
+    status: "active",
+    record_count: 1000000,
+    ai_system_ids: ["ais-001", "ais-002"],
+    data_types: ["operational"],
+    retention_period: "1 year",
+    legal_basis: "legitimate_interest",
+    created_by: "user-001",
+    updated_by: "user-001",
+    created_at: "2025-02-01T09:00:00Z",
+    updated_at: "2025-02-01T09:00:00Z",
+  } as Dataset,
+];
+
+export const mockDataTransfers: DataTransfer[] = [
+  {
+    id: "dt-001",
+    organization_id: "org-001",
+    dataset_id: "ds-001",
+    destination_country: "US",
+    destination_entity: "OpenAI",
+    transfer_purpose: "Model training",
+    legal_mechanism: "standard_contractual_clauses",
+    status: "approved",
+    created_by: "user-001",
+    updated_by: "user-001",
+    created_at: "2025-03-01T09:00:00Z",
+    updated_at: "2025-03-01T09:00:00Z",
+  } as DataTransfer,
+];
