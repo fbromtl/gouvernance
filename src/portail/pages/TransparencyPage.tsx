@@ -293,7 +293,7 @@ function RegistryTab({
       }
       setDialogOpen(false);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
@@ -304,7 +304,7 @@ function RegistryTab({
       toast.success(t("messages.registryDeleted"));
       setDeleting(null);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
@@ -558,7 +558,7 @@ function ContestationsTab({
       }
       setDialogOpen(false);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 

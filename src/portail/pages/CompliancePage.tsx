@@ -241,7 +241,7 @@ function DashboardTab({ isPreview }: { isPreview: boolean }) {
                     {t(`frameworks.${fw.framework}`)}
                   </span>
                   {!hasData && (
-                    <span className="text-[10px] text-muted-foreground">Non initialisé</span>
+                    <span className="text-[10px] text-muted-foreground">{t("dashboard.notInitialized", { defaultValue: "Non initialisé" })}</span>
                   )}
                 </div>
               );

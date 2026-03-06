@@ -85,7 +85,7 @@ export default function RiskAssessmentDetailPage() {
           : t("toast.updated"),
       );
     } catch {
-      toast.error("Erreur lors de la mise à jour du statut.");
+      toast.error(t("toast.statusError", { defaultValue: "Erreur lors de la mise à jour du statut." }));
     }
   }
 

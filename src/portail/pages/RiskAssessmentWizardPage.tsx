@@ -214,7 +214,7 @@ export default function RiskAssessmentWizardPage() {
       toast.success(t("toast.created"));
       navigate(`/risks/${result.id}`);
     } catch {
-      toast.error("Error");
+      toast.error(t("toast.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
@@ -249,7 +249,7 @@ export default function RiskAssessmentWizardPage() {
       toast.success(t("toast.created"));
       navigate(`/risks/${result.id}`);
     } catch {
-      toast.error("Error");
+      toast.error(t("toast.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 

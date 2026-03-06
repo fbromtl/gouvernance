@@ -152,7 +152,7 @@ export default function IncidentDetailPage() {
       await updateIncident.mutateAsync({ id, status: nextStatus });
       toast.success(t("toast.statusChanged"));
     } catch {
-      toast.error("Erreur lors de la mise a jour du statut.");
+      toast.error(t("toast.statusError"));
     }
   };
 
@@ -172,7 +172,7 @@ export default function IncidentDetailPage() {
   if (!incident) {
     return (
       <div className="text-center py-16 text-muted-foreground">
-        Incident introuvable.
+        {t("detail.notFound")}
       </div>
     );
   }
@@ -377,11 +377,18 @@ export default function IncidentDetailPage() {
             <CardContent className="space-y-4">
               <DetailField label={t("detail.correctiveActions")}>
                 {incident.corrective_actions &&
-                typeof incident.corrective_actions === "object" &&
                 Array.isArray(incident.corrective_actions) &&
-                (incident.corrective_actions as unknown[]).length > 0
-                  ? JSON.stringify(incident.corrective_actions, null, 2)
-                  : t("detail.notSpecified")}
+                (incident.corrective_actions as unknown[]).length > 0 ? (
+                  <ul className="list-disc list-inside space-y-1">
+                    {(incident.corrective_actions as unknown[]).map((action, i) => (
+                      <li key={i}>
+                        {typeof action === "string" ? action : JSON.stringify(action)}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  t("detail.notSpecified")
+                )}
               </DetailField>
 
               <DetailField label={t("detail.resolutionDate")}>

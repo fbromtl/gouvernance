@@ -164,7 +164,7 @@ export default function IncidentReportPage() {
       toast.success(t("toast.created"));
       navigate(`/incidents/${result.id}`);
     } catch {
-      toast.error("Erreur lors de la creation de l'incident.");
+      toast.error(t("toast.createError"));
     }
   };
 

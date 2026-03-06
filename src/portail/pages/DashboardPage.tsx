@@ -407,7 +407,7 @@ export default function DashboardPage() {
             const Icon = mod.icon;
             return (
               <Link key={mod.key} to={mod.path}>
-                <PortalCard className="h-full cursor-pointer">
+                <PortalCard className="h-full cursor-pointer group">
                   <div className="flex items-center justify-between mb-3">
                     <div className={`h-10 w-10 rounded-xl ${mod.bgColor} flex items-center justify-center`}>
                       <Icon className={`h-5 w-5 ${mod.color}`} />

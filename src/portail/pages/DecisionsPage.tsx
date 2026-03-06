@@ -578,8 +578,8 @@ export default function DecisionsPage() {
                 <div className="pt-4 border-t text-xs text-muted-foreground space-y-1">
                   <p>{t("form.requester")}: {getMemberName(viewingDecision.requester_id)}</p>
                   {viewingDecision.effective_date && <p>{t("form.effectiveDate")}: {viewingDecision.effective_date}</p>}
-                  <p>Créé le {new Date(viewingDecision.created_at).toLocaleDateString("fr-CA")}</p>
-                  {viewingDecision.approved_at && <p>Approuvé le {new Date(viewingDecision.approved_at).toLocaleDateString("fr-CA")}</p>}
+                  <p>{t("detail.createdAt", { defaultValue: "Créé le" })} {new Date(viewingDecision.created_at).toLocaleDateString("fr-CA")}</p>
+                  {viewingDecision.approved_at && <p>{t("detail.approvedAt", { defaultValue: "Approuvé le" })} {new Date(viewingDecision.approved_at).toLocaleDateString("fr-CA")}</p>}
                 </div>
               </div>
             </>

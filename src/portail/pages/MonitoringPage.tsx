@@ -268,7 +268,7 @@ export default function MonitoringPage() {
       }
       setMetricDialogOpen(false);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
@@ -279,7 +279,7 @@ export default function MonitoringPage() {
       toast.success(t("messages.metricDeleted"));
       setDeleting(null);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
@@ -304,7 +304,7 @@ export default function MonitoringPage() {
       toast.success(t("messages.dataPointAdded"));
       setDataPointDialogOpen(false);
     } catch {
-      toast.error("Error");
+      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
     }
   }
 
