@@ -91,7 +91,7 @@ export function HomePage() {
             {/* ── Hero Split: Text + Phone Mockup ── */}
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               {/* Left column: text content */}
-              <div className="flex-1 text-center lg:text-left">
+              <div className="flex-1 text-center">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3 py-1 rounded-full mb-8">
                   <span className="flex h-2 w-2 rounded-full bg-[#57886c] animate-pulse" />
@@ -108,13 +108,13 @@ export function HomePage() {
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-lg md:text-xl text-neutral-600 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-neutral-600 mb-10 leading-relaxed max-w-2xl mx-auto">
                   La plateforme tout-en-un pour évaluer, conformer et piloter vos systèmes d&apos;IA.
                   Rejoignez plus de 150 experts en gouvernance de l&apos;intelligence artificielle.
                 </p>
 
                 {/* CTA row */}
-                <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center lg:items-start justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-center">
                   <Link
                     to="/inscription"
                     className="inline-flex items-center gap-2 font-medium text-white bg-[#57886c] rounded-full py-4 px-8 transition-all duration-300 hover:bg-[#466060]"
@@ -132,14 +132,14 @@ export function HomePage() {
                 </div>
 
                 {/* Reassurance line */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 mb-6 text-sm text-neutral-500">
+                <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm text-neutral-500">
                   <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Gratuit</span>
                   <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Sans carte de crédit</span>
                   <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Diagnostic en 10 min</span>
                 </div>
 
                 {/* Quebec badge */}
-                <div className="flex justify-center lg:justify-start mb-10 lg:mb-6">
+                <div className="flex justify-center mb-10 lg:mb-6">
                   <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3.5 py-1.5 rounded-full">
                     <span className="text-[#57886c] text-sm leading-none">⚜</span>
                     <span className="text-[11px] font-medium text-neutral-500">
@@ -149,7 +149,7 @@ export function HomePage() {
                 </div>
 
                 {/* Social Proof Avatars */}
-                <div className="flex items-center justify-center lg:justify-start gap-3 mb-8 lg:mb-0">
+                <div className="flex items-center justify-center gap-3 mb-8 lg:mb-0">
                   <div className="flex -space-x-2.5">
                     {[
                       "/images-gouvernance-ai/businesswoman-meeting.jpg",
@@ -173,7 +173,7 @@ export function HomePage() {
               </div>
 
               {/* Right column: Floating Phone Mockup */}
-              <div className="hidden md:flex items-center justify-center lg:justify-end flex-shrink-0">
+              <div className="hidden md:flex items-center justify-end flex-shrink-0 lg:-mr-8">
                 <div className="animate-phone-float">
                   {/* Phone frame */}
                   <div className="relative w-[280px] h-[580px] bg-[#1a1a1a] rounded-[3rem] p-[10px] shadow-2xl shadow-black/20">
