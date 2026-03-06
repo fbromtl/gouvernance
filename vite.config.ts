@@ -19,7 +19,8 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react-dom') || id.includes('react-router-dom'))
+            // react core + react-dom + react-router must be in the same chunk
+            if (/[/\\]react[/\\]/.test(id) || id.includes('react-dom') || id.includes('react-router') || id.includes('scheduler'))
               return 'vendor-react';
             if (id.includes('recharts') || id.includes('d3-'))
               return 'vendor-charts';
