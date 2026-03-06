@@ -31,9 +31,9 @@ export function usePlanFeatures() {
     staleTime: 5 * 60 * 1000,
   });
 
-  const hasFeature = (featureKey: string): boolean => {
-    if (!query.data) return plan === 'expert';
-    return query.data[featureKey] ?? false;
+  // TODO: re-enable paid feature gating later
+  const hasFeature = (_featureKey: string): boolean => {
+    return true;
   };
 
   return { ...query, plan, hasFeature };
