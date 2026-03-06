@@ -15,3 +15,15 @@ createRoot(document.getElementById('root')!).render(
     </QueryClientProvider>
   </StrictMode>,
 )
+
+// PWA service worker registration
+import { registerSW } from 'virtual:pwa-register'
+
+registerSW({
+  onNeedRefresh() {
+    // Auto-update silently
+  },
+  onOfflineReady() {
+    console.log('App ready to work offline')
+  },
+})
