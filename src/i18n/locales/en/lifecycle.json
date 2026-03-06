@@ -2,12 +2,24 @@
   "pageTitle": "Lifecycle & Changes",
   "pageDescription": "Track lifecycle events and changes to your AI systems.",
   "create": "New event",
+  "createTitle": "New event",
+  "createDescription": "Record a change or lifecycle transition.",
   "edit": "Edit",
+  "editTitle": "Edit event",
+  "editDescription": "Update this event's information.",
   "delete": "Delete",
+  "deleteTitle": "Delete this event?",
   "view": "View",
+  "save": "Save",
+  "cancel": "Cancel",
   "search": "Search an event...",
   "noEvents": "No events recorded",
   "noEventsDescription": "Start by recording a change on one of your AI systems.",
+  "errorLoading": "Error loading data.",
+  "emptyFiltered": {
+    "title": "No results",
+    "description": "Try adjusting your search filters."
+  },
   "eventTypes": {
     "model_update": "Model update",
     "data_change": "Data change",
@@ -70,11 +82,15 @@
     "date": "Date",
     "actions": "Actions"
   },
+  "detail": {
+    "versions": "Versions"
+  },
   "messages": {
     "created": "Event created",
     "updated": "Event updated",
     "deleted": "Event deleted",
-    "deleteConfirm": "Are you sure you want to delete this event?"
+    "error": "An error occurred",
+    "deleteConfirm": "Are you sure you want to delete this event? This action is irreversible."
   },
   "help": {
     "title": "Understanding: Lifecycle",

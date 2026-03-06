@@ -7,11 +7,15 @@ import {
   Trash2,
   Search,
   Eye,
+  AlertTriangle,
   CheckCircle,
   XCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 
+import { PageHeader } from "@/components/shared/PageHeader";
+import { EmptyState } from "@/components/shared/EmptyState";
+import { StatusBadge } from "@/components/shared/StatusBadge";
 import { usePermissions } from "@/hooks/usePermissions";
 import { useAiSystems } from "@/hooks/useAiSystems";
 import {
@@ -21,7 +25,6 @@ import {
   useDeleteLifecycleEvent,
 } from "@/hooks/useLifecycleEvents";
 import type { LifecycleEvent } from "@/types/database";
-import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,6 +32,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -89,27 +94,6 @@ const COMPONENTS = [
   "api",
   "ui",
 ] as const;
-
-/* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
-/* ------------------------------------------------------------------ */
-
-function impactColor(impact: string) {
-  switch (impact) {
-    case "critical":
-      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-    case "high":
-      return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400";
-    case "medium":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-    case "low":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    case "none":
-      return "bg-muted text-muted-foreground";
-    default:
-      return "bg-muted text-muted-foreground";
-  }
-}
 
 /* ------------------------------------------------------------------ */
 /*  EMPTY FORM                                                         */
@@ -228,7 +212,7 @@ export default function LifecyclePage() {
       }
       setDialogOpen(false);
     } catch {
-      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
+      toast.error(t("messages.error"));
     }
   }
 
@@ -239,12 +223,12 @@ export default function LifecyclePage() {
       toast.success(t("messages.deleted"));
       setDeleting(null);
     } catch {
-      toast.error(t("messages.error", { defaultValue: "Une erreur est survenue" }));
+      toast.error(t("messages.error"));
     }
   }
 
   function getSystemName(id: string) {
-    return systems.find((s) => s.id === id)?.name ?? "—";
+    return systems.find((s) => s.id === id)?.name ?? "---";
   }
 
   function toggleComponent(comp: string) {
@@ -256,53 +240,73 @@ export default function LifecyclePage() {
     }));
   }
 
-  /* --- render --- */
-  if (isError) {
+  function formatDate(dateStr: string | null | undefined) {
+    if (!dateStr) return "---";
+    return new Date(dateStr).toLocaleDateString("fr-CA");
+  }
+
+  /* --- Loading skeleton --- */
+  if (isLoading) {
     return (
       <div className="space-y-6">
-        <Card className="p-8 text-center">
-          <RefreshCw className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-          </p>
-        </Card>
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-8 w-64" />
+          <Skeleton className="h-9 w-40" />
+        </div>
+        <div className="flex gap-3">
+          <Skeleton className="h-9 flex-1 max-w-sm" />
+          <Skeleton className="h-9 w-[200px]" />
+        </div>
+        <div className="space-y-2">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <Skeleton key={i} className="h-12 w-full" />
+          ))}
+        </div>
       </div>
     );
   }
 
+  /* --- Error state --- */
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <AlertTriangle className="size-10 text-destructive mb-4" />
+        <p className="text-muted-foreground">{t("errorLoading")}</p>
+      </div>
+    );
+  }
+
+  /* --- Empty state logic --- */
+  const isEmpty = events.length === 0;
+  const hasActiveFilters = search || filterType !== "__all__";
+
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <RefreshCw className="h-6 w-6 text-brand-forest" />
-              {t("pageTitle")}
-            </h1>
-            <SectionHelpButton ns="lifecycle" />
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">
-            {t("pageDescription")}
-          </p>
-        </div>
-        {!readOnly && (
-          <Button onClick={openCreate}>
-            <Plus className="h-4 w-4 mr-2" />
-            {t("create")}
-          </Button>
-        )}
-      </div>
+      <PageHeader
+        title={t("pageTitle")}
+        description={t("pageDescription")}
+        icon={RefreshCw}
+        helpNs="lifecycle"
+        actions={
+          !readOnly ? (
+            <Button onClick={openCreate}>
+              <Plus className="mr-2 size-4" />
+              {t("create")}
+            </Button>
+          ) : undefined
+        }
+      />
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder={t("search")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10"
+            className="pl-9"
           />
         </div>
         <Select value={filterType} onValueChange={setFilterType}>
@@ -320,23 +324,19 @@ export default function LifecyclePage() {
         </Select>
       </div>
 
-      {/* Table */}
-      {isLoading ? (
-        <Card className="p-8 text-center text-muted-foreground">...</Card>
-      ) : events.length === 0 ? (
-        <Card className="p-12 text-center">
-          <RefreshCw className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
-          <h3 className="font-semibold text-lg">{t("noEvents")}</h3>
-          <p className="text-sm text-muted-foreground mt-1">
-            {t("noEventsDescription")}
-          </p>
-          {!readOnly && (
-            <Button className="mt-4" onClick={openCreate}>
-              <Plus className="h-4 w-4 mr-2" />
-              {t("create")}
-            </Button>
-          )}
-        </Card>
+      {/* Table or Empty State */}
+      {isEmpty ? (
+        <EmptyState
+          icon={RefreshCw}
+          title={hasActiveFilters ? t("emptyFiltered.title") : t("noEvents")}
+          description={
+            hasActiveFilters
+              ? t("emptyFiltered.description")
+              : t("noEventsDescription")
+          }
+          actionLabel={hasActiveFilters || readOnly ? undefined : t("create")}
+          onAction={hasActiveFilters || readOnly ? undefined : openCreate}
+        />
       ) : (
         <Card>
           <Table>
@@ -368,21 +368,20 @@ export default function LifecyclePage() {
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge className={impactColor(evt.impact)}>
-                      {t(`impacts.${evt.impact}`)}
-                    </Badge>
+                    <StatusBadge
+                      status={evt.impact}
+                      label={t(`impacts.${evt.impact}`)}
+                    />
                   </TableCell>
                   <TableCell>
                     {evt.is_substantial ? (
-                      <CheckCircle className="h-4 w-4 text-orange-500" />
+                      <CheckCircle className="size-4 text-orange-500" />
                     ) : (
-                      <XCircle className="h-4 w-4 text-muted-foreground/40" />
+                      <XCircle className="size-4 text-muted-foreground/40" />
                     )}
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
-                    {evt.change_date
-                      ? new Date(evt.change_date).toLocaleDateString()
-                      : "—"}
+                    {formatDate(evt.change_date)}
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex items-center justify-end gap-1">
@@ -392,7 +391,7 @@ export default function LifecyclePage() {
                         onClick={() => setViewing(evt)}
                         title={t("view")}
                       >
-                        <Eye className="h-4 w-4" />
+                        <Eye className="size-4" />
                       </Button>
                       {!readOnly && (
                         <>
@@ -402,7 +401,7 @@ export default function LifecyclePage() {
                             onClick={() => openEdit(evt)}
                             title={t("edit")}
                           >
-                            <Pencil className="h-4 w-4" />
+                            <Pencil className="size-4" />
                           </Button>
                           <Button
                             variant="ghost"
@@ -410,7 +409,7 @@ export default function LifecyclePage() {
                             onClick={() => setDeleting(evt)}
                             title={t("delete")}
                           >
-                            <Trash2 className="h-4 w-4 text-destructive" />
+                            <Trash2 className="size-4 text-destructive" />
                           </Button>
                         </>
                       )}
@@ -427,12 +426,17 @@ export default function LifecyclePage() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>{editing ? t("edit") : t("create")}</DialogTitle>
+            <DialogTitle>
+              {editing ? t("editTitle") : t("createTitle")}
+            </DialogTitle>
+            <DialogDescription>
+              {editing ? t("editDescription") : t("createDescription")}
+            </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             {/* AI System */}
             <div className="space-y-2">
-              <Label>{t("form.aiSystem")}</Label>
+              <Label>{t("form.aiSystem")} *</Label>
               <Select
                 value={form.ai_system_id}
                 onValueChange={(v) => setForm({ ...form, ai_system_id: v })}
@@ -453,7 +457,7 @@ export default function LifecyclePage() {
             {/* Event Type + Impact */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>{t("form.eventType")}</Label>
+                <Label>{t("form.eventType")} *</Label>
                 <Select
                   value={form.event_type}
                   onValueChange={(v) => setForm({ ...form, event_type: v })}
@@ -492,7 +496,7 @@ export default function LifecyclePage() {
 
             {/* Title */}
             <div className="space-y-2">
-              <Label>{t("form.title")}</Label>
+              <Label>{t("form.title")} *</Label>
               <Input
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -570,29 +574,25 @@ export default function LifecyclePage() {
             {/* Toggles */}
             <div className="flex items-center gap-6">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={form.is_substantial}
-                  onChange={(e) =>
-                    setForm({ ...form, is_substantial: e.target.checked })
+                  onCheckedChange={(checked) =>
+                    setForm({ ...form, is_substantial: !!checked })
                   }
-                  className="rounded border-gray-300"
                 />
                 <span className="text-sm font-medium">
                   {t("form.isSubstantial")}
                 </span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={form.risk_reassessment_required}
-                  onChange={(e) =>
+                  onCheckedChange={(checked) =>
                     setForm({
                       ...form,
-                      risk_reassessment_required: e.target.checked,
+                      risk_reassessment_required: !!checked,
                     })
                   }
-                  className="rounded border-gray-300"
                 />
                 <span className="text-sm font-medium">
                   {t("form.riskReassessment")}
@@ -603,7 +603,7 @@ export default function LifecyclePage() {
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>
-              {t("cancel", { ns: "common" })}
+              {t("cancel")}
             </Button>
             <Button
               onClick={handleSave}
@@ -611,7 +611,7 @@ export default function LifecyclePage() {
                 createMutation.isPending || updateMutation.isPending
               }
             >
-              {editing ? t("edit") : t("create")}
+              {editing ? t("save") : t("create")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -619,7 +619,7 @@ export default function LifecyclePage() {
 
       {/* Detail Sheet */}
       <Sheet open={!!viewing} onOpenChange={() => setViewing(null)}>
-        <SheetContent className="w-[500px] sm:max-w-[500px] overflow-y-auto">
+        <SheetContent className="w-full sm:max-w-lg overflow-y-auto">
           {viewing && (
             <>
               <SheetHeader>
@@ -628,29 +628,25 @@ export default function LifecyclePage() {
               <div className="mt-6 space-y-6">
                 {/* General */}
                 <section>
-                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-3">
                     {t("form.aiSystem")}
                   </h3>
-                  <dl className="space-y-2 text-sm">
-                    <div>
-                      <dt className="font-medium">{t("table.system")}</dt>
-                      <dd>{getSystemName(viewing.ai_system_id)}</dd>
+                  <dl className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <dt className="text-muted-foreground">{t("table.system")}</dt>
+                      <dd className="font-medium">{getSystemName(viewing.ai_system_id)}</dd>
                     </div>
-                    <div>
-                      <dt className="font-medium">{t("table.eventType")}</dt>
+                    <div className="flex justify-between items-center">
+                      <dt className="text-muted-foreground">{t("table.eventType")}</dt>
                       <dd>
                         <Badge variant="outline">
                           {t(`eventTypes.${viewing.event_type}`)}
                         </Badge>
                       </dd>
                     </div>
-                    <div>
-                      <dt className="font-medium">{t("table.date")}</dt>
-                      <dd>
-                        {viewing.change_date
-                          ? new Date(viewing.change_date).toLocaleString()
-                          : "—"}
-                      </dd>
+                    <div className="flex justify-between">
+                      <dt className="text-muted-foreground">{t("table.date")}</dt>
+                      <dd>{formatDate(viewing.change_date)}</dd>
                     </div>
                   </dl>
                 </section>
@@ -680,7 +676,7 @@ export default function LifecyclePage() {
                         </Badge>
                       ))
                     ) : (
-                      <span className="text-muted-foreground text-sm">—</span>
+                      <span className="text-muted-foreground text-sm">---</span>
                     )}
                   </div>
                 </section>
@@ -688,24 +684,24 @@ export default function LifecyclePage() {
                 {/* Versions */}
                 {(viewing.previous_version || viewing.new_version) && (
                   <section>
-                    <h3 className="font-semibold text-sm text-muted-foreground mb-2">
-                      Versions
+                    <h3 className="font-semibold text-sm text-muted-foreground mb-3">
+                      {t("detail.versions")}
                     </h3>
-                    <dl className="space-y-2 text-sm">
+                    <dl className="space-y-3 text-sm">
                       {viewing.previous_version && (
-                        <div>
-                          <dt className="font-medium">
+                        <div className="flex justify-between">
+                          <dt className="text-muted-foreground">
                             {t("form.previousVersion")}
                           </dt>
-                          <dd>{viewing.previous_version}</dd>
+                          <dd className="font-medium">{viewing.previous_version}</dd>
                         </div>
                       )}
                       {viewing.new_version && (
-                        <div>
-                          <dt className="font-medium">
+                        <div className="flex justify-between">
+                          <dt className="text-muted-foreground">
                             {t("form.newVersion")}
                           </dt>
-                          <dd>{viewing.new_version}</dd>
+                          <dd className="font-medium">{viewing.new_version}</dd>
                         </div>
                       )}
                     </dl>
@@ -714,43 +710,42 @@ export default function LifecyclePage() {
 
                 {/* Impact & Flags */}
                 <section>
-                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-3">
                     {t("form.impact")}
                   </h3>
-                  <dl className="space-y-2 text-sm">
-                    <div>
-                      <dt className="font-medium">{t("table.impact")}</dt>
+                  <dl className="space-y-3 text-sm">
+                    <div className="flex justify-between items-center">
+                      <dt className="text-muted-foreground">{t("table.impact")}</dt>
                       <dd>
-                        <Badge className={impactColor(viewing.impact)}>
-                          {t(`impacts.${viewing.impact}`)}
-                        </Badge>
+                        <StatusBadge
+                          status={viewing.impact}
+                          label={t(`impacts.${viewing.impact}`)}
+                        />
                       </dd>
                     </div>
-                    <div className="flex gap-4">
-                      <div>
-                        <dt className="font-medium">
-                          {t("form.isSubstantial")}
-                        </dt>
-                        <dd>
-                          {viewing.is_substantial ? (
-                            <CheckCircle className="h-4 w-4 text-orange-500" />
-                          ) : (
-                            <XCircle className="h-4 w-4 text-muted-foreground/40" />
-                          )}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt className="font-medium">
-                          {t("form.riskReassessment")}
-                        </dt>
-                        <dd>
-                          {viewing.risk_reassessment_required ? (
-                            <CheckCircle className="h-4 w-4 text-red-500" />
-                          ) : (
-                            <XCircle className="h-4 w-4 text-muted-foreground/40" />
-                          )}
-                        </dd>
-                      </div>
+                    <div className="flex justify-between items-center">
+                      <dt className="text-muted-foreground">
+                        {t("form.isSubstantial")}
+                      </dt>
+                      <dd>
+                        {viewing.is_substantial ? (
+                          <CheckCircle className="size-4 text-orange-500" />
+                        ) : (
+                          <XCircle className="size-4 text-muted-foreground/40" />
+                        )}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <dt className="text-muted-foreground">
+                        {t("form.riskReassessment")}
+                      </dt>
+                      <dd>
+                        {viewing.risk_reassessment_required ? (
+                          <CheckCircle className="size-4 text-red-500" />
+                        ) : (
+                          <XCircle className="size-4 text-muted-foreground/40" />
+                        )}
+                      </dd>
                     </div>
                   </dl>
                 </section>
@@ -764,16 +759,20 @@ export default function LifecyclePage() {
       <Dialog open={!!deleting} onOpenChange={() => setDeleting(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t("delete")}</DialogTitle>
+            <DialogTitle>{t("deleteTitle")}</DialogTitle>
             <DialogDescription>
               {t("messages.deleteConfirm")}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDeleting(null)}>
-              {t("cancel", { ns: "common" })}
+              {t("cancel")}
             </Button>
-            <Button variant="destructive" onClick={handleDelete}>
+            <Button
+              variant="destructive"
+              onClick={handleDelete}
+              disabled={deleteMutation.isPending}
+            >
               {t("delete")}
             </Button>
           </DialogFooter>

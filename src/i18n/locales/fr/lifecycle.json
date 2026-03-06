@@ -2,12 +2,24 @@
   "pageTitle": "Cycle de vie et changements",
   "pageDescription": "Tracez les événements du cycle de vie et les changements de vos systèmes IA.",
   "create": "Nouvel événement",
+  "createTitle": "Nouvel événement",
+  "createDescription": "Enregistrez un changement ou une transition de cycle de vie.",
   "edit": "Modifier",
+  "editTitle": "Modifier l'événement",
+  "editDescription": "Mettez à jour les informations de cet événement.",
   "delete": "Supprimer",
+  "deleteTitle": "Supprimer cet événement ?",
   "view": "Consulter",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
   "search": "Rechercher un événement...",
   "noEvents": "Aucun événement enregistré",
   "noEventsDescription": "Commencez par enregistrer un changement sur un de vos systèmes IA.",
+  "errorLoading": "Erreur lors du chargement des données.",
+  "emptyFiltered": {
+    "title": "Aucun résultat",
+    "description": "Essayez de modifier vos filtres de recherche."
+  },
   "eventTypes": {
     "model_update": "Mise à jour du modèle",
     "data_change": "Changement de données",
@@ -70,11 +82,15 @@
     "date": "Date",
     "actions": "Actions"
   },
+  "detail": {
+    "versions": "Versions"
+  },
   "messages": {
     "created": "Événement créé",
     "updated": "Événement mis à jour",
     "deleted": "Événement supprimé",
-    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet événement ?"
+    "error": "Une erreur est survenue",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet événement ? Cette action est irréversible."
   },
   "help": {
     "title": "Comprendre : Cycle de vie",
