@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 interface EmptyStateProps {
   icon: LucideIcon;
   title: string;
-  description: string;
+  description?: string;
   actionLabel?: string;
   onAction?: () => void;
 }
@@ -16,7 +16,7 @@ export function EmptyState({ icon: Icon, title, description, actionLabel, onActi
         <Icon className="h-7 w-7 text-muted-foreground/60" />
       </div>
       <h3 className="text-lg font-semibold mb-1.5 text-foreground">{title}</h3>
-      <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-6">{description}</p>
+      {description && <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-6">{description}</p>}
       {actionLabel && onAction && (
         <Button onClick={onAction} size="sm" className="shadow-sm">
           {actionLabel}

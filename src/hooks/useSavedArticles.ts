@@ -32,7 +32,8 @@ export function useSavedArticles() {
     queryKey: ["saved-articles", orgId],
     queryFn: async () => {
       if (!orgId) return [];
-      const { data, error } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data, error } = await (supabase as any)
         .from("saved_articles")
         .select("*")
         .order("created_at", { ascending: false });
@@ -64,7 +65,8 @@ export function useSaveArticle() {
       if (!user || !profile?.organization_id)
         throw new Error("Not authenticated");
 
-      const { data, error } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data, error } = await (supabase as any)
         .from("saved_articles")
         .upsert(
           {
@@ -96,7 +98,8 @@ export function useUpdateSavedArticle() {
       id,
       ...input
     }: Partial<SavedArticle> & { id: string }) => {
-      const { data, error } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data, error } = await (supabase as any)
         .from("saved_articles")
         .update({ ...input, updated_at: new Date().toISOString() })
         .eq("id", id)
@@ -118,7 +121,8 @@ export function useDeleteSavedArticle() {
 
   return useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error } = await (supabase as any)
         .from("saved_articles")
         .delete()
         .eq("id", id);
