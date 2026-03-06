@@ -67,5 +67,8 @@
   "placeholder": {
     "title": "Under development",
     "description": "This module will be available soon."
+  },
+  "mobileNav": {
+    "subpagesTitle": "Navigate"
   }
 }
