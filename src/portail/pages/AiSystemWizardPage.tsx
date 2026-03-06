@@ -36,6 +36,7 @@ import {
   useUpdateAiSystem,
   calculateRiskScoreClient,
 } from "@/hooks/useAiSystems";
+import { useOrgMembers } from "@/hooks/useOrgMembers";
 import type { AiSystemInsert } from "@/types/database";
 
 /* ------------------------------------------------------------------ */
@@ -297,6 +298,7 @@ export default function AiSystemWizardPage() {
   // ----- Mutations -----
   const createMutation = useCreateAiSystem();
   const updateMutation = useUpdateAiSystem();
+  const { data: orgMembers = [] } = useOrgMembers();
 
   // ----- Form -----
   const form = useForm<FormValues>({
@@ -430,11 +432,11 @@ export default function AiSystemWizardPage() {
         vendor_name: values.vendor_name || null,
         model_version: values.model_version || null,
         data_locations: values.data_locations,
-        business_owner_id: values.business_owner_id || null,
-        tech_owner_id: values.tech_owner_id || null,
-        privacy_owner_id: values.privacy_owner_id || null,
-        risk_owner_id: values.risk_owner_id || null,
-        approver_id: values.approver_id || null,
+        business_owner_id: values.business_owner_id && values.business_owner_id !== "__none__" ? values.business_owner_id : null,
+        tech_owner_id: values.tech_owner_id && values.tech_owner_id !== "__none__" ? values.tech_owner_id : null,
+        privacy_owner_id: values.privacy_owner_id && values.privacy_owner_id !== "__none__" ? values.privacy_owner_id : null,
+        risk_owner_id: values.risk_owner_id && values.risk_owner_id !== "__none__" ? values.risk_owner_id : null,
+        approver_id: values.approver_id && values.approver_id !== "__none__" ? values.approver_id : null,
         lifecycle_status: values.lifecycle_status,
         production_date: values.production_date || null,
         next_review_date: values.next_review_date || null,
@@ -502,6 +504,9 @@ export default function AiSystemWizardPage() {
               isEdit ? t("wizard.submitUpdate") : t("wizard.submitCreate")
             }
             draftLabel={t("wizard.saveDraft")}
+            previousLabel={t("wizard.previous")}
+            nextLabel={t("wizard.next")}
+            submittingLabel={t("wizard.submitting", { defaultValue: "Envoi en cours\u2026" })}
           >
             {/* ---- Step 1: Identification ---- */}
             {step === 0 && (
@@ -797,60 +802,45 @@ export default function AiSystemWizardPage() {
             {/* ---- Step 4: Owners ---- */}
             {step === 3 && (
               <div className="space-y-5">
-                <div>
-                  <Label htmlFor="business_owner_id">
-                    {t("fields.businessOwner")}
-                  </Label>
-                  <Input
-                    id="business_owner_id"
-                    {...register("business_owner_id")}
-                    placeholder={t("fields.ownerPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="tech_owner_id">
-                    {t("fields.techOwner")}
-                  </Label>
-                  <Input
-                    id="tech_owner_id"
-                    {...register("tech_owner_id")}
-                    placeholder={t("fields.ownerPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="privacy_owner_id">
-                    {t("fields.privacyOwner")}
-                  </Label>
-                  <Input
-                    id="privacy_owner_id"
-                    {...register("privacy_owner_id")}
-                    placeholder={t("fields.ownerPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="risk_owner_id">
-                    {t("fields.riskOwner")}
-                  </Label>
-                  <Input
-                    id="risk_owner_id"
-                    {...register("risk_owner_id")}
-                    placeholder={t("fields.ownerPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="approver_id">
-                    {t("fields.approver")}
-                  </Label>
-                  <Input
-                    id="approver_id"
-                    {...register("approver_id")}
-                    placeholder={t("fields.ownerPlaceholder")}
-                  />
-                </div>
+                {(
+                  [
+                    ["business_owner_id", "businessOwner"],
+                    ["tech_owner_id", "techOwner"],
+                    ["privacy_owner_id", "privacyOwner"],
+                    ["risk_owner_id", "riskOwner"],
+                    ["approver_id", "approver"],
+                  ] as const
+                ).map(([fieldName, labelKey]) => (
+                  <div key={fieldName}>
+                    <Label>{t(`fields.${labelKey}`)}</Label>
+                    <Controller
+                      name={fieldName as keyof FormValues}
+                      control={control}
+                      render={({ field }) => (
+                        <Select
+                          value={field.value as string}
+                          onValueChange={field.onChange}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue
+                              placeholder={t("fields.ownerSelectPlaceholder")}
+                            />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="__none__">
+                              {t("fields.ownerNone")}
+                            </SelectItem>
+                            {orgMembers.map((m) => (
+                              <SelectItem key={m.user_id} value={m.user_id}>
+                                {m.full_name || m.email}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                  </div>
+                ))}
               </div>
             )}
 

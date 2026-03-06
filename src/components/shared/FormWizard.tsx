@@ -21,6 +21,9 @@ interface FormWizardProps {
   canGoNext?: boolean;
   submitLabel?: string;
   draftLabel?: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  submittingLabel?: string;
 }
 
 export function FormWizard({
@@ -34,6 +37,9 @@ export function FormWizard({
   canGoNext = true,
   submitLabel = "Soumettre",
   draftLabel = "Sauvegarder brouillon",
+  previousLabel = "Pr\u00e9c\u00e9dent",
+  nextLabel = "Suivant",
+  submittingLabel = "Envoi en cours\u2026",
 }: FormWizardProps) {
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === steps.length - 1;
@@ -161,7 +167,7 @@ export function FormWizard({
               onClick={handlePrevious}
               disabled={isSubmitting}
             >
-              Pr&eacute;c&eacute;dent
+              {previousLabel}
             </Button>
           )}
         </div>
@@ -184,10 +190,10 @@ export function FormWizard({
             disabled={!canGoNext || isSubmitting}
           >
             {isSubmitting
-              ? "Envoi en cours\u2026"
+              ? submittingLabel
               : isLastStep
                 ? submitLabel
-                : "Suivant"}
+                : nextLabel}
           </Button>
         </div>
       </div>

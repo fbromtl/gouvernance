@@ -44,7 +44,8 @@
     "updateSuccess": "AI system updated",
     "error": "Error saving system",
     "fieldRequired": "This field is required",
-    "riskPreview": "Risk preview"
+    "riskPreview": "Risk preview",
+    "submitting": "Submitting\u2026"
   },
   "fields": {
     "name": "System name",
@@ -76,6 +77,8 @@
     "riskOwner": "Risk owner",
     "approver": "Approver",
     "ownerPlaceholder": "UUID or owner name",
+    "ownerSelectPlaceholder": "Select a member",
+    "ownerNone": "-- None --",
     "lifecycleStatus": "Lifecycle status",
     "productionDate": "Production date",
     "nextReviewDate": "Next review date",

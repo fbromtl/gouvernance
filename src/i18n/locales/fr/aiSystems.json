@@ -44,7 +44,8 @@
     "updateSuccess": "Système IA mis à jour",
     "error": "Erreur lors de la sauvegarde",
     "fieldRequired": "Ce champ est requis",
-    "riskPreview": "Aperçu du risque"
+    "riskPreview": "Aperçu du risque",
+    "submitting": "Envoi en cours\u2026"
   },
   "fields": {
     "name": "Nom du système",
@@ -76,6 +77,8 @@
     "riskOwner": "Responsable risques",
     "approver": "Approbateur",
     "ownerPlaceholder": "UUID ou nom du responsable",
+    "ownerSelectPlaceholder": "Sélectionner un membre",
+    "ownerNone": "-- Aucun --",
     "lifecycleStatus": "Statut du cycle de vie",
     "productionDate": "Date de mise en production",
     "nextReviewDate": "Date de prochaine revue",
