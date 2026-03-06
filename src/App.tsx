@@ -1,212 +1,183 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { AuthProvider } from "@/lib/auth";
 import { ProtectedRoute } from "@/lib/ProtectedRoute";
 
-// Site vitrine
+// Eagerly loaded — critical for first paint
 import { Layout } from "@/components/layout/Layout";
 import { HomePage } from "@/pages/HomePage";
-import { AProposPage } from "@/pages/AProposPage";
-import { ExpertsPage } from "@/pages/ExpertsPage";
-import { RessourcesPage } from "@/pages/RessourcesPage";
 
-import { RejoindrePage } from "@/pages/RejoindrePage";
+// ---------- Lazy-loaded: Site vitrine ----------
+const AProposPage = lazy(() => import("@/pages/AProposPage").then(m => ({ default: m.AProposPage })));
+const ExpertsPage = lazy(() => import("@/pages/ExpertsPage").then(m => ({ default: m.ExpertsPage })));
+const RessourcesPage = lazy(() => import("@/pages/RessourcesPage").then(m => ({ default: m.RessourcesPage })));
+const RejoindrePage = lazy(() => import("@/pages/RejoindrePage").then(m => ({ default: m.RejoindrePage })));
+const ActualitesPage = lazy(() => import("@/pages/ActualitesPage").then(m => ({ default: m.ActualitesPage })));
+const ArticlePage = lazy(() => import("@/pages/ArticlePage").then(m => ({ default: m.ArticlePage })));
+const ContactPage = lazy(() => import("@/pages/ContactPage").then(m => ({ default: m.ContactPage })));
+const TarifsPage = lazy(() => import("@/pages/TarifsPage").then(m => ({ default: m.TarifsPage })));
+const FonctionnalitesPage = lazy(() => import("@/pages/FonctionnalitesPage").then(m => ({ default: m.FonctionnalitesPage })));
+const MembresHonorairesPage = lazy(() => import("@/pages/MembresHonorairesPage").then(m => ({ default: m.MembresHonorairesPage })));
+const ConfidentialitePage = lazy(() => import("@/pages/ConfidentialitePage").then(m => ({ default: m.ConfidentialitePage })));
+const MentionsLegalesPage = lazy(() => import("@/pages/MentionsLegalesPage").then(m => ({ default: m.MentionsLegalesPage })));
+const AccessibilitePage = lazy(() => import("@/pages/AccessibilitePage").then(m => ({ default: m.AccessibilitePage })));
+const DiagnosticPage = lazy(() => import("@/pages/DiagnosticPage"));
+const DiagnosticResultsPage = lazy(() => import("@/pages/DiagnosticResultsPage"));
+const MemberPublicPage = lazy(() => import("@/pages/MemberPublicPage").then(m => ({ default: m.MemberPublicPage })));
 
-import { ActualitesPage } from "@/pages/ActualitesPage";
-import { ArticlePage } from "@/pages/ArticlePage";
-import { ContactPage } from "@/pages/ContactPage";
-import { TarifsPage } from "@/pages/TarifsPage";
-import { FonctionnalitesPage } from "@/pages/FonctionnalitesPage";
-import { MembresHonorairesPage } from "@/pages/MembresHonorairesPage";
-import { ConfidentialitePage } from "@/pages/ConfidentialitePage";
-import { MentionsLegalesPage } from "@/pages/MentionsLegalesPage";
-import { AccessibilitePage } from "@/pages/AccessibilitePage";
+// ---------- Lazy-loaded: Auth ----------
+const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
+const RegisterPage = lazy(() => import("@/pages/auth/RegisterPage"));
+const ForgotPasswordPage = lazy(() => import("@/pages/auth/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("@/pages/auth/ResetPasswordPage"));
+const AuthCallbackPage = lazy(() => import("@/pages/auth/AuthCallbackPage"));
 
-// Auth
-import LoginPage from "@/pages/auth/LoginPage";
-import RegisterPage from "@/pages/auth/RegisterPage";
-import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
-import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
-import AuthCallbackPage from "@/pages/auth/AuthCallbackPage";
+// ---------- Lazy-loaded: Portail layout ----------
+const PortailLayout = lazy(() => import("@/portail/layout/PortailLayout").then(m => ({ default: m.PortailLayout })));
 
-// Portail
-import { PortailLayout } from "@/portail/layout/PortailLayout";
-import DashboardPage from "@/portail/pages/DashboardPage";
-import ProfilPage from "@/portail/pages/ProfilPage";
-import ConditionsPage from "@/portail/pages/ConditionsPage";
-// Module: AI Systems
-import AiSystemsListPage from "@/portail/pages/AiSystemsListPage";
-import AiSystemWizardPage from "@/portail/pages/AiSystemWizardPage";
-import AiSystemDetailPage from "@/portail/pages/AiSystemDetailPage";
+// ---------- Lazy-loaded: Portail pages ----------
+const DashboardPage = lazy(() => import("@/portail/pages/DashboardPage"));
+const ProfilPage = lazy(() => import("@/portail/pages/ProfilPage"));
+const ConditionsPage = lazy(() => import("@/portail/pages/ConditionsPage"));
+const OnboardingPage = lazy(() => import("@/portail/pages/OnboardingPage"));
+const AiSystemsListPage = lazy(() => import("@/portail/pages/AiSystemsListPage"));
+const AiSystemWizardPage = lazy(() => import("@/portail/pages/AiSystemWizardPage"));
+const AiSystemDetailPage = lazy(() => import("@/portail/pages/AiSystemDetailPage"));
+const RiskAssessmentListPage = lazy(() => import("@/portail/pages/RiskAssessmentListPage"));
+const RiskAssessmentWizardPage = lazy(() => import("@/portail/pages/RiskAssessmentWizardPage"));
+const RiskAssessmentDetailPage = lazy(() => import("@/portail/pages/RiskAssessmentDetailPage"));
+const IncidentListPage = lazy(() => import("@/portail/pages/IncidentListPage"));
+const IncidentReportPage = lazy(() => import("@/portail/pages/IncidentReportPage"));
+const IncidentDetailPage = lazy(() => import("@/portail/pages/IncidentDetailPage"));
+const GovernancePage = lazy(() => import("@/portail/pages/GovernancePage"));
+const DecisionsPage = lazy(() => import("@/portail/pages/DecisionsPage"));
+const CompliancePage = lazy(() => import("@/portail/pages/CompliancePage"));
+const BiasPage = lazy(() => import("@/portail/pages/BiasPage"));
+const TransparencyPage = lazy(() => import("@/portail/pages/TransparencyPage"));
+const LifecyclePage = lazy(() => import("@/portail/pages/LifecyclePage"));
+const DocumentsPage = lazy(() => import("@/portail/pages/DocumentsPage"));
+const MonitoringPage = lazy(() => import("@/portail/pages/MonitoringPage"));
+const DataPage = lazy(() => import("@/portail/pages/DataPage"));
+const VendorsPage = lazy(() => import("@/portail/pages/VendorsPage"));
+const VeillePage = lazy(() => import("@/portail/pages/VeillePage"));
+const BibliothecPage = lazy(() => import("@/portail/pages/BibliothecPage"));
+const ModelesBibliothequePage = lazy(() => import("@/portail/pages/ModelesBibliothequePage"));
+const MembresPage = lazy(() => import("@/portail/pages/MembresPage"));
+const AgentsPage = lazy(() => import("@/portail/pages/AgentsPage"));
+const AgentTracesPage = lazy(() => import("@/portail/pages/AgentTracesPage"));
+const RoadmapPage = lazy(() => import("@/portail/pages/RoadmapPage"));
+const AdminPage = lazy(() => import("@/portail/pages/AdminPage"));
+const BillingPage = lazy(() => import("@/portail/pages/BillingPage"));
 
-// Module: Risk Assessments
-import RiskAssessmentListPage from "@/portail/pages/RiskAssessmentListPage";
-import RiskAssessmentWizardPage from "@/portail/pages/RiskAssessmentWizardPage";
-import RiskAssessmentDetailPage from "@/portail/pages/RiskAssessmentDetailPage";
-
-// Module: Incidents
-import IncidentListPage from "@/portail/pages/IncidentListPage";
-import IncidentReportPage from "@/portail/pages/IncidentReportPage";
-import IncidentDetailPage from "@/portail/pages/IncidentDetailPage";
-
-// Module: Admin
-import AdminPage from "@/portail/pages/AdminPage";
-
-// Module: Billing
-import BillingPage from "@/portail/pages/BillingPage";
-
-// Module: Governance
-import GovernancePage from "@/portail/pages/GovernancePage";
-
-// Module: Compliance
-import CompliancePage from "@/portail/pages/CompliancePage";
-
-// Module: Decisions
-import DecisionsPage from "@/portail/pages/DecisionsPage";
-
-// Module: Bias
-import BiasPage from "@/portail/pages/BiasPage";
-
-// Module: Transparency
-import TransparencyPage from "@/portail/pages/TransparencyPage";
-
-// Module: Lifecycle
-import LifecyclePage from "@/portail/pages/LifecyclePage";
-
-// Module: Vendors
-import VendorsPage from "@/portail/pages/VendorsPage";
-
-// Module: Documents
-import DocumentsPage from "@/portail/pages/DocumentsPage";
-
-// Module: Monitoring
-import MonitoringPage from "@/portail/pages/MonitoringPage";
-
-// Module: Data
-import DataPage from "@/portail/pages/DataPage";
-
-// Onboarding
-import OnboardingPage from "@/portail/pages/OnboardingPage";
-import RoadmapPage from "@/portail/pages/RoadmapPage";
-
-// Module: Veille réglementaire
-import VeillePage from "@/portail/pages/VeillePage";
-
-// Module: Bibliothèque documentaire
-import BibliothecPage from "@/portail/pages/BibliothecPage";
-import ModelesBibliothequePage from "@/portail/pages/ModelesBibliothequePage";
-
-// Diagnostic public (standalone)
-import { DiagnosticPage } from "@/pages/DiagnosticPage";
-import { DiagnosticResultsPage } from "@/pages/DiagnosticResultsPage";
-
-// Module: Members
-import MembresPage from "@/portail/pages/MembresPage";
-import { MemberPublicPage } from "@/pages/MemberPublicPage";
-
-// Module: Agent Registry
-import AgentsPage from "@/portail/pages/AgentsPage";
-
-// Module: Agent Traces
-import AgentTracesPage from "@/portail/pages/AgentTracesPage";
+// Minimal loading fallback
+function PageLoader() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-forest border-t-transparent" />
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          {/* Site vitrine */}
-          <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/a-propos" element={<AProposPage />} />
-            <Route path="/experts" element={<ExpertsPage />} />
-            <Route path="/ressources" element={<RessourcesPage />} />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {/* Site vitrine */}
+            <Route element={<Layout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/a-propos" element={<AProposPage />} />
+              <Route path="/experts" element={<ExpertsPage />} />
+              <Route path="/ressources" element={<RessourcesPage />} />
 
-            <Route path="/rejoindre" element={<RejoindrePage />} />
+              <Route path="/rejoindre" element={<RejoindrePage />} />
 
-            <Route path="/actualites" element={<ActualitesPage />} />
-            <Route path="/actualites/:slug" element={<ArticlePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/tarifs" element={<TarifsPage />} />
-            <Route path="/fonctionnalites" element={<FonctionnalitesPage />} />
-            <Route path="/membres-honoraires" element={<MembresHonorairesPage />} />
-            <Route path="/confidentialite" element={<ConfidentialitePage />} />
-            <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-            <Route path="/accessibilite" element={<AccessibilitePage />} />
-          </Route>
-
-          {/* Auth pages */}
-          <Route element={<Layout />}>
-            <Route path="/connexion" element={<LoginPage />} />
-            <Route path="/inscription" element={<RegisterPage />} />
-            <Route path="/mot-de-passe-oublie" element={<ForgotPasswordPage />} />
-            <Route path="/reinitialiser-mot-de-passe" element={<ResetPasswordPage />} />
-          </Route>
-
-          {/* Diagnostic public (standalone, no header/footer) */}
-          <Route path="/diagnostic" element={<DiagnosticPage />} />
-          <Route path="/diagnostic/resultats" element={<DiagnosticResultsPage />} />
-
-          {/* Public member profiles */}
-          <Route path="/membres/:slug" element={<MemberPublicPage />} />
-
-          {/* OAuth callback */}
-          <Route path="/auth/callback" element={<AuthCallbackPage />} />
-
-          {/* Portail SaaS (protégé) */}
-          <Route element={<ProtectedRoute />}>
-            {/* CGU et onboarding (hors layout portail) */}
-            <Route path="/conditions" element={<ConditionsPage />} />
-            <Route path="/onboarding" element={<OnboardingPage />} />
-
-            <Route element={<PortailLayout />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/veille" element={<VeillePage />} />
-              <Route path="/bibliotheque" element={<BibliothecPage />} />
-              <Route path="/modeles" element={<ModelesBibliothequePage />} />
-              <Route path="/profile" element={<ProfilPage />} />
-
-              {/* Module: AI Systems */}
-              <Route path="/ai-systems" element={<AiSystemsListPage />} />
-              <Route path="/ai-systems/new" element={<AiSystemWizardPage />} />
-              <Route path="/ai-systems/:id" element={<AiSystemDetailPage />} />
-              <Route path="/ai-systems/:id/edit" element={<AiSystemWizardPage />} />
-
-              {/* Module: Risk Assessments */}
-              <Route path="/risks" element={<RiskAssessmentListPage />} />
-              <Route path="/risks/new" element={<RiskAssessmentWizardPage />} />
-              <Route path="/risks/:id" element={<RiskAssessmentDetailPage />} />
-
-              {/* Module: Incidents */}
-              <Route path="/incidents" element={<IncidentListPage />} />
-              <Route path="/incidents/new" element={<IncidentReportPage />} />
-              <Route path="/incidents/:id" element={<IncidentDetailPage />} />
-
-              {/* Modules — placeholder pages (Phase 3+) */}
-              <Route path="/governance" element={<GovernancePage />} />
-              <Route path="/decisions" element={<DecisionsPage />} />
-              <Route path="/bias" element={<BiasPage />} />
-              <Route path="/transparency" element={<TransparencyPage />} />
-              <Route path="/lifecycle" element={<LifecyclePage />} />
-              <Route path="/documents" element={<DocumentsPage />} />
-              <Route path="/monitoring" element={<MonitoringPage />} />
-              <Route path="/data" element={<DataPage />} />
-              <Route path="/vendors" element={<VendorsPage />} />
-              <Route path="/compliance" element={<CompliancePage />} />
-              <Route path="/membres" element={<MembresPage />} />
-              <Route path="/agents" element={<AgentsPage />} />
-              <Route path="/agent-traces" element={<AgentTracesPage />} />
-              <Route path="/roadmap" element={<RoadmapPage />} />
-              <Route path="/admin" element={<AdminPage />} />
-              <Route path="/billing" element={<BillingPage />} />
+              <Route path="/actualites" element={<ActualitesPage />} />
+              <Route path="/actualites/:slug" element={<ArticlePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/tarifs" element={<TarifsPage />} />
+              <Route path="/fonctionnalites" element={<FonctionnalitesPage />} />
+              <Route path="/membres-honoraires" element={<MembresHonorairesPage />} />
+              <Route path="/confidentialite" element={<ConfidentialitePage />} />
+              <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+              <Route path="/accessibilite" element={<AccessibilitePage />} />
             </Route>
 
-            {/* Redirects from old routes */}
-            <Route path="/portail" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/portail/profil" element={<Navigate to="/profile" replace />} />
-            <Route path="/portail/conditions" element={<Navigate to="/conditions" replace />} />
-          </Route>
-        </Routes>
+            {/* Auth pages */}
+            <Route element={<Layout />}>
+              <Route path="/connexion" element={<LoginPage />} />
+              <Route path="/inscription" element={<RegisterPage />} />
+              <Route path="/mot-de-passe-oublie" element={<ForgotPasswordPage />} />
+              <Route path="/reinitialiser-mot-de-passe" element={<ResetPasswordPage />} />
+            </Route>
+
+            {/* Diagnostic public (standalone, no header/footer) */}
+            <Route path="/diagnostic" element={<DiagnosticPage />} />
+            <Route path="/diagnostic/resultats" element={<DiagnosticResultsPage />} />
+
+            {/* Public member profiles */}
+            <Route path="/membres/:slug" element={<MemberPublicPage />} />
+
+            {/* OAuth callback */}
+            <Route path="/auth/callback" element={<AuthCallbackPage />} />
+
+            {/* Portail SaaS (protégé) */}
+            <Route element={<ProtectedRoute />}>
+              {/* CGU et onboarding (hors layout portail) */}
+              <Route path="/conditions" element={<ConditionsPage />} />
+              <Route path="/onboarding" element={<OnboardingPage />} />
+
+              <Route element={<PortailLayout />}>
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/veille" element={<VeillePage />} />
+                <Route path="/bibliotheque" element={<BibliothecPage />} />
+                <Route path="/modeles" element={<ModelesBibliothequePage />} />
+                <Route path="/profile" element={<ProfilPage />} />
+
+                {/* Module: AI Systems */}
+                <Route path="/ai-systems" element={<AiSystemsListPage />} />
+                <Route path="/ai-systems/new" element={<AiSystemWizardPage />} />
+                <Route path="/ai-systems/:id" element={<AiSystemDetailPage />} />
+                <Route path="/ai-systems/:id/edit" element={<AiSystemWizardPage />} />
+
+                {/* Module: Risk Assessments */}
+                <Route path="/risks" element={<RiskAssessmentListPage />} />
+                <Route path="/risks/new" element={<RiskAssessmentWizardPage />} />
+                <Route path="/risks/:id" element={<RiskAssessmentDetailPage />} />
+
+                {/* Module: Incidents */}
+                <Route path="/incidents" element={<IncidentListPage />} />
+                <Route path="/incidents/new" element={<IncidentReportPage />} />
+                <Route path="/incidents/:id" element={<IncidentDetailPage />} />
+
+                {/* Modules — placeholder pages (Phase 3+) */}
+                <Route path="/governance" element={<GovernancePage />} />
+                <Route path="/decisions" element={<DecisionsPage />} />
+                <Route path="/bias" element={<BiasPage />} />
+                <Route path="/transparency" element={<TransparencyPage />} />
+                <Route path="/lifecycle" element={<LifecyclePage />} />
+                <Route path="/documents" element={<DocumentsPage />} />
+                <Route path="/monitoring" element={<MonitoringPage />} />
+                <Route path="/data" element={<DataPage />} />
+                <Route path="/vendors" element={<VendorsPage />} />
+                <Route path="/compliance" element={<CompliancePage />} />
+                <Route path="/membres" element={<MembresPage />} />
+                <Route path="/agents" element={<AgentsPage />} />
+                <Route path="/agent-traces" element={<AgentTracesPage />} />
+                <Route path="/roadmap" element={<RoadmapPage />} />
+                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/billing" element={<BillingPage />} />
+              </Route>
+
+              {/* Redirects from old routes */}
+              <Route path="/portail" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/portail/profil" element={<Navigate to="/profile" replace />} />
+              <Route path="/portail/conditions" element={<Navigate to="/conditions" replace />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </AuthProvider>
     </BrowserRouter>
   );
