@@ -18,7 +18,10 @@
     "stepE": "E — Transparence",
     "stepF": "F — Supervision humaine",
     "submit": "Soumettre l'évaluation",
-    "saveDraft": "Sauvegarder le brouillon"
+    "saveDraft": "Sauvegarder le brouillon",
+    "editTitle": "Modifier l'évaluation",
+    "updateDraft": "Mettre à jour le brouillon",
+    "updateSubmit": "Mettre à jour et soumettre"
   },
   "questions": {
     "q1": {
@@ -215,7 +218,9 @@
     "dates": "Dates",
     "updatedAt": "Dernière mise à jour",
     "approvedAt": "Approuvée le",
-    "answersTitle": "Réponses au questionnaire"
+    "answersTitle": "Réponses au questionnaire",
+    "edit": "Modifier le brouillon",
+    "submit": "Soumettre l'évaluation"
   },
   "result": {
     "title": "Résultat de l'évaluation",

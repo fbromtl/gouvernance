@@ -145,6 +145,7 @@ function App() {
                 {/* Module: Risk Assessments */}
                 <Route path="/risks" element={<RiskAssessmentListPage />} />
                 <Route path="/risks/new" element={<RiskAssessmentWizardPage />} />
+                <Route path="/risks/:id/edit" element={<RiskAssessmentWizardPage />} />
                 <Route path="/risks/:id" element={<RiskAssessmentDetailPage />} />
 
                 {/* Module: Incidents */}

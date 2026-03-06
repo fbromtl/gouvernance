@@ -18,7 +18,10 @@
     "stepE": "E — Transparency",
     "stepF": "F — Human Oversight",
     "submit": "Submit assessment",
-    "saveDraft": "Save draft"
+    "saveDraft": "Save draft",
+    "editTitle": "Edit assessment",
+    "updateDraft": "Update draft",
+    "updateSubmit": "Update and submit"
   },
   "questions": {
     "q1": {
@@ -215,7 +218,9 @@
     "dates": "Dates",
     "updatedAt": "Last updated",
     "approvedAt": "Approved on",
-    "answersTitle": "Questionnaire answers"
+    "answersTitle": "Questionnaire answers",
+    "edit": "Edit draft",
+    "submit": "Submit assessment"
   },
   "result": {
     "title": "Assessment Result",

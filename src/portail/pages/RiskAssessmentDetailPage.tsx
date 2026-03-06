@@ -6,6 +6,8 @@ import {
   CheckCircle2,
   ShieldCheck,
   AlertTriangle,
+  Pencil,
+  Send,
 } from "lucide-react";
 
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -42,6 +44,7 @@ const SECTIONS = [
 const WORKFLOW = ["draft", "submitted", "in_review", "approved"] as const;
 
 const NEXT_STATUS: Record<string, string> = {
+  draft: "submitted",
   submitted: "in_review",
   in_review: "approved",
 };
@@ -224,22 +227,38 @@ export default function RiskAssessmentDetailPage() {
         </CardContent>
       </Card>
 
-      {/* Action button */}
-      {canAdvance && (
-        <div>
-          <Button
-            onClick={handleAdvanceStatus}
-            disabled={updateMutation.isPending}
-          >
-            {NEXT_STATUS[assessment.status] === "approved" ? (
-              <>
-                <ShieldCheck className="mr-2 size-4" />
-                {t("detail.approve")}
-              </>
-            ) : (
-              t("detail.startReview")
-            )}
-          </Button>
+      {/* Action buttons */}
+      {(canAdvance || assessment.status === "draft") && (
+        <div className="flex items-center gap-2">
+          {assessment.status === "draft" && (
+            <Button
+              variant="outline"
+              onClick={() => navigate(`/risks/${id}/edit`)}
+            >
+              <Pencil className="mr-2 size-4" />
+              {t("detail.edit")}
+            </Button>
+          )}
+          {canAdvance && (
+            <Button
+              onClick={handleAdvanceStatus}
+              disabled={updateMutation.isPending}
+            >
+              {NEXT_STATUS[assessment.status] === "approved" ? (
+                <>
+                  <ShieldCheck className="mr-2 size-4" />
+                  {t("detail.approve")}
+                </>
+              ) : NEXT_STATUS[assessment.status] === "submitted" ? (
+                <>
+                  <Send className="mr-2 size-4" />
+                  {t("detail.submit")}
+                </>
+              ) : (
+                t("detail.startReview")
+              )}
+            </Button>
+          )}
         </div>
       )}
 

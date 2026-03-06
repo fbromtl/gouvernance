@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { useNavigate, useSearchParams, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,9 +15,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import {
+  useRiskAssessment,
   useCreateRiskAssessment,
+  useUpdateRiskAssessment,
   calculateAssessmentScore,
 } from "@/hooks/useRiskAssessments";
 import { useAiSystems } from "@/hooks/useAiSystems";
@@ -128,18 +131,25 @@ const SECTIONS: { key: string; questions: QuestionDef[] }[] = [
 export default function RiskAssessmentWizardPage() {
   const { t } = useTranslation("riskAssessments");
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
   const prelinkedSystemId = searchParams.get("ai_system_id") ?? "";
+
+  const isEditMode = !!id;
 
   const [currentStep, setCurrentStep] = useState(0);
 
   const { data: aiSystems = [] } = useAiSystems();
+  const { data: existingAssessment, isLoading: isLoadingAssessment } =
+    useRiskAssessment(isEditMode ? id : undefined);
   const createMutation = useCreateRiskAssessment();
+  const updateMutation = useUpdateRiskAssessment();
 
   const {
     control,
     watch,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -165,6 +175,35 @@ export default function RiskAssessmentWizardPage() {
     },
   });
 
+  // Populate form when editing an existing assessment
+  useEffect(() => {
+    if (!existingAssessment) return;
+    const answers = (existingAssessment.answers ?? {}) as Record<
+      string,
+      string | string[]
+    >;
+    reset({
+      ai_system_id: existingAssessment.ai_system_id,
+      q1: (answers.q1 as string) ?? "",
+      q2: (answers.q2 as string) ?? "",
+      q3: (answers.q3 as string) ?? "",
+      q4: (answers.q4 as string[]) ?? [],
+      q5: (answers.q5 as string) ?? "",
+      q6: (answers.q6 as string[]) ?? [],
+      q7: (answers.q7 as string) ?? "",
+      q8: (answers.q8 as string) ?? "",
+      q9: (answers.q9 as string) ?? "",
+      q10: (answers.q10 as string) ?? "",
+      q11: (answers.q11 as string) ?? "",
+      q12: (answers.q12 as string) ?? "",
+      q13: (answers.q13 as string) ?? "",
+      q14: (answers.q14 as string) ?? "",
+      q15: (answers.q15 as string) ?? "",
+      q16: (answers.q16 as string) ?? "",
+      q17: (answers.q17 as string) ?? "",
+    });
+  }, [existingAssessment, reset]);
+
   const allValues = watch();
 
   // Live score computation
@@ -183,8 +222,8 @@ export default function RiskAssessmentWizardPage() {
     label: t(`wizard.step${s.key}`),
   }));
 
-  // Submit
-  async function onSubmit(values: FormValues) {
+  // Build payload from form values
+  function buildPayload(values: FormValues, status: string) {
     const answers: Record<string, string | string[]> = {};
     for (let i = 1; i <= 17; i++) {
       const key = `q${i}` as keyof FormValues;
@@ -202,54 +241,54 @@ export default function RiskAssessmentWizardPage() {
       returnObjects: true,
     }) as string[];
 
+    return {
+      ai_system_id: values.ai_system_id,
+      total_score: computed.score,
+      risk_level: computed.level,
+      answers: answers as any,
+      requirements: requirementsArr as any,
+      status,
+    };
+  }
+
+  // Submit (create or update)
+  async function onSubmit(values: FormValues) {
+    const payload = buildPayload(values, "submitted");
     try {
-      const result = await createMutation.mutateAsync({
-        ai_system_id: values.ai_system_id,
-        total_score: computed.score,
-        risk_level: computed.level,
-        answers: answers as any,
-        requirements: requirementsArr as any,
-        status: "submitted",
-      });
-      toast.success(t("toast.created"));
-      navigate(`/risks/${result.id}`);
+      if (isEditMode) {
+        await updateMutation.mutateAsync({ id, ...payload });
+        toast.success(t("toast.updated"));
+      } else {
+        const result = await createMutation.mutateAsync(payload);
+        toast.success(t("toast.created"));
+        navigate(`/risks/${result.id}`);
+        return;
+      }
+      navigate(`/risks/${id}`);
     } catch {
-      toast.error(t("toast.error", { defaultValue: "Une erreur est survenue" }));
+      toast.error(
+        t("toast.error", { defaultValue: "Une erreur est survenue" }),
+      );
     }
   }
 
   async function onSaveDraft() {
     const values = allValues;
-    const answers: Record<string, string | string[]> = {};
-    for (let i = 1; i <= 17; i++) {
-      const key = `q${i}` as keyof FormValues;
-      answers[key] = values[key] as string | string[];
-    }
-    const computed = calculateAssessmentScore(answers);
-
-    const requirementKey = computed.level as
-      | "minimal"
-      | "limited"
-      | "high"
-      | "critical"
-      | "prohibited";
-    const requirementsArr = t(`requirements.${requirementKey}`, {
-      returnObjects: true,
-    }) as string[];
-
+    const payload = buildPayload(values, "draft");
     try {
-      const result = await createMutation.mutateAsync({
-        ai_system_id: values.ai_system_id,
-        total_score: computed.score,
-        risk_level: computed.level,
-        answers: answers as any,
-        requirements: requirementsArr as any,
-        status: "draft",
-      });
-      toast.success(t("toast.created"));
-      navigate(`/risks/${result.id}`);
+      if (isEditMode) {
+        await updateMutation.mutateAsync({ id, ...payload });
+        toast.success(t("toast.updated"));
+        navigate(`/risks/${id}`);
+      } else {
+        const result = await createMutation.mutateAsync(payload);
+        toast.success(t("toast.created"));
+        navigate(`/risks/${result.id}`);
+      }
     } catch {
-      toast.error(t("toast.error", { defaultValue: "Une erreur est survenue" }));
+      toast.error(
+        t("toast.error", { defaultValue: "Une erreur est survenue" }),
+      );
     }
   }
 
@@ -259,17 +298,41 @@ export default function RiskAssessmentWizardPage() {
   }) as string[];
 
   /* ---------------------------------------------------------------- */
+  /*  LOADING (edit mode)                                               */
+  /* ---------------------------------------------------------------- */
+
+  if (isEditMode && isLoadingAssessment) {
+    return (
+      <div className="space-y-6">
+        <Skeleton className="h-8 w-64" />
+        <Skeleton className="h-96" />
+      </div>
+    );
+  }
+
+  /* ---------------------------------------------------------------- */
   /*  RENDER                                                            */
   /* ---------------------------------------------------------------- */
 
   const section = SECTIONS[currentStep];
+  const pageTitle = isEditMode ? t("wizard.editTitle") : t("title");
+  const submitLabel = isEditMode
+    ? t("wizard.updateSubmit")
+    : t("wizard.submit");
+  const draftLabel = isEditMode
+    ? t("wizard.updateDraft")
+    : t("wizard.saveDraft");
 
   return (
     <div className="space-y-6">
-      <PageHeader title={t("title")} description={t("description")} helpNs="riskAssessments" />
+      <PageHeader
+        title={pageTitle}
+        description={t("description")}
+        helpNs="riskAssessments"
+      />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_280px]">
-        {/* Left — wizard form */}
+        {/* Left -- wizard form */}
         <div>
           <FormWizard
             steps={steps}
@@ -278,8 +341,8 @@ export default function RiskAssessmentWizardPage() {
             onSubmit={handleSubmit(onSubmit)}
             onSaveDraft={onSaveDraft}
             isSubmitting={isSubmitting}
-            submitLabel={t("wizard.submit")}
-            draftLabel={t("wizard.saveDraft")}
+            submitLabel={submitLabel}
+            draftLabel={draftLabel}
           >
             <div className="space-y-8">
               {/* AI System selector (shown on first step only) */}
@@ -330,10 +393,16 @@ export default function RiskAssessmentWizardPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <StatusBadge status={level} label={t(`riskLevels.${level}`)} />
+                    <StatusBadge
+                      status={level}
+                      label={t(`riskLevels.${level}`)}
+                    />
                     <ul className="mt-4 space-y-2">
                       {requirementsList.map((req, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm">
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-sm"
+                        >
                           <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-green-500" />
                           <span>{req}</span>
                         </li>
@@ -346,12 +415,14 @@ export default function RiskAssessmentWizardPage() {
           </FormWizard>
         </div>
 
-        {/* Right — live score sidebar */}
+        {/* Right -- live score sidebar */}
         <div className="space-y-4">
           <Card>
             <CardContent className="flex flex-col items-center gap-3 pt-6">
               <RiskScoreGauge score={score} size="lg" showLabel />
-              <p className="text-sm text-muted-foreground">{t("result.score")}</p>
+              <p className="text-sm text-muted-foreground">
+                {t("result.score")}
+              </p>
             </CardContent>
           </Card>
 
@@ -413,7 +484,10 @@ function QuestionField({
             >
               {Object.entries(options).map(([value, label]) => (
                 <div key={value} className="flex items-center gap-2">
-                  <RadioGroupItem value={value} id={`${questionId}-${value}`} />
+                  <RadioGroupItem
+                    value={value}
+                    id={`${questionId}-${value}`}
+                  />
                   <Label
                     htmlFor={`${questionId}-${value}`}
                     className="font-normal"
