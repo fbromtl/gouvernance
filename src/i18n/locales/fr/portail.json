@@ -29,7 +29,8 @@
     "modeles": "Modèles de documents"
   },
   "sections": {
-    "overview": "Vue d'ensemble",
+    "home": "Tableau de bord",
+    "resources": "Ressources",
     "registry": "Registre IA",
     "compliance": "Conformité & Pilotage",
     "organization": "Mon organisation",
@@ -38,7 +39,8 @@
     "modules": "Modules"
   },
   "rail": {
-    "overview": "Accueil",
+    "home": "Accueil",
+    "resources": "Ressources",
     "registry": "Registre",
     "compliance": "Conformité",
     "organization": "Org.",

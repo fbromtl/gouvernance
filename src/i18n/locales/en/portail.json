@@ -29,7 +29,8 @@
     "modeles": "Document Templates"
   },
   "sections": {
-    "overview": "Overview",
+    "home": "Dashboard",
+    "resources": "Resources",
     "registry": "AI Registry",
     "compliance": "Compliance & Oversight",
     "organization": "My Organization",
@@ -38,7 +39,8 @@
     "modules": "Modules"
   },
   "rail": {
-    "overview": "Home",
+    "home": "Home",
+    "resources": "Resources",
     "registry": "Registry",
     "compliance": "Compliance",
     "organization": "Org.",

@@ -42,7 +42,8 @@ export interface NavGroup {
 
 /** Icon used to represent each category in the icon rail */
 export const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  overview: LayoutDashboard,
+  home: LayoutDashboard,
+  resources: BookOpen,
   registry: Bot,
   compliance: ShieldCheck,
   organization: Building2,
@@ -50,14 +51,20 @@ export const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: st
 
 export const navGroups: NavGroup[] = [
   {
-    labelKey: "sections.overview",
-    category: "overview",
+    labelKey: "sections.home",
+    category: "home",
     items: [
       { key: "dashboard", path: "/dashboard", icon: LayoutDashboard, ready: true },
+      { key: "roadmap", path: "/roadmap", icon: Map, ready: true },
+    ],
+  },
+  {
+    labelKey: "sections.resources",
+    category: "resources",
+    items: [
       { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
       { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
       { key: "modeles", path: "/modeles", icon: Library, ready: true },
-      { key: "roadmap", path: "/roadmap", icon: Map, ready: true },
     ],
   },
   {
@@ -100,7 +107,7 @@ export const navGroups: NavGroup[] = [
 
 /**
  * Given a pathname (e.g. "/risks/123"), returns the matching category key.
- * Falls back to "overview" if no match.
+ * Falls back to "home" if no match.
  */
 export function getCategoryForPath(pathname: string): string {
   for (const group of navGroups) {
@@ -110,5 +117,5 @@ export function getCategoryForPath(pathname: string): string {
       }
     }
   }
-  return "overview";
+  return "home";
 }
