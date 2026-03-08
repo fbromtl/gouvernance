@@ -460,7 +460,6 @@ export default function BillingPage() {
 
             const currentIdx = PLAN_ORDER.indexOf(currentPlan);
             const targetIdx = PLAN_ORDER.indexOf(planId);
-            const isUpgrade = targetIdx > currentIdx;
             const isDowngrade = targetIdx < currentIdx;
 
             const Icon = PLAN_ICONS[planId];
