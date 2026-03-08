@@ -34,7 +34,6 @@ import {
   Layers,
   Database,
   Scale,
-  RefreshCw,
   Send,
   BookOpen,
   Newspaper,
