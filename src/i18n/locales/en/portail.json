@@ -29,21 +29,21 @@
     "modeles": "Document Templates"
   },
   "sections": {
-    "home": "Dashboard",
+    "dashboard": "Dashboard",
+    "inventory": "Inventory",
+    "risks": "Risks",
+    "compliance": "Compliance",
     "resources": "Resources",
-    "registry": "AI Registry",
-    "compliance": "Compliance & Oversight",
-    "organization": "My Organization",
     "settings": "Settings",
     "main": "Main",
     "modules": "Modules"
   },
   "rail": {
-    "home": "Home",
-    "resources": "Resources",
-    "registry": "Registry",
+    "dashboard": "Home",
+    "inventory": "Inventory",
+    "risks": "Risks",
     "compliance": "Compliance",
-    "organization": "Org.",
+    "resources": "Resources",
     "backToSite": "Site",
     "settings": "Profile"
   },

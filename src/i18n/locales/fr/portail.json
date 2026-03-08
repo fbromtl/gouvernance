@@ -29,21 +29,21 @@
     "modeles": "Modèles de documents"
   },
   "sections": {
-    "home": "Tableau de bord",
+    "dashboard": "Tableau de bord",
+    "inventory": "Inventaire",
+    "risks": "Risques",
+    "compliance": "Conformité",
     "resources": "Ressources",
-    "registry": "Registre IA",
-    "compliance": "Conformité & Pilotage",
-    "organization": "Mon organisation",
     "settings": "Paramètres",
     "main": "Principal",
     "modules": "Modules"
   },
   "rail": {
-    "home": "Accueil",
-    "resources": "Ressources",
-    "registry": "Registre",
+    "dashboard": "Accueil",
+    "inventory": "Inventaire",
+    "risks": "Risques",
     "compliance": "Conformité",
-    "organization": "Org.",
+    "resources": "Ressources",
     "backToSite": "Site",
     "settings": "Profil"
   },

@@ -16,9 +16,6 @@ import {
   CheckCircle,
   Newspaper,
   BookOpen,
-  Users,
-  CreditCard,
-  Map,
   Library,
   Shield,
 } from "lucide-react";
@@ -42,41 +39,39 @@ export interface NavGroup {
 
 /** Icon used to represent each category in the icon rail */
 export const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  home: LayoutDashboard,
-  resources: BookOpen,
-  registry: Bot,
+  dashboard: LayoutDashboard,
+  inventory: Bot,
+  risks: AlertTriangle,
   compliance: ShieldCheck,
-  organization: Building2,
+  resources: BookOpen,
 };
 
 export const navGroups: NavGroup[] = [
   {
-    labelKey: "sections.home",
-    category: "home",
+    labelKey: "sections.dashboard",
+    category: "dashboard",
     items: [
       { key: "dashboard", path: "/dashboard", icon: LayoutDashboard, ready: true },
-      { key: "roadmap", path: "/roadmap", icon: Map, ready: true },
     ],
   },
   {
-    labelKey: "sections.resources",
-    category: "resources",
-    items: [
-      { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
-      { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
-      { key: "modeles", path: "/modeles", icon: Library, ready: true },
-    ],
-  },
-  {
-    labelKey: "sections.registry",
-    category: "registry",
+    labelKey: "sections.inventory",
+    category: "inventory",
     items: [
       { key: "aiSystems", path: "/ai-systems", icon: Bot, ready: true },
       { key: "lifecycle", path: "/lifecycle", icon: RefreshCw, ready: true },
       { key: "vendors", path: "/vendors", icon: Building2, permission: "manage_vendors", ready: true },
+      { key: "agents", path: "/agents", icon: Bot, ready: true },
+      { key: "agentTraces", path: "/agent-traces", icon: Activity, ready: true },
+    ],
+  },
+  {
+    labelKey: "sections.risks",
+    category: "risks",
+    items: [
       { key: "risks", path: "/risks", icon: AlertTriangle, permission: "assess_risks", ready: true },
-      { key: "incidents", path: "/incidents", icon: AlertCircle, ready: true },
       { key: "bias", path: "/bias", icon: Scale, permission: "manage_bias", ready: true },
+      { key: "incidents", path: "/incidents", icon: AlertCircle, ready: true },
     ],
   },
   {
@@ -84,30 +79,28 @@ export const navGroups: NavGroup[] = [
     category: "compliance",
     items: [
       { key: "governance", path: "/governance", icon: Shield, permission: "manage_policies", ready: true },
-      { key: "decisions", path: "/decisions", icon: ClipboardCheck, permission: "approve_decisions", ready: true },
       { key: "compliance", path: "/compliance", icon: CheckCircle, permission: "manage_compliance", ready: true },
-      { key: "documents", path: "/documents", icon: FileText, ready: true },
+      { key: "decisions", path: "/decisions", icon: ClipboardCheck, permission: "approve_decisions", ready: true },
       { key: "transparency", path: "/transparency", icon: Eye, ready: true },
       { key: "monitoring", path: "/monitoring", icon: Activity, permission: "configure_monitoring", ready: true },
       { key: "data", path: "/data", icon: Database, ready: true },
-      { key: "agents", path: "/agents", icon: Bot, ready: true },
-      { key: "agentTraces", path: "/agent-traces", icon: Activity, ready: true },
     ],
   },
   {
-    labelKey: "sections.organization",
-    category: "organization",
+    labelKey: "sections.resources",
+    category: "resources",
     items: [
-      { key: "members", path: "/membres", icon: Users, ready: true },
-      { key: "admin", path: "/admin", icon: Building2, ready: true },
-      { key: "billing", path: "/billing", icon: CreditCard, ready: true },
+      { key: "documents", path: "/documents", icon: FileText, ready: true },
+      { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
+      { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
+      { key: "modeles", path: "/modeles", icon: Library, ready: true },
     ],
   },
 ];
 
 /**
  * Given a pathname (e.g. "/risks/123"), returns the matching category key.
- * Falls back to "home" if no match.
+ * Falls back to "dashboard" if no match.
  */
 export function getCategoryForPath(pathname: string): string {
   for (const group of navGroups) {
@@ -117,5 +110,5 @@ export function getCategoryForPath(pathname: string): string {
       }
     }
   }
-  return "home";
+  return "dashboard";
 }

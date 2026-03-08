@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, Menu, LogOut, User, Settings, Check, ChevronRight, Rocket, CreditCard } from "lucide-react";
+import { Bell, Menu, LogOut, User, Check, ChevronRight, CreditCard, Users, Map, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -72,10 +72,16 @@ const ROUTE_LABELS: Record<string, string> = {
   transparency: "nav.transparency",
   monitoring: "nav.monitoring",
   data: "nav.data",
+  agents: "nav.agents",
+  "agent-traces": "nav.agentTraces",
   roadmap: "nav.roadmap",
   admin: "nav.admin",
   profile: "nav.profile",
   membres: "nav.members",
+  billing: "nav.billing",
+  bibliotheque: "nav.bibliotheque",
+  modeles: "nav.modeles",
+  veille: "nav.veille",
 };
 
 export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
@@ -249,6 +255,19 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
                 {t("nav.profile")}
               </Link>
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <Link to="/membres" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                {t("nav.members")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/admin" className="flex items-center gap-2">
+                <Building2 className="h-4 w-4" />
+                {t("nav.admin")}
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link to="/billing" className="flex items-center gap-2">
                 <CreditCard className="h-4 w-4" />
@@ -256,14 +275,8 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/admin" className="flex items-center gap-2">
-                <Settings className="h-4 w-4" />
-                {t("nav.admin")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
               <Link to="/roadmap" className="flex items-center gap-2">
-                <Rocket className="h-4 w-4" />
+                <Map className="h-4 w-4" />
                 {t("nav.roadmap")}
               </Link>
             </DropdownMenuItem>
