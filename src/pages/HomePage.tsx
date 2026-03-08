@@ -191,8 +191,8 @@ export function HomePage() {
 
               </div>
 
-              {/* Right column — Phone Mockup with Carousel */}
-              <div className="hidden lg:flex justify-center items-center relative">
+              {/* Right column — Phone Mockup with Carousel (visible on all screens) */}
+              <div className="flex justify-center items-center relative mt-10 lg:mt-0">
                 {/* Nav buttons */}
                 <button
                   type="button"
