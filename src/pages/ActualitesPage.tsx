@@ -257,20 +257,7 @@ function FeaturedCard({ article }: { article: Article }) {
           to={`/actualites/${article.slug}`}
           className="group block rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 transition-all duration-300 overflow-hidden"
         >
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Cover image */}
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <img
-                src={article.cover}
-                alt={article.title}
-                className="absolute inset-0 w-full h-full object-cover rounded-t-3xl md:rounded-t-none md:rounded-l-3xl"
-                onError={handleImgError}
-              />
-              <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
-                <Newspaper className="size-10 text-brand-sage" />
-              </div>
-            </div>
-
+          <div>
             {/* Content */}
             <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-3">
@@ -342,19 +329,6 @@ function ArticleCard({ article }: { article: Article }) {
   return (
     <Card className="group rounded-3xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col overflow-hidden">
       <Link to={`/actualites/${article.slug}`} className="flex flex-col h-full">
-        {/* Cover image */}
-        <div className="relative aspect-[16/9] overflow-hidden">
-          <img
-            src={article.cover}
-            alt={article.title}
-            className="absolute inset-0 w-full h-full object-cover rounded-t-2xl"
-            onError={handleImgError}
-          />
-          <div className="hidden absolute inset-0 bg-gradient-to-br from-brand-sage/20 to-brand-forest/20 items-center justify-center">
-            <Newspaper className="size-10 text-brand-sage" />
-          </div>
-        </div>
-
         <CardHeader className="pb-2">
           <div className="flex items-center gap-2 mb-2">
             <Badge

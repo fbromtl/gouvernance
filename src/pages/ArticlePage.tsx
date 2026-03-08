@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import {
@@ -42,16 +42,9 @@ function getInitials(name: string) {
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
 
-  const [coverError, setCoverError] = useState(false);
-
   // Scroll to top when slug changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
-
-  // Reset cover error when slug changes
-  useEffect(() => {
-    setCoverError(false);
   }, [slug]);
 
   const article: Article | undefined = slug ? getArticleBySlug(slug) : undefined;
@@ -165,21 +158,7 @@ export function ArticlePage() {
         {/* Article content */}
         <section className="pt-32 pb-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* 1. Cover image */}
-            {!coverError ? (
-              <img
-                src={article.cover}
-                alt={article.title}
-                className="w-full max-h-96 object-cover rounded-2xl"
-                onError={() => setCoverError(true)}
-              />
-            ) : (
-              <div className="w-full max-h-96 h-64 rounded-2xl bg-gradient-to-br from-brand-forest to-brand-teal flex items-center justify-center">
-                <Newspaper className="size-16 text-white/60" />
-              </div>
-            )}
-
-            {/* 2. Meta row */}
+            {/* Meta row */}
             <div className="flex items-center gap-3 mt-8">
               <Badge
                 variant="outline"
@@ -331,20 +310,6 @@ export function ArticlePage() {
                     className="group"
                   >
                     <Card className="rounded-2xl border border-neutral-200 bg-white hover:shadow-xl hover:shadow-[#57886c]/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
-                      {related.cover ? (
-                        <img
-                          src={related.cover}
-                          alt={related.title}
-                          className="aspect-[16/9] w-full object-cover rounded-t-2xl"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = "none";
-                          }}
-                        />
-                      ) : (
-                        <div className="aspect-[16/9] w-full bg-gradient-to-br from-brand-forest to-brand-teal rounded-t-2xl flex items-center justify-center">
-                          <Newspaper className="size-10 text-white/60" />
-                        </div>
-                      )}
                       <CardContent className="p-4 flex-1 flex flex-col">
                         <div className="flex items-center gap-2 mb-2">
                           <Badge
