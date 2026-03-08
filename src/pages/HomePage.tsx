@@ -738,22 +738,16 @@ export function HomePage() {
                     </div>
                     <span className="text-[10px] font-medium text-neutral-400">{PHONE_SLIDES[phoneSlide].label}</span>
 
-                    {/* Platform icons — official logos */}
-                    <div className="flex items-center gap-5 mt-3">
-                      {/* Windows 11 logo */}
-                      <svg width="16" height="16" viewBox="0 0 256 256" fill="#a3a3a3" aria-label="Windows">
-                        <path d="M0 36.357L104.62 22.11v99.37H0zm116.87-15.84L255.97 0v121.74l-139.1.63zm-12.25 135.79l.1 99.83L0 241.96v-85.66zm12.25 1.34L255.97 256v-120.1l-139.1-.14z"/>
-                      </svg>
-                      {/* Apple logo */}
-                      <svg width="14" height="17" viewBox="0 0 170 210" fill="#a3a3a3" aria-label="macOS">
-                        <path d="M150.37 130.25c-.25-27.67 22.58-40.93 23.6-41.57-12.85-18.79-32.86-21.37-39.97-21.66-17.01-1.73-33.21 10.02-41.86 10.02-8.63 0-21.98-9.77-36.12-9.5-18.59.27-35.72 10.81-45.28 27.45-19.32 33.51-4.94 83.18 13.89 110.36 9.2 13.32 20.18 28.26 34.6 27.73 13.87-.56 19.12-8.98 35.89-8.98 16.78 0 21.47 8.98 36.13 8.7 14.93-.27 24.42-13.56 33.55-26.92 10.58-15.44 14.94-30.39 15.2-31.17-.33-.14-29.17-11.2-29.46-44.45zM122.72 24.7C130.54 15.16 135.88 2.08 134.48 0 123.51.52 110.1 7.3 102 16.85 94.83 25.28 88.34 38.87 89.97 51.62 102.24 52.56 114.89 34.24 122.72 24.7z"/>
-                      </svg>
-                      {/* Android logo */}
-                      <svg width="16" height="16" viewBox="0 0 256 300" fill="#a3a3a3" aria-label="Android">
-                        <path d="M78.4 44.7L62.8 17.3c-1-1.7-.3-3.8 1.3-4.8 1.7-1 3.8-.3 4.8 1.3l15.8 27.7C99 34.7 115.2 30.7 128 30.7s29 4 43.3 11.2l15.8-27.7c1-1.6 3.1-2.3 4.8-1.3 1.6 1 2.3 3.1 1.3 4.8L177.6 44.7C213.5 64.5 239 99.7 239 140.7H17C17 99.7 42.5 64.5 78.4 44.7zM96 112c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zm64 0c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zM17 152.7h222v120c0 11-9 20-20 20H37c-11 0-20-9-20-20v-120z"/>
-                      </svg>
+                    {/* Platform labels */}
+                    <div className="flex items-center gap-3 mt-3 text-[10px] font-medium text-neutral-400">
+                      <span>Windows</span>
+                      <span className="text-neutral-300">·</span>
+                      <span>Mac</span>
+                      <span className="text-neutral-300">·</span>
+                      <span>Android</span>
+                      <span className="text-neutral-300">·</span>
+                      <span>iPhone</span>
                     </div>
-                    <span className="text-[9px] text-neutral-400">Disponible partout</span>
                   </div>
                 </div>
               </div>
