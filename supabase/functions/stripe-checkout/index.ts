@@ -47,31 +47,28 @@ function stripeHeaders(): Record<string, string> {
  *
  * Priority:
  *   1. Env-var based lookup (STRIPE_PRICE_MEMBER_MONTHLY, etc.)
- *   2. Legacy env-var names  (STRIPE_PRICE_PRO_MONTHLY, etc.)
- *   3. Hardcoded fallbacks   (from frontend PLANS definition)
+ *   2. Hardcoded fallbacks   (from frontend PLANS definition — CAD prices)
+ *
+ * Note: legacy PRO / ENTERPRISE env-var aliases have been removed to avoid
+ * accidentally resolving to old USD prices that no longer match current plans.
  */
 function getPriceId(plan: string, period: string): string | null {
-  // Map current plan names → env-var prefix (+ legacy aliases)
-  const envPrefixes: Record<string, string[]> = {
-    member:     ["MEMBER", "PRO"],
-    expert:     ["EXPERT", "ENTERPRISE"],
-    // Legacy names (backward compat)
-    pro:        ["PRO", "MEMBER"],
-    enterprise: ["ENTERPRISE", "EXPERT"],
+  // Canonical env-var prefix per plan (no legacy aliases)
+  const envPrefix: Record<string, string> = {
+    member: "MEMBER",
+    expert: "EXPERT",
   };
 
-  const prefixes = envPrefixes[plan];
-  if (!prefixes) return null;
+  const prefix = envPrefix[plan];
+  if (!prefix) return null;
 
   const periodUpper = period.toUpperCase(); // MONTHLY | YEARLY
 
-  // Try each env-var prefix
-  for (const prefix of prefixes) {
-    const val = Deno.env.get(`STRIPE_PRICE_${prefix}_${periodUpper}`);
-    if (val) return val;
-  }
+  // Try env-var first
+  const val = Deno.env.get(`STRIPE_PRICE_${prefix}_${periodUpper}`);
+  if (val) return val;
 
-  // Hardcoded fallbacks (mirrors src/lib/stripe.ts PLANS)
+  // Hardcoded fallbacks (mirrors src/lib/stripe.ts PLANS — all CAD)
   const hardcoded: Record<string, string> = {
     member_monthly:  "price_1T7iKEGu82aZFyznGIZzX3ad",
     member_yearly:   "price_1T7iKFGu82aZFyzngH7GPyRZ",
