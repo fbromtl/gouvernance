@@ -189,15 +189,6 @@ export function HomePage() {
                   <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-[#57886c]" /> Diagnostic en 10 min</span>
                 </div>
 
-                {/* Quebec badge */}
-                <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur border border-neutral-200 px-3.5 py-1.5 rounded-full">
-                    <span className="text-[#57886c] text-sm leading-none">⚜</span>
-                    <span className="text-[11px] font-medium text-neutral-500">
-                      Fièrement québécois
-                    </span>
-                  </div>
-                </div>
               </div>
 
               {/* Right column — Phone Mockup with Carousel */}
