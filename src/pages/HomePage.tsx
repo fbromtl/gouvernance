@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   Shield,
@@ -14,6 +14,8 @@ import {
   ClipboardCheck,
   BarChart3,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   AlertTriangle,
   Bot,
   CheckCircle,
@@ -30,10 +32,23 @@ import { EcosystemMarquee } from "@/components/home/EcosystemMarquee";
 /*  HOME PAGE – Template-inspired design with governance content       */
 /* ================================================================== */
 
+const PHONE_SLIDES = [
+  { id: "dashboard", label: "Tableau de bord" },
+  { id: "compliance", label: "Conformité" },
+  { id: "risks", label: "Risques" },
+] as const;
+
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [stickyDismissed, setStickyDismissed] = useState(false);
+  const [phoneSlide, setPhoneSlide] = useState(0);
+  const [slideKey, setSlideKey] = useState(0);
+
+  const goToSlide = useCallback((dir: 1 | -1) => {
+    setPhoneSlide((prev) => (prev + dir + PHONE_SLIDES.length) % PHONE_SLIDES.length);
+    setSlideKey((k) => k + 1);
+  }, []);
 
   // Sticky CTA bar: show after scrolling past hero, hide near pricing
   useEffect(() => {
@@ -154,86 +169,216 @@ export function HomePage() {
                 </div>
               </div>
 
-              {/* Right column — Phone Mockup */}
-              <div className="hidden lg:flex justify-center items-center">
-                <div className="animate-phone-float">
-                  {/* Phone frame */}
-                  <div className="w-[280px] xl:w-[300px] bg-white border border-neutral-200 rounded-[2.5rem] p-[6px] shadow-2xl shadow-black/15">
-                    {/* Notch */}
-                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-white rounded-full z-10 border border-neutral-100" />
+              {/* Right column — Phone Mockup with Carousel */}
+              <div className="hidden lg:flex justify-center items-center relative">
+                {/* Nav buttons */}
+                <button
+                  type="button"
+                  onClick={() => goToSlide(-1)}
+                  className="absolute left-0 xl:-left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white rounded-full shadow-lg border border-neutral-100 flex items-center justify-center text-neutral-700 hover:scale-110 transition-transform"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goToSlide(1)}
+                  className="absolute right-0 xl:-right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-[#0e0f19] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Phone frame — fixed, no animation */}
+                <div className="w-[280px] xl:w-[300px] relative">
+                  <div className="bg-white border border-neutral-200 rounded-[2.5rem] p-[6px] shadow-2xl shadow-black/15 ring-1 ring-neutral-900/5">
+                    {/* Dynamic Island */}
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 h-5 w-24 bg-black rounded-b-2xl z-30" />
+
                     {/* Screen */}
-                    <div className="w-full bg-neutral-50 rounded-[2.1rem] overflow-hidden flex flex-col" style={{ aspectRatio: "9/19" }}>
-                      {/* App header */}
-                      <div className="flex items-center justify-between px-5 pt-10 pb-3 bg-white border-b border-neutral-100">
-                        <span className="text-xs font-bold text-neutral-900 tracking-tight">GiA</span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                          <span className="text-[10px] text-neutral-400">En ligne</span>
-                        </div>
-                      </div>
+                    <div className="w-full bg-neutral-50 rounded-[2.1rem] overflow-hidden relative" style={{ aspectRatio: "9/19" }}>
 
-                      {/* Mobile dashboard content */}
-                      <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
-                        {/* Mini KPIs */}
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="bg-white rounded-xl p-3 border border-neutral-100">
-                            <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Conformité</p>
-                            <span className="text-lg font-bold text-[#57886c]">87%</span>
-                          </div>
-                          <div className="bg-white rounded-xl p-3 border border-neutral-100">
-                            <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Systèmes</p>
-                            <span className="text-lg font-bold text-[#57886c]">24</span>
-                          </div>
-                        </div>
-
-                        {/* Mini donut chart */}
-                        <div className="bg-white rounded-xl p-3 border border-neutral-100 flex items-center gap-3">
-                          <svg width="44" height="44" viewBox="0 0 36 36" className="shrink-0">
-                            <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e5e5" strokeWidth="4" />
-                            <circle cx="18" cy="18" r="14" fill="none" stroke="#57886c" strokeWidth="4"
-                              strokeDasharray="76.4 87.96" strokeDashoffset="22" strokeLinecap="round" />
-                            <text x="18" y="20" textAnchor="middle" className="text-[8px] font-bold fill-neutral-700">87%</text>
-                          </svg>
-                          <div>
-                            <p className="text-[8px] font-bold text-neutral-400 uppercase tracking-widest">Score global</p>
-                            <p className="text-[9px] text-neutral-600 mt-0.5">4/5 cadres conformes</p>
-                          </div>
-                        </div>
-
-                        {/* Mini notifications */}
-                        <div className="bg-white rounded-xl p-3 border border-neutral-100 space-y-2">
-                          <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">Notifications</p>
-                          {[
-                            { text: "Évaluation terminée", dot: "bg-emerald-400" },
-                            { text: "Incident résolu", dot: "bg-blue-400" },
-                            { text: "Nouveau système ajouté", dot: "bg-[#57886c]" },
-                          ].map((n) => (
-                            <div key={n.text} className="flex items-center gap-2">
-                              <span className={`w-2 h-2 rounded-full ${n.dot} shrink-0`} />
-                              <span className="text-[9px] text-neutral-600 truncate">{n.text}</span>
+                      {/* ── Slide: Dashboard ── */}
+                      {phoneSlide === 0 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col">
+                          <div className="flex items-center justify-between px-5 pt-8 pb-3 bg-white border-b border-neutral-100">
+                            <span className="text-xs font-bold text-neutral-900 tracking-tight">GiA</span>
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                              <span className="text-[10px] text-neutral-400">En ligne</span>
                             </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Bottom tab bar */}
-                      <div className="flex items-center justify-around px-3 py-2 border-t border-neutral-100 bg-white shrink-0">
-                        {[
-                          { label: "Accueil", active: true },
-                          { label: "IA", active: false },
-                          { label: "Risques", active: false },
-                          { label: "Conformité", active: false },
-                          { label: "Plus", active: false },
-                        ].map((tab) => (
-                          <div key={tab.label} className="flex flex-col items-center gap-0.5">
-                            <div className={`w-4 h-4 rounded ${tab.active ? "bg-[#57886c]" : "bg-neutral-200"}`} />
-                            <span className={`text-[6px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
-                              {tab.label}
-                            </span>
                           </div>
-                        ))}
-                      </div>
+                          <div className="flex-1 px-3 py-3 space-y-2.5 overflow-hidden">
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="bg-white rounded-xl p-3 border border-neutral-100">
+                                <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Conformité</p>
+                                <span className="text-lg font-bold text-[#57886c]">87%</span>
+                              </div>
+                              <div className="bg-white rounded-xl p-3 border border-neutral-100">
+                                <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Systèmes</p>
+                                <span className="text-lg font-bold text-[#57886c]">24</span>
+                              </div>
+                            </div>
+                            <div className="bg-white rounded-xl p-3 border border-neutral-100 flex items-center gap-3">
+                              <svg width="44" height="44" viewBox="0 0 36 36" className="shrink-0">
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e5e5" strokeWidth="4" />
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#57886c" strokeWidth="4"
+                                  strokeDasharray="76.4 87.96" strokeDashoffset="22" strokeLinecap="round" />
+                                <text x="18" y="20" textAnchor="middle" className="text-[8px] font-bold fill-neutral-700">87%</text>
+                              </svg>
+                              <div>
+                                <p className="text-[8px] font-bold text-neutral-400 uppercase tracking-widest">Score global</p>
+                                <p className="text-[9px] text-neutral-600 mt-0.5">4/5 cadres conformes</p>
+                              </div>
+                            </div>
+                            <div className="bg-white rounded-xl p-3 border border-neutral-100 space-y-2">
+                              <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">Notifications</p>
+                              {[
+                                { text: "Évaluation terminée", dot: "bg-emerald-400" },
+                                { text: "Incident résolu", dot: "bg-blue-400" },
+                                { text: "Nouveau système ajouté", dot: "bg-[#57886c]" },
+                              ].map((n) => (
+                                <div key={n.text} className="flex items-center gap-2">
+                                  <span className={`w-2 h-2 rounded-full ${n.dot} shrink-0`} />
+                                  <span className="text-[9px] text-neutral-600 truncate">{n.text}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-around px-3 py-2 border-t border-neutral-100 bg-white shrink-0">
+                            {[
+                              { label: "Accueil", active: true },
+                              { label: "IA", active: false },
+                              { label: "Risques", active: false },
+                              { label: "Conformité", active: false },
+                            ].map((tab) => (
+                              <div key={tab.label} className="flex flex-col items-center gap-0.5">
+                                <div className={`w-4 h-4 rounded ${tab.active ? "bg-[#57886c]" : "bg-neutral-200"}`} />
+                                <span className={`text-[6px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
+                                  {tab.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Slide: Conformité ── */}
+                      {phoneSlide === 1 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col">
+                          <div className="flex items-center justify-between px-5 pt-8 pb-3 bg-white border-b border-neutral-100">
+                            <span className="text-xs font-bold text-neutral-900 tracking-tight">Conformité</span>
+                            <span className="text-[10px] font-semibold text-white bg-[#57886c] rounded-md px-2 py-0.5">5 cadres</span>
+                          </div>
+                          <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
+                            {[
+                              { label: "Loi 25 (Québec)", value: 92, color: "#57886c" },
+                              { label: "EU AI Act", value: 78, color: "#57886c" },
+                              { label: "NIST AI RMF", value: 85, color: "#57886c" },
+                              { label: "ISO 42001", value: 71, color: "#81a684" },
+                              { label: "RGPD", value: 88, color: "#57886c" },
+                            ].map((item) => (
+                              <div key={item.label} className="bg-white rounded-xl p-3 border border-neutral-100">
+                                <div className="flex items-center justify-between mb-1.5">
+                                  <span className="text-[9px] font-medium text-neutral-700">{item.label}</span>
+                                  <span className="text-[10px] font-bold text-neutral-900">{item.value}%</span>
+                                </div>
+                                <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                                  <div className="h-full rounded-full" style={{ width: `${item.value}%`, backgroundColor: item.color }} />
+                                </div>
+                              </div>
+                            ))}
+                            <div className="bg-[#57886c]/10 rounded-xl p-3 border border-[#57886c]/20">
+                              <p className="text-[8px] font-bold text-[#57886c] uppercase tracking-widest mb-1">Score moyen</p>
+                              <span className="text-xl font-bold text-[#57886c]">82.8%</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-around px-3 py-2 border-t border-neutral-100 bg-white shrink-0">
+                            {[
+                              { label: "Accueil", active: false },
+                              { label: "IA", active: false },
+                              { label: "Risques", active: false },
+                              { label: "Conformité", active: true },
+                            ].map((tab) => (
+                              <div key={tab.label} className="flex flex-col items-center gap-0.5">
+                                <div className={`w-4 h-4 rounded ${tab.active ? "bg-[#57886c]" : "bg-neutral-200"}`} />
+                                <span className={`text-[6px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
+                                  {tab.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Slide: Risques ── */}
+                      {phoneSlide === 2 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col">
+                          <div className="flex items-center justify-between px-5 pt-8 pb-3 bg-white border-b border-neutral-100">
+                            <span className="text-xs font-bold text-neutral-900 tracking-tight">Risques IA</span>
+                            <span className="text-[10px] font-semibold text-white bg-amber-500 rounded-md px-2 py-0.5">3 élevés</span>
+                          </div>
+                          <div className="flex-1 px-3 py-3 space-y-2 overflow-hidden">
+                            {[
+                              { name: "Chatbot RH", level: "Élevé", color: "bg-red-500", bg: "bg-red-50", border: "border-red-100" },
+                              { name: "IA Recrutement", level: "Élevé", color: "bg-orange-500", bg: "bg-orange-50", border: "border-orange-100" },
+                              { name: "Scoring Client", level: "Moyen", color: "bg-amber-400", bg: "bg-amber-50", border: "border-amber-100" },
+                              { name: "Analyse Fraude", level: "Faible", color: "bg-emerald-500", bg: "bg-emerald-50", border: "border-emerald-100" },
+                              { name: "Traduction IA", level: "Faible", color: "bg-emerald-500", bg: "bg-emerald-50", border: "border-emerald-100" },
+                            ].map((item) => (
+                              <div key={item.name} className={`${item.bg} rounded-xl p-3 border ${item.border} flex items-center justify-between`}>
+                                <div>
+                                  <p className="text-[9px] font-medium text-neutral-800">{item.name}</p>
+                                  <p className="text-[7px] text-neutral-500 mt-0.5">Système d&apos;IA</p>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                  <span className={`w-2 h-2 rounded-full ${item.color}`} />
+                                  <span className="text-[8px] font-semibold text-neutral-700">{item.level}</span>
+                                </div>
+                              </div>
+                            ))}
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="bg-white rounded-xl p-2.5 border border-neutral-100 text-center">
+                                <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">Total</p>
+                                <span className="text-base font-bold text-neutral-900">12</span>
+                              </div>
+                              <div className="bg-white rounded-xl p-2.5 border border-neutral-100 text-center">
+                                <p className="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">Mitigés</p>
+                                <span className="text-base font-bold text-[#57886c]">9</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-around px-3 py-2 border-t border-neutral-100 bg-white shrink-0">
+                            {[
+                              { label: "Accueil", active: false },
+                              { label: "IA", active: false },
+                              { label: "Risques", active: true },
+                              { label: "Conformité", active: false },
+                            ].map((tab) => (
+                              <div key={tab.label} className="flex flex-col items-center gap-0.5">
+                                <div className={`w-4 h-4 rounded ${tab.active ? "bg-[#57886c]" : "bg-neutral-200"}`} />
+                                <span className={`text-[6px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
+                                  {tab.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
+                  </div>
+
+                  {/* Slide indicator dots */}
+                  <div className="flex items-center justify-center gap-2 mt-4">
+                    {PHONE_SLIDES.map((slide, i) => (
+                      <button
+                        key={slide.id}
+                        type="button"
+                        onClick={() => { setPhoneSlide(i); setSlideKey((k) => k + 1); }}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === phoneSlide ? "w-6 bg-[#57886c]" : "w-1.5 bg-neutral-300"
+                        }`}
+                        aria-label={slide.label}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>

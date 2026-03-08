@@ -224,11 +224,11 @@
   background: rgba(87, 136, 108, 0.4);
 }
 
-/* Phone mockup float animation */
-@keyframes phone-float {
-  0%, 100% { transform: translateY(0) rotate(2deg); }
-  50%      { transform: translateY(-8px) rotate(3deg); }
+/* Phone mockup slide transition */
+@keyframes phone-slide-enter {
+  0%   { opacity: 0; transform: scale(0.95) translateX(20px); }
+  100% { opacity: 1; transform: scale(1) translateX(0); }
 }
-.animate-phone-float {
-  animation: phone-float 4s ease-in-out infinite;
+.phone-slide-active {
+  animation: phone-slide-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
