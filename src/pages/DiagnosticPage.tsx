@@ -16,6 +16,7 @@ import {
   Building2,
   GraduationCap,
 } from "lucide-react";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "gouvernance:diagnostic:pending";
@@ -67,6 +68,7 @@ function getMaturityLevel(score: number): string {
 export function DiagnosticPage() {
   const { t } = useTranslation("diagnostic");
   const navigate = useNavigate();
+  const { hasConsent } = useCookieConsent();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -85,11 +87,13 @@ export function DiagnosticPage() {
       const newAnswers = { ...answers, [currentKey]: value };
       setAnswers(newAnswers);
 
-      // Save progress to localStorage
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ answers: newAnswers, timestamp: Date.now() })
-      );
+      // Save progress to localStorage (only with functional consent — Loi 25)
+      if (hasConsent('functional')) {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ answers: newAnswers, timestamp: Date.now() })
+        );
+      }
 
       // Auto-advance after short delay
       setTimeout(() => {
@@ -101,20 +105,22 @@ export function DiagnosticPage() {
           // Last question — save full result and navigate
           const score = Object.values(newAnswers).reduce((a, b) => a + b, 0);
           const level = getMaturityLevel(score);
-          localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify({
-              answers: newAnswers,
-              score,
-              level,
-              completedAt: new Date().toISOString(),
-            })
-          );
+          if (hasConsent('functional')) {
+            localStorage.setItem(
+              STORAGE_KEY,
+              JSON.stringify({
+                answers: newAnswers,
+                score,
+                level,
+                completedAt: new Date().toISOString(),
+              })
+            );
+          }
           navigate("/diagnostic/resultats");
         }
       }, 400);
     },
-    [answers, currentIndex, currentKey, totalQuestions, navigate]
+    [answers, currentIndex, currentKey, totalQuestions, navigate, hasConsent]
   );
 
   const goBack = useCallback(() => {

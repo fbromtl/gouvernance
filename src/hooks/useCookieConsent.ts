@@ -16,21 +16,44 @@ function emitChange() {
   listeners.forEach((l) => l());
 }
 
+let cachedRaw: string | null = null;
+let cachedState: CookieConsentState | null = null;
+
 function getSnapshot(): CookieConsentState | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as CookieConsentState;
-    if (parsed.version !== CONSENT_VERSION) return null;
-    return parsed;
+    if (!raw) { cachedRaw = null; cachedState = null; return null; }
+    if (raw === cachedRaw) return cachedState;
+    const parsed = JSON.parse(raw);
+    if (
+      typeof parsed.version !== 'number' ||
+      typeof parsed.functional !== 'boolean' ||
+      parsed.version !== CONSENT_VERSION
+    ) {
+      cachedRaw = null;
+      cachedState = null;
+      return null;
+    }
+    cachedRaw = raw;
+    cachedState = parsed as CookieConsentState;
+    return cachedState;
   } catch {
+    cachedRaw = null;
+    cachedState = null;
     return null;
   }
 }
 
 function subscribe(cb: () => void) {
   listeners.add(cb);
-  return () => listeners.delete(cb);
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY) emitChange();
+  };
+  window.addEventListener('storage', handleStorage);
+  return () => {
+    listeners.delete(cb);
+    window.removeEventListener('storage', handleStorage);
+  };
 }
 
 export function useCookieConsent() {

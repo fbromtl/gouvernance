@@ -27,14 +27,34 @@ function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
+let _tempSessionId: string | null = null;
+
 function getSessionId(): string {
   const KEY = "public-chat-session";
-  let id = sessionStorage.getItem(KEY);
-  if (!id) {
-    id = generateId();
-    sessionStorage.setItem(KEY, id);
+
+  // Check functional cookie consent before persisting to sessionStorage
+  try {
+    const consentRaw = localStorage.getItem('cookie_consent');
+    if (consentRaw) {
+      const consent = JSON.parse(consentRaw);
+      if (consent.functional === true) {
+        let id = sessionStorage.getItem(KEY);
+        if (!id) {
+          id = generateId();
+          sessionStorage.setItem(KEY, id);
+        }
+        return id;
+      }
+    }
+  } catch {
+    // Fall through to non-persisted ID
   }
-  return id;
+
+  // No functional consent — use non-persisted ID
+  if (!_tempSessionId) {
+    _tempSessionId = generateId();
+  }
+  return _tempSessionId;
 }
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;

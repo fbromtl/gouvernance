@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Shield, Cookie, MessageSquare } from 'lucide-react';
 import {
   Dialog,
@@ -21,6 +21,12 @@ interface CookiePreferencesProps {
 export function CookiePreferences({ open, onOpenChange }: CookiePreferencesProps) {
   const { consent, saveConsent } = useCookieConsent();
   const [functional, setFunctional] = useState(consent?.functional ?? false);
+
+  useEffect(() => {
+    if (open) {
+      setFunctional(consent?.functional ?? false);
+    }
+  }, [open, consent?.functional]);
 
   const handleSave = () => {
     saveConsent(functional);
