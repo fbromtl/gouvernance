@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { SEO } from "@/components/SEO";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 export function ConfidentialitePage() {
+  const { resetConsent } = useCookieConsent();
+
   return (
     <>
       <SEO title="Politique de confidentialité" description="Politique de confidentialité du Cercle de Gouvernance de l'IA. Protection des données conformément à la Loi 25." noindex={true} />
@@ -56,12 +60,32 @@ export function ConfidentialitePage() {
           <section>
             <h2 className="font-serif text-xl font-semibold text-foreground mb-3">Cookies</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Notre site peut utiliser des cookies pour améliorer l&apos;expérience de navigation,
-              analyser le trafic et mémoriser vos préférences. Les cookies essentiels sont
-              nécessaires au fonctionnement du site. Vous pouvez configurer votre navigateur pour
-              refuser les cookies non essentiels, ce qui pourrait toutefois affecter certaines
-              fonctionnalités du site.
+              Notre site utilise des cookies pour assurer son fonctionnement et améliorer votre
+              expérience. Conformément à la Loi 25 du Québec, nous distinguons deux catégories :
             </p>
+            <ul className="mt-3 space-y-2 text-muted-foreground leading-relaxed list-disc list-inside">
+              <li>
+                <strong className="text-foreground">Cookies essentiels</strong> — nécessaires au
+                fonctionnement du site (authentification, paiement, préférence de langue). Ils ne
+                peuvent pas être désactivés.
+              </li>
+              <li>
+                <strong className="text-foreground">Cookies fonctionnels</strong> — améliorent votre
+                expérience (sauvegarde du diagnostic en cours, session du chat). Vous pouvez les
+                accepter ou les refuser.
+              </li>
+            </ul>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Vous pouvez modifier vos préférences à tout moment :
+            </p>
+            <button
+              type="button"
+              onClick={resetConsent}
+              className="mt-2 inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors"
+            >
+              <Shield className="size-4" />
+              Modifier mes préférences de cookies
+            </button>
           </section>
 
           <Separator />
