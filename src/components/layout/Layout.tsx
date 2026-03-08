@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { PublicChat } from "@/components/PublicChat";
+import { CookieConsent } from "@/components/cookie/CookieConsent";
 
 export function Layout() {
   return (
@@ -13,6 +14,7 @@ export function Layout() {
       </main>
       <Footer />
       <PublicChat />
+      <CookieConsent />
     </div>
   );
 }
