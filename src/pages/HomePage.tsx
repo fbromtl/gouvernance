@@ -792,8 +792,8 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* ── Dashboard Mockup (full width below) ── */}
-            <div className="mt-16 max-w-6xl mx-auto">
+            {/* ── Dashboard Mockup (full width below — desktop only) ── */}
+            <div className="hidden lg:block mt-16 max-w-6xl mx-auto">
               <div className="overflow-hidden flex flex-col bg-white border-neutral-200/60 border rounded-2xl relative shadow-2xl">
                 {/* Mockup header */}
                 <header className="flex z-20 shrink-0 bg-white border-neutral-100 border-b pt-4 pr-6 pb-4 pl-6 items-center justify-between">
