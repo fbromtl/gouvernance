@@ -32,6 +32,12 @@ import {
   ShieldCheck,
   CircleAlert,
   Layers,
+  Database,
+  Scale,
+  RefreshCw,
+  Send,
+  BookOpen,
+  Newspaper,
 } from "lucide-react";
 
 import { SEO, JsonLd } from "@/components/SEO";
@@ -44,8 +50,11 @@ import { EcosystemMarquee } from "@/components/home/EcosystemMarquee";
 
 const PHONE_SLIDES = [
   { id: "dashboard", label: "Tableau de bord" },
+  { id: "inventory", label: "Inventaire IA" },
   { id: "compliance", label: "Conformité" },
-  { id: "risks", label: "Risques" },
+  { id: "risks", label: "Risques & Biais" },
+  { id: "monitoring", label: "Monitoring" },
+  { id: "assistant", label: "Assistant IA" },
 ] as const;
 
 export function HomePage() {
@@ -55,10 +64,23 @@ export function HomePage() {
   const [phoneSlide, setPhoneSlide] = useState(0);
   const [slideKey, setSlideKey] = useState(0);
 
+  const [autoPlay, setAutoPlay] = useState(true);
+
   const goToSlide = useCallback((dir: 1 | -1) => {
     setPhoneSlide((prev) => (prev + dir + PHONE_SLIDES.length) % PHONE_SLIDES.length);
     setSlideKey((k) => k + 1);
+    setAutoPlay(false);
   }, []);
+
+  // Auto-rotate slides every 5s
+  useEffect(() => {
+    if (!autoPlay) return;
+    const timer = setInterval(() => {
+      setPhoneSlide((prev) => (prev + 1) % PHONE_SLIDES.length);
+      setSlideKey((k) => k + 1);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [autoPlay]);
 
   // Sticky CTA bar: show after scrolling past hero, hide near pricing
   useEffect(() => {
@@ -199,41 +221,27 @@ export function HomePage() {
 
                 {/* Phone device */}
                 <div className="w-[280px] xl:w-[300px] relative">
-                  {/* Subtle glow behind phone */}
                   <div className="absolute -inset-8 bg-gradient-to-br from-[#57886c]/10 via-transparent to-[#81a684]/10 rounded-full blur-2xl pointer-events-none" />
 
                   <div className="relative bg-[#1a1a1a] rounded-[2.8rem] p-[10px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] ring-1 ring-white/10">
-                    {/* Dynamic Island */}
                     <div className="absolute top-[14px] left-1/2 -translate-x-1/2 h-[22px] w-[90px] bg-black rounded-full z-30 flex items-center justify-center gap-2">
                       <span className="w-[6px] h-[6px] rounded-full bg-neutral-800 ring-1 ring-neutral-700" />
                     </div>
 
-                    {/* Screen bezel */}
                     <div className="w-full bg-[#f8f8f8] rounded-[2.1rem] overflow-hidden relative" style={{ aspectRatio: "9/19.2" }}>
 
-                      {/* ── Slide: Dashboard ── */}
+                      {/* ═══ Slide 0: Dashboard ═══ */}
                       {phoneSlide === 0 && (
                         <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
                           {/* Status bar */}
                           <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
                             <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
                             <div className="flex items-center gap-1">
-                              <Activity className="w-3 h-3 text-neutral-600" />
-                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor">
-                                <rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/>
-                                <rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/>
-                                <rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/>
-                                <rect x="9" y="0" width="2" height="10" rx="0.5"/>
-                              </svg>
-                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor">
-                                <rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/>
-                                <rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/>
-                                <rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/>
-                              </svg>
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
                             </div>
                           </div>
-
-                          {/* App header */}
+                          {/* Header */}
                           <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
                             <div className="flex items-center gap-2">
                               <div className="w-7 h-7 rounded-lg bg-[#57886c] flex items-center justify-center">
@@ -245,26 +253,20 @@ export function HomePage() {
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="relative">
-                                <Bell className="w-4 h-4 text-neutral-500" />
-                                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full border border-[#f5f5f0]" />
-                              </div>
-                              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] flex items-center justify-center">
-                                <span className="text-[7px] font-bold text-white">FB</span>
-                              </div>
+                              <div className="relative"><Bell className="w-4 h-4 text-neutral-500" /><span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full border border-[#f5f5f0] ph-pulse-dot" /></div>
+                              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#57886c] to-[#466060] flex items-center justify-center"><span className="text-[7px] font-bold text-white">FB</span></div>
                             </div>
                           </div>
-
                           {/* Content */}
                           <div className="flex-1 px-3 pb-1 space-y-2 overflow-hidden">
-                            {/* Score hero card */}
-                            <div className="bg-gradient-to-br from-[#57886c] to-[#3d6b54] rounded-2xl p-3.5 text-white relative overflow-hidden">
+                            {/* Score hero */}
+                            <div className="ph-fade-up ph-d1 bg-gradient-to-br from-[#57886c] to-[#3d6b54] rounded-2xl p-3.5 text-white relative overflow-hidden">
                               <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-y-6 translate-x-6" />
                               <div className="flex items-center justify-between">
                                 <div>
                                   <p className="text-[8px] font-medium text-white/60 uppercase tracking-wider">Score de conformité</p>
                                   <div className="flex items-baseline gap-1 mt-1">
-                                    <span className="text-[28px] font-bold leading-none">87</span>
+                                    <span className="text-[28px] font-bold leading-none ph-counter ph-d2">87</span>
                                     <span className="text-sm font-medium text-white/70">%</span>
                                   </div>
                                   <div className="flex items-center gap-1 mt-1">
@@ -275,43 +277,39 @@ export function HomePage() {
                                 <svg width="56" height="56" viewBox="0 0 36 36" className="shrink-0">
                                   <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="3.5" />
                                   <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="3.5"
-                                    strokeDasharray="76.4 87.96" strokeDashoffset="22" strokeLinecap="round" />
-                                  <text x="18" y="19" textAnchor="middle" className="text-[7px] font-bold" fill="rgba(255,255,255,0.7)">4/5</text>
-                                  <text x="18" y="24" textAnchor="middle" className="text-[5px]" fill="rgba(255,255,255,0.5)">cadres</text>
+                                    strokeDasharray="76.4 87.96" strokeDashoffset="22" strokeLinecap="round" className="ph-ring-draw" />
                                 </svg>
                               </div>
                             </div>
-
-                            {/* KPI row */}
+                            {/* KPIs */}
                             <div className="grid grid-cols-3 gap-1.5">
                               {[
-                                { label: "Systèmes", value: "24", icon: Cpu, accent: "text-[#57886c]", bg: "bg-[#57886c]/8" },
-                                { label: "Incidents", value: "2", icon: CircleAlert, accent: "text-amber-500", bg: "bg-amber-50" },
-                                { label: "Risques", value: "3", icon: AlertTriangle, accent: "text-red-500", bg: "bg-red-50" },
+                                { label: "Systèmes", value: "24", icon: Cpu, accent: "text-[#57886c]", bg: "bg-[#57886c]/8", d: "ph-d2" },
+                                { label: "Incidents", value: "2", icon: CircleAlert, accent: "text-amber-500", bg: "bg-amber-50", d: "ph-d3" },
+                                { label: "Risques", value: "3", icon: AlertTriangle, accent: "text-red-500", bg: "bg-red-50", d: "ph-d4" },
                               ].map((kpi) => (
-                                <div key={kpi.label} className="bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                                <div key={kpi.label} className={`ph-fade-up ${kpi.d} bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]`}>
                                   <div className={`w-5 h-5 ${kpi.bg} rounded-md flex items-center justify-center mb-1.5`}>
                                     <kpi.icon className={`w-2.5 h-2.5 ${kpi.accent}`} />
                                   </div>
-                                  <span className={`text-sm font-bold ${kpi.accent}`}>{kpi.value}</span>
+                                  <span className={`text-sm font-bold ${kpi.accent} ph-counter ${kpi.d}`}>{kpi.value}</span>
                                   <p className="text-[7px] text-neutral-400 font-medium mt-0.5">{kpi.label}</p>
                                 </div>
                               ))}
                             </div>
-
-                            {/* Activity feed */}
-                            <div className="bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                            {/* Activity */}
+                            <div className="ph-fade-up ph-d5 bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                               <div className="flex items-center justify-between mb-2.5">
                                 <p className="text-[9px] font-semibold text-neutral-800">Activité récente</p>
                                 <span className="text-[7px] text-[#57886c] font-medium">Tout voir</span>
                               </div>
                               <div className="space-y-2">
                                 {[
-                                  { text: "Évaluation complétée", sub: "Chatbot RH — Loi 25", icon: CheckCircle, color: "text-emerald-500", bg: "bg-emerald-50" },
-                                  { text: "Incident signalé", sub: "API Scoring — Biais détecté", icon: AlertCircle, color: "text-amber-500", bg: "bg-amber-50" },
-                                  { text: "Système enregistré", sub: "IA Recrutement v2.0", icon: Layers, color: "text-blue-500", bg: "bg-blue-50" },
+                                  { text: "Évaluation complétée", sub: "Chatbot RH — Loi 25", icon: CheckCircle, color: "text-emerald-500", bg: "bg-emerald-50", d: "ph-d5" },
+                                  { text: "Incident signalé", sub: "API Scoring — Biais détecté", icon: AlertCircle, color: "text-amber-500", bg: "bg-amber-50", d: "ph-d6" },
+                                  { text: "Système enregistré", sub: "IA Recrutement v2.0", icon: Layers, color: "text-blue-500", bg: "bg-blue-50", d: "ph-d7" },
                                 ].map((item) => (
-                                  <div key={item.text} className="flex items-center gap-2.5">
+                                  <div key={item.text} className={`ph-fade-up ${item.d} flex items-center gap-2.5`}>
                                     <div className={`w-6 h-6 ${item.bg} rounded-lg flex items-center justify-center shrink-0`}>
                                       <item.icon className={`w-3 h-3 ${item.color}`} />
                                     </div>
@@ -325,8 +323,7 @@ export function HomePage() {
                               </div>
                             </div>
                           </div>
-
-                          {/* Tab bar — iOS style */}
+                          {/* Tab bar */}
                           <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
                             <div className="flex items-center justify-around">
                               {[
@@ -337,9 +334,7 @@ export function HomePage() {
                               ].map((tab) => (
                                 <div key={tab.label} className="flex flex-col items-center gap-[2px]">
                                   <tab.Icon className={`w-[16px] h-[16px] ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`} strokeWidth={tab.active ? 2.5 : 1.5} />
-                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
-                                    {tab.label}
-                                  </span>
+                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>{tab.label}</span>
                                 </div>
                               ))}
                             </div>
@@ -347,34 +342,85 @@ export function HomePage() {
                         </div>
                       )}
 
-                      {/* ── Slide: Conformité ── */}
+                      {/* ═══ Slide 1: Inventaire IA ═══ */}
                       {phoneSlide === 1 && (
                         <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
-                          {/* Status bar */}
                           <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
                             <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
                             <div className="flex items-center gap-1">
-                              <Activity className="w-3 h-3 text-neutral-600" />
-                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor">
-                                <rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/>
-                                <rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/>
-                                <rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/>
-                                <rect x="9" y="0" width="2" height="10" rx="0.5"/>
-                              </svg>
-                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor">
-                                <rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/>
-                                <rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/>
-                                <rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/>
-                              </svg>
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
                             </div>
                           </div>
-
-                          {/* App header */}
                           <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
                             <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-lg bg-[#57886c] flex items-center justify-center">
-                                <FileCheck className="w-3.5 h-3.5 text-white" />
+                              <div className="w-7 h-7 rounded-lg bg-blue-500 flex items-center justify-center"><Cpu className="w-3.5 h-3.5 text-white" /></div>
+                              <div>
+                                <p className="text-[11px] font-bold text-neutral-900 leading-tight">Systèmes IA</p>
+                                <p className="text-[8px] text-neutral-400">24 systèmes enregistrés</p>
                               </div>
+                            </div>
+                            <Search className="w-4 h-4 text-neutral-400" />
+                          </div>
+                          <div className="flex-1 px-3 pb-1 space-y-2 overflow-hidden">
+                            {/* Summary row */}
+                            <div className="ph-fade-up ph-d1 grid grid-cols-3 gap-1.5">
+                              <div className="bg-emerald-50 rounded-xl p-2 text-center ring-1 ring-emerald-100"><span className="text-sm font-bold text-emerald-600 ph-counter ph-d1">18</span><p className="text-[7px] font-medium text-emerald-600">Production</p></div>
+                              <div className="bg-blue-50 rounded-xl p-2 text-center ring-1 ring-blue-100"><span className="text-sm font-bold text-blue-600 ph-counter ph-d2">4</span><p className="text-[7px] font-medium text-blue-600">Test</p></div>
+                              <div className="bg-neutral-100 rounded-xl p-2 text-center ring-1 ring-neutral-200"><span className="text-sm font-bold text-neutral-600 ph-counter ph-d3">2</span><p className="text-[7px] font-medium text-neutral-500">Retiré</p></div>
+                            </div>
+                            {/* System cards */}
+                            {[
+                              { name: "Chatbot RH", type: "NLP / Génératif", risk: "Élevé", dot: "bg-red-500", status: "Production", tag: "bg-emerald-50 text-emerald-600", Icon: Bot, d: "ph-d2" },
+                              { name: "IA Recrutement", type: "Classification", risk: "Élevé", dot: "bg-orange-500", status: "Production", tag: "bg-emerald-50 text-emerald-600", Icon: Users, d: "ph-d3" },
+                              { name: "Scoring Client", type: "Prédictif", risk: "Moyen", dot: "bg-amber-400", status: "Production", tag: "bg-emerald-50 text-emerald-600", Icon: BarChart3, d: "ph-d4" },
+                              { name: "Analyse Fraude", type: "Détection anomalies", risk: "Faible", dot: "bg-emerald-500", status: "Production", tag: "bg-emerald-50 text-emerald-600", Icon: ShieldCheck, d: "ph-d5" },
+                              { name: "Traduction v3", type: "NLP / Séq-à-séq", risk: "Faible", dot: "bg-emerald-500", status: "Test", tag: "bg-blue-50 text-blue-600", Icon: MessageSquare, d: "ph-d6" },
+                            ].map((sys) => (
+                              <div key={sys.name} className={`ph-fade-up ${sys.d} bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-2.5`}>
+                                <div className="w-8 h-8 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-100">
+                                  <sys.Icon className="w-3.5 h-3.5 text-neutral-500" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-1.5">
+                                    <p className="text-[9px] font-semibold text-neutral-800 truncate">{sys.name}</p>
+                                    <span className={`text-[6px] font-bold ${sys.tag} rounded px-1 py-[1px] shrink-0`}>{sys.status}</span>
+                                  </div>
+                                  <p className="text-[7px] text-neutral-400">{sys.type}</p>
+                                </div>
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <span className={`w-[5px] h-[5px] rounded-full ${sys.dot}`} />
+                                  <span className="text-[7px] font-medium text-neutral-500">{sys.risk}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
+                            <div className="flex items-center justify-around">
+                              {[{ label: "Accueil", Icon: Home, active: false },{ label: "Systèmes", Icon: Cpu, active: true },{ label: "Risques", Icon: Shield, active: false },{ label: "Conformité", Icon: FileCheck, active: false }].map((tab) => (
+                                <div key={tab.label} className="flex flex-col items-center gap-[2px]">
+                                  <tab.Icon className={`w-[16px] h-[16px] ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`} strokeWidth={tab.active ? 2.5 : 1.5} />
+                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>{tab.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ═══ Slide 2: Conformité ═══ */}
+                      {phoneSlide === 2 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
+                          <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
+                            <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
+                            <div className="flex items-center gap-1">
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
+                            <div className="flex items-center gap-2">
+                              <div className="w-7 h-7 rounded-lg bg-[#57886c] flex items-center justify-center"><FileCheck className="w-3.5 h-3.5 text-white" /></div>
                               <div>
                                 <p className="text-[11px] font-bold text-neutral-900 leading-tight">Conformité</p>
                                 <p className="text-[8px] text-neutral-400">5 référentiels actifs</p>
@@ -382,69 +428,50 @@ export function HomePage() {
                             </div>
                             <Search className="w-4 h-4 text-neutral-400" />
                           </div>
-
-                          {/* Content */}
                           <div className="flex-1 px-3 pb-1 space-y-2 overflow-hidden">
-                            {/* Score banner */}
-                            <div className="bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                            {/* Score ring */}
+                            <div className="ph-fade-up ph-d1 bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                               <div className="flex items-center gap-3">
                                 <div className="relative w-12 h-12 shrink-0">
                                   <svg width="48" height="48" viewBox="0 0 48 48">
                                     <circle cx="24" cy="24" r="20" fill="none" stroke="#e8e6e1" strokeWidth="4" />
                                     <circle cx="24" cy="24" r="20" fill="none" stroke="#57886c" strokeWidth="4"
                                       strokeDasharray="104 125.66" strokeDashoffset="31.4" strokeLinecap="round"
-                                      style={{ transform: "rotate(-90deg)", transformOrigin: "center" }} />
+                                      className="ph-ring-draw" style={{ transform: "rotate(-90deg)", transformOrigin: "center" }} />
                                   </svg>
-                                  <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-[#57886c]">83%</span>
+                                  <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-[#57886c] ph-counter ph-d3">83%</span>
                                 </div>
                                 <div>
                                   <p className="text-[10px] font-semibold text-neutral-800">Score moyen</p>
-                                  <p className="text-[7px] text-neutral-400 mt-0.5">Dernière mise à jour : aujourd&apos;hui</p>
+                                  <p className="text-[7px] text-neutral-400 mt-0.5">Mis à jour aujourd&apos;hui</p>
                                 </div>
                               </div>
                             </div>
-
-                            {/* Frameworks list */}
+                            {/* Frameworks */}
                             {[
-                              { label: "Loi 25", sub: "Québec", value: 92, badge: "A+" },
-                              { label: "EU AI Act", sub: "Union européenne", value: 78, badge: "B+" },
-                              { label: "NIST AI RMF", sub: "États-Unis", value: 85, badge: "A" },
-                              { label: "ISO 42001", sub: "International", value: 71, badge: "B" },
-                              { label: "RGPD", sub: "Europe", value: 88, badge: "A" },
+                              { label: "Loi 25", sub: "Québec", value: 92, badge: "A+", d: "ph-d2" },
+                              { label: "EU AI Act", sub: "Union européenne", value: 78, badge: "B+", d: "ph-d3" },
+                              { label: "NIST AI RMF", sub: "États-Unis", value: 85, badge: "A", d: "ph-d4" },
+                              { label: "ISO 42001", sub: "International", value: 71, badge: "B", d: "ph-d5" },
+                              { label: "RGPD", sub: "Europe", value: 88, badge: "A", d: "ph-d6" },
                             ].map((item) => (
-                              <div key={item.label} className="bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-2.5">
-                                <div className="w-8 h-8 bg-[#57886c]/8 rounded-lg flex items-center justify-center shrink-0">
-                                  <ShieldCheck className="w-3.5 h-3.5 text-[#57886c]" />
-                                </div>
+                              <div key={item.label} className={`ph-fade-up ${item.d} bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-2.5`}>
+                                <div className="w-8 h-8 bg-[#57886c]/8 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck className="w-3.5 h-3.5 text-[#57886c]" /></div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="flex items-center justify-between">
-                                    <p className="text-[9px] font-semibold text-neutral-800">{item.label}</p>
-                                    <span className="text-[8px] font-bold text-[#57886c]">{item.value}%</span>
-                                  </div>
+                                  <div className="flex items-center justify-between"><p className="text-[9px] font-semibold text-neutral-800">{item.label}</p><span className="text-[8px] font-bold text-[#57886c]">{item.value}%</span></div>
                                   <p className="text-[7px] text-neutral-400">{item.sub}</p>
-                                  <div className="h-1 bg-neutral-100 rounded-full overflow-hidden mt-1.5">
-                                    <div className="h-full rounded-full bg-[#57886c]" style={{ width: `${item.value}%` }} />
-                                  </div>
+                                  <div className="h-1 bg-neutral-100 rounded-full overflow-hidden mt-1.5"><div className="h-full rounded-full bg-[#57886c] ph-bar-fill" style={{ width: `${item.value}%` }} /></div>
                                 </div>
                                 <span className="text-[8px] font-bold text-[#57886c] bg-[#57886c]/10 rounded px-1.5 py-0.5 shrink-0">{item.badge}</span>
                               </div>
                             ))}
                           </div>
-
-                          {/* Tab bar */}
                           <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
                             <div className="flex items-center justify-around">
-                              {[
-                                { label: "Accueil", Icon: Home, active: false },
-                                { label: "Systèmes", Icon: Cpu, active: false },
-                                { label: "Risques", Icon: Shield, active: false },
-                                { label: "Conformité", Icon: FileCheck, active: true },
-                              ].map((tab) => (
+                              {[{ label: "Accueil", Icon: Home, active: false },{ label: "Systèmes", Icon: Cpu, active: false },{ label: "Risques", Icon: Shield, active: false },{ label: "Conformité", Icon: FileCheck, active: true }].map((tab) => (
                                 <div key={tab.label} className="flex flex-col items-center gap-[2px]">
                                   <tab.Icon className={`w-[16px] h-[16px] ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`} strokeWidth={tab.active ? 2.5 : 1.5} />
-                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
-                                    {tab.label}
-                                  </span>
+                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>{tab.label}</span>
                                 </div>
                               ))}
                             </div>
@@ -452,118 +479,268 @@ export function HomePage() {
                         </div>
                       )}
 
-                      {/* ── Slide: Risques ── */}
-                      {phoneSlide === 2 && (
+                      {/* ═══ Slide 3: Risques & Biais ═══ */}
+                      {phoneSlide === 3 && (
                         <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
-                          {/* Status bar */}
                           <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
                             <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
                             <div className="flex items-center gap-1">
-                              <Activity className="w-3 h-3 text-neutral-600" />
-                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor">
-                                <rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/>
-                                <rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/>
-                                <rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/>
-                                <rect x="9" y="0" width="2" height="10" rx="0.5"/>
-                              </svg>
-                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor">
-                                <rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/>
-                                <rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/>
-                                <rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/>
-                              </svg>
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
                             </div>
                           </div>
-
-                          {/* App header */}
                           <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
                             <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center">
-                                <Shield className="w-3.5 h-3.5 text-white" />
-                              </div>
+                              <div className="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center"><AlertTriangle className="w-3.5 h-3.5 text-white" /></div>
                               <div>
-                                <p className="text-[11px] font-bold text-neutral-900 leading-tight">Risques IA</p>
-                                <p className="text-[8px] text-neutral-400">12 systèmes analysés</p>
+                                <p className="text-[11px] font-bold text-neutral-900 leading-tight">Risques & Biais</p>
+                                <p className="text-[8px] text-neutral-400">Évaluation continue</p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-1 bg-amber-50 border border-amber-200/50 rounded-full px-2 py-0.5">
-                              <AlertTriangle className="w-2.5 h-2.5 text-amber-500" />
-                              <span className="text-[8px] font-semibold text-amber-600">3 élevés</span>
-                            </div>
+                            <div className="flex items-center gap-1 bg-amber-50 border border-amber-200/50 rounded-full px-2 py-0.5"><AlertTriangle className="w-2.5 h-2.5 text-amber-500" /><span className="text-[8px] font-semibold text-amber-600">3 élevés</span></div>
                           </div>
-
-                          {/* Content */}
                           <div className="flex-1 px-3 pb-1 space-y-2 overflow-hidden">
-                            {/* Risk summary cards */}
-                            <div className="grid grid-cols-3 gap-1.5">
+                            <div className="ph-fade-up ph-d1 grid grid-cols-3 gap-1.5">
                               {[
-                                { label: "Élevé", count: 3, color: "text-red-500", bg: "bg-red-50", ring: "ring-red-100" },
-                                { label: "Moyen", count: 4, color: "text-amber-500", bg: "bg-amber-50", ring: "ring-amber-100" },
-                                { label: "Faible", count: 5, color: "text-emerald-500", bg: "bg-emerald-50", ring: "ring-emerald-100" },
+                                { label: "Élevé", count: 3, color: "text-red-500", bg: "bg-red-50", ring: "ring-red-100", d: "ph-d1" },
+                                { label: "Moyen", count: 4, color: "text-amber-500", bg: "bg-amber-50", ring: "ring-amber-100", d: "ph-d2" },
+                                { label: "Faible", count: 5, color: "text-emerald-500", bg: "bg-emerald-50", ring: "ring-emerald-100", d: "ph-d3" },
                               ].map((s) => (
-                                <div key={s.label} className={`${s.bg} rounded-xl p-2 text-center ring-1 ${s.ring}`}>
-                                  <span className={`text-base font-bold ${s.color}`}>{s.count}</span>
+                                <div key={s.label} className={`ph-scale-in ${s.d} ${s.bg} rounded-xl p-2 text-center ring-1 ${s.ring}`}>
+                                  <span className={`text-base font-bold ${s.color} ph-counter ${s.d}`}>{s.count}</span>
                                   <p className={`text-[7px] font-medium ${s.color} mt-0.5`}>{s.label}</p>
                                 </div>
                               ))}
                             </div>
-
+                            {/* Bias detection card */}
+                            <div className="ph-fade-up ph-d3 bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Scale className="w-3.5 h-3.5 text-purple-500" />
+                                <p className="text-[9px] font-semibold text-neutral-800">Analyse des biais</p>
+                              </div>
+                              <div className="space-y-1.5">
+                                {[
+                                  { label: "Genre", value: 12, color: "bg-purple-500" },
+                                  { label: "Âge", value: 8, color: "bg-purple-400" },
+                                  { label: "Origine", value: 3, color: "bg-purple-300" },
+                                ].map((b) => (
+                                  <div key={b.label} className="flex items-center gap-2">
+                                    <span className="text-[7px] text-neutral-500 w-10">{b.label}</span>
+                                    <div className="flex-1 h-1 bg-neutral-100 rounded-full overflow-hidden"><div className={`h-full ${b.color} rounded-full ph-bar-fill`} style={{ width: `${b.value * 5}%` }} /></div>
+                                    <span className="text-[7px] font-bold text-neutral-600 w-4 text-right">{b.value}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                             {/* Risk items */}
                             {[
-                              { name: "Chatbot RH", desc: "Biais potentiel détecté", level: "Élevé", dot: "bg-red-500", Icon: Bot },
-                              { name: "IA Recrutement", desc: "Données sensibles", level: "Élevé", dot: "bg-orange-500", Icon: Users },
-                              { name: "Scoring Client", desc: "Transparence limitée", level: "Moyen", dot: "bg-amber-400", Icon: Eye },
-                              { name: "Analyse Fraude", desc: "Conforme", level: "Faible", dot: "bg-emerald-500", Icon: ShieldCheck },
-                              { name: "Traduction IA", desc: "Risque minimal", level: "Faible", dot: "bg-emerald-500", Icon: MessageSquare },
+                              { name: "Chatbot RH", desc: "Biais genre détecté", level: "Élevé", dot: "bg-red-500", Icon: Bot, d: "ph-d4" },
+                              { name: "IA Recrutement", desc: "Données sensibles", level: "Élevé", dot: "bg-orange-500", Icon: Users, d: "ph-d5" },
+                              { name: "Scoring Client", desc: "Transparence limitée", level: "Moyen", dot: "bg-amber-400", Icon: Eye, d: "ph-d6" },
                             ].map((item) => (
-                              <div key={item.name} className="bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-2.5">
-                                <div className="w-7 h-7 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-100">
-                                  <item.Icon className="w-3.5 h-3.5 text-neutral-500" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-[9px] font-semibold text-neutral-800 truncate">{item.name}</p>
-                                  <p className="text-[7px] text-neutral-400 truncate">{item.desc}</p>
-                                </div>
-                                <div className="flex items-center gap-1 shrink-0">
-                                  <span className={`w-[5px] h-[5px] rounded-full ${item.dot}`} />
-                                  <span className="text-[7px] font-medium text-neutral-500">{item.level}</span>
-                                </div>
+                              <div key={item.name} className={`ph-fade-up ${item.d} bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-2.5`}>
+                                <div className="w-7 h-7 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-100"><item.Icon className="w-3.5 h-3.5 text-neutral-500" /></div>
+                                <div className="flex-1 min-w-0"><p className="text-[9px] font-semibold text-neutral-800 truncate">{item.name}</p><p className="text-[7px] text-neutral-400 truncate">{item.desc}</p></div>
+                                <div className="flex items-center gap-1 shrink-0"><span className={`w-[5px] h-[5px] rounded-full ${item.dot}`} /><span className="text-[7px] font-medium text-neutral-500">{item.level}</span></div>
                               </div>
                             ))}
                           </div>
-
-                          {/* Tab bar */}
                           <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
                             <div className="flex items-center justify-around">
-                              {[
-                                { label: "Accueil", Icon: Home, active: false },
-                                { label: "Systèmes", Icon: Cpu, active: false },
-                                { label: "Risques", Icon: Shield, active: true },
-                                { label: "Conformité", Icon: FileCheck, active: false },
-                              ].map((tab) => (
+                              {[{ label: "Accueil", Icon: Home, active: false },{ label: "Systèmes", Icon: Cpu, active: false },{ label: "Risques", Icon: Shield, active: true },{ label: "Conformité", Icon: FileCheck, active: false }].map((tab) => (
                                 <div key={tab.label} className="flex flex-col items-center gap-[2px]">
                                   <tab.Icon className={`w-[16px] h-[16px] ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`} strokeWidth={tab.active ? 2.5 : 1.5} />
-                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>
-                                    {tab.label}
-                                  </span>
+                                  <span className={`text-[7px] font-medium ${tab.active ? "text-[#57886c]" : "text-neutral-400"}`}>{tab.label}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
                       )}
+
+                      {/* ═══ Slide 4: Monitoring ═══ */}
+                      {phoneSlide === 4 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
+                          <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
+                            <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
+                            <div className="flex items-center gap-1">
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
+                            <div className="flex items-center gap-2">
+                              <div className="w-7 h-7 rounded-lg bg-violet-500 flex items-center justify-center"><Activity className="w-3.5 h-3.5 text-white" /></div>
+                              <div>
+                                <p className="text-[11px] font-bold text-neutral-900 leading-tight">Monitoring</p>
+                                <p className="text-[8px] text-neutral-400">Temps réel</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-400 ph-pulse-dot" /><span className="text-[8px] font-medium text-emerald-600">Live</span></div>
+                          </div>
+                          <div className="flex-1 px-3 pb-1 space-y-2 overflow-hidden">
+                            {/* Metrics */}
+                            <div className="ph-fade-up ph-d1 grid grid-cols-2 gap-1.5">
+                              {[
+                                { label: "Précision", value: "94.2%", trend: "+0.3%", up: true },
+                                { label: "Latence", value: "128ms", trend: "-12ms", up: true },
+                              ].map((m) => (
+                                <div key={m.label} className="bg-white rounded-xl p-2.5 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                                  <p className="text-[7px] text-neutral-400 font-medium">{m.label}</p>
+                                  <span className="text-sm font-bold text-neutral-900 ph-counter ph-d2">{m.value}</span>
+                                  <p className={`text-[7px] font-medium flex items-center gap-0.5 ${m.up ? "text-emerald-500" : "text-red-500"}`}>
+                                    {m.up ? <TrendingUp className="w-2 h-2" /> : <TrendingDown className="w-2 h-2" />}{m.trend}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                            {/* Mini chart */}
+                            <div className="ph-fade-up ph-d3 bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                              <div className="flex items-center justify-between mb-2"><p className="text-[9px] font-semibold text-neutral-800">Performance 7j</p><span className="text-[7px] text-neutral-400">Chatbot RH</span></div>
+                              <svg width="100%" height="50" viewBox="0 0 220 50" className="text-[#57886c]">
+                                <polyline fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                                  points="0,35 30,28 60,32 90,20 120,15 150,18 180,10 210,12" className="ph-ring-draw" />
+                                <polyline fill="url(#chart-fill)" stroke="none"
+                                  points="0,35 30,28 60,32 90,20 120,15 150,18 180,10 210,12 210,50 0,50" opacity="0.1" />
+                                <defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#57886c" /><stop offset="100%" stopColor="#57886c" stopOpacity="0" /></linearGradient></defs>
+                              </svg>
+                            </div>
+                            {/* Data drift */}
+                            <div className="ph-fade-up ph-d4 bg-white rounded-2xl p-3 border border-neutral-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                              <div className="flex items-center gap-2 mb-2"><Database className="w-3 h-3 text-violet-500" /><p className="text-[9px] font-semibold text-neutral-800">Data Drift</p></div>
+                              <div className="space-y-1.5">
+                                {[
+                                  { label: "Distribution", value: 0.02, ok: true },
+                                  { label: "Features", value: 0.05, ok: true },
+                                  { label: "Labels", value: 0.12, ok: false },
+                                ].map((d) => (
+                                  <div key={d.label} className="flex items-center gap-2">
+                                    <span className="text-[7px] text-neutral-500 w-14">{d.label}</span>
+                                    <div className="flex-1 h-1.5 bg-neutral-100 rounded-full overflow-hidden"><div className={`h-full rounded-full ph-bar-fill ${d.ok ? "bg-emerald-400" : "bg-amber-400"}`} style={{ width: `${d.value * 500}%` }} /></div>
+                                    <span className={`text-[7px] font-bold ${d.ok ? "text-emerald-600" : "text-amber-600"}`}>{d.value}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            {/* Alerts */}
+                            <div className="ph-fade-up ph-d5 bg-amber-50 rounded-xl p-2.5 border border-amber-200/50 flex items-center gap-2">
+                              <AlertCircle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                              <div className="min-w-0"><p className="text-[8px] font-semibold text-amber-700">Drift détecté — Labels</p><p className="text-[7px] text-amber-600/70">Seuil 0.10 dépassé · il y a 2h</p></div>
+                            </div>
+                          </div>
+                          <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
+                            <div className="flex items-center justify-around">
+                              {[{ label: "Accueil", Icon: Home, active: false },{ label: "Systèmes", Icon: Cpu, active: false },{ label: "Risques", Icon: Shield, active: false },{ label: "Conformité", Icon: FileCheck, active: false }].map((tab) => (
+                                <div key={tab.label} className="flex flex-col items-center gap-[2px]">
+                                  <tab.Icon className={`w-[16px] h-[16px] text-neutral-400`} strokeWidth={1.5} />
+                                  <span className="text-[7px] font-medium text-neutral-400">{tab.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ═══ Slide 5: Assistant IA ═══ */}
+                      {phoneSlide === 5 && (
+                        <div key={slideKey} className="phone-slide-active w-full h-full flex flex-col bg-[#f5f5f0]">
+                          <div className="flex items-center justify-between px-6 pt-[14px] pb-1">
+                            <span className="text-[10px] font-semibold text-neutral-800">9:41</span>
+                            <div className="flex items-center gap-1">
+                              <svg width="14" height="10" viewBox="0 0 14 10" className="text-neutral-600" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5" opacity="0.3"/><rect x="3" y="4" width="2" height="6" rx="0.5" opacity="0.5"/><rect x="6" y="2" width="2" height="8" rx="0.5" opacity="0.7"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                              <svg width="22" height="10" viewBox="0 0 22 10" className="text-neutral-700" fill="currentColor"><rect x="0" y="1" width="18" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1"/><rect x="18.5" y="3" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="5" rx="1" fill="#57886c"/></svg>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between px-4 pt-1 pb-2.5">
+                            <div className="flex items-center gap-2">
+                              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#57886c] to-[#81a684] flex items-center justify-center"><MessageSquare className="w-3.5 h-3.5 text-white" /></div>
+                              <div>
+                                <p className="text-[11px] font-bold text-neutral-900 leading-tight">Assistant IA</p>
+                                <p className="text-[8px] text-neutral-400">Juridique & Gouvernance</p>
+                              </div>
+                            </div>
+                            <BookOpen className="w-4 h-4 text-neutral-400" />
+                          </div>
+                          <div className="flex-1 px-3 pb-2 overflow-hidden flex flex-col">
+                            {/* Jurisdiction pills */}
+                            <div className="ph-fade-up ph-d1 flex gap-1 mb-3 flex-wrap">
+                              {["Québec", "Canada", "UE", "France"].map((j, i) => (
+                                <span key={j} className={`text-[7px] font-semibold px-2 py-0.5 rounded-full ${i === 0 ? "bg-[#57886c] text-white" : "bg-white text-neutral-500 border border-neutral-200"}`}>{j}</span>
+                              ))}
+                            </div>
+                            {/* Chat messages */}
+                            <div className="flex-1 space-y-2.5 overflow-hidden">
+                              {/* User message */}
+                              <div className="ph-fade-up ph-d2 flex justify-end">
+                                <div className="bg-[#57886c] text-white rounded-2xl rounded-br-md px-3 py-2 max-w-[85%]">
+                                  <p className="text-[9px] leading-relaxed">Quelles sont nos obligations sous la Loi 25 pour notre chatbot RH ?</p>
+                                </div>
+                              </div>
+                              {/* AI response */}
+                              <div className="ph-fade-up ph-d4 flex gap-2">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#57886c] to-[#81a684] flex items-center justify-center shrink-0 mt-0.5"><Bot className="w-2.5 h-2.5 text-white" /></div>
+                                <div className="bg-white rounded-2xl rounded-bl-md px-3 py-2 border border-neutral-100 max-w-[85%] shadow-sm">
+                                  <p className="text-[9px] text-neutral-800 leading-relaxed">Selon la <span className="font-semibold text-[#57886c]">Loi 25</span>, votre chatbot RH doit :</p>
+                                  <div className="mt-1.5 space-y-1">
+                                    {[
+                                      "Informer l'utilisateur qu'il interagit avec une IA",
+                                      "Obtenir le consentement pour la collecte de données",
+                                      "Permettre l'accès aux données personnelles",
+                                    ].map((r, i) => (
+                                      <div key={i} className={`ph-fade-up ph-d${i + 5} flex items-start gap-1.5`}>
+                                        <CheckCircle className="w-2.5 h-2.5 text-[#57886c] mt-[1px] shrink-0" />
+                                        <span className="text-[8px] text-neutral-600 leading-tight">{r}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <div className="mt-2 pt-1.5 border-t border-neutral-100 flex items-center gap-1">
+                                    <Newspaper className="w-2.5 h-2.5 text-neutral-400" />
+                                    <span className="text-[7px] text-neutral-400">Sources : RLRQ c. P-39.1, art. 12, 13</span>
+                                  </div>
+                                </div>
+                              </div>
+                              {/* Typing indicator */}
+                              <div className="ph-fade-up ph-d7 flex gap-2">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#57886c] to-[#81a684] flex items-center justify-center shrink-0 mt-0.5"><Bot className="w-2.5 h-2.5 text-white" /></div>
+                                <div className="bg-white rounded-2xl px-3 py-2 border border-neutral-100 shadow-sm flex items-center gap-1">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 ph-typing-dot" />
+                                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 ph-typing-dot ph-typing-d2" />
+                                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 ph-typing-dot ph-typing-d3" />
+                                </div>
+                              </div>
+                            </div>
+                            {/* Input */}
+                            <div className="mt-2 bg-white rounded-xl border border-neutral-200 px-3 py-2 flex items-center gap-2">
+                              <span className="text-[9px] text-neutral-400 flex-1">Posez votre question...</span>
+                              <div className="w-6 h-6 rounded-lg bg-[#57886c] flex items-center justify-center"><Send className="w-3 h-3 text-white" /></div>
+                            </div>
+                          </div>
+                          <div className="bg-white/80 backdrop-blur-xl border-t border-neutral-200/50 px-2 pt-1.5 pb-4 shrink-0">
+                            <div className="flex items-center justify-around">
+                              {[{ label: "Accueil", Icon: Home, active: false },{ label: "Systèmes", Icon: Cpu, active: false },{ label: "Risques", Icon: Shield, active: false },{ label: "Conformité", Icon: FileCheck, active: false }].map((tab) => (
+                                <div key={tab.label} className="flex flex-col items-center gap-[2px]">
+                                  <tab.Icon className="w-[16px] h-[16px] text-neutral-400" strokeWidth={1.5} />
+                                  <span className="text-[7px] font-medium text-neutral-400">{tab.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                     </div>
                   </div>
 
                   {/* Slide indicator dots + label */}
                   <div className="flex flex-col items-center gap-1.5 mt-5">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       {PHONE_SLIDES.map((slide, i) => (
                         <button
                           key={slide.id}
                           type="button"
-                          onClick={() => { setPhoneSlide(i); setSlideKey((k) => k + 1); }}
+                          onClick={() => { setPhoneSlide(i); setSlideKey((k) => k + 1); setAutoPlay(false); }}
                           className={`rounded-full transition-all duration-300 ${
-                            i === phoneSlide ? "w-6 h-1.5 bg-[#57886c]" : "w-1.5 h-1.5 bg-neutral-300 hover:bg-neutral-400"
+                            i === phoneSlide ? "w-5 h-1.5 bg-[#57886c]" : "w-1.5 h-1.5 bg-neutral-300 hover:bg-neutral-400"
                           }`}
                           aria-label={slide.label}
                         />

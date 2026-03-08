@@ -232,3 +232,51 @@
 .phone-slide-active {
   animation: phone-slide-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* Phone mockup in-slide animations */
+@keyframes phone-fade-up {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes phone-bar-fill {
+  0%   { width: 0; }
+}
+@keyframes phone-scale-in {
+  0%   { opacity: 0; transform: scale(0.7); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes phone-typing-dot {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+@keyframes phone-ring-draw {
+  0%   { stroke-dashoffset: 88; }
+}
+@keyframes phone-pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.5); opacity: 0.5; }
+}
+@keyframes phone-counter {
+  0%   { opacity: 0; transform: translateY(6px) scale(0.8); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes phone-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.ph-fade-up   { animation: phone-fade-up 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+.ph-d1 { animation-delay: 0.08s; }
+.ph-d2 { animation-delay: 0.16s; }
+.ph-d3 { animation-delay: 0.24s; }
+.ph-d4 { animation-delay: 0.32s; }
+.ph-d5 { animation-delay: 0.40s; }
+.ph-d6 { animation-delay: 0.48s; }
+.ph-d7 { animation-delay: 0.56s; }
+.ph-bar-fill  { animation: phone-bar-fill 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.ph-scale-in  { animation: phone-scale-in 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+.ph-ring-draw { animation: phone-ring-draw 1s cubic-bezier(0.16,1,0.3,1) both; }
+.ph-counter   { animation: phone-counter 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.ph-pulse-dot { animation: phone-pulse-dot 2s ease-in-out infinite; }
+.ph-typing-dot { animation: phone-typing-dot 1.4s ease-in-out infinite; }
+.ph-typing-d2 { animation-delay: 0.2s; }
+.ph-typing-d3 { animation-delay: 0.4s; }
