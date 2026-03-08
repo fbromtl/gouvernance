@@ -738,15 +738,31 @@ export function HomePage() {
                     </div>
                     <span className="text-[10px] font-medium text-neutral-400">{PHONE_SLIDES[phoneSlide].label}</span>
 
-                    {/* Platform labels */}
-                    <div className="flex items-center gap-3 mt-3 text-[10px] font-medium text-neutral-400">
-                      <span>Windows</span>
+                    {/* Platform labels with icons */}
+                    <div className="flex items-center gap-2 mt-3 bg-white/60 backdrop-blur border border-neutral-200/60 rounded-full px-4 py-1.5">
+                      {/* Windows */}
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-neutral-500">
+                        <svg width="12" height="12" viewBox="0 0 256 256" fill="currentColor"><path d="M0 36.4L104.6 22.1v99.4H0zm116.9-15.8L256 0v121.7l-139.1.6zm-12.3 135.8l.1 99.8L0 242v-85.7zm12.3 1.3L256 256V135.9l-139.1-.1z"/></svg>
+                        Windows
+                      </span>
                       <span className="text-neutral-300">·</span>
-                      <span>Mac</span>
+                      {/* Mac */}
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-neutral-500">
+                        <svg width="11" height="13" viewBox="0 0 170 210" fill="currentColor"><path d="M150.4 130.3c-.3-27.7 22.6-41 23.6-41.6-12.9-18.8-32.9-21.4-40-21.7-17-1.7-33.2 10-41.9 10s-22-9.8-36.1-9.5c-18.6.3-35.7 10.8-45.3 27.5-19.3 33.5-4.9 83.2 13.9 110.4 9.2 13.3 20.2 28.3 34.6 27.7 13.9-.6 19.1-9 35.9-9s21.5 9 36.1 8.7c14.9-.3 24.4-13.6 33.6-26.9 10.6-15.4 14.9-30.4 15.2-31.2-.3-.1-29.2-11.2-29.5-44.5zM122.7 24.7c7.8-9.5 13.2-22.6 11.8-24.7-11 .5-24.4 7.3-32.5 16.9-7.2 8.4-13.7 22-11.9 34.8 12.2.9 24.9-16.8 32.7-27z"/></svg>
+                        Mac
+                      </span>
                       <span className="text-neutral-300">·</span>
-                      <span>Android</span>
+                      {/* Android */}
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-neutral-500">
+                        <svg width="13" height="13" viewBox="0 0 256 300" fill="currentColor"><path d="M78.4 44.7L62.8 17.3c-1-1.7-.3-3.8 1.3-4.8 1.7-1 3.8-.3 4.8 1.3l15.8 27.7C99 34.7 115.2 30.7 128 30.7s29 4 43.3 11.2l15.8-27.7c1-1.6 3.1-2.3 4.8-1.3 1.6 1 2.3 3.1 1.3 4.8L177.6 44.7C213.5 64.5 239 99.7 239 140.7H17C17 99.7 42.5 64.5 78.4 44.7zM96 112c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zm64 0c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zM17 152.7h222v120c0 11-9 20-20 20H37c-11 0-20-9-20-20v-120z"/></svg>
+                        Android
+                      </span>
                       <span className="text-neutral-300">·</span>
-                      <span>iPhone</span>
+                      {/* iOS */}
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-neutral-500">
+                        <svg width="11" height="13" viewBox="0 0 170 210" fill="currentColor"><path d="M150.4 130.3c-.3-27.7 22.6-41 23.6-41.6-12.9-18.8-32.9-21.4-40-21.7-17-1.7-33.2 10-41.9 10s-22-9.8-36.1-9.5c-18.6.3-35.7 10.8-45.3 27.5-19.3 33.5-4.9 83.2 13.9 110.4 9.2 13.3 20.2 28.3 34.6 27.7 13.9-.6 19.1-9 35.9-9s21.5 9 36.1 8.7c14.9-.3 24.4-13.6 33.6-26.9 10.6-15.4 14.9-30.4 15.2-31.2-.3-.1-29.2-11.2-29.5-44.5zM122.7 24.7c7.8-9.5 13.2-22.6 11.8-24.7-11 .5-24.4 7.3-32.5 16.9-7.2 8.4-13.7 22-11.9 34.8 12.2.9 24.9-16.8 32.7-27z"/></svg>
+                        iOS
+                      </span>
                     </div>
                   </div>
                 </div>
