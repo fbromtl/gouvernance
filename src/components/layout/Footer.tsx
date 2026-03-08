@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { useCookieConsent } from '@/hooks/useCookieConsent';
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
@@ -66,6 +67,7 @@ const legalLinks = [
   { to: "/confidentialite", label: "Confidentialité" },
   { to: "/mentions-legales", label: "Mentions légales" },
   { to: "/accessibilite", label: "Accessibilité" },
+  { to: "#cookies", label: "Gestion des cookies" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -75,6 +77,7 @@ const legalLinks = [
 export function Footer() {
   const [nlSubmitted, setNlSubmitted] = useState(false);
   const [nlSubmitting, setNlSubmitting] = useState(false);
+  const { resetConsent } = useCookieConsent();
 
   const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -274,12 +277,22 @@ export function Footer() {
                   {legalLinks.map((link, i) => (
                     <span key={link.to} className="flex items-center">
                       {i > 0 && <span className="text-white/20 mx-1.5">·</span>}
-                      <Link
-                        to={link.to}
-                        className="text-xs text-white/35 hover:text-white/60 transition-colors"
-                      >
-                        {link.label}
-                      </Link>
+                      {link.to === '#cookies' ? (
+                        <button
+                          type="button"
+                          onClick={resetConsent}
+                          className="text-xs text-white/35 hover:text-white/60 transition-colors"
+                        >
+                          {link.label}
+                        </button>
+                      ) : (
+                        <Link
+                          to={link.to}
+                          className="text-xs text-white/35 hover:text-white/60 transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </span>
                   ))}
                 </div>
