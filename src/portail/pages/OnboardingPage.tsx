@@ -67,14 +67,14 @@ export default function OnboardingPage() {
 
     try {
       const { error: rpcError } = await supabase.rpc(
-        "onboard_create_organization" as never, // TODO: add RPC to Database types
+        "onboard_create_organization" as any,
         {
           p_name: name.trim(),
           p_sector: sector || null,
           p_size: size || null,
           p_country: country || null,
           p_province: province || null,
-        }
+        } as any
       );
 
       if (rpcError) {
