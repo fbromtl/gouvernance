@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import type { Incident, IncidentInsert, IncidentUpdate } from "@/types/database";
 
@@ -46,15 +47,7 @@ export function useIncidents(filters?: IncidentFilters) {
       if (filters?.category) {
         query = query.eq("category", filters.category);
       }
-      if (filters?.search) {
-        // Sanitize search input for PostgREST filter safety
-        const safe = filters.search.replace(/[%_,.*()]/g, "");
-        if (safe) {
-          query = query.or(
-            `title.ilike.%${safe}%,description.ilike.%${safe}%`
-          );
-        }
-      }
+      query = applySearch(query, filters?.search, ["title", "description"]);
 
       query = query.order("created_at", { ascending: false });
 

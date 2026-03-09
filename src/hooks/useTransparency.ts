@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -51,11 +52,7 @@ export function useAutomatedDecisions(filters?: AutomatedDecisionFilters) {
       if (filters?.status) {
         query = query.eq("status", filters.status);
       }
-      if (filters?.search) {
-        query = query.or(
-          `decision_type.ilike.%${filters.search}%,information_channel.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["decision_type", "information_channel"]);
 
       query = query.order("updated_at", { ascending: false });
 
@@ -198,11 +195,7 @@ export function useContestations(filters?: ContestationFilters) {
       if (filters?.status) {
         query = query.eq("status", filters.status);
       }
-      if (filters?.search) {
-        query = query.or(
-          `case_number.ilike.%${filters.search}%,requester_name.ilike.%${filters.search}%,contested_decision_description.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["case_number", "requester_name", "contested_decision_description"]);
 
       query = query.order("received_at", { ascending: false });
 

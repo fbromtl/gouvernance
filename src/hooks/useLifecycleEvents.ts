@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -42,11 +43,7 @@ export function useLifecycleEvents(filters?: LifecycleEventFilters) {
       if (filters?.ai_system_id) {
         query = query.eq("ai_system_id", filters.ai_system_id);
       }
-      if (filters?.search) {
-        query = query.or(
-          `title.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["title", "description"]);
 
       query = query.order("change_date", { ascending: false });
 

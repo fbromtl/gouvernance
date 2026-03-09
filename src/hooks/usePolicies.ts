@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -42,11 +43,7 @@ export function usePolicies(filters?: PolicyFilters) {
       if (filters?.policy_type) {
         query = query.eq("policy_type", filters.policy_type);
       }
-      if (filters?.search) {
-        query = query.or(
-          `title.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["title", "description"]);
 
       query = query.order("updated_at", { ascending: false });
 

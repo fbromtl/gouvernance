@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -55,11 +56,7 @@ export function useDatasets(filters?: DatasetFilters) {
       if (filters?.status) {
         query = query.eq("status", filters.status);
       }
-      if (filters?.search) {
-        query = query.or(
-          `name.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["name", "description"]);
 
       query = query.order("updated_at", { ascending: false });
 
@@ -195,11 +192,7 @@ export function useDataTransfers(filters?: DataTransferFilters) {
       if (filters?.status) {
         query = query.eq("status", filters.status);
       }
-      if (filters?.search) {
-        query = query.or(
-          `destination_country.ilike.%${filters.search}%,transfer_purpose.ilike.%${filters.search}%,destination_entity.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["destination_country", "transfer_purpose", "destination_entity"]);
 
       query = query.order("updated_at", { ascending: false });
 

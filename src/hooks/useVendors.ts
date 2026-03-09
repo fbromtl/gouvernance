@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type { Vendor, VendorInsert, VendorUpdate } from "@/types/database";
@@ -38,11 +39,7 @@ export function useVendors(filters?: VendorFilters) {
       if (filters?.risk_level) {
         query = query.eq("risk_level", filters.risk_level);
       }
-      if (filters?.search) {
-        query = query.or(
-          `name.ilike.%${filters.search}%,website.ilike.%${filters.search}%,contact_name.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["name", "website", "contact_name"]);
 
       query = query.order("updated_at", { ascending: false });
 

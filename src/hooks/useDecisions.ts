@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -46,11 +47,7 @@ export function useDecisions(filters?: DecisionFilters) {
       if (filters?.impact) {
         query = query.eq("impact", filters.impact);
       }
-      if (filters?.search) {
-        query = query.or(
-          `title.ilike.%${filters.search}%,context.ilike.%${filters.search}%,justification.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["title", "context", "justification"]);
 
       query = query.order("updated_at", { ascending: false });
 

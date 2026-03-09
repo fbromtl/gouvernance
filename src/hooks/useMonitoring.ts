@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type {
@@ -44,11 +45,7 @@ export function useMonitoringMetrics(filters?: MonitoringMetricFilters) {
       if (filters?.ai_system_id) {
         query = query.eq("ai_system_id", filters.ai_system_id);
       }
-      if (filters?.search) {
-        query = query.or(
-          `name.ilike.%${filters.search}%`
-        );
-      }
+      query = applySearch(query, filters?.search, ["name"]);
 
       query = query.order("created_at", { ascending: false });
 

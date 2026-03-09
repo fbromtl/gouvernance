@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
+import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import type { AiSystem, AiSystemInsert, AiSystemUpdate } from "@/types/database";
 
@@ -134,15 +135,7 @@ export function useAiSystems(filters?: AiSystemFilters) {
       if (filters?.system_type) {
         query = query.eq("system_type", filters.system_type);
       }
-      if (filters?.search) {
-        // Sanitize search input for PostgREST filter safety
-        const safe = filters.search.replace(/[%_,.*()]/g, "");
-        if (safe) {
-          query = query.or(
-            `name.ilike.%${safe}%,description.ilike.%${safe}%`
-          );
-        }
-      }
+      query = applySearch(query, filters?.search, ["name", "description"]);
 
       query = query.order("risk_score", { ascending: false });
 
