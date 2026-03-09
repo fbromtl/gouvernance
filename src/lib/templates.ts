@@ -1,6 +1,7 @@
 import type {
   TemplateDoc,
   TemplateCategory,
+  TemplateType,
   TemplateCategoryInfo,
 } from "@/types/template";
 
@@ -73,4 +74,24 @@ export function getCategories(): TemplateCategoryInfo[] {
     count,
     icon: CATEGORY_ICONS[slug] || "FileText",
   }));
+}
+
+/** Returns unique template types with their French labels, sorted by label. */
+export function getTypes(): { slug: TemplateType; label: string }[] {
+  const map = new Map<TemplateType, string>();
+  for (const t of allTemplates) {
+    if (!map.has(t.type)) map.set(t.type, t.typeLabel);
+  }
+  return Array.from(map.entries())
+    .map(([slug, label]) => ({ slug, label }))
+    .sort((a, b) => a.label.localeCompare(b.label, "fr"));
+}
+
+/** Returns unique framework names across all templates, sorted alphabetically. */
+export function getFrameworks(): string[] {
+  const set = new Set<string>();
+  for (const t of allTemplates) {
+    for (const fw of t.frameworks) set.add(fw);
+  }
+  return Array.from(set).sort((a, b) => a.localeCompare(b, "fr"));
 }

@@ -23,12 +23,15 @@ interface TemplatePreviewSheetProps {
   template: TemplateDoc | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  /** Called when the user downloads a template */
+  onDownload?: () => void;
 }
 
 export function TemplatePreviewSheet({
   template,
   open,
   onOpenChange,
+  onDownload,
 }: TemplatePreviewSheetProps) {
   const [htmlContent, setHtmlContent] = useState<string>("");
   const [loading, setLoading] = useState(false);
@@ -108,7 +111,7 @@ export function TemplatePreviewSheet({
           {template && (
             <>
               <Button asChild variant="default">
-                <a href={template.docxPath} download>
+                <a href={template.docxPath} download onClick={onDownload}>
                   <Download />
                   Télécharger DOCX
                 </a>
