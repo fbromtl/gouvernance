@@ -70,6 +70,7 @@ export default function ProfilPage() {
   const [linkedinUrl, setLinkedinUrl] = useState(profile?.linkedin_url ?? "");
   const [jobTitle, setJobTitle] = useState(profile?.job_title ?? "");
   const [saving, setSaving] = useState(false);
+  const [avatarError, setAvatarError] = useState(false);
   const [feedback, setFeedback] = useState<{
     type: "success" | "error";
     message: string;
@@ -80,9 +81,9 @@ export default function ProfilPage() {
   const email = user?.email ?? "";
 
   const avatarUrl =
-    profile?.avatar_url ??
-    user?.user_metadata?.avatar_url ??
-    user?.user_metadata?.picture ??
+    profile?.avatar_url ||
+    user?.user_metadata?.avatar_url ||
+    user?.user_metadata?.picture ||
     null;
 
   const initials = (profile?.full_name ?? user?.user_metadata?.full_name ?? "?")
@@ -187,12 +188,13 @@ export default function ProfilPage() {
           <div className="flex flex-col sm:flex-row sm:items-end gap-4 -mt-12">
             {/* Avatar */}
             <div className="relative group">
-              {avatarUrl ? (
+              {avatarUrl && !avatarError ? (
                 <img
                   src={avatarUrl}
                   alt={fullName}
                   className="size-24 rounded-2xl object-cover border-4 border-card shadow-lg"
                   referrerPolicy="no-referrer"
+                  onError={() => setAvatarError(true)}
                 />
               ) : (
                 <div className="flex size-24 items-center justify-center rounded-2xl bg-brand-forest/10 text-brand-forest text-2xl font-bold border-4 border-card shadow-lg">
