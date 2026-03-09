@@ -25,7 +25,7 @@ import {
   useDeleteDataTransfer,
 } from "@/hooks/useData";
 import type { Dataset, DataTransfer } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -65,8 +65,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
-
 /* ================================================================== */
 /*  CONSTANTS                                                          */
 /* ================================================================== */
@@ -473,29 +471,31 @@ export default function DataPage() {
 
   if ((dsError || trError) && !isPreview) {
     return (
-      <FeatureGate feature="data_catalog">
-        <div className="space-y-6 p-4 md:p-6">
-          <Card className="p-8 text-center">
-            <Database className="h-8 w-8 text-destructive mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">
-              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-            </p>
-          </Card>
-        </div>
-      </FeatureGate>
-    );
-  }
-
-  return (
-    <FeatureGate feature="data_catalog">
-    <div className="space-y-6 p-4 md:p-6">
-      {/* Header */}
-      <PageHeader
+      <PortalPage
         icon={Database}
         title={t("pageTitle")}
         description={t("pageDescription")}
         helpNs="data"
-      />
+        feature="data_catalog"
+      >
+        <Card className="p-8 text-center">
+          <Database className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </PortalPage>
+    );
+  }
+
+  return (
+    <PortalPage
+      icon={Database}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="data"
+      feature="data_catalog"
+    >
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -1454,7 +1454,6 @@ export default function DataPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

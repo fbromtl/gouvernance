@@ -20,8 +20,7 @@ import {
   useAddDataPoint,
 } from "@/hooks/useMonitoring";
 import type { MonitoringMetric } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
-import { FeatureGate } from "@/components/shared/FeatureGate";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_MONITORING_METRICS,
@@ -311,29 +310,31 @@ export default function MonitoringPage() {
   /* --- render --- */
   if (isError) {
     return (
-      <FeatureGate feature="monitoring">
-        <div className="space-y-6">
-          <Card className="p-8 text-center">
-            <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">
-              {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-            </p>
-          </Card>
-        </div>
-      </FeatureGate>
-    );
-  }
-
-  return (
-    <FeatureGate feature="monitoring">
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
+      <PortalPage
         icon={Activity}
         title={t("pageTitle")}
         description={t("pageDescription")}
         helpNs="monitoring"
-      />
+        feature="monitoring"
+      >
+        <Card className="p-8 text-center">
+          <Activity className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
+          </p>
+        </Card>
+      </PortalPage>
+    );
+  }
+
+  return (
+    <PortalPage
+      icon={Activity}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="monitoring"
+      feature="monitoring"
+    >
 
       {/* Tabs */}
       <Tabs defaultValue="metrics">
@@ -899,7 +900,6 @@ export default function MonitoringPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

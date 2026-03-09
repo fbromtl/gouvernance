@@ -20,7 +20,7 @@ import {
 } from "@/hooks/useAdminMutations";
 import { ROLES } from "@/lib/permissions";
 import type { Organization } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,14 +63,12 @@ export default function AdminPage() {
   const readOnly = !can("manage_organization");
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <PageHeader
-        icon={Building2}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        helpNs="admin"
-      />
-
+    <PortalPage
+      icon={Building2}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="admin"
+    >
       <Tabs defaultValue="organization" className="space-y-4">
         <TabsList>
           <TabsTrigger value="organization" className="gap-2">
@@ -90,7 +88,7 @@ export default function AdminPage() {
           <MembersTab readOnly={readOnly} />
         </TabsContent>
       </Tabs>
-    </div>
+    </PortalPage>
   );
 }
 

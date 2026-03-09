@@ -35,7 +35,7 @@ import {
 import type { ComplianceAssessment, RemediationAction } from "@/types/database";
 
 import { ComplianceScoreGauge } from "@/components/shared/ComplianceScoreGauge";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -67,7 +67,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_COMPLIANCE_SCORES,
@@ -113,43 +112,40 @@ export default function CompliancePage() {
   const { isPreview } = useFeaturePreview("compliance");
 
   return (
-    <FeatureGate feature="compliance">
-      <div className="space-y-6 p-4 md:p-6">
-        <PageHeader
-          icon={CheckCircle}
-          title={t("pageTitle")}
-          description={t("pageDescription")}
-          helpNs="compliance"
-        />
+    <PortalPage
+      icon={CheckCircle}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="compliance"
+      feature="compliance"
+    >
+      <Tabs defaultValue="dashboard" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="dashboard" className="gap-1.5">
+            <BarChart3 className="h-4 w-4" />
+            {t("tabs.dashboard")}
+          </TabsTrigger>
+          <TabsTrigger value="frameworks" className="gap-1.5">
+            <CheckCircle className="h-4 w-4" />
+            {t("tabs.frameworks")}
+          </TabsTrigger>
+          <TabsTrigger value="remediation" className="gap-1.5">
+            <ArrowUpCircle className="h-4 w-4" />
+            {t("tabs.remediation")}
+          </TabsTrigger>
+        </TabsList>
 
-        <Tabs defaultValue="dashboard" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="dashboard" className="gap-1.5">
-              <BarChart3 className="h-4 w-4" />
-              {t("tabs.dashboard")}
-            </TabsTrigger>
-            <TabsTrigger value="frameworks" className="gap-1.5">
-              <CheckCircle className="h-4 w-4" />
-              {t("tabs.frameworks")}
-            </TabsTrigger>
-            <TabsTrigger value="remediation" className="gap-1.5">
-              <ArrowUpCircle className="h-4 w-4" />
-              {t("tabs.remediation")}
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="dashboard">
-            <DashboardTab isPreview={isPreview} />
-          </TabsContent>
-          <TabsContent value="frameworks">
-            <FrameworksTab readOnly={readOnly} isPreview={isPreview} />
-          </TabsContent>
-          <TabsContent value="remediation">
-            <RemediationTab readOnly={readOnly} isPreview={isPreview} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </FeatureGate>
+        <TabsContent value="dashboard">
+          <DashboardTab isPreview={isPreview} />
+        </TabsContent>
+        <TabsContent value="frameworks">
+          <FrameworksTab readOnly={readOnly} isPreview={isPreview} />
+        </TabsContent>
+        <TabsContent value="remediation">
+          <RemediationTab readOnly={readOnly} isPreview={isPreview} />
+        </TabsContent>
+      </Tabs>
+    </PortalPage>
   );
 }
 

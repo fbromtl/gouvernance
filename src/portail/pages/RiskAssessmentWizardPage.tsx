@@ -10,7 +10,7 @@ import { AlertTriangle, CheckCircle2, ShieldAlert } from "lucide-react";
 import { FormWizard } from "@/components/shared/FormWizard";
 import { RiskScoreGauge } from "@/components/shared/RiskScoreGauge";
 import { StatusBadge } from "@/components/shared/StatusBadge";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -324,14 +324,12 @@ export default function RiskAssessmentWizardPage() {
     : t("wizard.saveDraft");
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        icon={ShieldAlert}
-        title={pageTitle}
-        description={t("description")}
-        helpNs="riskAssessments"
-      />
-
+    <PortalPage
+      icon={ShieldAlert}
+      title={pageTitle}
+      description={t("description")}
+      helpNs="riskAssessments"
+    >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_280px]">
         {/* Left -- wizard form */}
         <div>
@@ -447,7 +445,7 @@ export default function RiskAssessmentWizardPage() {
           )}
         </div>
       </div>
-    </div>
+    </PortalPage>
   );
 }
 

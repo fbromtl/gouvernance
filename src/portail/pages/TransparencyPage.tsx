@@ -23,7 +23,7 @@ import {
   useUpdateContestation,
 } from "@/hooks/useTransparency";
 import type { AutomatedDecision, Contestation } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -61,7 +61,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_AUTOMATED_DECISIONS, DEMO_CONTESTATIONS } from "@/portail/demo";
 
@@ -185,31 +184,28 @@ export default function TransparencyPage() {
   const getSystemName = (id: string) => systems.find((s) => s.id === id)?.name ?? "—";
 
   return (
-    <FeatureGate feature="transparency">
-      <div className="space-y-6">
-        <PageHeader
-          icon={Eye}
-          title={t("pageTitle")}
-          description={t("pageDescription")}
-          helpNs="transparency"
-        />
+    <PortalPage
+      icon={Eye}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="transparency"
+      feature="transparency"
+    >
+      <Tabs defaultValue="registry">
+        <TabsList>
+          <TabsTrigger value="registry">{t("tabs.registry")}</TabsTrigger>
+          <TabsTrigger value="contestations">{t("tabs.contestations")}</TabsTrigger>
+        </TabsList>
 
-        <Tabs defaultValue="registry">
-          <TabsList>
-            <TabsTrigger value="registry">{t("tabs.registry")}</TabsTrigger>
-            <TabsTrigger value="contestations">{t("tabs.contestations")}</TabsTrigger>
-          </TabsList>
+        <TabsContent value="registry" className="mt-4">
+          <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
+        </TabsContent>
 
-          <TabsContent value="registry" className="mt-4">
-            <RegistryTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
-          </TabsContent>
-
-          <TabsContent value="contestations" className="mt-4">
-            <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </FeatureGate>
+        <TabsContent value="contestations" className="mt-4">
+          <ContestationsTab readOnly={readOnly} systems={systems} getSystemName={getSystemName} isPreview={isPreview} />
+        </TabsContent>
+      </Tabs>
+    </PortalPage>
   );
 }
 

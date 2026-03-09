@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ArrowLeft, AlertTriangle } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -171,26 +171,24 @@ export default function IncidentReportPage() {
   /* ---------- Render ------------------------------------------------ */
 
   return (
-    <div className="space-y-6 max-w-3xl">
-      {/* Back link */}
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => navigate("/incidents")}
-        className="gap-2"
-      >
-        <ArrowLeft className="size-4" />
-        {t("detail.backToList")}
-      </Button>
-
-      <PageHeader
-        icon={AlertTriangle}
-        title={t("form.title")}
-        description={t("form.description")}
-        helpNs="incidents"
-      />
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <PortalPage
+      icon={AlertTriangle}
+      title={t("form.title")}
+      description={t("form.description")}
+      helpNs="incidents"
+      actions={
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => navigate("/incidents")}
+          className="gap-2"
+        >
+          <ArrowLeft className="size-4" />
+          {t("detail.backToList")}
+        </Button>
+      }
+    >
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-3xl">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">{t("form.title")}</CardTitle>
@@ -412,6 +410,6 @@ export default function IncidentReportPage() {
           </Button>
         </div>
       </form>
-    </div>
+    </PortalPage>
   );
 }

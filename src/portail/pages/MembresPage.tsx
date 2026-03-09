@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Search, Users, Lock } from "lucide-react";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -113,14 +113,12 @@ export default function MembresPage() {
 
   if (isObserver) {
     return (
-      <div className="space-y-8">
-        <PageHeader
-          icon={Users}
-          title={t("pageTitle")}
-          description={t("pageDescription")}
-          badge={t("memberCount", { count: members.length })}
-        />
-
+      <PortalPage
+        icon={Users}
+        title={t("pageTitle")}
+        description={t("pageDescription")}
+        badge={t("memberCount", { count: members.length })}
+      >
         {/* Blurred member cards with overlay */}
         <div className="relative">
           {/* Blurred cards grid */}
@@ -167,7 +165,7 @@ export default function MembresPage() {
             </Card>
           </div>
         </div>
-      </div>
+      </PortalPage>
     );
   }
 
@@ -176,14 +174,12 @@ export default function MembresPage() {
   /* ================================================================ */
 
   return (
-    <div className="space-y-8">
-      <PageHeader
-        icon={Users}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        badge={t("memberCount", { count: members.length })}
-      />
-
+    <PortalPage
+      icon={Users}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      badge={t("memberCount", { count: members.length })}
+    >
       {/* ---- Filter tabs + Search ---- */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         {/* Tab buttons */}
@@ -234,6 +230,6 @@ export default function MembresPage() {
           </p>
         </div>
       )}
-    </div>
+    </PortalPage>
   );
 }

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ShieldAlert, Plus } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DataTable, SortableHeader } from "@/components/shared/DataTable";
@@ -20,7 +20,6 @@ import {
 
 import { useRiskAssessments } from "@/hooks/useRiskAssessments";
 import type { RiskAssessment } from "@/types/database";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_RISK_ASSESSMENTS } from "@/portail/demo";
 
@@ -100,49 +99,45 @@ export default function RiskAssessmentListPage() {
 
   if (!effectiveLoading && displayAssessments.length === 0) {
     return (
-      <FeatureGate feature="risk_assessments">
-        <div className="space-y-6">
-          <PageHeader
-            icon={ShieldAlert}
-            title={t("title")}
-            helpNs="riskAssessments"
-            description={t("description")}
-            actions={
-              <Button onClick={() => navigate("/risks/new")}>
-                <Plus className="mr-2 size-4" />
-                {t("newAssessment")}
-              </Button>
-            }
-          />
-          <EmptyState
-            icon={ShieldAlert}
-            title={t("empty.title")}
-            description={t("empty.description")}
-            actionLabel={t("empty.action")}
-            onAction={() => navigate("/risks/new")}
-          />
-        </div>
-      </FeatureGate>
+      <PortalPage
+        icon={ShieldAlert}
+        title={t("title")}
+        helpNs="riskAssessments"
+        description={t("description")}
+        feature="risk_assessments"
+        actions={
+          <Button onClick={() => navigate("/risks/new")}>
+            <Plus className="mr-2 size-4" />
+            {t("newAssessment")}
+          </Button>
+        }
+      >
+        <EmptyState
+          icon={ShieldAlert}
+          title={t("empty.title")}
+          description={t("empty.description")}
+          actionLabel={t("empty.action")}
+          onAction={() => navigate("/risks/new")}
+        />
+      </PortalPage>
     );
   }
 
   return (
-    <FeatureGate feature="risk_assessments">
-      <div className="space-y-6">
-        <PageHeader
-          icon={ShieldAlert}
-          title={t("title")}
-          helpNs="riskAssessments"
-          description={t("description")}
-          actions={
-            <Button onClick={() => navigate("/risks/new")}>
-              <Plus className="mr-2 size-4" />
-              {t("newAssessment")}
-            </Button>
-          }
-        />
-
-        {/* Filters */}
+    <PortalPage
+      icon={ShieldAlert}
+      title={t("title")}
+      helpNs="riskAssessments"
+      description={t("description")}
+      feature="risk_assessments"
+      actions={
+        <Button onClick={() => navigate("/risks/new")}>
+          <Plus className="mr-2 size-4" />
+          {t("newAssessment")}
+        </Button>
+      }
+    >
+      {/* Filters */}
         <div className="flex flex-wrap items-center gap-3">
           <Select value={statusFilter} onValueChange={setStatusFilter}>
             <SelectTrigger className="w-[180px]">
@@ -178,7 +173,6 @@ export default function RiskAssessmentListPage() {
           isLoading={effectiveLoading}
           onRowClick={(row) => navigate(`/risks/${row.id}`)}
         />
-      </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

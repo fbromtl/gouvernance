@@ -19,7 +19,7 @@ import {
   useDeleteBiasFinding,
 } from "@/hooks/useBiasFindings";
 import type { BiasFinding } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -56,7 +56,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_BIAS_FINDINGS } from "@/portail/demo";
 /* ------------------------------------------------------------------ */
@@ -304,23 +303,21 @@ export default function BiasPage() {
 
   /* --- render --- */
   return (
-    <FeatureGate feature="bias">
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
-        icon={Scale}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        helpNs="bias"
-        actions={
-          !readOnly ? (
-            <Button onClick={openCreate}>
-              <Plus className="h-4 w-4 mr-2" />
-              {t("create")}
-            </Button>
-          ) : undefined
-        }
-      />
+    <PortalPage
+      icon={Scale}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="bias"
+      feature="bias"
+      actions={
+        !readOnly ? (
+          <Button onClick={openCreate}>
+            <Plus className="h-4 w-4 mr-2" />
+            {t("create")}
+          </Button>
+        ) : undefined
+      }
+    >
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
@@ -706,7 +703,6 @@ export default function BiasPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Library, Search } from "lucide-react";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { TemplateCard } from "@/portail/components/templates/TemplateCard";
@@ -40,25 +40,20 @@ export default function ModelesBibliothequePage() {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
-      {/* Header */}
-      <div className="mb-6 space-y-4">
-        <PageHeader
-          icon={Library}
-          title="Mod\u00e8les de documents"
-          description={`${allTemplates.length} mod\u00e8les de gouvernance IA pr\u00eats \u00e0 l\u2019emploi pour structurer vos pratiques.`}
+    <PortalPage
+      icon={Library}
+      title="Mod\u00e8les de documents"
+      description={`${allTemplates.length} mod\u00e8les de gouvernance IA pr\u00eats \u00e0 l\u2019emploi pour structurer vos pratiques.`}
+    >
+      {/* Search bar */}
+      <div className="relative max-w-md">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Input
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Rechercher un mod\u00e8le..."
+          className="pl-9"
         />
-
-        {/* Search bar */}
-        <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Rechercher un mod\u00e8le..."
-            className="pl-9"
-          />
-        </div>
       </div>
 
       {/* Mobile category pills */}
@@ -132,6 +127,6 @@ export default function ModelesBibliothequePage() {
           if (!open) setSelectedTemplate(null);
         }}
       />
-    </div>
+    </PortalPage>
   );
 }

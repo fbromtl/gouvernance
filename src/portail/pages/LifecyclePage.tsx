@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { usePermissions } from "@/hooks/usePermissions";
@@ -281,23 +281,20 @@ export default function LifecyclePage() {
   const hasActiveFilters = search || filterType !== "__all__";
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        icon={RefreshCw}
-        helpNs="lifecycle"
-        actions={
-          !readOnly ? (
-            <Button onClick={openCreate}>
-              <Plus className="mr-2 size-4" />
-              {t("create")}
-            </Button>
-          ) : undefined
-        }
-      />
-
+    <PortalPage
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      icon={RefreshCw}
+      helpNs="lifecycle"
+      actions={
+        !readOnly ? (
+          <Button onClick={openCreate}>
+            <Plus className="mr-2 size-4" />
+            {t("create")}
+          </Button>
+        ) : undefined
+      }
+    >
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
@@ -778,6 +775,6 @@ export default function LifecyclePage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
+    </PortalPage>
   );
 }

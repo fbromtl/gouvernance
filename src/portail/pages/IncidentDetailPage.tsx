@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { AlertCircle, ArrowLeft, CheckCircle2, Circle } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -183,37 +183,32 @@ export default function IncidentDetailPage() {
   /* ---------- Render ------------------------------------------------ */
 
   return (
-    <div className="space-y-6">
-      {/* Back link */}
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => navigate("/incidents")}
-        className="gap-2"
-      >
-        <ArrowLeft className="size-4" />
-        {t("detail.backToList")}
-      </Button>
-
-      {/* Header */}
-      <PageHeader
-        icon={AlertCircle}
-        title={incident.title}
-        helpNs="incidents"
-        actions={
-          <div className="flex items-center gap-2">
-            <StatusBadge
-              status={incident.severity}
-              label={t(`severities.${incident.severity}`)}
-            />
-            <StatusBadge
-              status={incident.status}
-              label={t(`statuses.${incident.status}`)}
-            />
-          </div>
-        }
-      />
-
+    <PortalPage
+      icon={AlertCircle}
+      title={incident.title}
+      helpNs="incidents"
+      actions={
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/incidents")}
+            className="gap-2"
+          >
+            <ArrowLeft className="size-4" />
+            {t("detail.backToList")}
+          </Button>
+          <StatusBadge
+            status={incident.severity}
+            label={t(`severities.${incident.severity}`)}
+          />
+          <StatusBadge
+            status={incident.status}
+            label={t(`statuses.${incident.status}`)}
+          />
+        </div>
+      }
+    >
       {/* Workflow stepper */}
       <Card>
         <CardContent className="py-4">
@@ -474,6 +469,6 @@ export default function IncidentDetailPage() {
           </TabsContent>
         )}
       </Tabs>
-    </div>
+    </PortalPage>
   );
 }

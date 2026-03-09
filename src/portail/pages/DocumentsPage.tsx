@@ -44,8 +44,7 @@ import { FileDetail } from "@/portail/components/drive/FileDetail";
 import { ClassificationReview } from "@/portail/components/drive/ClassificationReview";
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
-import { PageHeader } from "@/components/shared/PageHeader";
-import { FeatureGate } from "@/components/shared/FeatureGate";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
@@ -342,36 +341,40 @@ export default function DocumentsPage() {
 
   if (isError && !isPreview) {
     return (
-      <FeatureGate feature="documents">
-        <div className="p-4 md:p-6">
-          <Card className="p-8 text-center">
-            <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">
-              {t("errorLoading", {
-                defaultValue: "Erreur de chargement des donnees.",
-              })}
-            </p>
-          </Card>
-        </div>
-      </FeatureGate>
+      <PortalPage
+        icon={FolderOpen}
+        title={t("drive.title", { defaultValue: "Espace documentaire" })}
+        description={t("drive.description", {
+          defaultValue:
+            "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
+        })}
+        helpNs="documents"
+        feature="documents"
+      >
+        <Card className="p-8 text-center">
+          <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
+          <p className="text-sm text-muted-foreground">
+            {t("errorLoading", {
+              defaultValue: "Erreur de chargement des donnees.",
+            })}
+          </p>
+        </Card>
+      </PortalPage>
     );
   }
 
   return (
-    <FeatureGate feature="documents">
-    <div className="flex flex-col gap-4 p-4 md:p-6 -mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8">
-      {/* ---- Header ---- */}
-      <div className="px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
-        <PageHeader
-          icon={FolderOpen}
-          title={t("drive.title", { defaultValue: "Espace documentaire" })}
-          description={t("drive.description", {
-            defaultValue:
-              "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
-          })}
-          helpNs="documents"
-        />
-      </div>
+    <PortalPage
+      icon={FolderOpen}
+      title={t("drive.title", { defaultValue: "Espace documentaire" })}
+      description={t("drive.description", {
+        defaultValue:
+          "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
+      })}
+      helpNs="documents"
+      feature="documents"
+    >
+    <div className="flex flex-col gap-4 -mx-4 md:-mx-6 -mb-4 md:-mb-6">
 
       {/* ---- Upload zone ---- */}
       {!readOnly && (
@@ -678,6 +681,6 @@ export default function DocumentsPage() {
         </DialogContent>
       </Dialog>
     </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

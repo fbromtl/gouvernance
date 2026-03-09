@@ -8,7 +8,7 @@ import {
   Copy,
   Check,
 } from "lucide-react";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { toast } from "sonner";
 
 import { useAgentTraces } from "@/hooks/useAgentTraces";
@@ -132,12 +132,11 @@ export default function AgentTracesPage() {
   };
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <PageHeader
-        icon={Activity}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-      />
+    <PortalPage
+      icon={Activity}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+    >
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">
@@ -463,6 +462,6 @@ export default function AgentTracesPage() {
           )}
         </SheetContent>
       </Sheet>
-    </div>
+    </PortalPage>
   );
 }

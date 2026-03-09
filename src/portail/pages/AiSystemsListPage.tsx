@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import type { ColumnDef } from "@tanstack/react-table";
 import { AlertTriangle, Bot, Plus, Search } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DataTable, SortableHeader } from "@/components/shared/DataTable";
@@ -209,21 +209,18 @@ export default function AiSystemsListPage() {
     search || lifecycleStatus !== ALL || riskLevel !== ALL || systemType !== ALL;
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
-        icon={Bot}
-        title={t("title")}
-        helpNs="aiSystems"
-        description={t("description")}
-        actions={
-          <Button onClick={() => navigate("/ai-systems/new")}>
-            <Plus className="mr-2 size-4" />
-            {t("newSystem")}
-          </Button>
-        }
-      />
-
+    <PortalPage
+      icon={Bot}
+      title={t("title")}
+      helpNs="aiSystems"
+      description={t("description")}
+      actions={
+        <Button onClick={() => navigate("/ai-systems/new")}>
+          <Plus className="mr-2 size-4" />
+          {t("newSystem")}
+        </Button>
+      }
+    >
       {/* Filter row */}
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
@@ -306,6 +303,6 @@ export default function AiSystemsListPage() {
           pageSize={10}
         />
       )}
-    </div>
+    </PortalPage>
   );
 }

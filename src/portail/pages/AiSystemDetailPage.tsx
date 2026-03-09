@@ -12,7 +12,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { RiskScoreGauge } from "@/components/shared/RiskScoreGauge";
@@ -139,68 +139,63 @@ export default function AiSystemDetailPage() {
   }
 
   return (
-    <div className="space-y-6">
-      {/* Back link */}
-      <Link
-        to="/ai-systems"
-        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-      >
-        <ArrowLeft className="size-4" />
-        {t("detail.backToList")}
-      </Link>
+    <PortalPage
+      icon={Bot}
+      title={system.name}
+      description={system.internal_ref ? `Ref: ${system.internal_ref}` : undefined}
+      helpNs="aiSystems"
+      actions={
+        <>
+          <Link
+            to="/ai-systems"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="size-4" />
+            {t("detail.backToList")}
+          </Link>
+          <Button
+            variant="outline"
+            onClick={() => navigate(`/ai-systems/${id}/edit`)}
+          >
+            <Pencil className="mr-2 size-4" />
+            {t("detail.edit")}
+          </Button>
 
-      {/* Header */}
-      <PageHeader
-        icon={Bot}
-        title={system.name}
-        description={system.internal_ref ? `Ref: ${system.internal_ref}` : undefined}
-        helpNs="aiSystems"
-        actions={
-          <>
-            <Button
-              variant="outline"
-              onClick={() => navigate(`/ai-systems/${id}/edit`)}
-            >
-              <Pencil className="mr-2 size-4" />
-              {t("detail.edit")}
-            </Button>
-
-            <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
-              <DialogTrigger asChild>
-                <Button variant="destructive">
-                  <Trash2 className="mr-2 size-4" />
-                  {t("detail.delete")}
+          <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+            <DialogTrigger asChild>
+              <Button variant="destructive">
+                <Trash2 className="mr-2 size-4" />
+                {t("detail.delete")}
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>{t("detail.deleteConfirmTitle")}</DialogTitle>
+                <DialogDescription>
+                  {t("detail.deleteConfirmDescription", {
+                    name: system.name,
+                  })}
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">{t("detail.cancel")}</Button>
+                </DialogClose>
+                <Button
+                  variant="destructive"
+                  onClick={handleDelete}
+                  disabled={deleteMutation.isPending}
+                >
+                  {deleteMutation.isPending
+                    ? t("detail.deleting")
+                    : t("detail.confirmDelete")}
                 </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>{t("detail.deleteConfirmTitle")}</DialogTitle>
-                  <DialogDescription>
-                    {t("detail.deleteConfirmDescription", {
-                      name: system.name,
-                    })}
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button variant="outline">{t("detail.cancel")}</Button>
-                  </DialogClose>
-                  <Button
-                    variant="destructive"
-                    onClick={handleDelete}
-                    disabled={deleteMutation.isPending}
-                  >
-                    {deleteMutation.isPending
-                      ? t("detail.deleting")
-                      : t("detail.confirmDelete")}
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </>
-        }
-      />
-
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </>
+      }
+    >
       {/* Tabs */}
       <Tabs defaultValue="summary">
         <TabsList>
@@ -607,6 +602,6 @@ export default function AiSystemDetailPage() {
           />
         </TabsContent>
       </Tabs>
-    </div>
+    </PortalPage>
   );
 }

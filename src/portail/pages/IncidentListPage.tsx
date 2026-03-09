@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import type { ColumnDef } from "@tanstack/react-table";
 import { AlertTriangle, Plus, Search } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { DataTable, SortableHeader } from "@/components/shared/DataTable";
@@ -21,7 +21,6 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { useIncidents, type IncidentFilters } from "@/hooks/useIncidents";
 import type { Incident } from "@/types/database";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_INCIDENTS } from "@/portail/demo";
 
@@ -177,41 +176,47 @@ export default function IncidentListPage() {
   // ----- Loading skeleton -----
   if (effectiveLoading) {
     return (
-      <FeatureGate feature="incidents">
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <Skeleton className="h-8 w-64" />
-            <Skeleton className="h-9 w-48" />
-          </div>
-          <div className="grid grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <Skeleton key={i} className="h-20 w-full" />
-            ))}
-          </div>
-          <div className="flex gap-3">
-            {[1, 2, 3, 4].map((i) => (
-              <Skeleton key={i} className="h-9 w-44" />
-            ))}
-          </div>
-          <div className="space-y-2">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Skeleton key={i} className="h-12 w-full" />
-            ))}
-          </div>
+      <PortalPage
+        icon={AlertTriangle}
+        title={t("title")}
+        helpNs="incidents"
+        description={t("description")}
+        feature="incidents"
+      >
+        <div className="grid grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <Skeleton key={i} className="h-20 w-full" />
+          ))}
         </div>
-      </FeatureGate>
+        <div className="flex gap-3">
+          {[1, 2, 3, 4].map((i) => (
+            <Skeleton key={i} className="h-9 w-44" />
+          ))}
+        </div>
+        <div className="space-y-2">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <Skeleton key={i} className="h-12 w-full" />
+          ))}
+        </div>
+      </PortalPage>
     );
   }
 
   // ----- Error state -----
   if (effectiveError) {
     return (
-      <FeatureGate feature="incidents">
+      <PortalPage
+        icon={AlertTriangle}
+        title={t("title")}
+        helpNs="incidents"
+        description={t("description")}
+        feature="incidents"
+      >
         <div className="flex flex-col items-center justify-center py-16 text-center">
           <AlertTriangle className="size-10 text-destructive mb-4" />
           <p className="text-muted-foreground">{t("errors.loadFailed", { defaultValue: "Erreur lors du chargement des données." })}</p>
         </div>
-      </FeatureGate>
+      </PortalPage>
     );
   }
 
@@ -221,22 +226,19 @@ export default function IncidentListPage() {
     search || status !== ALL || severity !== ALL || category !== ALL;
 
   return (
-    <FeatureGate feature="incidents">
-      <div className="space-y-6">
-        {/* Header */}
-        <PageHeader
-          icon={AlertTriangle}
-          title={t("title")}
-          helpNs="incidents"
-          description={t("description")}
-          actions={
-            <Button onClick={() => navigate("/incidents/new")}>
-              <Plus className="mr-2 size-4" />
-              {t("newIncident")}
-            </Button>
-          }
-        />
-
+    <PortalPage
+      icon={AlertTriangle}
+      title={t("title")}
+      helpNs="incidents"
+      description={t("description")}
+      feature="incidents"
+      actions={
+        <Button onClick={() => navigate("/incidents/new")}>
+          <Plus className="mr-2 size-4" />
+          {t("newIncident")}
+        </Button>
+      }
+    >
       {/* Severity stat cards */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {SEVERITIES.map((sev) => (
@@ -326,7 +328,6 @@ export default function IncidentListPage() {
             pageSize={10}
           />
         )}
-      </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }

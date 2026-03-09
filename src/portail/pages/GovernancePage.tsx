@@ -51,7 +51,7 @@ import type {
 } from "@/types/database";
 
 import { StatusBadge } from "@/components/shared/StatusBadge";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -87,7 +87,6 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import {
   DEMO_POLICIES,
@@ -1422,50 +1421,47 @@ export default function GovernancePage() {
   const readOnly = !can("manage_policies");
 
   return (
-    <FeatureGate feature="governance_structure">
-      <div className="space-y-6 p-4 md:p-6">
-        <PageHeader
-          icon={Shield}
-          title={t("pageTitle")}
-          description={t("pageDescription")}
-          helpNs="governance"
-          actions={
-            <Button asChild className="gap-2 shrink-0">
-              <Link to="/modeles">
-                <Sparkles className="h-4 w-4" />
-                {t("generatePolicy")}
-              </Link>
-            </Button>
-          }
-        />
+    <PortalPage
+      icon={Shield}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="governance"
+      feature="governance_structure"
+      actions={
+        <Button asChild className="gap-2 shrink-0">
+          <Link to="/modeles">
+            <Sparkles className="h-4 w-4" />
+            {t("generatePolicy")}
+          </Link>
+        </Button>
+      }
+    >
+      <Tabs defaultValue="policies" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="policies" className="gap-2">
+            <FileText className="h-4 w-4" />
+            {t("tabs.policies")}
+          </TabsTrigger>
+          <TabsTrigger value="roles" className="gap-2">
+            <Users className="h-4 w-4" />
+            {t("tabs.roles")}
+          </TabsTrigger>
+          <TabsTrigger value="committees" className="gap-2">
+            <Building2 className="h-4 w-4" />
+            {t("tabs.committees")}
+          </TabsTrigger>
+        </TabsList>
 
-        <Tabs defaultValue="policies" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="policies" className="gap-2">
-              <FileText className="h-4 w-4" />
-              {t("tabs.policies")}
-            </TabsTrigger>
-            <TabsTrigger value="roles" className="gap-2">
-              <Users className="h-4 w-4" />
-              {t("tabs.roles")}
-            </TabsTrigger>
-            <TabsTrigger value="committees" className="gap-2">
-              <Building2 className="h-4 w-4" />
-              {t("tabs.committees")}
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="policies">
-            <PoliciesTab readOnly={readOnly} isPreview={isPreview} />
-          </TabsContent>
-          <TabsContent value="roles">
-            <RolesTab readOnly={readOnly} isPreview={isPreview} />
-          </TabsContent>
-          <TabsContent value="committees">
-            <CommitteesTab readOnly={readOnly} isPreview={isPreview} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </FeatureGate>
+        <TabsContent value="policies">
+          <PoliciesTab readOnly={readOnly} isPreview={isPreview} />
+        </TabsContent>
+        <TabsContent value="roles">
+          <RolesTab readOnly={readOnly} isPreview={isPreview} />
+        </TabsContent>
+        <TabsContent value="committees">
+          <CommitteesTab readOnly={readOnly} isPreview={isPreview} />
+        </TabsContent>
+      </Tabs>
+    </PortalPage>
   );
 }

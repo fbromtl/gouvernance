@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { supabase, supabaseConfigured } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -751,16 +751,13 @@ export default function VeillePage() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <PageHeader
-        icon={Newspaper}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        helpNs="veille"
-        badge="IA"
-      />
-
+    <PortalPage
+      icon={Newspaper}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="veille"
+      badge="IA"
+    >
       {/* Tabs */}
       <Tabs defaultValue="feed">
         <TabsList>
@@ -1238,6 +1235,6 @@ export default function VeillePage() {
           )}
         </SheetContent>
       </Sheet>
-    </div>
+    </PortalPage>
   );
 }

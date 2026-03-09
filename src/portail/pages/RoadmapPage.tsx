@@ -22,7 +22,7 @@ import {
   Map,
   BookOpenCheck,
 } from "lucide-react";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import type { LucideIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -93,13 +93,11 @@ export default function RoadmapPage() {
   const { t } = useTranslation("roadmap");
 
   return (
-    <div className="space-y-10">
-      <PageHeader
-        icon={Map}
-        title={t("pageTitle")}
-        description={t("pageSubtitle")}
-      />
-
+    <PortalPage
+      icon={Map}
+      title={t("pageTitle")}
+      description={t("pageSubtitle")}
+    >
       {/* ============================================================ */}
       {/*  SECTION 1 — Already available                                */}
       {/* ============================================================ */}
@@ -197,6 +195,6 @@ export default function RoadmapPage() {
           </Button>
         </CardContent>
       </Card>
-    </div>
+    </PortalPage>
   );
 }

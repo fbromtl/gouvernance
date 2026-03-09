@@ -11,7 +11,7 @@ import {
   Send,
 } from "lucide-react";
 
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { RiskScoreGauge } from "@/components/shared/RiskScoreGauge";
 import { Button } from "@/components/ui/button";
@@ -152,38 +152,33 @@ export default function RiskAssessmentDetailPage() {
   /* ---------- Render ------------------------------------------------ */
 
   return (
-    <div className="space-y-6">
-      {/* Back link */}
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => navigate("/risks")}
-        className="gap-2"
-      >
-        <ArrowLeft className="size-4" />
-        {t("result.backToList")}
-      </Button>
-
-      {/* Header */}
-      <PageHeader
-        icon={ShieldAlert}
-        title={t("result.title")}
-        description={`${t("columns.system")}: ${systemName}`}
-        helpNs="riskAssessments"
-        actions={
-          <div className="flex items-center gap-2">
-            <StatusBadge
-              status={assessment.risk_level}
-              label={t(`riskLevels.${assessment.risk_level}`)}
-            />
-            <StatusBadge
-              status={assessment.status}
-              label={t(`statuses.${assessment.status}`)}
-            />
-          </div>
-        }
-      />
-
+    <PortalPage
+      icon={ShieldAlert}
+      title={t("result.title")}
+      description={`${t("columns.system")}: ${systemName}`}
+      helpNs="riskAssessments"
+      actions={
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/risks")}
+            className="gap-2"
+          >
+            <ArrowLeft className="size-4" />
+            {t("result.backToList")}
+          </Button>
+          <StatusBadge
+            status={assessment.risk_level}
+            label={t(`riskLevels.${assessment.risk_level}`)}
+          />
+          <StatusBadge
+            status={assessment.status}
+            label={t(`statuses.${assessment.status}`)}
+          />
+        </div>
+      }
+    >
       {/* Workflow stepper */}
       <Card>
         <CardContent className="py-4">
@@ -381,6 +376,6 @@ export default function RiskAssessmentDetailPage() {
           ))}
         </CardContent>
       </Card>
-    </div>
+    </PortalPage>
   );
 }

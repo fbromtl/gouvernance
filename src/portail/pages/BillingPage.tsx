@@ -30,7 +30,7 @@ import {
   type PlanId,
   type Currency,
 } from "@/lib/stripe";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import type { BillingPeriod } from "@/types/database";
 import { cn } from "@/lib/utils";
 
@@ -223,13 +223,12 @@ export default function BillingPage() {
 
   if (!orgId) {
     return (
-      <div className="space-y-6 p-4 md:p-6">
-        <PageHeader
-          title={t("pageTitle", "Facturation")}
-          description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
-          icon={CreditCard}
-          helpNs="billing"
-        />
+      <PortalPage
+        title={t("pageTitle", "Facturation")}
+        description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
+        icon={CreditCard}
+        helpNs="billing"
+      >
         <Card className="flex flex-col items-center justify-center p-12 text-center">
           <CreditCard className="h-12 w-12 text-muted-foreground/40 mb-4" />
           <h2 className="text-lg font-semibold mb-2">
@@ -242,7 +241,7 @@ export default function BillingPage() {
             )}
           </p>
         </Card>
-      </div>
+      </PortalPage>
     );
   }
 
@@ -252,13 +251,12 @@ export default function BillingPage() {
 
   if (isLoading) {
     return (
-      <div className="space-y-6 p-4 md:p-6">
-        <PageHeader
-          title={t("pageTitle", "Facturation")}
-          description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
-          icon={CreditCard}
-          helpNs="billing"
-        />
+      <PortalPage
+        title={t("pageTitle", "Facturation")}
+        description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
+        icon={CreditCard}
+        helpNs="billing"
+      >
         <Card className="p-6 space-y-4">
           <Skeleton className="h-6 w-48" />
           <div className="flex gap-3">
@@ -280,7 +278,7 @@ export default function BillingPage() {
             </Card>
           ))}
         </div>
-      </div>
+      </PortalPage>
     );
   }
 
@@ -291,15 +289,12 @@ export default function BillingPage() {
   const statusInfo = STATUS_BADGE[subscription?.status ?? "active"] ?? STATUS_BADGE.active;
 
   return (
-    <div className="space-y-8 p-4 md:p-6">
-      {/* ---- Page header ---- */}
-      <PageHeader
-        title={t("pageTitle", "Facturation")}
-        description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
-        icon={CreditCard}
-        helpNs="billing"
-      />
-
+    <PortalPage
+      title={t("pageTitle", "Facturation")}
+      description={t("pageDescription", "Gérez votre abonnement et vos paiements")}
+      icon={CreditCard}
+      helpNs="billing"
+    >
       {/* ---- Current Plan Card ---- */}
       {currentPlan === "observer" ? (
         <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-muted-foreground">
@@ -632,6 +627,6 @@ export default function BillingPage() {
           })}
         </div>
       </div>
-    </div>
+    </PortalPage>
   );
 }

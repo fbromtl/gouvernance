@@ -8,7 +8,7 @@ import {
   ShieldOff,
   Ban,
 } from "lucide-react";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 import { toast } from "sonner";
 
 import {
@@ -133,18 +133,17 @@ export default function AgentsPage() {
   };
 
   return (
-    <div className="space-y-6 p-4 md:p-6">
-      <PageHeader
-        icon={Bot}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        actions={
-          <Button size="sm" className="gap-1.5" onClick={openCreateDialog}>
-            <Plus className="h-4 w-4" />
-            {t("create")}
-          </Button>
-        }
-      />
+    <PortalPage
+      icon={Bot}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      actions={
+        <Button size="sm" className="gap-1.5" onClick={openCreateDialog}>
+          <Plus className="h-4 w-4" />
+          {t("create")}
+        </Button>
+      }
+    >
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">
@@ -467,6 +466,6 @@ export default function AgentsPage() {
           )}
         </SheetContent>
       </Sheet>
-    </div>
+    </PortalPage>
   );
 }

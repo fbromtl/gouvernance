@@ -26,7 +26,7 @@ import {
   useRejectDecision,
 } from "@/hooks/useDecisions";
 import type { Decision } from "@/types/database";
-import { PageHeader } from "@/components/shared/PageHeader";
+import { PortalPage } from "@/portail/components/PortalPage";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -65,7 +65,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { FeatureGate } from "@/components/shared/FeatureGate";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_DECISIONS } from "@/portail/demo";
 
@@ -267,14 +266,13 @@ export default function DecisionsPage() {
   };
 
   return (
-    <FeatureGate feature="decisions">
-      <div className="space-y-6 p-4 md:p-6">
-        <PageHeader
-          icon={ClipboardCheck}
-          title={t("pageTitle")}
-          description={t("pageDescription")}
-          helpNs="decisions"
-        />
+    <PortalPage
+      icon={ClipboardCheck}
+      title={t("pageTitle")}
+      description={t("pageDescription")}
+      helpNs="decisions"
+      feature="decisions"
+    >
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">
@@ -605,7 +603,6 @@ export default function DecisionsPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
-    </FeatureGate>
+    </PortalPage>
   );
 }
