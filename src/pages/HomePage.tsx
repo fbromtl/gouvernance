@@ -1417,9 +1417,9 @@ export function HomePage() {
         </section>
 
         {/* ============================================================ */}
-        {/*  TESTIMONIALS                                                 */}
+        {/*  TESTIMONIALS (hidden – kept for future use)                  */}
         {/* ============================================================ */}
-        <section className="overflow-hidden border-y bg-white border-neutral-200 pt-24 pb-24 relative">
+        {false && (<section className="overflow-hidden border-y bg-white border-neutral-200 pt-24 pb-24 relative">
           <div className="z-10 max-w-7xl mr-auto ml-auto pt-16 pr-6 pb-16 pl-6 relative">
             {/* Section header */}
             <div className="flex flex-col w-full mb-16">
@@ -1537,7 +1537,7 @@ export function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </section>)}
 
         {/* Intermediate CTA */}
         <div className="text-center py-10">
