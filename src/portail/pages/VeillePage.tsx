@@ -754,6 +754,7 @@ export default function VeillePage() {
     <div className="space-y-6">
       {/* Header */}
       <PageHeader
+        icon={Newspaper}
         title={t("pageTitle")}
         description={t("pageDescription")}
         helpNs="veille"

@@ -225,6 +225,7 @@ export default function IncidentListPage() {
       <div className="space-y-6">
         {/* Header */}
         <PageHeader
+          icon={AlertTriangle}
           title={t("title")}
           helpNs="incidents"
           description={t("description")}

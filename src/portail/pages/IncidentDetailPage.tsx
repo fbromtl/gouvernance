@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { ArrowLeft, CheckCircle2, Circle } from "lucide-react";
+import { AlertCircle, ArrowLeft, CheckCircle2, Circle } from "lucide-react";
 
 import { PageHeader } from "@/components/shared/PageHeader";
 import { StatusBadge } from "@/components/shared/StatusBadge";
@@ -197,6 +197,7 @@ export default function IncidentDetailPage() {
 
       {/* Header */}
       <PageHeader
+        icon={AlertCircle}
         title={incident.title}
         helpNs="incidents"
         actions={

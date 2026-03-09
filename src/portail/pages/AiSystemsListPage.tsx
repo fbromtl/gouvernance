@@ -212,6 +212,7 @@ export default function AiSystemsListPage() {
     <div className="space-y-6">
       {/* Header */}
       <PageHeader
+        icon={Bot}
         title={t("title")}
         helpNs="aiSystems"
         description={t("description")}

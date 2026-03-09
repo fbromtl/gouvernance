@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { AlertTriangle, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, ShieldAlert } from "lucide-react";
 
 import { FormWizard } from "@/components/shared/FormWizard";
 import { RiskScoreGauge } from "@/components/shared/RiskScoreGauge";
@@ -326,6 +326,7 @@ export default function RiskAssessmentWizardPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        icon={ShieldAlert}
         title={pageTitle}
         description={t("description")}
         helpNs="riskAssessments"

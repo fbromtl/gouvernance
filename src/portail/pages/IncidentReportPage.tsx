@@ -184,6 +184,7 @@ export default function IncidentReportPage() {
       </Button>
 
       <PageHeader
+        icon={AlertTriangle}
         title={t("form.title")}
         description={t("form.description")}
         helpNs="incidents"

@@ -103,6 +103,7 @@ export default function RiskAssessmentListPage() {
       <FeatureGate feature="risk_assessments">
         <div className="space-y-6">
           <PageHeader
+            icon={ShieldAlert}
             title={t("title")}
             helpNs="riskAssessments"
             description={t("description")}

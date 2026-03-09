@@ -151,6 +151,7 @@ export default function AiSystemDetailPage() {
 
       {/* Header */}
       <PageHeader
+        icon={Bot}
         title={system.name}
         description={system.internal_ref ? `Ref: ${system.internal_ref}` : undefined}
         helpNs="aiSystems"

@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import {
   ArrowLeft,
   CheckCircle2,
+  ShieldAlert,
   ShieldCheck,
   AlertTriangle,
   Pencil,
@@ -165,6 +166,7 @@ export default function RiskAssessmentDetailPage() {
 
       {/* Header */}
       <PageHeader
+        icon={ShieldAlert}
         title={t("result.title")}
         description={`${t("columns.system")}: ${systemName}`}
         helpNs="riskAssessments"
