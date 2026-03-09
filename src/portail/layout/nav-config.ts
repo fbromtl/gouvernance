@@ -27,6 +27,8 @@ export interface NavItem {
   permission?: Permission;
   ready?: boolean;
   badge?: string;
+  /** Show AI sparkles icon next to the label */
+  aiBadge?: boolean;
 }
 
 export interface NavGroup {
@@ -61,7 +63,7 @@ export const navGroups: NavGroup[] = [
       { key: "aiSystems", path: "/ai-systems", icon: Bot, ready: true },
       { key: "lifecycle", path: "/lifecycle", icon: RefreshCw, ready: true },
       { key: "vendors", path: "/vendors", icon: Building2, permission: "manage_vendors", ready: true },
-      { key: "agents", path: "/agents", icon: Bot, ready: true },
+      { key: "agents", path: "/agents", icon: Bot, ready: true, aiBadge: true },
       { key: "agentTraces", path: "/agent-traces", icon: Activity, ready: true },
     ],
   },
@@ -91,7 +93,7 @@ export const navGroups: NavGroup[] = [
     category: "resources",
     items: [
       { key: "documents", path: "/documents", icon: FileText, ready: true },
-      { key: "veille", path: "/veille", icon: Newspaper, ready: true, badge: "IA" },
+      { key: "veille", path: "/veille", icon: Newspaper, ready: true, aiBadge: true },
       { key: "bibliotheque", path: "/bibliotheque", icon: BookOpen, ready: true },
       { key: "modeles", path: "/modeles", icon: Library, ready: true },
     ],

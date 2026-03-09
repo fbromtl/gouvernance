@@ -62,6 +62,9 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         {!collapsed && (
           <>
             <span className="flex-1 truncate">{t(`nav.${item.key}`)}</span>
+            {item.aiBadge && (
+              <Sparkles className="ml-auto h-3.5 w-3.5 text-brand-forest/60" />
+            )}
             {item.badge && (
               <Badge className="ml-auto bg-brand-forest/15 text-brand-forest border-brand-forest/30 text-[9px] font-bold tracking-wider px-1.5 py-0 h-4">
                 {item.badge}
