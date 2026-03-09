@@ -120,26 +120,29 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         )}
       >
         {/* ---- Brand Header ---- */}
-        <div
+        <Link
+          to="/dashboard"
           className={cn(
-            "flex items-center gap-3 border-b border-neutral-100 px-3 h-14 shrink-0",
+            "flex items-center gap-2.5 border-b border-neutral-100 px-3 h-14 shrink-0 hover:bg-neutral-50 transition-colors",
             collapsed && "justify-center"
           )}
         >
-          <div className="relative h-8 w-8 rounded-lg bg-brand-forest flex items-center justify-center shrink-0 shadow-sm shadow-brand-forest/20">
-            <Sparkles className="h-4 w-4 text-white" />
-          </div>
+          <img
+            src="/logo.svg"
+            alt="gouvernance.ai"
+            className={cn("shrink-0", collapsed ? "h-6 w-auto" : "h-7 w-auto")}
+          />
           {!collapsed && (
             <div className="flex flex-col min-w-0">
               <span className="font-bold text-sm tracking-tight truncate text-neutral-900">
-                {t("brandName")}
+                gouvernance.ai
               </span>
               <span className="text-[10px] text-neutral-400 -mt-0.5 font-medium">
-                {t("brandTagline")}
+                Plateforme de gouvernance IA
               </span>
             </div>
           )}
-        </div>
+        </Link>
 
         {/* ---- Navigation ---- */}
         <ScrollArea className="flex-1 py-1.5">
