@@ -130,18 +130,8 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           <img
             src="/logo.svg"
             alt="gouvernance.ai"
-            className={cn("shrink-0", collapsed ? "h-6 w-auto" : "h-7 w-auto")}
+            className={cn("shrink-0", collapsed ? "h-6 w-auto" : "h-8 w-auto")}
           />
-          {!collapsed && (
-            <div className="flex flex-col min-w-0">
-              <span className="font-bold text-sm tracking-tight truncate text-neutral-900">
-                gouvernance.ai
-              </span>
-              <span className="text-[10px] text-neutral-400 -mt-0.5 font-medium">
-                Plateforme de gouvernance IA
-              </span>
-            </div>
-          )}
         </Link>
 
         {/* ---- Navigation ---- */}
