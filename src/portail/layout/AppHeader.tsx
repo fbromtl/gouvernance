@@ -18,6 +18,7 @@ import LanguageSwitcher from "@/portail/components/LanguageSwitcher";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { MemberBadge } from "@/components/shared/MemberBadge";
 import { useSubscription } from "@/hooks/useSubscription";
+import { usePermissions } from "@/hooks/usePermissions";
 import type { PlanId } from "@/lib/stripe";
 
 interface AppHeaderProps {
@@ -94,6 +95,7 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const { data: subscription } = useSubscription();
   const currentPlan = (subscription?.plan ?? "observer") as PlanId;
+  const { can } = usePermissions();
 
   const initials = profile?.full_name
     ? profile.full_name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
@@ -262,12 +264,14 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
                 {t("nav.members")}
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link to="/admin" className="flex items-center gap-2">
-                <Building2 className="h-4 w-4" />
-                {t("nav.admin")}
-              </Link>
-            </DropdownMenuItem>
+            {can("manage_organization") && (
+              <DropdownMenuItem asChild>
+                <Link to="/admin" className="flex items-center gap-2">
+                  <Building2 className="h-4 w-4" />
+                  {t("nav.admin")}
+                </Link>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuItem asChild>
               <Link to="/billing" className="flex items-center gap-2">
                 <CreditCard className="h-4 w-4" />
