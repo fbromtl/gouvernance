@@ -19,9 +19,10 @@ import {
   Archive,
   Cpu,
   ArrowRight,
-  Sparkles,
+  Map,
   BookOpenCheck,
 } from "lucide-react";
+import { PageHeader } from "@/components/shared/PageHeader";
 import type { LucideIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -93,18 +94,11 @@ export default function RoadmapPage() {
 
   return (
     <div className="space-y-10">
-      {/* Page header */}
-      <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-forest/10">
-          <Sparkles className="h-5 w-5 text-brand-forest" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            {t("pageSubtitle")}
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        icon={Map}
+        title={t("pageTitle")}
+        description={t("pageSubtitle")}
+      />
 
       {/* ============================================================ */}
       {/*  SECTION 1 — Already available                                */}

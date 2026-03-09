@@ -15,6 +15,7 @@ import {
   Copy,
   AlertTriangle,
   Sparkles,
+  Shield,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -50,7 +51,7 @@ import type {
 } from "@/types/database";
 
 import { StatusBadge } from "@/components/shared/StatusBadge";
-import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { PageHeader } from "@/components/shared/PageHeader";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -1423,23 +1424,20 @@ export default function GovernancePage() {
   return (
     <FeatureGate feature="governance_structure">
       <div className="space-y-6 p-4 md:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-1.5">
-              <h1 className="text-2xl font-bold tracking-tight">
-                {t("pageTitle")}
-              </h1>
-              <SectionHelpButton ns="governance" />
-            </div>
-            <p className="text-muted-foreground">{t("pageDescription")}</p>
-          </div>
-          <Button asChild className="gap-2 shrink-0">
-            <Link to="/modeles">
-              <Sparkles className="h-4 w-4" />
-              {t("generatePolicy")}
-            </Link>
-          </Button>
-        </div>
+        <PageHeader
+          icon={Shield}
+          title={t("pageTitle")}
+          description={t("pageDescription")}
+          helpNs="governance"
+          actions={
+            <Button asChild className="gap-2 shrink-0">
+              <Link to="/modeles">
+                <Sparkles className="h-4 w-4" />
+                {t("generatePolicy")}
+              </Link>
+            </Button>
+          }
+        />
 
         <Tabs defaultValue="policies" className="space-y-4">
           <TabsList>

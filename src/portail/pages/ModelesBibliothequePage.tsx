@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Library, Search } from "lucide-react";
+import { PageHeader } from "@/components/shared/PageHeader";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { TemplateCard } from "@/portail/components/templates/TemplateCard";
@@ -42,15 +43,11 @@ export default function ModelesBibliothequePage() {
     <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
       <div className="mb-6 space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Mod&egrave;les de documents
-          </h1>
-          <p className="mt-1 text-muted-foreground">
-            {allTemplates.length} mod&egrave;les de gouvernance IA pr&ecirc;ts
-            &agrave; l&rsquo;emploi pour structurer vos pratiques.
-          </p>
-        </div>
+        <PageHeader
+          icon={Library}
+          title="Mod\u00e8les de documents"
+          description={`${allTemplates.length} mod\u00e8les de gouvernance IA pr\u00eats \u00e0 l\u2019emploi pour structurer vos pratiques.`}
+        />
 
         {/* Search bar */}
         <div className="relative max-w-md">

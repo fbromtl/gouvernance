@@ -8,6 +8,7 @@ import {
   Copy,
   Check,
 } from "lucide-react";
+import { PageHeader } from "@/components/shared/PageHeader";
 import { toast } from "sonner";
 
 import { useAgentTraces } from "@/hooks/useAgentTraces";
@@ -132,10 +133,11 @@ export default function AgentTracesPage() {
 
   return (
     <div className="space-y-6 p-4 md:p-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-        <p className="text-muted-foreground">{t("pageDescription")}</p>
-      </div>
+      <PageHeader
+        icon={Activity}
+        title={t("pageTitle")}
+        description={t("pageDescription")}
+      />
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">

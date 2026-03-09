@@ -19,7 +19,7 @@ import {
   useDeleteBiasFinding,
 } from "@/hooks/useBiasFindings";
 import type { BiasFinding } from "@/types/database";
-import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { PageHeader } from "@/components/shared/PageHeader";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -307,24 +307,20 @@ export default function BiasPage() {
     <FeatureGate feature="bias">
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <Scale className="h-6 w-6 text-brand-forest" />
-              {t("pageTitle")}
-            </h1>
-            <SectionHelpButton ns="bias" />
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">{t("pageDescription")}</p>
-        </div>
-        {!readOnly && (
-          <Button onClick={openCreate}>
-            <Plus className="h-4 w-4 mr-2" />
-            {t("create")}
-          </Button>
-        )}
-      </div>
+      <PageHeader
+        icon={Scale}
+        title={t("pageTitle")}
+        description={t("pageDescription")}
+        helpNs="bias"
+        actions={
+          !readOnly ? (
+            <Button onClick={openCreate}>
+              <Plus className="h-4 w-4 mr-2" />
+              {t("create")}
+            </Button>
+          ) : undefined
+        }
+      />
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">

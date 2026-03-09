@@ -2,10 +2,10 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Search, Users, Lock } from "lucide-react";
+import { PageHeader } from "@/components/shared/PageHeader";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { MemberCard } from "@/components/shared/MemberCard";
 import { useMembers } from "@/hooks/useMembers";
 import { usePlanFeatures } from "@/hooks/usePlanFeatures";
@@ -114,21 +114,12 @@ export default function MembresPage() {
   if (isObserver) {
     return (
       <div className="space-y-8">
-        {/* Page header */}
-        <div>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              {t("pageTitle")}
-            </h1>
-            <Badge variant="secondary" className="text-xs">
-              <Users className="h-3 w-3 mr-1" />
-              {t("memberCount", { count: members.length })}
-            </Badge>
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">
-            {t("pageDescription")}
-          </p>
-        </div>
+        <PageHeader
+          icon={Users}
+          title={t("pageTitle")}
+          description={t("pageDescription")}
+          badge={t("memberCount", { count: members.length })}
+        />
 
         {/* Blurred member cards with overlay */}
         <div className="relative">
@@ -186,21 +177,12 @@ export default function MembresPage() {
 
   return (
     <div className="space-y-8">
-      {/* ---- Page header ---- */}
-      <div>
-        <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            {t("pageTitle")}
-          </h1>
-          <Badge variant="secondary" className="text-xs">
-            <Users className="h-3 w-3 mr-1" />
-            {t("memberCount", { count: members.length })}
-          </Badge>
-        </div>
-        <p className="text-sm text-muted-foreground mt-1">
-          {t("pageDescription")}
-        </p>
-      </div>
+      <PageHeader
+        icon={Users}
+        title={t("pageTitle")}
+        description={t("pageDescription")}
+        badge={t("memberCount", { count: members.length })}
+      />
 
       {/* ---- Filter tabs + Search ---- */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

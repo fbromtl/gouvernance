@@ -26,7 +26,7 @@ import {
   useRejectDecision,
 } from "@/hooks/useDecisions";
 import type { Decision } from "@/types/database";
-import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { PageHeader } from "@/components/shared/PageHeader";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -269,13 +269,12 @@ export default function DecisionsPage() {
   return (
     <FeatureGate feature="decisions">
       <div className="space-y-6 p-4 md:p-6">
-        <div>
-          <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-bold tracking-tight">{t("pageTitle")}</h1>
-            <SectionHelpButton ns="decisions" />
-          </div>
-          <p className="text-muted-foreground">{t("pageDescription")}</p>
-        </div>
+        <PageHeader
+          icon={ClipboardCheck}
+          title={t("pageTitle")}
+          description={t("pageDescription")}
+          helpNs="decisions"
+        />
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3">

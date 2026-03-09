@@ -44,7 +44,7 @@ import { FileDetail } from "@/portail/components/drive/FileDetail";
 import { ClassificationReview } from "@/portail/components/drive/ClassificationReview";
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
-import { SectionHelpButton } from "@/components/shared/SectionHelpButton";
+import { PageHeader } from "@/components/shared/PageHeader";
 import { FeatureGate } from "@/components/shared/FeatureGate";
 import { supabase } from "@/lib/supabase";
 
@@ -361,24 +361,16 @@ export default function DocumentsPage() {
     <FeatureGate feature="documents">
     <div className="flex flex-col gap-4 p-4 md:p-6 -mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8">
       {/* ---- Header ---- */}
-      <div className="flex items-start justify-between gap-3 px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
-        <div className="flex items-start gap-3">
-          <FolderOpen className="h-7 w-7 text-brand-forest mt-0.5" />
-          <div>
-            <div className="flex items-center gap-1.5">
-              <h1 className="text-2xl font-bold tracking-tight">
-                {t("drive.title", { defaultValue: "Espace documentaire" })}
-              </h1>
-              <SectionHelpButton ns="documents" />
-            </div>
-            <p className="text-muted-foreground">
-              {t("drive.description", {
-                defaultValue:
-                  "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
-              })}
-            </p>
-          </div>
-        </div>
+      <div className="px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
+        <PageHeader
+          icon={FolderOpen}
+          title={t("drive.title", { defaultValue: "Espace documentaire" })}
+          description={t("drive.description", {
+            defaultValue:
+              "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
+          })}
+          helpNs="documents"
+        />
       </div>
 
       {/* ---- Upload zone ---- */}
