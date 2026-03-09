@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { ChatMessage } from "@/hooks/useAiChat";
+import { ChatMessageBubble } from "@/portail/components/ChatMessageBubble";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -24,29 +25,6 @@ interface FloatingChatProps {
   isStreaming: boolean;
   error: string | null;
   onReset: () => void;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Message bubble                                                     */
-/* ------------------------------------------------------------------ */
-
-function MessageBubble({ message }: { message: ChatMessage }) {
-  const isUser = message.role === "user";
-
-  return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
-      <div
-        className={cn(
-          "max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed whitespace-pre-wrap",
-          isUser
-            ? "bg-brand-forest text-white rounded-br-md"
-            : "bg-muted text-foreground rounded-bl-md"
-        )}
-      >
-        {message.content}
-      </div>
-    </div>
-  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -160,7 +138,7 @@ export function FloatingChat({
             className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3"
           >
             {messages.map((msg) => (
-              <MessageBubble key={msg.id} message={msg} />
+              <ChatMessageBubble key={msg.id} role={msg.role} content={msg.content} variant="floating" />
             ))}
 
             {/* Streaming indicator */}

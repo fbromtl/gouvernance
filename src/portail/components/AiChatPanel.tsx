@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import type { ChatMessage } from "@/hooks/useAiChat";
+import { ChatMessageBubble } from "@/portail/components/ChatMessageBubble";
 
 /* ------------------------------------------------------------------ */
 /*  Props                                                               */
@@ -17,28 +18,6 @@ interface AiChatPanelProps {
   isStreaming: boolean;
   error: string | null;
   onReset: () => void;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Message bubble                                                      */
-/* ------------------------------------------------------------------ */
-
-function MessageBubble({ message }: { message: ChatMessage }) {
-  const isUser = message.role === "user";
-
-  return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`max-w-[85%] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap ${
-          isUser
-            ? "bg-brand-forest/10 text-foreground"
-            : "bg-muted text-foreground"
-        }`}
-      >
-        {message.content}
-      </div>
-    </div>
-  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -111,7 +90,7 @@ export function AiChatPanel({
       <ScrollArea className="flex-1 px-4">
         <div ref={scrollRef} className="flex flex-col gap-3 py-4">
           {messages.map((msg) => (
-            <MessageBubble key={msg.id} message={msg} />
+            <ChatMessageBubble key={msg.id} role={msg.role} content={msg.content} variant="panel" />
           ))}
 
           {/* Streaming indicator */}
