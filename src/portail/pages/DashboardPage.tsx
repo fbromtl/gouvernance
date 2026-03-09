@@ -46,13 +46,13 @@ import RecentDecisionsWidget from "@/portail/components/dashboard/RecentDecision
 import BiasDebtWidget from "@/portail/components/dashboard/BiasDebtWidget";
 import AgentActivityWidget from "@/portail/components/dashboard/AgentActivityWidget";
 
-// Demo data
+// Demo data (dashboard-specific with dynamic dates for charts)
 import {
-  DEMO_AI_SYSTEMS,
-  DEMO_INCIDENTS,
-  DEMO_COMPLIANCE_SCORES,
-  DEMO_DECISIONS,
-  DEMO_BIAS_FINDINGS,
+  DASHBOARD_AI_SYSTEMS,
+  DASHBOARD_INCIDENTS,
+  DASHBOARD_COMPLIANCE_SCORES,
+  DASHBOARD_DECISIONS,
+  DASHBOARD_BIAS_FINDINGS,
 } from "@/portail/components/dashboard/demo-data";
 
 /* ------------------------------------------------------------------ */
@@ -92,11 +92,11 @@ export default function DashboardPage() {
   const { data: liveBiasFindings = [] } = useBiasFindings();
 
   // Use demo data when toggle is ON
-  const aiSystems = demo ? DEMO_AI_SYSTEMS : liveAiSystems;
-  const incidents = demo ? DEMO_INCIDENTS : liveIncidents;
-  const complianceScores = demo ? DEMO_COMPLIANCE_SCORES : liveComplianceScores;
-  const decisions = demo ? DEMO_DECISIONS : liveDecisions;
-  const biasFindings = demo ? DEMO_BIAS_FINDINGS : liveBiasFindings;
+  const aiSystems = demo ? DASHBOARD_AI_SYSTEMS : liveAiSystems;
+  const incidents = demo ? DASHBOARD_INCIDENTS : liveIncidents;
+  const complianceScores = demo ? DASHBOARD_COMPLIANCE_SCORES : liveComplianceScores;
+  const decisions = demo ? DASHBOARD_DECISIONS : liveDecisions;
+  const biasFindings = demo ? DASHBOARD_BIAS_FINDINGS : liveBiasFindings;
 
   const firstName = profile?.full_name?.split(" ")[0]?.trim() || t("welcomeFallback");
 

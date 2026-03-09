@@ -1,7 +1,14 @@
 /**
  * Demo data for the dashboard "Demo Mode" toggle.
+ *
  * These are realistic fake records that showcase all dashboard widgets
  * with diverse values so every chart / table / list is populated.
+ *
+ * The dashboard uses dynamic dates (monthsAgo, daysAgo, daysFromNow)
+ * so data always looks current in timeline charts and review widgets.
+ *
+ * For module-specific preview data (feature-gate overlays), see
+ * `@/portail/demo/data.ts` instead.
  */
 
 import type { Database } from "@/types/database";
@@ -40,7 +47,7 @@ function daysAgo(d: number) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  AI Systems (10)                                                    */
+/*  AI Systems (10) — dynamic dates for dashboard widgets              */
 /* ------------------------------------------------------------------ */
 
 const systemBase = {
@@ -71,7 +78,7 @@ const systemBase = {
   deleted_at: null,
 } satisfies Partial<AiSystem>;
 
-export const DEMO_AI_SYSTEMS: AiSystem[] = [
+export const DASHBOARD_AI_SYSTEMS: AiSystem[] = [
   {
     ...systemBase,
     id: demoId(1),
@@ -215,7 +222,7 @@ export const DEMO_AI_SYSTEMS: AiSystem[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Incidents (18) — spread over 6 months                              */
+/*  Incidents (18) — spread over 6 months for timeline chart           */
 /* ------------------------------------------------------------------ */
 
 const incidentBase = {
@@ -264,7 +271,7 @@ const incidentRows: { title: string; severity: string; status: string; month: nu
   { title: "Défaillance du monitoring en production", severity: "low", status: "closed", month: 5, category: "availability", incident_type: "service_outage" },
 ];
 
-export const DEMO_INCIDENTS: Incident[] = incidentRows.map((r, i) => ({
+export const DASHBOARD_INCIDENTS: Incident[] = incidentRows.map((r, i) => ({
   ...incidentBase,
   id: demoId(100 + i),
   title: r.title,
@@ -279,10 +286,10 @@ export const DEMO_INCIDENTS: Incident[] = incidentRows.map((r, i) => ({
 }));
 
 /* ------------------------------------------------------------------ */
-/*  Compliance Scores                                                  */
+/*  Compliance Scores — 5 frameworks for dashboard radar chart         */
 /* ------------------------------------------------------------------ */
 
-export const DEMO_COMPLIANCE_SCORES = {
+export const DASHBOARD_COMPLIANCE_SCORES = {
   frameworks: [
     { framework: "loi25" as const, score: 78, total: 45, compliant: 28, partial: 7, nonCompliant: 5, notApplicable: 5 },
     { framework: "euai" as const, score: 65, total: 62, compliant: 32, partial: 8, nonCompliant: 14, notApplicable: 8 },
@@ -294,7 +301,7 @@ export const DEMO_COMPLIANCE_SCORES = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Decisions (8)                                                      */
+/*  Decisions (8) — recent decisions for dashboard widget              */
 /* ------------------------------------------------------------------ */
 
 const decisionBase = {
@@ -331,7 +338,7 @@ const decisionRows: { title: string; decision_type: string; status: string; days
   { title: "Changement substantiel modèle de fraude", decision_type: "substantial_change", status: "rejected", daysAgo: 35 },
 ];
 
-export const DEMO_DECISIONS: Decision[] = decisionRows.map((r, i) => ({
+export const DASHBOARD_DECISIONS: Decision[] = decisionRows.map((r, i) => ({
   ...decisionBase,
   id: demoId(200 + i),
   title: r.title,
@@ -342,7 +349,7 @@ export const DEMO_DECISIONS: Decision[] = decisionRows.map((r, i) => ({
 }));
 
 /* ------------------------------------------------------------------ */
-/*  Bias Findings (7)                                                  */
+/*  Bias Findings (7) — for dashboard bias debt widget                 */
 /* ------------------------------------------------------------------ */
 
 const biasBase = {
@@ -379,7 +386,7 @@ const biasRows: { title: string; bias_type: string; severity: string; status: st
   { title: "Biais de confirmation dans les recommandations", bias_type: "confirmation_bias", severity: "medium", status: "resolved", daysAgo: 45 },
 ];
 
-export const DEMO_BIAS_FINDINGS: BiasFinding[] = biasRows.map((r, i) => ({
+export const DASHBOARD_BIAS_FINDINGS: BiasFinding[] = biasRows.map((r, i) => ({
   ...biasBase,
   id: demoId(300 + i),
   title: r.title,
