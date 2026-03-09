@@ -45,6 +45,7 @@ import { ClassificationReview } from "@/portail/components/drive/ClassificationR
 import { DRIVE_CATEGORIES, formatFileSize } from "@/portail/components/drive/constants";
 import { cn } from "@/lib/utils";
 import { PortalPage } from "@/portail/components/PortalPage";
+import { QueryState } from "@/portail/components/QueryState";
 import { supabase } from "@/lib/supabase";
 
 /* ------------------------------------------------------------------ */
@@ -339,29 +340,7 @@ export default function DocumentsPage() {
   /*  RENDER                                                           */
   /* ================================================================ */
 
-  if (isError && !isPreview) {
-    return (
-      <PortalPage
-        icon={FolderOpen}
-        title={t("drive.title", { defaultValue: "Espace documentaire" })}
-        description={t("drive.description", {
-          defaultValue:
-            "Centralisez, classifiez et retrouvez tous vos documents de gouvernance IA.",
-        })}
-        helpNs="documents"
-        feature="documents"
-      >
-        <Card className="p-8 text-center">
-          <FileText className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", {
-              defaultValue: "Erreur de chargement des donnees.",
-            })}
-          </p>
-        </Card>
-      </PortalPage>
-    );
-  }
+  const effectiveError = isPreview ? null : (isError ? new Error(t("errorLoading", { defaultValue: "Erreur de chargement des données." })) : null);
 
   return (
     <PortalPage
@@ -518,28 +497,20 @@ export default function DocumentsPage() {
           </div>
 
           {/* Content */}
-          {isLoading && !isPreview ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <Skeleton key={i} className="h-36 rounded-xl" />
-              ))}
-            </div>
-          ) : filteredDocs.length === 0 ? (
-            <Card className="p-10 text-center">
-              <FolderOpen className="h-12 w-12 mx-auto text-muted-foreground/20 mb-4" />
-              <p className="font-medium text-muted-foreground">
-                {t("drive.noDocuments", {
-                  defaultValue: "Aucun document dans cette categorie",
-                })}
-              </p>
-              <p className="text-sm text-muted-foreground/70 mt-1">
-                {t("drive.noDocumentsHint", {
-                  defaultValue:
-                    "Glissez-deposez des fichiers ci-dessus pour commencer.",
-                })}
-              </p>
-            </Card>
-          ) : viewMode === "grid" ? (
+          <QueryState
+            isLoading={isLoading && !isPreview}
+            error={effectiveError}
+            isEmpty={filteredDocs.length === 0}
+            emptyIcon={FolderOpen}
+            emptyTitle={t("drive.noDocuments", {
+              defaultValue: "Aucun document dans cette catégorie",
+            })}
+            emptyDescription={t("drive.noDocumentsHint", {
+              defaultValue:
+                "Glissez-déposez des fichiers ci-dessus pour commencer.",
+            })}
+          >
+          {viewMode === "grid" ? (
             /* ---- Grid view ---- */
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {filteredDocs.map((doc) => (
@@ -627,6 +598,7 @@ export default function DocumentsPage() {
               </Table>
             </Card>
           )}
+          </QueryState>
         </div>
       </div>
 

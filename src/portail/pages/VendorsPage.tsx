@@ -22,6 +22,7 @@ import {
 } from "@/hooks/useVendors";
 import type { Vendor } from "@/types/database";
 import { PortalPage } from "@/portail/components/PortalPage";
+import { QueryState } from "@/portail/components/QueryState";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,7 +30,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select,
   SelectContent,
@@ -290,24 +290,7 @@ export default function VendorsPage() {
   /*  RENDER                                                           */
   /* ================================================================ */
 
-  if (isError && !isPreview) {
-    return (
-      <PortalPage
-        icon={Building2}
-        title={t("pageTitle")}
-        description={t("pageDescription")}
-        helpNs="vendors"
-        feature="vendors"
-      >
-        <Card className="p-8 text-center">
-          <Building2 className="h-8 w-8 text-destructive mx-auto mb-2" />
-          <p className="text-sm text-muted-foreground">
-            {t("errorLoading", { defaultValue: "Erreur de chargement des données." })}
-          </p>
-        </Card>
-      </PortalPage>
-    );
-  }
+  const effectiveError = isPreview ? null : (isError ? new Error(t("errorLoading", { defaultValue: "Erreur de chargement des données." })) : null);
 
   return (
     <PortalPage
@@ -367,27 +350,14 @@ export default function VendorsPage() {
       </div>
 
       {/* Content */}
-      {isLoading && !isPreview ? (
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-16 rounded-lg" />
-          ))}
-        </div>
-      ) : vendors.length === 0 ? (
-        <Card className="p-8 text-center">
-          <Building2 className="h-10 w-10 mx-auto text-muted-foreground/40 mb-4" />
-          <p className="font-medium text-muted-foreground">{t("noVendors")}</p>
-          <p className="text-sm text-muted-foreground/70 mt-1">
-            {t("noVendorsDescription")}
-          </p>
-          {!readOnly && (
-            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("create")}
-            </Button>
-          )}
-        </Card>
-      ) : (
+      <QueryState
+        isLoading={isLoading && !isPreview}
+        error={effectiveError}
+        isEmpty={vendors.length === 0}
+        emptyIcon={Building2}
+        emptyTitle={t("noVendors")}
+        emptyDescription={t("noVendorsDescription")}
+      >
         <Card>
           <Table>
             <TableHeader>
@@ -486,7 +456,7 @@ export default function VendorsPage() {
             </TableBody>
           </Table>
         </Card>
-      )}
+      </QueryState>
 
       {/* ============================================================ */}
       {/*  CREATE / EDIT DIALOG                                         */}

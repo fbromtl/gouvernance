@@ -24,6 +24,7 @@ import {
 } from "@/hooks/useTransparency";
 import type { AutomatedDecision, Contestation } from "@/types/database";
 import { PortalPage } from "@/portail/components/PortalPage";
+import { QueryState } from "@/portail/components/QueryState";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -205,9 +206,10 @@ function RegistryTab({
 }) {
   const { t } = useTranslation("transparency");
   const [search, setSearch] = useState("");
-  const { data: realEntries = [], isLoading: realLoading } = useAutomatedDecisions({ search: search || undefined });
+  const { data: realEntries = [], isLoading: realLoading, error: realError } = useAutomatedDecisions({ search: search || undefined });
   const entries = isPreview ? DEMO_AUTOMATED_DECISIONS : realEntries;
   const isLoading = isPreview ? false : realLoading;
+  const effectiveError = isPreview ? null : realError;
   const createMutation = useCreateAutomatedDecision();
   const updateMutation = useUpdateAutomatedDecision();
   const deleteMutation = useDeleteAutomatedDecision();
@@ -291,15 +293,14 @@ function RegistryTab({
         )}
       </div>
 
-      {isLoading ? (
-        <Card className="p-8 text-center text-muted-foreground">...</Card>
-      ) : entries.length === 0 ? (
-        <Card className="p-12 text-center">
-          <Eye className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
-          <h3 className="font-semibold text-lg">{t("registry.noEntries")}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{t("registry.noEntriesDescription")}</p>
-        </Card>
-      ) : (
+      <QueryState
+        isLoading={isLoading}
+        error={effectiveError}
+        isEmpty={entries.length === 0}
+        emptyIcon={Eye}
+        emptyTitle={t("registry.noEntries")}
+        emptyDescription={t("registry.noEntriesDescription")}
+      >
         <Card>
           <Table>
             <TableHeader>
@@ -337,7 +338,7 @@ function RegistryTab({
             </TableBody>
           </Table>
         </Card>
-      )}
+      </QueryState>
 
       {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -457,12 +458,13 @@ function ContestationsTab({
   const { t } = useTranslation("transparency");
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("__all__");
-  const { data: realContestations = [], isLoading: realLoading } = useContestations({
+  const { data: realContestations = [], isLoading: realLoading, error: realError } = useContestations({
     status: filterStatus !== "__all__" ? filterStatus : undefined,
     search: search || undefined,
   });
   const contestations = isPreview ? DEMO_CONTESTATIONS : realContestations;
   const isLoading = isPreview ? false : realLoading;
+  const effectiveError = isPreview ? null : realError;
   const createMutation = useCreateContestation();
   const updateMutation = useUpdateContestation();
 
@@ -554,15 +556,14 @@ function ContestationsTab({
         )}
       </div>
 
-      {isLoading ? (
-        <Card className="p-8 text-center text-muted-foreground">...</Card>
-      ) : contestations.length === 0 ? (
-        <Card className="p-12 text-center">
-          <Eye className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
-          <h3 className="font-semibold text-lg">{t("contestation.noContestations")}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{t("contestation.noContestationsDescription")}</p>
-        </Card>
-      ) : (
+      <QueryState
+        isLoading={isLoading}
+        error={effectiveError}
+        isEmpty={contestations.length === 0}
+        emptyIcon={Eye}
+        emptyTitle={t("contestation.noContestations")}
+        emptyDescription={t("contestation.noContestationsDescription")}
+      >
         <Card>
           <Table>
             <TableHeader>
@@ -598,7 +599,7 @@ function ContestationsTab({
             </TableBody>
           </Table>
         </Card>
-      )}
+      </QueryState>
 
       {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

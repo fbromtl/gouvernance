@@ -34,7 +34,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select,
   SelectContent,
@@ -66,6 +65,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
+import { QueryState } from "@/portail/components/QueryState";
 import { DEMO_DECISIONS } from "@/portail/demo";
 import {
   DECISION_TYPES,
@@ -96,7 +96,7 @@ export default function DecisionsPage() {
   const [viewingDecision, setViewingDecision] = useState<Decision | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
-  const { data: decisions = [], isLoading } = useDecisions({
+  const { data: decisions = [], isLoading, error } = useDecisions({
     decision_type: typeFilter === ALL ? undefined : typeFilter,
     status: statusFilter === ALL ? undefined : statusFilter,
     search: searchQuery || undefined,
@@ -104,6 +104,7 @@ export default function DecisionsPage() {
   const { isPreview } = useFeaturePreview('decisions');
   const displayDecisions = isPreview ? DEMO_DECISIONS : decisions;
   const effectiveLoading = isPreview ? false : isLoading;
+  const effectiveError = isPreview ? null : error;
   const { data: aiSystems = [] } = useAiSystems();
   const { data: members = [] } = useOrgMembers();
   const createDecision = useCreateDecision();
@@ -284,25 +285,14 @@ export default function DecisionsPage() {
       </div>
 
       {/* Content */}
-      {effectiveLoading ? (
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-16 rounded-lg" />
-          ))}
-        </div>
-      ) : displayDecisions.length === 0 ? (
-        <Card className="p-8 text-center">
-          <ClipboardCheck className="h-10 w-10 mx-auto text-muted-foreground/40 mb-4" />
-          <p className="font-medium text-muted-foreground">{t("noDecisions")}</p>
-          <p className="text-sm text-muted-foreground/70 mt-1">{t("noDecisionsDescription")}</p>
-          {!readOnly && (
-            <Button size="sm" className="mt-4 gap-1.5" onClick={openCreateDialog}>
-              <Plus className="h-4 w-4" />
-              {t("create")}
-            </Button>
-          )}
-        </Card>
-      ) : (
+      <QueryState
+        isLoading={effectiveLoading}
+        error={effectiveError}
+        isEmpty={displayDecisions.length === 0}
+        emptyIcon={ClipboardCheck}
+        emptyTitle={t("noDecisions")}
+        emptyDescription={t("noDecisionsDescription")}
+      >
         <Card>
           <Table>
             <TableHeader>
@@ -387,7 +377,7 @@ export default function DecisionsPage() {
             </TableBody>
           </Table>
         </Card>
-      )}
+      </QueryState>
 
       {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

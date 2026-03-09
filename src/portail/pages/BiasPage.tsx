@@ -20,6 +20,7 @@ import {
 } from "@/hooks/useBiasFindings";
 import type { BiasFinding } from "@/types/database";
 import { PortalPage } from "@/portail/components/PortalPage";
+import { QueryState } from "@/portail/components/QueryState";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -165,7 +166,7 @@ export default function BiasPage() {
   const [filterSeverity, setFilterSeverity] = useState("__all__");
 
   /* --- data --- */
-  const { data: findings = [], isLoading } = useBiasFindings({
+  const { data: findings = [], isLoading, error } = useBiasFindings({
     bias_type: filterType !== "__all__" ? filterType : undefined,
     status: filterStatus !== "__all__" ? filterStatus : undefined,
     severity: filterSeverity !== "__all__" ? filterSeverity : undefined,
@@ -174,6 +175,7 @@ export default function BiasPage() {
   const { isPreview } = useFeaturePreview('bias');
   const displayFindings = isPreview ? DEMO_BIAS_FINDINGS : findings;
   const effectiveLoading = isPreview ? false : isLoading;
+  const effectiveError = isPreview ? null : error;
   const { data: systems = [] } = useAiSystems();
 
   const createMutation = useCreateBiasFinding();
@@ -336,21 +338,14 @@ export default function BiasPage() {
       </div>
 
       {/* Table */}
-      {effectiveLoading ? (
-        <Card className="p-8 text-center text-muted-foreground">...</Card>
-      ) : displayFindings.length === 0 ? (
-        <Card className="p-12 text-center">
-          <Scale className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
-          <h3 className="font-semibold text-lg">{t("noFindings")}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{t("noFindingsDescription")}</p>
-          {!readOnly && (
-            <Button className="mt-4" onClick={openCreate}>
-              <Plus className="h-4 w-4 mr-2" />
-              {t("create")}
-            </Button>
-          )}
-        </Card>
-      ) : (
+      <QueryState
+        isLoading={effectiveLoading}
+        error={effectiveError}
+        isEmpty={displayFindings.length === 0}
+        emptyIcon={Scale}
+        emptyTitle={t("noFindings")}
+        emptyDescription={t("noFindingsDescription")}
+      >
         <Card>
           <Table>
             <TableHeader>
@@ -403,7 +398,7 @@ export default function BiasPage() {
             </TableBody>
           </Table>
         </Card>
-      )}
+      </QueryState>
 
       {/* Create / Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

@@ -7,13 +7,13 @@ import {
   Trash2,
   Search,
   Eye,
-  AlertTriangle,
   CheckCircle,
   XCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 
 import { PortalPage } from "@/portail/components/PortalPage";
+import { QueryState } from "@/portail/components/QueryState";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { usePermissions } from "@/hooks/usePermissions";
@@ -33,7 +33,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -245,36 +244,7 @@ export default function LifecyclePage() {
     return new Date(dateStr).toLocaleDateString("fr-CA");
   }
 
-  /* --- Loading skeleton --- */
-  if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-64" />
-          <Skeleton className="h-9 w-40" />
-        </div>
-        <div className="flex gap-3">
-          <Skeleton className="h-9 flex-1 max-w-sm" />
-          <Skeleton className="h-9 w-[200px]" />
-        </div>
-        <div className="space-y-2">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <Skeleton key={i} className="h-12 w-full" />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  /* --- Error state --- */
-  if (isError) {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <AlertTriangle className="size-10 text-destructive mb-4" />
-        <p className="text-muted-foreground">{t("errorLoading")}</p>
-      </div>
-    );
-  }
+  const queryError = isError ? new Error(t("errorLoading")) : null;
 
   /* --- Empty state logic --- */
   const isEmpty = events.length === 0;
@@ -322,6 +292,11 @@ export default function LifecyclePage() {
       </div>
 
       {/* Table or Empty State */}
+      <QueryState
+        isLoading={isLoading}
+        error={queryError}
+        isEmpty={false}
+      >
       {isEmpty ? (
         <EmptyState
           icon={RefreshCw}
@@ -418,6 +393,7 @@ export default function LifecyclePage() {
           </Table>
         </Card>
       )}
+      </QueryState>
 
       {/* Create / Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
