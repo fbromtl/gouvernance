@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   FileText,
@@ -13,6 +14,7 @@ import {
   Archive,
   Copy,
   AlertTriangle,
+  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -1421,14 +1423,22 @@ export default function GovernancePage() {
   return (
     <FeatureGate feature="governance_structure">
       <div className="space-y-6 p-4 md:p-6">
-        <div>
-          <div className="flex items-center gap-1.5">
-            <h1 className="text-2xl font-bold tracking-tight">
-              {t("pageTitle")}
-            </h1>
-            <SectionHelpButton ns="governance" />
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <h1 className="text-2xl font-bold tracking-tight">
+                {t("pageTitle")}
+              </h1>
+              <SectionHelpButton ns="governance" />
+            </div>
+            <p className="text-muted-foreground">{t("pageDescription")}</p>
           </div>
-          <p className="text-muted-foreground">{t("pageDescription")}</p>
+          <Button asChild className="gap-2 shrink-0">
+            <Link to="/modeles">
+              <Sparkles className="h-4 w-4" />
+              {t("generatePolicy")}
+            </Link>
+          </Button>
         </div>
 
         <Tabs defaultValue="policies" className="space-y-4">

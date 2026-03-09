@@ -1,6 +1,7 @@
 {
   "pageTitle": "Gouvernance & Responsabilités",
   "pageDescription": "Définissez les rôles, politiques et comités de gouvernance IA de votre organisation.",
+  "generatePolicy": "Générer une politique",
   "tabs": {
     "policies": "Politiques",
     "roles": "Rôles",

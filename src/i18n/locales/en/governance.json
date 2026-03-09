@@ -1,6 +1,7 @@
 {
   "pageTitle": "Governance & Responsibilities",
   "pageDescription": "Define your organization's AI governance roles, policies, and committees.",
+  "generatePolicy": "Generate a policy",
   "tabs": {
     "policies": "Policies",
     "roles": "Roles",
