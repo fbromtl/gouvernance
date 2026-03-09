@@ -25,6 +25,7 @@ const AccessibilitePage = lazy(() => import("@/pages/AccessibilitePage").then(m 
 const DiagnosticPage = lazy(() => import("@/pages/DiagnosticPage"));
 const DiagnosticResultsPage = lazy(() => import("@/pages/DiagnosticResultsPage"));
 const MemberPublicPage = lazy(() => import("@/pages/MemberPublicPage").then(m => ({ default: m.MemberPublicPage })));
+const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
 // ---------- Lazy-loaded: Auth ----------
 const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
@@ -177,6 +178,9 @@ function App() {
               <Route path="/portail/profil" element={<Navigate to="/profile" replace />} />
               <Route path="/portail/conditions" element={<Navigate to="/conditions" replace />} />
             </Route>
+
+            {/* 404 catch-all */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </AuthProvider>
