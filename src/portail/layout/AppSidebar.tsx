@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { navGroups, type NavItem, type NavGroup } from "./nav-config";
+import { usePermissions } from "@/hooks/usePermissions";
 
 
 /* ------------------------------------------------------------------ */
@@ -26,10 +27,16 @@ interface AppSidebarProps {
 export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
   const { t } = useTranslation("portail");
   const location = useLocation();
+  const { can } = usePermissions();
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + "/");
 
-  const displayGroups = navGroups;
+  const displayGroups = navGroups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) => !item.permission || can(item.permission)),
+    }))
+    .filter((group) => group.items.length > 0);
 
   /* ------ render a single nav link ------ */
   function renderItem(item: NavItem) {
