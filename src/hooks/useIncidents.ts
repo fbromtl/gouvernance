@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import type { Incident, IncidentInsert, IncidentUpdate } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -51,7 +52,7 @@ export function useIncidents(filters?: IncidentFilters) {
 
       query = query.order("created_at", { ascending: false });
 
-      const { data, error } = await (query as any);
+      const { data, error } = await query;
       if (error) throw error;
       return (data ?? []) as Incident[];
     },
@@ -69,11 +70,11 @@ export function useIncident(id: string | undefined) {
     queryFn: async () => {
       if (!id) return null;
 
-      const { data, error } = await (supabase
+      const { data, error } = await supabase
         .from("incidents")
         .select("*")
         .eq("id", id)
-        .single() as any);
+        .single();
 
       if (error) throw error;
       return data as Incident;
@@ -104,11 +105,11 @@ export function useCreateIncident() {
         updated_by: user.id,
       };
 
-      const { data, error } = await (supabase
+      const { data, error } = await supabase
         .from("incidents")
-        .insert(record as any)
+        .insert(record as TableInsert<"incidents">)
         .select()
-        .single() as any);
+        .single();
 
       if (error) throw error;
       return data as Incident;
@@ -136,12 +137,12 @@ export function useUpdateIncident() {
         updated_by: user.id,
       };
 
-      const { data, error } = await (supabase
+      const { data, error } = await supabase
         .from("incidents")
-        .update(record as any)
+        .update(record as TableUpdate<"incidents">)
         .eq("id", id)
         .select()
-        .single() as any);
+        .single();
 
       if (error) throw error;
       return data as Incident;
@@ -165,13 +166,13 @@ export function useSoftDeleteIncident() {
     mutationFn: async (id: string) => {
       if (!user) throw new Error("Not authenticated");
 
-      const { error } = await (supabase
+      const { error } = await supabase
         .from("incidents")
         .update({
           deleted_at: new Date().toISOString(),
           updated_by: user.id,
-        } as any)
-        .eq("id", id) as any);
+        } as TableUpdate<"incidents">)
+        .eq("id", id);
 
       if (error) throw error;
     },

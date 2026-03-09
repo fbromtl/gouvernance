@@ -226,7 +226,7 @@ export default function DocumentsPage() {
           subcategory: data.subcategory,
           summary: data.summary,
           tags: data.tags,
-          ai_analysis: pending?.analysis as any,
+          ai_analysis: (pending?.analysis ?? null) as Record<string, unknown> | null,
         },
         {
           onSuccess: () => {

@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
+import type { TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  Update organization                                                 */
@@ -26,7 +27,7 @@ export function useUpdateOrganization() {
       if (!orgId) throw new Error("No organization");
       const { error } = await supabase
         .from("organizations")
-        .update(updates as any)
+        .update(updates as TableUpdate<"organizations">)
         .eq("id", orgId);
       if (error) throw error;
     },
@@ -65,7 +66,7 @@ export function useUpdateMemberRole() {
       if (!orgId) throw new Error("No organization");
       const { error } = await supabase
         .from("user_roles")
-        .update({ role } as any)
+        .update({ role } as TableUpdate<"user_roles">)
         .eq("user_id", userId)
         .eq("organization_id", orgId);
       if (error) throw error;
@@ -110,7 +111,7 @@ export function useRemoveMember() {
       // Unlink from org
       const { error: profileError } = await supabase
         .from("profiles")
-        .update({ organization_id: null } as any)
+        .update({ organization_id: null } as TableUpdate<"profiles">)
         .eq("id", userId);
       if (profileError) throw profileError;
     },

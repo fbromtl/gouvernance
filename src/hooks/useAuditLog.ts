@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
+import type { TableInsert } from "@/lib/supabase-types";
 
 interface AuditLogEntry {
   action: "create" | "update" | "delete" | "view" | "export" | "approve" | "reject" | "submit";
@@ -21,7 +22,7 @@ export function useAuditLog() {
       resource_type: entry.resource_type,
       resource_id: entry.resource_id,
       changes: entry.changes,
-    } as any);
+    } as TableInsert<"audit_logs">);
   };
 
   return { log };

@@ -7,6 +7,7 @@ import type {
   GovernanceRoleInsert,
   GovernanceRoleUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -77,7 +78,7 @@ export function useCreateGovernanceRole() {
 
       const { data, error } = await supabase
         .from("governance_roles")
-        .insert(record as any)
+        .insert(record as TableInsert<"governance_roles">)
         .select()
         .single();
 
@@ -113,7 +114,7 @@ export function useUpdateGovernanceRole() {
 
       const { data, error } = await supabase
         .from("governance_roles")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"governance_roles">)
         .eq("id", id)
         .select()
         .single();

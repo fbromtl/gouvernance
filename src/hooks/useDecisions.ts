@@ -8,6 +8,7 @@ import type {
   DecisionInsert,
   DecisionUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -102,7 +103,7 @@ export function useCreateDecision() {
 
       const { data, error } = await supabase
         .from("decisions")
-        .insert(record as any)
+        .insert(record as TableInsert<"decisions">)
         .select()
         .single();
 
@@ -135,7 +136,7 @@ export function useUpdateDecision() {
 
       const { data, error } = await supabase
         .from("decisions")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"decisions">)
         .eq("id", id)
         .select()
         .single();
@@ -192,7 +193,7 @@ export function useSubmitDecision() {
       if (!user) throw new Error("Not authenticated");
       const { data, error } = await supabase
         .from("decisions")
-        .update({ status: "submitted", updated_by: user.id } as any)
+        .update({ status: "submitted", updated_by: user.id } as TableUpdate<"decisions">)
         .eq("id", id)
         .select()
         .single();
@@ -226,7 +227,7 @@ export function useApproveDecision() {
           status: "approved",
           approved_at: new Date().toISOString(),
           updated_by: user.id,
-        } as any)
+        } as TableUpdate<"decisions">)
         .eq("id", id)
         .select()
         .single();
@@ -260,7 +261,7 @@ export function useRejectDecision() {
           status: "rejected",
           rejection_reason,
           updated_by: user.id,
-        } as any)
+        } as TableUpdate<"decisions">)
         .eq("id", id)
         .select()
         .single();

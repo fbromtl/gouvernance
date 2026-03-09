@@ -7,6 +7,7 @@ import type {
   GovDocumentInsert,
   GovDocumentUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 
@@ -131,7 +132,7 @@ export function useCreateDocument() {
 
       const { data, error } = await supabase
         .from("documents")
-        .insert(record as any)
+        .insert(record as TableInsert<"documents">)
         .select()
         .single();
 
@@ -165,7 +166,7 @@ export function useUpdateDocument() {
 
       const { data, error } = await supabase
         .from("documents")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"documents">)
         .eq("id", id)
         .select()
         .single();
@@ -281,7 +282,7 @@ export function useUploadDocument() {
           tags: [],
           created_by: user.id,
           updated_by: user.id,
-        } as any)
+        } as TableInsert<"documents">)
         .select()
         .single();
 
@@ -300,8 +301,8 @@ export function useUploadDocument() {
       if (uploadError) {
         console.error("[Drive] Upload error details:", {
           message: uploadError.message,
-          name: (uploadError as any).name,
-          status: (uploadError as any).statusCode,
+          name: (uploadError as unknown as Record<string, unknown>).name,
+          status: (uploadError as unknown as Record<string, unknown>).statusCode,
           error: uploadError,
           storagePath,
           fileType: file.type,
@@ -320,7 +321,7 @@ export function useUploadDocument() {
 
       const { data: updated, error: updateError } = await supabase
         .from("documents")
-        .update({ file_url: publicUrl } as any)
+        .update({ file_url: publicUrl } as TableUpdate<"documents">)
         .eq("id", doc.id)
         .select()
         .single();

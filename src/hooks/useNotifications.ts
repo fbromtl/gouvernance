@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
 import type { Database } from "@/types/database";
+import type { TableUpdate } from "@/lib/supabase-types";
 
 type Notification = Database["public"]["Tables"]["notifications"]["Row"];
 
@@ -56,7 +57,7 @@ export function useNotifications() {
     mutationFn: async (id: string) => {
       const { error } = await supabase
         .from("notifications")
-        .update({ read: true } as any)
+        .update({ read: true } as TableUpdate<"notifications">)
         .eq("id", id);
       if (error) throw error;
     },
@@ -69,7 +70,7 @@ export function useNotifications() {
     mutationFn: async () => {
       const { error } = await supabase
         .from("notifications")
-        .update({ read: true } as any)
+        .update({ read: true } as TableUpdate<"notifications">)
         .eq("user_id", user!.id)
         .eq("read", false);
       if (error) throw error;

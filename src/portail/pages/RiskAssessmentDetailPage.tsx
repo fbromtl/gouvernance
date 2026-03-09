@@ -70,7 +70,7 @@ export default function RiskAssessmentDetailPage() {
     const nextStatus = NEXT_STATUS[assessment.status];
     if (!nextStatus) return;
 
-    const payload: Record<string, unknown> = {
+    const payload: { id: string; status: string; approved_by?: string; approved_at?: string } = {
       id,
       status: nextStatus,
     };
@@ -82,7 +82,7 @@ export default function RiskAssessmentDetailPage() {
     }
 
     try {
-      await updateMutation.mutateAsync(payload as any);
+      await updateMutation.mutateAsync(payload);
       toast.success(
         nextStatus === "approved"
           ? t("toast.approved")

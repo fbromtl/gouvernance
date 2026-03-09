@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
 import type { RiskAssessment, RiskAssessmentInsert, RiskAssessmentUpdate } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  CLIENT-SIDE ASSESSMENT SCORE CALCULATOR                            */
@@ -223,7 +224,7 @@ export function useCreateRiskAssessment() {
 
       const { data, error } = await supabase
         .from("risk_assessments")
-        .insert(record as any)
+        .insert(record as TableInsert<"risk_assessments">)
         .select()
         .single();
 
@@ -255,7 +256,7 @@ export function useUpdateRiskAssessment() {
 
       const { data, error } = await supabase
         .from("risk_assessments")
-        .update(record as any)
+        .update(record as TableUpdate<"risk_assessments">)
         .eq("id", id)
         .select()
         .single();

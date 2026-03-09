@@ -11,6 +11,7 @@ import type {
   DataTransferInsert,
   DataTransferUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -93,7 +94,7 @@ export function useCreateDataset() {
 
       const { data, error } = await supabase
         .from("datasets")
-        .insert(record as any)
+        .insert(record as TableInsert<"datasets">)
         .select()
         .single();
 
@@ -126,7 +127,7 @@ export function useUpdateDataset() {
 
       const { data, error } = await supabase
         .from("datasets")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"datasets">)
         .eq("id", id)
         .select()
         .single();
@@ -229,7 +230,7 @@ export function useCreateDataTransfer() {
 
       const { data, error } = await supabase
         .from("data_transfers")
-        .insert(record as any)
+        .insert(record as TableInsert<"data_transfers">)
         .select()
         .single();
 
@@ -261,7 +262,7 @@ export function useUpdateDataTransfer() {
 
       const { data, error } = await supabase
         .from("data_transfers")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"data_transfers">)
         .eq("id", id)
         .select()
         .single();

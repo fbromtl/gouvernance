@@ -142,7 +142,7 @@ function OrgSettingsTab({ readOnly = false }: { readOnly?: boolean }) {
         <div className="flex items-center gap-2">
           <Label>{t("org.plan")}</Label>
           <Badge variant="secondary" className="capitalize">
-            {t(`org.plans.${org.plan}` as any)}
+            {String(t(`org.plans.${org.plan}`))}
           </Badge>
         </div>
       )}
@@ -169,7 +169,7 @@ function OrgSettingsTab({ readOnly = false }: { readOnly?: boolean }) {
             <SelectContent>
               {SECTORS.map((s) => (
                 <SelectItem key={s} value={s}>
-                  {t(`org.sectors.${s}` as any)}
+                  {String(t(`org.sectors.${s}`))}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -185,7 +185,7 @@ function OrgSettingsTab({ readOnly = false }: { readOnly?: boolean }) {
             <SelectContent>
               {SIZES.map((s) => (
                 <SelectItem key={s} value={s}>
-                  {t(`org.sizes.${s}` as any)}
+                  {String(t(`org.sizes.${s}`))}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -362,7 +362,7 @@ function MembersTab({ readOnly = false }: { readOnly?: boolean }) {
                       <SelectContent>
                         {assignableRoles.map((r) => (
                           <SelectItem key={r} value={r}>
-                            {t(`roles.${r}` as any)}
+                            {String(t(`roles.${r}`))}
                           </SelectItem>
                         ))}
                       </SelectContent>

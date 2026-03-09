@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import type { AiSystem, AiSystemInsert, AiSystemUpdate } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -197,7 +198,7 @@ export function useCreateAiSystem() {
 
       const { data, error } = await supabase
         .from("ai_systems")
-        .insert(record as any)
+        .insert(record as TableInsert<"ai_systems">)
         .select()
         .single();
 
@@ -233,7 +234,7 @@ export function useUpdateAiSystem() {
 
       const { data, error } = await supabase
         .from("ai_systems")
-        .update(record as any)
+        .update(record as TableUpdate<"ai_systems">)
         .eq("id", id)
         .select()
         .single();
@@ -265,7 +266,7 @@ export function useDeleteAiSystem() {
         .update({
           deleted_at: new Date().toISOString(),
           updated_by: user.id,
-        } as any)
+        } as TableUpdate<"ai_systems">)
         .eq("id", id);
 
       if (error) throw error;

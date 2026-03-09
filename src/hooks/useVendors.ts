@@ -4,6 +4,7 @@ import { applySearch } from "@/lib/supabase-helpers";
 import { useAuth } from "@/lib/auth";
 import { useAuditLog } from "@/hooks/useAuditLog";
 import type { Vendor, VendorInsert, VendorUpdate } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -76,7 +77,7 @@ export function useCreateVendor() {
 
       const { data, error } = await supabase
         .from("vendors")
-        .insert(record as any)
+        .insert(record as TableInsert<"vendors">)
         .select()
         .single();
 
@@ -109,7 +110,7 @@ export function useUpdateVendor() {
 
       const { data, error } = await supabase
         .from("vendors")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"vendors">)
         .eq("id", id)
         .select()
         .single();

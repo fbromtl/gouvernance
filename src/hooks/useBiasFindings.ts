@@ -8,6 +8,7 @@ import type {
   BiasFindingInsert,
   BiasFindingUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -106,7 +107,7 @@ export function useCreateBiasFinding() {
 
       const { data, error } = await supabase
         .from("bias_findings")
-        .insert(record as any)
+        .insert(record as TableInsert<"bias_findings">)
         .select()
         .single();
 
@@ -139,7 +140,7 @@ export function useUpdateBiasFinding() {
 
       const { data, error } = await supabase
         .from("bias_findings")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"bias_findings">)
         .eq("id", id)
         .select()
         .single();

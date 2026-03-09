@@ -7,6 +7,7 @@ import type {
   GovernanceCommitteeInsert,
   GovernanceCommitteeUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  QUERIES                                                            */
@@ -59,7 +60,7 @@ export function useCreateCommittee() {
 
       const { data, error } = await supabase
         .from("governance_committees")
-        .insert(record as any)
+        .insert(record as TableInsert<"governance_committees">)
         .select()
         .single();
 
@@ -92,7 +93,7 @@ export function useUpdateCommittee() {
 
       const { data, error } = await supabase
         .from("governance_committees")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"governance_committees">)
         .eq("id", id)
         .select()
         .single();

@@ -11,6 +11,7 @@ import type {
   ContestationInsert,
   ContestationUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -89,7 +90,7 @@ export function useCreateAutomatedDecision() {
 
       const { data, error } = await supabase
         .from("automated_decisions")
-        .insert(record as any)
+        .insert(record as TableInsert<"automated_decisions">)
         .select()
         .single();
 
@@ -125,7 +126,7 @@ export function useUpdateAutomatedDecision() {
 
       const { data, error } = await supabase
         .from("automated_decisions")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"automated_decisions">)
         .eq("id", id)
         .select()
         .single();
@@ -237,7 +238,7 @@ export function useCreateContestation() {
 
       const { data, error } = await supabase
         .from("contestations")
-        .insert(record as any)
+        .insert(record as TableInsert<"contestations">)
         .select()
         .single();
 
@@ -273,7 +274,7 @@ export function useUpdateContestation() {
 
       const { data, error } = await supabase
         .from("contestations")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"contestations">)
         .eq("id", id)
         .select()
         .single();

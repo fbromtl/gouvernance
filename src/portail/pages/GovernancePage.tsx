@@ -407,7 +407,7 @@ function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boole
                 <TableRow key={p.id}>
                   <TableCell className="font-medium">{p.title}</TableCell>
                   <TableCell className="text-sm">
-                    {t(`policies.types.${p.policy_type}` as any)}
+                    {String(t(`policies.types.${p.policy_type}`))}
                   </TableCell>
                   <TableCell>
                     <Badge variant="outline" className="text-xs">
@@ -417,7 +417,7 @@ function PoliciesTab({ readOnly = false, isPreview = false }: { readOnly?: boole
                   <TableCell>
                     <StatusBadge
                       status={p.status}
-                      label={t(`policies.statuses.${p.status}` as any)}
+                      label={String(t(`policies.statuses.${p.status}`))}
                     />
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
@@ -805,10 +805,10 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
                     <TableCell>
                       <div>
                         <span className="font-medium">
-                          {t(`roles.roleTypes.${r.role_type}` as any)}
+                          {String(t(`roles.roleTypes.${r.role_type}`))}
                         </span>
                         <p className="text-xs text-muted-foreground">
-                          {t(`roles.roleDescriptions.${r.role_type}` as any)}
+                          {String(t(`roles.roleDescriptions.${r.role_type}`))}
                         </p>
                       </div>
                     </TableCell>
@@ -833,7 +833,7 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
                     </TableCell>
                     <TableCell>
                       <Badge variant="outline" className="text-xs">
-                        {t(`roles.scopes.${r.scope}` as any)}
+                        {String(t(`roles.scopes.${r.scope}`))}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
@@ -1002,7 +1002,7 @@ function RolesTab({ readOnly = false, isPreview = false }: { readOnly?: boolean;
             <DialogDescription>
               {t("roles.confirm.deleteDescription", {
                 role: deletingRole
-                  ? t(`roles.roleTypes.${deletingRole.role_type}` as any)
+                  ? String(t(`roles.roleTypes.${deletingRole.role_type}`))
                   : "",
               })}
             </DialogDescription>
@@ -1100,7 +1100,7 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
       name: fName,
       mandate: fMandate || null,
       meeting_frequency: fFrequency,
-      members: validMembers as any,
+      members: validMembers as unknown as import("@/types/database").Json,
     };
 
     if (editing) {
@@ -1137,7 +1137,7 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
   }
 
   function getMemberCount(c: GovernanceCommittee) {
-    return Array.isArray(c.members) ? (c.members as any[]).length : 0;
+    return Array.isArray(c.members) ? (c.members as unknown[]).length : 0;
   }
 
   const isEmpty = !committees || committees.length === 0;
@@ -1209,7 +1209,7 @@ function CommitteesTab({ readOnly = false, isPreview = false }: { readOnly?: boo
                     {c.mandate || "---"}
                   </TableCell>
                   <TableCell className="text-sm">
-                    {t(`committees.frequencies.${c.meeting_frequency}` as any)}
+                    {String(t(`committees.frequencies.${c.meeting_frequency}`))}
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary" className="text-xs">

@@ -8,6 +8,7 @@ import type {
   GovernancePolicyInsert,
   GovernancePolicyUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -133,7 +134,7 @@ export function useCreatePolicy() {
 
       const { data, error } = await supabase
         .from("governance_policies")
-        .insert(record as any)
+        .insert(record as TableInsert<"governance_policies">)
         .select()
         .single();
 
@@ -166,7 +167,7 @@ export function useUpdatePolicy() {
 
       const { data, error } = await supabase
         .from("governance_policies")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"governance_policies">)
         .eq("id", id)
         .select()
         .single();
@@ -207,7 +208,7 @@ export function usePublishPolicy() {
           published_at: new Date().toISOString(),
           published_by: user.id,
           updated_by: user.id,
-        } as any)
+        } as TableUpdate<"governance_policies">)
         .eq("id", id)
         .select()
         .single();
@@ -258,7 +259,7 @@ export function useCreatePolicyVersion() {
       // 2. Archive the source
       await supabase
         .from("governance_policies")
-        .update({ status: "archived", updated_by: user.id } as any)
+        .update({ status: "archived", updated_by: user.id } as TableUpdate<"governance_policies">)
         .eq("id", sourceId);
 
       // 3. Create new version
@@ -278,7 +279,7 @@ export function useCreatePolicyVersion() {
 
       const { data, error } = await supabase
         .from("governance_policies")
-        .insert(newRecord as any)
+        .insert(newRecord as TableInsert<"governance_policies">)
         .select()
         .single();
 

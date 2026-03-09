@@ -245,8 +245,8 @@ export default function RiskAssessmentWizardPage() {
       ai_system_id: values.ai_system_id,
       total_score: computed.score,
       risk_level: computed.level,
-      answers: answers as any,
-      requirements: requirementsArr as any,
+      answers: answers as unknown as import("@/types/database").Json,
+      requirements: requirementsArr as unknown as import("@/types/database").Json,
       status,
     };
   }

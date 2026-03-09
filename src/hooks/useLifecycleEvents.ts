@@ -8,6 +8,7 @@ import type {
   LifecycleEventInsert,
   LifecycleEventUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -80,7 +81,7 @@ export function useCreateLifecycleEvent() {
 
       const { data, error } = await supabase
         .from("lifecycle_events")
-        .insert(record as any)
+        .insert(record as TableInsert<"lifecycle_events">)
         .select()
         .single();
 
@@ -113,7 +114,7 @@ export function useUpdateLifecycleEvent() {
 
       const { data, error } = await supabase
         .from("lifecycle_events")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"lifecycle_events">)
         .eq("id", id)
         .select()
         .single();

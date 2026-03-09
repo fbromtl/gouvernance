@@ -10,6 +10,7 @@ import type {
   MonitoringDataPoint,
   MonitoringDataPointInsert,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -105,7 +106,7 @@ export function useCreateMonitoringMetric() {
 
       const { data, error } = await supabase
         .from("monitoring_metrics")
-        .insert(record as any)
+        .insert(record as TableInsert<"monitoring_metrics">)
         .select()
         .single();
 
@@ -138,7 +139,7 @@ export function useUpdateMonitoringMetric() {
 
       const { data, error } = await supabase
         .from("monitoring_metrics")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"monitoring_metrics">)
         .eq("id", id)
         .select()
         .single();
@@ -260,7 +261,7 @@ export function useAddDataPoint() {
 
       const { data, error } = await supabase
         .from("monitoring_data_points")
-        .insert(record as any)
+        .insert(record as TableInsert<"monitoring_data_points">)
         .select()
         .single();
 

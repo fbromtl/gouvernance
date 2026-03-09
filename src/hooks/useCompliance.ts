@@ -17,6 +17,7 @@ import type {
   RemediationActionInsert,
   RemediationActionUpdate,
 } from "@/types/database";
+import type { TableInsert, TableUpdate } from "@/lib/supabase-types";
 
 /* ------------------------------------------------------------------ */
 /*  FILTERS                                                            */
@@ -248,7 +249,7 @@ export function useUpdateAssessment() {
 
       const { data, error } = await supabase
         .from("compliance_assessments")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"compliance_assessments">)
         .eq("id", id)
         .select()
         .single();
@@ -292,7 +293,7 @@ export function useCreateRemediation() {
 
       const { data, error } = await supabase
         .from("remediation_actions")
-        .insert(record as any)
+        .insert(record as TableInsert<"remediation_actions">)
         .select()
         .single();
 
@@ -325,7 +326,7 @@ export function useUpdateRemediation() {
 
       const { data, error } = await supabase
         .from("remediation_actions")
-        .update({ ...input, updated_by: user.id } as any)
+        .update({ ...input, updated_by: user.id } as TableUpdate<"remediation_actions">)
         .eq("id", id)
         .select()
         .single();
