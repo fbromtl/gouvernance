@@ -58,6 +58,12 @@ import {
 } from "@/components/ui/sheet";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_BIAS_FINDINGS } from "@/portail/demo";
+import {
+  BIAS_SEVERITY_COLORS,
+  BIAS_STATUS_COLORS,
+  getColorClass,
+} from "@/portail/constants/colors";
+
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
 /* ------------------------------------------------------------------ */
@@ -106,42 +112,6 @@ const PROTECTED_DIMENSIONS = [
   "language",
   "intersectional",
 ] as const;
-
-/* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
-/* ------------------------------------------------------------------ */
-
-function severityColor(s: string) {
-  switch (s) {
-    case "critical":
-      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-    case "high":
-      return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400";
-    case "medium":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-    case "low":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    default:
-      return "bg-muted text-muted-foreground";
-  }
-}
-
-function statusColor(s: string) {
-  switch (s) {
-    case "identified":
-      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-    case "in_remediation":
-      return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400";
-    case "retest_pending":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400";
-    case "resolved":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    case "accepted_risk":
-      return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400";
-    default:
-      return "bg-muted text-muted-foreground";
-  }
-}
 
 /* ------------------------------------------------------------------ */
 /*  EMPTY FORM                                                         */
@@ -403,10 +373,10 @@ export default function BiasPage() {
                     <Badge variant="outline" className="text-xs">{t(`biasTypes.${f.bias_type}`)}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge className={severityColor(f.severity)}>{t(`severities.${f.severity}`)}</Badge>
+                    <Badge className={getColorClass(BIAS_SEVERITY_COLORS, f.severity)}>{t(`severities.${f.severity}`)}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge className={statusColor(f.status)}>{t(`statuses.${f.status}`)}</Badge>
+                    <Badge className={getColorClass(BIAS_STATUS_COLORS, f.status)}>{t(`statuses.${f.status}`)}</Badge>
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
                     {f.detected_at ? new Date(f.detected_at).toLocaleDateString() : "—"}
@@ -653,8 +623,8 @@ export default function BiasPage() {
                   <h3 className="font-semibold text-sm text-muted-foreground mb-2">{t("detail.assessment")}</h3>
                   <dl className="space-y-2 text-sm">
                     <div className="flex gap-4">
-                      <div><dt className="font-medium">{t("form.severity")}</dt><dd><Badge className={severityColor(viewing.severity)}>{t(`severities.${viewing.severity}`)}</Badge></dd></div>
-                      <div><dt className="font-medium">{t("table.status")}</dt><dd><Badge className={statusColor(viewing.status)}>{t(`statuses.${viewing.status}`)}</Badge></dd></div>
+                      <div><dt className="font-medium">{t("form.severity")}</dt><dd><Badge className={getColorClass(BIAS_SEVERITY_COLORS, viewing.severity)}>{t(`severities.${viewing.severity}`)}</Badge></dd></div>
+                      <div><dt className="font-medium">{t("table.status")}</dt><dd><Badge className={getColorClass(BIAS_STATUS_COLORS, viewing.status)}>{t(`statuses.${viewing.status}`)}</Badge></dd></div>
                     </div>
                     {viewing.likelihood && <div><dt className="font-medium">{t("form.likelihood")}</dt><dd>{t(`likelihoods.${viewing.likelihood}`)}</dd></div>}
                     {viewing.estimated_impact && <div><dt className="font-medium">{t("form.estimatedImpact")}</dt><dd className="whitespace-pre-wrap">{viewing.estimated_impact}</dd></div>}

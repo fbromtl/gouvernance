@@ -65,6 +65,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { DATA_STATUS_COLORS } from "@/portail/constants/colors";
+
 /* ================================================================== */
 /*  CONSTANTS                                                          */
 /* ================================================================== */
@@ -152,13 +154,7 @@ const CLASSIFICATION_VARIANTS: Record<string, "secondary" | "default" | "destruc
   sensitive: "destructive",
 };
 
-const STATUS_COLORS: Record<string, string> = {
-  active: "bg-green-100 text-green-800 border-green-200",
-  archived: "bg-gray-100 text-gray-800 border-gray-200",
-  pending_deletion: "bg-orange-100 text-orange-800 border-orange-200",
-  suspended: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  terminated: "bg-red-100 text-red-800 border-red-200",
-};
+const STATUS_COLORS = DATA_STATUS_COLORS;
 
 /* ================================================================== */
 /*  MAIN PAGE                                                          */

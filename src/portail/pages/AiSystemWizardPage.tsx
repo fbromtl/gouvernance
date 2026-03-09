@@ -38,119 +38,20 @@ import {
 } from "@/hooks/useAiSystems";
 import { useOrgMembers } from "@/hooks/useOrgMembers";
 import type { AiSystemInsert } from "@/types/database";
-
-/* ------------------------------------------------------------------ */
-/*  Option lists                                                        */
-/* ------------------------------------------------------------------ */
-
-const SYSTEM_TYPES = [
-  "predictive_ml",
-  "rules_based",
-  "genai_text",
-  "genai_image",
-  "genai_code",
-  "genai_multimodal",
-  "nlp",
-  "computer_vision",
-  "robotics",
-  "recommendation",
-  "other",
-] as const;
-
-const GENAI_SUBTYPES = [
-  "chatbot",
-  "content_generation",
-  "code_assistant",
-  "image_generation",
-  "summarization",
-  "translation",
-  "other",
-] as const;
-
-const DEPARTMENTS = [
-  "it",
-  "hr",
-  "finance",
-  "marketing",
-  "sales",
-  "legal",
-  "operations",
-  "customer_service",
-  "r_and_d",
-  "executive",
-] as const;
-
-const AFFECTED_POPULATIONS = [
-  "employees",
-  "customers",
-  "prospects",
-  "public",
-  "minors",
-  "vulnerable",
-] as const;
-
-const ESTIMATED_VOLUMES = [
-  "under_100",
-  "100_1000",
-  "1000_10000",
-  "10000_100000",
-  "over_100000",
-] as const;
-
-const AUTONOMY_LEVELS = [
-  "human_in_command",
-  "human_in_the_loop",
-  "human_on_the_loop",
-  "full_auto",
-] as const;
-
-const SENSITIVE_DOMAINS = [
-  "biometric_id",
-  "justice",
-  "migration",
-  "critical_infra",
-  "health",
-  "employment",
-  "credit",
-  "education",
-  "housing",
-] as const;
-
-const DATA_TYPES = [
-  "no_personal_data",
-  "public_data",
-  "synthetic_data",
-  "personal_data",
-  "financial_data",
-  "sensitive_data",
-] as const;
-
-const SYSTEM_SOURCES = ["internal", "vendor", "open_source", "hybrid"] as const;
-
-const DATA_LOCATIONS = [
-  "canada",
-  "usa",
-  "eu",
-  "uk",
-  "other_international",
-] as const;
-
-const LIFECYCLE_STATUSES = [
-  "idea",
-  "pilot",
-  "development",
-  "testing",
-  "production",
-  "suspended",
-  "decommissioned",
-] as const;
-
-const REVIEW_FREQUENCIES = [
-  "monthly",
-  "quarterly",
-  "semi_annual",
-  "annual",
-] as const;
+import {
+  SYSTEM_TYPES,
+  GENAI_SUBTYPES,
+  DEPARTMENTS,
+  AFFECTED_POPULATIONS,
+  ESTIMATED_VOLUMES,
+  AUTONOMY_LEVELS,
+  SENSITIVE_DOMAINS,
+  DATA_TYPES,
+  SYSTEM_SOURCES,
+  DATA_LOCATIONS,
+  LIFECYCLE_STATUSES,
+  REVIEW_FREQUENCIES,
+} from "@/portail/constants";
 
 /* ------------------------------------------------------------------ */
 /*  Zod schema                                                          */

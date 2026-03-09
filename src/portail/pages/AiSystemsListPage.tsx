@@ -22,36 +22,11 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAiSystems, type AiSystemFilters } from "@/hooks/useAiSystems";
 import type { AiSystem } from "@/types/database";
-
-/* ------------------------------------------------------------------ */
-/*  Option constants                                                    */
-/* ------------------------------------------------------------------ */
-
-const LIFECYCLE_STATUSES = [
-  "idea",
-  "pilot",
-  "development",
-  "testing",
-  "production",
-  "suspended",
-  "decommissioned",
-] as const;
-
-const RISK_LEVELS = ["minimal", "limited", "high", "critical"] as const;
-
-const SYSTEM_TYPES = [
-  "predictive_ml",
-  "rules_based",
-  "genai_text",
-  "genai_image",
-  "genai_code",
-  "genai_multimodal",
-  "nlp",
-  "computer_vision",
-  "robotics",
-  "recommendation",
-  "other",
-] as const;
+import {
+  LIFECYCLE_STATUSES,
+  RISK_LEVELS,
+  SYSTEM_TYPES,
+} from "@/portail/constants";
 
 /* ------------------------------------------------------------------ */
 /*  Sentinel value for "all" selects                                    */

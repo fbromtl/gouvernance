@@ -24,47 +24,13 @@ import {
 } from "@/components/ui/select";
 
 import { useCreateIncident } from "@/hooks/useIncidents";
-
-/* ------------------------------------------------------------------ */
-/*  Option constants                                                    */
-/* ------------------------------------------------------------------ */
-
-const AI_INCIDENT_TYPES = [
-  "performance",
-  "security",
-  "bias",
-  "ethics",
-  "availability",
-  "compliance",
-  "unauthorized_use",
-] as const;
-
-const PRIVACY_INCIDENT_TYPES = [
-  "unauthorized_access",
-  "unauthorized_use_data",
-  "unauthorized_disclosure",
-  "data_loss",
-  "data_theft",
-  "other_breach",
-] as const;
-
-const DETECTION_MODES = [
-  "automated_monitoring",
-  "user_report",
-  "internal_audit",
-  "external_report",
-  "media",
-  "regulatory",
-] as const;
-
-const SEVERITIES = ["critical", "high", "medium", "low"] as const;
-
-const SEVERITY_INDICATORS: Record<string, string> = {
-  critical: "bg-red-500",
-  high: "bg-orange-500",
-  medium: "bg-amber-500",
-  low: "bg-green-500",
-};
+import {
+  AI_INCIDENT_TYPES,
+  PRIVACY_INCIDENT_TYPES,
+  DETECTION_MODES,
+  INCIDENT_SEVERITIES,
+} from "@/portail/constants";
+import { SEVERITY_INDICATORS } from "@/portail/constants/colors";
 
 /* ------------------------------------------------------------------ */
 /*  Zod schema                                                          */
@@ -346,7 +312,7 @@ export default function IncidentReportPage() {
                     onValueChange={field.onChange}
                     className="flex flex-wrap gap-4"
                   >
-                    {SEVERITIES.map((sev) => (
+                    {INCIDENT_SEVERITIES.map((sev) => (
                       <div key={sev} className="flex items-center gap-2">
                         <RadioGroupItem value={sev} id={`sev-${sev}`} />
                         <span

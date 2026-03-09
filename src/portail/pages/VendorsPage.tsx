@@ -60,6 +60,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  VENDOR_RISK_COLORS,
+  VENDOR_STATUS_COLORS,
+} from "@/portail/constants/colors";
+
 /* ================================================================== */
 /*  CONSTANTS                                                          */
 /* ================================================================== */
@@ -91,18 +96,8 @@ const STATUSES = [
   "terminated",
 ] as const;
 
-const RISK_COLORS: Record<string, string> = {
-  low_risk: "bg-green-100 text-green-800 border-green-200",
-  medium_risk: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  high_risk: "bg-red-100 text-red-800 border-red-200",
-};
-
-const STATUS_COLORS: Record<string, string> = {
-  active: "bg-green-100 text-green-800 border-green-200",
-  under_evaluation: "bg-blue-100 text-blue-800 border-blue-200",
-  suspended: "bg-orange-100 text-orange-800 border-orange-200",
-  terminated: "bg-red-100 text-red-800 border-red-200",
-};
+const RISK_COLORS = VENDOR_RISK_COLORS;
+const STATUS_COLORS = VENDOR_STATUS_COLORS;
 
 /** Sentinel values for Radix Select (which forbids value="") */
 const ALL = "__all__";

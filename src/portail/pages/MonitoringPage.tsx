@@ -26,6 +26,7 @@ import {
   DEMO_MONITORING_METRICS,
   DEMO_MONITORING_DATA_POINTS,
 } from "@/portail/demo";
+import { ALERT_LEVEL_COLORS, getColorClass } from "@/portail/constants/colors";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -106,16 +107,7 @@ const SOURCES = [
 /* ------------------------------------------------------------------ */
 
 function alertBadgeClass(level: string | null) {
-  switch (level) {
-    case "ok":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    case "warning":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-    case "critical":
-      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-    default:
-      return "bg-muted text-muted-foreground";
-  }
+  return getColorClass(ALERT_LEVEL_COLORS, level);
 }
 
 /* ------------------------------------------------------------------ */

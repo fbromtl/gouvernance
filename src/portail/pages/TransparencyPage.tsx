@@ -63,6 +63,11 @@ import {
 } from "@/components/ui/sheet";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_AUTOMATED_DECISIONS, DEMO_CONTESTATIONS } from "@/portail/demo";
+import {
+  TRANSPARENCY_IMPACT_COLORS,
+  CONTESTATION_STATUS_COLORS,
+  getColorClass,
+} from "@/portail/constants/colors";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                          */
@@ -77,32 +82,6 @@ const CONTESTATION_STATUSES = [
   "received", "assigned", "under_review", "decision_revised",
   "decision_maintained", "notified", "closed",
 ] as const;
-
-/* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
-/* ------------------------------------------------------------------ */
-
-function impactColor(s: string) {
-  switch (s) {
-    case "high": return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-    case "medium": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-    case "low": return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    default: return "bg-muted text-muted-foreground";
-  }
-}
-
-function contestationStatusColor(s: string) {
-  switch (s) {
-    case "received": return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400";
-    case "assigned": return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400";
-    case "under_review": return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400";
-    case "decision_revised": return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-    case "decision_maintained": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-    case "notified": return "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-400";
-    case "closed": return "bg-muted text-muted-foreground";
-    default: return "bg-muted text-muted-foreground";
-  }
-}
 
 /* ------------------------------------------------------------------ */
 /*  EMPTY FORMS                                                        */
@@ -340,7 +319,7 @@ function RegistryTab({
                   <TableCell className="text-sm">{getSystemName(e.ai_system_id)}</TableCell>
                   <TableCell className="font-medium max-w-[200px] truncate">{e.decision_type}</TableCell>
                   <TableCell><Badge variant="outline" className="text-xs">{t(`automationLevels.${e.automation_level}`)}</Badge></TableCell>
-                  <TableCell><Badge className={impactColor(e.decision_impact)}>{t(`decisionImpacts.${e.decision_impact}`)}</Badge></TableCell>
+                  <TableCell><Badge className={getColorClass(TRANSPARENCY_IMPACT_COLORS, e.decision_impact)}>{t(`decisionImpacts.${e.decision_impact}`)}</Badge></TableCell>
                   <TableCell>{e.contestation_enabled ? <CheckCircle className="h-4 w-4 text-green-500" /> : <XCircle className="h-4 w-4 text-muted-foreground/40" />}</TableCell>
                   <TableCell><Badge variant="outline">{t(`registryStatuses.${e.status}`)}</Badge></TableCell>
                   <TableCell className="text-right">
@@ -604,7 +583,7 @@ function ContestationsTab({
                   <TableCell className="font-medium">{c.requester_name}</TableCell>
                   <TableCell className="text-sm text-muted-foreground">{getSystemName(c.ai_system_id)}</TableCell>
                   <TableCell className="text-sm">{c.received_at ? new Date(c.received_at).toLocaleDateString() : "—"}</TableCell>
-                  <TableCell><Badge className={contestationStatusColor(c.status)}>{t(`contestationStatuses.${c.status}`)}</Badge></TableCell>
+                  <TableCell><Badge className={getColorClass(CONTESTATION_STATUS_COLORS, c.status)}>{t(`contestationStatuses.${c.status}`)}</Badge></TableCell>
                   <TableCell>{c.review_outcome ? <Badge variant="outline">{t(`reviewOutcomes.${c.review_outcome}`)}</Badge> : "—"}</TableCell>
                   <TableCell className="text-right">
                     <div className="flex items-center justify-end gap-1">
@@ -728,7 +707,7 @@ function ContestationsTab({
                 <div><span className="font-medium">{t("contestationTable.system")}:</span> {getSystemName(viewing.ai_system_id)}</div>
                 <div><span className="font-medium">{t("contestationForm.receptionChannel")}:</span> {t(`receptionChannels.${viewing.reception_channel}`)}</div>
                 <div><span className="font-medium">{t("contestationTable.receivedAt")}:</span> {viewing.received_at ? new Date(viewing.received_at).toLocaleDateString() : "—"}</div>
-                <div><span className="font-medium">{t("contestationTable.status")}:</span> <Badge className={contestationStatusColor(viewing.status)}>{t(`contestationStatuses.${viewing.status}`)}</Badge></div>
+                <div><span className="font-medium">{t("contestationTable.status")}:</span> <Badge className={getColorClass(CONTESTATION_STATUS_COLORS, viewing.status)}>{t(`contestationStatuses.${viewing.status}`)}</Badge></div>
                 <div className="pt-2">
                   <span className="font-medium">{t("contestationForm.contestedDecision")}:</span>
                   <p className="mt-1 whitespace-pre-wrap">{viewing.contested_decision_description}</p>

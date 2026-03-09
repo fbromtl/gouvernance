@@ -23,33 +23,14 @@ import { useIncidents, type IncidentFilters } from "@/hooks/useIncidents";
 import type { Incident } from "@/types/database";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_INCIDENTS } from "@/portail/demo";
-
-/* ------------------------------------------------------------------ */
-/*  Constants                                                           */
-/* ------------------------------------------------------------------ */
-
-const STATUSES = [
-  "reported",
-  "triaged",
-  "investigating",
-  "resolving",
-  "resolved",
-  "post_mortem",
-  "closed",
-] as const;
-
-const SEVERITIES = ["critical", "high", "medium", "low"] as const;
-
-const CATEGORIES = ["ai", "privacy"] as const;
+import {
+  INCIDENT_STATUSES,
+  INCIDENT_SEVERITIES,
+  INCIDENT_CATEGORIES,
+  INCIDENT_SEVERITY_COLORS,
+} from "@/portail/constants";
 
 const ALL = "__all__";
-
-const SEVERITY_COLORS: Record<string, string> = {
-  critical: "text-red-700 bg-red-50 border-red-200",
-  high: "text-orange-700 bg-orange-50 border-orange-200",
-  medium: "text-amber-700 bg-amber-50 border-amber-200",
-  low: "text-green-700 bg-green-50 border-green-200",
-};
 
 /* ------------------------------------------------------------------ */
 /*  Page component                                                      */
@@ -241,8 +222,8 @@ export default function IncidentListPage() {
     >
       {/* Severity stat cards */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {SEVERITIES.map((sev) => (
-          <Card key={sev} className={`border ${SEVERITY_COLORS[sev]}`}>
+        {INCIDENT_SEVERITIES.map((sev) => (
+          <Card key={sev} className={`border ${INCIDENT_SEVERITY_COLORS[sev]}`}>
             <CardContent className="flex items-center justify-between p-4">
               <div>
                 <p className="text-sm font-medium">{t(`stats.${sev}`)}</p>
@@ -272,7 +253,7 @@ export default function IncidentListPage() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
-            {STATUSES.map((s) => (
+            {INCIDENT_STATUSES.map((s) => (
               <SelectItem key={s} value={s}>
                 {t(`statuses.${s}`)}
               </SelectItem>
@@ -286,7 +267,7 @@ export default function IncidentListPage() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>{t("filters.allSeverities")}</SelectItem>
-            {SEVERITIES.map((s) => (
+            {INCIDENT_SEVERITIES.map((s) => (
               <SelectItem key={s} value={s}>
                 {t(`severities.${s}`)}
               </SelectItem>
@@ -300,7 +281,7 @@ export default function IncidentListPage() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>{t("filters.allCategories")}</SelectItem>
-            {CATEGORIES.map((c) => (
+            {INCIDENT_CATEGORIES.map((c) => (
               <SelectItem key={c} value={c}>
                 {t(`categories.${c}`)}
               </SelectItem>

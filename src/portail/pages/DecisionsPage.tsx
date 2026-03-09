@@ -67,52 +67,17 @@ import {
 } from "@/components/ui/sheet";
 import { useFeaturePreview } from "@/hooks/useFeaturePreview";
 import { DEMO_DECISIONS } from "@/portail/demo";
-
-/* ================================================================== */
-/*  CONSTANTS                                                          */
-/* ================================================================== */
-
-const DECISION_TYPES = [
-  "go_nogo", "substantial_change", "scale_deployment", "vendor_change",
-  "policy_adjustment", "ethical_arbitration", "suspension", "exception",
-] as const;
-
-const STATUSES = [
-  "draft", "submitted", "in_review", "approved", "rejected", "implemented", "archived",
-] as const;
-
-const IMPACTS = ["low", "medium", "high", "critical"] as const;
-
-const STATUS_COLORS: Record<string, string> = {
-  draft: "bg-gray-100 text-gray-800 border-gray-200",
-  submitted: "bg-blue-100 text-blue-800 border-blue-200",
-  in_review: "bg-emerald-100 text-emerald-800 border-emerald-200",
-  approved: "bg-green-100 text-green-800 border-green-200",
-  rejected: "bg-red-100 text-red-800 border-red-200",
-  implemented: "bg-emerald-100 text-emerald-800 border-emerald-200",
-  archived: "bg-gray-100 text-gray-600 border-gray-200",
-};
+import {
+  DECISION_TYPES,
+  DECISION_STATUSES,
+  DECISION_IMPACTS,
+  STATUS_COLORS,
+  IMPACT_COLORS,
+  DECISION_TYPE_COLORS,
+} from "@/portail/constants";
 
 const ALL = "__all__";
 const NONE = "__none__";
-
-const IMPACT_COLORS: Record<string, string> = {
-  low: "bg-blue-100 text-blue-800 border-blue-200",
-  medium: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  high: "bg-orange-100 text-orange-800 border-orange-200",
-  critical: "bg-red-100 text-red-800 border-red-200",
-};
-
-const TYPE_COLORS: Record<string, string> = {
-  go_nogo: "bg-green-100 text-green-800 border-green-200",
-  substantial_change: "bg-orange-100 text-orange-800 border-orange-200",
-  scale_deployment: "bg-blue-100 text-blue-800 border-blue-200",
-  vendor_change: "bg-emerald-100 text-emerald-800 border-emerald-200",
-  policy_adjustment: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  ethical_arbitration: "bg-pink-100 text-pink-800 border-pink-200",
-  suspension: "bg-red-100 text-red-800 border-red-200",
-  exception: "bg-gray-100 text-gray-800 border-gray-200",
-};
 
 /* ================================================================== */
 /*  MAIN PAGE                                                          */
@@ -304,7 +269,7 @@ export default function DecisionsPage() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>{t("filters.allStatuses")}</SelectItem>
-            {STATUSES.map((s) => (
+            {DECISION_STATUSES.map((s) => (
               <SelectItem key={s} value={s}>{t(`statuses.${s}`)}</SelectItem>
             ))}
           </SelectContent>
@@ -363,7 +328,7 @@ export default function DecisionsPage() {
                     </button>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className={`text-[11px] ${TYPE_COLORS[d.decision_type] ?? ""}`}>
+                    <Badge variant="outline" className={`text-[11px] ${DECISION_TYPE_COLORS[d.decision_type] ?? ""}`}>
                       {t(`types.${d.decision_type}`)}
                     </Badge>
                   </TableCell>
@@ -491,7 +456,7 @@ export default function DecisionsPage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value={NONE}>{t("form.noImpact")}</SelectItem>
-                    {IMPACTS.map((i) => (
+                    {DECISION_IMPACTS.map((i) => (
                       <SelectItem key={i} value={i}>{t(`impacts.${i}`)}</SelectItem>
                     ))}
                   </SelectContent>
@@ -525,7 +490,7 @@ export default function DecisionsPage() {
                 <SheetTitle>{viewingDecision.title}</SheetTitle>
                 <SheetDescription>
                   <div className="flex gap-2 mt-1">
-                    <Badge variant="outline" className={TYPE_COLORS[viewingDecision.decision_type] ?? ""}>
+                    <Badge variant="outline" className={DECISION_TYPE_COLORS[viewingDecision.decision_type] ?? ""}>
                       {t(`types.${viewingDecision.decision_type}`)}
                     </Badge>
                     <Badge variant="outline" className={STATUS_COLORS[viewingDecision.status] ?? ""}>
