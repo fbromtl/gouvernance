@@ -1,18 +1,37 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { ExternalLink, Settings } from "lucide-react";
+import { ExternalLink, LayoutDashboard, Settings } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { navGroups, CATEGORY_ICONS } from "./nav-config";
 
-interface AppIconRailProps {
-  activeCategory: string;
-  onCategoryChange: (category: string) => void;
-}
-
-export function AppIconRail({ activeCategory, onCategoryChange }: AppIconRailProps) {
+export function AppIconRail() {
   const { t } = useTranslation("portail");
   const location = useLocation();
+
+  const items = [
+    {
+      key: "dashboard",
+      path: "/dashboard",
+      icon: LayoutDashboard,
+      label: t("rail.dashboard"),
+      tooltip: t("nav.dashboard"),
+    },
+    {
+      key: "site",
+      path: "/",
+      icon: ExternalLink,
+      label: t("rail.backToSite"),
+      tooltip: t("backToSite"),
+      external: true,
+    },
+    {
+      key: "profile",
+      path: "/profile",
+      icon: Settings,
+      label: t("rail.settings"),
+      tooltip: t("nav.profile"),
+    },
+  ];
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -25,18 +44,21 @@ export function AppIconRail({ activeCategory, onCategoryChange }: AppIconRailPro
           G
         </Link>
 
-        {/* ---- Category Buttons ---- */}
+        {/* ---- Navigation ---- */}
         <nav className="flex flex-1 flex-col items-center gap-1 w-full px-1.5">
-          {navGroups.map((group) => {
-            const Icon = CATEGORY_ICONS[group.category];
-            const isActive = activeCategory === group.category;
+          {items.map((item) => {
+            const Icon = item.icon;
+            const isActive =
+              item.path === "/"
+                ? false
+                : location.pathname === item.path ||
+                  location.pathname.startsWith(item.path + "/");
 
             return (
-              <Tooltip key={group.category}>
+              <Tooltip key={item.key}>
                 <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    onClick={() => onCategoryChange(group.category)}
+                  <Link
+                    to={item.path}
                     className={cn(
                       "relative flex w-full flex-col items-center gap-0.5 rounded-lg px-1 py-2.5 transition-all duration-200",
                       isActive
@@ -44,62 +66,22 @@ export function AppIconRail({ activeCategory, onCategoryChange }: AppIconRailPro
                         : "text-white/60 hover:text-white/80 hover:bg-white/8"
                     )}
                   >
-                    {/* Active indicator — left bar */}
                     {isActive && (
                       <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-r-full bg-[#81a684] shadow-[2px_0_10px_rgba(129,166,132,0.55)]" />
                     )}
-
-                    {Icon && <Icon className="h-[22px] w-[22px]" />}
+                    <Icon className="h-[22px] w-[22px]" />
                     <span className="text-[10px] font-medium leading-tight">
-                      {t(`rail.${group.category}`)}
+                      {item.label}
                     </span>
-                  </button>
+                  </Link>
                 </TooltipTrigger>
                 <TooltipContent side="right" sideOffset={8} className="font-medium">
-                  {t(group.labelKey)}
+                  {item.tooltip}
                 </TooltipContent>
               </Tooltip>
             );
           })}
         </nav>
-
-        {/* ---- Footer ---- */}
-        <div className="flex flex-col items-center gap-1 w-full px-1.5 pt-2 border-t border-white/10 mt-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/"
-                className="flex w-full flex-col items-center gap-0.5 rounded-lg px-1 py-2 text-white/60 hover:text-white/80 hover:bg-white/8 transition-all duration-200"
-              >
-                <ExternalLink className="h-[18px] w-[18px]" />
-                <span className="text-[10px] font-medium">{t("rail.backToSite")}</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={8} className="font-medium">
-              {t("backToSite")}
-            </TooltipContent>
-          </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                to="/profile"
-                className={cn(
-                  "flex w-full flex-col items-center gap-0.5 rounded-lg px-1 py-2 transition-all duration-200",
-                  location.pathname === "/profile"
-                    ? "bg-white/15 text-white"
-                    : "text-white/60 hover:text-white/80 hover:bg-white/8"
-                )}
-              >
-                <Settings className="h-[18px] w-[18px]" />
-                <span className="text-[10px] font-medium">{t("rail.settings")}</span>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={8} className="font-medium">
-              {t("nav.profile")}
-            </TooltipContent>
-          </Tooltip>
-        </div>
       </aside>
     </TooltipProvider>
   );
