@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, Phone, Users, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Mail, Users, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -209,28 +209,6 @@ export function ContactPage() {
                     <div>
                       <p className="font-medium text-white">Email</p>
                       <p className="text-neutral-400">contact@cercle-gouvernance.ai</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-emerald-400">
-                      <Phone className="size-5" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-white">Téléphone</p>
-                      <p className="text-neutral-400">+1 (514) 555-0123</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-emerald-400">
-                      <MapPin className="size-5" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-white">Adresse</p>
-                      <p className="text-neutral-400">
-                        Cercle de Gouvernance de l&apos;IA<br />
-                        1234 Rue Sherbrooke Ouest<br />
-                        Montréal, QC H3G 1H4
-                      </p>
                     </div>
                   </div>
                 </div>
