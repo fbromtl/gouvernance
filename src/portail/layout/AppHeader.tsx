@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/auth";
 import { useNotifications } from "@/hooks/useNotifications";
-import { Bell, Menu, LogOut, User, Check, ChevronRight, CreditCard, Users, Map, Building2 } from "lucide-react";
+import { Bell, Menu, LogOut, User, Check, ChevronRight, CreditCard, Users, Map, Building2, Bug } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -23,6 +23,7 @@ import type { PlanId } from "@/lib/stripe";
 
 interface AppHeaderProps {
   onMobileMenuToggle: () => void;
+  onOpenBugReport: () => void;
 }
 
 /* ------------------------------------------------------------------ */
@@ -85,7 +86,7 @@ const ROUTE_LABELS: Record<string, string> = {
   veille: "nav.veille",
 };
 
-export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
+export function AppHeader({ onMobileMenuToggle, onOpenBugReport }: AppHeaderProps) {
   const { t } = useTranslation("portail");
   const { t: tc } = useTranslation("common");
   const { profile, signOut } = useAuth();
@@ -283,6 +284,10 @@ export function AppHeader({ onMobileMenuToggle }: AppHeaderProps) {
                 <Map className="h-4 w-4" />
                 {t("nav.roadmap")}
               </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={onOpenBugReport} className="flex items-center gap-2">
+              <Bug className="h-4 w-4" />
+              Signaler un bug
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={signOut} className="flex items-center gap-2 text-destructive">
