@@ -13,7 +13,7 @@ const tables = [
   "governance_roles", "governance_committees", "governance_policies",
   "governance_diagnostics", "automated_decisions", "contestations",
   "members", "profiles", "organizations", "subscriptions",
-  "notifications", "audit_logs", "plan_features",
+  "notifications", "audit_logs", "plan_features", "bug_reports",
   // Legacy aliases (kept for any remaining references)
   "monitoring_alerts", "monitoring_kpis",
   "data_sources", "committees", "policies", "audit_log",
