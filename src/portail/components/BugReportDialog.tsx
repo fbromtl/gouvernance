@@ -25,7 +25,7 @@ const bugReportSchema = z.object({
   description: z.string().min(1, "La description est requise"),
   page_url: z.string().optional(),
   severity: z.enum(["blocking", "annoying", "minor"], {
-    required_error: "La sévérité est requise",
+    message: "La sévérité est requise",
   }),
 });
 
