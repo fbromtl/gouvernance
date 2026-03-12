@@ -4,7 +4,6 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  Phone,
   MapPin,
   ArrowUp,
   Send,
@@ -144,15 +143,6 @@ export function Footer() {
                     <Mail className="size-3.5 text-brand-sage" />
                   </span>
                   info@gouvernance.ai
-                </a>
-                <a
-                  href="tel:+15145551234"
-                  className="flex items-center gap-2.5 text-sm text-white/55 hover:text-white transition-colors group"
-                >
-                  <span className="flex items-center justify-center size-8 rounded-lg bg-white/8 group-hover:bg-brand-forest/20 transition-colors">
-                    <Phone className="size-3.5 text-brand-sage" />
-                  </span>
-                  +1 (514) 555-1234
                 </a>
                 <div className="flex items-center gap-2.5 text-sm text-white/55">
                   <span className="flex items-center justify-center size-8 rounded-lg bg-white/8">
