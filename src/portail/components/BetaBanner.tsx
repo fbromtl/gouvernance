@@ -11,7 +11,7 @@ export function BetaBanner({ onOpenBugReport }: BetaBannerProps) {
       <p>
         <span className="font-medium">Portail en version bêta</span>
         {" — "}
-        Certaines fonctionnalités ne sont pas entièrement finalisées.{" "}
+        Certaines fonctionnalités ne sont pas entièrement finalisées. L'accès aux fonctionnalités est actuellement libre avec le forfait Observateur gratuit.{" "}
         <button
           type="button"
           onClick={onOpenBugReport}
