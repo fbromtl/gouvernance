@@ -22,8 +22,9 @@ La mention bêta apparaît **uniquement dans le portail** (pas sur le site publi
 
 - **Emplacement :** `src/portail/components/BugReportDialog.tsx`
 - **Type :** Dialog (modale shadcn/ui)
-- **Props :** `{ open: boolean, onOpenChange: (open: boolean) => void }` (pattern shadcn/ui standard, cf. `CreateAgentDialog`)
+- **Props :** `{ open: boolean, onOpenChange: (open: boolean) => void }` (pattern shadcn/ui standard, cf. props de `CreateAgentDialog` — NB : le formulaire utilise react-hook-form + Zod, pas le pattern useState manuel de CreateAgentDialog)
 - **Monté une seule fois** dans `PortailLayout.tsx`
+- **Reset du formulaire :** Appeler `form.reset()` dans le callback `onOpenChange(false)` pour éviter les données périmées à la réouverture
 - **Points d'accès :**
   - Lien "Signaler un bug" dans le `BetaBanner`
   - Item "Signaler un bug" (icône `Bug` de lucide-react) dans le dropdown utilisateur de `AppHeader`
@@ -56,6 +57,7 @@ La mention bêta apparaît **uniquement dans le portail** (pas sur le site publi
 - **Emplacement :** `src/hooks/useBugReports.ts`
 - Expose une mutation `useCreateBugReport` (TanStack React Query)
 - Encapsule : insert dans `bug_reports`, upload storage, update `screenshot_url`
+- Le payload d'insert doit explicitement inclure `user_id: user.id` pour satisfaire la policy RLS INSERT
 - Pattern identique à `useDocuments.ts` / `useIncidents.ts`
 
 ### Table Supabase `bug_reports`
@@ -85,20 +87,54 @@ CREATE POLICY "Users can insert bug reports for their organization"
     AND organization_id = (auth.jwt() ->> 'organization_id')::uuid
   );
 
-CREATE POLICY "Admins can view bug reports for their organization"
+CREATE POLICY "Users can view bug reports for their organization"
   ON public.bug_reports FOR SELECT
   USING (
     organization_id = (auth.jwt() ->> 'organization_id')::uuid
   );
+
+CREATE POLICY "Users can update own bug reports"
+  ON public.bug_reports FOR UPDATE
+  USING (
+    auth.uid() = user_id
+    AND organization_id = (auth.jwt() ->> 'organization_id')::uuid
+  )
+  WITH CHECK (
+    auth.uid() = user_id
+    AND organization_id = (auth.jwt() ->> 'organization_id')::uuid
+  );
+
+CREATE TRIGGER set_updated_at_bug_reports
+  BEFORE UPDATE ON public.bug_reports
+  FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
 
 GRANT ALL ON public.bug_reports TO authenticated;
 ```
 
 #### Storage
 
-- Bucket `bug-screenshots` dans Supabase Storage
-- Policy d'upload pour les utilisateurs authentifiés
-- Chemin : `{organization_id}/{bug_report_id}/{filename}`
+Bucket `bug-screenshots` dans Supabase Storage. Création via migration :
+
+```sql
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('bug-screenshots', 'bug-screenshots', false);
+
+CREATE POLICY "Authenticated users can upload bug screenshots"
+  ON storage.objects FOR INSERT
+  WITH CHECK (
+    bucket_id = 'bug-screenshots'
+    AND auth.role() = 'authenticated'
+  );
+
+CREATE POLICY "Users can view bug screenshots from their org"
+  ON storage.objects FOR SELECT
+  USING (
+    bucket_id = 'bug-screenshots'
+    AND auth.role() = 'authenticated'
+  );
+```
+
+Chemin d'upload : `{organization_id}/{bug_report_id}/{filename}`
 
 ### Intégration dans `PortailLayout`
 
