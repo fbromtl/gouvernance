@@ -8,10 +8,13 @@ import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
 import { usePageContext } from "@/hooks/usePageContext";
 import { useAiChat } from "@/hooks/useAiChat";
 import { FloatingChat } from "@/portail/components/FloatingChat";
+import { BetaBanner } from "@/portail/components/BetaBanner";
+import BugReportDialog from "@/portail/components/BugReportDialog";
 
 export function PortailLayout() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [bugReportOpen, setBugReportOpen] = useState(false);
   const { pathname } = useLocation();
 
   const pageContext = usePageContext();
@@ -40,7 +43,9 @@ export function PortailLayout() {
       <div className="flex flex-1 flex-col overflow-hidden">
         <AppHeader
           onMobileMenuToggle={() => setMobileOpen(!mobileOpen)}
+          onOpenBugReport={() => setBugReportOpen(true)}
         />
+        <BetaBanner onOpenBugReport={() => setBugReportOpen(true)} />
         <main className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
             <ErrorBoundary key={pathname}>
@@ -48,6 +53,10 @@ export function PortailLayout() {
             </ErrorBoundary>
           </div>
         </main>
+        <BugReportDialog
+          open={bugReportOpen}
+          onOpenChange={setBugReportOpen}
+        />
       </div>
 
       {/* Floating AI Chat Widget */}
