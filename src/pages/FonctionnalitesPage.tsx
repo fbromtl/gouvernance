@@ -1357,6 +1357,17 @@ export function FonctionnalitesPage() {
         }}
       />
 
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Accueil", item: "https://gouvernance.ai/" },
+            { "@type": "ListItem", position: 2, name: "Fonctionnalités" },
+          ],
+        }}
+      />
+
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}

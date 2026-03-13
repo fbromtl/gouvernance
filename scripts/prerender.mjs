@@ -49,6 +49,7 @@ function getRoutes() {
     '/actualites',
     '/contact',
     '/tarifs',
+    '/diagnostic',
     '/fonctionnalites',
     '/membres-honoraires',
     '/confidentialite',
@@ -181,8 +182,8 @@ async function prerender() {
         timeout: 30000,
       });
 
-      // Wait for React to render (h1 appears after lazy-load + render)
-      await page.waitForSelector('h1', { timeout: 15000 });
+      // Wait for React to render (h1 or h2 appears after lazy-load + render)
+      await page.waitForSelector('h1, h2', { timeout: 15000 });
 
       // Small delay for useEffect-based meta tag updates
       await new Promise((r) => setTimeout(r, 500));

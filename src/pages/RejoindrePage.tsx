@@ -17,7 +17,7 @@ import {
   Shield,
 } from "lucide-react";
 
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                                */
@@ -104,7 +104,29 @@ export function RejoindrePage() {
       <SEO
         title="Rejoindre le Cercle"
         description="Rejoignez gratuitement le Cercle de Gouvernance de l'IA. Outils de gouvernance simples, diagnostic de maturité, communauté de 150+ experts."
+        tags={["rejoindre", "adhésion", "gouvernance IA", "inscription gratuite", "diagnostic IA", "communauté IA"]}
       />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Rejoindre le Cercle" },
+        ],
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Rejoindre le Cercle de Gouvernance de l'IA",
+        "description": "Rejoignez gratuitement le Cercle. Outils de gouvernance, diagnostic de maturité, communauté de 150+ experts.",
+        "url": "https://gouvernance.ai/rejoindre",
+        "inLanguage": "fr-CA",
+        "potentialAction": {
+          "@type": "JoinAction",
+          "target": "https://gouvernance.ai/inscription",
+          "name": "Créer un compte gratuit",
+        },
+      }} />
       <div className="overflow-x-hidden">
         {/* ============================================================ */}
         {/*  SECTION 1 — HERO TWO-COLUMN                                  */}

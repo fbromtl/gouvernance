@@ -17,6 +17,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
+import { SEO, JsonLd } from "@/components/SEO";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "gouvernance:diagnostic:pending";
@@ -151,6 +152,39 @@ export function DiagnosticPage() {
   };
 
   return (
+    <>
+    <SEO
+      title="Diagnostic de maturité IA"
+      description="Évaluez la maturité de votre organisation en gouvernance de l'IA en 10 minutes. Recevez un score et des recommandations personnalisées couvrant 10 domaines clés."
+      tags={["diagnostic IA", "maturité IA", "gouvernance IA", "évaluation IA", "Loi 25", "conformité IA"]}
+    />
+    <JsonLd data={{
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Diagnostic de maturité IA — Cercle de Gouvernance de l'IA",
+      "description": "Outil gratuit d'évaluation de la maturité en gouvernance de l'intelligence artificielle. 10 questions, 10 domaines, résultats instantanés.",
+      "url": "https://gouvernance.ai/diagnostic",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CAD",
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Cercle de Gouvernance de l'IA",
+        "url": "https://gouvernance.ai",
+      },
+    }} />
+    <JsonLd data={{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Diagnostic de maturité IA" },
+      ],
+    }} />
     <div className="fixed inset-0 flex flex-col" style={{ background: "radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 50% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%), white" }}>
       {/* ── Top Bar ────────────────────────────────────── */}
       <div className="relative z-10 flex items-center justify-between px-4 pt-4 sm:px-6 sm:pt-6">
@@ -264,6 +298,7 @@ export function DiagnosticPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }
 

@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 /* ------------------------------------------------------------------ */
 /*  Animations                                                         */
@@ -134,6 +134,14 @@ export function MembresHonorairesPage() {
         title={t("seo.title")}
         description={t("seo.description")}
       />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Membres honoraires" },
+        ],
+      }} />
 
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0e0f19] via-[#1a1a2e] to-[#0e0f19] py-20 sm:py-28">

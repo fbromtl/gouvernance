@@ -18,6 +18,7 @@ import {
   GraduationCap,
   Sparkles,
 } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "gouvernance:diagnostic:pending";
@@ -189,6 +190,12 @@ export function DiagnosticResultsPage() {
   const VISIBLE_COUNT = 3; // Show only first 3 domains, blur the rest
 
   return (
+    <>
+    <SEO
+      title="Résultats du diagnostic IA"
+      description="Résultats de votre diagnostic de maturité en gouvernance de l'IA. Score, recommandations et prochaines étapes."
+      noindex={true}
+    />
     <div className="min-h-screen" style={{ background: "radial-gradient(at 0% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 50% 0%, #E9E0D1 0, transparent 50%), radial-gradient(at 100% 0%, #E9E0D1 0, transparent 50%), white" }}>
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
         {/* ── Header ─────────────────────────────────── */}
@@ -298,6 +305,7 @@ export function DiagnosticResultsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

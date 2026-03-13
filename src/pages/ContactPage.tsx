@@ -70,6 +70,14 @@ export function ContactPage() {
           }
         }
       }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact" },
+        ],
+      }} />
       <div className="overflow-x-hidden">
       {/* Hero — Immersive photo */}
       <section className="relative overflow-hidden pt-32 pb-20 min-h-[480px] sm:min-h-[540px] flex items-center">

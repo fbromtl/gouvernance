@@ -59,6 +59,14 @@ export function ExpertsPage() {
           "description": c.description,
         })),
       }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Nos experts" },
+        ],
+      }} />
       <div className="overflow-x-hidden">
       {/* HERO SECTION */}
       <section
