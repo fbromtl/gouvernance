@@ -2,10 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA redirect - all routes handled by React Router
+# SPA fallback — prerendered routes serve their own index.html automatically;
+# non-prerendered routes (portail, auth, etc.) fall back to the SPA shell.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/_spa.html"
   status = 200
 
 # SEO & Performance headers

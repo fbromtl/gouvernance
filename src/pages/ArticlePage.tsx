@@ -109,11 +109,13 @@ export function ArticlePage() {
         title={article.title}
         description={article.excerpt}
         image={article.cover?.startsWith("http") ? article.cover : `https://gouvernance.ai${article.cover}`}
+        imageAlt={article.title}
         type="article"
         publishedTime={article.date}
         authorName={author?.name}
         articleSection={categoryLabels[article.category as Category]}
         tags={article.tags}
+        readingTime={article.readingTime}
       />
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -130,6 +132,8 @@ export function ArticlePage() {
           "@type": "Person",
           "name": author.name,
           "jobTitle": author.title,
+          ...(author.linkedin ? { "url": author.linkedin } : {}),
+          ...(author.avatar ? { "image": author.avatar.startsWith("http") ? author.avatar : `https://gouvernance.ai${author.avatar}` } : {}),
         } : undefined,
         "publisher": {
           "@type": "Organization",
@@ -146,6 +150,7 @@ export function ArticlePage() {
           "width": 1200,
           "height": 630,
         },
+        "isAccessibleForFree": true,
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `https://gouvernance.ai/actualites/${article.slug}`,

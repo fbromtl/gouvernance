@@ -10,7 +10,7 @@ import {
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 
 export function AProposPage() {
   const frameworks = [
@@ -62,6 +62,23 @@ export function AProposPage() {
   return (
     <>
       <SEO title="À propos" description="Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA. Un réseau d'experts dédié à la gouvernance responsable de l'intelligence artificielle." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "À propos" },
+        ],
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "À propos — Cercle de Gouvernance de l'IA",
+        "description": "Découvrez la mission, la vision et l'approche du Cercle de Gouvernance de l'IA.",
+        "url": "https://gouvernance.ai/a-propos",
+        "inLanguage": "fr-CA",
+        "isPartOf": { "@type": "WebSite", "url": "https://gouvernance.ai" },
+      }} />
       <div className="overflow-x-hidden">
       {/* HERO */}
       <section

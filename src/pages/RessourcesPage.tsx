@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { SEO } from "@/components/SEO";
+import { SEO, JsonLd } from "@/components/SEO";
 import { DocumentLibraryPreview } from "@/components/resources/DocumentLibraryPreview";
 import { VeilleShowcase } from "@/components/resources/VeilleShowcase";
 import { ToolkitShowcase } from "@/components/resources/ToolkitShowcase";
@@ -58,6 +58,23 @@ export function RessourcesPage() {
   return (
     <>
       <SEO title="Ressources" description="Guides, cadres de gouvernance, boîte à outils et veille réglementaire pour la gouvernance de l'intelligence artificielle." />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://gouvernance.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Ressources" },
+        ],
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Ressources — Cercle de Gouvernance de l'IA",
+        "description": "Guides, cadres de gouvernance, boîte à outils et veille réglementaire pour la gouvernance de l'intelligence artificielle.",
+        "url": "https://gouvernance.ai/ressources",
+        "inLanguage": "fr-CA",
+        "isPartOf": { "@type": "WebSite", "url": "https://gouvernance.ai" },
+      }} />
       <div className="overflow-x-hidden">
       {/* HERO */}
       <section
