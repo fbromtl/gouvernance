@@ -11,6 +11,7 @@
 
 import puppeteer from 'puppeteer';
 import { createServer } from 'http';
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -138,10 +139,19 @@ async function prerender() {
   fs.copyFileSync(spaPath, fallbackPath);
   console.log('  Saved SPA fallback: _spa.html');
 
-  // 2. Start local server
+  // 2. Ensure Chrome is installed (required on CI environments like Netlify)
+  try {
+    console.log('  Installing Chrome for Puppeteer...');
+    execSync('npx puppeteer browsers install chrome', { stdio: 'pipe' });
+    console.log('  Chrome installed.');
+  } catch {
+    console.log('  Chrome install skipped (may already be available).');
+  }
+
+  // 3. Start local server
   const server = await startServer();
 
-  // 3. Launch headless browser
+  // 4. Launch headless browser
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
