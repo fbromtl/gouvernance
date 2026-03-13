@@ -151,6 +151,10 @@ export function ArticlePage() {
           "height": 630,
         },
         "isAccessibleForFree": true,
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": ["article h1", "article .prose p:first-of-type"],
+        },
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `https://gouvernance.ai/actualites/${article.slug}`,

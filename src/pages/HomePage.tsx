@@ -109,6 +109,16 @@ export function HomePage() {
           description:
             "Réseau de 150+ experts en gouvernance de l'intelligence artificielle. Diagnostic de maturité IA, formations, accompagnement stratégique.",
           areaServed: { "@type": "Country", name: "Canada" },
+          knowsAbout: [
+            "Gouvernance de l'intelligence artificielle",
+            "Conformité Loi 25",
+            "EU AI Act",
+            "NIST AI RMF",
+            "ISO/IEC 42001",
+            "Éthique IA",
+            "Biais algorithmiques",
+            "Protection des données personnelles",
+          ],
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Services de Gouvernance IA",
@@ -119,6 +129,115 @@ export function HomePage() {
               { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conférences et interventions" } },
             ],
           },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Le plan Observateur est-il vraiment gratuit ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Oui, sans limite de durée ni carte de crédit. Accédez au dashboard, enregistrez jusqu'à 3 systèmes IA et lancez votre diagnostic de maturité.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Combien de temps prend le diagnostic de maturité IA ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Environ 10 minutes. Vous recevez un rapport complet avec un score de maturité et des recommandations personnalisées pour votre organisation.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Les données sont-elles sécurisées sur la plateforme ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Absolument. Hébergement Supabase avec chiffrement au repos et en transit, conforme aux exigences de la Loi 25 et du RGPD.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Quels cadres réglementaires IA couvrez-vous ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Loi 25 (Québec), EU AI Act, NIST AI RMF, ISO/IEC 42001 et les principes OCDE. Chaque cadre dispose de son propre tableau de suivi dans la plateforme.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Puis-je changer de plan à tout moment ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Oui, passez du plan Observateur au Membre ou Expert quand vous le souhaitez. La transition est instantanée et vos données sont conservées.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Comment fonctionne le support du Cercle de Gouvernance de l'IA ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Observateur : documentation en ligne. Membre : support par courriel sous 24h. Expert : support dédié avec temps de réponse garanti.",
+              },
+            },
+          ],
+        }}
+      />
+
+      {/* GEO: Key AI governance terms for AI systems to extract */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "DefinedTermSet",
+          name: "Glossaire de la gouvernance de l'IA",
+          url: "https://gouvernance.ai",
+          inLanguage: "fr-CA",
+          hasDefinedTerm: [
+            {
+              "@type": "DefinedTerm",
+              name: "Gouvernance de l'IA",
+              description: "Ensemble des cadres, politiques, processus et structures organisationnelles visant à encadrer le développement, le déploiement et l'utilisation responsable de l'intelligence artificielle au sein d'une organisation.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "Loi 25",
+              description: "Loi modernisant des dispositions législatives en matière de protection des renseignements personnels au Québec. Entrée en vigueur progressivement depuis 2022, elle impose des obligations de transparence, de consentement et de gouvernance des données aux organisations.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "EU AI Act",
+              description: "Règlement européen sur l'intelligence artificielle adopté en 2024. Premier cadre juridique complet au monde pour réguler l'IA selon une approche basée sur les risques, classant les systèmes IA en catégories de risque (inacceptable, élevé, limité, minimal).",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "NIST AI RMF",
+              description: "AI Risk Management Framework du National Institute of Standards and Technology (États-Unis). Cadre volontaire pour gérer les risques liés à l'IA, structuré autour de quatre fonctions : Govern, Map, Measure, Manage.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "ISO/IEC 42001",
+              description: "Norme internationale publiée en 2023 pour les systèmes de management de l'intelligence artificielle (SMIA). Elle fournit un cadre certifiable pour la gouvernance responsable de l'IA dans les organisations.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "Diagnostic de maturité IA",
+              description: "Évaluation structurée du niveau de préparation d'une organisation en matière de gouvernance de l'intelligence artificielle. Couvre la stratégie, l'éthique, la conformité, la gestion des risques et les compétences.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "Biais algorithmique",
+              description: "Distorsion systématique dans les résultats d'un système d'IA, souvent causée par des données d'entraînement non représentatives ou des choix de conception discriminatoires. Peut affecter l'équité des décisions automatisées.",
+            },
+            {
+              "@type": "DefinedTerm",
+              name: "IA responsable",
+              description: "Approche du développement et du déploiement de l'intelligence artificielle qui intègre des principes éthiques, de transparence, d'équité, de sécurité et de respect de la vie privée tout au long du cycle de vie des systèmes.",
+            },
+          ],
         }}
       />
 

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:templates && tsc -b && vite build && node scripts/generate-sitemap.mjs && node scripts/prerender.mjs",
+    "build": "npm run build:templates && tsc -b && vite build && node scripts/generate-sitemap.mjs && node scripts/generate-llms-full.mjs && node scripts/prerender.mjs",
     "build:templates": "node scripts/build-templates.mjs",
     "lint": "eslint .",
     "preview": "vite preview",

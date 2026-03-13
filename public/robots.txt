@@ -1,3 +1,4 @@
+# Crawlers classiques
 User-agent: *
 Allow: /
 Disallow: /portail/
@@ -5,5 +6,34 @@ Disallow: /connexion
 Disallow: /inscription
 Disallow: /mot-de-passe-oublie
 Disallow: /reinitialiser-mot-de-passe
+
+# Crawlers IA — accès autorisé au contenu public
+User-agent: GPTBot
+Allow: /
+Disallow: /portail/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /portail/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /portail/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /portail/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /portail/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /portail/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /portail/
 
 Sitemap: https://gouvernance.ai/sitemap.xml

@@ -12,6 +12,9 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://gouvernance.ai/" />
 
+    <!-- GEO: AI crawlers discovery -->
+    <link rel="author" href="/llms.txt" type="text/plain" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -46,26 +49,48 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Cercle de Gouvernance de l'IA",
-      "alternateName": "Gouvernance IA",
+      "alternateName": ["Gouvernance IA", "gouvernance.ai"],
       "url": "https://gouvernance.ai",
       "logo": "https://gouvernance.ai/logo.svg",
-      "description": "Le Cercle de Gouvernance de l'IA réunit des experts pour accompagner les organisations dans la gouvernance responsable de l'intelligence artificielle.",
+      "description": "Le Cercle de Gouvernance de l'IA réunit 150+ experts pour accompagner les organisations dans la gouvernance responsable de l'intelligence artificielle. Conformité Loi 25, EU AI Act, NIST AI RMF, ISO 42001.",
       "foundingDate": "2024",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Canada"
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Montréal, Québec, Canada"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "AdministrativeArea", "name": "Québec" }
+      ],
       "knowsAbout": [
         "Gouvernance de l'intelligence artificielle",
-        "Conformité Loi 25",
-        "Éthique IA",
-        "Cadre NIST AI",
-        "Diagnostic de maturité IA"
+        "Conformité Loi 25 Québec",
+        "EU AI Act",
+        "NIST AI Risk Management Framework",
+        "ISO/IEC 42001",
+        "RGPD et protection des données",
+        "Principes OCDE sur l'IA",
+        "Éthique de l'intelligence artificielle",
+        "Biais algorithmiques et équité",
+        "Diagnostic de maturité IA",
+        "Transparence et explicabilité algorithmique",
+        "Cybersécurité et IA",
+        "IA responsable"
       ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": "150+",
+        "unitText": "experts"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Florian Brobst",
+        "jobTitle": "Fondateur & Directeur",
+        "url": "https://www.linkedin.com/in/florian-mtl/"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "info@gouvernance.ai",
-        "telephone": "+1-514-555-1234",
         "contactType": "customer service",
         "availableLanguage": ["French", "English"]
       },
