@@ -14,4 +14,10 @@ export const authors: Record<string, Author> = {
     bio: "Le Cercle de Gouvernance de l\u2019IA rassemble des experts et professionnels engag\u00e9s dans la promotion d\u2019une intelligence artificielle responsable et \u00e9thique.",
     avatar: "/images/authors/cercle-logo.jpg",
   },
+  "anne-garo": {
+    name: "Anne Garo",
+    title: "Journaliste spécialisée IT",
+    bio: "Anne Garo est journaliste spécialisée dans les technologies de l\u2019information et la transformation numérique des entreprises. Elle couvre les enjeux de gouvernance des données et d\u2019intelligence artificielle pour les décideurs IT.",
+    avatar: "/images/authors/cercle-logo.jpg",
+  },
 };
